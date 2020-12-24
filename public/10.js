@@ -715,10 +715,10 @@ var _nav = [{
   })
 }, {
   _tag: 'CSidebarNavTitle',
-  _children: ['Devices']
+  _children: ['Device']
 }, {
   _tag: 'CSidebarNavItem',
-  name: 'Devices',
+  name: 'Device',
   to: '/devices',
   icon: 'cil-devices'
 }, {
