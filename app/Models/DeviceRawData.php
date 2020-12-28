@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CommandHistory extends Model
+class DeviceRawData extends Model
 {
     use HasFactory;
 
     /**
-     * Get the device that owns the command history.
+     * Get the device that owns the raw data.
      */
     public function device()
     {

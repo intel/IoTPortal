@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\UserTeam;
+use App\Models\DeviceRawData;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UserTeamFactory extends Factory
+class DeviceRawDataFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = UserTeam::class;
+    protected $model = DeviceRawData::class;
 
     /**
      * Define the model's default state.

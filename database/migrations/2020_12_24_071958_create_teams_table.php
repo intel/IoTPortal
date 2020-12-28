@@ -17,10 +17,7 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->string('unique_id');
             $table->string('name');
-            $table->unsignedBigInteger('user_id'); // team owner
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

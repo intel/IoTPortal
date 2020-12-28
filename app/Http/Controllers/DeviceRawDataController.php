@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserTeam;
+use App\Models\DeviceRawData;
 use Illuminate\Http\Request;
 
-class UserTeamController extends Controller
+class DeviceRawDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserTeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserTeam  $userTeam
+     * @param  \App\Models\DeviceRawData  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function show(UserTeam $userTeam)
+    public function show(DeviceRawData $deviceRawData)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserTeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserTeam  $userTeam
+     * @param  \App\Models\DeviceRawData  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserTeam $userTeam)
+    public function edit(DeviceRawData $deviceRawData)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserTeamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\UserTeam  $userTeam
+     * @param  \App\Models\DeviceRawData  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserTeam $userTeam)
+    public function update(Request $request, DeviceRawData $deviceRawData)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserTeamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserTeam  $userTeam
+     * @param  \App\Models\DeviceRawData  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserTeam $userTeam)
+    public function destroy(DeviceRawData $deviceRawData)
     {
         //
     }

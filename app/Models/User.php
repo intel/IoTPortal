@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use  HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -40,4 +41,53 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the managed teams for the user.
+     */
+    public function managedTeams()
+    {
+        return $this->belongsToMany('App\Models\Team')->wherePivot('role', 0);
+    }
+
+    /**
+     * The teams that the user joins.
+     */
+    public function teams()
+    {
+        return $this->belongsToMany('App\Models\Team');
+    }
+
+    /**
+     * Get the owning devices for the user.
+     */
+    public function devices()
+    {
+        return $this->hasMany('App\Models\Device');
+    }
+
+
+    /**
+     * Get the FOTA configurations for the user.
+     */
+    public function fotaConfigurations()
+    {
+        return $this->hasMany('App\Models\FotaConfiguration');
+    }
+
+    /**
+     * Get the AOTA configurations for the user.
+     */
+    public function aotaConfigurations()
+    {
+        return $this->hasMany('App\Models\AotaConfiguration');
+    }
+
+    /**
+     * Get the configuration files for the user.
+     */
+    public function configurationFiles()
+    {
+        return $this->hasMany('App\Models\ConfigurationFile');
+    }
 }

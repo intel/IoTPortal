@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class FotaConfiguration extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the user that owns the FOTA configuration.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }
