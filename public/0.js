@@ -17864,7 +17864,7 @@ var ReactDOMServerRenderer = /*#__PURE__*/function () {
     this.currentSelectValue = null;
     this.previousWasTextNode = false;
     this.makeStaticMarkup = makeStaticMarkup;
-    this.suspenseDepth = 0; // Context (new API)
+    this.suspenseDepth = 0; // Context (new Api)
 
     this.contextIndex = -1;
     this.contextStack = [];
@@ -18339,7 +18339,7 @@ var ReactDOMServerRenderer = /*#__PURE__*/function () {
 
               {
                 {
-                  throw Error( "ReactDOMServer does not yet support the fundamental API." );
+                  throw Error( "ReactDOMServer does not yet support the fundamental Api." );
                 }
               }
             }
@@ -18666,7 +18666,7 @@ function renderToStaticMarkup(element, options) {
 function renderToNodeStream() {
   {
     {
-      throw Error( "ReactDOMServer.renderToNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToString() instead." );
+      throw Error( "ReactDOMServer.renderToNodeStream(): The streaming Api is not available in the browser. Use ReactDOMServer.renderToString() instead." );
     }
   }
 }
@@ -18674,7 +18674,7 @@ function renderToNodeStream() {
 function renderToStaticNodeStream() {
   {
     {
-      throw Error( "ReactDOMServer.renderToStaticNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToStaticMarkup() instead." );
+      throw Error( "ReactDOMServer.renderToStaticNodeStream(): The streaming Api is not available in the browser. Use ReactDOMServer.renderToStaticMarkup() instead." );
     }
   }
 }
@@ -19616,7 +19616,7 @@ var ENTERED = 'entered';
 var EXITING = 'exiting';
 /**
  * The Transition component lets you describe a transition from one component
- * state to another _over time_ with a simple declarative API. Most commonly
+ * state to another _over time_ with a simple declarative Api. Most commonly
  * it's used to animate the mounting and unmounting of a component, but can also
  * be used to describe in-place transition states as well.
  *

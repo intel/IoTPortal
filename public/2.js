@@ -738,7 +738,7 @@ var _nav = [{
   _children: ['Administration']
 }, {
   _tag: 'CSidebarNavItem',
-  name: 'API Keys',
+  name: 'Api Keys',
   to: '/administration/api',
   icon: 'cil-applications-settings'
 }];

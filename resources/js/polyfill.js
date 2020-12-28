@@ -20,7 +20,7 @@
 // import 'core-js/features/set'
 // import 'core-js/features/set/map';
 
-/** IE10 and IE11 requires the following for the Reflect API. */
+/** IE10 and IE11 requires the following for the Reflect Api. */
 // import 'core-js/features/reflect';
 
 /** Evergreen browsers require these. **/

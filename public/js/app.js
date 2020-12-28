@@ -592,7 +592,7 @@ function getConfirmation(message, callback) {
   callback(window.confirm(message)); // eslint-disable-line no-alert
 }
 /**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ * Returns true if the HTML5 history Api is supported. Taken from Modernizr.
  *
  * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
  * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
@@ -642,7 +642,7 @@ function getHistoryState() {
   }
 }
 /**
- * Creates a history object that uses the HTML5 history API including
+ * Creates a history object that uses the HTML5 history Api including
  * pushState, replaceState, and the popstate event.
  */
 
@@ -2622,7 +2622,7 @@ function isAsyncMode(object) {
     if (!hasWarnedAboutDeprecatedIsAsyncMode) {
       hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
 
-      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same Api.');
     }
   }
 
@@ -2780,7 +2780,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * The public API for a <Router> that uses HTML5 history.
+ * The public Api for a <Router> that uses HTML5 history.
  */
 
 var BrowserRouter =
@@ -2827,7 +2827,7 @@ if (true) {
 }
 
 /**
- * The public API for a <Router> that uses window.location.hash.
+ * The public Api for a <Router> that uses window.location.hash.
  */
 
 var HashRouter =
@@ -2937,7 +2937,7 @@ if (true) {
   LinkAnchor.displayName = "LinkAnchor";
 }
 /**
- * The public API for rendering a history-aware <a>.
+ * The public Api for rendering a history-aware <a>.
  */
 
 
@@ -3169,7 +3169,7 @@ var context =
 createNamedContext$1("Router");
 
 /**
- * The public API for putting history on context.
+ * The public Api for putting history on context.
  */
 
 var Router =
@@ -3262,7 +3262,7 @@ if (true) {
 }
 
 /**
- * The public API for a <Router> that stores location in memory.
+ * The public Api for a <Router> that stores location in memory.
  */
 
 var MemoryRouter =
@@ -3339,7 +3339,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
 /**
- * The public API for prompting the user before navigating away from a screen.
+ * The public Api for prompting the user before navigating away from a screen.
  */
 
 function Prompt(_ref) {
@@ -3392,7 +3392,7 @@ function compilePath(path) {
   return generator;
 }
 /**
- * Public API for generating a URL pathname from a path and parameters.
+ * Public Api for generating a URL pathname from a path and parameters.
  */
 
 
@@ -3411,7 +3411,7 @@ function generatePath(path, params) {
 }
 
 /**
- * The public API for navigating programmatically with a component.
+ * The public Api for navigating programmatically with a component.
  */
 
 function Redirect(_ref) {
@@ -3483,7 +3483,7 @@ function compilePath$1(path, options) {
   return result;
 }
 /**
- * Public API for matching a URL pathname to a path.
+ * Public Api for matching a URL pathname to a path.
  */
 
 
@@ -3550,7 +3550,7 @@ function evalChildrenDev(children, props, path) {
   return value || null;
 }
 /**
- * The public API for matching a single path and rendering.
+ * The public Api for matching a single path and rendering.
  */
 
 
@@ -3658,7 +3658,7 @@ function staticHandler(methodName) {
 
 function noop() {}
 /**
- * The public top-level API for a "static" <Router>, so-called because it
+ * The public top-level Api for a "static" <Router>, so-called because it
  * can't actually change the current location. Instead, it just records
  * location changes in a context object. Useful mainly in testing and
  * server-rendering scenarios.
@@ -3757,7 +3757,7 @@ if (true) {
 }
 
 /**
- * The public API for rendering the first <Route> that matches.
+ * The public Api for rendering the first <Route> that matches.
  */
 
 var Switch =
@@ -3814,7 +3814,7 @@ if (true) {
 }
 
 /**
- * A public higher-order component to access the imperative API
+ * A public higher-order component to access the imperative Api
  */
 
 function withRouter(Component) {
@@ -4605,7 +4605,7 @@ function warnNoop(publicInstance, callerName) {
   }
 }
 /**
- * This is the abstract API for an update queue.
+ * This is the abstract Api for an update queue.
  */
 
 
@@ -4633,7 +4633,7 @@ var ReactNoopUpdateQueue = {
    *
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {?function} callback Called after component is updated.
-   * @param {?string} callerName name of the calling function in the public API.
+   * @param {?string} callerName name of the calling function in the public Api.
    * @internal
    */
   enqueueForceUpdate: function (publicInstance, callback, callerName) {
@@ -4650,7 +4650,7 @@ var ReactNoopUpdateQueue = {
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {object} completeState Next state.
    * @param {?function} callback Called after component is updated.
-   * @param {?string} callerName name of the calling function in the public API.
+   * @param {?string} callerName name of the calling function in the public Api.
    * @internal
    */
   enqueueReplaceState: function (publicInstance, completeState, callback, callerName) {
@@ -4666,7 +4666,7 @@ var ReactNoopUpdateQueue = {
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {object} partialState Next partial state to be merged with state.
    * @param {?function} callback Called after component is updated.
-   * @param {?string} Name of the calling function in the public API.
+   * @param {?string} Name of the calling function in the public Api.
    * @internal
    */
   enqueueSetState: function (publicInstance, partialState, callback, callerName) {
@@ -5779,7 +5779,7 @@ function forwardRef(render) {
 
 // Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
 
-var enableScopeAPI = false; // Experimental Create Event Handle API.
+var enableScopeAPI = false; // Experimental Create Event Handle Api.
 
 function isValidElementType(type) {
   if (typeof type === 'string' || typeof type === 'function') {
