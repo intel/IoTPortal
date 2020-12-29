@@ -17,16 +17,19 @@ Route::middleware(['json.response'])->group(function () {
     Route::post('/register', 'App\Http\Controllers\Api\Auth\AuthController@register')->name('api.auth.register');
     Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
 
+    Route::post('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
 });
 
 Route::middleware(['json.response', 'auth:api'])->group(function () {
     Route::post('/logout', 'App\Http\Controllers\Api\Auth\AuthController@logout')->name('api.auth.logout');
 
+    Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
 
-//    Route::get('/user', function (Request $request) {
-//    return $request->user();
-//        echo 'sad';
-//    });
+    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
 
 

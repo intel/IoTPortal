@@ -10,7 +10,7 @@ const _nav =  [
     },
     {
         _tag: 'CSidebarNavTitle',
-        _children: ['Device']
+        _children: ['Devices']
     },
     {
         _tag: 'CSidebarNavItem',
@@ -30,7 +30,7 @@ const _nav =  [
     },
     {
         _tag: 'CSidebarNavTitle',
-        _children: ['Administration']
+        _children: ['Administrations']
     },
     {
         _tag: 'CSidebarNavItem',

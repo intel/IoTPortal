@@ -719,10 +719,10 @@ var _nav = [{
   })
 }, {
   _tag: 'CSidebarNavTitle',
-  _children: ['Device']
+  _children: ['Devices']
 }, {
   _tag: 'CSidebarNavItem',
-  name: 'Device',
+  name: 'Devices',
   to: '/devices',
   icon: 'cil-devices'
 }, {
@@ -735,7 +735,7 @@ var _nav = [{
   icon: 'cil-file'
 }, {
   _tag: 'CSidebarNavTitle',
-  _children: ['Administration']
+  _children: ['Administrations']
 }, {
   _tag: 'CSidebarNavItem',
   name: 'Api Keys',

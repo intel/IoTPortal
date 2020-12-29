@@ -22,8 +22,8 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response([
-                'success'=> false,
-                'errors'=>$validator->getMessageBag()->toArray()
+                'success' => false,
+                'errors' => $validator->getMessageBag()->toArray()
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         $response = ['success'=> true, 'token' => $token];
 
-        return response($response, 200);
+        return response($response, Response::HTTP_OK);
     }
 
     public function login(Request $request)
@@ -45,8 +45,8 @@ class AuthController extends Controller
 
         if ($validator->fails()) {
             return response([
-                'success'=> false,
-                'errors'=>$validator->getMessageBag()->toArray()
+                'success' => false,
+                'errors' => $validator->getMessageBag()->toArray()
             ], Response::HTTP_BAD_REQUEST);
         }
 
@@ -56,7 +56,7 @@ class AuthController extends Controller
             $response = ['success'=> true, 'token' => $token];
             return response($response, Response::HTTP_OK);
         } else {
-            $response = ['success'=> false, 'error' => 'Wrong email or password entered.'];
+            $response = ['success' => false, 'error' => 'Wrong email or password entered.'];
             return response($response, Response::HTTP_UNAUTHORIZED);
         }
     }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Helper;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,6 +49,7 @@ class User extends Authenticatable
         parent::boot();
         self::creating(function ($model) {
             $model->unique_id = Str::uuid()->toString();
+            $model->device_connection_key = Helper::generateDeviceConnectionKey();
         });
     }
 
