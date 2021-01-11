@@ -27,7 +27,6 @@ class CreateDevicesTable extends Migration
             $table->string('system_manufacturer')->nullable();
             $table->string('system_product_name')->nullable();
             $table->integer('total_memory')->nullable();
-//            $table->string('mqtt_username');
             $table->string('mqtt_password');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('team_id')->nullable();

@@ -10,6 +10,15 @@ class DeviceRawData extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'raw_data',
+    ];
+
+    /**
      * Get the device that owns the raw data.
      */
     public function device()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommandHistoriesTable extends Migration
+class CreateCpuStatisticsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCommandHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('command_histories', function (Blueprint $table) {
+        Schema::create('cpu_statistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
-            $table->json('payload');
-            $table->timestamp('response_time')->nullable();
+            $table->float('system_cpu_percentage');
             $table->unsignedBigInteger('device_id');
             $table->timestamps();
 
@@ -32,6 +30,6 @@ class CreateCommandHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('command_histories');
+        Schema::dropIfExists('cpu_statistics');
     }
 }

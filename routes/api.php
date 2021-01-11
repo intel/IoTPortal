@@ -18,6 +18,20 @@ Route::middleware(['json.response'])->group(function () {
     Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
 
     Route::post('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
+
+    // TODO: remove, not using anymore
+    Route::get('/devices/publish', 'App\Http\Controllers\Api\Devices\DevicePublisherController@publish')->name('api.devices.publish');
+    Route::get('/devices/listen', 'App\Http\Controllers\Api\Devices\DevicePublisherController@index')->name('api.devices.listen');
+
+    // direct method invocation from cloud
+    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceActionController@methods')->name('api.devices.methods');
+
+    Route::post('/mqtt/response/auth-on-publish', 'App\Http\Controllers\Api\Mqtt\MqttResponseController@authOnPublish')->name('api.mqtt.response.authOnPublish');
+
+    // device properties from device
+//    Route::post('devices/{device}/properties/reported', 'App\Http\Controllers\Api\Devices\DeviceActionController@propertiesReported')->name('api.properties.reported');
+
+
 });
 
 Route::middleware(['json.response', 'auth:api'])->group(function () {

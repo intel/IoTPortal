@@ -20,15 +20,6 @@ class Device extends Model
         'status',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'mqtt_password',
-    ];
-
     public static function boot()
     {
         parent::boot();
@@ -37,13 +28,24 @@ class Device extends Model
 
             $model->unique_id = $uniqueId;
             $model->name = $uniqueId;
+            $model->status = 0; //registered
             $model->mqtt_password = Helper::generateMqttPassword();
         });
     }
 
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
     public function getRouteKeyName()
     {
         return 'unique_id';
+    }
+
+    public function notFoundMessage()
+    {
+        return 'Device id not found.';
     }
 
     /**
@@ -100,6 +102,14 @@ class Device extends Model
     public function containerStatistics()
     {
         return $this->hasMany('App\Models\ContainerStatistic');
+    }
+
+    /**
+     * Get the cpu statistics for the device.
+     */
+    public function cpuStatistics()
+    {
+        return $this->hasMany('App\Models\CpuStatistic');
     }
 
     /**
