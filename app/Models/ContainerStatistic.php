@@ -10,6 +10,15 @@ class ContainerStatistic extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'container_message',
+    ];
+
+    /**
      * Get the device that owns the container statistic.
      */
     public function device()

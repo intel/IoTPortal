@@ -4,7 +4,7 @@ services:
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
-            dockerfile: Dockerfile
+            dockerfile: docker-compose.yml
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.0/app
@@ -38,7 +38,6 @@ services:
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
             - 'sailmysql:/var/lib/mysql'
         networks:

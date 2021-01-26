@@ -2,36 +2,123 @@
 
 namespace App\Http\Controllers\Api\Mqtt;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-class MqttResponseController extends Controller
+class EndpointController extends Controller
 {
-    public function authOnPublish(Request $request)
+    public function mqttEndpoint(Request $request)
+    {
+        $verneMqHook = $request->header('vernemq-hook');
+
+        if ($verneMqHook) {
+            if ($verneMqHook === config('constants.vernemq_hook.auth_on_register')) {
+                return $this->authOnRegister($request);
+            } elseif ($verneMqHook === config('constants.vernemq_hook.auth_on_subscribe')) {
+                return $this->authOnSubscribe($request);
+            } elseif ($verneMqHook === config('constants.vernemq_hook.auth_on_publish')) {
+                return $this->authOnPublish($request);
+            }
+            return response(['result' => ['error' => 'Header vernemq-hook is invalid.']], Response::HTTP_BAD_REQUEST);
+        }
+        return response(['result' => ['error' => 'Header vernemq-hook is empty.']], Response::HTTP_BAD_REQUEST);
+    }
+
+    protected function authOnRegister(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
-            'clientId' => 'required',
-            'topic' => 'required',
+            'username' => 'required|same:client_id',
+            'password' => 'required',
+            'client_id' => 'required',
         ]);
 
-        // TODO: Return custom error message according to VerneMQ requirement (TBConfirmed)
         if ($validator->fails()) {
             return response([
                 'result' => ['error' => $validator->getMessageBag()->toArray()]
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        // 'devices/33qzxxttu/messages/events'
         $username = $request->input('username');
-        $clientId = $request->input('clientId');
-        $topic = $request->input('topic');
-        $payload = $request->input('payload');
+        $password = $request->input('password');
+        $clientId = $request->input('client_id');
 
-        $payload = is_array($payload) ? json_encode($payload) : $payload;
+        if ($username === $clientId) {
+            $device = Device::where('unique_id', $username)->where('mqtt_password', $password)->first();
+
+            return $device
+                ? response(['result' => 'ok'], Response::HTTP_OK)
+                : response(['result' => ['error' => 'Invalid username or password.']], Response::HTTP_UNAUTHORIZED);
+        }
+        return response(['result' => ['error' => 'username and client_id do not match.']], Response::HTTP_BAD_REQUEST);
+    }
+
+    protected function authOnSubscribe(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|same:client_id',
+            'client_id' => 'required',
+            'topics' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response([
+                'result' => ['error' => $validator->getMessageBag()->toArray()]
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        $username = $request->input('username');
+        $clientId = $request->input('client_id');
+
+        if ($username === $clientId) {
+            $device = Device::where('unique_id', $username)->first();
+
+            if ($device) {
+                $topics = $request->input('topics');
+
+                $disallowTopics = [];
+                foreach ($topics as $topic) {
+                    if (!preg_match('/iotportal\/' . $username . '\//', $topic['topic'])) {
+                        $disallowTopics[] = [
+                            'topic' => $topic['topic'],
+                            'qos' => 128
+                        ];
+                    }
+                }
+                return $disallowTopics
+                    ? response(['result' => 'ok', 'topics' => $disallowTopics], Response::HTTP_OK)
+                    : response(['result' => 'ok'], Response::HTTP_OK);
+            }
+            return response(['result' => ['error' => 'Invalid username or password.']], Response::HTTP_UNAUTHORIZED);
+        }
+        return response(['result' => ['error' => 'username and client_id do not match.']], Response::HTTP_BAD_REQUEST);
+    }
+
+    protected function authOnPublish(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|same:client_id',
+            'client_id' => 'required',
+            'topic' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response([
+                'result' => ['error' => $validator->getMessageBag()->toArray()]
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        // TODO: To remove this comment, leaving for understanding only 'devices/aebdc088-ef2c-45c8-9f6b-84256f5d3f8e/messages/events'
+        $username = $request->input('username');
+        $clientId = $request->input('client_id');
+        $topic = $request->input('topic');
+        $payload = base64_decode($request->input('payload'));
+
+        $payload = Helper::sanitisePayload($payload);
 
         if (preg_match('/devices\/([\w-]+)\//', $topic, $deviceIdMatches)) {
             $extractedDeviceId = $deviceIdMatches[1];
@@ -39,27 +126,28 @@ class MqttResponseController extends Controller
             if ($username === $clientId && $clientId === $extractedDeviceId) {
                 $device = Device::where('unique_id', $username)->first();
                 if ($device) {
-                    if (preg_match('/devices\/([\w-]+)\/properties\/reported/', $topic)) {
-                        return $this->propertiesReported($device, $payload);
-                    } elseif (preg_match('/devices\/([\w-]+)\/messages\/events/', $topic)) {
+                    if (preg_match('/devices\/([\w-]+)\/messages\/events/', $topic)) {
                         return $this->messagesEvents($device, $payload);
+                    } elseif (preg_match('/devices\/([\w-]+)\/properties\/reported/', $topic)) {
+                        return $this->propertiesReported($device, $payload);
                     } elseif (preg_match('/iotportal\/([\w-]+)\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
                         return $this->updateResponse($device, $requestIdMatches[2]);
                     }
                     return response(['result' => ['error' => 'Unsupported topic.']], Response::HTTP_BAD_REQUEST);
                 }
             }
-            return response(['result' => ['error' => 'username, clientId and deviceId in topic do not match']], Response::HTTP_BAD_REQUEST);
+            return response(['result' => ['error' => 'username, client_id and device_unique_id in topic do not match']], Response::HTTP_BAD_REQUEST);
         }
-        return response(['result' => ['error' => 'Invalid device id in topic.']], Response::HTTP_NOT_FOUND);
+        return response(['result' => ['error' => 'Invalid device_unique_id in topic.']], Response::HTTP_NOT_FOUND);
     }
 
     protected function messagesEvents(Device $device, ?string $payload)
     {
+        Log::debug('Upper $payload->' . $payload);
         $this->updateDeviceStatus($device);
         $device->refresh();
         $deviceRawData = $device->deviceRawData()->create([
-            'raw_data' => json_encode(json_decode($payload)),
+            'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
 
         $payload = json_decode($payload);
@@ -109,10 +197,11 @@ class MqttResponseController extends Controller
 
     protected function propertiesReported(Device $device, ?string $payload)
     {
+        Log::debug('Upper $payload->' . $payload);
         $this->updateDeviceStatus($device);
         $device->refresh();
         $deviceRawData = $device->deviceRawData()->create([
-            'raw_data' => json_encode(json_decode($payload)),
+            'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
 
         $payload = json_decode($payload);

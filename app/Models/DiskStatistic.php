@@ -10,6 +10,15 @@ class DiskStatistic extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'disk_percentage_used',
+    ];
+
+    /**
      * Get the device that owns the disk statistic.
      */
     public function device()

@@ -28,7 +28,7 @@ class Device extends Model
 
             $model->unique_id = $uniqueId;
             $model->name = $uniqueId;
-            $model->status = 0; //registered
+            $model->status = config('constants.device_statuses.registered');
             $model->mqtt_password = Helper::generateMqttPassword();
         });
     }

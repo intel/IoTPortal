@@ -6,10 +6,21 @@ use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpMqtt\Client\MQTTClient;
 
 class DevicePublisherController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function publish(Request $request)
     {
 //        $mqtt = Helper::createClient();
@@ -17,9 +28,9 @@ class DevicePublisherController extends Controller
 //        $mqtt->publish('php-mqtt/d345y45yh457465h7654/test', 'Hello World!');
 //        $mqtt->close();
 
-        Helper::mqttPublish('iotportal', 'Hello World!');
+//        Helper::mqttPublish('iotportal', 'Hello World!');
 
-        echo 'sucess';
+        dd(Auth::user());
     }
 
     /**

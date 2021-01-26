@@ -10,6 +10,14 @@ class AotaConfiguration extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+    ];
+
+    /**
      * Get the user that owns the AOTA configuration.
      */
     public function user()

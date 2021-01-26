@@ -2,29 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceActionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DevicePublisherController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/MqttResponseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CpuStatisticController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/CpuStatistic.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/mqttclient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CpuStatisticFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_094543_create_cpu_statistics_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeders/CpuStatisticSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile.staging" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/inteliotportal.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/confirm.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/reset.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auths/verify.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CommandHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CommandHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DevicePublisherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DevicePublisherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/MqttResponseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CpuStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CpuStatistic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DeviceRawData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeviceRawData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DiskStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DiskStatistic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/App1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +196,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api/Devices" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -194,11 +205,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\views" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Devices" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\config" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Providers" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\vendor" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux\sidebar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Mqtt" />
@@ -245,7 +256,26 @@
       <workItem from="1609918064583" duration="5497000" />
       <workItem from="1609978136977" duration="10763000" />
       <workItem from="1610072392745" duration="17229000" />
-      <workItem from="1610331579304" duration="1896000" />
+      <workItem from="1610331579304" duration="2237000" />
+      <workItem from="1610342634408" duration="3629000" />
+      <workItem from="1610356521942" duration="234000" />
+      <workItem from="1610410133874" duration="625000" />
+      <workItem from="1610429797979" duration="547000" />
+      <workItem from="1610434575904" duration="55000" />
+      <workItem from="1610438840437" duration="6209000" />
+      <workItem from="1610507348616" duration="18518000" />
+      <workItem from="1610529432556" duration="323000" />
+      <workItem from="1610529807326" duration="3714000" />
+      <workItem from="1610583225484" duration="8787000" />
+      <workItem from="1610669632001" duration="1188000" />
+      <workItem from="1610928539933" duration="1167000" />
+      <workItem from="1611015790592" duration="597000" />
+      <workItem from="1611101391352" duration="6053000" />
+      <workItem from="1611189327471" duration="593000" />
+      <workItem from="1611274638463" duration="1229000" />
+      <workItem from="1611558446598" duration="6635000" />
+      <workItem from="1611645296432" duration="5628000" />
+      <workItem from="1611652109219" duration="5189000" />
     </task>
     <servers />
   </component>

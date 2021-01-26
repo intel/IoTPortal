@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+    app:
+        build:
+            args:
+                user: sammy
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile.staging
+        image: inteliotportal
+        container_name: inteliotportal-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        env_file: '.env.staging'
+        volumes:
+            - ./:/var/www
+        networks:
+            - inteliotportal
+
+    db:
+        image: mysql:5.7
+        container_name: inteliotportal-db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+#            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        networks:
+            - inteliotportal
+
+    nginx:
+        image: nginx:alpine
+        container_name: inteliotportal-nginx
+        restart: unless-stopped
+        ports:
+            - 8000:80
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - inteliotportal
+
+networks:
+    inteliotportal:
+        driver: bridge

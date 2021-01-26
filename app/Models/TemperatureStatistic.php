@@ -10,6 +10,15 @@ class TemperatureStatistic extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'temperature',
+    ];
+
+    /**
      * Get the device that owns the temperature statistic.
      */
     public function device()
