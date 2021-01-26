@@ -1,8 +1,4 @@
-FROM php:8.0-fpm
-
-# Arguments defined in docker-compose.yml
-ARG user
-ARG uid
+FROM php:fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -23,14 +19,24 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+COPY composer.lock composer.json /var/www/
 
-# Set working directory
+COPY database /var/www/database
+
 WORKDIR /var/www
 
-RUN ls
+COPY . /var/www
 
-USER $user
+RUN chown -R www-data:www-data \
+        /var/www/storage \
+        /var/www/bootstrap/cache
+
+RUN mv .env.staging .env
+
+RUN php artisan key:generate
+
+RUN php artisan config:cache
+
+RUN php artisan route:cache
+
+RUN php artisan optimize

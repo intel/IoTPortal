@@ -2,40 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile.staging" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/inteliotportal.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auths/verify.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.app" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.nginx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.phpmyadmin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DevicePublisherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DevicePublisherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/MqttResponseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CpuStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CpuStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DiskStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DiskStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/App1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile.staging" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/inteliotportal.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +172,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dockerfiles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -205,13 +181,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\dockerfiles" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\views" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Devices" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\config" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Providers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\dockerfiles" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Mqtt" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views\pages\layout" />
@@ -275,12 +252,15 @@
       <workItem from="1611274638463" duration="1229000" />
       <workItem from="1611558446598" duration="6635000" />
       <workItem from="1611645296432" duration="5628000" />
-      <workItem from="1611652109219" duration="5189000" />
+      <workItem from="1611652109219" duration="18489000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.app" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
