@@ -3,53 +3,89 @@ services:
     app:
         build:
             context: ./
-            dockerfile: dockerfiles/Dockerfile.staging.app
+            dockerfile: docker-compose/app/Dockerfile.staging
         image: inteliotportal
         container_name: inteliotportal-app
         restart: unless-stopped
         volumes:
             - ./storage:/var/www/storage
         depends_on:
-            - db
+            - '${DB_CONNECTION}'
         networks:
             - inteliotportal
 
-    db:
-        image: mysql:latest
-        container_name: inteliotportal-db
+    mysql:
+        image: mysql:${MYSQL_VERSION}
+        container_name: inteliotportal-mysql
         restart: unless-stopped
         environment:
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_DATABASE: '${DB_DATABASE}'
-            MYSQL_USER: '${DB_USERNAME}'
-            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${MYSQL_DATABASE}'
+            MYSQL_USER: '${MYSQL_USER}'
+            MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         ports:
-            - 3306:3306
+            - '${MYSQL_PORT}:3306'
         networks:
             - inteliotportal
 
     nginx:
         build:
             context: ./
-            dockerfile: dockerfiles/Dockerfile.staging.nginx
+            dockerfile: docker-compose/nginx/Dockerfile.staging
+            args:
+                - NGINX_VERSION=${NGINX_VERSION}
+                - CHANGE_SOURCE=${CHANGE_SOURCE}
+                - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
+                - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
+                - http_proxy
+                - https_proxy
+                - no_proxy
         container_name: inteliotportal-nginx
         restart: unless-stopped
-        ports:
-            - 80:80
         volumes:
-            - ./storage/logs/:/var/log/nginx
+            - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
+            - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
+            - ${NGINX_SSL_PATH}:/etc/nginx/ssl
+        ports:
+            - '${NGINX_HOST_HTTP_PORT}:80'
+            - '${NGINX_HOST_HTTPS_PORT}:443'
+        depends_on:
+            - '${NGINX_PHP_UPSTREAM_CONTAINER}'
+        networks:
+            - inteliotportal
+
+    mqtt:
+        image: vernemq/vernemq:${VERNEMQ_VERSION}
+        container_name: inteliotportal-mqtt
+        restart: unless-stopped
+        environment:
+            DOCKER_VERNEMQ_ACCEPT_EULA: '${ACCEPT_EULA}'
+            DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${ALLOW_ANONYMOUS}'
+            DOCKER_VERNEMQ_PLUGINS__VMQ_ACL: '${PLUGINS_VMQ_ACL}'
+            DOCKER_VERNEMQ_PLUGINS__VMQ_WEBHOOKS: '${PLUGINS_VMQ_WEBHOOKS}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_HOOK}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_HOOK}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_HOOK}'
+            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT}'
+        ports:
+            - '${VERNEMQ_PORT}:1883'
+        depends_on:
+            - app
         networks:
             - inteliotportal
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
+        image: phpmyadmin/phpmyadmin:${MYSQL_VERSION}
         container_name: inteliotportal-phpmyadmin
         restart: unless-stopped
         environment:
-            PMA_HOST: db
-            PMA_USER: '${DB_USERNAME}'
-            PMA_PASSWORD: '${DB_PASSWORD}'
+            PMA_ARBITRARY: '1'
+            MYSQL_USER: '${PMA_USER}'
+            MYSQL_PASSWORD: '${PMA_PASSWORD}'
+            MYSQL_ROOT_PASSWORD: '${PMA_ROOT_PASSWORD}'
         ports:
             - '${PMA_PORT}:80'
         depends_on:

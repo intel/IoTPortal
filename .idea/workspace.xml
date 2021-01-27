@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.app" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.nginx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.phpmyadmin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/logrotate/nginx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/ssl/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile.staging" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/inteliotportal.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.app" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.nginx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.phpmyadmin" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/phpmyadmin/Dockerfile.staging" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +175,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dockerfiles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -188,11 +192,11 @@
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\app" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\phpmyadmin" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\nginx" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\dockerfiles" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Mqtt" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views\pages\layout" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views\pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -252,7 +256,8 @@
       <workItem from="1611274638463" duration="1229000" />
       <workItem from="1611558446598" duration="6635000" />
       <workItem from="1611645296432" duration="5628000" />
-      <workItem from="1611652109219" duration="18489000" />
+      <workItem from="1611652109219" duration="19213000" />
+      <workItem from="1611718097866" duration="18057000" />
     </task>
     <servers />
   </component>
