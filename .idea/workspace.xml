@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/logrotate/nginx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/ssl/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.app" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.nginx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dockerfiles/Dockerfile.staging.phpmyadmin" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/phpmyadmin/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +247,7 @@
       <workItem from="1611558446598" duration="6635000" />
       <workItem from="1611645296432" duration="5628000" />
       <workItem from="1611652109219" duration="19213000" />
-      <workItem from="1611718097866" duration="18057000" />
+      <workItem from="1611718097866" duration="22743000" />
     </task>
     <servers />
   </component>
