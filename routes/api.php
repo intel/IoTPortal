@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +27,17 @@ Route::middleware(['json.response'])->group(function () {
 
     Route::post('/publish', 'App\Http\Controllers\Api\Mqtt\EndpointController@authOnPublish')->name('api.devices.publish');
 
-
     // TODO: remove, not using anymore
 //    Route::get('/devices/publish', 'App\Http\Controllers\Api\Devices\DevicePublisherController@publish')->name('api.devices.publish');
 //    Route::get('/devices/listen', 'App\Http\Controllers\Api\Devices\DevicePublisherController@index')->name('api.devices.listen');
 
+});
+
+Route::middleware(['json.response', 'auth'])->group(function () {
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
 
 Route::middleware(['json.response', 'auth:api'])->group(function () {
@@ -40,9 +47,9 @@ Route::middleware(['json.response', 'auth:api'])->group(function () {
 
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+//    Route::get('/user', function (Request $request) {
+//        return $request->user();
+//    });
 });
 
 
