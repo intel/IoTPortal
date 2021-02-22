@@ -80,7 +80,7 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        $response = ['success'=> true, 'device' => $device];
+        $response = ['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []];
         return response($response, Response::HTTP_OK);
     }
 

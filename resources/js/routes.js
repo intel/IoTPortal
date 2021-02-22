@@ -1,13 +1,13 @@
 import React from 'react';
 
 // const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
-// const Tables = React.lazy(() => import('./views/base/tables/Tables'));
+const Tables = React.lazy(() => import('./views/tables/Tables'));
 //
 // const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'));
 // const Cards = React.lazy(() => import('./views/base/cards/Cards'));
 // const Carousels = React.lazy(() => import('./views/base/carousels/Carousels'));
 // const Collapses = React.lazy(() => import('./views/base/collapses/Collapses'));
-// const BasicForms = React.lazy(() => import('./views/base/forms/BasicForms'));
+const BasicForms = React.lazy(() => import('./views/forms/BasicForms'));
 //
 // const Jumbotrons = React.lazy(() => import('./views/base/jumbotrons/Jumbotrons'));
 // const ListGroups = React.lazy(() => import('./views/base/list-groups/ListGroups'));
@@ -25,10 +25,10 @@ import React from 'react';
 // const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'));
 // const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 // const Charts = React.lazy(() => import('./views/charts/Charts'));
-const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
-// const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
-// const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
-// const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
+// const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
+const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
+const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
+const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
 // const Alerts = React.lazy(() => import('./views/notifications/alerts/Alerts'));
 // const Badges = React.lazy(() => import('./views/notifications/badges/Badges'));
 // const Modals = React.lazy(() => import('./views/notifications/modals/Modals'));
@@ -37,10 +37,17 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 // const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 // const Users = React.lazy(() => import('./views/users/Users'));
 // const User = React.lazy(() => import('./views/users/User'));
+const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
+const Devices = React.lazy(() => import('./views/devices/Devices'));
+const Device = React.lazy(() => import('./views/devices/Device'));
+
 
 const routes = [
-    { path: '/', exact: true, name: 'Home' },
-    { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+    { path: '/', exact: true, name: 'Dashboard', component: Dashboard },
+    { path: '/devices', exact: true,  name: 'Devices', component: Devices },
+    { path: '/devices/:id', exact: true, name: 'Device Details', component: Device },
+    // { path: '/', exact: true, name: 'Home' },
+    // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
     // { path: '/theme', name: 'Theme', component: Colors, exact: true },
     // { path: '/theme/colors', name: 'Colors', component: Colors },
     // { path: '/theme/typography', name: 'Typography', component: Typography },
@@ -49,7 +56,7 @@ const routes = [
     // { path: '/base/cards', name: 'Cards', component: Cards },
     // { path: '/base/carousels', name: 'Carousel', component: Carousels },
     // { path: '/base/collapses', name: 'Collapse', component: Collapses },
-    // { path: '/base/forms', name: 'Forms', component: BasicForms },
+    { path: '/forms', name: 'Forms', component: BasicForms },
     // { path: '/base/jumbotrons', name: 'Jumbotrons', component: Jumbotrons },
     // { path: '/base/list-groups', name: 'List Groups', component: ListGroups },
     // { path: '/base/navbars', name: 'Navbars', component: Navbars },
@@ -58,7 +65,7 @@ const routes = [
     // { path: '/base/popovers', name: 'Popovers', component: Popovers },
     // { path: '/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
     // { path: '/base/switches', name: 'Switches', component: Switches },
-    // { path: '/base/tables', name: 'Tables', component: Tables },
+    { path: '/base/tables', name: 'Tables', component: Tables },
     // { path: '/base/tabs', name: 'Tabs', component: Tabs },
     // { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
     // { path: '/buttons', name: 'Buttons', component: Buttons, exact: true },
@@ -67,10 +74,10 @@ const routes = [
     // { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
     // { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
     // { path: '/charts', name: 'Charts', component: Charts },
-    // { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
-    // { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
-    // { path: '/icons/flags', name: 'Flags', component: Flags },
-    // { path: '/icons/brands', name: 'Brands', component: Brands },
+    { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
+    { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
+    { path: '/icons/flags', name: 'Flags', component: Flags },
+    { path: '/icons/brands', name: 'Brands', component: Brands },
     // { path: '/notifications', name: 'Notifications', component: Alerts, exact: true },
     // { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
     // { path: '/notifications/badges', name: 'Badges', component: Badges },

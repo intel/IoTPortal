@@ -17,11 +17,36 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 //
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{path?}', [App\Http\Controllers\HomeController::class, 'index'])->where('path', '.*')->name('home');
 
-Route::view('/{path?}', 'app');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//
+//Route::view('/{path?}', 'app');
 
 //Auth::routes();
 

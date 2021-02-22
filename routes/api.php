@@ -25,7 +25,8 @@ Route::middleware(['json.response'])->group(function () {
 
     Route::post('/mqtt/endpoint', 'App\Http\Controllers\Api\Mqtt\EndpointController@mqttEndpoint')->name('api.mqtt.endpoint');
 
-    Route::post('/publish', 'App\Http\Controllers\Api\Mqtt\EndpointController@authOnPublish')->name('api.devices.publish');
+    // TODO: remove, not using anymore
+//    Route::post('/publish', 'App\Http\Controllers\Api\Mqtt\EndpointController@authOnPublish')->name('api.devices.publish');
 
     // TODO: remove, not using anymore
 //    Route::get('/devices/publish', 'App\Http\Controllers\Api\Devices\DevicePublisherController@publish')->name('api.devices.publish');
@@ -34,10 +35,12 @@ Route::middleware(['json.response'])->group(function () {
 });
 
 Route::middleware(['json.response', 'auth'])->group(function () {
-
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
+
 });
 
 Route::middleware(['json.response', 'auth:api'])->group(function () {
@@ -45,11 +48,7 @@ Route::middleware(['json.response', 'auth:api'])->group(function () {
 
     Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
 
-    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
-
-//    Route::get('/user', function (Request $request) {
-//        return $request->user();
-//    });
+//    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 });
 
 

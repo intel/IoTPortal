@@ -1,0 +1,7 @@
+const deviceActionTypes = {
+    FETCH_DEVICE_START: 'FETCH_DEVICE_START',
+    FETCH_DEVICE_SUCCESS: 'FETCH_DEVICE_SUCCESS',
+    FETCH_DEVICE_FAILURE: 'FETCH_DEVICE_FAILURE',
+}
+
+export default deviceActionTypes

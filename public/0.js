@@ -4804,7 +4804,8 @@ var CModal = function CModal(props) {
       addContentClass = props.addContentClass,
       onClose = props.onClose,
       className = props.className,
-      attributes = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["innerRef", "show", "centered", "size", "color", "borderColor", "fade", "backdrop", "closeOnBackdrop", "onOpened", "onClosed", "addContentClass", "onClose", "className"]);
+      scrollable = props.scrollable,
+      attributes = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["innerRef", "show", "centered", "size", "color", "borderColor", "fade", "backdrop", "closeOnBackdrop", "onOpened", "onClosed", "addContentClass", "onClose", "className", "scrollable"]);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
       isOpen = _useState[0],
@@ -4851,6 +4852,7 @@ var CModal = function CModal(props) {
 
   var modalClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()('modal overflow-auto fade', (_classNames = {}, _classNames["modal-" + color] = color, _classNames), className);
   var dialogClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()('modal-dialog', (_classNames2 = {
+    'modal-dialog-scrollable': scrollable,
     'modal-dialog-centered': centered
   }, _classNames2["modal-" + size] = size, _classNames2));
   var contentClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()('modal-content', (_classNames3 = {}, _classNames3["border-" + borderColor] = borderColor, _classNames3), addContentClass);
@@ -4908,7 +4910,8 @@ CModal.propTypes = {
   fade: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
   closeOnBackdrop: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
   onClose: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-  addContentClass: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string
+  addContentClass: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+  scrollable: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool
 };
 CModal.defaultProps = {
   backdrop: true,
@@ -6062,6 +6065,36 @@ CSwitch.propTypes = {
 
 /***/ }),
 
+/***/ "./node_modules/@coreui/react/es/table/CDataTable.css":
+/*!************************************************************!*\
+  !*** ./node_modules/@coreui/react/es/table/CDataTable.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../css-loader??ref--6-1!../../../../postcss-loader/src??ref--6-2!./CDataTable.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@coreui/react/es/table/CDataTable.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/@coreui/react/es/table/CDataTable.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@coreui/react/es/table/CDataTable.js ***!
@@ -6081,16 +6114,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _pagination_CPagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pagination/CPagination */ "./node_modules/@coreui/react/es/pagination/CPagination.js");
 /* harmony import */ var _element_cover_CElementCover__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../element-cover/CElementCover */ "./node_modules/@coreui/react/es/element-cover/CElementCover.js");
-/* harmony import */ var _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CDataTable.module.css */ "./node_modules/@coreui/react/es/table/CDataTable.module.css");
-/* harmony import */ var _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @coreui/icons */ "./node_modules/@coreui/icons/js/index.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @coreui/icons */ "./node_modules/@coreui/icons/js/index.js");
+/* harmony import */ var _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CDataTable.module.css */ "./node_modules/@coreui/react/es/table/CDataTable.module.css");
+/* harmony import */ var _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _CDataTable_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CDataTable.css */ "./node_modules/@coreui/react/es/table/CDataTable.css");
+/* harmony import */ var _CDataTable_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_CDataTable_css__WEBPACK_IMPORTED_MODULE_10__);
 
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -6234,7 +6270,7 @@ var CDataTable = function CDataTable(props) {
 
   var iconClasses = function iconClasses(index) {
     var state = getIconState(index);
-    return ['position-absolute', _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7___default.a['icon-transition'], _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7___default.a['arrow-position'], !state && _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7___default.a['transparent'], state === 'desc' && _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_7___default.a['rotate-icon']];
+    return ['position-absolute', _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9___default.a['icon-transition'], _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9___default.a['arrow-position'], !state && _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9___default.a['transparent'], state === 'desc' && _CDataTable_module_css__WEBPACK_IMPORTED_MODULE_9___default.a['rotate-icon']];
   };
 
   var rowClicked = function rowClicked(item, index, e, detailsClick) {
@@ -6447,8 +6483,8 @@ var CDataTable = function CDataTable(props) {
 
   var isFiltered = tableFilterState || sorterState.column || Object.values(columnFilterState).join('');
   var cleanerProps = {
-    content: _coreui_icons__WEBPACK_IMPORTED_MODULE_9__["cilFilterX"],
-    className: "ml-2 " + (isFiltered ? 'text-danger' : 'transparent'),
+    content: _coreui_icons__WEBPACK_IMPORTED_MODULE_8__["cilFilterX"],
+    className: "mfs-2 " + (isFiltered ? 'text-danger' : 'transparent'),
     role: isFiltered ? 'button' : null,
     tabIndex: isFiltered ? 0 : null
   }; // watch
@@ -6485,10 +6521,10 @@ var CDataTable = function CDataTable(props) {
       key: index
     }, columnHeaderSlot["" + rawColumnNames[index]] || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: "d-inline"
-    }, name), isSortable(index) && (sortingIconSlot && sortingIconSlot(getIconState(index), iconClasses(index)) || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }, name), isSortable(index) && (sortingIconSlot && sortingIconSlot(getIconState(index), iconClasses(index)) || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
       customClasses: classnames__WEBPACK_IMPORTED_MODULE_4___default()(iconClasses(index)),
       width: 18,
-      content: _coreui_icons__WEBPACK_IMPORTED_MODULE_9__["cilArrowTop"]
+      content: _coreui_icons__WEBPACK_IMPORTED_MODULE_8__["cilArrowTop"]
     })));
   }));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -6496,9 +6532,9 @@ var CDataTable = function CDataTable(props) {
   }, (itemsPerPageSelect || tableFilter || cleaner) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: "row my-2 mx-0"
   }, (tableFilter || cleaner) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "col-sm-6 form-inline p-0"
+    className: "col-sm-6 form-inline p-0 c-datatable-filter"
   }, tableFilter && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
-    className: "mr-2"
+    className: "mfe-2"
   }, tableFilterData.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("input", {
     className: "form-control",
     type: "text",
@@ -6511,14 +6547,17 @@ var CDataTable = function CDataTable(props) {
     },
     value: tableFilterState || '',
     "aria-label": "table filter input"
-  })), cleaner && (typeof cleaner === 'function' ? cleaner(clean, isFiltered, cleanerProps) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, cleanerProps, {
-    onClick: clean
+  })), cleaner && (typeof cleaner === 'function' ? cleaner(clean, isFiltered, cleanerProps) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, cleanerProps, {
+    onClick: clean,
+    onKeyUp: function onKeyUp(event) {
+      if (event.key === 'Enter') clean();
+    }
   })))), itemsPerPageSelect && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: 'col-sm-6 p-0' + (!(tableFilter || cleaner) && ' offset-sm-6')
+    className: "col-sm-6 p-0 " + (tableFilter || cleaner ? '' : 'offset-sm-6')
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-    className: "form-inline justify-content-sm-end"
+    className: "form-inline justify-content-sm-end c-datatable-items-per-page"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("label", {
-    className: "mr-2"
+    className: "mfe-2"
   }, paginationSelect.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("select", {
     className: "form-control",
     onChange: paginationChange,
@@ -6590,10 +6629,10 @@ var CDataTable = function CDataTable(props) {
     colSpan: colspan
   }, noItemsViewSlot || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
     className: "text-center my-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, noItemsText + ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h2", null, noItemsText + ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
     width: "30",
     name: "cilBan",
-    content: _coreui_icons__WEBPACK_IMPORTED_MODULE_9__["cilBan"],
+    content: _coreui_icons__WEBPACK_IMPORTED_MODULE_8__["cilBan"],
     className: "text-danger mb-2"
   })))))), footer && currentItems.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("tfoot", null, headerContent), footerSlot, captionSlot), loading && (loadingSlot || /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_element_cover_CElementCover__WEBPACK_IMPORTED_MODULE_6__["default"], {
     boundaries: [{
@@ -8277,14 +8316,17 @@ __webpack_require__.r(__webpack_exports__);
 var Context = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createContext({}); //component - CoreUI / CToast
 
 var CToast = function CToast(props) {
+  var _classNames;
+
   var className = props.className,
       children = props.children,
       innerRef = props.innerRef,
       show = props.show,
       autohide = props.autohide,
       fade = props.fade,
+      color = props.color,
       onStateChange = props.onStateChange,
-      attributes = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["className", "children", "innerRef", "show", "autohide", "fade", "onStateChange"]);
+      attributes = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["className", "children", "innerRef", "show", "autohide", "fade", "color", "onStateChange"]);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(show),
       state = _useState[0],
@@ -8353,7 +8395,9 @@ var CToast = function CToast(props) {
   }; // render
 
 
-  var classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()('toast', className);
+  var classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()((_classNames = {
+    toast: true
+  }, _classNames["toast-" + color] = !!color, _classNames), className);
   var fadeClasses = classnames__WEBPACK_IMPORTED_MODULE_4___default()(fade && (state === 'hiding' ? 'toast-fade-slow' : 'toast-fade'));
   var attrs = Object(_coreui_utils_src__WEBPACK_IMPORTED_MODULE_6__["omitByKeys"])(attributes, _utils_helper_js__WEBPACK_IMPORTED_MODULE_7__["CFadeProps"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Context.Provider, {
@@ -8381,6 +8425,7 @@ CToast.propTypes = {
   show: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
   autohide: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number, prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool]),
   fade: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+  color: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
   onStateChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func
 };
 CToast.defaultProps = {
@@ -8480,7 +8525,7 @@ var CToastHeader = function CToastHeader(props) {
   }, attributes, {
     ref: innerRef
   }), children, closeButton && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_button_CButtonClose__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: "ml-auto",
+    className: "mfs-auto",
     onClick: close
   }));
 };
@@ -12789,6 +12834,25 @@ exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-b
 
 // module
 exports.push([module.i, ".c-icon {\r\n  display: inline-block;\r\n  color: inherit;\r\n  text-align: center;\r\n  fill: currentColor;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size) {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  font-size: 1rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-2xl {\r\n  width: 2rem;\r\n  height: 2rem;\r\n  font-size: 2rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-3xl {\r\n  width: 3rem;\r\n  height: 3rem;\r\n  font-size: 3rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-4xl {\r\n  width: 4rem;\r\n  height: 4rem;\r\n  font-size: 4rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-5xl {\r\n  width: 5rem;\r\n  height: 5rem;\r\n  font-size: 5rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-6xl {\r\n  width: 6rem;\r\n  height: 6rem;\r\n  font-size: 6rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-7xl {\r\n  width: 7rem;\r\n  height: 7rem;\r\n  font-size: 7rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-8xl {\r\n  width: 8rem;\r\n  height: 8rem;\r\n  font-size: 8rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-9xl {\r\n  width: 9rem;\r\n  height: 9rem;\r\n  font-size: 9rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-xl {\r\n  width: 1.5rem;\r\n  height: 1.5rem;\r\n  font-size: 1.5rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-lg {\r\n  width: 1.25rem;\r\n  height: 1.25rem;\r\n  font-size: 1.25rem;\r\n}\r\n\r\n.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-sm {\r\n  width: 0.875rem;\r\n  height: 0.875rem;\r\n  font-size: 0.875rem;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/@coreui/react/es/table/CDataTable.css":
+/*!********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/@coreui/react/es/table/CDataTable.css ***!
+  \********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".c-datatable-filter {\r\n  display: flex;\r\n  flex-flow: row nowrap;\r\n  justify-content: flex-start;\r\n  align-items: center;\r\n}\r\n.c-datatable-filter label {\r\n  margin-bottom: 0;\r\n}\r\n.c-datatable-items-per-page {\r\n  display: flex;\r\n  flex-flow: row nowrap;\r\n  justify-content: flex-end;\r\n  align-items: center;\r\n}\r\n.c-datatable-items-per-page label {\r\n  margin-bottom: 0;\r\n}\r\n", ""]);
 
 // exports
 
@@ -17864,7 +17928,7 @@ var ReactDOMServerRenderer = /*#__PURE__*/function () {
     this.currentSelectValue = null;
     this.previousWasTextNode = false;
     this.makeStaticMarkup = makeStaticMarkup;
-    this.suspenseDepth = 0; // Context (new Api)
+    this.suspenseDepth = 0; // Context (new API)
 
     this.contextIndex = -1;
     this.contextStack = [];
@@ -18339,7 +18403,7 @@ var ReactDOMServerRenderer = /*#__PURE__*/function () {
 
               {
                 {
-                  throw Error( "ReactDOMServer does not yet support the fundamental Api." );
+                  throw Error( "ReactDOMServer does not yet support the fundamental API." );
                 }
               }
             }
@@ -18666,7 +18730,7 @@ function renderToStaticMarkup(element, options) {
 function renderToNodeStream() {
   {
     {
-      throw Error( "ReactDOMServer.renderToNodeStream(): The streaming Api is not available in the browser. Use ReactDOMServer.renderToString() instead." );
+      throw Error( "ReactDOMServer.renderToNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToString() instead." );
     }
   }
 }
@@ -18674,7 +18738,7 @@ function renderToNodeStream() {
 function renderToStaticNodeStream() {
   {
     {
-      throw Error( "ReactDOMServer.renderToStaticNodeStream(): The streaming Api is not available in the browser. Use ReactDOMServer.renderToStaticMarkup() instead." );
+      throw Error( "ReactDOMServer.renderToStaticNodeStream(): The streaming API is not available in the browser. Use ReactDOMServer.renderToStaticMarkup() instead." );
     }
   }
 }
@@ -19616,7 +19680,7 @@ var ENTERED = 'entered';
 var EXITING = 'exiting';
 /**
  * The Transition component lets you describe a transition from one component
- * state to another _over time_ with a simple declarative Api. Most commonly
+ * state to another _over time_ with a simple declarative API. Most commonly
  * it's used to animate the mounting and unmounting of a component, but can also
  * be used to describe in-place transition states as well.
  *

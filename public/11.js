@@ -1,80 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11],{
 
-/***/ "./resources/js/views/icons/brands/Brands.js":
-/*!***************************************************!*\
-  !*** ./resources/js/views/icons/brands/Brands.js ***!
-  \***************************************************/
-/*! exports provided: getIconsView, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getIconsView", function() { return getIconsView; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/icons */ "./node_modules/@coreui/icons/js/index.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'src/reusable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-var toKebabCase = function toKebabCase(str) {
-  return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
-};
-
-var getIconsView = function getIconsView(iconset) {
-  return Object.entries(iconset).map(function (_ref) {
-    var _ref2 = _slicedToArray(_ref, 2),
-        name = _ref2[0],
-        value = _ref2[1];
-
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], {
-      className: "mb-5",
-      xs: "6",
-      sm: "4",
-      md: "3",
-      xl: "2",
-      key: name
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      content: value,
-      size: "2xl"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, toKebabCase(name)));
-  });
-};
-
-var CoreUIIcons = function CoreUIIcons() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Brand Icons", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module 'src/reusable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-    href: "https://github.com/coreui/coreui-icons",
-    text: "GitHub"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], {
-    className: "text-center"
-  }, getIconsView(_coreui_icons__WEBPACK_IMPORTED_MODULE_3__["brandSet"]))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (CoreUIIcons);
-
-/***/ }),
-
-/***/ "./resources/js/views/icons/coreui-icons/CoreUIIcons.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/views/icons/coreui-icons/CoreUIIcons.js ***!
-  \**************************************************************/
+/***/ "./resources/js/views/tables/Tables.js":
+/*!*********************************************!*\
+  !*** ./resources/js/views/tables/Tables.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -83,25 +12,298 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons */ "./node_modules/@coreui/icons/js/index.js");
-/* harmony import */ var _brands_Brands_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../brands/Brands.js */ "./resources/js/views/icons/brands/Brands.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'src/reusable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _UsersData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UsersData */ "./resources/js/views/tables/UsersData.js");
+
+ // import { DocsLink } from 'src/reusable'
 
 
 
+var getBadge = function getBadge(status) {
+  switch (status) {
+    case 'Active':
+      return 'success';
 
+    case 'Inactive':
+      return 'secondary';
 
+    case 'Pending':
+      return 'warning';
 
-var CoreUIIcons = function CoreUIIcons() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Free Icons / as CIcon", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module 'src/reusable'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
-    href: "https://github.com/coreui/coreui-icons",
-    text: "GitHub"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], {
-    className: "text-center"
-  }, Object(_brands_Brands_js__WEBPACK_IMPORTED_MODULE_3__["getIconsView"])(_coreui_icons__WEBPACK_IMPORTED_MODULE_2__["freeSet"]))));
+    case 'Banned':
+      return 'danger';
+
+    default:
+      return 'primary';
+  }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (CoreUIIcons);
+var fields = ['name', 'registered', 'role', 'status'];
+
+var Tables = function Tables() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], {
+    xs: "12",
+    lg: "6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Simple Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    itemsPerPage: 5,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], {
+    xs: "12",
+    lg: "6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Striped Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    striped: true,
+    itemsPerPage: 5,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], {
+    xs: "12",
+    lg: "6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Condensed Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    size: "sm",
+    itemsPerPage: 5,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], {
+    xs: "12",
+    lg: "6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Bordered Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    bordered: true,
+    itemsPerPage: 5,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Combined All Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    hover: true,
+    striped: true,
+    bordered: true,
+    size: "sm",
+    itemsPerPage: 10,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CRow"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCol"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCard"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardHeader"], null, "Combined All dark Table"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CCardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CDataTable"], {
+    items: _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"],
+    fields: fields,
+    dark: true,
+    hover: true,
+    striped: true,
+    bordered: true,
+    size: "sm",
+    itemsPerPage: 10,
+    pagination: true,
+    scopedSlots: {
+      'status': function status(item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_1__["CBadge"], {
+          color: getBadge(item.status)
+        }, item.status));
+      }
+    }
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Tables);
+
+/***/ }),
+
+/***/ "./resources/js/views/tables/UsersData.js":
+/*!************************************************!*\
+  !*** ./resources/js/views/tables/UsersData.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var usersData = [{
+  id: 0,
+  name: 'John Doe',
+  registered: '2018/01/01',
+  role: 'Guest',
+  status: 'Pending'
+}, {
+  id: 1,
+  name: 'Samppa Nori',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Active'
+}, {
+  id: 2,
+  name: 'Estavan Lykos',
+  registered: '2018/02/01',
+  role: 'Staff',
+  status: 'Banned'
+}, {
+  id: 3,
+  name: 'Chetan Mohamed',
+  registered: '2018/02/01',
+  role: 'Admin',
+  status: 'Inactive'
+}, {
+  id: 4,
+  name: 'Derick Maximinus',
+  registered: '2018/03/01',
+  role: 'Member',
+  status: 'Pending'
+}, {
+  id: 5,
+  name: 'Friderik Dávid',
+  registered: '2018/01/21',
+  role: 'Staff',
+  status: 'Active'
+}, {
+  id: 6,
+  name: 'Yiorgos Avraamu',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Active'
+}, {
+  id: 7,
+  name: 'Avram Tarasios',
+  registered: '2018/02/01',
+  role: 'Staff',
+  status: 'Banned'
+}, {
+  id: 8,
+  name: 'Quintin Ed',
+  registered: '2018/02/01',
+  role: 'Admin',
+  status: 'Inactive'
+}, {
+  id: 9,
+  name: 'Enéas Kwadwo',
+  registered: '2018/03/01',
+  role: 'Member',
+  status: 'Pending'
+}, {
+  id: 10,
+  name: 'Agapetus Tadeáš',
+  registered: '2018/01/21',
+  role: 'Staff',
+  status: 'Active'
+}, {
+  id: 11,
+  name: 'Carwyn Fachtna',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Active'
+}, {
+  id: 12,
+  name: 'Nehemiah Tatius',
+  registered: '2018/02/01',
+  role: 'Staff',
+  status: 'Banned'
+}, {
+  id: 13,
+  name: 'Ebbe Gemariah',
+  registered: '2018/02/01',
+  role: 'Admin',
+  status: 'Inactive'
+}, {
+  id: 14,
+  name: 'Eustorgios Amulius',
+  registered: '2018/03/01',
+  role: 'Member',
+  status: 'Pending'
+}, {
+  id: 15,
+  name: 'Leopold Gáspár',
+  registered: '2018/01/21',
+  role: 'Staff',
+  status: 'Active'
+}, {
+  id: 16,
+  name: 'Pompeius René',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Active'
+}, {
+  id: 17,
+  name: 'Paĉjo Jadon',
+  registered: '2018/02/01',
+  role: 'Staff',
+  status: 'Banned'
+}, {
+  id: 18,
+  name: 'Micheal Mercurius',
+  registered: '2018/02/01',
+  role: 'Admin',
+  status: 'Inactive'
+}, {
+  id: 19,
+  name: 'Ganesha Dubhghall',
+  registered: '2018/03/01',
+  role: 'Member',
+  status: 'Pending'
+}, {
+  id: 20,
+  name: 'Hiroto Šimun',
+  registered: '2018/01/21',
+  role: 'Staff',
+  status: 'Active'
+}, {
+  id: 21,
+  name: 'Vishnu Serghei',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Active'
+}, {
+  id: 22,
+  name: 'Zbyněk Phoibos',
+  registered: '2018/02/01',
+  role: 'Staff',
+  status: 'Banned'
+}, {
+  id: 23,
+  name: 'Aulus Agmundr',
+  registered: '2018/01/01',
+  role: 'Member',
+  status: 'Pending'
+}, {
+  id: 42,
+  name: 'Ford Prefect',
+  registered: '2001/05/25',
+  role: 'Alien',
+  status: 'Don\'t panic!'
+}];
+/* harmony default export */ __webpack_exports__["default"] = (usersData);
 
 /***/ })
 

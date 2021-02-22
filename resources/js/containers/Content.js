@@ -35,7 +35,7 @@ const Content = () => {
                                     )} />
                             )
                         })}
-                        <Redirect from="/" to="/dashboard" />
+                        {/*<Redirect from="/" to="/dashboard" />*/}
                     </Switch>
                 </Suspense>
             </CContainer>
