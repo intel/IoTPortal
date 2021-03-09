@@ -8,7 +8,7 @@
 
 @story('deploy')
     delete_existing_project
-    clone_repositoryv
+    clone_repository
     down_existing_containers
     start_containers
 @endstory
