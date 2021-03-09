@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\Devices;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DeviceResource;
 use App\Models\Device;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -26,24 +28,19 @@ class DeviceController extends Controller
                 $device = $user->devices()->where('unique_id', $request->device_unique_id)->first();
 
                 if (!$device) {
-                    return response([
-                        'success'=> false,
-                        'error'=> 'device_unique_id provided not found.'
-                    ], Response::HTTP_BAD_REQUEST);
+                    $response = ['result' => ['device' => $device], 'success' => false, 'errors' => 'device_unique_id provided not found.', 'messages' => []];
+                    return response($response, Response::HTTP_BAD_REQUEST);
                 }
             } else {
                 $device = $user->devices()->create([
                     'status' => 0,
                 ]);
             }
-            $response = ['success'=> true, 'device' => $device];
+            $response = ['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []];
             return response($response, Response::HTTP_OK);
         }
 
-        return response([
-            'success'=> false,
-            'errors'=>'Invalid device connection key.'
-        ], Response::HTTP_BAD_REQUEST);
+        return response(['result' => [], 'success' => false, 'errors' => 'Invalid device_connection_key.', 'messages' => []], Response::HTTP_BAD_REQUEST);
     }
 
     /**
@@ -61,6 +58,21 @@ class DeviceController extends Controller
         }
     }
 
+    public function aota(Request $request, Device $device)
+    {
+        $payloadJson = json_encode($request->all());
+        $commandHistory = $device->commandHistories()->create([
+            'type' => config('constants.mqtt_methods_integer_types.triggeraota'),
+            'payload' => $payloadJson,
+        ]);
+
+        // Send to device specific MQTT method topic
+//        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/' . config('constants.mqtt_methods.triggeraota') . '/?$rid=' . $commandHistory->id, $payloadJson);
+
+        $response = ['result' => ['payload' => $request->all()], 'success' => true, 'errors' => [], 'messages' => []];
+        return response($response, Response::HTTP_OK);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,7 +81,7 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response($request->all(), Response::HTTP_OK);
     }
 
     /**

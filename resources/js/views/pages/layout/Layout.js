@@ -7,7 +7,6 @@ import {
 } from '../../../containers/index'
 
 const Layout = () => {
-
     return (
         <div className="c-app c-default-layout">
             <Sidebar/>

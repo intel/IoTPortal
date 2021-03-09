@@ -2,62 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DevicePropertyCard/DevicePropertyCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/WithSpinner/WithSpinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/data/options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/utils/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/devices/Device.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/forms/BasicForms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/tables/UsersData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/IotSelect/IotSelect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/IotTextInput/IotTextInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/data/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/10.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/11.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/11.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/12.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/12.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/13.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/13.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/14.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/14.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/15.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/15.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/16.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/16.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/17.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/17.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/18.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/19.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/19.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/20.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/6.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/7.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/8.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/8.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/9.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/App1.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/data/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/data/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +203,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api/Forms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -228,11 +212,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\data" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Forms" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\Spinner" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux\device" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DevicePropertyCard" />
@@ -330,6 +314,22 @@
       <workItem from="1612835134731" duration="22222000" />
       <workItem from="1613028685451" duration="24000" />
       <workItem from="1613545128604" duration="2327000" />
+      <workItem from="1613960115996" duration="228000" />
+      <workItem from="1613984716506" duration="1959000" />
+      <workItem from="1614008750757" duration="3660000" />
+      <workItem from="1614047157037" duration="25842000" />
+      <workItem from="1614129168731" duration="957000" />
+      <workItem from="1614132597875" duration="588000" />
+      <workItem from="1614236409052" duration="1156000" />
+      <workItem from="1614315482086" duration="636000" />
+      <workItem from="1614560290477" duration="1226000" />
+      <workItem from="1614822932920" duration="21016000" />
+      <workItem from="1614911046026" duration="1940000" />
+      <workItem from="1614913668911" duration="3675000" />
+      <workItem from="1614923786475" duration="14046000" />
+      <workItem from="1615171160817" duration="5045000" />
+      <workItem from="1615190152917" duration="7368000" />
+      <workItem from="1615255076285" duration="10127000" />
     </task>
     <servers />
   </component>

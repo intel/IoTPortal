@@ -41,7 +41,6 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 const Devices = React.lazy(() => import('./views/devices/Devices'));
 const Device = React.lazy(() => import('./views/devices/Device'));
 
-
 const routes = [
     { path: '/', exact: true, name: 'Dashboard', component: Dashboard },
     { path: '/devices', exact: true,  name: 'Devices', component: Devices },

@@ -41,6 +41,9 @@ Route::middleware(['json.response', 'auth'])->group(function () {
 
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
+    Route::post('/devices/{device}/aota', 'App\Http\Controllers\Api\Devices\DeviceController@aota')->name('api.devices.aota');
+
+
 });
 
 Route::middleware(['json.response', 'auth:api'])->group(function () {
