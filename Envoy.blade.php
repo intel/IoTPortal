@@ -1,4 +1,4 @@
-@servers(['web' => 'deployer@192.168.1.1'])
+@servers(['web' => 'root@67.205.191.118'])
 
 @setup
     $repository = 'git@gitlab.com:desmondsow/i-iot-portal.git';

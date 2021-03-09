@@ -6,8 +6,6 @@ services:
 variables:
   MYSQL_DATABASE: inteliotportal
   MYSQL_ROOT_PASSWORD: secret
-#  DB_HOST: mysql
-  DB_USERNAME: root
 
 stages:
   - test
@@ -34,7 +32,7 @@ deploy_production:
     - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA"
   environment:
     name: production
-    url: http://192.168.1.1
+    url: http://67.205.191.118
   when: manual
   only:
     - master
