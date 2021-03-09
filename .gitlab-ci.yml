@@ -6,6 +6,8 @@ services:
 variables:
   MYSQL_DATABASE: inteliotportal
   MYSQL_ROOT_PASSWORD: secret
+  DB_HOST: mysql
+  DB_USERNAME: root
 
 stages:
   - test
