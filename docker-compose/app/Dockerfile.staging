@@ -28,6 +28,7 @@ WORKDIR /var/www
 COPY . /var/www
 
 RUN chown -R www-data:www-data \
+        /var/www \
         /var/www/storage \
         /var/www/bootstrap/cache
 

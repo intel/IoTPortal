@@ -2,46 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/IotSelect/IotSelect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/IotTextInput/IotTextInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/data/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/php/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/data/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/data/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scss/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Device.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +72,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
@@ -113,8 +81,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
@@ -189,6 +155,12 @@
       <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
       <path value="$PROJECT_DIR$/vendor/php-mqtt/client" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/laravel/envoy" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ljN573d2c0UNeJ9Zo5or68Cgi0" />
@@ -203,7 +175,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -212,11 +184,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\data" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Forms" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\Spinner" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DevicePropertyCard" />
@@ -329,7 +301,8 @@
       <workItem from="1614923786475" duration="14046000" />
       <workItem from="1615171160817" duration="5045000" />
       <workItem from="1615190152917" duration="7368000" />
-      <workItem from="1615255076285" duration="10127000" />
+      <workItem from="1615255076285" duration="11710000" />
+      <workItem from="1615280646242" duration="12335000" />
     </task>
     <servers />
   </component>
