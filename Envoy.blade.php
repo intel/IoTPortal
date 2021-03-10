@@ -1,4 +1,4 @@
-@servers(['web' => 'root@174.138.35.53'])
+@servers(['staging' => $stagingSshHost)])
 
 @setup
     $repository = 'git@gitlab.com:desmondsow/i-iot-portal.git';
