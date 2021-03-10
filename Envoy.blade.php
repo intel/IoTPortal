@@ -27,12 +27,13 @@
 
 @task('down_existing_containers')
     echo "Shutting down existing deployment"
-    ls -l
+    cd {{ $project_dir }}
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
 @endtask
 
 @task('start_containers')
     echo "Starting deployment ({{ $release }})"
+    cd {{ $project_dir }}
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
 @endtask
 

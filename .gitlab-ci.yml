@@ -22,7 +22,7 @@ unit_test:
     - php artisan migrate
     - vendor/bin/phpunit
 
-deploy_production:
+deploy_staging:
   stage: deploy
   script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -31,10 +31,10 @@ deploy_production:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-    - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost="$STAGING_SSH_HOST"
+    - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost=root@"$STAGING_SSH_HOST"
   environment:
     name: production
-    url: http://67.205.191.118
+    url: http://"$STAGING_SSH_HOST"
   when: manual
   only:
     - master
