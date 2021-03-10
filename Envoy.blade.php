@@ -27,7 +27,7 @@
 
 @task('down_existing_containers')
     echo "Shutting down existing deployment"
-    ll
+    ls -l
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
 @endtask
 
