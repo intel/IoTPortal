@@ -15,7 +15,7 @@
 
 @task('delete_existing_project')
     echo 'Delete existing project folder'
-    [ -d {{ $project_dir }} ] || rm -rf {{ $project_dir }}
+    [ -d {{ $project_dir }} ] | rm -rf {{ $project_dir }}
 @endtask
 
 @task('clone_repository')
