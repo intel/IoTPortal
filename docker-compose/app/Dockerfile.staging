@@ -23,8 +23,11 @@ COPY . /var/www
 
 WORKDIR /var/www
 
+RUN echo whoami
+
 RUN chown -R www-data:www-data \
-        /var/www
+        /var/www \
+        /var/www/storage
 
 RUN composer install
 
