@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,7 +298,7 @@
       <workItem from="1615280646242" duration="20054000" />
       <workItem from="1615340330463" duration="4963000" />
       <workItem from="1615367760348" duration="2988000" />
-      <workItem from="1615432203448" duration="11656000" />
+      <workItem from="1615432203448" duration="12554000" />
     </task>
     <servers />
   </component>
