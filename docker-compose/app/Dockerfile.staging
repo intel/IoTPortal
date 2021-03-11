@@ -23,11 +23,7 @@ COPY . /var/www
 
 WORKDIR /var/www
 
-RUN whoami
-
-# Use CMD for chaging permission after volume is mounted
-CMD chown -R www-data:www-data \
-        /var/www \
+RUN chown -R www-data:www-data \
         /var/www/storage \
         /var/www/bootstrap/cache
 

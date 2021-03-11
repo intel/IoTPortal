@@ -7,8 +7,6 @@ services:
         image: inteliotportal
         container_name: inteliotportal-app
         restart: unless-stopped
-        volumes:
-            - ./storage:/var/www/storage
         depends_on:
             - '${DB_CONNECTION}'
         networks:
