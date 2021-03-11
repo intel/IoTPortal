@@ -16,9 +16,12 @@ stages:
 unit_test:
   stage: test
   script:
-    - cp .env.example .env
     - composer install
+    - cp .env.staging .env
     - php artisan key:generate
+    - php artisan config:cache
+    - php artisan route:cache
+    - php artisan optimize
     - php artisan migrate
     - vendor/bin/phpunit
 
@@ -30,7 +33,6 @@ deploy_staging:
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-
     - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost=root@"$STAGING_SSH_HOST"
   environment:
     name: production

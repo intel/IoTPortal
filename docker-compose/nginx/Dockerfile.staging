@@ -3,7 +3,7 @@ FROM nginx:${NGINX_VERSION}
 
 COPY ./docker-compose/nginx/nginx.conf /etc/nginx/
 
-#COPY ./public /var/www/public
+COPY . /var/www
 
 # If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
 

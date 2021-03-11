@@ -24,6 +24,8 @@ services:
             MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
             MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - dbdata:/var/lib/mysql/
         ports:
             - '${MYSQL_PORT}:3306'
         networks:
@@ -96,6 +98,9 @@ services:
 networks:
     inteliotportal:
         driver: bridge
+volumes:
+    dbdata:
+
 
 #version: "3.7"
 #services:
