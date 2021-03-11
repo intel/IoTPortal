@@ -23,6 +23,7 @@
     git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
+    sed -i 's/APP_URL=http:\/\/localhost\/APP_URL={{ $appUrl }}/g' env.staging
 @endtask
 
 @task('down_existing_containers')
@@ -34,7 +35,7 @@
 @task('start_containers')
     echo "Starting deployment ({{ $release }})"
     cd {{ $project_dir }}
-    docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
+    docker-compose -f docker-compose.staging.yml --env-file ./env.staging up -d --force-recreate --build
 @endtask
 
 
