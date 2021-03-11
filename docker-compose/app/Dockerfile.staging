@@ -25,7 +25,9 @@ WORKDIR /var/www
 
 RUN whoami
 
-RUN chown -R www-data:www-data \
+# Use CMD for chaging permission after volume is mounted
+CMD chown -R www-data:www-data \
+        /var/www \
         /var/www/storage \
         /var/www/bootstrap/cache
 
