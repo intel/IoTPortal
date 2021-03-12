@@ -23,7 +23,8 @@
     git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
-    sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' env.staging
+    sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
+    sed -i 's@server_name laravel.test@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
 @endtask
 
 @task('down_existing_containers')
@@ -35,7 +36,7 @@
 @task('start_containers')
     echo "Starting deployment ({{ $release }})"
     cd {{ $project_dir }}
-    docker-compose -f docker-compose.staging.yml --env-file ./env.staging up -d --force-recreate --build
+    docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
 @endtask
 
 
