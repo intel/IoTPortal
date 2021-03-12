@@ -29,6 +29,14 @@ RUN chown -R www-data:www-data \
 
 RUN composer install
 
+RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
+
+RUN apt install -y nodejs
+
+RUN npm install
+
+RUN npm run production
+
 RUN mv .env.staging .env
 
 RUN php artisan key:generate

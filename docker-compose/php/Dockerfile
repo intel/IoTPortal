@@ -2,13 +2,13 @@
 FROM php:latest
 
 # Update packages
-RUN apt-get update
+RUN apt update
 
 # Install PHP and composer dependencies
-RUN apt-get install -qq git curl libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev libzip-dev
+RUN apt install -qq git curl libmcrypt-dev libjpeg-dev libpng-dev libfreetype6-dev libbz2-dev libzip-dev
 
 # Clear out the local repository of retrieved package files
-RUN apt-get clean
+RUN apt clean
 
 # Install needed extensions
 # Here you can install any other extension that you need during the test and deployment process

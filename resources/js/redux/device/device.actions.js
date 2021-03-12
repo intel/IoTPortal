@@ -18,7 +18,7 @@ export const fetchDeviceFailure = errorMessage => ({
 export const fetchDeviceStartAsync = (id) => {
   return dispatch => {
     dispatch(fetchDeviceStart());
-    axios.get(`${API_ENDPOINT}/api/devices/${id}`)
+    axios.get(`${API_ENDPOINT}/devices/${id}`)
       .then(result => {
         dispatch(fetchDeviceSuccess(result.data.result.device));
       })
