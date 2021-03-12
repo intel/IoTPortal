@@ -23,7 +23,7 @@
     git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
-    sed -i 's/APP_URL=http:\/\/localhost\/APP_URL={{ $appUrl }}/g' env.staging
+    sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' env.staging
 @endtask
 
 @task('down_existing_containers')

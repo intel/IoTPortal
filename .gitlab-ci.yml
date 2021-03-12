@@ -36,7 +36,7 @@ deploy_staging:
     - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost=root@"$STAGING_SSH_HOST" --appUrl="$APP_URL"
   environment:
     name: production
-    url: http://"$STAGING_SSH_HOST"
+    url: $APP_URL
   when: manual
   only:
     - master
