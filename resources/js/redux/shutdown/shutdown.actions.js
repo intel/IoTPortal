@@ -27,7 +27,7 @@ export const submitShutdownStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/api/devices/${id}/shutdown`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/shutdown`, data)
       .then(result => {
         dispatch(submitShutdownSuccess(result.data));
 

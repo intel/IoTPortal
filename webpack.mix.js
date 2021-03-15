@@ -11,7 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.browserSync('127.0.0.1:8000');
+mix.browserSync('127.0.0.1:3000');
 
-mix.react('resources/js/index.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/index.js', 'public/js').react()  // React
+  .js('resources/js/layoutApp.js', 'public/js') // Laravel require JS
+  .sass('resources/sass/app.scss', 'public/css'); // Laravel default login page style
+
+

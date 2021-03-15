@@ -14,7 +14,7 @@
 @endstory
 
 @task('delete_existing_project')
-    echo 'Delete existing project folder'
+    echo 'Deleting existing project folder'
     [ -d {{ $project_dir }} ] && rm -rf {{ $project_dir }}
 @endtask
 

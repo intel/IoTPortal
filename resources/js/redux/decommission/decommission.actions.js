@@ -27,7 +27,7 @@ export const submitDecommissionStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/api/devices/${id}/decommission`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/decommission`, data)
       .then(result => {
         dispatch(submitDecommissionSuccess(result.data));
 

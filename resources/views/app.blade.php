@@ -8,11 +8,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Intel IoT Portal</title>
     <!-- Styles -->
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 <body>
 <div id="app">
-
 </div>
 
 <script src="{{ asset('js/index.js') }}"></script>

@@ -27,7 +27,7 @@ export const submitRebootStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/api/devices/${id}/reboot`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/reboot`, data)
       .then(result => {
         dispatch(submitRebootSuccess(result.data));
 

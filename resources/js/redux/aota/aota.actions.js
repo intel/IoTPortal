@@ -28,7 +28,7 @@ export const submitAotaStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/api/devices/${id}/aota`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/aota`, data)
       .then(result => {
         dispatch(submitAotaSuccess(result.data));
 
