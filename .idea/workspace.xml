@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/php/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +301,7 @@
       <workItem from="1615340330463" duration="4963000" />
       <workItem from="1615367760348" duration="2988000" />
       <workItem from="1615432203448" duration="19906000" />
-      <workItem from="1615515831712" duration="12852000" />
+      <workItem from="1615515831712" duration="18782000" />
     </task>
     <servers />
   </component>

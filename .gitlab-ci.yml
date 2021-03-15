@@ -16,12 +16,13 @@ stages:
 unit_test:
   stage: test
   script:
+    - cp .env.staging .env
     - composer install
-    - curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
+    - curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
     - apt install -y nodejs
     - npm install
+    - npm rebuild node-sass
     - npm run production
-    - cp .env.staging .env
     - php artisan key:generate
     - php artisan config:cache
     - php artisan route:cache

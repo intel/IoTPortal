@@ -55,9 +55,9 @@ services:
         networks:
             - inteliotportal
 
-    mqtt:
+    vernemq:
         image: vernemq/vernemq:${VERNEMQ_VERSION}
-        container_name: inteliotportal-mqtt
+        container_name: inteliotportal-vernemq
         restart: unless-stopped
         environment:
             DOCKER_VERNEMQ_ACCEPT_EULA: '${ACCEPT_EULA}'
