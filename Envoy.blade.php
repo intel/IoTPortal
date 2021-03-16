@@ -26,20 +26,21 @@
     git reset --hard {{ $commit }}
 @endtask
 
-
 @task('build_artifacts')
-    echo 'Building JS files locally'
+    echo 'Building artifacts'
     cd {{ $project_dir }}
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@server_name localhost@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
-    mv .env.staging .env
+    cp .env.staging .env
+    echo '.env Content'
+    head -10 .env
     echo 'Deleting old JS files'
     rm public/js/*.js
     rm public/js/*.txt
     echo 'Downloading NodeJS'
     curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
     sudo apt-get install -y nodejs
-    echo 'Compiling JS'
+    echo 'Building JS files'
     npm ci
     npm rebuild node-sass
     npm run production
