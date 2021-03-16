@@ -32,6 +32,7 @@
     cd {{ $project_dir }}
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@server_name localhost@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
+    mv .env.staging .env
     echo 'Deleting old JS files'
     rm public/js/*.js
     rm public/js/*.txt
