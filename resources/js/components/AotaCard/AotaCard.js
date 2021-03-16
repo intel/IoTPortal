@@ -4,7 +4,7 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { Toaster } from 'react-hot-toast';
-import { CButton, CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react'
+import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CSpinner } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
 import {
@@ -222,11 +222,12 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
         </Formik>
       </CCardBody>
       <CCardFooter>
-        <CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingAota}><CIcon
-          name="cil-scrubber"/> {isSubmittingAota ? 'Submitting' : 'Submit'}</CButton>
-        <CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset}
-                 disabled={isSubmittingAota}><CIcon
-          name="cil-ban"/> Reset</CButton>
+        <CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingAota}>
+          {isSubmittingAota ? <CSpinner color="white" size="sm"/> : <CIcon name="cil-scrubber"/>} Submit
+        </CButton>
+        <CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset} disabled={isSubmittingAota}>
+          <CIcon name="cil-ban"/> Reset
+        </CButton>
       </CCardFooter>
       <Toaster/>
     </CCard>

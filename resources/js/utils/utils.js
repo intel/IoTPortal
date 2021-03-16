@@ -5,4 +5,9 @@ export const convertDeviceObjectToDeviceArrayObject = object => {
   );
 }
 
+export const removeObjectEmptyString = object => {
+  Object.keys(object).forEach(key => object[key] === "" ? delete object[key] : {});
+}
+
+
 

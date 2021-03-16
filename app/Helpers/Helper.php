@@ -18,16 +18,6 @@ class Helper
         return Str::random(64);
     }
 
-    static function createMqttClient(string $topic, string $payload, callable $callback): void
-    {
-        $mqttConfig = config('mqttclient.connections.default');
-        $mqtt = new MQTTClient($mqttConfig['host'], $mqttConfig['port'], $mqttConfig['client_id']);
-        $mqtt->connect();
-        $mqtt->subscribe($topic, $callback);
-        $mqtt->loop(true);
-        $mqtt->close();
-    }
-
     static function mqttPublish(string $topic, string $payload): void
     {
         $mqttConfig = config('mqttclient.connections.default');
@@ -61,20 +51,15 @@ class Helper
         return json_encode($payload);
     }
 
-    static function sanitisePayloadBackup(string $payload)
+    static function mapArrayKeyByArray(array $array, array $arrayMap)
     {
-        if (is_array($payload)) {   // Encode array
-            $payload = json_encode($payload);
-        } elseif (is_string($payload) && Helper::isJson($payload)) {
-            // Decode json string
-            $payload = json_decode($payload);
-            // Further decode json string with backslash
-            if (is_string($payload)) {
-                $payload = json_decode($payload);
+        foreach ($array as $k => $v) {
+            if ($k !== $arrayMap[$k]) {
+                unset ($array[$k]);
+                $newKey = $arrayMap[$k];
+                $array[$newKey] = $v;
             }
-            // Encode back to string for payload
-            $payload = json_encode($payload);
         }
-        return $payload;
     }
+
 }

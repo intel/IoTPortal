@@ -15,7 +15,8 @@ import {
   CRow,
   CTabContent,
   CTabPane,
-  CTabs
+  CTabs,
+  CSpinner
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -92,11 +93,11 @@ const Device = (props) => {
                   <div className="d-flex justify-content-center">
                     <CButtonGroup>
                       <CButton color="danger" onClick={() => setShowShutdownModal(true)}
-                               disabled={isSubmittingShutdown}>{isSubmittingShutdown ? 'Shutting down' : 'Shut down'}</CButton>
+                               disabled={isSubmittingShutdown}>{isSubmittingShutdown && <CSpinner color="white" size="sm" />} Shut down</CButton>
                       <CButton color="info" onClick={() => setShowRebootModal(true)}
-                               disabled={isSubmittingReboot}>{isSubmittingReboot ? 'Rebooting' : 'Reboot'}</CButton>
+                               disabled={isSubmittingReboot}>{isSubmittingReboot && <CSpinner color="white" size="sm" />} Reboot</CButton>
                       <CButton color="primary" onClick={() => setShowDecommissionModal(true)}
-                               disabled={isSubmittingDecommission}>{isSubmittingDecommission ? 'Decommissioning' : 'Decommission'}</CButton>
+                               disabled={isSubmittingDecommission}>{isSubmittingDecommission && <CSpinner color="white" size="sm" />} Decommission</CButton>
                     </CButtonGroup>
                   </div>
                   <Modal show={showShutdownModal}

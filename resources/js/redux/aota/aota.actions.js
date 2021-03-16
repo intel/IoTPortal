@@ -5,6 +5,7 @@ import { CButton } from '@coreui/react'
 
 import otaActionTypes from './aota.types';
 import { API_ENDPOINT } from '../../data/config'
+import { removeObjectEmptyString } from '../../utils/utils';
 
 export const submitAotaStart = () => ({
   type: otaActionTypes.SUBMIT_AOTA_START,
@@ -28,7 +29,9 @@ export const submitAotaStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/aota`, data)
+    removeObjectEmptyString(data);
+
+    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'triggeraota', payload: data})
       .then(result => {
         dispatch(submitAotaSuccess(result.data));
 

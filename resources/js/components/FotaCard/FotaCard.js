@@ -56,6 +56,10 @@ const FotaCard = () => {
                     <CInput id="tool_options" placeholder="Tool Options" />
                 </CFormGroup>
                 <CFormGroup>
+                    <CLabel htmlFor="vendor">Vendor</CLabel>
+                    <CInput id="vendor" placeholder="Vendor" />
+                </CFormGroup>
+                <CFormGroup>
                     <CLabel htmlFor="server_username">Server Username</CLabel>
                     <CInput id="server_username" placeholder="Server Username" />
                 </CFormGroup>
