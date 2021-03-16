@@ -23,6 +23,8 @@
     git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
+    rm public/js/*.js
+    rm public/js/*.txt
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@server_name laravel.test@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
 @endtask
