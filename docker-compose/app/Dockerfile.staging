@@ -31,15 +31,15 @@ RUN mv .env.staging .env
 
 RUN composer install
 
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
-
-RUN apt install -y nodejs
-
-RUN npm ci
-
-RUN npm rebuild node-sass
-
-RUN npm run production
+#RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+#
+#RUN apt install -y nodejs
+#
+#RUN npm ci
+#
+#RUN npm rebuild node-sass
+#
+#RUN npm run production
 
 RUN php artisan key:generate
 

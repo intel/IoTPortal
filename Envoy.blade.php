@@ -23,10 +23,24 @@
     git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
-    rm public/js/*.js
-    rm public/js/*.txt
+@endtask
+
+
+@task('clone_repository')
+    echo 'Building JS files locally'
+    cd {{ $project_dir }}
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@server_name laravel.test@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
+    echo 'Deleting old JS files'
+    rm public/js/*.js
+    rm public/js/*.txt
+    echo 'Downloading NodeJS'
+    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    echo 'Compiling JS'
+    npm ci
+    npm rebuild node-sass
+    npm run production
 @endtask
 
 @task('down_existing_containers')
