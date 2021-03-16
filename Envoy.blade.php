@@ -9,7 +9,8 @@
 @story('deploy')
     delete_existing_project
     clone_repository
-    down_existing_containers
+    build_artifacts
+    shut_down_existing_containers
     start_containers
 @endstory
 
@@ -26,11 +27,11 @@
 @endtask
 
 
-@task('clone_repository')
+@task('build_artifacts')
     echo 'Building JS files locally'
     cd {{ $project_dir }}
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
-    sed -i 's@server_name laravel.test@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
+    sed -i 's@server_name localhost@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
     echo 'Deleting old JS files'
     rm public/js/*.js
     rm public/js/*.txt
@@ -43,7 +44,7 @@
     npm run production
 @endtask
 
-@task('down_existing_containers')
+@task('shut_down_existing_containers')
     echo "Shutting down existing deployment"
     cd {{ $project_dir }}
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
