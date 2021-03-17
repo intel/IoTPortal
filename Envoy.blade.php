@@ -29,8 +29,9 @@
 @task('build_artifacts')
     echo 'Building artifacts'
     cd {{ $project_dir }}
-    sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@server_name localhost@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
+    sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
+    sed -i 's@MQTT_HOST=.*@MQTT_HOST={{ $mqttHost }}@g' .env.staging
     cp .env.staging .env
     echo '.env Content'
     head -10 .env
