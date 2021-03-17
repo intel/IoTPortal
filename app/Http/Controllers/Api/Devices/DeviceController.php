@@ -32,7 +32,7 @@ class DeviceController extends Controller
                 $device = $user->devices()->create([
                     'status' => config('constants.device_statuses.registered'),
                 ]);
-                return response(['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+                return response(['result' => ['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
             }
         }
         return response(['result' => [], 'success' => false, 'errors' => 'Invalid device_connection_key.', 'messages' => []], Response::HTTP_BAD_REQUEST);
