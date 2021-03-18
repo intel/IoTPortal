@@ -19,6 +19,8 @@ class DeviceController extends Controller
     public function register(Request $request)
     {
         $deviceConnectionKey = $request->bearerToken();
+
+        dd($request->all());
         $user = User::where('device_connection_key', $deviceConnectionKey)->first();
 
         if ($user) {
