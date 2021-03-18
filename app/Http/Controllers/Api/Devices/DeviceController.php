@@ -22,10 +22,12 @@ class DeviceController extends Controller
         $user = User::where('device_connection_key', $deviceConnectionKey)->first();
 
         if ($user) {
-            if ($request->device_unique_id) {
+            if ($request->input('device_unique_id')) {
                 $device = $user->devices()->where('unique_id', $request->device_unique_id)->first();
 
-                if (!$device) {
+                if ($device) {
+                    return response(['result' => ['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_BAD_REQUEST);
+                } else {
                     return response(['result' => [], 'success' => false, 'errors' => 'device_unique_id provided not found.', 'messages' => []], Response::HTTP_BAD_REQUEST);
                 }
             } else {
