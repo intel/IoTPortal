@@ -20,12 +20,11 @@ class DeviceController extends Controller
     {
         $deviceConnectionKey = $request->bearerToken();
 
-        dd($request->all());
         $user = User::where('device_connection_key', $deviceConnectionKey)->first();
 
         if ($user) {
             if ($request->input('device_unique_id')) {
-                $device = $user->devices()->where('unique_id', $request->device_unique_id)->first();
+                $device = $user->devices()->where('unique_id', $request->input('device_unique_id'))->first();
 
                 if ($device) {
                     return response(['result' => ['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_BAD_REQUEST);
