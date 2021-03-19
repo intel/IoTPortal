@@ -44,8 +44,6 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');
 
 
-
-
 //    Route::post('/devices/{device}/aota', 'App\Http\Controllers\Api\Devices\DeviceController@aota')->name('api.devices.aota');
 });
 

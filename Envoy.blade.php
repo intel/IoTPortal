@@ -30,7 +30,7 @@
     echo 'Building artifacts'
     cd {{ $project_dir }}
     sed -i 's@server_name localhost@server_name {{ $serverName }}@g' docker-compose/nginx/sites/default.conf
-    sed -i 's@allow localhost@allow {{ $unblockIp }}@g' docker-compose/nginx/sites/default.conf
+    sed -i 's@allow 127.0.0.1@allow {{ $unblockIp }}@g' docker-compose/nginx/sites/default.conf
     sed -i 's@APP_URL=.*@APP_URL={{ $appUrl }}@g' .env.staging
     sed -i 's@DB_PASSWORD=.*@DB_PASSWORD={{ $dbPassword }}@g' .env.staging
     sed -i 's@MQTT_HOST=.*@MQTT_HOST={{ $mqttHost }}@g' .env.staging
