@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +312,7 @@
       <workItem from="1615967963429" duration="6317000" />
       <workItem from="1616033159519" duration="5197000" />
       <workItem from="1616045829423" duration="4586000" />
-      <workItem from="1616119455696" duration="4638000" />
+      <workItem from="1616119455696" duration="5992000" />
     </task>
     <servers />
   </component>
