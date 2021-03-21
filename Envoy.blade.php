@@ -1,7 +1,7 @@
 @servers(['staging' => $stagingSshHost])
 
 @setup
-    $repository = {{ $projectRepository }};
+    $repository = '{{ $projectRepository }}';
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
 @endsetup
