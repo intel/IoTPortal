@@ -1,7 +1,7 @@
 @servers(['staging' => $stagingSshHost])
 
 @setup
-    $repository = '';
+    $repository = $projectRepository;
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
 @endsetup
@@ -22,7 +22,7 @@
 @task('clone_repository')
     echo 'Cloning repository'
     echo {{ $repository }}
-    git clone --depth 1 {{ $projectRepository }}
+    git clone --depth 1 {{ $repository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
 @endtask
