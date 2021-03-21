@@ -32,6 +32,7 @@
     sed -i 's~server_name mqtthost~server_name {{ $mqttHost }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~server_name localhost~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~allow 127.0.0.1~allow {{ $unblockIp }}~g' docker-compose/nginx/sites/default.conf
+    sed -i 's~allow 127.0.0.2~allow {{ $serverIp }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
     sed -i 's~DB_PASSWORD=.*~DB_PASSWORD={{ $dbPassword }}~g' .env.staging
     sed -i 's~MQTT_HOST=.*~MQTT_HOST={{ $mqttHost }}~g' .env.staging
