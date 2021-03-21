@@ -1,7 +1,7 @@
 @servers(['staging' => $stagingSshHost])
 
 @setup
-    $repository = 'git@gitlab.com:desmondsow/i-iot-portal.git';
+    $repository = '{{ $projectRepository }}';
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
 @endsetup

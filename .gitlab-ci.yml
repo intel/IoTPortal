@@ -38,7 +38,7 @@ deploy_staging:
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost=root@"$STAGING_SSH_HOST" --serverName="$SERVER_NAME" --appUrl="$APP_URL" --dbPassword="$DB_PASSWORD" --mqttHost="$MQTT_HOST" --unblockIp="$UNBLOCK_IP" --serverIp="$SERVER_IP"
+    - ~/.composer/vendor/bin/envoy run deploy --commit="$CI_COMMIT_SHA" --stagingSshHost=root@"$STAGING_SSH_HOST" --projectRepository="$PROJECT_REPOSITORY" --serverName="$SERVER_NAME" --appUrl="$APP_URL" --dbPassword="$DB_PASSWORD" --mqttHost="$MQTT_HOST" --unblockIp="$UNBLOCK_IP" --serverIp="$STAGING_SSH_HOST"
   environment:
     name: production
     url: $APP_URL
