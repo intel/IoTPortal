@@ -15,7 +15,7 @@ class EndpointController extends Controller
     public function mqttEndpoint(Request $request)
     {
         $verneMqHook = $request->header('vernemq-hook');
-        Log::debug('MQTT request->' . $request->all());
+        Log::debug('MQTT request->' . json_encode($request->all()));
 
         if ($verneMqHook) {
             if ($verneMqHook === config('constants.vernemq_hook.auth_on_register')) {
