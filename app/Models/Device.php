@@ -17,7 +17,17 @@ class Device extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
         'status',
+        'bios_release_date',
+        'bios_vendor',
+        'bios_version',
+        'cpu',
+        'disk_information',
+        'os_information',
+        'system_manufacturer',
+        'system_product_name',
+        'total_memory'
     ];
 
     public static function boot()

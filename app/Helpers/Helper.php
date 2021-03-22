@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use PhpMqtt\Client\MQTTClient;
+
 
 class Helper
 {
@@ -22,7 +22,7 @@ class Helper
     {
         $mqttConfig = config('mqttclient.connections.default');
 
-        $mqtt = new MQTTClient($mqttConfig['host'], $mqttConfig['port'], $mqttConfig['client_id']);
+        $mqtt = new \PhpMqtt\Client\MqttClient($mqttConfig['host'], $mqttConfig['port'], $mqttConfig['client_id']);
         $mqtt->connect();
         $mqtt->publish($topic, $payload);
         $mqtt->close();

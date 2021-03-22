@@ -22,11 +22,11 @@ class CreateDevicesTable extends Migration
             $table->string('bios_vendor')->nullable();
             $table->string('bios_version')->nullable();
             $table->string('cpu')->nullable();
-            $table->string('disk_information')->nullable();
+            $table->json('disk_information')->nullable();
             $table->string('os_information')->nullable();
             $table->string('system_manufacturer')->nullable();
             $table->string('system_product_name')->nullable();
-            $table->integer('total_memory')->nullable();
+            $table->unsignedBigInteger('total_memory')->nullable();
             $table->string('mqtt_password');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('team_id')->nullable();

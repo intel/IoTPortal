@@ -15,7 +15,7 @@ class CreateMemoryStatisticsTable extends Migration
     {
         Schema::create('memory_statistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('available_memory_in_bytes');
+            $table->unsignedBigInteger('available_memory_in_bytes');
             $table->unsignedBigInteger('device_id');
             $table->timestamps();
 

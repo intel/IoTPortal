@@ -46,14 +46,14 @@ class DeviceController extends Controller
         $methodName = $request->input('method_name');
 
         switch ($methodName) {
-            case config('constants.mqtt_methods.triggeraota'):
-                return $this->ota($methodName, $device, $request->input('payload'), config('constants.aota_configurations_map'));
-            case config('constants.mqtt_methods.triggerfota'):
-                return $this->ota($methodName, $device, $request->input('payload'), config('constants.fota_configurations_map'));
-            case config('constants.mqtt_methods.triggersota'):
-                return $this->ota($methodName, $device, $request->input('payload'), config('constants.sota_configurations_map'));
-            case config('constants.mqtt_methods.triggerconfig'):
-                return $this->ota($methodName, $device, $request->input('payload'), config('constants.cota_configurations_map'));
+            case config('constants.mqtt_methods.aota'):
+                return $this->ota($device, $methodName, $request->input('payload'), config('constants.aota_configurations_map'));
+            case config('constants.mqtt_methods.fota'):
+                return $this->ota($device, $methodName, $request->input('payload'), config('constants.fota_configurations_map'));
+            case config('constants.mqtt_methods.sota'):
+                return $this->ota($device, $methodName, $request->input('payload'), config('constants.sota_configurations_map'));
+            case config('constants.mqtt_methods.cota'):
+                return $this->ota($device, $methodName, $request->input('payload'), config('constants.cota_configurations_map'));
             case config('constants.mqtt_methods.shutdown_device'):
             case config('constants.mqtt_methods.reboot_device'):
             case config('constants.mqtt_methods.decommission_device'):
@@ -63,7 +63,7 @@ class DeviceController extends Controller
         }
     }
 
-    protected function ota(string $methodName, Device $device, array $payload, array $configurationsMap)
+    protected function ota(Device $device, string $methodName, array $payload, array $configurationsMap)
     {
         Helper::mapArrayKeyByArray($payload, $configurationsMap);
 

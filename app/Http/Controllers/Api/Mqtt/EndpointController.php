@@ -15,7 +15,7 @@ class EndpointController extends Controller
     public function mqttEndpoint(Request $request)
     {
         $verneMqHook = $request->header('vernemq-hook');
-        Log::debug('MQTT request->' . json_encode($request->all()));
+        Log::debug('Header vernemq-hook-> '.$verneMqHook.' ,MQTT request->' . json_encode($request->all()));
 
         if ($verneMqHook) {
             if ($verneMqHook === config('constants.vernemq_hook.auth_on_register')) {
@@ -113,7 +113,6 @@ class EndpointController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        // TODO: To remove this comment, leaving for understanding only 'devices/aebdc088-ef2c-45c8-9f6b-84256f5d3f8e/messages/events'
         $username = $request->input('username');
         $clientId = $request->input('client_id');
         $topic = $request->input('topic');
@@ -127,6 +126,7 @@ class EndpointController extends Controller
             if ($username === $clientId && $clientId === $extractedDeviceId) {
                 $device = Device::where('unique_id', $username)->first();
                 if ($device) {
+                    $this->updateDeviceStatus($device);
                     if (preg_match('/devices\/([\w-]+)\/messages\/events/', $topic)) {
                         return $this->messagesEvents($device, $payload);
                     } elseif (preg_match('/devices\/([\w-]+)\/properties\/reported/', $topic)) {
@@ -145,8 +145,6 @@ class EndpointController extends Controller
     protected function messagesEvents(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $this->updateDeviceStatus($device);
-        $device->refresh();
         $deviceRawData = $device->deviceRawData()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
@@ -162,7 +160,7 @@ class EndpointController extends Controller
                         break;
                     case 'containersCpuPercent':
                         $device->containerStatistics()->create([
-                            'container_message' => json_encode($value),
+                            'container_message' => $value,
                         ]);
                         break;
                     case 'availableMemory':
@@ -176,13 +174,15 @@ class EndpointController extends Controller
                         ]);
                         break;
                     case 'coreTempCelsius':
-                        $device->temperatureStatistics()->create([
-                            'temperature' => $value,
-                        ]);
+                        if ($value && $value !== "Unknown") {
+                            $device->temperatureStatistics()->create([
+                                'temperature' => $value,
+                            ]);
+                        }
                         break;
                     case 'networkInformation':
                         $device->networkStatistics()->create([
-                            'network_message' => json_encode($value),
+                            'network_message' => $value,
                         ]);
                         break;
                     default:
@@ -199,17 +199,19 @@ class EndpointController extends Controller
     protected function propertiesReported(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $this->updateDeviceStatus($device);
-        $device->refresh();
         $deviceRawData = $device->deviceRawData()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
 
         $payload = json_decode($payload);
+        Log::debug('propertiesReported if $payload outer->' . json_encode($payload));
         if ($payload) {
+            Log::debug('propertiesReported if $payload run->' . json_encode($payload));
             foreach ($payload as $key => $value) {
+                Log::debug('propertiesReported foreach run->' . json_encode($value));
                 switch ($key) {
                     case 'totalPhysicalMemory':
+                        Log::debug('propertiesReported totalPhysicalMemory run->' . json_encode($value));
                         $device->update(['total_memory' => $value]);
                         break;
                     case 'cpuId':
@@ -249,8 +251,6 @@ class EndpointController extends Controller
 
     protected function updateResponse(Device $device, int $requestId)
     {
-        $this->updateDeviceStatus($device);
-
         $updateSuccess = $device->commandHistories()->find($requestId)->update(['response_time' => now()]);
 
         return $updateSuccess

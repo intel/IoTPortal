@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bcb8ae24cac4a7cdab8fdfcf678cbb2",
+    "content-hash": "d34e8496fd58e8c7dd0c9981c7db6f9d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2534,16 +2534,16 @@
         },
         {
             "name": "php-mqtt/client",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mqtt/client.git",
-                "reference": "ca47fff0d5513c7ebeba8698e8ff8397414c38d4"
+                "reference": "85fe51d44a75a4e6a46c31137e94538c810515f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mqtt/client/zipball/ca47fff0d5513c7ebeba8698e8ff8397414c38d4",
-                "reference": "ca47fff0d5513c7ebeba8698e8ff8397414c38d4",
+                "url": "https://api.github.com/repos/php-mqtt/client/zipball/85fe51d44a75a4e6a46c31137e94538c810515f1",
+                "reference": "85fe51d44a75a4e6a46c31137e94538c810515f1",
                 "shasum": ""
             },
             "require": {
@@ -2585,9 +2585,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-mqtt/client/issues",
-                "source": "https://github.com/php-mqtt/client/tree/v1.0.0"
+                "source": "https://github.com/php-mqtt/client/tree/v1.1.0"
             },
-            "time": "2021-01-10T18:42:03+00:00"
+            "time": "2021-03-21T19:23:51+00:00"
         },
         {
             "name": "phpoption/phpoption",
