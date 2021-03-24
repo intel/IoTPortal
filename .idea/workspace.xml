@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docker-compose/build/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/build/san.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +327,7 @@
       <workItem from="1616378065008" duration="21826000" />
       <workItem from="1616423957924" duration="6786000" />
       <workItem from="1616462551316" duration="31325000" />
-      <workItem from="1616546077579" duration="17594000" />
+      <workItem from="1616546077579" duration="19674000" />
     </task>
     <servers />
   </component>
