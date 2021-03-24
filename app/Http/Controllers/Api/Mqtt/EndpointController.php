@@ -32,6 +32,16 @@ class EndpointController extends Controller
 
     protected function authOnRegister(Request $request)
     {
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $clientId = $request->input('client_id');
+
+        $mqttConfig = config('mqttclient.connections.default');
+
+//        if ($username === $mqttConfig['username'] && $password === $mqttConfig['password'] && $clientId === $mqttConfig['client_id']) {
+            return response(['result' => 'ok'], Response::HTTP_OK);
+//        }
+
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
             'password' => 'required',
@@ -43,10 +53,6 @@ class EndpointController extends Controller
                 'result' => ['error' => $validator->getMessageBag()->toArray()]
             ], Response::HTTP_BAD_REQUEST);
         }
-
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $clientId = $request->input('client_id');
 
         if ($username === $clientId) {
             $device = Device::where('unique_id', $username)->where('mqtt_password', $password)->first();
@@ -60,6 +66,9 @@ class EndpointController extends Controller
 
     protected function authOnSubscribe(Request $request)
     {
+        $username = $request->input('username');
+        $clientId = $request->input('client_id');
+
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
             'client_id' => 'required',
@@ -71,9 +80,6 @@ class EndpointController extends Controller
                 'result' => ['error' => $validator->getMessageBag()->toArray()]
             ], Response::HTTP_BAD_REQUEST);
         }
-
-        $username = $request->input('username');
-        $clientId = $request->input('client_id');
 
         if ($username === $clientId) {
             $device = Device::where('unique_id', $username)->first();
@@ -101,6 +107,15 @@ class EndpointController extends Controller
 
     protected function authOnPublish(Request $request)
     {
+        $username = $request->input('username');
+        $clientId = $request->input('client_id');
+
+        $mqttConfig = config('mqttclient.connections.default');
+
+        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w-]+)\/methods\/([\w-_]+)\/\?\$rid=([\d]+)/', $string)) {
+            response(['result' => 'ok'], Response::HTTP_OK);
+        }
+
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
             'client_id' => 'required',

@@ -1,25 +1,30 @@
 FROM php:fpm
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install PHP and composer dependencies TODO: remove unused in future
+RUN apt update && apt install -qq -y \
     git \
     curl \
+    libmcrypt-dev \
+    libjpeg-dev \
     libpng-dev \
     libonig-dev \
+    libfreetype6-dev \
     libxml2-dev \
+    libbz2-dev \
+    libzip-dev \
     zip \
     unzip
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Clear out the local repository of retrieved package files
+RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
-# Get latest Composer
+# Get latest Composer TODO: remove in future
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY . /var/www
+COPY --from=inteliotportal-build /var/www /var/www
 
 WORKDIR /var/www
 
@@ -27,15 +32,6 @@ RUN chown -R www-data:www-data \
         /var/www/storage \
         /var/www/bootstrap/cache
 
-RUN composer install
-
-RUN php artisan key:generate
-
-RUN php artisan config:cache
-
-RUN php artisan route:cache
-
-RUN php artisan optimize
 
 
 
@@ -43,10 +39,44 @@ RUN php artisan optimize
 
 
 
-
-
-
-
+#FROM php:fpm
+#
+## Install system dependencies
+#RUN apt update && apt install -y \
+#    git \
+#    curl \
+#    libpng-dev \
+#    libonig-dev \
+#    libxml2-dev \
+#    zip \
+#    unzip
+#
+## Clear cache
+#RUN apt clean && rm -rf /var/lib/apt/lists/*
+#
+## Install PHP extensions
+#RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+#
+## Get latest Composer
+#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+#
+#COPY . /var/www
+#
+#WORKDIR /var/www
+#
+#RUN chown -R www-data:www-data \
+#        /var/www/storage \
+#        /var/www/bootstrap/cache
+#
+#RUN composer install
+#
+#RUN php artisan key:generate
+#
+#RUN php artisan config:cache
+#
+#RUN php artisan route:cache
+#
+#RUN php artisan optimize
 
 
 #FROM php:fpm

@@ -1,7 +1,6 @@
 @servers(['staging' => $stagingSshHost])
 
 @setup
-    $repository = $projectRepository;
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
 @endsetup
@@ -21,8 +20,7 @@
 
 @task('clone_repository')
     echo 'Cloning repository'
-    echo {{ $repository }}
-    git clone --depth 1 {{ $repository }}
+    git clone --depth 1 {{ $projectRepository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
 @endtask
@@ -30,26 +28,29 @@
 @task('build_artifacts')
     echo 'Building artifacts'
     cd {{ $project_dir }}
-    sed -i 's~server_name mqtthost~server_name {{ $mqttHost }}~g' docker-compose/nginx/sites/default.conf
-    sed -i 's~server_name localhost~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
+    sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~allow 127.0.0.1~allow {{ $unblockIp }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~allow 127.0.0.2~allow {{ $serverIp }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
     sed -i 's~DB_PASSWORD=.*~DB_PASSWORD={{ $dbPassword }}~g' .env.staging
     sed -i 's~MQTT_HOST=.*~MQTT_HOST={{ $mqttHost }}~g' .env.staging
-    cp .env.staging .env
-    echo '.env Content'
-    head -10 .env
-    echo 'Deleting old JS files'
-    rm public/js/*.js
-    rm public/js/*.txt
-    echo 'Downloading NodeJS'
-    curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    sudo apt-get install -y nodejs
-    echo 'Building JS files'
-    npm ci
-    npm rebuild node-sass
-    npm run production
+    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT="https://${MIX_API_ENDPOINT}/api/mqtt/endpoint"~g' .env.staging
+    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="https://${MIX_API_ENDPOINT}/api/mqtt/endpoint"~g' .env.staging
+    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="https://${MIX_API_ENDPOINT}/api/mqtt/endpoint"~g' .env.staging
+    docker build -t inteliotportal-build -f docker-compose/build/Dockerfile .
+    #cp .env.staging .env
+    #echo '.env Content'
+    #head -10 .env
+    #echo 'Deleting old JS files'
+    #rm public/js/*.js
+    #rm public/js/*.txt
+    #echo 'Downloading NodeJS'
+    #curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    #sudo apt-get install -y nodejs
+    #echo 'Building JS files'
+    #npm ci
+    #npm rebuild node-sass
+    #npm run production
 @endtask
 
 @task('shut_down_existing_containers')

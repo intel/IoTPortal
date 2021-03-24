@@ -1,0 +1,9 @@
+FROM vernemq/vernemq:latest-alpine
+
+USER root
+
+COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certificates/localhost.crt
+
+RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
+
+USER vernemq
