@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mqttclient.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mqttclient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +333,7 @@
       <workItem from="1616423957924" duration="6786000" />
       <workItem from="1616462551316" duration="31325000" />
       <workItem from="1616546077579" duration="22340000" />
-      <workItem from="1616637171065" duration="7144000" />
+      <workItem from="1616637171065" duration="16388000" />
     </task>
     <servers />
   </component>

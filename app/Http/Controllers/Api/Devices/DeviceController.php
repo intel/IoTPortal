@@ -65,9 +65,7 @@ class DeviceController extends Controller
 
     protected function ota(Device $device, string $methodName, array $payload, array $configurationsMap)
     {
-        Helper::mapArrayKeyByArray($payload, $configurationsMap);
-
-        $payloadJson = json_encode($payload);
+        $payloadJson = json_encode(Helper::mapArrayKeyByArray($payload, $configurationsMap));
 
         $commandHistory = $device->commandHistories()->create([
             'type' => config('constants.mqtt_methods_integer_types.' . $methodName),
