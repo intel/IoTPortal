@@ -38,9 +38,9 @@ class EndpointController extends Controller
 
         $mqttConfig = config('mqttclient.connections.default');
 
-//        if ($username === $mqttConfig['username'] && $password === $mqttConfig['password'] && $clientId === $mqttConfig['client_id']) {
+        if ($username === $mqttConfig['username'] && $password === $mqttConfig['password'] && $clientId === $mqttConfig['client_id']) {
             return response(['result' => 'ok'], Response::HTTP_OK);
-//        }
+        }
 
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
@@ -109,11 +109,12 @@ class EndpointController extends Controller
     {
         $username = $request->input('username');
         $clientId = $request->input('client_id');
+        $topic = $request->input('topic');
 
         $mqttConfig = config('mqttclient.connections.default');
 
-        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w-]+)\/methods\/([\w-_]+)\/\?\$rid=([\d]+)/', $string)) {
-            response(['result' => 'ok'], Response::HTTP_OK);
+        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w\-]+)\/methods\/([\w\-_]+)\/\?\$rid=([\d]+)/', $topic)) {
+            return response(['result' => 'ok'], Response::HTTP_OK);
         }
 
         $validator = Validator::make($request->all(), [
@@ -128,33 +129,32 @@ class EndpointController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        $username = $request->input('username');
-        $clientId = $request->input('client_id');
-        $topic = $request->input('topic');
         $payload = base64_decode($request->input('payload'));
 
         $payload = Helper::sanitisePayload($payload);
 
-        if (preg_match('/devices\/([\w-]+)\//', $topic, $deviceIdMatches)) {
+        if (preg_match('/devices\/([\w\-]+)\//', $topic, $deviceIdMatches)) {
             $extractedDeviceId = $deviceIdMatches[1];
+            Log::debug('$username-> '.$username.'$clientId-> '.$clientId.'$extractedDeviceId-> '.$extractedDeviceId);
 
             if ($username === $clientId && $clientId === $extractedDeviceId) {
                 $device = Device::where('unique_id', $username)->first();
                 if ($device) {
                     $this->updateDeviceStatus($device);
-                    if (preg_match('/devices\/([\w-]+)\/messages\/events/', $topic)) {
+                    if (preg_match('/devices\/([\w\-]+)\/messages\/events/', $topic)) {
                         return $this->messagesEvents($device, $payload);
-                    } elseif (preg_match('/devices\/([\w-]+)\/properties\/reported/', $topic)) {
+                    } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
                         return $this->propertiesReported($device, $payload);
-                    } elseif (preg_match('/iotportal\/([\w-]+)\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
+                    } elseif (preg_match('/iotportal\/([\w\-]+)\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
                         return $this->updateResponse($device, $requestIdMatches[2]);
                     }
                     return response(['result' => ['error' => 'Unsupported topic.']], Response::HTTP_BAD_REQUEST);
                 }
+                return response(['result' => ['error' => 'device_unique_id not found.']], Response::HTTP_NOT_FOUND);
             }
             return response(['result' => ['error' => 'username, client_id and device_unique_id in topic do not match']], Response::HTTP_BAD_REQUEST);
         }
-        return response(['result' => ['error' => 'Invalid device_unique_id in topic.']], Response::HTTP_NOT_FOUND);
+        return response(['result' => ['error' => 'Invalid device_unique_id in topic.']], Response::HTTP_BAD_REQUEST);
     }
 
     protected function messagesEvents(Device $device, ?string $payload)
