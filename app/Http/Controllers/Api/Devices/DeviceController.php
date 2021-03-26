@@ -72,7 +72,7 @@ class DeviceController extends Controller
             'payload' => $payloadJson,
         ]);
 
-        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/' . $methodName . '/?$rid=' . $commandHistory->id, $payloadJson);
+        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, $payloadJson);
 
         return response(['result' => ['payload' => $payload], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
@@ -84,7 +84,7 @@ class DeviceController extends Controller
             'payload' => null,
         ]);
 
-        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/' . $methodName . '/?$rid=' . $commandHistory->id, null);
+        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, null);
 
         return response(['result' => ['payload' => null], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }

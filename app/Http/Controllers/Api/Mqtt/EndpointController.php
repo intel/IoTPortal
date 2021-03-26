@@ -113,7 +113,7 @@ class EndpointController extends Controller
 
         $mqttConfig = config('mqttclient.connections.default');
 
-        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w\-]+)\/methods\/([\w\-_]+)\/\?\$rid=([\d]+)/', $topic)) {
+        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w\-]+)\/methods\/POST\/([\w\-_]+)\/\?\$rid=([\d]+)/', $topic)) {
             return response(['result' => 'ok'], Response::HTTP_OK);
         }
 
@@ -129,13 +129,11 @@ class EndpointController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        $payload = base64_decode($request->input('payload'));
+        $payload = Helper::sanitisePayload(base64_decode($request->input('payload')));
 
-        $payload = Helper::sanitisePayload($payload);
-
-        if (preg_match('/devices\/([\w\-]+)\//', $topic, $deviceIdMatches)) {
-            $extractedDeviceId = $deviceIdMatches[1];
-            Log::debug('$username-> '.$username.'$clientId-> '.$clientId.'$extractedDeviceId-> '.$extractedDeviceId);
+        if (preg_match('/(devices|iotportal)\/([\w\-]+)\//', $topic, $deviceIdMatches)) {
+            $extractedDeviceId = $deviceIdMatches[2];
+            Log::debug('$username-> '.$username.'$clientId-> '.$clientId.'$extractedDeviceId-> '. $extractedDeviceId);
 
             if ($username === $clientId && $clientId === $extractedDeviceId) {
                 $device = Device::where('unique_id', $username)->first();
@@ -145,7 +143,8 @@ class EndpointController extends Controller
                         return $this->messagesEvents($device, $payload);
                     } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
                         return $this->propertiesReported($device, $payload);
-                    } elseif (preg_match('/iotportal\/([\w\-]+)\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
+                    } elseif (preg_match('/iotportal\/([\w\-]+)\/methods\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
+                        Log::debug('preg_match updateResponse run-> '.$topic.' ,$requestIdMatches->' . $requestIdMatches[2]);
                         return $this->updateResponse($device, $requestIdMatches[2]);
                     }
                     return response(['result' => ['error' => 'Unsupported topic.']], Response::HTTP_BAD_REQUEST);
