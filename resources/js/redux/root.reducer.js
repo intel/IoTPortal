@@ -8,8 +8,11 @@ import shutdownReducer from './shutdown/shutdown.reducer';
 import rebootReducer from './reboot/reboot.reducer';
 import decommissionReducer from './decommission/decommission.reducer';
 import aotaReducer from './aota/aota.reducer';
+import fotaReducer from './fota/fota.reducer';
+import sotaReducer from './sota/sota.reducer';
+import cotaReducer from './cota/cota.reducer';
 import sidebarReducer from './sidebar/sidebar.reducer';
-
+import commandHistoryReducer from './commandHistory/commandHistory.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +27,10 @@ const rootReducer = combineReducers({
   reboot: rebootReducer,
   decommission: decommissionReducer,
   aota: aotaReducer,
+  fota: fotaReducer,
+  sota: sotaReducer,
+  cota: cotaReducer,
+  commandHistory: commandHistoryReducer,
   sidebar: sidebarReducer
 });
 

@@ -18,7 +18,7 @@ export const submitRebootFailure = errorMessage => ({
   payload: errorMessage
 });
 
-export const submitRebootStartAsync = (id, data) => {
+export const submitRebootStartAsync = (id) => {
   return dispatch => {
     dispatch(submitRebootStart());
     const toastId = toast.loading('Rebooting device...', {
@@ -27,9 +27,9 @@ export const submitRebootStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/reboot`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'reboot_device'})
       .then(result => {
-        dispatch(submitRebootSuccess(result.data));
+        dispatch(submitRebootSuccess());
 
         toast.success(<b>Rebooted device successfully!</b>, {
           id: toastId,

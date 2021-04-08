@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\CommandHistory;
+use App\Models\Device;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//         User::factory(10)->create();
+        User::factory()
+            ->has(Device::factory()
+                ->has(CommandHistory::factory()
+                    ->count(10)
+                )->count(3))
+            ->create();
     }
 }

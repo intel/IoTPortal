@@ -17,6 +17,7 @@ class CommandHistory extends Model
     protected $fillable = [
         'type',
         'payload',
+        'response_time'
     ];
 
     /**

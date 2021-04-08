@@ -18,7 +18,7 @@ export const submitShutdownFailure = errorMessage => ({
   payload: errorMessage
 });
 
-export const submitShutdownStartAsync = (id, data) => {
+export const submitShutdownStartAsync = (id) => {
   return dispatch => {
     dispatch(submitShutdownStart());
     const toastId = toast.loading('Shutting down device...', {
@@ -27,7 +27,7 @@ export const submitShutdownStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/shutdown`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'shutdown_device'})
       .then(result => {
         dispatch(submitShutdownSuccess(result.data));
 

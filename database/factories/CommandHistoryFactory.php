@@ -22,7 +22,9 @@ class CommandHistoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'type' => $this->faker->numberBetween($min = 0, $max = 8),
+            'payload' => '{"app":"compose","cmd":"down","containerTag":"hjckhjkhjk"}',
+            'response_time' => $this->faker->dateTime(),
         ];
     }
 }

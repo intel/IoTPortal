@@ -2,9 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/CotaPathInputFormGroup/CotaPathInputFormGroup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/DeviceCommandHistoryCard/commandHistoryDataTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Error/Error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/models/Configuration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/reusable/ErrorBoundary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/reusable/FormikPatchTouched.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/ForceJsonResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/ForceJsonResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CommandHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CommandHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DevicesFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DeviceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DevicesSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DeviceSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/assets/icons/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/IotSelect/IotSelect.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/IotTextInput/IotTextInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/data/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/data/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +72,7 @@
       <list>
         <option value="composer.json" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -165,9 +218,6 @@
       <path value="$PROJECT_DIR$/vendor/laravel/envoy" />
     </include_path>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1ljN573d2c0UNeJ9Zo5or68Cgi0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -180,7 +230,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker-compose" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Resources" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -189,18 +240,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Resources" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\data" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\database\seeders" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DeviceRawDataCard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\reusable" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\public\js" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DevicePropertyCard" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\SotaCard" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\FotaCard" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\CotaCard" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
@@ -331,7 +382,22 @@
       <workItem from="1616462551316" duration="31325000" />
       <workItem from="1616546077579" duration="22340000" />
       <workItem from="1616637171065" duration="19707000" />
-      <workItem from="1616717724421" duration="5970000" />
+      <workItem from="1616717724421" duration="21017000" />
+      <workItem from="1616979222641" duration="31590000" />
+      <workItem from="1617034892822" duration="3447000" />
+      <workItem from="1617066703178" duration="26184000" />
+      <workItem from="1617119357744" duration="3078000" />
+      <workItem from="1617153087153" duration="56000" />
+      <workItem from="1617156014470" duration="40367000" />
+      <workItem from="1617242716343" duration="21183000" />
+      <workItem from="1617335210963" duration="12829000" />
+      <workItem from="1617436771262" duration="9066000" />
+      <workItem from="1617462646950" duration="6531000" />
+      <workItem from="1617524242344" duration="2494000" />
+      <workItem from="1617553071616" duration="3368000" />
+      <workItem from="1617584111353" duration="27289000" />
+      <workItem from="1617676137637" duration="25255000" />
+      <workItem from="1617778873293" duration="8909000" />
     </task>
     <servers />
   </component>

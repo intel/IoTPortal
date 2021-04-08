@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Devices;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DeviceResource;
+use App\Models\CommandHistory;
 use App\Models\Device;
 use App\Models\User;
 use Carbon\Carbon;
@@ -13,6 +14,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Psy\Command\Command;
 
 class DeviceController extends Controller
 {
@@ -81,7 +83,6 @@ class DeviceController extends Controller
     {
         $commandHistory = $device->commandHistories()->create([
             'type' => config('constants.mqtt_methods_integer_types.' . $methodName),
-            'payload' => null,
         ]);
 
         Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, null);
@@ -120,8 +121,7 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        $response = ['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []];
-        return response($response, Response::HTTP_OK);
+        return response(['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**
@@ -149,5 +149,48 @@ class DeviceController extends Controller
     {
         $device->delete();
         return response(['success' => true], Response::HTTP_OK);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Device $device
+     * @return \Illuminate\Http\Response
+     */
+    public function showDeviceCommandHistories(Request $request, Device $device)
+    {
+        $query = $device->commandHistories();
+
+        if ($request->has('filters')) {
+            $filters = json_decode($request->input('filters'));
+
+            foreach ($filters as $key => $value) {
+                if ($key === 'payload') $query->where('payload', 'like', "%{$value->value}%");
+                if ($key === 'type') $query->where('type', $value->value);
+                if ($key === 'response_time') {
+                    $dates = explode(" - ", $value->value);
+                    $query->whereBetween('response_time', $dates);
+                }
+                if ($key === 'created_at') {
+                    $dates = explode(" - ", $value->value);
+                    $query->whereBetween('created_at', $dates);
+                }
+                if ($key === 'globalFilter') {
+                    $query->where(function ($query) use ($value) {
+                        $query->where('payload', 'like', "%{$value->value}%")
+                            ->orWhere('type', 'like', "%{$value->value}%");
+                    });
+                }
+            }
+        }
+
+        if ($request->has('sortField')) {
+            if ($request->input('sortOrder') === '1')
+                $query->orderBy($request->input('sortField'));
+            else
+                $query->orderByDesc($request->input('sortField'));
+        }
+
+        return response()->json(['result' => ['commandHistories' => $query->paginate((int)$request->input('rows', 10))], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK, [], JSON_PRETTY_PRINT);
     }
 }

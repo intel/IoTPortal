@@ -1,4 +1,4 @@
-import otaActionTypes from './aota.types';
+import aotaActionTypes from './aota.types';
 
 const INITIAL_STATE = {
     isSubmittingAota: false,
@@ -7,17 +7,17 @@ const INITIAL_STATE = {
 
 const aotaReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case otaActionTypes.SUBMIT_AOTA_START:
+        case aotaActionTypes.SUBMIT_AOTA_START:
             return {
                 ...state,
                 isSubmittingAota: true
             };
-        case otaActionTypes.SUBMIT_AOTA_SUCCESS:
+        case aotaActionTypes.SUBMIT_AOTA_SUCCESS:
             return {
                 ...state,
                 isSubmittingAota: false
             };
-        case otaActionTypes.SUBMIT_AOTA_FAILURE:
+        case aotaActionTypes.SUBMIT_AOTA_FAILURE:
             return {
                 ...state,
                 isSubmittingAota: false,

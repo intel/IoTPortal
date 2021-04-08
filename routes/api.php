@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your Api!
 |
 */
+
 Route::middleware(['json.response'])->group(function () {
     Route::post('/register', 'App\Http\Controllers\Api\Auth\AuthController@register')->name('api.auth.register');
     Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
 
-    Route::post('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
+    Route::get('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
 
     // direct method invocation from cloud
 //    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceActionController@methods')->name('api.devices.methods');
@@ -39,7 +40,10 @@ Route::middleware(['json.response', 'auth'])->group(function () {
         return $request->user();
     });
 
+
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
+
+    Route::get('/devices/{device}/command-histories', 'App\Http\Controllers\Api\Devices\DeviceController@showDeviceCommandHistories')->name('api.devices.commandHistories');
 
     Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');
 

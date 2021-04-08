@@ -3,20 +3,19 @@ import React from 'react'
 import toast from 'react-hot-toast';
 import { CButton } from '@coreui/react'
 
-import otaActionTypes from './aota.types';
+import aotaActionTypes from './aota.types';
 import { API_ENDPOINT } from '../../data/config'
-import { removeObjectEmptyString } from '../../utils/utils';
 
 export const submitAotaStart = () => ({
-  type: otaActionTypes.SUBMIT_AOTA_START,
+  type: aotaActionTypes.SUBMIT_AOTA_START,
 });
 
 export const submitAotaSuccess = () => ({
-  type: otaActionTypes.SUBMIT_AOTA_SUCCESS,
+  type: aotaActionTypes.SUBMIT_AOTA_SUCCESS,
 });
 
 export const submitAotaFailure = errorMessage => ({
-  type: otaActionTypes.SUBMIT_AOTA_FAILURE,
+  type: aotaActionTypes.SUBMIT_AOTA_FAILURE,
   payload: errorMessage
 });
 
@@ -28,8 +27,6 @@ export const submitAotaStartAsync = (id, data) => {
         minWidth: '500px',
       },
     });
-
-    removeObjectEmptyString(data);
 
     axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'triggeraota', payload: data})
       .then(result => {

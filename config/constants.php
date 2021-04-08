@@ -48,7 +48,7 @@ return [
 
     'fota_configurations_map' => [
         'bios_version' => 'biosversion',
-        'fetch' => 'fetchfetch',
+        'fetch_link' => 'fetch',
         'manufacturer' => 'manufacturer',
         'path' => 'path',
         'product' => 'product',
@@ -62,16 +62,16 @@ return [
 
     'sota_configurations_map' => [
         'command' => 'cmd',
-        'fetch' => 'fetch',
-        'log' => 'log_to_file',
+        'fetch_link' => 'fetch',
+        'log_to_file' => 'log_to_file',
         'username' => 'username',
         'password' => 'password'
     ],
 
     'cota_configurations_map' => [
         'command' => 'cmd',
-        'fetch' => 'fetch',
-        'path' => 'path',
+        'fetch_link' => 'fetch',
+        'configurations' => 'path',
         'signature' => 'signature',
     ],
 

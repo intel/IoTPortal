@@ -1,0 +1,7 @@
+const fotaActionTypes = {
+    SUBMIT_FOTA_START: 'SUBMIT_FOTA_START',
+    SUBMIT_FOTA_SUCCESS: 'SUBMIT_FOTA_SUCCESS',
+    SUBMIT_FOTA_FAILURE: 'SUBMIT_FOTA_FAILURE',
+};
+
+export default fotaActionTypes;

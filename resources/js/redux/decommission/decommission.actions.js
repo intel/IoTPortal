@@ -18,7 +18,7 @@ export const submitDecommissionFailure = errorMessage => ({
   payload: errorMessage
 });
 
-export const submitDecommissionStartAsync = (id, data) => {
+export const submitDecommissionStartAsync = (id) => {
   return dispatch => {
     dispatch(submitDecommissionStart());
     const toastId = toast.loading('Decommissioning device...', {
@@ -27,7 +27,7 @@ export const submitDecommissionStartAsync = (id, data) => {
       },
     });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/decommission`, data)
+    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'decommission_device'})
       .then(result => {
         dispatch(submitDecommissionSuccess(result.data));
 

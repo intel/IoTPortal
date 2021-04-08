@@ -1,0 +1,7 @@
+const sotaActionTypes = {
+    SUBMIT_SOTA_START: 'SUBMIT_SOTA_START',
+    SUBMIT_SOTA_SUCCESS: 'SUBMIT_SOTA_SUCCESS',
+    SUBMIT_SOTA_FAILURE: 'SUBMIT_SOTA_FAILURE',
+};
+
+export default sotaActionTypes;

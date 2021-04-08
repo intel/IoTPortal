@@ -27,7 +27,7 @@ class Device extends Model
         'os_information',
         'system_manufacturer',
         'system_product_name',
-        'total_memory'
+        'total_memory',
     ];
 
     public static function boot()
@@ -38,7 +38,6 @@ class Device extends Model
 
             $model->unique_id = $uniqueId;
             $model->name = $uniqueId;
-            $model->status = config('constants.device_statuses.registered');
             $model->mqtt_password = Helper::generateMqttPassword();
         });
     }
