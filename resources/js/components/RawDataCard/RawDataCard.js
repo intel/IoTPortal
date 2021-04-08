@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
+import ReactJson from 'react-json-view';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Calendar } from 'primereact/calendar';
@@ -14,9 +15,9 @@ import 'primeicons/primeicons.css';
 
 import { fetchCommandHistoryStartAsync } from '../../redux/commandHistory/commandHistory.actions';
 
-import './commandHistoryDataTable.css';
+import './rawDataDataTable.css';
 
-const DeviceCommandHistoryCard = ({
+const RawDataCard = ({
                                     deviceId,
                                     commandHistories,
                                     totalRecords,
@@ -24,6 +25,7 @@ const DeviceCommandHistoryCard = ({
                                     fetchCommandHistoryStartAsync
                                   }) => {
   const [selectedCommandHistories, setSelectedCommandHistories] = useState(null);
+  const [expandedRows, setExpandedRows] = useState(null);
   const [globalFilter, setGlobalFilter] = useState(null);
   const [selectedCommandType, setSelectedCommandType] = useState(null);
   const [responseTimeFilter, setResponseTimeFilter] = useState(null);
@@ -105,7 +107,7 @@ const DeviceCommandHistoryCard = ({
   const renderResponseTimeFilter = () => {
     return (
       <Calendar selectionMode="range" value={responseTimeFilter} onChange={onResponseTimeFilterChange}
-                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1}
+                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
                 showButtonBar touchUI monthNavigator yearNavigator yearRange="1900:2100"/>
     );
   }
@@ -122,7 +124,7 @@ const DeviceCommandHistoryCard = ({
   const renderTimestampFilter = () => {
     return (
       <Calendar selectionMode="range" value={timestampFilter} onChange={onTimestampFilterChange}
-                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1}
+                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
                 showButtonBar touchUI monthNavigator yearNavigator yearRange="1900:2100"/>
     );
   };
@@ -206,6 +208,15 @@ const DeviceCommandHistoryCard = ({
     );
   };
 
+  const rowExpansionTemplate = (data) => {
+    return (
+      <>
+        <h5>Payload</h5>
+        <ReactJson src={JSON.parse(data.payload)} name="payload"/>
+      </>
+    );
+  };
+
   const header = renderHeader();
   const commandTypeFilterElement = renderCommandTypeFilter();
   const responseTimeFilterElement = renderResponseTimeFilter();
@@ -223,7 +234,9 @@ const DeviceCommandHistoryCard = ({
                  rowsPerPageOptions={[3, 10, 25, 50]} first={lazyParams.first} rows={lazyParams.rows}
                  totalRecords={totalRecords} onPage={onPage} onSort={onSort} sortField={lazyParams.sortField}
                  sortOrder={lazyParams.sortOrder} onFilter={onFilter} filters={lazyParams.filters} filterDelay={800}
-                 loading={isFetchingCommandHistories}>
+                 expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
+                 rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingCommandHistories}>
+        <Column expander style={{width: '3em'}}/>
         <Column selectionMode="multiple" style={{width: '3em'}}/>
         <Column field="payload" header="Payload" body={payloadColumnBody} sortable filter
                 filterPlaceholder="Search by payload"/>
@@ -251,4 +264,4 @@ const mapDispatchToProps = dispatch => ({
   fetchCommandHistoryStartAsync: (id, pagination) => dispatch(fetchCommandHistoryStartAsync(id, pagination)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeviceCommandHistoryCard);
+export default connect(mapStateToProps, mapDispatchToProps)(RawDataCard);

@@ -33,7 +33,8 @@ import DevicePropertyCard from '../../components/DevicePropertyCard/DeviceProper
 import Spinner from '../../components/Spinner/Spinner';
 import Modal from '../../components/Modal/Modal';
 import Error from '../../components/Error/Error';
-import DeviceCommandHistoryCard from '../../components/DeviceCommandHistoryCard/DeviceCommandHistoryCard';
+import CommandHistoriesCard from '../../components/CommandHistoriesCard/CommandHistoriesCard';
+import RawDataCard from '../../components/RawDataCard/RawDataCard';
 
 const Device = (props) => {
 
@@ -163,6 +164,11 @@ const Device = (props) => {
                     Command Histories
                   </CNavLink>
                 </CNavItem>
+                <CNavItem>
+                  <CNavLink data-tab="raw-data">
+                    Raw Data
+                  </CNavLink>
+                </CNavItem>
               </CNav>
               <CTabContent>
                 <CTabPane className="m-3" data-tab="overview">
@@ -181,7 +187,10 @@ const Device = (props) => {
                   <CotaCard deviceId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="command-histories">
-                  <DeviceCommandHistoryCard deviceId={deviceId}/>
+                  <CommandHistoriesCard deviceId={deviceId}/>
+                </CTabPane>
+                <CTabPane className="m-3" data-tab="raw-data">
+                  <RawDataCard deviceId={deviceId}/>
                 </CTabPane>
               </CTabContent>
             </CTabs>
