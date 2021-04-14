@@ -111,7 +111,7 @@ class DeviceController extends Controller
     public function destroy(Device $device)
     {
         $device->delete();
-        return response(['success' => true], Response::HTTP_OK);
+        return response(['result' => [], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     public function register(Request $request)

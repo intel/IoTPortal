@@ -1,6 +1,8 @@
 import React from 'react'
+
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
-import DevicesCard from '../../components/DevicesCard/DevicesCard';
+
+import DevicesCard from '../../containers/DevicesCard/DevicesCard';
 
 const Devices = () => {
 
@@ -17,7 +19,7 @@ const Devices = () => {
         </CCard>
       </CCol>
     </CRow>
-  )
+  );
 };
 
 export default Devices;

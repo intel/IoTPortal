@@ -2000,9 +2000,826 @@ function(){function t(t){t.remember("_draggable",this),this.el=t}t.prototype.ini
 
 /***/ }),
 
-/***/ "./resources/js/components/AotaCard/AotaCard.js":
+/***/ "./resources/js/components/CardSkeleton/CardSkeleton.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/CardSkeleton/CardSkeleton.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var CardSkeleton = function CardSkeleton() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
+          className: "my-auto",
+          xs: "12",
+          md: "12",
+          lg: "1",
+          xl: "1",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "d-flex justify-content-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+              size: "5rem"
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
+          className: "my-auto",
+          xs: "12",
+          md: "12",
+          lg: "11",
+          xl: "11",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+            className: "mb-2"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+            width: "10rem"
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+        className: "mb-2"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+        width: "10rem",
+        className: "mb-2"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+        width: "5rem",
+        className: "mb-2"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+        height: "2rem",
+        className: "mb-2"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+        width: "10rem",
+        height: "4rem",
+        className: "mb-2"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardSkeleton);
+
+/***/ }),
+
+/***/ "./resources/js/components/ChartSkeleton/ChartSkeleton.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/ChartSkeleton/ChartSkeleton.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var ChartSkeleton = function ChartSkeleton() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {
+      width: "15rem",
+      height: "30px",
+      className: "mb-2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {
+      height: "470px",
+      className: "mb-2"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChartSkeleton);
+
+/***/ }),
+
+/***/ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/DevicePropertyCard/DevicePropertyCard.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var DevicePropertyCard = function DevicePropertyCard(_ref) {
+  var device = _ref.device;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
+      children: "Device Properties"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        className: "table table-striped",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "col",
+              children: "Property"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "col",
+              children: "Value"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "BIOS Release Date"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.bios_release_date
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "BIOS Vendor"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.bios_vendor
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "BIOS Version"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.bios_version
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "CPU"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.cpu
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "Disk Information"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.disk_information
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "OS Information"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.os_information
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "System Manufacturer"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.system_manufacturer
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "System Product Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.system_product_name
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              scope: "row",
+              children: "Total Memory"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: device.total_memory
+            })]
+          })]
+        })]
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DevicePropertyCard);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditableText/EditableText.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/EditableText/EditableText.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _editableText_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editableText.css */ "./resources/js/components/EditableText/editableText.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+var EditableText = function EditableText(_ref) {
+  var Tag = _ref.tag,
+      value = _ref.value,
+      updateFunction = _ref.updateFunction,
+      props = _objectWithoutProperties(_ref, ["tag", "value", "updateFunction"]);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      edit = _useState2[0],
+      setEdit = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentValue = _useState4[0],
+      setCurrentValue = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value || ''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      originalValue = _useState6[0],
+      setOriginalValue = _useState6[1];
+
+  var _updateFunction = function _updateFunction(value) {
+    if (value !== originalValue) {
+      updateFunction(value);
+    }
+  };
+
+  return edit ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread({
+    autoFocus: true,
+    onFocus: function onFocus() {
+      return setOriginalValue(value);
+    },
+    onChange: function onChange(event) {
+      return setCurrentValue(event.target.value);
+    },
+    onBlur: function onBlur(event) {
+      setEdit(false);
+
+      _updateFunction(event.target.value);
+    },
+    onKeyUp: function onKeyUp(event) {
+      if (event.key === 'Escape') {
+        setEdit(false);
+        setCurrentValue(originalValue);
+      } else if (event.key === 'Enter') {
+        setEdit(false);
+
+        _updateFunction(event.target.value);
+      }
+    },
+    value: currentValue
+  }, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Tag, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('editable-text'),
+    onClick: function onClick() {
+      return setEdit(!edit);
+    },
+    children: currentValue
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditableText);
+
+/***/ }),
+
+/***/ "./resources/js/components/Error/Error.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Error/Error.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var Error = function Error(_ref) {
+  var errorMessage = _ref.errorMessage;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
+    className: "justify-content-center",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
+      md: "6",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "clearfix text-center mt-5",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
+          size: "5xl",
+          name: "cil-warning"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
+          className: "pt-3",
+          children: "Oops! Something went wrong."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          className: "text-muted",
+          children: errorMessage || 'The resource you are looking for was not found.'
+        })]
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
+
+/***/ }),
+
+/***/ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+
+var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
+  var isHidden = _ref.isHidden,
+      isLabelHidden = _ref.isLabelHidden,
+      label = _ref.label,
+      value = _ref.value,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
+
+  var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
+      setFieldValue = _useFormikContext.setFieldValue,
+      setFieldTouched = _useFormikContext.setFieldTouched;
+
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
+      _useField2 = _slicedToArray(_useField, 2),
+      field = _useField2[0],
+      meta = _useField2[1];
+
+  var defaultStyle = {
+    control: function control(base) {
+      return _objectSpread(_objectSpread({}, base), {}, {
+        height: 35,
+        minHeight: 35,
+        '&:hover': {
+          boxShadow: '0 0 0 0.2rem rgb(50 31 219 / 25%)'
+        }
+      });
+    },
+    dropdownIndicator: function dropdownIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    },
+    clearIndicator: function clearIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    }
+  };
+  var errorStyle = {
+    control: function control(base) {
+      return _objectSpread(_objectSpread({}, base), {}, {
+        height: 35,
+        minHeight: 35,
+        border: '1px solid #e55353',
+        '&:hover': {
+          border: '1px solid #e55353',
+          boxShadow: '0 0 0 0.2rem rgb(255 0 0 / 25%)'
+        }
+      });
+    },
+    dropdownIndicator: function dropdownIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    },
+    clearIndicator: function clearIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    }
+  };
+
+  var handleOptionChange = function handleOptionChange(selection) {
+    setFieldValue(props.name, selection);
+    if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
+  };
+
+  var updateBlur = function updateBlur() {
+    setFieldTouched(props.name, true);
+  };
+
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+      htmlFor: props.id || props.name,
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
+      theme: function theme(_theme) {
+        return _objectSpread(_objectSpread({}, _theme), {}, {
+          colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
+            primary50: '#958bef80',
+            primary25: '#958bef26',
+            primary: '#958bef'
+          })
+        });
+      },
+      styles: defaultStyle
+    }, meta.touched && meta.error && {
+      className: 'is-invalid',
+      styles: errorStyle
+    }), {}, {
+      id: props.id || props.name,
+      name: field.name,
+      options: props.options,
+      value: value,
+      onBlur: updateBlur,
+      onChange: handleOptionChange
+    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+      children: typeof meta.error === 'string' ? meta.error : meta.error.label
+    }) : null]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotSelectFormGroup);
+
+/***/ }),
+
+/***/ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
+  var isHidden = _ref.isHidden,
+      isLabelHidden = _ref.isLabelHidden,
+      isDisabled = _ref.isDisabled,
+      label = _ref.label,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "isDisabled", "label"]);
+
+  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+  // which we can spread on <input>. We can use field meta to show an error
+  // message if the field is invalid and it has been touched (i.e. visited)
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
+      _useField2 = _slicedToArray(_useField, 2),
+      field = _useField2[0],
+      meta = _useField2[1];
+
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+      htmlFor: props.id || props.name,
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
+      invalid: true
+    }), {}, {
+      id: props.id || props.name
+    }, isDisabled && {
+      disabled: true
+    }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+      children: meta.error
+    }) : null]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotTextInputFormGroup);
+
+/***/ }),
+
+/***/ "./resources/js/components/LineChartCard/LineChartCard.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/LineChartCard/LineChartCard.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
+/* harmony import */ var primereact_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/button */ "./node_modules/primereact/button.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChartSkeleton/ChartSkeleton */ "./resources/js/components/ChartSkeleton/ChartSkeleton.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+var LineChartCard = function LineChartCard(_ref) {
+  var title = _ref.title,
+      options = _ref.options,
+      series = _ref.series,
+      type = _ref.type,
+      height = _ref.height,
+      timeRangeFilters = _ref.timeRangeFilters,
+      selectedTimeRangeFilter = _ref.selectedTimeRangeFilter,
+      onTimeRangeFilter = _ref.onTimeRangeFilter,
+      onRefresh = _ref.onRefresh,
+      isLoading = _ref.isLoading,
+      errorMessage = _ref.errorMessage;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+        className: "card-title mb-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+          sm: "5",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
+            className: "card-title mb-0",
+            children: title
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+          sm: "7",
+          className: "d-none d-md-block",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+            icon: classnames__WEBPACK_IMPORTED_MODULE_1___default()('pi', {
+              'pi-spin': isLoading
+            }, 'pi-refresh'),
+            iconPos: "right",
+            className: "float-right",
+            onClick: onRefresh
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButtonGroup, {
+            className: "float-right mr-3",
+            children: timeRangeFilters.map(function (value) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
+                color: "outline-secondary",
+                value: value.value,
+                className: "mx-0",
+                active: value.value === selectedTimeRangeFilter,
+                onClick: onTimeRangeFilter,
+                children: value.label
+              }, value.value);
+            })
+          })]
+        })]
+      }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__.default, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "mt-3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_2__.default, {
+          options: options,
+          series: series,
+          type: type,
+          height: height
+        })
+      })]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LineChartCard);
+
+/***/ }),
+
+/***/ "./resources/js/components/MetricsCard/MetricsCard.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/MetricsCard/MetricsCard.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _containers_CpuTemperatureLineChartCard_CpuTemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard */ "./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js");
+/* harmony import */ var _containers_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../containers/CpuUsageLineChartCard/CpuUsageLineChartCard */ "./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js");
+/* harmony import */ var _containers_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../containers/DiskUsageLineChartCard/DiskUsageLineChartCard */ "./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js");
+/* harmony import */ var _containers_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard */ "./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+var MetricsCard = function MetricsCard(_ref) {
+  var deviceId = _ref.deviceId;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
+      children: "Metrics"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuTemperatureLineChartCard_CpuTemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+        deviceId: deviceId
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__.default, {
+        deviceId: deviceId
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__.default, {
+        deviceId: deviceId
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__.default, {
+        deviceId: deviceId
+      })]
+    })]
+  });
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(MetricsCard));
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal/Modal.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Modal/Modal.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var Modal = function Modal(_ref) {
+  var show = _ref.show,
+      onConfirm = _ref.onConfirm,
+      onClose = _ref.onClose,
+      modalTitle = _ref.modalTitle,
+      modalMessage = _ref.modalMessage;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModal, {
+    show: show,
+    onClose: onClose,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalHeader, {
+      closeButton: true,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalTitle, {
+        children: modalTitle
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalBody, {
+      children: modalMessage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalFooter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        color: "primary",
+        onClick: onConfirm,
+        children: "Shut down"
+      }), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        color: "secondary",
+        onClick: onClose,
+        children: "Cancel"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
+/***/ "./resources/js/containers/AotaCard/AotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/components/AotaCard/AotaCard.js ***!
+  !*** ./resources/js/containers/AotaCard/AotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2020,8 +2837,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
 /* harmony import */ var _redux_aota_aota_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/aota/aota.actions */ "./resources/js/redux/aota/aota.actions.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -2178,7 +2995,7 @@ var AotaCard = function AotaCard(_ref) {
         children: function children(_ref6) {
           var values = _ref6.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_2__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "app",
               name: "app",
               label: "Application",
@@ -2189,7 +3006,7 @@ var AotaCard = function AotaCard(_ref) {
               isHidden: isFieldHidden.app,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "command",
               name: "command",
               label: "Command",
@@ -2200,13 +3017,13 @@ var AotaCard = function AotaCard(_ref) {
               isHidden: isFieldHidden.command,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "tag",
               name: "tag",
               label: "Container Tag",
               placeholder: "Enter container tag",
               isHidden: isFieldHidden.tag
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "reboot",
               name: "reboot",
               label: "Device Reboot",
@@ -2216,55 +3033,55 @@ var AotaCard = function AotaCard(_ref) {
               isHidden: isFieldHidden.reboot,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch Link",
               placeholder: "Enter fetch link",
               isHidden: isFieldHidden.fetch_link
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "signature",
               name: "signature",
               label: "Signature",
               placeholder: "Enter signature",
               isHidden: isFieldHidden.signature
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "version",
               name: "version",
               label: "Version",
               placeholder: "Enter version",
               isHidden: isFieldHidden.version
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "server_username",
               name: "server_username",
               label: "Server Username",
               placeholder: "Enter server username",
               isHidden: isFieldHidden.server_username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "server_password",
               name: "server_password",
               label: "Server Password",
               placeholder: "Enter server password",
               isHidden: isFieldHidden.server_password
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "docker_registry",
               name: "docker_registry",
               label: "Docker Registry",
               placeholder: "Enter Docker registry",
               isHidden: isFieldHidden.docker_registry
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "docker_username",
               name: "docker_username",
               label: "Docker Username",
               placeholder: "Enter Docker username",
               isHidden: isFieldHidden.docker_username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "docker_password",
               name: "docker_password",
               label: "Docker Password",
               placeholder: "Enter Docker password",
               isHidden: isFieldHidden.docker_password
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "docker_compose_file",
               name: "docker_compose_file",
               label: "Docker Compose File",
@@ -2320,9 +3137,9 @@ var mapDispatchToPros = function mapDispatchToPros(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js":
+/***/ "./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js":
 /*!**********************************************************************************************!*\
-  !*** ./resources/js/components/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js ***!
+  !*** ./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js ***!
   \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2334,7 +3151,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2356,10 +3173,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
   var deviceId = _ref.deviceId,
-      availableMemoriesInBytes = _ref.availableMemoriesInBytes,
-      isFetchingAvailableMemoriesInBytes = _ref.isFetchingAvailableMemoriesInBytes,
-      fetchAvailableMemoriesInBytesErrorMessage = _ref.fetchAvailableMemoriesInBytesErrorMessage,
-      fetchAvailableMemoriesInBytesStartAsync = _ref.fetchAvailableMemoriesInBytesStartAsync;
+      availableMemories = _ref.availableMemories,
+      isFetchingAvailableMemories = _ref.isFetchingAvailableMemories,
+      fetchAvailableMemoriesErrorMessage = _ref.fetchAvailableMemoriesErrorMessage,
+      fetchAvailableMemoriesStartAsync = _ref.fetchAvailableMemoriesStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
     value: 1,
@@ -2433,13 +3250,13 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchAvailableMemoriesInBytesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "Available Memory",
-    data: availableMemoriesInBytes
+    data: availableMemories
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "Available Memory",
     options: chartOptions,
     series: series,
@@ -2451,25 +3268,25 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchAvailableMemoriesInBytesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter);
     },
-    isLoading: isFetchingAvailableMemoriesInBytes,
-    errorMessage: fetchAvailableMemoriesInBytesErrorMessage
+    isLoading: isFetchingAvailableMemories,
+    errorMessage: fetchAvailableMemoriesErrorMessage
   });
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    availableMemoriesInBytes: state.deviceMetric.availableMemoriesInBytes,
-    isFetchingAvailableMemoriesInBytes: state.deviceMetric.isFetchingAvailableMemoriesInBytes,
-    fetchAvailableMemoriesInBytesErrorMessage: state.deviceMetric.fetchAvailableMemoriesInBytesErrorMessage
+    availableMemories: state.deviceMetric.availableMemories,
+    isFetchingAvailableMemories: state.deviceMetric.isFetchingAvailableMemories,
+    fetchAvailableMemoriesErrorMessage: state.deviceMetric.fetchAvailableMemoriesErrorMessage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchAvailableMemoriesInBytesStartAsync: function fetchAvailableMemoriesInBytesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAvailableMemoriesInBytesStartAsync)(id, timeRangeFilter));
+    fetchAvailableMemoriesStartAsync: function fetchAvailableMemoriesStartAsync(id, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAvailableMemoriesStartAsync)(id, timeRangeFilter));
     }
   };
 };
@@ -2478,121 +3295,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CardSkeleton/CardSkeleton.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/CardSkeleton/CardSkeleton.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var CardSkeleton = function CardSkeleton() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-          className: "my-auto",
-          xs: "12",
-          md: "12",
-          lg: "1",
-          xl: "1",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "d-flex justify-content-center",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-              size: "5rem"
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-          className: "my-auto",
-          xs: "12",
-          md: "12",
-          lg: "11",
-          xl: "11",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-            className: "mb-2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-            width: "10rem"
-          })]
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-        className: "mb-2"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-        width: "10rem",
-        className: "mb-2"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-        width: "5rem",
-        className: "mb-2"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-        height: "2rem",
-        className: "mb-2"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-        width: "10rem",
-        height: "4rem",
-        className: "mb-2"
-      })]
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardSkeleton);
-
-/***/ }),
-
-/***/ "./resources/js/components/ChartSkeleton/ChartSkeleton.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/ChartSkeleton/ChartSkeleton.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var ChartSkeleton = function ChartSkeleton() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {
-      width: "15rem",
-      height: "30px",
-      className: "mb-2"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {
-      height: "470px",
-      className: "mb-2"
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChartSkeleton);
-
-/***/ }),
-
-/***/ "./resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js":
+/***/ "./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js":
 /*!******************************************************************************!*\
-  !*** ./resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js ***!
+  !*** ./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js ***!
   \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2614,7 +3319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
 /* harmony import */ var _redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceCommand/deviceCommand.actions */ "./resources/js/redux/deviceCommand/deviceCommand.actions.js");
 /* harmony import */ var _redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/deviceCommandHistory/deviceCommandHistory.actions */ "./resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js");
-/* harmony import */ var _commandHistoryDataTable_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./commandHistoryDataTable.css */ "./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css");
+/* harmony import */ var _commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./commandHistoriesCard.css */ "./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -3002,9 +3707,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CotaCard/CotaCard.js":
+/***/ "./resources/js/containers/CotaCard/CotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/components/CotaCard/CotaCard.js ***!
+  !*** ./resources/js/containers/CotaCard/CotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3023,9 +3728,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_Configuration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../models/Configuration */ "./resources/js/models/Configuration.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 /* harmony import */ var _redux_cota_cota_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/cota/cota.actions */ "./resources/js/redux/cota/cota.actions.js");
-/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../reusable/FormikPatchTouched */ "./resources/js/reusable/FormikPatchTouched.js");
+/* harmony import */ var _reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../reusable/FormikPatchTouched */ "./resources/js/reusable/FormikPatchTouched.js");
+/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -3146,7 +3851,7 @@ var CotaCard = function CotaCard(_ref) {
         children: function children(_ref5) {
           var values = _ref5.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_2__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_12__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_10__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__.default, {
               id: "command",
               name: "command",
               label: "Command (get, load, set, append, remove)",
@@ -3156,7 +3861,7 @@ var CotaCard = function CotaCard(_ref) {
               isHidden: isFieldHidden.command,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_12__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch Link",
@@ -3175,7 +3880,7 @@ var CotaCard = function CotaCard(_ref) {
                       row: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
                         sm: isFieldHidden.configuration_values ? 10 : 5,
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__.default, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_11__.default, {
                           id: "configurations.".concat(index, ".path"),
                           name: "configurations.".concat(index, ".path"),
                           placeholder: "Enter configuration path ".concat(index + 1),
@@ -3188,7 +3893,7 @@ var CotaCard = function CotaCard(_ref) {
                         })
                       }), !isFieldHidden.configuration_values && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
                         sm: "5",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_12__.default, {
                           id: "configurations.".concat(index, ".value"),
                           name: "configurations.".concat(index, ".value"),
                           placeholder: "Enter configuration value ".concat(index + 1),
@@ -3232,7 +3937,7 @@ var CotaCard = function CotaCard(_ref) {
                   });
                 }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_12__.default, {
               id: "signature",
               name: "signature",
               label: "Signature",
@@ -3288,9 +3993,167 @@ var mapDispatchToPros = function mapDispatchToPros(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CpuUsageLineChartCard/CpuUsageLineChartCard.js":
+/***/ "./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
+  var deviceId = _ref.deviceId,
+      cpuTemperatures = _ref.cpuTemperatures,
+      isFetchingCpuTemperatures = _ref.isFetchingCpuTemperatures,
+      fetchCpuTemperaturesErrorMessage = _ref.fetchCpuTemperaturesErrorMessage,
+      fetchCpuTemperaturesStartAsync = _ref.fetchCpuTemperaturesStartAsync;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+    value: 1,
+    label: 'Last 1 hour'
+  }, {
+    value: 7,
+    label: 'Last 7 hours'
+  }, {
+    value: 24,
+    label: 'Last 24 hours'
+  }, {
+    value: 168,
+    label: 'Last 7 days'
+  }]),
+      _useState2 = _slicedToArray(_useState, 2),
+      timeRangeFilters = _useState2[0],
+      setTimeRangeFilters = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selectedTimeRangeFilter = _useState4[0],
+      setSelectedTimeRangeFilter = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    chart: {
+      type: 'area',
+      stacked: false,
+      height: 500,
+      zoom: {
+        autoScaleYaxis: true
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    yaxis: {
+      title: {
+        text: 'Temperature - Celsius(°C)'
+      },
+      labels: {
+        formatter: function formatter(value) {
+          return "".concat(Math.round(value), "\xB0C");
+        }
+      }
+    },
+    xaxis: {
+      type: 'datetime'
+    },
+    tooltip: {
+      y: {
+        formatter: function formatter(value) {
+          return "".concat(value, "\xB0C");
+        }
+      },
+      x: {
+        format: 'dd MMM yyyy HH:mm:ss'
+      }
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 100]
+      }
+    }
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      chartOptions = _useState6[0],
+      setChartOptions = _useState6[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
+  }, [selectedTimeRangeFilter]);
+  var series = [{
+    name: "Temperature",
+    data: cpuTemperatures
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "Temperature",
+    options: chartOptions,
+    series: series,
+    type: "area",
+    height: 500,
+    timeRangeFilters: timeRangeFilters,
+    selectedTimeRangeFilter: selectedTimeRangeFilter,
+    onTimeRangeFilter: function onTimeRangeFilter(event) {
+      return setSelectedTimeRangeFilter(parseInt(event.target.value));
+    },
+    onRefresh: function onRefresh() {
+      return fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
+    },
+    isLoading: isFetchingCpuTemperatures,
+    errorMessage: fetchCpuTemperaturesErrorMessage
+  });
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    cpuTemperatures: state.deviceMetric.cpuTemperatures,
+    isFetchingCpuTemperatures: state.deviceMetric.isFetchingCpuTemperatures,
+    fetchCpuTemperaturesErrorMessage: state.deviceMetric.fetchCpuTemperaturesErrorMessage
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchCpuTemperaturesStartAsync: function fetchCpuTemperaturesStartAsync(id, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuTemperaturesStartAsync)(id, timeRangeFilter));
+    }
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CpuTemperatureLineChartCard));
+
+/***/ }),
+
+/***/ "./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js":
 /*!********************************************************************************!*\
-  !*** ./resources/js/components/CpuUsageLineChartCard/CpuUsageLineChartCard.js ***!
+  !*** ./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js ***!
   \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3302,7 +4165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -3324,10 +4187,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
   var deviceId = _ref.deviceId,
-      cpuUsagePercentages = _ref.cpuUsagePercentages,
-      isFetchingCpuUsagePercentages = _ref.isFetchingCpuUsagePercentages,
-      fetchCpuUsagePercentagesErrorMessage = _ref.fetchCpuUsagePercentagesErrorMessage,
-      fetchCpuUsagePercentagesStartAsync = _ref.fetchCpuUsagePercentagesStartAsync;
+      cpuUsages = _ref.cpuUsages,
+      isFetchingCpuUsages = _ref.isFetchingCpuUsages,
+      fetchCpuUsagesErrorMessage = _ref.fetchCpuUsagesErrorMessage,
+      fetchCpuUsagesStartAsync = _ref.fetchCpuUsagesStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
     value: 1,
@@ -3401,13 +4264,13 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchCpuUsagePercentagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "CPU Usage %",
-    data: cpuUsagePercentages
+    data: cpuUsages
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "CPU Usage",
     options: chartOptions,
     series: series,
@@ -3419,25 +4282,25 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchCpuUsagePercentagesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter);
     },
-    isLoading: isFetchingCpuUsagePercentages,
-    errorMessage: fetchCpuUsagePercentagesErrorMessage
+    isLoading: isFetchingCpuUsages,
+    errorMessage: fetchCpuUsagesErrorMessage
   });
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    cpuUsagePercentages: state.deviceMetric.cpuUsagePercentages,
-    isFetchingCpuUsagePercentages: state.deviceMetric.isFetchingCpuUsagePercentages,
-    fetchCpuUsagePercentagesErrorMessage: state.deviceMetric.fetchCpuUsagePercentagesErrorMessage
+    cpuUsages: state.deviceMetric.cpuUsages,
+    isFetchingCpuUsages: state.deviceMetric.isFetchingCpuUsages,
+    fetchCpuUsagesErrorMessage: state.deviceMetric.fetchCpuUsagesErrorMessage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchCpuUsagePercentagesStartAsync: function fetchCpuUsagePercentagesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuUsagePercentagesStartAsync)(id, timeRangeFilter));
+    fetchCpuUsagesStartAsync: function fetchCpuUsagesStartAsync(id, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuUsagesStartAsync)(id, timeRangeFilter));
     }
   };
 };
@@ -3446,121 +4309,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/DevicePropertyCard/DevicePropertyCard.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var DevicePropertyCard = function DevicePropertyCard(_ref) {
-  var device = _ref.device;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
-      children: "Device Properties"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
-        className: "table table-striped",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "col",
-              children: "Property"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "col",
-              children: "Value"
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "BIOS Release Date"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.bios_release_date
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "BIOS Vendor"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.bios_vendor
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "BIOS Version"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.bios_version
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "CPU"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.cpu
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "Disk Information"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.disk_information
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "OS Information"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.os_information
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "System Manufacturer"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.system_manufacturer
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "System Product Name"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.system_product_name
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              scope: "row",
-              children: "Total Memory"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              children: device.total_memory
-            })]
-          })]
-        })]
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DevicePropertyCard);
-
-/***/ }),
-
-/***/ "./resources/js/components/DiskUsageLineChartCard/DiskUsageLineChartCard.js":
+/***/ "./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js":
 /*!**********************************************************************************!*\
-  !*** ./resources/js/components/DiskUsageLineChartCard/DiskUsageLineChartCard.js ***!
+  !*** ./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js ***!
   \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3572,7 +4323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -3594,10 +4345,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
   var deviceId = _ref.deviceId,
-      diskUsagePercentages = _ref.diskUsagePercentages,
-      isFetchingDiskUsagePercentages = _ref.isFetchingDiskUsagePercentages,
-      fetchDiskUsagePercentagesErrorMessage = _ref.fetchDiskUsagePercentagesErrorMessage,
-      fetchDiskUsagePercentagesStartAsync = _ref.fetchDiskUsagePercentagesStartAsync;
+      diskUsages = _ref.diskUsages,
+      isFetchingDiskUsages = _ref.isFetchingDiskUsages,
+      fetchDiskUsagesErrorMessage = _ref.fetchDiskUsagesErrorMessage,
+      fetchDiskUsagesStartAsync = _ref.fetchDiskUsagesStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
     value: 1,
@@ -3671,13 +4422,13 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDiskUsagePercentagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "Disk Usage",
-    data: diskUsagePercentages
+    data: diskUsages
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "Disk Usage",
     options: chartOptions,
     series: series,
@@ -3689,25 +4440,25 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchDiskUsagePercentagesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter);
     },
-    isLoading: isFetchingDiskUsagePercentages,
-    errorMessage: fetchDiskUsagePercentagesErrorMessage
+    isLoading: isFetchingDiskUsages,
+    errorMessage: fetchDiskUsagesErrorMessage
   });
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    diskUsagePercentages: state.deviceMetric.diskUsagePercentages,
-    isFetchingDiskUsagePercentages: state.deviceMetric.isFetchingDiskUsagePercentages,
-    fetchDiskUsagePercentagesErrorMessage: state.deviceMetric.fetchDiskUsagePercentagesErrorMessage
+    diskUsages: state.deviceMetric.diskUsages,
+    isFetchingDiskUsages: state.deviceMetric.isFetchingDiskUsages,
+    fetchDiskUsagesErrorMessage: state.deviceMetric.fetchDiskUsagesErrorMessage
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchDiskUsagePercentagesStartAsync: function fetchDiskUsagePercentagesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchDiskUsagePercentagesStartAsync)(id, timeRangeFilter));
+    fetchDiskUsagesStartAsync: function fetchDiskUsagesStartAsync(id, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchDiskUsagesStartAsync)(id, timeRangeFilter));
     }
   };
 };
@@ -3716,166 +4467,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/EditableText/EditableText.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/EditableText/EditableText.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editableText_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editableText.css */ "./resources/js/components/EditableText/editableText.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-var EditableText = function EditableText(_ref) {
-  var Tag = _ref.tag,
-      value = _ref.value,
-      updateFunction = _ref.updateFunction,
-      props = _objectWithoutProperties(_ref, ["tag", "value", "updateFunction"]);
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      edit = _useState2[0],
-      setEdit = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value),
-      _useState4 = _slicedToArray(_useState3, 2),
-      currentValue = _useState4[0],
-      setCurrentValue = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value || ''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      originalValue = _useState6[0],
-      setOriginalValue = _useState6[1];
-
-  var _updateFunction = function _updateFunction(value) {
-    if (value !== originalValue) {
-      updateFunction(value);
-    }
-  };
-
-  return edit ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CInput, _objectSpread({
-    autoFocus: true,
-    onFocus: function onFocus() {
-      return setOriginalValue(value);
-    },
-    onChange: function onChange(event) {
-      return setCurrentValue(event.target.value);
-    },
-    onBlur: function onBlur(event) {
-      setEdit(false);
-
-      _updateFunction(event.target.value);
-    },
-    onKeyUp: function onKeyUp(event) {
-      if (event.key === 'Escape') {
-        setEdit(false);
-        setCurrentValue(originalValue);
-      } else if (event.key === 'Enter') {
-        setEdit(false);
-
-        _updateFunction(event.target.value);
-      }
-    },
-    value: currentValue
-  }, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Tag, {
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('editable-text'),
-    onClick: function onClick() {
-      return setEdit(!edit);
-    },
-    children: currentValue
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditableText);
-
-/***/ }),
-
-/***/ "./resources/js/components/Error/Error.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Error/Error.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Error = function Error(_ref) {
-  var errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
-    className: "justify-content-center",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-      md: "6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "clearfix text-center mt-5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          size: "5xl",
-          name: "cil-warning"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-          className: "pt-3",
-          children: "Oops! Something went wrong."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-muted",
-          children: errorMessage || 'The resource you are looking for was not found.'
-        })]
-      })
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
-
-/***/ }),
-
-/***/ "./resources/js/components/EventHistoriesCard/EventHistoriesCard.js":
+/***/ "./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js":
 /*!**************************************************************************!*\
-  !*** ./resources/js/components/EventHistoriesCard/EventHistoriesCard.js ***!
+  !*** ./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js ***!
   \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3897,7 +4491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
 /* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
 /* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
-/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css");
+/* harmony import */ var _eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventHistoriesCard.css */ "./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -4238,9 +4832,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/FotaCard/FotaCard.js":
+/***/ "./resources/js/containers/FotaCard/FotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/components/FotaCard/FotaCard.js ***!
+  !*** ./resources/js/containers/FotaCard/FotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4257,7 +4851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
 /* harmony import */ var _redux_fota_fota_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/fota/fota.actions */ "./resources/js/redux/fota/fota.actions.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -4328,57 +4922,57 @@ var FotaCard = function FotaCard(_ref) {
           submitFotaStartAsync(deviceId, (0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.getSanitizedValues)(values));
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_2__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "bios_version",
             name: "bios_version",
             label: "BIOS Version",
             placeholder: "Enter BIOS version"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "fetch_link",
             name: "fetch_link",
             label: "Fetch Link",
             placeholder: "Enter fetch link"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "manufacturer",
             name: "manufacturer",
             label: "Manufacturer",
             placeholder: "Enter manufacturer"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "path",
             name: "path",
             label: "Path",
             placeholder: "Enter path"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "product",
             name: "product",
             label: "Product",
             placeholder: "Enter product"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "release_date",
             name: "release_date",
             label: "Release Date",
             placeholder: "Enter release date"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "signature",
             name: "signature",
             label: "Signature",
             placeholder: "Enter signature"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "tool_options",
             name: "tool_options",
             label: "Tool Options",
             placeholder: "Enter tool options"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "vendor",
             name: "vendor",
             label: "Vendor",
             placeholder: "Enter vendor"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "server_username",
             name: "server_username",
             label: "Server Username",
             placeholder: "Enter server username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
             id: "server_password",
             name: "server_password",
             label: "Server Password",
@@ -4432,445 +5026,9 @@ var mapDispatchToPros = function mapDispatchToPros(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-
-var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
-  var isHidden = _ref.isHidden,
-      isLabelHidden = _ref.isLabelHidden,
-      label = _ref.label,
-      value = _ref.value,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
-
-  var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
-      setFieldValue = _useFormikContext.setFieldValue,
-      setFieldTouched = _useFormikContext.setFieldTouched;
-
-  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
-      _useField2 = _slicedToArray(_useField, 2),
-      field = _useField2[0],
-      meta = _useField2[1];
-
-  var defaultStyle = {
-    control: function control(base) {
-      return _objectSpread(_objectSpread({}, base), {}, {
-        height: 35,
-        minHeight: 35,
-        '&:hover': {
-          boxShadow: '0 0 0 0.2rem rgb(50 31 219 / 25%)'
-        }
-      });
-    },
-    dropdownIndicator: function dropdownIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    },
-    clearIndicator: function clearIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    }
-  };
-  var errorStyle = {
-    control: function control(base) {
-      return _objectSpread(_objectSpread({}, base), {}, {
-        height: 35,
-        minHeight: 35,
-        border: '1px solid #e55353',
-        '&:hover': {
-          border: '1px solid #e55353',
-          boxShadow: '0 0 0 0.2rem rgb(255 0 0 / 25%)'
-        }
-      });
-    },
-    dropdownIndicator: function dropdownIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    },
-    clearIndicator: function clearIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    }
-  };
-
-  var handleOptionChange = function handleOptionChange(selection) {
-    setFieldValue(props.name, selection);
-    if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
-  };
-
-  var updateBlur = function updateBlur() {
-    setFieldTouched(props.name, true);
-  };
-
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
-      htmlFor: props.id || props.name,
-      children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
-      theme: function theme(_theme) {
-        return _objectSpread(_objectSpread({}, _theme), {}, {
-          colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
-            primary50: '#958bef80',
-            primary25: '#958bef26',
-            primary: '#958bef'
-          })
-        });
-      },
-      styles: defaultStyle
-    }, meta.touched && meta.error && {
-      className: 'is-invalid',
-      styles: errorStyle
-    }), {}, {
-      id: props.id || props.name,
-      name: field.name,
-      options: props.options,
-      value: value,
-      onBlur: updateBlur,
-      onChange: handleOptionChange
-    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
-      children: typeof meta.error === 'string' ? meta.error : meta.error.label
-    }) : null]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotSelectFormGroup);
-
-/***/ }),
-
-/***/ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
-  var isHidden = _ref.isHidden,
-      isLabelHidden = _ref.isLabelHidden,
-      isDisabled = _ref.isDisabled,
-      label = _ref.label,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "isDisabled", "label"]);
-
-  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-  // which we can spread on <input>. We can use field meta to show an error
-  // message if the field is invalid and it has been touched (i.e. visited)
-  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
-      _useField2 = _slicedToArray(_useField, 2),
-      field = _useField2[0],
-      meta = _useField2[1];
-
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
-      htmlFor: props.id || props.name,
-      children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
-      invalid: true
-    }), {}, {
-      id: props.id || props.name
-    }, isDisabled && {
-      disabled: true
-    }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
-      children: meta.error
-    }) : null]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotTextInputFormGroup);
-
-/***/ }),
-
-/***/ "./resources/js/components/LineChartCard/LineChartCard.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/LineChartCard/LineChartCard.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
-/* harmony import */ var primereact_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/button */ "./node_modules/primereact/button.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChartSkeleton/ChartSkeleton */ "./resources/js/components/ChartSkeleton/ChartSkeleton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-var LineChartCard = function LineChartCard(_ref) {
-  var title = _ref.title,
-      options = _ref.options,
-      series = _ref.series,
-      type = _ref.type,
-      height = _ref.height,
-      timeRangeFilters = _ref.timeRangeFilters,
-      selectedTimeRangeFilter = _ref.selectedTimeRangeFilter,
-      onTimeRangeFilter = _ref.onTimeRangeFilter,
-      onRefresh = _ref.onRefresh,
-      isLoading = _ref.isLoading,
-      errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
-        className: "card-title mb-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
-          sm: "5",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
-            className: "card-title mb-0",
-            children: title
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
-          sm: "7",
-          className: "d-none d-md-block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
-            icon: classnames__WEBPACK_IMPORTED_MODULE_1___default()('pi', {
-              'pi-spin': isLoading
-            }, 'pi-refresh'),
-            iconPos: "right",
-            className: "float-right",
-            onClick: onRefresh
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButtonGroup, {
-            className: "float-right mr-3",
-            children: timeRangeFilters.map(function (value) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
-                color: "outline-secondary",
-                value: value.value,
-                className: "mx-0",
-                active: value.value === selectedTimeRangeFilter,
-                onClick: onTimeRangeFilter,
-                children: value.label
-              }, value.value);
-            })
-          })]
-        })]
-      }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__.default, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: "mt-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_2__.default, {
-          options: options,
-          series: series,
-          type: type,
-          height: height
-        })
-      })]
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LineChartCard);
-
-/***/ }),
-
-/***/ "./resources/js/components/MetricsCard/MetricsCard.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/MetricsCard/MetricsCard.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _TemperatureLineChartCard_TemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../TemperatureLineChartCard/TemperatureLineChartCard */ "./resources/js/components/TemperatureLineChartCard/TemperatureLineChartCard.js");
-/* harmony import */ var _CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CpuUsageLineChartCard/CpuUsageLineChartCard */ "./resources/js/components/CpuUsageLineChartCard/CpuUsageLineChartCard.js");
-/* harmony import */ var _DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../DiskUsageLineChartCard/DiskUsageLineChartCard */ "./resources/js/components/DiskUsageLineChartCard/DiskUsageLineChartCard.js");
-/* harmony import */ var _AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AvailableMemoryLineChartCard/AvailableMemoryLineChartCard */ "./resources/js/components/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-
-var MetricsCard = function MetricsCard(_ref) {
-  var deviceId = _ref.deviceId;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
-      children: "Metrics"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TemperatureLineChartCard_TemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
-        deviceId: deviceId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__.default, {
-        deviceId: deviceId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__.default, {
-        deviceId: deviceId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__.default, {
-        deviceId: deviceId
-      })]
-    })]
-  });
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {};
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(MetricsCard));
-
-/***/ }),
-
-/***/ "./resources/js/components/Modal/Modal.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Modal/Modal.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var Modal = function Modal(_ref) {
-  var show = _ref.show,
-      onConfirm = _ref.onConfirm,
-      onClose = _ref.onClose,
-      modalTitle = _ref.modalTitle,
-      modalMessage = _ref.modalMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModal, {
-    show: show,
-    onClose: onClose,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalHeader, {
-      closeButton: true,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalTitle, {
-        children: modalTitle
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalBody, {
-      children: modalMessage
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalFooter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
-        color: "primary",
-        onClick: onConfirm,
-        children: "Shut down"
-      }), ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
-        color: "secondary",
-        onClick: onClose,
-        children: "Cancel"
-      })]
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
-
-/***/ }),
-
-/***/ "./resources/js/components/SotaCard/SotaCard.js":
+/***/ "./resources/js/containers/SotaCard/SotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/components/SotaCard/SotaCard.js ***!
+  !*** ./resources/js/containers/SotaCard/SotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4888,8 +5046,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
 /* harmony import */ var _redux_sota_sota_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/sota/sota.actions */ "./resources/js/redux/sota/sota.actions.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -5004,7 +5162,7 @@ var SotaCard = function SotaCard(_ref) {
         children: function children(_ref6) {
           var values = _ref6.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_2__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "sota_option",
               name: "sota_option",
               label: "SOTA Option",
@@ -5015,7 +5173,7 @@ var SotaCard = function SotaCard(_ref) {
               isHidden: isFieldHidden.sota_option,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "command",
               name: "command",
               label: "Command",
@@ -5025,13 +5183,13 @@ var SotaCard = function SotaCard(_ref) {
               value: values.command,
               isHidden: isFieldHidden.command,
               isDisabled: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch Link",
               placeholder: "Enter fetch link",
               isHidden: isFieldHidden.fetch_link
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "log_to_file",
               name: "log_to_file",
               label: "Log to File (No, Yes)",
@@ -5041,13 +5199,13 @@ var SotaCard = function SotaCard(_ref) {
               isHidden: isFieldHidden.log_to_file,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "username",
               name: "username",
               label: "Username",
               placeholder: "Enter username",
               isHidden: isFieldHidden.username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "password",
               name: "password",
               label: "Password",
@@ -5100,200 +5258,6 @@ var mapDispatchToPros = function mapDispatchToPros(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToPros)(SotaCard));
-
-/***/ }),
-
-/***/ "./resources/js/components/Spinner/Spinner.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/Spinner/Spinner.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-var Spinner = function Spinner() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "sk-fold sk-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "sk-fold-cube"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "sk-fold-cube"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "sk-fold-cube"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "sk-fold-cube"
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Spinner);
-
-/***/ }),
-
-/***/ "./resources/js/components/TemperatureLineChartCard/TemperatureLineChartCard.js":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/TemperatureLineChartCard/TemperatureLineChartCard.js ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-var TemperatureLineChartCard = function TemperatureLineChartCard(_ref) {
-  var deviceId = _ref.deviceId,
-      temperatures = _ref.temperatures,
-      isFetchingTemperatures = _ref.isFetchingTemperatures,
-      fetchTemperaturesErrorMessage = _ref.fetchTemperaturesErrorMessage,
-      fetchTemperaturesStartAsync = _ref.fetchTemperaturesStartAsync;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    value: 1,
-    label: 'Last 1 hour'
-  }, {
-    value: 7,
-    label: 'Last 7 hours'
-  }, {
-    value: 24,
-    label: 'Last 24 hours'
-  }, {
-    value: 168,
-    label: 'Last 7 days'
-  }]),
-      _useState2 = _slicedToArray(_useState, 2),
-      timeRangeFilters = _useState2[0],
-      setTimeRangeFilters = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selectedTimeRangeFilter = _useState4[0],
-      setSelectedTimeRangeFilter = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    chart: {
-      type: 'area',
-      stacked: false,
-      height: 500,
-      zoom: {
-        autoScaleYaxis: true
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    yaxis: {
-      title: {
-        text: 'Temperature - Celsius(°C)'
-      },
-      labels: {
-        formatter: function formatter(value) {
-          return "".concat(Math.round(value), "\xB0C");
-        }
-      }
-    },
-    xaxis: {
-      type: 'datetime'
-    },
-    tooltip: {
-      y: {
-        formatter: function formatter(value) {
-          return "".concat(value, "\xB0C");
-        }
-      },
-      x: {
-        format: 'dd MMM yyyy HH:mm:ss'
-      }
-    },
-    fill: {
-      type: 'gradient',
-      gradient: {
-        shadeIntensity: 1,
-        opacityFrom: 0.7,
-        opacityTo: 0.9,
-        stops: [0, 100]
-      }
-    }
-  }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      chartOptions = _useState6[0],
-      setChartOptions = _useState6[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
-  }, [selectedTimeRangeFilter]);
-  var series = [{
-    name: "Temperature",
-    data: temperatures
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
-    title: "Temperature",
-    options: chartOptions,
-    series: series,
-    type: "area",
-    height: 500,
-    timeRangeFilters: timeRangeFilters,
-    selectedTimeRangeFilter: selectedTimeRangeFilter,
-    onTimeRangeFilter: function onTimeRangeFilter(event) {
-      return setSelectedTimeRangeFilter(parseInt(event.target.value));
-    },
-    onRefresh: function onRefresh() {
-      return fetchTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
-    },
-    isLoading: isFetchingTemperatures,
-    errorMessage: fetchTemperaturesErrorMessage
-  });
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    temperatures: state.deviceMetric.temperatures,
-    isFetchingTemperatures: state.deviceMetric.isFetchingTemperatures,
-    fetchTemperaturesErrorMessage: state.deviceMetric.fetchTemperaturesErrorMessage
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    fetchTemperaturesStartAsync: function fetchTemperaturesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchTemperaturesStartAsync)(id, timeRangeFilter));
-    }
-  };
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(TemperatureLineChartCard));
 
 /***/ }),
 
@@ -6359,7 +6323,7 @@ var fetchDeviceCommandHistoriesFailure = function fetchDeviceCommandHistoriesFai
 var fetchDeviceCommandHistoriesStartAsync = function fetchDeviceCommandHistoriesStartAsync(id, params) {
   return function (dispatch) {
     dispatch(fetchDeviceCommandHistoriesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/command-histories"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/commands/histories"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDeviceCommandHistoriesSuccess(result.data.result.deviceCommandHistories));
@@ -6409,7 +6373,7 @@ var fetchDeviceCommandsFailure = function fetchDeviceCommandsFailure(errorMessag
 var fetchDeviceCommandsStartAsync = function fetchDeviceCommandsStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceCommandsStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/device-commands")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/commands")).then(function (result) {
       dispatch(fetchDeviceCommandsSuccess(result.data.result.deviceCommands));
     })["catch"](function (error) {
       dispatch(fetchDeviceCommandsFailure(error.message));
@@ -6459,7 +6423,7 @@ var fetchDeviceEventHistoriesFailure = function fetchDeviceEventHistoriesFailure
 var fetchDeviceEventHistoriesStartAsync = function fetchDeviceEventHistoriesStartAsync(id, params) {
   return function (dispatch) {
     dispatch(fetchDeviceEventHistoriesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/event-histories"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/events/histories"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDeviceEventHistoriesSuccess(result.data.result.deviceEventHistories));
@@ -6509,7 +6473,7 @@ var fetchDeviceEventsFailure = function fetchDeviceEventsFailure(errorMessage) {
 var fetchDeviceEventsStartAsync = function fetchDeviceEventsStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceEventsStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/device-events")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/events")).then(function (result) {
       dispatch(fetchDeviceEventsSuccess(result.data.result.deviceEvents));
     })["catch"](function (error) {
       dispatch(fetchDeviceEventsFailure(error.message));
@@ -6528,152 +6492,152 @@ var fetchDeviceEventsStartAsync = function fetchDeviceEventsStartAsync(id) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchTemperaturesStart": () => (/* binding */ fetchTemperaturesStart),
-/* harmony export */   "fetchTemperaturesSuccess": () => (/* binding */ fetchTemperaturesSuccess),
-/* harmony export */   "fetchTemperaturesFailure": () => (/* binding */ fetchTemperaturesFailure),
-/* harmony export */   "fetchTemperaturesStartAsync": () => (/* binding */ fetchTemperaturesStartAsync),
-/* harmony export */   "fetchCpuUsagePercentagesStart": () => (/* binding */ fetchCpuUsagePercentagesStart),
-/* harmony export */   "fetchCpuUsagePercentagesSuccess": () => (/* binding */ fetchCpuUsagePercentagesSuccess),
-/* harmony export */   "fetchCpuUsagePercentagesFailure": () => (/* binding */ fetchCpuUsagePercentagesFailure),
-/* harmony export */   "fetchCpuUsagePercentagesStartAsync": () => (/* binding */ fetchCpuUsagePercentagesStartAsync),
-/* harmony export */   "fetchDiskUsagePercentagesStart": () => (/* binding */ fetchDiskUsagePercentagesStart),
-/* harmony export */   "fetchDiskUsagePercentagesSuccess": () => (/* binding */ fetchDiskUsagePercentagesSuccess),
-/* harmony export */   "fetchDiskUsagePercentagesFailure": () => (/* binding */ fetchDiskUsagePercentagesFailure),
-/* harmony export */   "fetchDiskUsagePercentagesStartAsync": () => (/* binding */ fetchDiskUsagePercentagesStartAsync),
-/* harmony export */   "fetchAvailableMemoriesInBytesStart": () => (/* binding */ fetchAvailableMemoriesInBytesStart),
-/* harmony export */   "fetchAvailableMemoriesInBytesSuccess": () => (/* binding */ fetchAvailableMemoriesInBytesSuccess),
-/* harmony export */   "fetchAvailableMemoriesInBytesFailure": () => (/* binding */ fetchAvailableMemoriesInBytesFailure),
-/* harmony export */   "fetchAvailableMemoriesInBytesStartAsync": () => (/* binding */ fetchAvailableMemoriesInBytesStartAsync)
+/* harmony export */   "fetchCpuTemperaturesStart": () => (/* binding */ fetchCpuTemperaturesStart),
+/* harmony export */   "fetchCpuTemperaturesSuccess": () => (/* binding */ fetchCpuTemperaturesSuccess),
+/* harmony export */   "fetchCpuTemperaturesFailure": () => (/* binding */ fetchCpuTemperaturesFailure),
+/* harmony export */   "fetchCpuTemperaturesStartAsync": () => (/* binding */ fetchCpuTemperaturesStartAsync),
+/* harmony export */   "fetchCpuUsagesStart": () => (/* binding */ fetchCpuUsagesStart),
+/* harmony export */   "fetchCpuUsagesSuccess": () => (/* binding */ fetchCpuUsagesSuccess),
+/* harmony export */   "fetchCpuUsagesFailure": () => (/* binding */ fetchCpuUsagesFailure),
+/* harmony export */   "fetchCpuUsagesStartAsync": () => (/* binding */ fetchCpuUsagesStartAsync),
+/* harmony export */   "fetchDiskUsagesStart": () => (/* binding */ fetchDiskUsagesStart),
+/* harmony export */   "fetchDiskUsagesSuccess": () => (/* binding */ fetchDiskUsagesSuccess),
+/* harmony export */   "fetchDiskUsagesFailure": () => (/* binding */ fetchDiskUsagesFailure),
+/* harmony export */   "fetchDiskUsagesStartAsync": () => (/* binding */ fetchDiskUsagesStartAsync),
+/* harmony export */   "fetchAvailableMemoriesStart": () => (/* binding */ fetchAvailableMemoriesStart),
+/* harmony export */   "fetchAvailableMemoriesSuccess": () => (/* binding */ fetchAvailableMemoriesSuccess),
+/* harmony export */   "fetchAvailableMemoriesFailure": () => (/* binding */ fetchAvailableMemoriesFailure),
+/* harmony export */   "fetchAvailableMemoriesStartAsync": () => (/* binding */ fetchAvailableMemoriesStartAsync)
 /* harmony export */ });
 /* harmony import */ var _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./deviceMetric.types */ "./resources/js/redux/deviceMetric/deviceMetric.types.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
 
 
-var fetchTemperaturesStart = function fetchTemperaturesStart() {
+var fetchCpuTemperaturesStart = function fetchCpuTemperaturesStart() {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_TEMPERATURES_START
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_TEMPERATURES_START
   };
 };
-var fetchTemperaturesSuccess = function fetchTemperaturesSuccess(temperatures) {
+var fetchCpuTemperaturesSuccess = function fetchCpuTemperaturesSuccess(cpuTemperatures) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_TEMPERATURES_SUCCESS,
-    payload: temperatures
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_TEMPERATURES_SUCCESS,
+    payload: cpuTemperatures
   };
 };
-var fetchTemperaturesFailure = function fetchTemperaturesFailure(errorMessage) {
+var fetchCpuTemperaturesFailure = function fetchCpuTemperaturesFailure(errorMessage) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_TEMPERATURES_FAILURE,
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_TEMPERATURES_FAILURE,
     payload: errorMessage
   };
 };
-var fetchTemperaturesStartAsync = function fetchTemperaturesStartAsync(id, timeRangeFilter) {
+var fetchCpuTemperaturesStartAsync = function fetchCpuTemperaturesStartAsync(id, timeRangeFilter) {
   return function (dispatch) {
-    dispatch(fetchTemperaturesStart());
+    dispatch(fetchCpuTemperaturesStart());
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metric-temperatures"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/cpu/temperatures"), {
       params: params
     }).then(function (result) {
-      dispatch(fetchTemperaturesSuccess(result.data.result.temperatures));
+      dispatch(fetchCpuTemperaturesSuccess(result.data.result.cpuTemperatures));
     })["catch"](function (error) {
-      dispatch(fetchTemperaturesFailure(error.message));
+      dispatch(fetchCpuTemperaturesFailure(error.message));
     });
   };
 };
-var fetchCpuUsagePercentagesStart = function fetchCpuUsagePercentagesStart() {
+var fetchCpuUsagesStart = function fetchCpuUsagesStart() {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGE_PERCENTAGES_START
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGES_START
   };
 };
-var fetchCpuUsagePercentagesSuccess = function fetchCpuUsagePercentagesSuccess(cpuUsagePercentages) {
+var fetchCpuUsagesSuccess = function fetchCpuUsagesSuccess(cpuUsages) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGE_PERCENTAGES_SUCCESS,
-    payload: cpuUsagePercentages
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGES_SUCCESS,
+    payload: cpuUsages
   };
 };
-var fetchCpuUsagePercentagesFailure = function fetchCpuUsagePercentagesFailure(errorMessage) {
+var fetchCpuUsagesFailure = function fetchCpuUsagesFailure(errorMessage) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGE_PERCENTAGES_FAILURE,
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_CPU_USAGES_FAILURE,
     payload: errorMessage
   };
 };
-var fetchCpuUsagePercentagesStartAsync = function fetchCpuUsagePercentagesStartAsync(id, timeRangeFilter) {
+var fetchCpuUsagesStartAsync = function fetchCpuUsagesStartAsync(id, timeRangeFilter) {
   return function (dispatch) {
-    dispatch(fetchCpuUsagePercentagesStart());
+    dispatch(fetchCpuUsagesStart());
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metric-cpu-usage-percentages"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/cpu/usages"), {
       params: params
     }).then(function (result) {
-      dispatch(fetchCpuUsagePercentagesSuccess(result.data.result.cpuUsagePercentages));
+      dispatch(fetchCpuUsagesSuccess(result.data.result.cpuUsages));
     })["catch"](function (error) {
-      dispatch(fetchCpuUsagePercentagesFailure(error.message));
+      dispatch(fetchCpuUsagesFailure(error.message));
     });
   };
 };
-var fetchDiskUsagePercentagesStart = function fetchDiskUsagePercentagesStart() {
+var fetchDiskUsagesStart = function fetchDiskUsagesStart() {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGE_PERCENTAGES_START
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGES_START
   };
 };
-var fetchDiskUsagePercentagesSuccess = function fetchDiskUsagePercentagesSuccess(diskUsagePercentages) {
+var fetchDiskUsagesSuccess = function fetchDiskUsagesSuccess(diskUsages) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGE_PERCENTAGES_SUCCESS,
-    payload: diskUsagePercentages
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGES_SUCCESS,
+    payload: diskUsages
   };
 };
-var fetchDiskUsagePercentagesFailure = function fetchDiskUsagePercentagesFailure(errorMessage) {
+var fetchDiskUsagesFailure = function fetchDiskUsagesFailure(errorMessage) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGE_PERCENTAGES_FAILURE,
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_DISK_USAGES_FAILURE,
     payload: errorMessage
   };
 };
-var fetchDiskUsagePercentagesStartAsync = function fetchDiskUsagePercentagesStartAsync(id, timeRangeFilter) {
+var fetchDiskUsagesStartAsync = function fetchDiskUsagesStartAsync(id, timeRangeFilter) {
   return function (dispatch) {
-    dispatch(fetchDiskUsagePercentagesStart());
+    dispatch(fetchDiskUsagesStart());
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metric-disk-usage-percentages"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/disk/usages"), {
       params: params
     }).then(function (result) {
-      dispatch(fetchDiskUsagePercentagesSuccess(result.data.result.diskUsagePercentages));
+      dispatch(fetchDiskUsagesSuccess(result.data.result.diskUsages));
     })["catch"](function (error) {
-      dispatch(fetchDiskUsagePercentagesFailure(error.message));
+      dispatch(fetchDiskUsagesFailure(error.message));
     });
   };
 };
-var fetchAvailableMemoriesInBytesStart = function fetchAvailableMemoriesInBytesStart() {
+var fetchAvailableMemoriesStart = function fetchAvailableMemoriesStart() {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_IN_BYTES_START
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_START
   };
 };
-var fetchAvailableMemoriesInBytesSuccess = function fetchAvailableMemoriesInBytesSuccess(availableMemoriesInBytes) {
+var fetchAvailableMemoriesSuccess = function fetchAvailableMemoriesSuccess(availableMemories) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_IN_BYTES_SUCCESS,
-    payload: availableMemoriesInBytes
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_SUCCESS,
+    payload: availableMemories
   };
 };
-var fetchAvailableMemoriesInBytesFailure = function fetchAvailableMemoriesInBytesFailure(errorMessage) {
+var fetchAvailableMemoriesFailure = function fetchAvailableMemoriesFailure(errorMessage) {
   return {
-    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_IN_BYTES_FAILURE,
+    type: _deviceMetric_types__WEBPACK_IMPORTED_MODULE_0__.default.FETCH_AVAILABLE_MEMORIES_FAILURE,
     payload: errorMessage
   };
 };
-var fetchAvailableMemoriesInBytesStartAsync = function fetchAvailableMemoriesInBytesStartAsync(id, timeRangeFilter) {
+var fetchAvailableMemoriesStartAsync = function fetchAvailableMemoriesStartAsync(id, timeRangeFilter) {
   return function (dispatch) {
-    dispatch(fetchAvailableMemoriesInBytesStart());
+    dispatch(fetchAvailableMemoriesStart());
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metric-available-memories"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/memory/availables"), {
       params: params
     }).then(function (result) {
-      dispatch(fetchAvailableMemoriesInBytesSuccess(result.data.result.availableMemoriesInBytes));
+      dispatch(fetchAvailableMemoriesSuccess(result.data.result.availableMemories));
     })["catch"](function (error) {
-      dispatch(fetchAvailableMemoriesInBytesFailure(error.message));
+      dispatch(fetchAvailableMemoriesFailure(error.message));
     });
   };
 };
@@ -7314,21 +7278,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/shutdown/shutdown.actions */ "./resources/js/redux/shutdown/shutdown.actions.js");
 /* harmony import */ var _redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/reboot/reboot.actions */ "./resources/js/redux/reboot/reboot.actions.js");
 /* harmony import */ var _redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/decommission/decommission.actions */ "./resources/js/redux/decommission/decommission.actions.js");
-/* harmony import */ var _components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/AotaCard/AotaCard */ "./resources/js/components/AotaCard/AotaCard.js");
-/* harmony import */ var _components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/FotaCard/FotaCard */ "./resources/js/components/FotaCard/FotaCard.js");
-/* harmony import */ var _components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/SotaCard/SotaCard */ "./resources/js/components/SotaCard/SotaCard.js");
-/* harmony import */ var _components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/CotaCard/CotaCard */ "./resources/js/components/CotaCard/CotaCard.js");
+/* harmony import */ var _components_Modal_Modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Modal/Modal */ "./resources/js/components/Modal/Modal.js");
+/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
+/* harmony import */ var _components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/EditableText/EditableText */ "./resources/js/components/EditableText/EditableText.js");
+/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
 /* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
-/* harmony import */ var _components_Spinner_Spinner__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Spinner/Spinner */ "./resources/js/components/Spinner/Spinner.js");
-/* harmony import */ var _components_Modal_Modal__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/Modal/Modal */ "./resources/js/components/Modal/Modal.js");
-/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
-/* harmony import */ var _components_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/CommandHistoriesCard/CommandHistoriesCard */ "./resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js");
-/* harmony import */ var _components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/EditableText/EditableText */ "./resources/js/components/EditableText/EditableText.js");
-/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
-/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
-/* harmony import */ var _components_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../components/EventHistoriesCard/EventHistoriesCard */ "./resources/js/components/EventHistoriesCard/EventHistoriesCard.js");
-/* harmony import */ var _components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../components/MetricsCard/MetricsCard */ "./resources/js/components/MetricsCard/MetricsCard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/MetricsCard/MetricsCard */ "./resources/js/components/MetricsCard/MetricsCard.js");
+/* harmony import */ var _containers_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../containers/AotaCard/AotaCard */ "./resources/js/containers/AotaCard/AotaCard.js");
+/* harmony import */ var _containers_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../containers/FotaCard/FotaCard */ "./resources/js/containers/FotaCard/FotaCard.js");
+/* harmony import */ var _containers_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../containers/SotaCard/SotaCard */ "./resources/js/containers/SotaCard/SotaCard.js");
+/* harmony import */ var _containers_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../containers/CotaCard/CotaCard */ "./resources/js/containers/CotaCard/CotaCard.js");
+/* harmony import */ var _containers_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../containers/CommandHistoriesCard/CommandHistoriesCard */ "./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js");
+/* harmony import */ var _containers_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../containers/EventHistoriesCard/EventHistoriesCard */ "./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -7340,8 +7302,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
 
 
 
@@ -7416,41 +7376,41 @@ var Device = function Device(props) {
   };
 
   if (isFetchingDevice) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_20__.default, {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_12__.default, {});
   } else if (fetchDeviceErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_16__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_10__.default, {
       errorMessage: fetchDeviceErrorMessage
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
       xs: "12",
       md: "12",
       className: "mb-4",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
               className: "my-auto",
               xs: "12",
               md: "12",
               lg: "1",
               xl: "1",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("div", {
                 className: "d-flex justify-content-center",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
                   name: "cilDevices",
                   size: "4xl"
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
               className: "my-auto",
               xs: "12",
               md: "12",
               lg: "6",
               xl: "7",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_18__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_11__.default, {
                 tag: "h2",
                 value: device.name,
                 updateFunction: function updateFunction(value) {
@@ -7458,51 +7418,51 @@ var Device = function Device(props) {
                     name: value
                   });
                 }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("small", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)("small", {
                 children: ["ID: ", device.unique_id]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
               className: "my-auto",
               xs: "12",
               md: "12",
               lg: "5",
               xl: "4",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("div", {
                 className: "d-flex justify-content-center",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButtonGroup, {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButtonGroup, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
                     color: "danger",
                     onClick: function onClick() {
                       return setShowShutdownModal(true);
                     },
                     disabled: isSubmittingShutdown,
-                    children: [isSubmittingShutdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                    children: [isSubmittingShutdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
                       color: "white",
                       size: "sm"
                     }), " Shut down"]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
                     color: "info",
                     onClick: function onClick() {
                       return setShowRebootModal(true);
                     },
                     disabled: isSubmittingReboot,
-                    children: [isSubmittingReboot && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                    children: [isSubmittingReboot && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
                       color: "white",
                       size: "sm"
                     }), " Reboot"]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
                     color: "primary",
                     onClick: function onClick() {
                       return setShowDecommissionModal(true);
                     },
                     disabled: isSubmittingDecommission,
-                    children: [isSubmittingDecommission && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                    children: [isSubmittingDecommission && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
                       color: "white",
                       size: "sm"
                     }), " Decommission"]
                   })]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_15__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_9__.default, {
                 show: showShutdownModal,
                 modalTitle: "Confirm Shut Down Device",
                 modalMessage: "Do you confirm to shut down this device?",
@@ -7510,7 +7470,7 @@ var Device = function Device(props) {
                   return setShowShutdownModal(!showShutdownModal);
                 },
                 onConfirm: confirmShutdown
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_15__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_9__.default, {
                 show: showRebootModal,
                 modalTitle: "Confirm Reboot Device",
                 modalMessage: "Do you confirm to reboot this device?",
@@ -7518,7 +7478,7 @@ var Device = function Device(props) {
                   return setShowRebootModal(!showRebootModal);
                 },
                 onConfirm: confirmReboot
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_15__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_Modal_Modal__WEBPACK_IMPORTED_MODULE_9__.default, {
                 show: showDecommissionModal,
                 modalTitle: "Confirm Decommission Device",
                 modalMessage: "Do you confirm to decommission this device?",
@@ -7529,104 +7489,104 @@ var Device = function Device(props) {
               })]
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabs, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabs, {
             activeTab: "overview",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNav, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNav, {
               variant: "tabs",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "overview",
                   children: "Overview"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "metrics",
                   children: "Metrics"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "aota",
                   children: "Application OTA Update"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "fota",
                   children: "Firmware OTA Update"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "sota",
                   children: "Software OTA Update"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "cota",
                   children: "Configuration OTA Update"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "command-histories",
                   children: "Command Histories"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
                   "data-tab": "event-histories",
                   children: "Event Histories"
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabContent, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabContent, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "overview",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_13__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_13__.default, {
                   device: device
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "metrics",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_22__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_14__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "aota",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_9__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_15__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "fota",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_10__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_16__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "sota",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_17__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "cota",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_12__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_18__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "command-histories",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_17__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_19__.default, {
                   deviceId: deviceId
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "event-histories",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_21__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_20__.default, {
                   deviceId: deviceId
                 })
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.Toaster, {})]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.Toaster, {})]
         })]
       })
     })
@@ -7670,30 +7630,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css ***!
-  \********************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-command-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-command-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-command-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-command-histories .p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th,\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.command-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.command-badge.type-ota {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.command-badge.type-aota {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n\r\n.command-badge.type-fota {\r\n    background-color: #FEEDAF;\r\n    color: #8A5340;\r\n}\r\n\r\n.command-badge.type-sota {\r\n    background-color: #B3E5FC;\r\n    color: #23547B;\r\n}\r\n\r\n.command-badge.type-cota {\r\n    background-color: #ECCFFF;\r\n    color: #694382;\r\n}\r\n\r\n.command-badge.type-shutdown {\r\n    background-color: #FFCDD2;\r\n    color: #C63737;\r\n}\r\n\r\n.command-badge.type-reboot {\r\n    background-color: #ff99ac;\r\n    color: #ff0a54;\r\n}\r\n\r\n.command-badge.type-decommission {\r\n    background-color: #9CC5A1;\r\n    color: #127475;\r\n}\r\n\r\n.command-badge.type-file-upload {\r\n    background-color: #FDF8E1;\r\n    color: #FDC500;\r\n}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/EditableText/editableText.css":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/EditableText/editableText.css ***!
@@ -7718,10 +7654,34 @@ ___CSS_LOADER_EXPORT___.push([module.id, "/*https://github.com/bymi15/react-edit
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css":
-/*!******************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css ***!
-  \******************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-command-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-command-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-command-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-command-histories .p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th,\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.command-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.command-badge.type-ota {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.command-badge.type-aota {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n\r\n.command-badge.type-fota {\r\n    background-color: #FEEDAF;\r\n    color: #8A5340;\r\n}\r\n\r\n.command-badge.type-sota {\r\n    background-color: #B3E5FC;\r\n    color: #23547B;\r\n}\r\n\r\n.command-badge.type-cota {\r\n    background-color: #ECCFFF;\r\n    color: #694382;\r\n}\r\n\r\n.command-badge.type-shutdown {\r\n    background-color: #FFCDD2;\r\n    color: #C63737;\r\n}\r\n\r\n.command-badge.type-reboot {\r\n    background-color: #ff99ac;\r\n    color: #ff0a54;\r\n}\r\n\r\n.command-badge.type-decommission {\r\n    background-color: #9CC5A1;\r\n    color: #127475;\r\n}\r\n\r\n.command-badge.type-file-upload {\r\n    background-color: #FDF8E1;\r\n    color: #FDC500;\r\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43295,36 +43255,6 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 
 /***/ }),
 
-/***/ "./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoryDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./commandHistoryDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoryDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoryDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
-
-/***/ }),
-
 /***/ "./resources/js/components/EditableText/editableText.css":
 /*!***************************************************************!*\
   !*** ./resources/js/components/EditableText/editableText.css ***!
@@ -43355,10 +43285,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css ***!
-  \********************************************************************************/
+/***/ "./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43368,7 +43298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./eventHistoriesDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./commandHistoriesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css");
 
             
 
@@ -43377,11 +43307,41 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css":
+/*!***************************************************************************!*\
+  !*** ./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./eventHistoriesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

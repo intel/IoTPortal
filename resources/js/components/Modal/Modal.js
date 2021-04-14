@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from '@coreui/react';
 
 const Modal = ({show, onConfirm, onClose, modalTitle, modalMessage}) => {

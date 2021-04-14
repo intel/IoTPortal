@@ -1,13 +1,8 @@
 import React from 'react';
-import { Form, useField, useFormikContext } from 'formik';
+import { useField, useFormikContext } from 'formik';
 
-import { CCol, CFormGroup, CInput, CInvalidFeedback, CLabel, CButton } from '@coreui/react'
+import { CButton, CCol, CFormGroup, CInput, CInvalidFeedback } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-
-import { COTA_COMMAND_OPTIONS } from '../../data/options';
-
-import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
-import IotSelectFormGroup from '../IotSelectFormGroup/IotSelectFormGroup';
 import Select from 'react-select';
 
 const CotaPathInputFormGroup = ({isHidden, label, value, ...props}) => {

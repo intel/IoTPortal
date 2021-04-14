@@ -19,7 +19,7 @@ export const fetchDeviceCommandsStartAsync = id => {
   return dispatch => {
     dispatch(fetchDeviceCommandsStart());
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/device-commands`)
+    axios.get(`${API_ENDPOINT}/devices/${id}/commands`)
       .then(result => {
         dispatch(fetchDeviceCommandsSuccess(result.data.result.deviceCommands));
       })

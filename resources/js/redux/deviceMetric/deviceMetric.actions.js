@@ -1,130 +1,130 @@
 import deviceMetricActionTypes from './deviceMetric.types';
 import { API_ENDPOINT } from '../../data/config';
 
-export const fetchTemperaturesStart = () => ({
-  type: deviceMetricActionTypes.FETCH_TEMPERATURES_START,
+export const fetchCpuTemperaturesStart = () => ({
+  type: deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_START,
 });
 
-export const fetchTemperaturesSuccess = temperatures => ({
-  type: deviceMetricActionTypes.FETCH_TEMPERATURES_SUCCESS,
-  payload: temperatures,
+export const fetchCpuTemperaturesSuccess = cpuTemperatures => ({
+  type: deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_SUCCESS,
+  payload: cpuTemperatures,
 });
 
-export const fetchTemperaturesFailure = errorMessage => ({
-  type: deviceMetricActionTypes.FETCH_TEMPERATURES_FAILURE,
+export const fetchCpuTemperaturesFailure = errorMessage => ({
+  type: deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_FAILURE,
   payload: errorMessage,
 });
 
-export const fetchTemperaturesStartAsync = (id, timeRangeFilter) => {
+export const fetchCpuTemperaturesStartAsync = (id, timeRangeFilter) => {
   return dispatch => {
-    dispatch(fetchTemperaturesStart());
+    dispatch(fetchCpuTemperaturesStart());
 
     const params = {
       timeRangeFilter: timeRangeFilter
     };
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/metric-temperatures`, {params: params})
+    axios.get(`${API_ENDPOINT}/devices/${id}/metrics/cpu/temperatures`, {params: params})
       .then(result => {
-        dispatch(fetchTemperaturesSuccess(result.data.result.temperatures));
+        dispatch(fetchCpuTemperaturesSuccess(result.data.result.cpuTemperatures));
       })
       .catch(error => {
-        dispatch(fetchTemperaturesFailure(error.message));
+        dispatch(fetchCpuTemperaturesFailure(error.message));
       });
   }
 };
 
-export const fetchCpuUsagePercentagesStart = () => ({
-  type: deviceMetricActionTypes.FETCH_CPU_USAGE_PERCENTAGES_START,
+export const fetchCpuUsagesStart = () => ({
+  type: deviceMetricActionTypes.FETCH_CPU_USAGES_START,
 });
 
-export const fetchCpuUsagePercentagesSuccess = cpuUsagePercentages => ({
-  type: deviceMetricActionTypes.FETCH_CPU_USAGE_PERCENTAGES_SUCCESS,
-  payload: cpuUsagePercentages,
+export const fetchCpuUsagesSuccess = cpuUsages => ({
+  type: deviceMetricActionTypes.FETCH_CPU_USAGES_SUCCESS,
+  payload: cpuUsages,
 });
 
-export const fetchCpuUsagePercentagesFailure = errorMessage => ({
-  type: deviceMetricActionTypes.FETCH_CPU_USAGE_PERCENTAGES_FAILURE,
+export const fetchCpuUsagesFailure = errorMessage => ({
+  type: deviceMetricActionTypes.FETCH_CPU_USAGES_FAILURE,
   payload: errorMessage,
 });
 
-export const fetchCpuUsagePercentagesStartAsync = (id, timeRangeFilter) => {
+export const fetchCpuUsagesStartAsync = (id, timeRangeFilter) => {
   return dispatch => {
-    dispatch(fetchCpuUsagePercentagesStart());
+    dispatch(fetchCpuUsagesStart());
 
     const params = {
       timeRangeFilter: timeRangeFilter
     };
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/metric-cpu-usage-percentages`, {params: params})
+    axios.get(`${API_ENDPOINT}/devices/${id}/metrics/cpu/usages`, {params: params})
       .then(result => {
-        dispatch(fetchCpuUsagePercentagesSuccess(result.data.result.cpuUsagePercentages));
+        dispatch(fetchCpuUsagesSuccess(result.data.result.cpuUsages));
       })
       .catch(error => {
-        dispatch(fetchCpuUsagePercentagesFailure(error.message));
+        dispatch(fetchCpuUsagesFailure(error.message));
       });
   }
 };
 
-export const fetchDiskUsagePercentagesStart = () => ({
-  type: deviceMetricActionTypes.FETCH_DISK_USAGE_PERCENTAGES_START,
+export const fetchDiskUsagesStart = () => ({
+  type: deviceMetricActionTypes.FETCH_DISK_USAGES_START,
 });
 
-export const fetchDiskUsagePercentagesSuccess = diskUsagePercentages => ({
-  type: deviceMetricActionTypes.FETCH_DISK_USAGE_PERCENTAGES_SUCCESS,
-  payload: diskUsagePercentages,
+export const fetchDiskUsagesSuccess = diskUsages => ({
+  type: deviceMetricActionTypes.FETCH_DISK_USAGES_SUCCESS,
+  payload: diskUsages,
 });
 
-export const fetchDiskUsagePercentagesFailure = errorMessage => ({
-  type: deviceMetricActionTypes.FETCH_DISK_USAGE_PERCENTAGES_FAILURE,
+export const fetchDiskUsagesFailure = errorMessage => ({
+  type: deviceMetricActionTypes.FETCH_DISK_USAGES_FAILURE,
   payload: errorMessage,
 });
 
-export const fetchDiskUsagePercentagesStartAsync = (id, timeRangeFilter) => {
+export const fetchDiskUsagesStartAsync = (id, timeRangeFilter) => {
   return dispatch => {
-    dispatch(fetchDiskUsagePercentagesStart());
+    dispatch(fetchDiskUsagesStart());
 
     const params = {
       timeRangeFilter: timeRangeFilter
     };
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/metric-disk-usage-percentages`, {params: params})
+    axios.get(`${API_ENDPOINT}/devices/${id}/metrics/disk/usages`, {params: params})
       .then(result => {
-        dispatch(fetchDiskUsagePercentagesSuccess(result.data.result.diskUsagePercentages));
+        dispatch(fetchDiskUsagesSuccess(result.data.result.diskUsages));
       })
       .catch(error => {
-        dispatch(fetchDiskUsagePercentagesFailure(error.message));
+        dispatch(fetchDiskUsagesFailure(error.message));
       });
   }
 };
 
-export const fetchAvailableMemoriesInBytesStart = () => ({
-  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_IN_BYTES_START,
+export const fetchAvailableMemoriesStart = () => ({
+  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_START,
 });
 
-export const fetchAvailableMemoriesInBytesSuccess = availableMemoriesInBytes => ({
-  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_IN_BYTES_SUCCESS,
-  payload: availableMemoriesInBytes,
+export const fetchAvailableMemoriesSuccess = availableMemories => ({
+  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_SUCCESS,
+  payload: availableMemories,
 });
 
-export const fetchAvailableMemoriesInBytesFailure = errorMessage => ({
-  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_IN_BYTES_FAILURE,
+export const fetchAvailableMemoriesFailure = errorMessage => ({
+  type: deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_FAILURE,
   payload: errorMessage,
 });
 
-export const fetchAvailableMemoriesInBytesStartAsync = (id, timeRangeFilter) => {
+export const fetchAvailableMemoriesStartAsync = (id, timeRangeFilter) => {
   return dispatch => {
-    dispatch(fetchAvailableMemoriesInBytesStart());
+    dispatch(fetchAvailableMemoriesStart());
 
     const params = {
       timeRangeFilter: timeRangeFilter
     };
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/metric-available-memories`, {params: params})
+    axios.get(`${API_ENDPOINT}/devices/${id}/metrics/memory/availables`, {params: params})
       .then(result => {
-        dispatch(fetchAvailableMemoriesInBytesSuccess(result.data.result.availableMemoriesInBytes));
+        dispatch(fetchAvailableMemoriesSuccess(result.data.result.availableMemories));
       })
       .catch(error => {
-        dispatch(fetchAvailableMemoriesInBytesFailure(error.message));
+        dispatch(fetchAvailableMemoriesFailure(error.message));
       });
   }
 };

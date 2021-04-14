@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { CInput } from '@coreui/react';
 import classnames from 'classnames';
+
+import { CInput } from '@coreui/react';
 
 import './editableText.css';
 

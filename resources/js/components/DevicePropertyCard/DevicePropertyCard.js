@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { CCard, CCardBody, CCardHeader } from '@coreui/react'
 
 const DevicePropertyCard = ({device}) => {

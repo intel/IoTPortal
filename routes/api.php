@@ -40,27 +40,31 @@ Route::middleware(['json.response', 'auth'])->group(function () {
         return $request->user();
     });
 
-    Route::apiResource('/device-categories', 'App\Http\Controllers\Api\Devices\CategoryController');
+//    Devices
+    Route::apiResource('/device/categories', 'App\Http\Controllers\Api\Devices\CategoryController');
 
-    Route::apiResource('/device-statuses', 'App\Http\Controllers\Api\Devices\StatusController');
+    Route::apiResource('/device/statuses', 'App\Http\Controllers\Api\Devices\StatusController');
 
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
-    Route::get('/devices/{device}/metric-temperatures', 'App\Http\Controllers\Api\Devices\MetricController@temperatures')->name('api.devices.metric.temperatures');
 
-    Route::get('/devices/{device}/metric-cpu-usage-percentages', 'App\Http\Controllers\Api\Devices\MetricController@cpuUsagePercentages')->name('api.devices.metric.cpuUsagePercentages');
+    Route::get('/devices/{device}/metrics/cpu/temperatures', 'App\Http\Controllers\Api\Devices\MetricController@cpuTemperatures')->name('api.devices.metrics.cpuTemperatures');
 
-    Route::get('/devices/{device}/metric-disk-usage-percentages', 'App\Http\Controllers\Api\Devices\MetricController@diskUsagePercentages')->name('api.devices.metric.diskUsagePercentages');
+    Route::get('/devices/{device}/metrics/cpu/usages', 'App\Http\Controllers\Api\Devices\MetricController@cpuUsages')->name('api.devices.metrics.cpuUsages');
 
-    Route::get('/devices/{device}/metric-available-memories', 'App\Http\Controllers\Api\Devices\MetricController@availableMemoriesInBytes')->name('api.devices.metric.availableMemoriesInBytes');
+    Route::get('/devices/{device}/metrics/disk/usages', 'App\Http\Controllers\Api\Devices\MetricController@diskUsages')->name('api.devices.metrics.diskUsages');
 
-    Route::get('/devices/{device}/device-commands', 'App\Http\Controllers\Api\Devices\CommandController@index')->name('api.devices.deviceCommands.index');
+    Route::get('/devices/{device}/metrics/memory/availables', 'App\Http\Controllers\Api\Devices\MetricController@memoryAvailables')->name('api.devices.metrics.memoryAvailables');
 
-    Route::get('/devices/{device}/device-events', 'App\Http\Controllers\Api\Devices\EventController@index')->name('api.devices.deviceEvents.index');
 
-    Route::get('/devices/{device}/command-histories', 'App\Http\Controllers\Api\Devices\CommandHistoryController@index')->name('api.devices.commandHistories.index');
+    Route::get('/devices/{device}/commands', 'App\Http\Controllers\Api\Devices\CommandController@index')->name('api.devices.commands.index');
 
-    Route::get('/devices/{device}/event-histories', 'App\Http\Controllers\Api\Devices\EventHistoryController@index')->name('api.devices.eventHistories.index');
+    Route::get('/devices/{device}/events', 'App\Http\Controllers\Api\Devices\EventController@index')->name('api.devices.events.index');
+
+    Route::get('/devices/{device}/commands/histories', 'App\Http\Controllers\Api\Devices\CommandHistoryController@index')->name('api.devices.commandHistories.index');
+
+    Route::get('/devices/{device}/events/histories', 'App\Http\Controllers\Api\Devices\EventHistoryController@index')->name('api.devices.eventHistories.index');
+
 
     Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');
 
@@ -71,8 +75,6 @@ Route::middleware(['json.response', 'auth:api'])->group(function () {
     Route::post('/logout', 'App\Http\Controllers\Api\Auth\AuthController@logout')->name('api.auth.logout');
 
     Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
-
-//    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 });
 
 

@@ -19,7 +19,7 @@ export const fetchDeviceStatusesStartAsync = () => {
   return dispatch => {
     dispatch(fetchDeviceStatusesStart());
 
-    axios.get(`${API_ENDPOINT}/device-statuses`)
+    axios.get(`${API_ENDPOINT}/device/statuses`)
       .then(result => {
         dispatch(fetchDeviceStatusesSuccess(result.data.result.deviceStatuses));
       })

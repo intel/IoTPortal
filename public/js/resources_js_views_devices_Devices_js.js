@@ -133,9 +133,9 @@ var DevicePropertyCard = function DevicePropertyCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/DevicesCard/DevicesCard.js":
+/***/ "./resources/js/containers/DevicesCard/DevicesCard.js":
 /*!************************************************************!*\
-  !*** ./resources/js/components/DevicesCard/DevicesCard.js ***!
+  !*** ./resources/js/containers/DevicesCard/DevicesCard.js ***!
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -157,8 +157,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/deviceCategory/deviceCategory.actions */ "./resources/js/redux/deviceCategory/deviceCategory.actions.js");
 /* harmony import */ var _redux_deviceStatus_deviceStatus_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceStatus/deviceStatus.actions */ "./resources/js/redux/deviceStatus/deviceStatus.actions.js");
 /* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var _DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
-/* harmony import */ var _devicesDataTable_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./devicesDataTable.css */ "./resources/js/components/DevicesCard/devicesDataTable.css");
+/* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
+/* harmony import */ var _devicesCard_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./devicesCard.css */ "./resources/js/containers/DevicesCard/devicesCard.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -404,17 +404,28 @@ var DevicesCard = function DevicesCard(_ref) {
   };
 
   var actionColumnBody = function actionColumnBody(rowData) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_5__.Button, {
-      icon: "pi pi-search",
-      className: "p-button-rounded p-button-success",
-      onClick: function onClick() {
-        return history.push("".concat(match.url, "/").concat(rowData.unique_id));
-      }
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        icon: "pi pi-search",
+        className: "p-button-rounded p-button-success mr-2",
+        onClick: function onClick() {
+          return history.push("".concat(match.url, "/").concat(rowData.unique_id));
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        icon: "pi pi-pencil",
+        className: "p-button-rounded p-button-warning mr-2"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_5__.Button, {
+        icon: "pi pi-trash",
+        className: "p-button-rounded p-button-danger mr-2",
+        onClick: function onClick() {
+          return history.push("".concat(match.url, "/").concat(rowData.unique_id));
+        }
+      })]
     });
   };
 
   var rowExpansionTemplate = function rowExpansionTemplate(data) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_11__.default, {
       device: data
     });
   };
@@ -517,7 +528,7 @@ var DevicesCard = function DevicesCard(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         body: actionColumnBody,
         headerStyle: {
-          width: '8em',
+          width: '15em',
           textAlign: 'center'
         },
         bodyStyle: {
@@ -615,7 +626,7 @@ var fetchDeviceCategoriesFailure = function fetchDeviceCategoriesFailure(errorMe
 var fetchDeviceCategoriesStartAsync = function fetchDeviceCategoriesStartAsync() {
   return function (dispatch) {
     dispatch(fetchDeviceCategoriesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/device-categories")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/device/categories")).then(function (result) {
       dispatch(fetchDeviceCategoriesSuccess(result.data.result.deviceCategories));
     })["catch"](function (error) {
       dispatch(fetchDeviceCategoriesFailure(error.message));
@@ -663,7 +674,7 @@ var fetchDeviceStatusesFailure = function fetchDeviceStatusesFailure(errorMessag
 var fetchDeviceStatusesStartAsync = function fetchDeviceStatusesStartAsync() {
   return function (dispatch) {
     dispatch(fetchDeviceStatusesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/device-statuses")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/device/statuses")).then(function (result) {
       dispatch(fetchDeviceStatusesSuccess(result.data.result.deviceStatuses));
     })["catch"](function (error) {
       dispatch(fetchDeviceStatusesFailure(error.message));
@@ -808,7 +819,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _components_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/DevicesCard/DevicesCard */ "./resources/js/components/DevicesCard/DevicesCard.js");
+/* harmony import */ var _containers_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../containers/DevicesCard/DevicesCard */ "./resources/js/containers/DevicesCard/DevicesCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -826,7 +837,7 @@ var Devices = function Devices() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
           children: "Devices"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__.default, {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_containers_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__.default, {})
         })]
       })
     })
@@ -837,10 +848,10 @@ var Devices = function Devices() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/DevicesCard/devicesDataTable.css":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/DevicesCard/devicesDataTable.css ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -14217,10 +14228,10 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 
 /***/ }),
 
-/***/ "./resources/js/components/DevicesCard/devicesDataTable.css":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/DevicesCard/devicesDataTable.css ***!
-  \******************************************************************/
+/***/ "./resources/js/containers/DevicesCard/devicesCard.css":
+/*!*************************************************************!*\
+  !*** ./resources/js/containers/DevicesCard/devicesCard.css ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -14230,7 +14241,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./devicesDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/DevicesCard/devicesDataTable.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./devicesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css");
 
             
 
@@ -14239,11 +14250,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ })
 

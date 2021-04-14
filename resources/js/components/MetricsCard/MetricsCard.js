@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { CCard, CCardBody, CCardHeader } from '@coreui/react';
-import TemperatureLineChartCard from '../TemperatureLineChartCard/TemperatureLineChartCard';
-import CpuUsageLineChartCard from '../CpuUsageLineChartCard/CpuUsageLineChartCard';
-import DiskUsageLineChartCard from '../DiskUsageLineChartCard/DiskUsageLineChartCard';
-import AvailableMemoryLineChartCard from '../AvailableMemoryLineChartCard/AvailableMemoryLineChartCard';
 
+import CpuTemperatureLineChartCard from '../../containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard';
+import CpuUsageLineChartCard from '../../containers/CpuUsageLineChartCard/CpuUsageLineChartCard';
+import DiskUsageLineChartCard from '../../containers/DiskUsageLineChartCard/DiskUsageLineChartCard';
+import AvailableMemoryLineChartCard from '../../containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard';
 
 const MetricsCard = ({deviceId}) => {
 
@@ -16,7 +16,7 @@ const MetricsCard = ({deviceId}) => {
         Metrics
       </CCardHeader>
       <CCardBody>
-        <TemperatureLineChartCard deviceId={deviceId}/>
+        <CpuTemperatureLineChartCard deviceId={deviceId}/>
         <CpuUsageLineChartCard deviceId={deviceId}/>
         <DiskUsageLineChartCard deviceId={deviceId}/>
         <AvailableMemoryLineChartCard deviceId={deviceId}/>

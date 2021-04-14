@@ -1,9 +1,7 @@
 import React from 'react'
 import { useField } from 'formik';
 
-
 import { CFormGroup, CInput, CInvalidFeedback, CLabel } from '@coreui/react'
-
 
 const IotTextInputFormGroup = ({isHidden, isLabelHidden, isDisabled, label, ...props}) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]

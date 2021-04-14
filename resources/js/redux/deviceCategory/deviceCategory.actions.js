@@ -19,7 +19,7 @@ export const fetchDeviceCategoriesStartAsync = () => {
   return dispatch => {
     dispatch(fetchDeviceCategoriesStart());
 
-    axios.get(`${API_ENDPOINT}/device-categories`)
+    axios.get(`${API_ENDPOINT}/device/categories`)
       .then(result => {
         dispatch(fetchDeviceCategoriesSuccess(result.data.result.deviceCategories));
       })

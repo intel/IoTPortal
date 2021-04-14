@@ -19,7 +19,7 @@ export const fetchDeviceEventsStartAsync = id => {
   return dispatch => {
     dispatch(fetchDeviceEventsStart());
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/device-events`)
+    axios.get(`${API_ENDPOINT}/devices/${id}/events`)
       .then(result => {
         dispatch(fetchDeviceEventsSuccess(result.data.result.deviceEvents));
       })

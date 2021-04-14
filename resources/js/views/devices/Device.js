@@ -13,10 +13,10 @@ import {
   CNavItem,
   CNavLink,
   CRow,
+  CSpinner,
   CTabContent,
   CTabPane,
-  CTabs,
-  CSpinner
+  CTabs
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -25,20 +25,18 @@ import { submitShutdownStartAsync } from '../../redux/shutdown/shutdown.actions'
 import { submitRebootStartAsync } from '../../redux/reboot/reboot.actions'
 import { submitDecommissionStartAsync } from '../../redux/decommission/decommission.actions'
 
-import AotaCard from '../../components/AotaCard/AotaCard';
-import FotaCard from '../../components/FotaCard/FotaCard';
-import SotaCard from '../../components/SotaCard/SotaCard';
-import CotaCard from '../../components/CotaCard/CotaCard';
-import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
-import Spinner from '../../components/Spinner/Spinner';
 import Modal from '../../components/Modal/Modal';
 import Error from '../../components/Error/Error';
-import CommandHistoriesCard from '../../components/CommandHistoriesCard/CommandHistoriesCard';
 import EditableText from '../../components/EditableText/EditableText';
-import { Skeleton } from 'primereact/skeleton';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import EventHistoriesCard from '../../components/EventHistoriesCard/EventHistoriesCard';
+import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
 import MetricsCard from '../../components/MetricsCard/MetricsCard';
+import AotaCard from '../../containers/AotaCard/AotaCard';
+import FotaCard from '../../containers/FotaCard/FotaCard';
+import SotaCard from '../../containers/SotaCard/SotaCard';
+import CotaCard from '../../containers/CotaCard/CotaCard';
+import CommandHistoriesCard from '../../containers/CommandHistoriesCard/CommandHistoriesCard';
+import EventHistoriesCard from '../../containers/EventHistoriesCard/EventHistoriesCard';
 
 const Device = (props) => {
 
@@ -98,7 +96,8 @@ const Device = (props) => {
                 </div>
               </CCol>
               <CCol className="my-auto" xs="12" md="12" lg="6" xl="7">
-                <EditableText tag="h2" value={device.name} updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
+                <EditableText tag="h2" value={device.name}
+                              updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                 <small>ID: {device.unique_id}</small>
               </CCol>
               <CCol className="my-auto" xs="12" md="12" lg="5" xl="4">

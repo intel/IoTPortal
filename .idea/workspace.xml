@@ -2,88 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/CommandController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/CommandHistoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventHistoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/StatusController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/CardSkeleton/CardSkeleton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ChartSkeleton/ChartSkeleton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/CpuUsageLineChartCard/CpuUsageLineChartCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DiskUsageLineChartCard/DiskUsageLineChartCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/EditableText/EditableText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/EditableText/editableText.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/TemperatureLineChartCard/TemperatureLineChartCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/includes/css.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DeviceRawDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DeviceRawDataController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AotaConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CommandHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CommandHistory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ConfigurationFile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ConfigurationFile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContainerStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CpuStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CpuStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DeviceRawData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventHistory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DiskStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DiskStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/FotaConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FotaConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/MemoryStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NetworkStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TemperatureStatistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/CpuStatisticFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CpuStatisticFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/DeviceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DeviceFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/DeviceRawDataFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EventHistoryFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/DiskStatisticFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DiskStatisticFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/MemoryStatisticFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/MemoryStatisticFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/TemperatureStatisticFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/TemperatureStatisticFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_28_014716_create_device_raw_data_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_014716_create_event_histories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/MetricController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/MetricController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/AotaCard/AotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/CommandHistoriesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CommandHistoriesCard/commandHistoryDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CotaPathInputFormGroup/CotaPathInputFormGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CotaPathInputFormGroup/CotaPathInputFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CpuUsageLineChartCard/CpuUsageLineChartCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/DevicePropertyCard/DevicePropertyCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DevicePropertyCard/DevicePropertyCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/RawDataCard/RawDataCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EventHistoriesCard/EventHistoriesCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/RawDataCard/rawDataDataTable.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.actions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/commandHistory/commandHistory.types.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/cota/cota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DevicesCard/DevicesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesCard/DevicesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DevicesCard/devicesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesCard/devicesCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DiskUsageLineChartCard/DiskUsageLineChartCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EditableText/EditableText.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditableText/EditableText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Error/Error.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Error/Error.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EventHistoriesCard/EventHistoriesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesCard/EventHistoriesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EventHistoriesCard/eventHistoriesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesCard/eventHistoriesCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/FotaCard/FotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/MetricsCard/MetricsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MetricsCard/MetricsCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SotaCard/SotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/TemperatureLineChartCard/TemperatureLineChartCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/WithSpinner/WithSpinner.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/WithSpinner/WithSpinner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Device.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +73,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/primereact/components/skeleton/Skeleton.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -274,11 +237,11 @@
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\views\includes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Devices" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\reusable" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\public\js" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DevicePropertyCard" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\SotaCard" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
@@ -434,7 +397,8 @@
       <workItem from="1618278305614" duration="50000" />
       <workItem from="1618278445034" duration="5220000" />
       <workItem from="1618284217328" duration="33488000" />
-      <workItem from="1618367259682" duration="24904000" />
+      <workItem from="1618367259682" duration="26059000" />
+      <workItem from="1618409608133" duration="7739000" />
     </task>
     <servers />
   </component>
@@ -462,10 +426,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/views/forms/BasicForms.js</url>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/resources/js/components/Spinner/Spinner.js</url>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

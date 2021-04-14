@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Devices;
 
 use App\Http\Controllers\Controller;
 use App\Models\Device;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -16,25 +15,26 @@ class MetricController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function temperatures(Request $request, Device $device)
+    public function cpuTemperatures(Request $request, Device $device)
     {
         $timeRangeFilter = 1;
         if ($request->has('timeRangeFilter')) {
-            $timeRangeFilter = (int) $request->input('timeRangeFilter');
+            $timeRangeFilter = (int)$request->input('timeRangeFilter');
         }
-        $temperatures = $device->temperatureStatistics()
+
+        $cpuTemperatures = $device->temperatureStatistics()
             ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
             ->orderBy('created_at')
             ->select(['id', 'temperature', 'created_at'])->get();
 
-        $temperatures->transform(function ($item, $key) {
+        $cpuTemperatures->transform(function ($item, $key) {
             return [
                 $item->created_at->getPreciseTimestamp(3),
                 $item->temperature,
             ];
         });
 
-        return response(['result' => ['temperatures' => $temperatures->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return response(['result' => ['cpuTemperatures' => $cpuTemperatures->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**
@@ -42,25 +42,26 @@ class MetricController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function cpuUsagePercentages(Request $request, Device $device)
+    public function cpuUsages(Request $request, Device $device)
     {
         $timeRangeFilter = 1;
         if ($request->has('timeRangeFilter')) {
-            $timeRangeFilter = (int) $request->input('timeRangeFilter');
+            $timeRangeFilter = (int)$request->input('timeRangeFilter');
         }
-        $cpuUsagePercentages = $device->cpuStatistics()
+
+        $cpuUsages = $device->cpuStatistics()
             ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
             ->orderBy('created_at')
             ->select(['id', 'system_cpu_percentage', 'created_at'])->get();
 
-        $cpuUsagePercentages->transform(function ($item, $key) {
+        $cpuUsages->transform(function ($item, $key) {
             return [
                 $item->created_at->getPreciseTimestamp(3),
                 $item->system_cpu_percentage,
             ];
         });
 
-        return response(['result' => ['cpuUsagePercentages' => $cpuUsagePercentages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return response(['result' => ['cpuUsages' => $cpuUsages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**
@@ -68,25 +69,26 @@ class MetricController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function diskUsagePercentages(Request $request, Device $device)
+    public function diskUsages(Request $request, Device $device)
     {
         $timeRangeFilter = 1;
         if ($request->has('timeRangeFilter')) {
-            $timeRangeFilter = (int) $request->input('timeRangeFilter');
+            $timeRangeFilter = (int)$request->input('timeRangeFilter');
         }
-        $diskUsagePercentages = $device->diskStatistics()
+
+        $diskUsages = $device->diskStatistics()
             ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
             ->orderBy('created_at')
             ->select(['id', 'disk_percentage_used', 'created_at'])->get();
 
-        $diskUsagePercentages->transform(function ($item, $key) {
+        $diskUsages->transform(function ($item, $key) {
             return [
                 $item->created_at->getPreciseTimestamp(3),
                 $item->disk_percentage_used,
             ];
         });
 
-        return response(['result' => ['diskUsagePercentages' => $diskUsagePercentages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return response(['result' => ['diskUsages' => $diskUsages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**
@@ -94,25 +96,26 @@ class MetricController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function availableMemoriesInBytes(Request $request, Device $device)
+    public function memoryAvailables(Request $request, Device $device)
     {
         $timeRangeFilter = 1;
         if ($request->has('timeRangeFilter')) {
-            $timeRangeFilter = (int) $request->input('timeRangeFilter');
+            $timeRangeFilter = (int)$request->input('timeRangeFilter');
         }
-        $availableMemoriesInBytes = $device->memoryStatistics()
+
+        $availableMemories = $device->memoryStatistics()
             ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
             ->orderBy('created_at')
             ->select(['id', 'available_memory_in_bytes', 'created_at'])->get();
 
-        $availableMemoriesInBytes->transform(function ($item, $key) {
+        $availableMemories->transform(function ($item, $key) {
             return [
                 $item->created_at->getPreciseTimestamp(3),
                 $item->available_memory_in_bytes,
             ];
         });
 
-        return response(['result' => ['availableMemoriesInBytes' => $availableMemoriesInBytes->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return response(['result' => ['availableMemories' => $availableMemories->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**

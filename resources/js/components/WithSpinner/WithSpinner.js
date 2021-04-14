@@ -6,7 +6,7 @@ const WithSpinner = WrappedComponent => ({ loading, ...otherProps }) => {
     <Spinner/>
   ) : (
     <WrappedComponent {...otherProps}/>
-  )
-}
+  );
+};
 
 export default WithSpinner;
