@@ -12268,6 +12268,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var loading = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
   className: "pt-3 text-center",
   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -12282,8 +12283,8 @@ var Content = function Content() {
       fluid: true,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
         fallback: loading,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-          children: _routes__WEBPACK_IMPORTED_MODULE_2__.default.map(function (route, idx) {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
+          children: [_routes__WEBPACK_IMPORTED_MODULE_2__.default.map(function (route, idx) {
             return route.component && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
               path: route.path,
               exact: route.exact,
@@ -12294,7 +12295,17 @@ var Content = function Content() {
                 });
               }
             }, idx);
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+            exact: true,
+            strict: true,
+            path: "(.*//+.*)",
+            render: function render(_ref) {
+              var location = _ref.location;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+                to: location.pathname.replace(/\/\/+/g, '/')
+              });
+            }
+          })]
         })
       })
     })

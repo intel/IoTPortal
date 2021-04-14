@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DeviceRawData;
+use App\Models\EventHistory;
 use Illuminate\Http\Request;
 
 class DeviceRawDataController extends Controller
@@ -41,10 +41,10 @@ class DeviceRawDataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DeviceRawData  $deviceRawData
+     * @param  \App\Models\EventHistory  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function show(DeviceRawData $deviceRawData)
+    public function show(EventHistory $deviceRawData)
     {
         //
     }
@@ -52,10 +52,10 @@ class DeviceRawDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DeviceRawData  $deviceRawData
+     * @param  \App\Models\EventHistory  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function edit(DeviceRawData $deviceRawData)
+    public function edit(EventHistory $deviceRawData)
     {
         //
     }
@@ -64,10 +64,10 @@ class DeviceRawDataController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DeviceRawData  $deviceRawData
+     * @param  \App\Models\EventHistory  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DeviceRawData $deviceRawData)
+    public function update(Request $request, EventHistory $deviceRawData)
     {
         //
     }
@@ -75,10 +75,10 @@ class DeviceRawDataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DeviceRawData  $deviceRawData
+     * @param  \App\Models\EventHistory  $deviceRawData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DeviceRawData $deviceRawData)
+    public function destroy(EventHistory $deviceRawData)
     {
         //
     }

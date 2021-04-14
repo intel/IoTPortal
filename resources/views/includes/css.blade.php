@@ -1,0 +1,1 @@
+<link rel="preload" href="{{ asset('fonts/vendor/primeicons/primeicons.ttf?3a0d4a58da62cf7c55bb243e98b172b5') }}" as="font" crossorigin/>

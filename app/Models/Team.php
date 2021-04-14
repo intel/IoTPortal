@@ -14,7 +14,7 @@ class Team extends Model
      */
     public function admins()
     {
-        return $this->belongsToMany('App\Models\User')->wherePivot('role', 0);
+        return $this->belongsToMany(User::class)->wherePivot('role', 0);
     }
 
     /**
@@ -22,7 +22,7 @@ class Team extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany(User::class);
     }
 
     /**
@@ -30,6 +30,6 @@ class Team extends Model
      */
     public function devices()
     {
-        return $this->hasMany('App\Models\Device');
+        return $this->hasMany(Device::class);
     }
 }

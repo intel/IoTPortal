@@ -15,13 +15,15 @@ class CreateCommandHistoriesTable extends Migration
     {
         Schema::create('command_histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
+//            $table->integer('type');
             $table->json('payload')->nullable();
             $table->timestamp('response_time')->nullable();
-            $table->unsignedBigInteger('device_id');
+            $table->unsignedBigInteger('command_id');
+//            $table->unsignedBigInteger('device_id');
             $table->timestamps();
 
-            $table->foreign('device_id')->references('id')->on('devices');
+            $table->foreign('command_id')->references('id')->on('commands');
+//            $table->foreign('device_id')->references('id')->on('devices');
         });
     }
 

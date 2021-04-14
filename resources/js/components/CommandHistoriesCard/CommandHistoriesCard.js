@@ -9,49 +9,41 @@ import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
-import 'primereact/resources/themes/saga-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-
-import { fetchCommandHistoryStartAsync } from '../../redux/commandHistory/commandHistory.actions';
+import { fetchDeviceCommandsStartAsync } from '../../redux/deviceCommand/deviceCommand.actions';
+import { fetchDeviceCommandHistoriesStartAsync } from '../../redux/deviceCommandHistory/deviceCommandHistory.actions';
 
 import './commandHistoryDataTable.css';
 
 const CommandHistoriesCard = ({
-                                    deviceId,
-                                    commandHistories,
-                                    totalRecords,
-                                    isFetchingCommandHistories,
-                                    fetchCommandHistoryStartAsync
-                                  }) => {
-  const [selectedCommandHistories, setSelectedCommandHistories] = useState(null);
+                                deviceId,
+                                deviceCommands,
+                                isFetchingDeviceCommands,
+                                fetchDeviceCommandsErrorMessage,
+                                deviceCommandHistories,
+                                totalRecords,
+                                isFetchingDeviceCommandHistories,
+                                fetchDeviceCommandHistoriesErrorMessage,
+                                fetchDeviceCommandsStartAsync,
+                                fetchDeviceCommandHistoriesStartAsync
+                              }) => {
+
   const [expandedRows, setExpandedRows] = useState(null);
   const [globalFilter, setGlobalFilter] = useState(null);
+  const [selectedCommandHistories, setSelectedCommandHistories] = useState(null);
   const [selectedCommandType, setSelectedCommandType] = useState(null);
   const [responseTimeFilter, setResponseTimeFilter] = useState(null);
   const [timestampFilter, setTimestampFilter] = useState(null);
   const [lazyParams, setLazyParams] = useState({
     first: 0,
-    rows: 3,
+    rows: 10,
     page: 1,
   });
 
   const dt = useRef(null);
 
-  const commandTypes = [
-    {name: 'OTA', value: 0, style: 'ota'},
-    {name: 'AOTA', value: 1, style: 'aota'},
-    {name: 'FOTA', value: 2, style: 'fota'},
-    {name: 'SOTA', value: 3, style: 'sota'},
-    {name: 'COTA', value: 4, style: 'cota'},
-    {name: 'SHUTDOWN', value: 5, style: 'shutdown'},
-    {name: 'REBOOT', value: 6, style: 'reboot'},
-    {name: 'DECOMMISSION', value: 7, style: 'decommission'},
-    {name: 'FILE UPLOAD', value: 8, style: 'file-upload'},
-  ];
-
   useEffect(() => {
-    fetchCommandHistoryStartAsync(deviceId, lazyParams);
+    fetchDeviceCommandsStartAsync(deviceId);
+    fetchDeviceCommandHistoriesStartAsync(deviceId, lazyParams);
   }, [lazyParams]);
 
   const onPage = (event) => {
@@ -78,7 +70,7 @@ const CommandHistoriesCard = ({
         Command Histories
         <span className="p-input-icon-left">
           <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..."/>
+          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
         </span>
       </div>
     );
@@ -86,9 +78,9 @@ const CommandHistoriesCard = ({
 
   const renderCommandTypeFilter = () => {
     return (
-      <Dropdown optionLabel="name" optionValue="value" value={selectedCommandType} options={commandTypes}
+      <Dropdown optionLabel="name" optionValue="id" value={selectedCommandType} options={deviceCommands}
                 onChange={onCommandTypeFilterChange}
-                itemTemplate={commandTypeItemTemplate} showClear placeholder="Select a Command Type"
+                itemTemplate={commandTypeItemTemplate} showClear placeholder="Select a command type"
                 className="p-column-filter"/>
     );
   };
@@ -100,14 +92,14 @@ const CommandHistoriesCard = ({
 
   const commandTypeItemTemplate = (option) => {
     return (
-      <span className={classNames('command-badge', 'type-' + option.style)}>{option.name}</span>
+      <span className={classNames('command-badge', 'type-' + option.name.replace(/\s+/g, '-').toLowerCase())}>{option.name}</span>
     );
   };
 
   const renderResponseTimeFilter = () => {
     return (
       <Calendar selectionMode="range" value={responseTimeFilter} onChange={onResponseTimeFilterChange}
-                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
+                placeholder="Filter by date range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
                 showButtonBar touchUI monthNavigator yearNavigator yearRange="1900:2100"/>
     );
   }
@@ -124,7 +116,7 @@ const CommandHistoriesCard = ({
   const renderTimestampFilter = () => {
     return (
       <Calendar selectionMode="range" value={timestampFilter} onChange={onTimestampFilterChange}
-                placeholder="Filter by Date Range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
+                placeholder="Filter by date range" dateFormat="yy-mm-dd" className="p-column-filter" baseZIndex={1000}
                 showButtonBar touchUI monthNavigator yearNavigator yearRange="1900:2100"/>
     );
   };
@@ -174,12 +166,12 @@ const CommandHistoriesCard = ({
     );
   };
 
-  const typeColumnBody = (rowData) => {
+  const commandTypeColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">Command Type</span>
         <span
-          className={classNames('command-badge', 'type-' + commandTypes[rowData.type].style)}>{commandTypes[rowData.type].name}</span>
+          className={classNames('command-badge', 'type-' + rowData.command.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.command.name.toUpperCase()}</span>
       </>
     );
   };
@@ -223,24 +215,24 @@ const CommandHistoriesCard = ({
   const timestampFilterElement = renderTimestampFilter();
 
   return (
-    <div className="datatable-command-history">
-      <DataTable ref={dt} value={commandHistories} lazy
-                 header={header} className="p-datatable-command-history" dataKey="id" rowHover
+    <div className="datatable-command-histories">
+      <DataTable ref={dt} value={deviceCommandHistories} resizableColumns columnResizeMode="fit" lazy
+                 header={header} className="p-datatable-command-histories" dataKey="id" rowHover
                  globalFilter={globalFilter}
                  selection={selectedCommandHistories} onSelectionChange={e => setSelectedCommandHistories(e.value)}
                  paginator emptyMessage="No command history found"
                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                  paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                 rowsPerPageOptions={[3, 10, 25, 50]} first={lazyParams.first} rows={lazyParams.rows}
+                 rowsPerPageOptions={[10, 25, 50, 100, 200]} first={lazyParams.first} rows={lazyParams.rows}
                  totalRecords={totalRecords} onPage={onPage} onSort={onSort} sortField={lazyParams.sortField}
                  sortOrder={lazyParams.sortOrder} onFilter={onFilter} filters={lazyParams.filters} filterDelay={800}
                  expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
-                 rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingCommandHistories}>
-        <Column expander style={{width: '3em'}}/>
+                 rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceCommandHistories}>
+        <Column expander style={{width: '5em'}}/>
         <Column selectionMode="multiple" style={{width: '3em'}}/>
         <Column field="payload" header="Payload" body={payloadColumnBody} sortable filter
                 filterPlaceholder="Search by payload"/>
-        <Column field="type" header="Type" body={typeColumnBody} sortable filter excludeGlobalFilter={true}
+        <Column field="type" header="Type" body={commandTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={commandTypeFilterElement}/>
         <Column field="response_time" header="Response Time" body={responseTimeColumnBody} sortable filter
                 excludeGlobalFilter={true} filterMatchMode="custom" filterFunction={filterDateTimeRange}
@@ -254,14 +246,18 @@ const CommandHistoriesCard = ({
 };
 
 const mapStateToProps = state => ({
-  commandHistories: state.commandHistory.commandHistories,
-  totalRecords: state.commandHistory.totalRecords,
-  isFetchingCommandHistories: state.commandHistory.isFetchingCommandHistories,
-  fetchCommandHistoriesErrorMessage: state.commandHistory.fetchCommandHistoriesErrorMessage,
+  deviceCommands: state.deviceCommand.deviceCommands,
+  isFetchingDeviceCommands: state.deviceCommand.isFetchingDeviceCommands,
+  fetchDeviceCommandsErrorMessage: state.deviceCommand.fetchDeviceCommandsErrorMessage,
+  deviceCommandHistories: state.deviceCommandHistory.deviceCommandHistories,
+  totalRecords: state.deviceCommandHistory.totalRecords,
+  isFetchingDeviceCommandHistories: state.deviceCommandHistory.isFetchingDeviceCommandHistories,
+  fetchDeviceCommandHistoriesErrorMessage: state.deviceCommandHistory.fetchDeviceCommandHistoriesErrorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCommandHistoryStartAsync: (id, pagination) => dispatch(fetchCommandHistoryStartAsync(id, pagination)),
+  fetchDeviceCommandsStartAsync: (id) => dispatch(fetchDeviceCommandsStartAsync(id)),
+  fetchDeviceCommandHistoriesStartAsync: (id, params) => dispatch(fetchDeviceCommandHistoriesStartAsync(id, params)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommandHistoriesCard);

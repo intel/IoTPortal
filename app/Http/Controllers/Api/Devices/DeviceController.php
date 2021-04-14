@@ -4,20 +4,116 @@ namespace App\Http\Controllers\Api\Devices;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\DeviceResource;
-use App\Models\CommandHistory;
 use App\Models\Device;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Psy\Command\Command;
 
 class DeviceController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $query = Auth::user()->devices()->with('category:id,name', 'status:id,name');
+
+        if ($request->has('filters')) {
+            $filters = json_decode($request->input('filters'));
+
+            foreach ($filters as $key => $value) {
+                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
+                if ($key === 'name') $query->nameLike($value->value);
+                if ($key === 'bios_vendor') $query->biosVendorLike($value->value);
+                if ($key === 'bios_version') $query->biosVersionLike($value->value);
+                if ($key === 'category') $query->categoryId($value->value);
+                if ($key === 'status') $query->statusId($value->value);
+                if ($key === 'globalFilter') {
+                    $query->where(function ($query) use ($value) {
+                        $query->uniqueIdLike($value->value)
+                            ->orWhere->nameLike($value->value)
+                            ->orWhere->biosVendorLike($value->value)
+                            ->orWhere->biosVersionLike($value->value);
+                    });
+                }
+            }
+        }
+
+        if ($request->has('sortField')) {
+            if ($request->input('sortOrder') === '1')
+                $query->orderBy($request->input('sortField'));
+            else
+                $query->orderByDesc($request->input('sortField'));
+        }
+
+        $devices = $query->paginate((int)$request->input('rows', 10));
+
+        return response(['result' => ['devices' => $devices], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return response($request->all(), Response::HTTP_OK);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Device $device
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Device $device)
+    {
+        return response(['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param Device $device
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Device $device)
+    {
+        if ($request->has('name')) {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string',
+            ]);
+            if ($validator->fails()) {
+                return response([
+                    'result' => ['error' => $validator->getMessageBag()->toArray()]
+                ], Response::HTTP_BAD_REQUEST);
+            }
+            $device->update(['name' => $request->input('name')]);
+            return response(['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Device $device
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Device $device)
+    {
+        $device->delete();
+        return response(['success' => true], Response::HTTP_OK);
+    }
+
     public function register(Request $request)
     {
         $deviceConnectionKey = $request->bearerToken();
@@ -88,109 +184,5 @@ class DeviceController extends Controller
         Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, null);
 
         return response(['result' => ['payload' => null], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $user = Auth::user();
-        $devices = $user->devices()->get();
-        return response(['result' => ['devices' => $devices], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return response($request->all(), Response::HTTP_OK);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Device $device)
-    {
-        return response(['result' => ['device' => $device], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param Device $device
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Device $device)
-    {
-        $device->update($request->all());
-
-        $response = ['success' => true, 'device' => $device];
-        return response($response, Response::HTTP_OK);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Device $device)
-    {
-        $device->delete();
-        return response(['success' => true], Response::HTTP_OK);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
-     */
-    public function showDeviceCommandHistories(Request $request, Device $device)
-    {
-        $query = $device->commandHistories();
-
-        if ($request->has('filters')) {
-            $filters = json_decode($request->input('filters'));
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'payload') $query->where('payload', 'like', "%{$value->value}%");
-                if ($key === 'type') $query->where('type', $value->value);
-                if ($key === 'response_time') {
-                    $dates = explode(" - ", $value->value);
-                    $query->whereBetween('response_time', $dates);
-                }
-                if ($key === 'created_at') {
-                    $dates = explode(" - ", $value->value);
-                    $query->whereBetween('created_at', $dates);
-                }
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->where('payload', 'like', "%{$value->value}%")
-                            ->orWhere('type', 'like', "%{$value->value}%");
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->input('sortOrder') === '1')
-                $query->orderBy($request->input('sortField'));
-            else
-                $query->orderByDesc($request->input('sortField'));
-        }
-
-        return response()->json(['result' => ['commandHistories' => $query->paginate((int)$request->input('rows', 10))], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK, [], JSON_PRETTY_PRINT);
     }
 }

@@ -40,15 +40,30 @@ Route::middleware(['json.response', 'auth'])->group(function () {
         return $request->user();
     });
 
+    Route::apiResource('/device-categories', 'App\Http\Controllers\Api\Devices\CategoryController');
+
+    Route::apiResource('/device-statuses', 'App\Http\Controllers\Api\Devices\StatusController');
 
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
-    Route::get('/devices/{device}/command-histories', 'App\Http\Controllers\Api\Devices\DeviceController@showDeviceCommandHistories')->name('api.devices.commandHistories');
+    Route::get('/devices/{device}/metric-temperatures', 'App\Http\Controllers\Api\Devices\MetricController@temperatures')->name('api.devices.metric.temperatures');
+
+    Route::get('/devices/{device}/metric-cpu-usage-percentages', 'App\Http\Controllers\Api\Devices\MetricController@cpuUsagePercentages')->name('api.devices.metric.cpuUsagePercentages');
+
+    Route::get('/devices/{device}/metric-disk-usage-percentages', 'App\Http\Controllers\Api\Devices\MetricController@diskUsagePercentages')->name('api.devices.metric.diskUsagePercentages');
+
+    Route::get('/devices/{device}/metric-available-memories', 'App\Http\Controllers\Api\Devices\MetricController@availableMemoriesInBytes')->name('api.devices.metric.availableMemoriesInBytes');
+
+    Route::get('/devices/{device}/device-commands', 'App\Http\Controllers\Api\Devices\CommandController@index')->name('api.devices.deviceCommands.index');
+
+    Route::get('/devices/{device}/device-events', 'App\Http\Controllers\Api\Devices\EventController@index')->name('api.devices.deviceEvents.index');
+
+    Route::get('/devices/{device}/command-histories', 'App\Http\Controllers\Api\Devices\CommandHistoryController@index')->name('api.devices.commandHistories.index');
+
+    Route::get('/devices/{device}/event-histories', 'App\Http\Controllers\Api\Devices\EventHistoryController@index')->name('api.devices.eventHistories.index');
 
     Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');
 
-
-//    Route::post('/devices/{device}/aota', 'App\Http\Controllers\Api\Devices\DeviceController@aota')->name('api.devices.aota');
 });
 
 // TODO: remove, not using anymore

@@ -6,6 +6,11 @@ return [
         'provisioned' => 1
     ],
 
+    'raw_data_types' => [
+        'property' => 0,
+        'telemetry' => 1
+    ],
+
     'mqtt_methods' => [
         'ota' => 'triggerota',
         'aota' => 'triggeraota',

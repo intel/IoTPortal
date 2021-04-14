@@ -1,0 +1,14 @@
+/*https://github.com/bymi15/react-edit-text/blob/main/src/styles.module.css*/
+
+.editable-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    min-height: 28px;
+}
+
+.editable-text:hover {
+    cursor: pointer;
+    background: rgba(220, 220, 220, 0.4);
+}

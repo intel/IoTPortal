@@ -1,21 +1,8 @@
-import React, { useState } from 'react'
-import {
-  CCol,
-  CNav,
-  CNavItem,
-  CNavLink,
-  CRow,
-  CTabContent,
-  CTabPane,
-  CCard,
-  CCardBody,
-  CTabs,
-  CCardHeader
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import React from 'react'
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
+import DevicesCard from '../../components/DevicesCard/DevicesCard';
 
 const Devices = () => {
-  const [active, setActive] = useState(1)
 
   return (
     <CRow>
@@ -25,7 +12,7 @@ const Devices = () => {
             Devices
           </CCardHeader>
           <CCardBody>
-
+            <DevicesCard/>
           </CCardBody>
         </CCard>
       </CCol>

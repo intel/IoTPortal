@@ -22,7 +22,7 @@ class DiskStatisticFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'disk_percentage_used' => $this->faker->randomFloat(2, 0, 100),
         ];
     }
 }

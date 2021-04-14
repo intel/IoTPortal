@@ -35,7 +35,6 @@ class Device extends Model
         parent::boot();
         self::creating(function ($model) {
             $uniqueId = Str::uuid()->toString();
-
             $model->unique_id = $uniqueId;
             $model->name = $uniqueId;
             $model->mqtt_password = Helper::generateMqttPassword();
@@ -58,19 +57,59 @@ class Device extends Model
     }
 
     /**
-     * Get the team that owns the device.
+     * Get the category for the device.
      */
-    public function team()
+    public function category()
     {
-        return $this->belongsTo('App\Models\Team');
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the teams that can access the device.
+     */
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
+    /**
+     * Get the status for the device.
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
+    /**
+     * Get the commands for the device.
+     */
+    public function commands()
+    {
+        return $this->hasMany(Command::class);
+    }
+
+    /**
+     * Get all of the command histories for the device.
+     */
+    public function commandHistories()
+    {
+        return $this->hasManyThrough(CommandHistory::class, Command::class);
     }
 
     /**
      * Get the raw data for the device.
      */
-    public function deviceRawData()
+    public function events()
     {
-        return $this->hasMany('App\Models\DeviceRawData');
+        return $this->hasMany(Event::class);
+    }
+
+    /**
+     * Get the event histories for the device.
+     */
+    public function eventHistories()
+    {
+        return $this->hasManyThrough(EventHistory::class, Event::class);
     }
 
     /**
@@ -78,7 +117,7 @@ class Device extends Model
      */
     public function temperatureStatistics()
     {
-        return $this->hasMany('App\Models\TemperatureStatistic');
+        return $this->hasMany(TemperatureStatistic::class);
     }
 
     /**
@@ -86,7 +125,7 @@ class Device extends Model
      */
     public function memoryStatistics()
     {
-        return $this->hasMany('App\Models\MemoryStatistic');
+        return $this->hasMany(MemoryStatistic::class);
     }
 
     /**
@@ -94,7 +133,7 @@ class Device extends Model
      */
     public function diskStatistics()
     {
-        return $this->hasMany('App\Models\DiskStatistic');
+        return $this->hasMany(DiskStatistic::class);
     }
 
     /**
@@ -102,7 +141,7 @@ class Device extends Model
      */
     public function networkStatistics()
     {
-        return $this->hasMany('App\Models\NetworkStatistic');
+        return $this->hasMany(NetworkStatistic::class);
     }
 
     /**
@@ -110,7 +149,7 @@ class Device extends Model
      */
     public function containerStatistics()
     {
-        return $this->hasMany('App\Models\ContainerStatistic');
+        return $this->hasMany(ContainerStatistic::class);
     }
 
     /**
@@ -118,14 +157,36 @@ class Device extends Model
      */
     public function cpuStatistics()
     {
-        return $this->hasMany('App\Models\CpuStatistic');
+        return $this->hasMany(CpuStatistic::class);
     }
 
-    /**
-     * Get the command histories for the device.
-     */
-    public function commandHistories()
+    public function scopeUniqueIdLike($query, $value)
     {
-        return $this->hasMany('App\Models\CommandHistory');
+        return $query->where('unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeNameLike($query, $value)
+    {
+        return $query->where('name', 'like', "%{$value}%");
+    }
+
+    public function scopeBiosVendorLike($query, $value)
+    {
+        return $query->where('bios_vendor', 'like', "%{$value}%");
+    }
+
+    public function scopeBiosVersionLike($query, $value)
+    {
+        return $query->where('bios_version', 'like', "%{$value}%");
+    }
+
+    public function scopeCategoryId($query, $id)
+    {
+        return $query->where('category_id', $id);
+    }
+
+    public function scopeStatusId($query, $id)
+    {
+        return $query->where('status_id',$id);
     }
 }

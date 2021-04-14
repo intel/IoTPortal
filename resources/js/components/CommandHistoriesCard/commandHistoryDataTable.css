@@ -10,73 +10,73 @@
     }
 }
 
-.datatable-command-history *:not(.table-header) {
+.datatable-command-histories *:not(.table-header) {
     font-size: 14px;
 }
 
-.datatable-command-history .p-paginator .p-paginator-current {
+.datatable-command-histories .p-paginator .p-paginator-current {
     margin-left: auto;
 }
 
-.datatable-command-history .p-progressbar {
+.datatable-command-histories .p-progressbar {
     height: .5rem;
     background-color: #D8DADC;
 }
 
-.datatable-command-history .p-progressbar .p-progressbar-value {
+.datatable-command-histories .p-progressbar .p-progressbar-value {
     background-color: #607D8B;
 }
 
-.datatable-command-history .table-header {
+.datatable-command-histories .table-header {
     display: flex;
     justify-content: space-between;
 }
 
-.datatable-command-history .p-datepicker {
+.datatable-command-histories .p-datepicker {
     min-width: 25rem;
 }
 
-.datatable-command-history .p-datepicker td {
+.datatable-command-histories .p-datepicker td {
     font-weight: 400;
 }
 
-.datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-header {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-header {
     padding: 1rem;
     text-align: left;
     font-size: 1.5rem !important;
 }
 
-.datatable-command-history .p-datatable.p-datatable-command-history .p-paginator {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-paginator {
     padding: 1rem;
 }
 
-.datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-thead > tr > th {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th {
     text-align: left;
 }
 
-.datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tbody > tr > td {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {
     cursor: auto;
 }
 
-.datatable-command-history .p-datatable.p-datatable-command-history .p-dropdown-label:not(.p-placeholder) {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {
     text-transform: uppercase;
 }
 
-.datatable-command-history .p-datatable-command-history .p-datatable-tbody > tr > td .p-column-title {
+.datatable-command-histories .p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {
     display: none;
 }
 
 @media screen and (max-width: 960px) {
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-thead > tr > th,
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tfoot > tr > td {
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th,
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tfoot > tr > td {
         display: none !important;
     }
 
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tbody > tr {
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr {
         border-bottom: 1px solid var(--layer-2);
     }
 
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tbody > tr > td {
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {
         text-align: left;
         display: block;
         border: 0 none !important;
@@ -86,7 +86,7 @@
         border: 0 none;
     }
 
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tbody > tr > td .p-column-title {
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {
         padding: .4rem;
         min-width: 30%;
         display: inline-block;
@@ -94,7 +94,7 @@
         font-weight: bold;
     }
 
-    .datatable-command-history .p-datatable.p-datatable-command-history .p-datatable-tbody > tr > td .p-progressbar {
+    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-progressbar {
         margin-top: .5rem;
     }
 }

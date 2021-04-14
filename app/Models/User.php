@@ -58,7 +58,7 @@ class User extends Authenticatable
      */
     public function managedTeams()
     {
-        return $this->belongsToMany('App\Models\Team')->wherePivot('role', 0);
+        return $this->belongsToMany(Team::class)->wherePivot('role', 0);
     }
 
     /**
@@ -66,7 +66,15 @@ class User extends Authenticatable
      */
     public function teams()
     {
-        return $this->belongsToMany('App\Models\Team');
+        return $this->belongsToMany(Team::class);
+    }
+
+    /**
+     * Get all of the device categories for the user.
+     */
+    public function deviceCategories()
+    {
+        return $this->hasMany(Category::class);
     }
 
     /**
@@ -74,16 +82,15 @@ class User extends Authenticatable
      */
     public function devices()
     {
-        return $this->hasMany('App\Models\Device');
+        return $this->hasManyThrough(Device::class, Category::class);
     }
-
 
     /**
      * Get the FOTA configurations for the user.
      */
     public function fotaConfigurations()
     {
-        return $this->hasMany('App\Models\FotaConfiguration');
+        return $this->hasMany(FotaConfiguration::class);
     }
 
     /**
@@ -91,7 +98,7 @@ class User extends Authenticatable
      */
     public function aotaConfigurations()
     {
-        return $this->hasMany('App\Models\AotaConfiguration');
+        return $this->hasMany(AotaConfiguration::class);
     }
 
     /**
@@ -99,6 +106,6 @@ class User extends Authenticatable
      */
     public function configurationFiles()
     {
-        return $this->hasMany('App\Models\ConfigurationFile');
+        return $this->hasMany(ConfigurationFile::class);
     }
 }

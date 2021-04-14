@@ -5,7 +5,6 @@ import { CButton } from '@coreui/react';
 
 import cotaActionTypes from './cota.types';
 import { API_ENDPOINT } from '../../data/config';
-import { removeObjectEmptyString } from '../../utils/utils';
 
 export const submitCotaStart = () => ({
   type: cotaActionTypes.SUBMIT_COTA_START,

@@ -160,6 +160,7 @@ class EndpointController extends Controller
     {
         Log::debug('Upper $payload->' . $payload);
         $deviceRawData = $device->deviceRawData()->create([
+            'type' => config('constants.raw_data_types.telemetry'),
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
 
@@ -214,6 +215,7 @@ class EndpointController extends Controller
     {
         Log::debug('Upper $payload->' . $payload);
         $deviceRawData = $device->deviceRawData()->create([
+            'type' => config('constants.raw_data_types.property'),
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
         ]);
 

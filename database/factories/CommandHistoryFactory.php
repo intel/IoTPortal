@@ -22,7 +22,7 @@ class CommandHistoryFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->numberBetween($min = 0, $max = 8),
+//            'type' => config('constants.mqtt_methods_integer_types'. '.' . array_rand(config('constants.mqtt_methods_integer_types'))),
             'payload' => '{"app":"compose","cmd":"down","containerTag":"hjckhjkhjk"}',
             'response_time' => $this->faker->dateTime(),
         ];

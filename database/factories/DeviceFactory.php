@@ -22,7 +22,7 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'status' => config('constants.device_statuses.provisioned'),
+//            'status' => config('constants.device_statuses.provisioned'),
             'bios_release_date' => $this->faker->date($format = 'Y-m-d', $max = 'now') . $this->faker->time($format = 'H:i:s', $max = 'now'),
             'bios_vendor' => $this->faker->company,
             'bios_version' => '6.00',

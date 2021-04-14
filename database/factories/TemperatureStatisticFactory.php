@@ -22,7 +22,7 @@ class TemperatureStatisticFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'temperature' => $this->faker->randomFloat(2, 0, 100),
         ];
     }
 }

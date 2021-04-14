@@ -5,7 +5,7 @@ const DevicePropertyCard = ({device}) => {
   return (
     <CCard>
       <CCardHeader>
-        Device Property
+        Device Properties
       </CCardHeader>
       <CCardBody>
         <table className="table table-striped">
@@ -57,6 +57,6 @@ const DevicePropertyCard = ({device}) => {
       </CCardBody>
     </CCard>
   )
-}
+};
 
-export default DevicePropertyCard
+export default DevicePropertyCard;

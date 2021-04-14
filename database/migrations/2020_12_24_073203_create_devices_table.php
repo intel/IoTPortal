@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->id();
             $table->string('unique_id')->unique();
             $table->string('name');
-            $table->integer('status');
+//            $table->integer('status');
             $table->string('bios_release_date')->nullable();
             $table->string('bios_vendor')->nullable();
             $table->string('bios_version')->nullable();
@@ -28,12 +28,16 @@ class CreateDevicesTable extends Migration
             $table->string('system_product_name')->nullable();
             $table->unsignedBigInteger('total_memory')->nullable();
             $table->string('mqtt_password');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('team_id')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('status_id');
+//            $table->unsignedBigInteger('user_id');
+//            $table->unsignedBigInteger('team_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('status_id')->references('id')->on('statuses');
+//            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 

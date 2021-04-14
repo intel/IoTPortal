@@ -21,7 +21,7 @@ const Content = () => {
             <CContainer fluid>
                 <Suspense fallback={loading}>
                     <Switch>
-                        {routes.map((route, idx) => {
+                      {routes.map((route, idx) => {
                             return route.component && (
                                 <Route
                                     key={idx}
@@ -35,7 +35,8 @@ const Content = () => {
                                     )} />
                             )
                         })}
-                        {/*<Redirect from="/" to="/dashboard" />*/}
+                      <Route exact strict path="(.*//+.*)" render={({ location }) => <Redirect to={location.pathname.replace(/\/\/+/g, '/')} />} />
+                      {/*<Redirect from="/" to="/dashboard" />*/}
                     </Switch>
                 </Suspense>
             </CContainer>

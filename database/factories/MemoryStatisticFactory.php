@@ -22,7 +22,7 @@ class MemoryStatisticFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'available_memory_in_bytes' => $this->faker->numberBetween($min = 107374182, $max = 34359738368),
         ];
     }
 }

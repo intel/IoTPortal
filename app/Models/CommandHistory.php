@@ -21,10 +21,30 @@ class CommandHistory extends Model
     ];
 
     /**
-     * Get the device that owns the command history.
+     * Get the command that owns the command history.
      */
-    public function device()
+    public function command()
     {
-        return $this->belongsTo('App\Models\Device');
+        return $this->belongsTo(Command::class);
+    }
+
+    public function scopePayloadLike($query, $value)
+    {
+        return $query->where('payload', 'like', "%{$value}%");
+    }
+
+    public function scopeCommandId($query, $value)
+    {
+        return $query->where('command_id', $value);
+    }
+
+    public function scopeResponseTimeBetween($query, $dates)
+    {
+        return $query->whereBetween('response_time', $dates);
+    }
+
+    public function scopeCreatedAtBetween($query, $dates)
+    {
+        return $query->whereBetween('created_at', $dates);
     }
 }

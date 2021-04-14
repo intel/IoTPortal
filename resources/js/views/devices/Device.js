@@ -20,7 +20,7 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-import { fetchDeviceStartAsync } from '../../redux/device/device.actions';
+import { fetchDeviceStartAsync, updateDeviceStartAsync } from '../../redux/device/device.actions';
 import { submitShutdownStartAsync } from '../../redux/shutdown/shutdown.actions'
 import { submitRebootStartAsync } from '../../redux/reboot/reboot.actions'
 import { submitDecommissionStartAsync } from '../../redux/decommission/decommission.actions'
@@ -34,19 +34,24 @@ import Spinner from '../../components/Spinner/Spinner';
 import Modal from '../../components/Modal/Modal';
 import Error from '../../components/Error/Error';
 import CommandHistoriesCard from '../../components/CommandHistoriesCard/CommandHistoriesCard';
-import RawDataCard from '../../components/RawDataCard/RawDataCard';
+import EditableText from '../../components/EditableText/EditableText';
+import { Skeleton } from 'primereact/skeleton';
+import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
+import EventHistoriesCard from '../../components/EventHistoriesCard/EventHistoriesCard';
+import MetricsCard from '../../components/MetricsCard/MetricsCard';
 
 const Device = (props) => {
 
   const deviceId = props.match.params.id;
   const {
     device,
-    errorMessage,
     isFetchingDevice,
+    fetchDeviceErrorMessage,
     isSubmittingShutdown,
     isSubmittingReboot,
     isSubmittingDecommission,
     fetchDeviceStartAsync,
+    updateDeviceStartAsync,
     submitShutdownStartAsync,
     submitRebootStartAsync,
     submitDecommissionStartAsync
@@ -76,9 +81,9 @@ const Device = (props) => {
   }
 
   if (isFetchingDevice) {
-    return (<Spinner/>);
-  } else if (errorMessage) {
-    return (<Error errorMessage={errorMessage}/>);
+    return (<CardSkeleton/>);
+  } else if (fetchDeviceErrorMessage) {
+    return (<Error errorMessage={fetchDeviceErrorMessage}/>);
   }
 
   return (
@@ -93,7 +98,7 @@ const Device = (props) => {
                 </div>
               </CCol>
               <CCol className="my-auto" xs="12" md="12" lg="6" xl="7">
-                <h2>{device.name}</h2>
+                <EditableText tag="h2" value={device.name} updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                 <small>ID: {device.unique_id}</small>
               </CCol>
               <CCol className="my-auto" xs="12" md="12" lg="5" xl="4">
@@ -140,6 +145,11 @@ const Device = (props) => {
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
+                  <CNavLink data-tab="metrics">
+                    Metrics
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
                   <CNavLink data-tab="aota">
                     Application OTA Update
                   </CNavLink>
@@ -165,14 +175,17 @@ const Device = (props) => {
                   </CNavLink>
                 </CNavItem>
                 <CNavItem>
-                  <CNavLink data-tab="raw-data">
-                    Raw Data
+                  <CNavLink data-tab="event-histories">
+                    Event Histories
                   </CNavLink>
                 </CNavItem>
               </CNav>
               <CTabContent>
                 <CTabPane className="m-3" data-tab="overview">
                   <DevicePropertyCard device={device}/>
+                </CTabPane>
+                <CTabPane className="m-3" data-tab="metrics">
+                  <MetricsCard deviceId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="aota">
                   <AotaCard deviceId={deviceId}/>
@@ -189,8 +202,8 @@ const Device = (props) => {
                 <CTabPane className="m-3" data-tab="command-histories">
                   <CommandHistoriesCard deviceId={deviceId}/>
                 </CTabPane>
-                <CTabPane className="m-3" data-tab="raw-data">
-                  <RawDataCard deviceId={deviceId}/>
+                <CTabPane className="m-3" data-tab="event-histories">
+                  <EventHistoriesCard deviceId={deviceId}/>
                 </CTabPane>
               </CTabContent>
             </CTabs>
@@ -200,12 +213,14 @@ const Device = (props) => {
       </CCol>
     </CRow>
   )
-}
+};
 
 const mapStateToProps = state => ({
   device: state.device.device,
   isFetchingDevice: state.device.isFetchingDevice,
-  errorMessage: state.device.fetchDeviceErrorMessage,
+  fetchDeviceErrorMessage: state.device.fetchDeviceErrorMessage,
+  isUpdatingDevice: state.device.isUpdatingDevice,
+  updateDeviceErrorMessage: state.device.updateDeviceErrorMessage,
   isSubmittingShutdown: state.shutdown.isSubmittingShutdown,
   isSubmittingReboot: state.reboot.isSubmittingReboot,
   isSubmittingDecommission: state.decommission.isSubmittingDecommission
@@ -213,6 +228,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchDeviceStartAsync: (id) => dispatch(fetchDeviceStartAsync(id)),
+  updateDeviceStartAsync: (id, params) => dispatch(updateDeviceStartAsync(id, params)),
   submitShutdownStartAsync: (id) => dispatch(submitShutdownStartAsync(id)),
   submitRebootStartAsync: (id) => dispatch(submitRebootStartAsync(id)),
   submitDecommissionStartAsync: (id) => dispatch(submitDecommissionStartAsync(id))
