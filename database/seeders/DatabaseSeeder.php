@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
         $deviceStatuses = array();
 
         $deviceStatuses[] = Status::create([
-            'name' => 'registered',
+            'name' => 'REGISTERED',
         ]);
 
         $deviceStatuses[] = Status::create([
-            'name' => 'provisioned',
+            'name' => 'PROVISIONED',
         ]);
 
         for ($i = 0; $i < 1; $i++) {
@@ -40,23 +40,23 @@ class DatabaseSeeder extends Seeder
             $deviceCategories = array();
 
             $deviceCategories[] = $user->deviceCategories()->create([
-                'name' => 'uncategorized',
+                'name' => 'UNCATEGORIZED',
             ]);
 
             $deviceCategories[] = $user->deviceCategories()->create([
-                'name' => 'cctv',
+                'name' => 'CCTV',
             ]);
 
             $deviceCategories[] = $user->deviceCategories()->create([
-                'name' => 'router',
+                'name' => 'ROUTER',
             ]);
 
             $deviceCategories[] = $user->deviceCategories()->create([
-                'name' => 'desktop',
+                'name' => 'DESKTOP',
             ]);
 
             $deviceCategories[] = $user->deviceCategories()->create([
-                'name' => 'laptop',
+                'name' => 'LAPTOP',
             ]);
 
             for ($x = 0; $x < 1; $x++) {
@@ -109,38 +109,47 @@ class DatabaseSeeder extends Seeder
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'ota',
+                    'method_name' => 'triggerota',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'aota',
+                    'method_name' => 'triggeraota',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'fota',
+                    'method_name' => 'triggerfota',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'sota',
+                    'method_name' => 'triggersota',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'cota',
+                    'method_name' => 'triggerconfig',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'shutdown',
+                    'method_name' => 'shutdown_device',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'reboot',
+                    'method_name' => 'reboot_device',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'decommission',
+                    'method_name' => 'decommission_device',
                 ]);
 
                 $commandTypes[] = $device->commands()->create([
                     'name' => 'file upload',
+                    'method_name' => 'file_upload',
                 ]);
 
                 for ($a = 0; $a < 10; $a++) {

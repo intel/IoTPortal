@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import {
     Content,
     Sidebar,
     Footer,
     Header
-} from '../../../containers/index'
+} from '../../../containers/index';
 
 const Layout = () => {
     return (
@@ -18,7 +18,7 @@ const Layout = () => {
                 <Footer/>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;

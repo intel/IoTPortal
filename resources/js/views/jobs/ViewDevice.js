@@ -16,7 +16,8 @@ import {
   CSpinner,
   CTabContent,
   CTabPane,
-  CTabs
+  CTabs,
+  CBadge
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -35,10 +36,10 @@ import AotaCard from '../../containers/AotaCard/AotaCard';
 import FotaCard from '../../containers/FotaCard/FotaCard';
 import SotaCard from '../../containers/SotaCard/SotaCard';
 import CotaCard from '../../containers/CotaCard/CotaCard';
-import CommandHistoriesCard from '../../containers/CommandHistoriesCard/CommandHistoriesCard';
-import EventHistoriesCard from '../../containers/EventHistoriesCard/EventHistoriesCard';
+import CommandHistoriesDataTable from '../../containers/CommandHistoriesDataTable/CommandHistoriesDataTable';
+import EventHistoriesDataTable from '../../containers/EventHistoriesDataTable/EventHistoriesDataTable';
 
-const Device = (props) => {
+const ViewDevice = (props) => {
 
   const deviceId = props.match.params.id;
   const {
@@ -90,17 +91,23 @@ const Device = (props) => {
         <CCard>
           <CCardHeader>
             <CRow>
-              <CCol className="my-auto" xs="12" md="12" lg="1" xl="1">
-                <div className="d-flex justify-content-center">
-                  <CIcon name='cilDevices' size="4xl"/>
+              <CCol className="mb-3" lg="12" xl="8">
+                <div className="d-flex my-auto">
+                  <div className="mr-5">
+                    <CIcon name='cilDevices' size="4xl"/>
+                  </div>
+                  <div className="flex-grow-1 overflow-hidden">
+                      <EditableText style={{minHeight: '48px'}} tag="h2" value={device.name} maxLength="255"
+                                    updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
+                      <small>ID: {device.unique_id}</small><br/>
+                      <div className="mt-2">
+                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name.toUpperCase()}</CBadge>
+                        <CBadge color="primary" className="font-lg">{device.category.name.toUpperCase()}</CBadge>
+                      </div>
+                  </div>
                 </div>
               </CCol>
-              <CCol className="my-auto" xs="12" md="12" lg="6" xl="7">
-                <EditableText tag="h2" value={device.name}
-                              updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
-                <small>ID: {device.unique_id}</small>
-              </CCol>
-              <CCol className="my-auto" xs="12" md="12" lg="5" xl="4">
+              <CCol className="my-auto" lg="12" xl="4">
                 <div className="d-flex justify-content-center">
                   <CButtonGroup>
                     <CButton color="danger" onClick={() => setShowShutdownModal(true)}
@@ -199,10 +206,10 @@ const Device = (props) => {
                   <CotaCard deviceId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="command-histories">
-                  <CommandHistoriesCard deviceId={deviceId}/>
+                  <CommandHistoriesDataTable deviceId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="event-histories">
-                  <EventHistoriesCard deviceId={deviceId}/>
+                  <EventHistoriesDataTable deviceId={deviceId}/>
                 </CTabPane>
               </CTabContent>
             </CTabs>
@@ -233,4 +240,4 @@ const mapDispatchToProps = dispatch => ({
   submitDecommissionStartAsync: (id) => dispatch(submitDecommissionStartAsync(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Device);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewDevice);

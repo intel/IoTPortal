@@ -1,17 +1,23 @@
 import React, { useRef } from 'react';
-import { connect } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CSpinner } from '@coreui/react';
-import CIcon from '@coreui/icons-react';
-
-import { submitFotaStartAsync } from '../../redux/fota/fota.actions';
+import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
+import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 
-const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
+const FotaCard = ({
+                    primaryButtonText,
+                    secondaryButtonText,
+                    isPrimaryLoading,
+                    isSecondaryLoading,
+                    isPrimaryDisabled,
+                    isSecondaryDisabled,
+                    submitCallback,
+                    resetCallback
+                  }) => {
 
   const formRef = useRef();
 
@@ -19,12 +25,16 @@ const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
     if (formRef.current) {
       formRef.current.handleSubmit();
     }
+    if (resetCallback) {
+      resetCallback();
+    }
   };
 
   const handleReset = () => {
     if (formRef.current) {
       formRef.current.resetForm();
     }
+    resetCallback();
   };
 
   const validationSchema = Yup.object({
@@ -65,20 +75,21 @@ const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            submitFotaStartAsync(deviceId, getSanitizedValues(values));
+            const data = {command: 'fota', payload: getSanitizedValues(values)}
+            submitCallback(data);
           }}
         >
           <Form>
             <IotTextInputFormGroup
               id="bios_version"
               name="bios_version"
-              label="BIOS Version"
+              label="BIOS version"
               placeholder="Enter BIOS version"
             />
             <IotTextInputFormGroup
               id="fetch_link"
               name="fetch_link"
-              label="Fetch Link"
+              label="Fetch link"
               placeholder="Enter fetch link"
             />
             <IotTextInputFormGroup
@@ -102,7 +113,7 @@ const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
             <IotTextInputFormGroup
               id="release_date"
               name="release_date"
-              label="Release Date"
+              label="Release date"
               placeholder="Enter release date"
             />
             <IotTextInputFormGroup
@@ -114,7 +125,7 @@ const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
             <IotTextInputFormGroup
               id="tool_options"
               name="tool_options"
-              label="Tool Options"
+              label="Tool options"
               placeholder="Enter tool options"
             />
             <IotTextInputFormGroup
@@ -126,37 +137,26 @@ const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
             <IotTextInputFormGroup
               id="server_username"
               name="server_username"
-              label="Server Username"
+              label="Server username"
               placeholder="Enter server username"
             />
             <IotTextInputFormGroup
               id="server_password"
               name="server_password"
-              label="Server Password"
+              label="Server password"
               placeholder="Enter server password"
             />
           </Form>
         </Formik>
       </CCardBody>
       <CCardFooter>
-        <CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingFota}>
-          {isSubmittingFota ? <CSpinner color="white" size="sm"/> : <CIcon name="cil-scrubber"/>} Submit
-        </CButton>
-        <CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset}
-                 disabled={isSubmittingFota}>
-          <CIcon name="cil-ban"/> Reset
-        </CButton>
+        <PrimarySecondaryButtons primaryButtonText={primaryButtonText} secondaryButtonText={secondaryButtonText}
+                                 isPrimaryLoading={isPrimaryLoading} isSecondaryLoading={isSecondaryLoading}
+                                 isPrimaryDisabled={isPrimaryDisabled} isSecondaryDisabled={isSecondaryDisabled}
+                                 onClickPrimary={handleSubmit} onClickSecondary={handleReset}/>
       </CCardFooter>
     </CCard>
   );
 };
 
-const mapStateToProps = state => ({
-  isSubmittingFota: state.fota.isSubmittingFota
-});
-
-const mapDispatchToPros = dispatch => ({
-  submitFotaStartAsync: (id, data) => dispatch(submitFotaStartAsync(id, data))
-});
-
-export default connect(mapStateToProps, mapDispatchToPros)(FotaCard);
+export default FotaCard;

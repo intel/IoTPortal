@@ -10,6 +10,7 @@ import deviceStatusReducer from './deviceStatus/deviceStatus.reducer';
 import deviceMetricReducer from './deviceMetric/deviceMetric.reducer';
 import deviceCommandHistoryReducer from './deviceCommandHistory/deviceCommandHistory.reducer';
 import deviceEventHistoryReducer from './deviceEventHistory/deviceEventHistory.reducer';
+import deviceGroupReducer from './deviceGroup/deviceGroup.reducer';
 import deviceReducer from './device/device.reducer';
 import shutdownReducer from './shutdown/shutdown.reducer';
 import rebootReducer from './reboot/reboot.reducer';
@@ -19,6 +20,7 @@ import fotaReducer from './fota/fota.reducer';
 import sotaReducer from './sota/sota.reducer';
 import cotaReducer from './cota/cota.reducer';
 import sidebarReducer from './sidebar/sidebar.reducer';
+import savedCommandReducer from './savedCommand/savedCommand.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -28,6 +30,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  savedCommand: savedCommandReducer,
   deviceCategory: deviceCategoryReducer,
   deviceCommand: deviceCommandReducer,
   deviceEvent: deviceEventReducer,
@@ -35,6 +38,7 @@ const rootReducer = combineReducers({
   deviceMetric: deviceMetricReducer,
   deviceCommandHistory: deviceCommandHistoryReducer,
   deviceEventHistory: deviceEventHistoryReducer,
+  deviceGroup: deviceGroupReducer,
   device: deviceReducer,
   shutdown: shutdownReducer,
   reboot: rebootReducer,
@@ -43,7 +47,7 @@ const rootReducer = combineReducers({
   fota: fotaReducer,
   sota: sotaReducer,
   cota: cotaReducer,
-  sidebar: sidebarReducer
+  sidebar: sidebarReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -1,8 +1,10 @@
 import React from 'react';
 
-import deviceCommandHistoryActionTypes from './deviceCommandHistory.types';
 import { API_ENDPOINT } from '../../data/config';
+import deviceCommandHistoryActionTypes from './deviceCommandHistory.types';
 
+
+// Index
 export const fetchDeviceCommandHistoriesStart = () => ({
   type: deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_START,
 });
@@ -17,11 +19,11 @@ export const fetchDeviceCommandHistoriesFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDeviceCommandHistoriesStartAsync = (id, params) => {
+export const fetchDeviceCommandHistoriesStartAsync = (id, lazyParams) => {
   return dispatch => {
-    dispatch(fetchDeviceCommandHistoriesStart());
+    dispatch(fetchDeviceCommandHistoriesStart())
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/commands/histories`, {params: params})
+    axios.get(`${API_ENDPOINT}/devices/${id}/commands/histories`, {params: lazyParams})
       .then(result => {
         dispatch(fetchDeviceCommandHistoriesSuccess(result.data.result.deviceCommandHistories));
       })
@@ -30,3 +32,8 @@ export const fetchDeviceCommandHistoriesStartAsync = (id, params) => {
       });
   };
 };
+
+export const setFetchDeviceCommandHistoriesLazyParams = lazyParams => ({
+  type: deviceCommandHistoryActionTypes.SET_FETCH_DEVICE_COMMAND_HISTORIES_LAZY_PARAMS,
+  payload: lazyParams,
+});

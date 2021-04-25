@@ -1,29 +1,32 @@
 import deviceStatusActionTypes from './deviceStatus.types';
 
+
 const INITIAL_STATE = {
-  deviceStatuses: null,
-  isFetchingDeviceStatuses: false,
-  fetchDeviceStatusesErrorMessage: undefined,
+  // Dropdown options
+  deviceStatusOptions: null,
+  isFetchingDeviceStatusOptions: false,
+  fetchDeviceStatusOptionsErrorMessage: undefined,
 };
 
 const deviceStatusReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case deviceStatusActionTypes.FETCH_DEVICE_STATUSES_START:
+    // Dropdown options
+    case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_START:
       return {
         ...state,
-        isFetchingDeviceStatuses: true
+        isFetchingDeviceStatusOptions: true
       };
-    case deviceStatusActionTypes.FETCH_DEVICE_STATUSES_SUCCESS:
+    case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_SUCCESS:
       return {
         ...state,
-        deviceStatuses: action.payload,
-        isFetchingDeviceStatuses: false
+        deviceStatusOptions: action.payload,
+        isFetchingDeviceStatusOptions: false
       };
-    case deviceStatusActionTypes.FETCH_DEVICE_STATUSES_FAILURE:
+    case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_FAILURE:
       return {
         ...state,
-        isFetchingDeviceStatuses: false,
-        fetchDeviceStatusesErrorMessage: action.payload
+        isFetchingDeviceStatusOptions: false,
+        fetchDeviceStatusOptionsErrorMessage: action.payload
       };
     default:
       return state;

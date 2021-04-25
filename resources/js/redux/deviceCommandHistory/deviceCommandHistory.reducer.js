@@ -1,14 +1,22 @@
 import deviceCommandHistoryActionTypes from './deviceCommandHistory.types';
 
+
 const INITIAL_STATE = {
+  // Index
   deviceCommandHistories: null,
-  totalRecords: 0,
+  deviceCommandHistoriesTotalRecords: 0,
   isFetchingDeviceCommandHistories: false,
   fetchDeviceCommandHistoriesErrorMessage: undefined,
+  fetchDeviceCommandHistoriesLazyParams: {
+    first: 0,
+    rows: 10,
+    page: 1,
+  },
 };
 
 const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    // Index
     case deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_START:
       return {
         ...state,
@@ -18,7 +26,7 @@ const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         deviceCommandHistories: action.payload.data,
-        totalRecords: action.payload.total,
+        deviceCommandHistoriesTotalRecords: action.payload.total,
         isFetchingDeviceCommandHistories: false,
       };
     case deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_FAILURE:
@@ -26,6 +34,11 @@ const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetchingDeviceCommandHistories: false,
         fetchDeviceCommandHistoriesErrorMessage: action.payload,
+      };
+    case deviceCommandHistoryActionTypes.SET_FETCH_DEVICE_COMMAND_HISTORIES_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDeviceCommandHistoriesLazyParams: action.payload,
       };
     default:
       return state;

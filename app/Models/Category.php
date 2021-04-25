@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -27,6 +28,30 @@ class Category extends Model
         'laravel_through_key',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $uniqueId = Str::uuid()->toString();
+            $model->unique_id = $uniqueId;
+        });
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'unique_id';
+    }
+
+    public function notFoundMessage()
+    {
+        return 'Device category not found.';
+    }
+
     /**
      * Get the user that owns the device category.
      */
@@ -41,5 +66,15 @@ class Category extends Model
     public function devices()
     {
         return $this->hasMany(Device::class);
+    }
+
+    public function scopeUniqueIdLike($query, $value)
+    {
+        return $query->where('unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeNameLike($query, $value)
+    {
+        return $query->where('name', 'like', "%{$value}%");
     }
 }

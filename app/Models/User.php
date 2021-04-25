@@ -70,11 +70,35 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the jobs for the user.
+     */
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
+    /**
      * Get all of the device categories for the user.
      */
     public function deviceCategories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    /**
+     * Get all of the device groups for the user.
+     */
+    public function deviceGroups()
+    {
+        return $this->hasMany(Group::class);
+    }
+
+    /**
+     * Get all of the saved commands for the user.
+     */
+    public function savedCommands()
+    {
+        return $this->hasMany(SavedCommand::class);
     }
 
     /**

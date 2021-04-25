@@ -12284,7 +12284,27 @@ var Content = function Content() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
         fallback: loading,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-          children: [_routes__WEBPACK_IMPORTED_MODULE_2__.default.map(function (route, idx) {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+            path: "/:url*(/+)",
+            exact: true,
+            strict: true,
+            render: function render(_ref) {
+              var location = _ref.location;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+                to: location.pathname.replace(/\/+$/, "")
+              });
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+            path: "/:url(.*//+.*)",
+            exact: true,
+            strict: true,
+            render: function render(_ref2) {
+              var match = _ref2.match;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+                to: "/".concat(match.params.url.replace(/\/\/+/, "/"))
+              });
+            }
+          }), _routes__WEBPACK_IMPORTED_MODULE_2__.default.map(function (route, idx) {
             return route.component && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
               path: route.path,
               exact: route.exact,
@@ -12295,16 +12315,9 @@ var Content = function Content() {
                 });
               }
             }, idx);
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
-            exact: true,
-            strict: true,
-            path: "(.*//+.*)",
-            render: function render(_ref) {
-              var location = _ref.location;
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
-                to: location.pathname.replace(/\/\/+/g, '/')
-              });
-            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Redirect, {
+            from: "/",
+            to: "/dashboard"
           })]
         })
       })
@@ -12336,30 +12349,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Footer = function Footer() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CFooter, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CFooter, {
     fixed: false,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-        href: "https://coreui.io",
+        href: "https://www.intel.com",
         target: "_blank",
         rel: "noopener noreferrer",
-        children: "CoreUI"
+        children: "Intel IoT Portal"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
         className: "ml-1",
-        children: "\xA9 2020 creativeLabs."
+        children: "\xA9 2021 Intel."
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "mfs-auto",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-        className: "mr-1",
-        children: "Powered by"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-        href: "https://coreui.io/react",
-        target: "_blank",
-        rel: "noopener noreferrer",
-        children: "CoreUI for React"
-      })]
-    })]
+    })
   });
 };
 
@@ -12437,60 +12439,24 @@ var Header = function Header() {
         height: "48",
         alt: "Logo"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNav, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNav, {
       className: "d-md-down-none mr-auto",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavItem, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavItem, {
         className: "px-3",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavLink, {
           to: "/dashboard",
           children: "Dashboard"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavItem, {
-        className: "px-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavLink, {
-          to: "/users",
-          children: "Users"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavItem, {
-        className: "px-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNavLink, {
-          children: "Settings"
-        })
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNav, {
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CHeaderNav, {
       className: "px-3",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_index__WEBPACK_IMPORTED_MODULE_6__.HeaderDropdownNotif, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_index__WEBPACK_IMPORTED_MODULE_6__.HeaderDropdownTasks, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_index__WEBPACK_IMPORTED_MODULE_6__.HeaderDropdownMssg, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_index__WEBPACK_IMPORTED_MODULE_6__.HeaderDropdown, {})]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSubheader, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_index__WEBPACK_IMPORTED_MODULE_6__.HeaderDropdown, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSubheader, {
       className: "px-3 justify-content-between",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CBreadcrumbRouter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CBreadcrumbRouter, {
         className: "border-0 c-subheader-nav m-0 px-0 px-md-3",
         routes: _routes__WEBPACK_IMPORTED_MODULE_4__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "d-md-down-none mfe-2 c-subheader-nav",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLink, {
-          className: "c-subheader-nav-link",
-          href: "#",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
-            name: "cil-speech",
-            alt: "Settings"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLink, {
-          className: "c-subheader-nav-link",
-          "aria-current": "page",
-          to: "/dashboard",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
-            name: "cil-graph",
-            alt: "Dashboard"
-          }), "\xA0Dashboard"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLink, {
-          className: "c-subheader-nav-link",
-          href: "#",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
-            name: "cil-settings",
-            alt: "Settings"
-          }), "\xA0Settings"]
-        })]
-      })]
+      })
     })]
   });
 };
@@ -12531,7 +12497,7 @@ var HeaderDropdown = function HeaderDropdown() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "c-avatar",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CImg, {
-          src: 'avatars/6.jpg',
+          src: '/avatars/default2.png',
           className: "c-avatar-img",
           alt: "admin@bootstrapmaster.com"
         })
@@ -12549,50 +12515,6 @@ var HeaderDropdown = function HeaderDropdown() {
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-bell",
-          className: "mfe-2"
-        }), "Updates", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "info",
-          className: "mfs-auto",
-          children: "42"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-envelope-open",
-          className: "mfe-2"
-        }), "Messages", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "success",
-          className: "mfs-auto",
-          children: "42"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-task",
-          className: "mfe-2"
-        }), "Tasks", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "danger",
-          className: "mfs-auto",
-          children: "42"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-comment-square",
-          className: "mfe-2"
-        }), "Comments", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "warning",
-          className: "mfs-auto",
-          children: "42"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        header: true,
-        tag: "div",
-        color: "light",
-        className: "text-center",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-          children: "Settings"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
           name: "cil-user",
           className: "mfe-2"
         }), "Profile"]
@@ -12601,31 +12523,13 @@ var HeaderDropdown = function HeaderDropdown() {
           name: "cil-settings",
           className: "mfe-2"
         }), "Settings"]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-credit-card",
-          className: "mfe-2"
-        }), "Payments", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "secondary",
-          className: "mfs-auto",
-          children: "42"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          name: "cil-file",
-          className: "mfe-2"
-        }), "Projects", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CBadge, {
-          color: "primary",
-          className: "mfs-auto",
-          children: "42"
-        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
         divider: true
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CDropdownItem, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
           name: "cil-lock-locked",
           className: "mfe-2"
-        }), "Lock Account"]
+        }), "Logout"]
       })]
     })]
   });
@@ -13202,20 +13106,80 @@ var _nav = [{
   })
 }, {
   _tag: 'CSidebarNavTitle',
-  _children: ['Devices']
+  _children: ['Management']
 }, {
-  _tag: 'CSidebarNavItem',
+  _tag: 'CSidebarNavDropdown',
   name: 'Devices',
   to: '/devices',
-  icon: 'cil-devices'
+  icon: 'cil-devices',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Devices',
+    to: '/devices'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Create new device',
+    to: '/devices/create'
+  }]
+}, {
+  _tag: 'CSidebarNavDropdown',
+  name: 'Device Groups',
+  to: '/device/groups',
+  icon: 'cil-basket',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Device Groups',
+    to: '/device/groups'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Create new device group',
+    to: '/device/groups/create'
+  }]
+}, {
+  _tag: 'CSidebarNavDropdown',
+  name: 'Device Categories',
+  to: '/device/categories',
+  icon: 'cil-library-add',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Device Categories',
+    to: '/device/categories'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Create new device category',
+    to: '/device/categories/create'
+  }]
+}, {
+  _tag: 'CSidebarNavDropdown',
+  name: 'Jobs',
+  to: '/jobs',
+  icon: 'cil-calendar-check',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Jobs',
+    to: '/jobs'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Create new job',
+    to: '/jobs/create'
+  }]
 }, {
   _tag: 'CSidebarNavTitle',
-  _children: ['OTA Update Files']
+  _children: ['Commands']
 }, {
-  _tag: 'CSidebarNavItem',
-  name: 'Configuration Files',
-  to: '/files/configuration',
-  icon: 'cil-file'
+  _tag: 'CSidebarNavDropdown',
+  name: 'Saved Commands',
+  to: '/commands/saved',
+  icon: 'cil-note-add',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Saved Commands',
+    to: '/commands/saved'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Create new saved command',
+    to: '/commands/saved/create'
+  }]
 }, {
   _tag: 'CSidebarNavTitle',
   _children: ['Administrations']
@@ -13331,14 +13295,50 @@ var Brands = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
 var Dashboard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_dashboard_Dashboard_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/dashboard/Dashboard */ "./resources/js/views/dashboard/Dashboard.js"));
 });
-var Devices = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_Devices_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/Devices */ "./resources/js/views/devices/Devices.js"));
+var ListDevices = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_ListDevices_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/ListDevices */ "./resources/js/views/devices/ListDevices.js"));
 });
-var Device = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_Device_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/Device */ "./resources/js/views/devices/Device.js"));
+var CreateDevice = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_CreateDevice_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/CreateDevice */ "./resources/js/views/devices/CreateDevice.js"));
+});
+var ViewDevice = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_ViewDevice_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/ViewDevice */ "./resources/js/views/devices/ViewDevice.js"));
+});
+var EditDevice = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_devices_EditDevice_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/devices/EditDevice */ "./resources/js/views/devices/EditDevice.js"));
+});
+var ListDeviceGroups = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceGroups_ListDeviceGroups_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceGroups/ListDeviceGroups */ "./resources/js/views/deviceGroups/ListDeviceGroups.js"));
+});
+var CreateDeviceGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceGroups_CreateDeviceGroup_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceGroups/CreateDeviceGroup */ "./resources/js/views/deviceGroups/CreateDeviceGroup.js"));
+});
+var ViewDeviceGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceGroups_ViewDeviceGroup_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceGroups/ViewDeviceGroup */ "./resources/js/views/deviceGroups/ViewDeviceGroup.js"));
+});
+var EditDeviceGroup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceGroups_EditDeviceGroup_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceGroups/EditDeviceGroup */ "./resources/js/views/deviceGroups/EditDeviceGroup.js"));
+});
+var ListDeviceCategories = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_ListDeviceCategories_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/ListDeviceCategories */ "./resources/js/views/deviceCategories/ListDeviceCategories.js"));
+});
+var CreateDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_CreateDeviceCategory_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/CreateDeviceCategory */ "./resources/js/views/deviceCategories/CreateDeviceCategory.js"));
+});
+var ViewDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_ViewDeviceCategory_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/ViewDeviceCategory */ "./resources/js/views/deviceCategories/ViewDeviceCategory.js"));
+});
+var EditDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_EditDeviceCategory_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/EditDeviceCategory */ "./resources/js/views/deviceCategories/EditDeviceCategory.js"));
+});
+var CreateJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_jobs_CreateJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/jobs/CreateJob */ "./resources/js/views/jobs/CreateJob.js"));
+});
+var CreateSavedCommand = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_CreateSavedCommand_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/CreateSavedCommand */ "./resources/js/views/savedCommands/CreateSavedCommand.js"));
 });
 var routes = [{
-  path: '/',
+  path: '/dashboard',
   exact: true,
   name: 'Dashboard',
   component: Dashboard
@@ -13346,12 +13346,72 @@ var routes = [{
   path: '/devices',
   exact: true,
   name: 'Devices',
-  component: Devices
+  component: ListDevices
+}, {
+  path: '/devices/create',
+  exact: true,
+  name: 'Create Device',
+  component: CreateDevice
 }, {
   path: '/devices/:id',
   exact: true,
   name: 'Device Details',
-  component: Device
+  component: ViewDevice
+}, {
+  path: '/devices/:id/edit',
+  exact: true,
+  name: 'Edit Device',
+  component: EditDevice
+}, {
+  path: '/device/groups',
+  exact: true,
+  name: 'Device Groups',
+  component: ListDeviceGroups
+}, {
+  path: '/device/groups/create',
+  exact: true,
+  name: 'Create Device Group',
+  component: CreateDeviceGroup
+}, {
+  path: '/device/groups/:id',
+  exact: true,
+  name: 'Device Group Details',
+  component: ViewDeviceGroup
+}, {
+  path: '/device/groups/:id/edit',
+  exact: true,
+  name: 'Edit Device Group',
+  component: EditDeviceGroup
+}, {
+  path: '/device/categories',
+  exact: true,
+  name: 'Device Categories',
+  component: ListDeviceCategories
+}, {
+  path: '/device/categories/create',
+  exact: true,
+  name: 'Create Device Category',
+  component: CreateDeviceCategory
+}, {
+  path: '/device/categories/:id',
+  exact: true,
+  name: 'Device Category Details',
+  component: ViewDeviceCategory
+}, {
+  path: '/device/categories/:id/edit',
+  exact: true,
+  name: 'Edit Device Category',
+  component: EditDeviceCategory
+}, {
+  path: '/jobs/create',
+  exact: true,
+  name: 'Create Job',
+  component: CreateJob
+}, {
+  path: '/commands/saved/create',
+  exact: true,
+  name: 'Create Saved Commands',
+  component: CreateSavedCommand
 }, // { path: '/', exact: true, name: 'Home' },
 // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
 // { path: '/theme', name: 'Theme', component: Colors, exact: true },

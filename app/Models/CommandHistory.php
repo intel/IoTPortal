@@ -28,6 +28,14 @@ class CommandHistory extends Model
         return $this->belongsTo(Command::class);
     }
 
+    /**
+     * Get the job that owns the command history.
+     */
+    public function job()
+    {
+        return $this->belongsTo(Command::class);
+    }
+
     public function scopePayloadLike($query, $value)
     {
         return $query->where('payload', 'like', "%{$value}%");
@@ -45,6 +53,6 @@ class CommandHistory extends Model
 
     public function scopeCreatedAtBetween($query, $dates)
     {
-        return $query->whereBetween('created_at', $dates);
+        return $query->whereBetween('command_histories.created_at', $dates);
     }
 }

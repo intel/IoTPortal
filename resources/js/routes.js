@@ -38,13 +38,49 @@ const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
 // const Users = React.lazy(() => import('./views/users/Users'));
 // const User = React.lazy(() => import('./views/users/User'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
-const Devices = React.lazy(() => import('./views/devices/Devices'));
-const Device = React.lazy(() => import('./views/devices/Device'));
+
+const ListDevices = React.lazy(() => import('./views/devices/ListDevices'));
+const CreateDevice = React.lazy(() => import('./views/devices/CreateDevice'));
+const ViewDevice = React.lazy(() => import('./views/devices/ViewDevice'));
+const EditDevice = React.lazy(() => import('./views/devices/EditDevice'));
+
+const ListDeviceGroups = React.lazy(() => import('./views/deviceGroups/ListDeviceGroups'));
+const CreateDeviceGroup = React.lazy(() => import('./views/deviceGroups/CreateDeviceGroup'));
+const ViewDeviceGroup = React.lazy(() => import('./views/deviceGroups/ViewDeviceGroup'));
+const EditDeviceGroup = React.lazy(() => import('./views/deviceGroups/EditDeviceGroup'));
+
+const ListDeviceCategories = React.lazy(() => import('./views/deviceCategories/ListDeviceCategories'));
+const CreateDeviceCategory = React.lazy(() => import('./views/deviceCategories/CreateDeviceCategory'));
+const ViewDeviceCategory = React.lazy(() => import('./views/deviceCategories/ViewDeviceCategory'));
+const EditDeviceCategory = React.lazy(() => import('./views/deviceCategories/EditDeviceCategory'));
+
+const CreateJob = React.lazy(() => import('./views/jobs/CreateJob'));
+
+const CreateSavedCommand = React.lazy(() => import('./views/savedCommands/CreateSavedCommand'));
 
 const routes = [
-    { path: '/', exact: true, name: 'Dashboard', component: Dashboard },
-    { path: '/devices', exact: true,  name: 'Devices', component: Devices },
-    { path: '/devices/:id', exact: true, name: 'Device Details', component: Device },
+    { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
+
+    { path: '/devices', exact: true,  name: 'Devices', component: ListDevices },
+    { path: '/devices/create', exact: true,  name: 'Create Device', component: CreateDevice },
+    { path: '/devices/:id', exact: true, name: 'Device Details', component: ViewDevice },
+    { path: '/devices/:id/edit', exact: true, name: 'Edit Device', component: EditDevice },
+
+    { path: '/device/groups', exact: true,  name: 'Device Groups', component: ListDeviceGroups },
+    { path: '/device/groups/create', exact: true,  name: 'Create Device Group', component: CreateDeviceGroup },
+    { path: '/device/groups/:id', exact: true,  name: 'Device Group Details', component: ViewDeviceGroup },
+    { path: '/device/groups/:id/edit', exact: true,  name: 'Edit Device Group', component: EditDeviceGroup },
+
+    { path: '/device/categories', exact: true,  name: 'Device Categories', component: ListDeviceCategories },
+    { path: '/device/categories/create', exact: true,  name: 'Create Device Category', component: CreateDeviceCategory },
+    { path: '/device/categories/:id', exact: true,  name: 'Device Category Details', component: ViewDeviceCategory },
+    { path: '/device/categories/:id/edit', exact: true,  name: 'Edit Device Category', component: EditDeviceCategory },
+
+    { path: '/jobs/create', exact: true,  name: 'Create Job', component: CreateJob },
+
+    { path: '/commands/saved/create', exact: true,  name: 'Create Saved Commands', component: CreateSavedCommand },
+
+
     // { path: '/', exact: true, name: 'Home' },
     // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
     // { path: '/theme', name: 'Theme', component: Colors, exact: true },

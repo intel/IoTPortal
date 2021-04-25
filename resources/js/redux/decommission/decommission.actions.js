@@ -1,10 +1,11 @@
-import React from 'react'
-import toast from 'react-hot-toast';
-import { CButton } from '@coreui/react'
+import React from 'react';
 
 import decommissionActionTypes from './decommission.types';
-import { API_ENDPOINT } from '../../data/config'
+import { API_ENDPOINT } from '../../data/config';
+import { toastHelper } from '../../utils/utils';
 
+
+// Submit Decommission
 export const submitDecommissionStart = () => ({
   type: decommissionActionTypes.SUBMIT_DECOMMISSION_START,
 });
@@ -15,50 +16,23 @@ export const submitDecommissionSuccess = () => ({
 
 export const submitDecommissionFailure = errorMessage => ({
   type: decommissionActionTypes.SUBMIT_DECOMMISSION_FAILURE,
-  payload: errorMessage
+  payload: errorMessage,
 });
 
 export const submitDecommissionStartAsync = (id) => {
   return dispatch => {
     dispatch(submitDecommissionStart());
-    const toastId = toast.loading('Decommissioning device...', {
-      style: {
-        minWidth: '500px',
-      },
-    });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'decommission_device'})
+    const toastId = toastHelper.loading('Decommissioning device...');
+
+    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'decommission'})
       .then(result => {
-        dispatch(submitDecommissionSuccess(result.data));
-
-        toast.success(<b>Decommissioned device successfully!</b>, {
-          id: toastId,
-          style: {
-            minWidth: '500px',
-          },
-        });
+        dispatch(submitDecommissionSuccess());
+        toastHelper.success('Decommissioned device successfully!', toastId);
       })
       .catch(error => {
         dispatch(submitDecommissionFailure(error.message));
-
-        toast.error((t) => (
-          <span>
-            <b>Decommission device failed: {error.message}</b>
-            <CButton
-              onClick={() => toast.dismiss(t.id)}
-              color="primary"
-              size="sm"
-              className="m-2"
-            >
-              Dismiss
-            </CButton>
-          </span>
-        ), {
-          id: toastId,
-          style: {
-            minWidth: '600px',
-          },
-        });
+        toastHelper.error(`Decommission device failed: ${error.message}`, toastId);
       });
   };
 };

@@ -133,10 +133,10 @@ var DevicePropertyCard = function DevicePropertyCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/DevicesCard/DevicesCard.js":
-/*!************************************************************!*\
-  !*** ./resources/js/containers/DevicesCard/DevicesCard.js ***!
-  \************************************************************/
+/***/ "./resources/js/containers/DevicesDataTable/DevicesDataTable.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/containers/DevicesDataTable/DevicesDataTable.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -158,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_deviceStatus_deviceStatus_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceStatus/deviceStatus.actions */ "./resources/js/redux/deviceStatus/deviceStatus.actions.js");
 /* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
 /* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
-/* harmony import */ var _devicesCard_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./devicesCard.css */ "./resources/js/containers/DevicesCard/devicesCard.css");
+/* harmony import */ var _devicesDataTable_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./devicesDataTable.css */ "./resources/js/containers/DevicesDataTable/devicesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -196,7 +196,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var DevicesCard = function DevicesCard(_ref) {
+var DevicesDataTable = function DevicesDataTable(_ref) {
   var history = _ref.history,
       match = _ref.match,
       deviceCategories = _ref.deviceCategories,
@@ -452,7 +452,7 @@ var DevicesCard = function DevicesCard(_ref) {
       },
       paginator: true,
       emptyMessage: "No device found",
-      currentPageReportTemplate: "Showing {first} to {last} of {totalRecords} entries",
+      currentPageReportTemplate: "Showing {first} to {last} of {deviceCommandHistoriesTotalRecords} entries",
       paginatorTemplate: "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown",
       rowsPerPageOptions: [10, 25, 50, 100, 200],
       first: lazyParams.first,
@@ -569,7 +569,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_14__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(DevicesCard)));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_14__.withRouter)((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(DevicesDataTable)));
 
 /***/ }),
 
@@ -819,7 +819,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _containers_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../containers/DevicesCard/DevicesCard */ "./resources/js/containers/DevicesCard/DevicesCard.js");
+/* harmony import */ var _containers_DevicesDataTable_DevicesDataTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../containers/DevicesDataTable/DevicesDataTable */ "./resources/js/containers/DevicesDataTable/DevicesDataTable.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -837,7 +837,7 @@ var Devices = function Devices() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
           children: "Devices"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_containers_DevicesCard_DevicesCard__WEBPACK_IMPORTED_MODULE_2__.default, {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_containers_DevicesDataTable_DevicesDataTable__WEBPACK_IMPORTED_MODULE_2__.default, {})
         })]
       })
     })
@@ -848,10 +848,10 @@ var Devices = function Devices() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesDataTable/devicesDataTable.css":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesDataTable/devicesDataTable.css ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -8639,7 +8639,7 @@ var CurrentPageReport = /*#__PURE__*/function (_Component) {
         rows: this.props.rows,
         totalRecords: this.props.totalRecords
       };
-      var text = this.props.reportTemplate.replace("{currentPage}", report.currentPage).replace("{totalPages}", report.totalPages).replace("{first}", report.first).replace("{last}", report.last).replace("{rows}", report.rows).replace("{totalRecords}", report.totalRecords);
+      var text = this.props.reportTemplate.replace("{currentPage}", report.currentPage).replace("{totalPages}", report.totalPages).replace("{first}", report.first).replace("{last}", report.last).replace("{rows}", report.rows).replace("{deviceCommandHistoriesTotalRecords}", report.totalRecords);
 
       var element = /*#__PURE__*/_react.default.createElement("span", {
         className: "p-paginator-current"
@@ -14228,10 +14228,10 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/DevicesCard/devicesCard.css":
-/*!*************************************************************!*\
-  !*** ./resources/js/containers/DevicesCard/devicesCard.css ***!
-  \*************************************************************/
+/***/ "./resources/js/containers/DevicesDataTable/devicesDataTable.css":
+/*!***********************************************************************!*\
+  !*** ./resources/js/containers/DevicesDataTable/devicesDataTable.css ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -14241,7 +14241,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./devicesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesCard/devicesCard.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./devicesDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/DevicesDataTable/devicesDataTable.css");
 
             
 
@@ -14250,11 +14250,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_devicesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ })
 

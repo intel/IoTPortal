@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'index_max_rows' => 500,
+
     'device_statuses' => [
         'registered' => 0,
         'provisioned' => 1
@@ -11,17 +13,93 @@ return [
         'telemetry' => 1
     ],
 
-    'mqtt_methods' => [
-        'ota' => 'triggerota',
-        'aota' => 'triggeraota',
-        'fota' => 'triggerfota',
-        'sota' => 'triggersota',
-        'cota' => 'triggerconfig',
-        'shutdown_device' => 'shutdown_device',
-        'reboot_device' => 'reboot_device',
-        'decommission_device' => 'decommission_device',
-        'file_upload' => 'file_upload'
+    'commands' => [
+        'ota' => [
+            'method_name' => 'triggerota',
+            'configuration_map' => [],
+        ],
+        'aota' => [
+            'method_name' => 'triggeraota',
+            'configuration_map' => [
+                'app' => 'app',
+                'command' => 'cmd',
+                'tag' => 'containerTag',
+                'reboot' => 'deviceReboot',
+                'fetch_link' => 'fetch',
+                'signature' => 'signature',
+                'version' => 'version',
+                'server_username' => 'username',
+                'server_password' => 'password',
+                'docker_registry' => 'dockerRegistry',
+                'docker_username' => 'dockerUsername',
+                'docker_password' => 'dockerPassword',
+                'docker_compose_file' => 'file',
+            ],
+        ],
+        'fota' => [
+            'method_name' => 'triggerfota',
+            'configuration_map' => [
+                'bios_version' => 'biosversion',
+                'fetch_link' => 'fetch',
+                'manufacturer' => 'manufacturer',
+                'path' => 'path',
+                'product' => 'product',
+                'release_date' => 'releasedate',
+                'signature' => 'signature',
+                'tool_options' => 'tooloptions',
+                'vendor' => 'vendor',
+                'server_username' => 'username',
+                'server_password' => 'password',
+            ],
+        ],
+        'sota' => [
+            'method_name' => 'triggersota',
+            'configuration_map' => [
+                'command' => 'cmd',
+                'fetch_link' => 'fetch',
+                'log_to_file' => 'log_to_file',
+                'username' => 'username',
+                'password' => 'password',
+            ],
+        ],
+        'cota' => [
+            'method_name' => 'triggercota',
+            'configuration_map' => [
+                'command' => 'cmd',
+                'fetch_link' => 'fetch',
+                'configurations' => 'path',
+                'signature' => 'signature',
+            ],
+        ],
+        'shutdown' => [
+            'method_name' => 'shutdown_device',
+            'configuration_map' => [],
+        ],
+        'reboot' => [
+            'method_name' => 'reboot_device',
+            'configuration_map' => [],
+        ],
+        'decommission' => [
+            'method_name' => 'decommission_device',
+            'configuration_map' => [],
+        ],
+        'file_upload' => [
+            'method_name' => 'file_upload',
+            'configuration_map' => [],
+        ],
     ],
+
+//    'mqtt_methods' => [
+//        'ota' => 'triggerota',
+//        'aota' => 'triggeraota',
+//        'fota' => 'triggerfota',
+//        'sota' => 'triggersota',
+//        'cota' => 'triggerconfig',
+//        'shutdown_device' => 'shutdown_device',
+//        'reboot_device' => 'reboot_device',
+//        'decommission_device' => 'decommission_device',
+//        'file_upload' => 'file_upload'
+//    ],
 
     'mqtt_methods_integer_types' => [
         'triggerota' => 0,
@@ -35,50 +113,50 @@ return [
         'file_upload' => 8
     ],
 
-    'aota_configurations_map' => [
-        'app' => 'app',
-        'command' => 'cmd',
-        'tag' => 'containerTag',
-        'reboot' => 'deviceReboot',
-        'fetch_link' => 'fetch',
-        'signature' => 'signature',
-        'version' => 'version',
-        'server_username' => 'username',
-        'server_password' => 'password',
-        'docker_registry' => 'dockerRegistry',
-        'docker_username' => 'dockerUsername',
-        'docker_password' => 'dockerPassword',
-        'docker_compose_file' => 'file'
-    ],
-
-    'fota_configurations_map' => [
-        'bios_version' => 'biosversion',
-        'fetch_link' => 'fetch',
-        'manufacturer' => 'manufacturer',
-        'path' => 'path',
-        'product' => 'product',
-        'release_date' => 'releasedate',
-        'signature' => 'signature',
-        'tool_options' => 'tooloptions',
-        'vendor' => 'vendor',
-        'server_username' => 'username',
-        'server_password' => 'password'
-    ],
-
-    'sota_configurations_map' => [
-        'command' => 'cmd',
-        'fetch_link' => 'fetch',
-        'log_to_file' => 'log_to_file',
-        'username' => 'username',
-        'password' => 'password'
-    ],
-
-    'cota_configurations_map' => [
-        'command' => 'cmd',
-        'fetch_link' => 'fetch',
-        'configurations' => 'path',
-        'signature' => 'signature',
-    ],
+//    'aota_configurations_map' => [
+//        'app' => 'app',
+//        'command' => 'cmd',
+//        'tag' => 'containerTag',
+//        'reboot' => 'deviceReboot',
+//        'fetch_link' => 'fetch',
+//        'signature' => 'signature',
+//        'version' => 'version',
+//        'server_username' => 'username',
+//        'server_password' => 'password',
+//        'docker_registry' => 'dockerRegistry',
+//        'docker_username' => 'dockerUsername',
+//        'docker_password' => 'dockerPassword',
+//        'docker_compose_file' => 'file'
+//    ],
+//
+//    'fota_configurations_map' => [
+//        'bios_version' => 'biosversion',
+//        'fetch_link' => 'fetch',
+//        'manufacturer' => 'manufacturer',
+//        'path' => 'path',
+//        'product' => 'product',
+//        'release_date' => 'releasedate',
+//        'signature' => 'signature',
+//        'tool_options' => 'tooloptions',
+//        'vendor' => 'vendor',
+//        'server_username' => 'username',
+//        'server_password' => 'password'
+//    ],
+//
+//    'sota_configurations_map' => [
+//        'command' => 'cmd',
+//        'fetch_link' => 'fetch',
+//        'log_to_file' => 'log_to_file',
+//        'username' => 'username',
+//        'password' => 'password'
+//    ],
+//
+//    'cota_configurations_map' => [
+//        'command' => 'cmd',
+//        'fetch_link' => 'fetch',
+//        'configurations' => 'path',
+//        'signature' => 'signature',
+//    ],
 
     'vernemq_hook' => [
         'auth_on_register' => 'auth_on_register',

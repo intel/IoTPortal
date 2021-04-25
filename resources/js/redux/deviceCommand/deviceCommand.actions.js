@@ -1,30 +1,35 @@
 import deviceCommandActionTypes from './deviceCommand.types';
 import { API_ENDPOINT } from '../../data/config';
 
-export const fetchDeviceCommandsStart = () => ({
-  type: deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_START,
+
+// Fetch dropdown options
+export const fetchDeviceCommandOptionsStart = () => ({
+  type: deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_START,
 });
 
-export const fetchDeviceCommandsSuccess = deviceCommands => ({
-  type: deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_SUCCESS,
-  payload: deviceCommands
+export const fetchDeviceCommandOptionsSuccess = deviceCommandOptions => ({
+  type: deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_SUCCESS,
+  payload: deviceCommandOptions,
 });
 
-export const fetchDeviceCommandsFailure = errorMessage => ({
-  type: deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_FAILURE,
-  payload: errorMessage
+export const fetchDeviceCommandOptionsFailure = errorMessage => ({
+  type: deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_FAILURE,
+  payload: errorMessage,
 });
 
-export const fetchDeviceCommandsStartAsync = id => {
+export const fetchDeviceCommandOptionsStartAsync = (id, name) => {
   return dispatch => {
-    dispatch(fetchDeviceCommandsStart());
+    dispatch(fetchDeviceCommandOptionsStart());
 
-    axios.get(`${API_ENDPOINT}/devices/${id}/commands`)
+    const params = {};
+    if (name) params.name = name;
+
+    axios.get(`${API_ENDPOINT}/devices/${id}/commands/options`, {params: params})
       .then(result => {
-        dispatch(fetchDeviceCommandsSuccess(result.data.result.deviceCommands));
+        dispatch(fetchDeviceCommandOptionsSuccess(result.data.result.deviceCommands));
       })
       .catch(error => {
-        dispatch(fetchDeviceCommandsFailure(error.message));
+        dispatch(fetchDeviceCommandOptionsFailure(error.message));
       });
   }
 };

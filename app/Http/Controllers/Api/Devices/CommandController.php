@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\Devices;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\Command;
 use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,20 +15,18 @@ class CommandController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
-    public function index(Device $device)
+    public function index(Request $request)
     {
-        $deviceCommands = $device->commands()->select(['id', 'name'])->distinct()->get();
-
-        return response(['result' => ['deviceCommands' => $deviceCommands], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -35,31 +35,47 @@ class CommandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param Command $command
+     * @return Response
      */
-    public function show(Device $device)
+    public function show(Command $command)
     {
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Command $command
+     * @return Response
      */
-    public function update(Request $request, Device $device)
+    public function update(Request $request, Command $command)
     {
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param Command $command
+     * @return Response
      */
-    public function destroy(Device $device)
+    public function destroy(Command $command)
     {
+    }
+
+    /**
+     * @param Request $request
+     * @param Device $device
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function options(Request $request, Device $device)
+    {
+        $query = $device->commands()->select(['id as value', 'name as label']);
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', "%{$request->input('name')}%");
+        }
+
+        return Helper::apiResponse(['deviceCommands' => $query->get()]);
     }
 }

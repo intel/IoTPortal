@@ -1,30 +1,35 @@
 import deviceStatusActionTypes from './deviceStatus.types';
 import { API_ENDPOINT } from '../../data/config';
 
-export const fetchDeviceStatusesStart = () => ({
-  type: deviceStatusActionTypes.FETCH_DEVICE_STATUSES_START,
+
+// Fetch dropdown options
+export const fetchDeviceStatusOptionsStart = () => ({
+  type: deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_START,
 });
 
-export const fetchDeviceStatusesSuccess = deviceStatuses => ({
-  type: deviceStatusActionTypes.FETCH_DEVICE_STATUSES_SUCCESS,
-  payload: deviceStatuses
+export const fetchDeviceStatusOptionsSuccess = deviceStatuses => ({
+  type: deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_SUCCESS,
+  payload: deviceStatuses,
 });
 
-export const fetchDeviceStatusesFailure = errorMessage => ({
-  type: deviceStatusActionTypes.FETCH_DEVICE_STATUSES_FAILURE,
-  payload: errorMessage
+export const fetchDeviceStatusOptionsFailure = errorMessage => ({
+  type: deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_FAILURE,
+  payload: errorMessage,
 });
 
-export const fetchDeviceStatusesStartAsync = () => {
+export const fetchDeviceStatusOptionsStartAsync = (name) => {
   return dispatch => {
-    dispatch(fetchDeviceStatusesStart());
+    dispatch(fetchDeviceStatusOptionsStart());
 
-    axios.get(`${API_ENDPOINT}/device/statuses`)
+    const params = {};
+    if (name) params.name = name;
+
+    axios.get(`${API_ENDPOINT}/device/statuses/options`, {params: params})
       .then(result => {
-        dispatch(fetchDeviceStatusesSuccess(result.data.result.deviceStatuses));
+        dispatch(fetchDeviceStatusOptionsSuccess(result.data.result.deviceStatuses));
       })
       .catch(error => {
-        dispatch(fetchDeviceStatusesFailure(error.message));
+        dispatch(fetchDeviceStatusOptionsFailure(error.message));
       });
   }
 };

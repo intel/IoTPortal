@@ -15,14 +15,11 @@ class CreateEventHistoriesTable extends Migration
     {
         Schema::create('event_histories', function (Blueprint $table) {
             $table->id();
-//            $table->integer('type');
             $table->json('raw_data');
             $table->unsignedBigInteger('event_id');
-//            $table->unsignedBigInteger('device_id');
             $table->timestamps();
 
-            $table->foreign('event_id')->references('id')->on('events');
-//            $table->foreign('device_id')->references('id')->on('devices');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

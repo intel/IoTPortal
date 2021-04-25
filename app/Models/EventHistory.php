@@ -38,7 +38,7 @@ class EventHistory extends Model
 
     public function scopeCreatedAtBetween($query, $dates)
     {
-        return $query->whereBetween('created_at', $dates);
+        return $query->whereBetween('event_histories.created_at', $dates);
     }
 
 

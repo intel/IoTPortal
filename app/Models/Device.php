@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\Helper;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -18,7 +19,6 @@ class Device extends Model
      */
     protected $fillable = [
         'name',
-        'status',
         'bios_release_date',
         'bios_vendor',
         'bios_version',
@@ -28,6 +28,8 @@ class Device extends Model
         'system_manufacturer',
         'system_product_name',
         'total_memory',
+        'category_id',
+        'status_id',
     ];
 
     public static function boot()
@@ -36,7 +38,7 @@ class Device extends Model
         self::creating(function ($model) {
             $uniqueId = Str::uuid()->toString();
             $model->unique_id = $uniqueId;
-            $model->name = $uniqueId;
+            $model->name = $model->name ? $model->name : $uniqueId;
             $model->mqtt_password = Helper::generateMqttPassword();
         });
     }
@@ -62,6 +64,14 @@ class Device extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the groups for the device.
+     */
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class);
     }
 
     /**
@@ -160,14 +170,19 @@ class Device extends Model
         return $this->hasMany(CpuStatistic::class);
     }
 
+    public function getRegisteredAttribute()
+    {
+        return strtolower($this->status->name) === 'registered';
+    }
+
     public function scopeUniqueIdLike($query, $value)
     {
-        return $query->where('unique_id', 'like', "%{$value}%");
+        return $query->where('devices.unique_id', 'like', "%{$value}%");
     }
 
     public function scopeNameLike($query, $value)
     {
-        return $query->where('name', 'like', "%{$value}%");
+        return $query->where('devices.name', 'like', "%{$value}%");
     }
 
     public function scopeBiosVendorLike($query, $value)
@@ -188,5 +203,12 @@ class Device extends Model
     public function scopeStatusId($query, $id)
     {
         return $query->where('status_id',$id);
+    }
+
+    public function scopeDeviceGroupUniqueId($query, $id)
+    {
+        return $query->whereHas('groups', function (Builder $query) use ($id) {
+            $query->where('groups.unique_id', $id);
+        });
     }
 }

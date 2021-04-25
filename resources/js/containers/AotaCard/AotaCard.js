@@ -1,25 +1,33 @@
 import React, { useRef, useState } from 'react';
-import { connect } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CSpinner } from '@coreui/react';
-import CIcon from '@coreui/icons-react';
+import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 
 import {
   AOTA_APP_OPTIONS,
   AOTA_COMMAND_OPTIONS,
-  AOTA_REBOOT_OPTIONS,
+  AOTA_FIELDS_HIDDEN_STATES,
   AOTA_INITIAL_FIELDS_HIDDEN_STATE,
-  AOTA_FIELDS_HIDDEN_STATES
+  AOTA_REBOOT_OPTIONS
 } from '../../data/options';
-import { submitAotaStartAsync } from '../../redux/aota/aota.actions';
 import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
+import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 
-const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
+const AotaCard = ({
+                    primaryButtonText,
+                    secondaryButtonText,
+                    isPrimaryLoading,
+                    isSecondaryLoading,
+                    isPrimaryDisabled,
+                    isSecondaryDisabled,
+                    submitCallback,
+                    resetCallback
+                  }) => {
+
   const [commandOptions, setCommandOptions] = useState(AOTA_COMMAND_OPTIONS.docker);
   const [isFieldHidden, setFieldHidden] = useState(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
 
@@ -35,6 +43,9 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
     setFieldHidden(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
     if (formRef.current) {
       formRef.current.resetForm();
+    }
+    if (resetCallback) {
+      resetCallback();
     }
   };
 
@@ -85,10 +96,6 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
       formRef.current.setFieldValue('app', selectedOption);
       setCommandOptions(AOTA_COMMAND_OPTIONS[selectedOption.value]);
       setFieldHidden({...AOTA_INITIAL_FIELDS_HIDDEN_STATE, command: false});
-      // Reset form fields hidden state when command dropdown is different than the previous one
-      // if (AOTA_COMMAND_OPTIONS[selectedOption.value].find((element) => (element.value === formRef.current.values.command.value)) !== undefined) {
-      //   setFieldHidden(AOTA_FIELDS_HIDDEN_STATES[selectedOption.value][formRef.current.values.command.value]);
-      // }
     } else if (name === 'app' && !selectedOption) {
       handleReset();
     } else if (name === 'command' && selectedOption) {
@@ -122,11 +129,8 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            submitAotaStartAsync(deviceId, getSanitizedValues(values));
-            // setTimeout(() => {
-            //   alert(JSON.stringify(values, null, 2));
-            //   setSubmitting(false);
-            // }, 4000);
+            const data = {command: 'aota', payload: getSanitizedValues(values)}
+            submitCallback(data);
           }}
         >
           {({values}) => (
@@ -158,14 +162,14 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
               <IotTextInputFormGroup
                 id="tag"
                 name="tag"
-                label="Container Tag"
+                label="Container tag"
                 placeholder="Enter container tag"
                 isHidden={isFieldHidden.tag}
               />
               <IotSelectFormGroup
                 id="reboot"
                 name="reboot"
-                label="Device Reboot"
+                label="Device reboot"
                 placeholder="Choose device reboot"
                 options={AOTA_REBOOT_OPTIONS}
                 value={values.reboot}
@@ -176,7 +180,7 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
               <IotTextInputFormGroup
                 id="fetch_link"
                 name="fetch_link"
-                label="Fetch Link"
+                label="Fetch link"
                 placeholder="Enter fetch link"
                 isHidden={isFieldHidden.fetch_link}
               />
@@ -197,42 +201,42 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
               <IotTextInputFormGroup
                 id="server_username"
                 name="server_username"
-                label="Server Username"
+                label="Server username"
                 placeholder="Enter server username"
                 isHidden={isFieldHidden.server_username}
               />
               <IotTextInputFormGroup
                 id="server_password"
                 name="server_password"
-                label="Server Password"
+                label="Server password"
                 placeholder="Enter server password"
                 isHidden={isFieldHidden.server_password}
               />
               <IotTextInputFormGroup
                 id="docker_registry"
                 name="docker_registry"
-                label="Docker Registry"
+                label="Docker registry"
                 placeholder="Enter Docker registry"
                 isHidden={isFieldHidden.docker_registry}
               />
               <IotTextInputFormGroup
                 id="docker_username"
                 name="docker_username"
-                label="Docker Username"
+                label="Docker username"
                 placeholder="Enter Docker username"
                 isHidden={isFieldHidden.docker_username}
               />
               <IotTextInputFormGroup
                 id="docker_password"
                 name="docker_password"
-                label="Docker Password"
+                label="Docker password"
                 placeholder="Enter Docker password"
                 isHidden={isFieldHidden.docker_password}
               />
               <IotTextInputFormGroup
                 id="docker_compose_file"
                 name="docker_compose_file"
-                label="Docker Compose File"
+                label="Docker compose file"
                 placeholder="Enter Docker Compose file"
                 isHidden={isFieldHidden.docker_compose_file}
               />
@@ -241,24 +245,13 @@ const AotaCard = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
         </Formik>
       </CCardBody>
       <CCardFooter>
-        <CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingAota}>
-          {isSubmittingAota ? <CSpinner color="white" size="sm"/> : <CIcon name="cil-scrubber"/>} Submit
-        </CButton>
-        <CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset}
-                 disabled={isSubmittingAota}>
-          <CIcon name="cil-ban"/> Reset
-        </CButton>
+        <PrimarySecondaryButtons primaryButtonText={primaryButtonText} secondaryButtonText={secondaryButtonText}
+                                 isPrimaryLoading={isPrimaryLoading} isSecondaryLoading={isSecondaryLoading}
+                                 isPrimaryDisabled={isPrimaryDisabled} isSecondaryDisabled={isSecondaryDisabled}
+                                 onClickPrimary={handleSubmit} onClickSecondary={handleReset}/>
       </CCardFooter>
     </CCard>
   );
 };
 
-const mapStateToProps = state => ({
-  isSubmittingAota: state.aota.isSubmittingAota
-});
-
-const mapDispatchToPros = dispatch => ({
-  submitAotaStartAsync: (id, data) => dispatch(submitAotaStartAsync(id, data))
-});
-
-export default connect(mapStateToProps, mapDispatchToPros)(AotaCard);
+export default AotaCard;

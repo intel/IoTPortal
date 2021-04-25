@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Mqtt;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +16,7 @@ class EndpointController extends Controller
     public function mqttEndpoint(Request $request)
     {
         $verneMqHook = $request->header('vernemq-hook');
-        Log::debug('Header vernemq-hook-> '.$verneMqHook.' ,MQTT request->' . json_encode($request->all()));
+        Log::debug('Header vernemq-hook-> ' . $verneMqHook . ' ,MQTT request->' . json_encode($request->all()));
 
         if ($verneMqHook) {
             if ($verneMqHook === config('constants.vernemq_hook.auth_on_register')) {
@@ -25,9 +26,9 @@ class EndpointController extends Controller
             } elseif ($verneMqHook === config('constants.vernemq_hook.auth_on_publish')) {
                 return $this->authOnPublish($request);
             }
-            return response(['result' => ['error' => 'Header vernemq-hook is invalid.']], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponse([], false, 'Header vernemq-hook is invalid.', [], Response::HTTP_BAD_REQUEST);
         }
-        return response(['result' => ['error' => 'Header vernemq-hook is empty.']], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponse([], false, 'Header vernemq-hook is empty.', [], Response::HTTP_BAD_REQUEST);
     }
 
     protected function authOnRegister(Request $request)
@@ -39,7 +40,7 @@ class EndpointController extends Controller
         $mqttConfig = config('mqttclient.connections.default');
 
         if ($username === $mqttConfig['username'] && $password === $mqttConfig['password'] && $clientId === $mqttConfig['client_id']) {
-            return response(['result' => 'ok'], Response::HTTP_OK);
+            return Helper::apiResponse();
         }
 
         $validator = Validator::make($request->all(), [
@@ -49,19 +50,17 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response([
-                'result' => ['error' => $validator->getMessageBag()->toArray()]
-            ], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
         }
 
         if ($username === $clientId) {
             $device = Device::where('unique_id', $username)->where('mqtt_password', $password)->first();
 
             return $device
-                ? response(['result' => 'ok'], Response::HTTP_OK)
-                : response(['result' => ['error' => 'Invalid username or password.']], Response::HTTP_UNAUTHORIZED);
+                ? Helper::apiResponse()
+                : Helper::apiResponse([], false, 'Invalid username or password.', [], Response::HTTP_UNAUTHORIZED);
         }
-        return response(['result' => ['error' => 'username and client_id do not match.']], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponse([], false, 'username and client_id do not match.', [], Response::HTTP_BAD_REQUEST);
     }
 
     protected function authOnSubscribe(Request $request)
@@ -76,9 +75,7 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response([
-                'result' => ['error' => $validator->getMessageBag()->toArray()]
-            ], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
         }
 
         if ($username === $clientId) {
@@ -100,9 +97,9 @@ class EndpointController extends Controller
                     ? response(['result' => 'ok', 'topics' => $disallowTopics], Response::HTTP_OK)
                     : response(['result' => 'ok'], Response::HTTP_OK);
             }
-            return response(['result' => ['error' => 'Invalid username or password.']], Response::HTTP_UNAUTHORIZED);
+            return Helper::apiResponse([], false, 'Invalid username or password.', [], Response::HTTP_UNAUTHORIZED);
         }
-        return response(['result' => ['error' => 'username and client_id do not match.']], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponse([], false, 'username and client_id do not match.', [], Response::HTTP_BAD_REQUEST);
     }
 
     protected function authOnPublish(Request $request)
@@ -114,7 +111,8 @@ class EndpointController extends Controller
         $mqttConfig = config('mqttclient.connections.default');
 
         if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w\-]+)\/methods\/POST\/([\w\-_]+)\/\?\$rid=([\d]+)/', $topic)) {
-            return response(['result' => 'ok'], Response::HTTP_OK);
+            return Helper::apiResponse();
+//            return response(['result' => 'ok'], Response::HTTP_OK);
         }
 
         $validator = Validator::make($request->all(), [
@@ -124,16 +122,14 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response([
-                'result' => ['error' => $validator->getMessageBag()->toArray()]
-            ], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
         }
 
         $payload = Helper::sanitisePayload(base64_decode($request->input('payload')));
 
         if (preg_match('/(devices|iotportal)\/([\w\-]+)\//', $topic, $deviceIdMatches)) {
             $extractedDeviceId = $deviceIdMatches[2];
-            Log::debug('$username-> '.$username.'$clientId-> '.$clientId.'$extractedDeviceId-> '. $extractedDeviceId);
+            Log::debug('$username-> ' . $username . '$clientId-> ' . $clientId . '$extractedDeviceId-> ' . $extractedDeviceId);
 
             if ($username === $clientId && $clientId === $extractedDeviceId) {
                 $device = Device::where('unique_id', $username)->first();
@@ -144,24 +140,25 @@ class EndpointController extends Controller
                     } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
                         return $this->propertiesReported($device, $payload);
                     } elseif (preg_match('/iotportal\/([\w\-]+)\/methods\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
-                        Log::debug('preg_match updateResponse run-> '.$topic.' ,$requestIdMatches->' . $requestIdMatches[2]);
+                        Log::debug('preg_match updateResponse run-> ' . $topic . ' ,$requestIdMatches->' . $requestIdMatches[2]);
                         return $this->updateResponse($device, $requestIdMatches[2]);
                     }
-                    return response(['result' => ['error' => 'Unsupported topic.']], Response::HTTP_BAD_REQUEST);
+                    return Helper::apiResponse([], false, 'Unsupported topic.', [], Response::HTTP_BAD_REQUEST);
                 }
-                return response(['result' => ['error' => 'device_unique_id not found.']], Response::HTTP_NOT_FOUND);
+                return Helper::apiResponse([], false, 'device_unique_id not found.', [], Response::HTTP_BAD_REQUEST);
             }
-            return response(['result' => ['error' => 'username, client_id and device_unique_id in topic do not match']], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponse([], false, 'username, client_id and device_unique_id in topic do not match.', [], Response::HTTP_BAD_REQUEST);
         }
-        return response(['result' => ['error' => 'Invalid device_unique_id in topic.']], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponse([], false, 'Invalid device_unique_id in topic.', [], Response::HTTP_BAD_REQUEST);
     }
 
     protected function messagesEvents(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $deviceRawData = $device->deviceRawData()->create([
-            'type' => config('constants.raw_data_types.telemetry'),
+        $telemetryEvent = $device->events()->where('name', 'telemetry')->first();
+        $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
+            'event_id' => $telemetryEvent->id,
         ]);
 
         $payload = json_decode($payload);
@@ -206,17 +203,18 @@ class EndpointController extends Controller
             }
         }
 
-        return $deviceRawData->exists
-            ? response(['result' => 'ok'], Response::HTTP_OK)
-            : response(['result' => ['error' => 'Error saving device events.']], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return $eventHistory->exists
+            ? Helper::apiResponse()
+            : Helper::apiResponse([], false, 'Error saving device events.', [], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     protected function propertiesReported(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $deviceRawData = $device->deviceRawData()->create([
-            'type' => config('constants.raw_data_types.property'),
+        $propertyEvent = $device->events()->where('name', 'property')->first();
+        $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
+            'event_id' => $propertyEvent->id,
         ]);
 
         $payload = json_decode($payload);
@@ -260,9 +258,9 @@ class EndpointController extends Controller
             }
         }
 
-        return $deviceRawData->exists
-            ? response(['result' => 'ok'], Response::HTTP_OK)
-            : response(['result' => ['error' => 'Error saving device properties.']], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return $eventHistory->exists
+            ? Helper::apiResponse()
+            : Helper::apiResponse([], false, 'Error saving device properties.', [], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     protected function updateResponse(Device $device, int $requestId)
@@ -270,13 +268,15 @@ class EndpointController extends Controller
         $updateSuccess = $device->commandHistories()->find($requestId)->update(['response_time' => now()]);
 
         return $updateSuccess
-            ? response(['result' => 'ok'], Response::HTTP_OK)
-            : response(['result' => ['error' => 'Error updating device response.']], Response::HTTP_INTERNAL_SERVER_ERROR);
+            ? Helper::apiResponse()
+            : Helper::apiResponse([], false, 'Error updating device response.', [], Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     protected function updateDeviceStatus(Device $device)
     {
-        if ($device->status === config('constants.device_statuses.registered'))
-            $device->update(['status' => config('constants.device_statuses.provisioned')]);
+        if ($device->registered) {
+            $provisionedStatus = Status::where('name', 'provisioned')->first();
+            $device->status()->associate($provisionedStatus)->save();
+        }
     }
 }

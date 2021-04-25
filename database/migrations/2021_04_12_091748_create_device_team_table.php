@@ -19,8 +19,8 @@ class CreateDeviceTeamTable extends Migration
             $table->unsignedBigInteger('team_id');
             $table->timestamps();
 
-            $table->foreign('device_id')->references('id')->on('devices');
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('device_id')->references('id')->on('devices')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 

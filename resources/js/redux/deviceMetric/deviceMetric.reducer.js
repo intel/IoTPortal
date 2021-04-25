@@ -1,15 +1,23 @@
 import deviceMetricActionTypes from './deviceMetric.types';
 
+
 const INITIAL_STATE = {
+  // CPU temperatures
   cpuTemperatures: null,
   isFetchingCpuTemperatures: false,
   fetchCpuTemperaturesErrorMessage: undefined,
+
+  // CPU usages
   cpuUsages: null,
   isFetchingCpuUsages: false,
   fetchCpuUsagesErrorMessage: undefined,
+
+  // Disk usages
   diskUsages: null,
   isFetchingDiskUsages: false,
   fetchDiskUsagesErrorMessage: undefined,
+
+  // Available memories
   availableMemories: null,
   isFetchingAvailableMemories: false,
   fetchAvailableMemoriesErrorMessage: undefined,
@@ -17,6 +25,7 @@ const INITIAL_STATE = {
 
 const deviceMetricReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    // CPU temperatures
     case deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_START:
       return {
         ...state,
@@ -34,6 +43,8 @@ const deviceMetricReducer = (state = INITIAL_STATE, action) => {
         isFetchingCpuTemperatures: false,
         fetchCpuTemperaturesErrorMessage: action.payload
       };
+
+    // CPU usages
     case deviceMetricActionTypes.FETCH_CPU_USAGES_START:
       return {
         ...state,
@@ -51,6 +62,8 @@ const deviceMetricReducer = (state = INITIAL_STATE, action) => {
         isFetchingCpuUsages: false,
         fetchCpuTemperaturesErrorMessage: action.payload
       };
+
+    // Disk usages
     case deviceMetricActionTypes.FETCH_DISK_USAGES_START:
       return {
         ...state,
@@ -68,6 +81,8 @@ const deviceMetricReducer = (state = INITIAL_STATE, action) => {
         isFetchingDiskUsages: false,
         fetchDiskUsagesErrorMessage: action.payload
       };
+
+    // Available memories
     case deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_START:
       return {
         ...state,

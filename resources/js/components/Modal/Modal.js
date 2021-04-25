@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from '@coreui/react';
 
-const Modal = ({show, onConfirm, onClose, modalTitle, modalMessage}) => {
+const Modal = ({show, onClose, onConfirm, modalTitle, modalMessage, hidePrimaryButton, hideSecondaryButton, primaryButtonText, secondaryButtonText}) => {
   return (
     <CModal
       show={show}
@@ -15,11 +15,11 @@ const Modal = ({show, onConfirm, onClose, modalTitle, modalMessage}) => {
         {modalMessage}
       </CModalBody>
       <CModalFooter>
-        <CButton color="primary" onClick={onConfirm}>Shut down</CButton>{' '}
-        <CButton color="secondary" onClick={onClose}>Cancel</CButton>
+        {!hideSecondaryButton && (<><CButton color="secondary" onClick={onClose}>{secondaryButtonText || 'No'}</CButton>{' '}</>)}
+        {!hidePrimaryButton && <CButton color="primary" onClick={onConfirm}>{primaryButtonText || 'Yes'}</CButton>}
       </CModalFooter>
     </CModal>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

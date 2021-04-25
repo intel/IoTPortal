@@ -1,29 +1,32 @@
 import deviceEventActionTypes from './deviceEvent.types';
 
+
 const INITIAL_STATE = {
-  deviceEvents: null,
-  isFetchingDeviceEvents: false,
-  fetchDeviceEventsErrorMessage: undefined,
+  // Dropdown options
+  deviceEventOptions: null,
+  isFetchingDeviceEventOptions: false,
+  fetchDeviceEventOptionsErrorMessage: undefined,
 };
 
 const deviceEventReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case deviceEventActionTypes.FETCH_DEVICE_EVENTS_START:
+    // Dropdown options
+    case deviceEventActionTypes.FETCH_DEVICE_EVENT_OPTIONS_START:
       return {
         ...state,
-        isFetchingDeviceEvents: true
+        isFetchingDeviceEventOptions: true,
       };
-    case deviceEventActionTypes.FETCH_DEVICE_EVENTS_SUCCESS:
+    case deviceEventActionTypes.FETCH_DEVICE_EVENT_OPTIONS_SUCCESS:
       return {
         ...state,
-        deviceEvents: action.payload,
-        isFetchingDeviceEvents: false
+        deviceEventOptions: action.payload,
+        isFetchingDeviceEventOptions: false,
       };
-    case deviceEventActionTypes.FETCH_DEVICE_EVENTS_FAILURE:
+    case deviceEventActionTypes.FETCH_DEVICE_EVENT_OPTIONS_FAILURE:
       return {
         ...state,
-        isFetchingDeviceEvents: false,
-        fetchDeviceEventsErrorMessage: action.payload
+        isFetchingDeviceEventOptions: false,
+        fetchDeviceEventOptionsErrorMessage: action.payload,
       };
     default:
       return state;

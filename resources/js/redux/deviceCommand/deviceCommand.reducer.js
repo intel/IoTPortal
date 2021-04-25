@@ -1,29 +1,32 @@
 import deviceCommandActionTypes from './deviceCommand.types';
 
+
 const INITIAL_STATE = {
-  deviceCommands: null,
-  isFetchingDeviceCommands: false,
-  fetchDeviceCommandsErrorMessage: undefined,
+  // Dropdown options
+  deviceCommandOptions: null,
+  isFetchingDeviceCommandOptions: false,
+  fetchDeviceCommandOptionsErrorMessage: undefined,
 };
 
 const deviceCommandReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_START:
+    // Dropdown options
+    case deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_START:
       return {
         ...state,
-        isFetchingDeviceCommands: true
+        isFetchingDeviceCommandOptions: true,
       };
-    case deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_SUCCESS:
+    case deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_SUCCESS:
       return {
         ...state,
-        deviceCommands: action.payload,
-        isFetchingDeviceCommands: false
+        deviceCommandOptions: action.payload,
+        isFetchingDeviceCommandOptions: false,
       };
-    case deviceCommandActionTypes.FETCH_DEVICE_COMMANDS_FAILURE:
+    case deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_FAILURE:
       return {
         ...state,
-        isFetchingDeviceCommands: false,
-        fetchDeviceCommandsErrorMessage: action.payload
+        isFetchingDeviceCommandOptions: false,
+        fetchDeviceCommandOptionsErrorMessage: action.payload,
       };
     default:
       return state;

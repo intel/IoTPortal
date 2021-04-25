@@ -1,10 +1,11 @@
-import React from 'react'
-import toast from 'react-hot-toast';
-import { CButton } from '@coreui/react'
+import React from 'react';
 
 import rebootActionTypes from './reboot.types';
-import { API_ENDPOINT } from '../../data/config'
+import { API_ENDPOINT } from '../../data/config';
+import { toastHelper } from '../../utils/utils';
 
+
+// Submit reboot
 export const submitRebootStart = () => ({
   type: rebootActionTypes.SUBMIT_REBOOT_START,
 });
@@ -15,50 +16,23 @@ export const submitRebootSuccess = () => ({
 
 export const submitRebootFailure = errorMessage => ({
   type: rebootActionTypes.SUBMIT_REBOOT_FAILURE,
-  payload: errorMessage
+  payload: errorMessage,
 });
 
 export const submitRebootStartAsync = (id) => {
   return dispatch => {
     dispatch(submitRebootStart());
-    const toastId = toast.loading('Rebooting device...', {
-      style: {
-        minWidth: '500px',
-      },
-    });
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/methods`, {method_name: 'reboot_device'})
+    const toastId = toastHelper.loading('Rebooting device...');
+
+    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'reboot'})
       .then(result => {
         dispatch(submitRebootSuccess());
-
-        toast.success(<b>Rebooted device successfully!</b>, {
-          id: toastId,
-          style: {
-            minWidth: '500px',
-          },
-        });
+        toastHelper.success('Rebooted device successfully!', toastId);
       })
       .catch(error => {
         dispatch(submitRebootFailure(error.message));
-
-        toast.error((t) => (
-          <span>
-            <b>Reboot device failed: {error.message}</b>
-            <CButton
-              onClick={() => toast.dismiss(t.id)}
-              color="primary"
-              size="sm"
-              className="m-2"
-            >
-              Dismiss
-            </CButton>
-          </span>
-        ), {
-          id: toastId,
-          style: {
-            minWidth: '600px',
-          },
-        });
+        toastHelper.error(`Reboot device failed: ${error.message}`, toastId);
       });
   };
 };

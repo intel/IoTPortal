@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api\Devices;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -13,7 +15,9 @@ class MetricController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Device $device
+     * @return JsonResponse
      */
     public function cpuTemperatures(Request $request, Device $device)
     {
@@ -34,13 +38,15 @@ class MetricController extends Controller
             ];
         });
 
-        return response(['result' => ['cpuTemperatures' => $cpuTemperatures->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return Helper::apiResponse(['cpuTemperatures' => $cpuTemperatures->toArray()]);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Device $device
+     * @return JsonResponse
      */
     public function cpuUsages(Request $request, Device $device)
     {
@@ -61,13 +67,15 @@ class MetricController extends Controller
             ];
         });
 
-        return response(['result' => ['cpuUsages' => $cpuUsages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return Helper::apiResponse(['cpuUsages' => $cpuUsages->toArray()]);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Device $device
+     * @return JsonResponse
      */
     public function diskUsages(Request $request, Device $device)
     {
@@ -88,13 +96,15 @@ class MetricController extends Controller
             ];
         });
 
-        return response(['result' => ['diskUsages' => $diskUsages->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return Helper::apiResponse(['diskUsages' => $diskUsages->toArray()]);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Device $device
+     * @return JsonResponse
      */
     public function memoryAvailables(Request $request, Device $device)
     {
@@ -115,14 +125,14 @@ class MetricController extends Controller
             ];
         });
 
-        return response(['result' => ['availableMemories' => $availableMemories->toArray()], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        return Helper::apiResponse(['availableMemories' => $availableMemories->toArray()]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -132,7 +142,7 @@ class MetricController extends Controller
      * Display the specified resource.
      *
      * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Device $device)
     {
@@ -141,9 +151,9 @@ class MetricController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, Device $device)
     {
@@ -153,7 +163,7 @@ class MetricController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Device $device)
     {

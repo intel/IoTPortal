@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Api\Devices;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\CommandHistory;
 use App\Models\Device;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 
 class CommandHistoryController extends Controller
 {
@@ -15,7 +19,7 @@ class CommandHistoryController extends Controller
      *
      * @param Request $request
      * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index(Request $request, Device $device)
     {
@@ -50,14 +54,19 @@ class CommandHistoryController extends Controller
                 $query->orderByDesc($request->input('sortField'));
         }
 
-        return response(['result' => ['deviceCommandHistories' => $query->paginate((int)$request->input('rows', 10))], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
+        $maxRows = Config::get('constants.index_max_rows');
+        $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
+
+        $deviceCommandHistories = $query->paginate($rows);
+
+        return Helper::apiResponse(['deviceCommandHistories' => $deviceCommandHistories]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -66,31 +75,31 @@ class CommandHistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param CommandHistory $commandHistory
+     * @return Response
      */
-    public function show(Device $device)
+    public function show(CommandHistory $commandHistory)
     {
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param CommandHistory $commandHistory
+     * @return Response
      */
-    public function update(Request $request, Device $device)
+    public function update(Request $request, CommandHistory $commandHistory)
     {
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Device $device
-     * @return \Illuminate\Http\Response
+     * @param CommandHistory $commandHistory
+     * @return Response
      */
-    public function destroy(Device $device)
+    public function destroy(CommandHistory $commandHistory)
     {
     }
 }

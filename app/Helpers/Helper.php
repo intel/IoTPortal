@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
@@ -81,6 +82,11 @@ class Helper
             }
         }
         return $array;
+    }
+
+    static function apiResponse($result = [], bool $success = true, $errors = [], $message = [], $status = 200, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result, 'success' => $success, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
     }
 
 }

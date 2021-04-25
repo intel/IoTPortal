@@ -3295,10 +3295,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js":
-/*!******************************************************************************!*\
-  !*** ./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js ***!
-  \******************************************************************************/
+/***/ "./resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js ***!
+  \****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3319,7 +3319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
 /* harmony import */ var _redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceCommand/deviceCommand.actions */ "./resources/js/redux/deviceCommand/deviceCommand.actions.js");
 /* harmony import */ var _redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/deviceCommandHistory/deviceCommandHistory.actions */ "./resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js");
-/* harmony import */ var _commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./commandHistoriesCard.css */ "./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css");
+/* harmony import */ var _commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./commandHistoriesDataTable.css */ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -3355,7 +3355,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var CommandHistoriesCard = function CommandHistoriesCard(_ref) {
+var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
   var deviceId = _ref.deviceId,
       deviceCommands = _ref.deviceCommands,
       isFetchingDeviceCommands = _ref.isFetchingDeviceCommands,
@@ -3611,7 +3611,7 @@ var CommandHistoriesCard = function CommandHistoriesCard(_ref) {
       },
       paginator: true,
       emptyMessage: "No command history found",
-      currentPageReportTemplate: "Showing {first} to {last} of {totalRecords} entries",
+      currentPageReportTemplate: "Showing {first} to {last} of {deviceCommandHistoriesTotalRecords} entries",
       paginatorTemplate: "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown",
       rowsPerPageOptions: [10, 25, 50, 100, 200],
       first: lazyParams.first,
@@ -3703,7 +3703,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CommandHistoriesCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CommandHistoriesDataTable));
 
 /***/ }),
 
@@ -4467,10 +4467,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js ***!
-  \**************************************************************************/
+/***/ "./resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4491,7 +4491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
 /* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
 /* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
-/* harmony import */ var _eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventHistoriesCard.css */ "./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css");
+/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -4527,7 +4527,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var EventHistoriesCard = function EventHistoriesCard(_ref) {
+var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   var deviceId = _ref.deviceId,
       deviceEvents = _ref.deviceEvents,
       isFetchingDeviceEvents = _ref.isFetchingDeviceEvents,
@@ -4746,7 +4746,7 @@ var EventHistoriesCard = function EventHistoriesCard(_ref) {
       },
       paginator: true,
       emptyMessage: "No event history found",
-      currentPageReportTemplate: "Showing {first} to {last} of {totalRecords} entries",
+      currentPageReportTemplate: "Showing {first} to {last} of {deviceCommandHistoriesTotalRecords} entries",
       paginatorTemplate: "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown",
       rowsPerPageOptions: [10, 25, 50, 100, 200],
       first: lazyParams.first,
@@ -4828,7 +4828,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(EventHistoriesCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(EventHistoriesDataTable));
 
 /***/ }),
 
@@ -7288,8 +7288,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../containers/FotaCard/FotaCard */ "./resources/js/containers/FotaCard/FotaCard.js");
 /* harmony import */ var _containers_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../containers/SotaCard/SotaCard */ "./resources/js/containers/SotaCard/SotaCard.js");
 /* harmony import */ var _containers_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../containers/CotaCard/CotaCard */ "./resources/js/containers/CotaCard/CotaCard.js");
-/* harmony import */ var _containers_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../containers/CommandHistoriesCard/CommandHistoriesCard */ "./resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js");
-/* harmony import */ var _containers_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../containers/EventHistoriesCard/EventHistoriesCard */ "./resources/js/containers/EventHistoriesCard/EventHistoriesCard.js");
+/* harmony import */ var _containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../containers/CommandHistoriesDataTable/CommandHistoriesDataTable */ "./resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js");
+/* harmony import */ var _containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../containers/EventHistoriesDataTable/EventHistoriesDataTable */ "./resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -7575,13 +7575,13 @@ var Device = function Device(props) {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "command-histories",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_CommandHistoriesCard_CommandHistoriesCard__WEBPACK_IMPORTED_MODULE_19__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_19__.default, {
                   deviceId: deviceId
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                 className: "m-3",
                 "data-tab": "event-histories",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_EventHistoriesCard_EventHistoriesCard__WEBPACK_IMPORTED_MODULE_20__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_20__.default, {
                   deviceId: deviceId
                 })
               })]
@@ -7654,10 +7654,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, "/*https://github.com/bymi15/react-edit
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7678,10 +7678,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css":
-/*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css ***!
-  \*************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -31877,7 +31877,7 @@ var CurrentPageReport = /*#__PURE__*/function (_Component) {
         rows: this.props.rows,
         totalRecords: this.props.totalRecords
       };
-      var text = this.props.reportTemplate.replace("{currentPage}", report.currentPage).replace("{totalPages}", report.totalPages).replace("{first}", report.first).replace("{last}", report.last).replace("{rows}", report.rows).replace("{totalRecords}", report.totalRecords);
+      var text = this.props.reportTemplate.replace("{currentPage}", report.currentPage).replace("{totalPages}", report.totalPages).replace("{first}", report.first).replace("{last}", report.last).replace("{rows}", report.rows).replace("{deviceCommandHistoriesTotalRecords}", report.totalRecords);
 
       var element = /*#__PURE__*/_react.default.createElement("span", {
         className: "p-paginator-current"
@@ -43285,10 +43285,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css ***!
-  \*******************************************************************************/
+/***/ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43298,7 +43298,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./commandHistoriesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./commandHistoriesDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
 
             
 
@@ -43307,18 +43307,18 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
-/***/ "./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css":
-/*!***************************************************************************!*\
-  !*** ./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css ***!
-  \***************************************************************************/
+/***/ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -43328,7 +43328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./eventHistoriesCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesCard/eventHistoriesCard.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./eventHistoriesDataTable.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
 
             
 
@@ -43337,11 +43337,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
