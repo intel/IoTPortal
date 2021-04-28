@@ -120,7 +120,7 @@ const DevicesDataTable = ({
 
   const deviceCategoryItemTemplate = (option) => {
     return (
-      <b>{option.label.toUpperCase()}</b>
+      <b>{option.label}</b>
     );
   };
 
@@ -141,7 +141,7 @@ const DevicesDataTable = ({
   const deviceStatusItemTemplate = (option) => {
     return (
       <span
-        className={classNames('device-badge', 'status-' + option.label.replace(/\s+/g, '-').toLowerCase())}>{option.label.toUpperCase()}</span>
+        className={classNames('device-badge', 'status-' + option.label.replace(/\s+/g, '-').toLowerCase())}>{option.label}</span>
     );
   };
 
@@ -185,7 +185,7 @@ const DevicesDataTable = ({
     return (
       <>
         <span className="p-column-title">Category</span>
-        <b>{rowData.category.name.toUpperCase()}</b>
+        <b>{rowData.category.name}</b>
       </>
     );
   };
@@ -195,7 +195,7 @@ const DevicesDataTable = ({
       <>
         <span className="p-column-title">Status</span>
         <span
-          className={classNames('device-badge', 'status-' + rowData.status.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.status.name.toUpperCase()}</span>
+          className={classNames('device-badge', 'status-' + rowData.status.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.status.name}</span>
       </>
     );
   };
@@ -244,11 +244,11 @@ const DevicesDataTable = ({
           <Column selectionMode="multiple" style={{width: '3em'}}/>}
           <Column field="unique_id" header="Device ID" body={deviceUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device ID"/>
-          <Column field="name" header="Device Name" body={deviceNameColumnBody} sortable filter
+          <Column field="name" header="Device name" body={deviceNameColumnBody} sortable filter
                   filterPlaceholder="Search by device name"/>
-          <Column field="bios_vendor" header="BIOS Vendor" body={deviceBiosVendorColumnBody} sortable filter
+          <Column field="bios_vendor" header="BIOS vendor" body={deviceBiosVendorColumnBody} sortable filter
                   filterPlaceholder="Search by BIOS vendor"/>
-          <Column field="bios_version" header="BIOS Version" body={deviceBiosVersionColumnBody} sortable filter
+          <Column field="bios_version" header="BIOS version" body={deviceBiosVersionColumnBody} sortable filter
                   filterPlaceholder="Search by BIOS version"/>
           <Column field="category" header="Category" body={deviceCategoryColumnBody} sortable filter
                   excludeGlobalFilter={true} filterElement={deviceCategoryFilterElement}/>
@@ -268,10 +268,7 @@ const DevicesDataTable = ({
 };
 
 const mapStateToProps = state => ({
-  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions ? state.deviceCategory.deviceCategoryOptions.map(option => ({
-    ...option,
-    label: option.label.toUpperCase()
-  })) : state.deviceCategory.deviceCategoryOptions,
+  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
   isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
   fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
   deviceStatusOptions: state.deviceStatus.deviceStatusOptions,

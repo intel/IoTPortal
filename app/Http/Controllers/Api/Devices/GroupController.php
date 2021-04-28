@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Group;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +52,7 @@ class GroupController extends Controller
 
         $deviceGroups = $query->paginate($rows);
 
-        return Helper::apiResponse(['deviceGroups' => $deviceGroups]);
+        return Helper::apiResponseHttpOk(['deviceGroups' => $deviceGroups]);
     }
 
     /**
@@ -66,11 +65,11 @@ class GroupController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:groups,name',
-            'devices.*' => 'required|exists:devices,id',
+            'devices' => 'required|array|exists:devices,id',
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $deviceGroup = Auth::user()->deviceGroups()->create([
@@ -80,9 +79,9 @@ class GroupController extends Controller
         $deviceGroup->devices()->attach($request->input('devices'));
 
         if ($deviceGroup->exists) {
-            return Helper::apiResponse(['deviceGroup' => $deviceGroup]);
+            return Helper::apiResponseHttpOk(['deviceGroup' => $deviceGroup]);
         } else {
-            return Helper::apiResponse([], false, 'Failed to create device group', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return Helper::apiResponseHttpInternalServerError(['Failed to create device group']);
         }
     }
 
@@ -94,7 +93,7 @@ class GroupController extends Controller
      */
     public function show(Group $group)
     {
-        return Helper::apiResponse(['deviceGroup' => $group]);
+        return Helper::apiResponseHttpOk(['deviceGroup' => $group]);
     }
 
     /**
@@ -117,7 +116,7 @@ class GroupController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = $group->update([
@@ -127,9 +126,9 @@ class GroupController extends Controller
         $group->devices()->sync($request->input('devices'));
 
         if ($success) {
-            return Helper::apiResponse(['deviceGroup' => $group]);
+            return Helper::apiResponseHttpOk(['deviceGroup' => $group]);
         }
-        return Helper::apiResponse([], false, 'Failed to update device group', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to update device group');
     }
 
     /**
@@ -151,16 +150,31 @@ class GroupController extends Controller
     public function destroySelected(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'ids.*' => 'required|exists:groups,id',
+            'ids' => 'required|array|exists:groups,id',
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = Auth::user()->deviceGroups()->whereIn('groups.id', $request->input('ids'))->delete();
 
-        return Helper::apiResponse([], $success);
+        return Helper::apiResponseHttpOk([], $success);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function options(Request $request)
+    {
+        $query = Auth::user()->deviceGroups()->select(['id as value', 'name as label']);
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', "%{$request->input('name')}%");
+        }
+
+        return Helper::apiResponseHttpOk(['deviceGroups' => $query->get()]);
     }
 
     /**
@@ -175,8 +189,8 @@ class GroupController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
-        return Helper::apiResponse();
+        return Helper::apiResponseHttpOk();
     }
 }

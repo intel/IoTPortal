@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('unique_id')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('device_connection_key')->unique();
+            $table->text('device_connection_key')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

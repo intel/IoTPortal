@@ -4,21 +4,9 @@ namespace App\Helpers;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
-
 
 class Helper
 {
-    static function generateDeviceConnectionKey(): string
-    {
-        return Str::random(64);
-    }
-
-    static function generateMqttPassword(): string
-    {
-        return Str::random(64);
-    }
-
     static function mqttPublish(string $topic, string $payload): void
     {
         $mqttConfig = config('mqttclient.connections.default');
@@ -57,15 +45,15 @@ class Helper
 
     static function sanitisePayload(string|array $payload): string|null
     {
-        Log::debug('root sanitisePayload->'.$payload);
+        Log::debug('root sanitisePayload->' . $payload);
         if (is_string($payload) && Helper::isJson($payload)) {
-            Log::debug('isstring and isjson sanitisePayload->'.$payload);
+            Log::debug('isstring and isjson sanitisePayload->' . $payload);
             $payload = json_decode($payload);
             if (is_string($payload)) {
                 $payload = json_decode($payload);
             }
         } elseif (is_string($payload)) {
-            Log::debug('isstring only sanitisePayload->'.$payload);
+            Log::debug('isstring only sanitisePayload->' . $payload);
             return $payload;
         }
         // Encode back to string for payload
@@ -84,9 +72,24 @@ class Helper
         return $array;
     }
 
-    static function apiResponse($result = [], bool $success = true, $errors = [], $message = [], $status = 200, array $headers = [], $options = 0)
+    static function apiResponseHttpOk($result = [], bool $success = true, $errors = [], $message = [], $status = 200, array $headers = [], $options = 0)
     {
         return response()->json(['result' => $result, 'success' => $success, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
+    }
+
+    static function apiResponseHttpBadRequest($errors = [], $message = [], $status = Response::HTTP_BAD_REQUEST, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => [], 'success' => false, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
+    }
+
+    static function apiResponseHttpInternalServerError($errors = [], $message = [], $status = Response::HTTP_INTERNAL_SERVER_ERROR, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => [], 'success' => false, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
+    }
+
+    static function apiResponseHttpUnauthorized($errors = [], $message = [], $status = Response::HTTP_UNAUTHORIZED, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => [], 'success' => false, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
     }
 
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Toaster } from 'react-hot-toast';
 
-import { CButton, CButtonGroup, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
+import { CButton, CButtonGroup, CCard, CCardHeader, CCol, CRow } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import Error from '../../components/Error/Error';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
@@ -50,11 +50,11 @@ const ViewDeviceCategory = (props) => {
             <CCardHeader>
               <CRow>
                 <CCol className="mb-3" lg="12" xl="9">
-                  <div className="d-flex my-auto">
-                    <div className="mr-5">
-                      <CIcon name='cilDevices' size="4xl"/>
+                  <div className="d-flex">
+                    <div className="m-4">
+                      <CIcon name='cilLibraryAdd' size="4xl"/>
                     </div>
-                    <div className="flex-grow-1 overflow-hidden">
+                    <div className="flex-grow-1 overflow-hidden my-auto">
                       <h2>{deviceCategory.name}</h2>
                       <small>ID: {deviceCategory.unique_id}</small><br/>
                     </div>
@@ -71,8 +71,6 @@ const ViewDeviceCategory = (props) => {
                 </CCol>
               </CRow>
             </CCardHeader>
-            <CCardBody>
-            </CCardBody>
           </CCard>
         </CCol>
       </CRow>

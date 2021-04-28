@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { submitSotaStartAsync } from '../../redux/sota/sota.actions';
 
-import SotaCard from '../SotaCard/SotaCard';
+import SotaCard from '../../components/SotaCard/SotaCard';
 
 const SubmitSotaCardForm = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
   return (

@@ -9,7 +9,7 @@ use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
@@ -67,7 +67,7 @@ class DeviceController extends Controller
             $devices = $query->paginate($rows);
         }
 
-        return Helper::apiResponse(['devices' => $devices]);
+        return Helper::apiResponseHttpOk(['devices' => $devices]);
     }
 
     /**
@@ -84,7 +84,7 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $registeredStatus = Status::where('name', 'registered')->first();
@@ -96,10 +96,10 @@ class DeviceController extends Controller
         ]);
 
         if ($device->exists) {
-            return Helper::apiResponse(['device' => $device]);
+            return Helper::apiResponseHttpOk(['device' => $device]);
         }
 
-        return Helper::apiResponse([], false, 'Failed to create device', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to create device');
     }
 
     /**
@@ -110,7 +110,7 @@ class DeviceController extends Controller
      */
     public function show(Device $device)
     {
-        return Helper::apiResponse(['device' => $device->load('category:id,name', 'status:id,name')]);
+        return Helper::apiResponseHttpOk(['device' => $device->load('category:id,name', 'status:id,name')]);
     }
 
     /**
@@ -133,7 +133,7 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = $device->update([
@@ -142,10 +142,10 @@ class DeviceController extends Controller
         ]);
 
         if ($success) {
-            return Helper::apiResponse(['device' => $device->load('category:id,name', 'status:id,name')]);
+            return Helper::apiResponseHttpOk(['device' => $device->load('category:id,name', 'status:id,name')]);
         }
 
-        return Helper::apiResponse([], false, 'Failed to update device', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to update device');
     }
 
     /**
@@ -156,6 +156,7 @@ class DeviceController extends Controller
      */
     public function destroy(Device $device)
     {
+        //
     }
 
     /**
@@ -171,12 +172,12 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = Auth::user()->devices()->whereIn('devices.id', $request->input('ids'))->delete();
 
-        return Helper::apiResponse([], $success);
+        return Helper::apiResponseHttpOk([], $success);
     }
 
     /**
@@ -191,10 +192,10 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
-        return Helper::apiResponse();
+        return Helper::apiResponseHttpOk();
     }
 
     public function commands(Request $request, Device $device)
@@ -205,7 +206,7 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $commandName = $request->input('command');
@@ -224,26 +225,26 @@ class DeviceController extends Controller
             ]);
 
             Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $command->method_name . '/?$rid=' . $commandHistory->id, $payloadJson);
-            return Helper::apiResponse();
+            return Helper::apiResponseHttpOk();
         }
 
-        return Helper::apiResponse([], false, 'Command not found for device.', [], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponseHttpBadRequest('Command not found for device.');
     }
 
     public function register(Request $request)
     {
-        if ($request->bearerToken()) {
-            $user = User::where('device_connection_key', $request->bearerToken())->first();
+        if ($request->has('unique_id') && $request->bearerToken()) {
+            $user = User::where('unique_id', $request->input('unique_id'))->first();
 
-            if ($user) {
+            if ($user && $user->validateDeviceConnectionKey($request->bearerToken())) {
                 if ($request->has('device_unique_id')) {
                     $device = $user->devices()->where('unique_id', $request->input('device_unique_id'))->first();
 
                     if ($device) {
-                        return Helper::apiResponse(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
+                        return Helper::apiResponseHttpOk(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
                     }
 
-                    return Helper::apiResponse([], false, 'device_unique_id provided not found.', [], Response::HTTP_BAD_REQUEST);
+                    return Helper::apiResponseHttpBadRequest('device_unique_id provided not found.');
                 } else {
                     $registeredStatus = Status::where('name', 'registered')->first();
 
@@ -251,12 +252,12 @@ class DeviceController extends Controller
                         'status_id' => $registeredStatus->id,
                     ]);
 
-                    return Helper::apiResponse(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
+                    return Helper::apiResponseHttpOk(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
                 }
             }
         }
 
-        return Helper::apiResponse([], false, 'Invalid device_connection_key.', [], Response::HTTP_BAD_REQUEST);
+        return Helper::apiResponseHttpBadRequest('Invalid device_connection_key.');
     }
 
 

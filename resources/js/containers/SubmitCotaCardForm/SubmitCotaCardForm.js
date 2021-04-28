@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { submitCotaStartAsync } from '../../redux/cota/cota.actions';
 
-import CotaCard from '../CotaCard/CotaCard';
+import CotaCard from '../../components/CotaCard/CotaCard';
 
 const SubmitCotaCardForm = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
   return (

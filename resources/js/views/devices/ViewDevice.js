@@ -95,11 +95,11 @@ const ViewDevice = (props) => {
             <CCardHeader>
               <CRow>
                 <CCol className="mb-3" lg="12" xl="8">
-                  <div className="d-flex my-auto">
-                    <div className="mx-4 my-auto">
+                  <div className="d-flex">
+                    <div className="m-4">
                       <CIcon name='cilDevices' size="4xl"/>
                     </div>
-                    <div className="flex-grow-1 overflow-hidden">
+                    <div className="flex-grow-1 overflow-hidden my-auto">
                       <EditableText style={{minHeight: '48px'}} tag="h2" value={device.name} maxLength="255"
                                     updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                       <small>ID: {device.unique_id}</small><br/>

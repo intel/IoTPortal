@@ -18,7 +18,7 @@ class CreateSavedCommandsTable extends Migration
             $table->string('unique_id')->unique();
             $table->string('name');
             $table->string('command_name');
-            $table->json('payload');
+            $table->json('payload')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

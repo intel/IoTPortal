@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use App\Helpers\Helper;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\HasDeviceConnectionKey;
+use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use  HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasUniqueId, HasDeviceConnectionKey;
 
     /**
      * The attributes that are mass assignable.
@@ -48,8 +47,8 @@ class User extends Authenticatable
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->unique_id = Str::uuid()->toString();
-            $model->device_connection_key = Helper::generateDeviceConnectionKey();
+            $model->unique_id = self::generateUniqueId();
+            $model->device_connection_key = self::generateEncryptedDeviceConnectionKey();
         });
     }
 

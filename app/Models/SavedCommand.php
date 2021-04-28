@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class SavedCommand extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUniqueId;
 
     /**
      * The attributes that are mass assignable.
@@ -25,8 +26,7 @@ class SavedCommand extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $uniqueId = Str::uuid()->toString();
-            $model->unique_id = $uniqueId;
+            $model->unique_id = self::generateUniqueId();
         });
     }
 
@@ -46,5 +46,20 @@ class SavedCommand extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeUniqueIdLike($query, $value)
+    {
+        return $query->where('unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeNameLike($query, $value)
+    {
+        return $query->where('name', 'like', "%{$value}%");
+    }
+
+    public function scopeCommandNameLike($query, $value)
+    {
+        return $query->where('command_name', 'like', "%{$value}%");
     }
 }

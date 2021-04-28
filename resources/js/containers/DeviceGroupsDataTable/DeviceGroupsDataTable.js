@@ -140,8 +140,8 @@ const DeviceGroupsDataTable = ({
           <Column selectionMode="multiple" style={{width: '3em'}}/>}
           <Column field="unique_id" header="Device group ID" body={deviceGroupUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device group ID"/>
-          <Column field="name" header="Device Group Name" body={deviceGroupNameColumnBody} sortable filter
-                  filterPlaceholder="Search by device name"/>
+          <Column field="name" header="Device group name" body={deviceGroupNameColumnBody} sortable filter
+                  filterPlaceholder="Search by device group name"/>
           {!hideActionsBar && <Column body={actionColumnBody} headerStyle={{width: '15em', textAlign: 'center'}}
                                       bodyStyle={{textAlign: 'center', overflow: 'visible'}}/>}
         </DataTable>

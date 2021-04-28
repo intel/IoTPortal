@@ -92,7 +92,7 @@ const _nav = [
     _tag: 'CSidebarNavDropdown',
     name: 'Saved Commands',
     to: '/commands/saved',
-    icon: 'cil-note-add',
+    icon: 'cil-command',
     _children: [
       {
         _tag: 'CSidebarNavItem',
@@ -112,8 +112,8 @@ const _nav = [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'API Keys',
-    to: '/administration/api',
+    name: 'API Tokens',
+    to: '/tokens',
     icon: 'cil-applications-settings',
   },
 ];

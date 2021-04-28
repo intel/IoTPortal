@@ -98,7 +98,7 @@ const DeviceCategoriesDataTable = ({
     return (
       <>
         <span className="p-column-title">Name</span>
-        <b>{truncateToStringEllipsis(rowData.name.toUpperCase())}</b>
+        <b>{truncateToStringEllipsis(rowData.name)}</b>
       </>
     );
   };
@@ -138,9 +138,9 @@ const DeviceCategoriesDataTable = ({
                    loading={isFetchingDeviceCategories}>
           {(selectedDeviceCategories !== undefined && setSelectedDeviceCategories !== undefined) &&
           <Column selectionMode="multiple" style={{width: '3em'}}/>}
-          <Column field="unique_id" header="Device Category ID" body={deviceCategoryUniqueIdColumnBody} sortable filter
+          <Column field="unique_id" header="Device category ID" body={deviceCategoryUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device category ID"/>
-          <Column field="name" header="Device Category Name" body={deviceCategoryNameColumnBody} sortable filter
+          <Column field="name" header="Device category name" body={deviceCategoryNameColumnBody} sortable filter
                   filterPlaceholder="Search by device category name"/>
           {!hideActionsBar && <Column body={actionColumnBody} headerStyle={{width: '15em', textAlign: 'center'}}
                                       bodyStyle={{textAlign: 'center', overflow: 'visible'}}/>}

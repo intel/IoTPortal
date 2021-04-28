@@ -2200,223 +2200,295 @@ var API_ENDPOINT = "http://127.0.0.1:8000/api";
 
 /***/ }),
 
-/***/ "./resources/js/redux/device/device.actions.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/redux/device/device.actions.js ***!
-  \*****************************************************/
+/***/ "./resources/js/redux/deviceGroup/deviceGroup.actions.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/redux/deviceGroup/deviceGroup.actions.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchDevicesStart": () => (/* binding */ fetchDevicesStart),
-/* harmony export */   "fetchDevicesSuccess": () => (/* binding */ fetchDevicesSuccess),
-/* harmony export */   "fetchDevicesFailure": () => (/* binding */ fetchDevicesFailure),
-/* harmony export */   "fetchDevicesStartAsync": () => (/* binding */ fetchDevicesStartAsync),
-/* harmony export */   "setFetchDevicesLazyParams": () => (/* binding */ setFetchDevicesLazyParams),
-/* harmony export */   "createDeviceStart": () => (/* binding */ createDeviceStart),
-/* harmony export */   "createDeviceSuccess": () => (/* binding */ createDeviceSuccess),
-/* harmony export */   "createDeviceFailure": () => (/* binding */ createDeviceFailure),
-/* harmony export */   "createDeviceStartAsync": () => (/* binding */ createDeviceStartAsync),
-/* harmony export */   "fetchDeviceStart": () => (/* binding */ fetchDeviceStart),
-/* harmony export */   "fetchDeviceSuccess": () => (/* binding */ fetchDeviceSuccess),
-/* harmony export */   "fetchDeviceFailure": () => (/* binding */ fetchDeviceFailure),
-/* harmony export */   "fetchDeviceStartAsync": () => (/* binding */ fetchDeviceStartAsync),
-/* harmony export */   "updateDeviceStart": () => (/* binding */ updateDeviceStart),
-/* harmony export */   "updateDeviceSuccess": () => (/* binding */ updateDeviceSuccess),
-/* harmony export */   "updateDeviceFailure": () => (/* binding */ updateDeviceFailure),
-/* harmony export */   "updateDeviceStartAsync": () => (/* binding */ updateDeviceStartAsync),
-/* harmony export */   "deleteDevicesStart": () => (/* binding */ deleteDevicesStart),
-/* harmony export */   "deleteDevicesSuccess": () => (/* binding */ deleteDevicesSuccess),
-/* harmony export */   "deleteDevicesFailure": () => (/* binding */ deleteDevicesFailure),
-/* harmony export */   "deleteDevicesStartAsync": () => (/* binding */ deleteDevicesStartAsync)
+/* harmony export */   "fetchDeviceGroupsStart": () => (/* binding */ fetchDeviceGroupsStart),
+/* harmony export */   "fetchDeviceGroupsSuccess": () => (/* binding */ fetchDeviceGroupsSuccess),
+/* harmony export */   "fetchDeviceGroupsFailure": () => (/* binding */ fetchDeviceGroupsFailure),
+/* harmony export */   "fetchDeviceGroupsStartAsync": () => (/* binding */ fetchDeviceGroupsStartAsync),
+/* harmony export */   "setFetchDeviceGroupsLazyParams": () => (/* binding */ setFetchDeviceGroupsLazyParams),
+/* harmony export */   "fetchDeviceGroupDevicesStart": () => (/* binding */ fetchDeviceGroupDevicesStart),
+/* harmony export */   "fetchDeviceGroupDevicesSuccess": () => (/* binding */ fetchDeviceGroupDevicesSuccess),
+/* harmony export */   "fetchDeviceGroupDevicesFailure": () => (/* binding */ fetchDeviceGroupDevicesFailure),
+/* harmony export */   "fetchDeviceGroupDevicesStartAsync": () => (/* binding */ fetchDeviceGroupDevicesStartAsync),
+/* harmony export */   "createDeviceGroupStart": () => (/* binding */ createDeviceGroupStart),
+/* harmony export */   "createDeviceGroupSuccess": () => (/* binding */ createDeviceGroupSuccess),
+/* harmony export */   "createDeviceGroupFailure": () => (/* binding */ createDeviceGroupFailure),
+/* harmony export */   "createDeviceGroupStartAsync": () => (/* binding */ createDeviceGroupStartAsync),
+/* harmony export */   "fetchDeviceGroupStart": () => (/* binding */ fetchDeviceGroupStart),
+/* harmony export */   "fetchDeviceGroupSuccess": () => (/* binding */ fetchDeviceGroupSuccess),
+/* harmony export */   "fetchDeviceGroupFailure": () => (/* binding */ fetchDeviceGroupFailure),
+/* harmony export */   "fetchDeviceGroupStartAsync": () => (/* binding */ fetchDeviceGroupStartAsync),
+/* harmony export */   "updateDeviceGroupStart": () => (/* binding */ updateDeviceGroupStart),
+/* harmony export */   "updateDeviceGroupSuccess": () => (/* binding */ updateDeviceGroupSuccess),
+/* harmony export */   "updateDeviceGroupFailure": () => (/* binding */ updateDeviceGroupFailure),
+/* harmony export */   "updateDeviceGroupStartAsync": () => (/* binding */ updateDeviceGroupStartAsync),
+/* harmony export */   "deleteDeviceGroupsStart": () => (/* binding */ deleteDeviceGroupsStart),
+/* harmony export */   "deleteDeviceGroupsSuccess": () => (/* binding */ deleteDeviceGroupsSuccess),
+/* harmony export */   "deleteDeviceGroupsFailure": () => (/* binding */ deleteDeviceGroupsFailure),
+/* harmony export */   "deleteDeviceGroupsStartAsync": () => (/* binding */ deleteDeviceGroupsStartAsync),
+/* harmony export */   "setDeviceGroupDevices": () => (/* binding */ setDeviceGroupDevices),
+/* harmony export */   "fetchDeviceGroupOptionsStart": () => (/* binding */ fetchDeviceGroupOptionsStart),
+/* harmony export */   "fetchDeviceGroupOptionsSuccess": () => (/* binding */ fetchDeviceGroupOptionsSuccess),
+/* harmony export */   "fetchDeviceGroupOptionsFailure": () => (/* binding */ fetchDeviceGroupOptionsFailure),
+/* harmony export */   "fetchDeviceGroupOptionsStartAsync": () => (/* binding */ fetchDeviceGroupOptionsStartAsync)
 /* harmony export */ });
 /* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pluralize */ "./node_modules/pluralize/pluralize.js");
 /* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pluralize__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _device_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./device.types */ "./resources/js/redux/device/device.types.js");
+/* harmony import */ var _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deviceGroup.types */ "./resources/js/redux/deviceGroup/deviceGroup.types.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
  // Index
 
-var fetchDevicesStart = function fetchDevicesStart() {
+var fetchDeviceGroupsStart = function fetchDeviceGroupsStart() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_START
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUPS_START
   };
 };
-var fetchDevicesSuccess = function fetchDevicesSuccess(devices) {
+var fetchDeviceGroupsSuccess = function fetchDeviceGroupsSuccess(deviceGroups) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_SUCCESS,
-    payload: devices
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUPS_SUCCESS,
+    payload: deviceGroups
   };
 };
-var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
+var fetchDeviceGroupsFailure = function fetchDeviceGroupsFailure(errorMessage) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_FAILURE,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUPS_FAILURE,
     payload: errorMessage
   };
 };
-var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupId) {
+var fetchDeviceGroupsStartAsync = function fetchDeviceGroupsStartAsync(lazyParams) {
   return function (dispatch) {
-    dispatch(fetchDevicesStart());
-
-    var params = _objectSpread({}, lazyParams);
-
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
-      params: params
+    dispatch(fetchDeviceGroupsStart());
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups"), {
+      params: lazyParams
     }).then(function (result) {
-      dispatch(fetchDevicesSuccess(result.data.result.devices));
+      dispatch(fetchDeviceGroupsSuccess(result.data.result.deviceGroups));
     })["catch"](function (error) {
-      dispatch(fetchDevicesFailure(error.message));
+      dispatch(fetchDeviceGroupsFailure(error.message));
     });
   };
 };
-var setFetchDevicesLazyParams = function setFetchDevicesLazyParams(lazyParams) {
+var setFetchDeviceGroupsLazyParams = function setFetchDeviceGroupsLazyParams(lazyParams) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICES_LAZY_PARAMS,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICE_GROUPS_LAZY_PARAMS,
     payload: lazyParams
   };
-}; // Create
+}; // Device group devices index
 
-var createDeviceStart = function createDeviceStart() {
+var fetchDeviceGroupDevicesStart = function fetchDeviceGroupDevicesStart() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_START
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_DEVICES_START
   };
 };
-var createDeviceSuccess = function createDeviceSuccess() {
+var fetchDeviceGroupDevicesSuccess = function fetchDeviceGroupDevicesSuccess(deviceGroupDevices) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_SUCCESS
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_DEVICES_SUCCESS,
+    payload: deviceGroupDevices
   };
 };
-var createDeviceFailure = function createDeviceFailure(errorMessage) {
+var fetchDeviceGroupDevicesFailure = function fetchDeviceGroupDevicesFailure(errorMessage) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_FAILURE,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_DEVICES_FAILURE,
     payload: errorMessage
   };
 };
-var createDeviceStartAsync = function createDeviceStartAsync(data, history) {
+var fetchDeviceGroupDevicesStartAsync = function fetchDeviceGroupDevicesStartAsync(deviceGroupId) {
+  var fetchAll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   return function (dispatch) {
-    dispatch(createDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Creating device');
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), data).then(function (result) {
-      dispatch(createDeviceSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device created successfully!', toastId);
-      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
+    dispatch(fetchDeviceGroupDevicesStart());
+    var params = {};
+    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
+    if (fetchAll) params.fetchAll = true;
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
+      params: params
+    }).then(function (result) {
+      dispatch(fetchDeviceGroupDevicesSuccess(result.data.result.devices));
     })["catch"](function (error) {
-      dispatch(createDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Failed to create device: ".concat(error.message), toastId);
+      dispatch(fetchDeviceGroupDevicesFailure(error.message));
+    });
+  };
+}; // Create
+
+var createDeviceGroupStart = function createDeviceGroupStart() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_GROUP_START
+  };
+};
+var createDeviceGroupSuccess = function createDeviceGroupSuccess() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_GROUP_SUCCESS
+  };
+};
+var createDeviceGroupFailure = function createDeviceGroupFailure(errorMessage) {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_GROUP_FAILURE,
+    payload: errorMessage
+  };
+};
+var createDeviceGroupStartAsync = function createDeviceGroupStartAsync(data, history) {
+  return function (dispatch) {
+    dispatch(createDeviceGroupStart());
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Creating device group');
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups"), data).then(function (result) {
+      dispatch(createDeviceGroupSuccess());
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device group created successfully!', toastId);
+      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/device/groups');
+    })["catch"](function (error) {
+      dispatch(createDeviceGroupFailure(error.message));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Failed to create device group: ".concat(error.message), toastId);
     });
   };
 }; // Read
 
-var fetchDeviceStart = function fetchDeviceStart() {
+var fetchDeviceGroupStart = function fetchDeviceGroupStart() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_START
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_START
   };
 };
-var fetchDeviceSuccess = function fetchDeviceSuccess(device) {
+var fetchDeviceGroupSuccess = function fetchDeviceGroupSuccess(deviceGroup) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_SUCCESS,
-    payload: device
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_SUCCESS,
+    payload: deviceGroup
   };
 };
-var fetchDeviceFailure = function fetchDeviceFailure(errorMessage) {
+var fetchDeviceGroupFailure = function fetchDeviceGroupFailure(errorMessage) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_FAILURE,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_FAILURE,
     payload: errorMessage
   };
 };
-var fetchDeviceStartAsync = function fetchDeviceStartAsync(id) {
+var fetchDeviceGroupStartAsync = function fetchDeviceGroupStartAsync(id) {
   return function (dispatch) {
-    dispatch(fetchDeviceStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id)).then(function (result) {
-      dispatch(fetchDeviceSuccess(result.data.result.device));
+    dispatch(fetchDeviceGroupStart());
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/").concat(id)).then(function (result) {
+      dispatch(fetchDeviceGroupSuccess(result.data.result.deviceGroup));
     })["catch"](function (error) {
-      dispatch(fetchDeviceFailure(error.message));
+      dispatch(fetchDeviceGroupFailure(error.message));
     });
   };
 }; // Update
 
-var updateDeviceStart = function updateDeviceStart() {
+var updateDeviceGroupStart = function updateDeviceGroupStart() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_START
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_GROUP_START
   };
 };
-var updateDeviceSuccess = function updateDeviceSuccess(device) {
+var updateDeviceGroupSuccess = function updateDeviceGroupSuccess(deviceGroup) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_SUCCESS,
-    payload: device
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_GROUP_SUCCESS,
+    payload: deviceGroup
   };
 };
-var updateDeviceFailure = function updateDeviceFailure(errorMessage) {
+var updateDeviceGroupFailure = function updateDeviceGroupFailure(errorMessage) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_FAILURE,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_GROUP_FAILURE,
     payload: errorMessage
   };
 };
-var updateDeviceStartAsync = function updateDeviceStartAsync(id, data, history) {
+var updateDeviceGroupStartAsync = function updateDeviceGroupStartAsync(id, data, history) {
   return function (dispatch) {
-    dispatch(updateDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Updating device');
-    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id), data).then(function (result) {
-      dispatch(updateDeviceSuccess(result.data.result.device));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device updated successfully!', toastId);
+    dispatch(updateDeviceGroupStart());
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Updating device group');
+    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/").concat(id), data).then(function (result) {
+      dispatch(updateDeviceGroupSuccess(result.data.result.deviceGroup));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device group updated successfully!', toastId);
 
       if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/device/groups');
       }
     })["catch"](function (error) {
-      dispatch(updateDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Device update failed: ".concat(error.message), toastId);
+      dispatch(updateDeviceGroupFailure(error.message));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Device group update failed: ".concat(error.message), toastId);
     });
   };
 }; // Delete Mass
 
-var deleteDevicesStart = function deleteDevicesStart() {
+var deleteDeviceGroupsStart = function deleteDeviceGroupsStart() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_START
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICE_GROUPS_START
   };
 };
-var deleteDevicesSuccess = function deleteDevicesSuccess() {
+var deleteDeviceGroupsSuccess = function deleteDeviceGroupsSuccess() {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_SUCCESS
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICE_GROUPS_SUCCESS
   };
 };
-var deleteDevicesFailure = function deleteDevicesFailure(errorMessage) {
+var deleteDeviceGroupsFailure = function deleteDeviceGroupsFailure(errorMessage) {
   return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_FAILURE,
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICE_GROUPS_FAILURE,
     payload: errorMessage
   };
 };
-var deleteDevicesStartAsync = function deleteDevicesStartAsync(ids, history) {
+var deleteDeviceGroupsStartAsync = function deleteDeviceGroupsStartAsync(ids, history) {
   return function (dispatch, getState) {
-    dispatch(deleteDevicesStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading("Deleting ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('device', ids.length)));
-    axios["delete"]("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
+    dispatch(deleteDeviceGroupsStart());
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading("Deleting device ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('group', ids.length)));
+    axios["delete"]("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups"), {
       data: {
         ids: ids
       }
     }).then(function (result) {
-      dispatch(deleteDevicesSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " deleted successfully!"), toastId);
+      dispatch(deleteDeviceGroupsSuccess());
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success("Device ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('group', ids.length), " deleted successfully!"), toastId);
 
       if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/device/groups');
       } else {
-        dispatch(fetchDevicesStartAsync(getState().device.fetchDevicesLazyParams));
+        dispatch(fetchDeviceGroupsStartAsync(getState().deviceGroup.fetchDeviceGroupsLazyParams));
       }
     })["catch"](function (error) {
-      dispatch(deleteDevicesFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " delete failed: ").concat(error.message), toastId);
+      dispatch(deleteDeviceGroupsFailure(error.message));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Device ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('group', ids.length), " delete failed: ").concat(error.message), toastId);
+    });
+  };
+}; // Set selection
+
+var setDeviceGroupDevices = function setDeviceGroupDevices(deviceGroupDevices) {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_DEVICE_GROUP_DEVICES,
+    payload: deviceGroupDevices
+  };
+}; // Fetch dropdown options
+
+var fetchDeviceGroupOptionsStart = function fetchDeviceGroupOptionsStart() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_OPTIONS_START
+  };
+};
+var fetchDeviceGroupOptionsSuccess = function fetchDeviceGroupOptionsSuccess(deviceGroupOptions) {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_OPTIONS_SUCCESS,
+    payload: deviceGroupOptions
+  };
+};
+var fetchDeviceGroupOptionsFailure = function fetchDeviceGroupOptionsFailure(errorMessage) {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_GROUP_OPTIONS_FAILURE,
+    payload: errorMessage
+  };
+};
+var fetchDeviceGroupOptionsStartAsync = function fetchDeviceGroupOptionsStartAsync(name) {
+  return function (dispatch) {
+    dispatch(fetchDeviceGroupOptionsStart());
+    var params = {};
+    if (name) params.name = name;
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/options"), {
+      params: params
+    }).then(function (result) {
+      dispatch(fetchDeviceGroupOptionsSuccess(result.data.result.deviceGroups));
+    })["catch"](function (error) {
+      dispatch(fetchDeviceGroupOptionsFailure(error.message));
     });
   };
 };
@@ -2435,6 +2507,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "convertDeviceObjectToDeviceArrayObject": () => (/* binding */ convertDeviceObjectToDeviceArrayObject),
 /* harmony export */   "removeObjectEmptyString": () => (/* binding */ removeObjectEmptyString),
 /* harmony export */   "removeLastCharacterIfExists": () => (/* binding */ removeLastCharacterIfExists),
+/* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
+/* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
+/* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
@@ -2449,8 +2524,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -2464,7 +2538,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -2497,6 +2570,23 @@ var removeLastCharacterIfExists = function removeLastCharacterIfExists(str, need
   }
 
   return str;
+};
+var isNotEmptyString = function isNotEmptyString(str) {
+  return Boolean(str);
+};
+var isValidJSONObject = function isValidJSONObject(obj) {
+  return _typeof(obj) === 'object' && obj !== null;
+};
+var isValidJsonString = function isValidJsonString(str) {
+  if (str === null) return false;
+
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -2547,7 +2637,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -2558,10 +2648,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
           },
@@ -2645,13 +2735,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var primereact_steps__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/steps */ "./node_modules/primereact/steps.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceGroup/deviceGroup.actions */ "./resources/js/redux/deviceGroup/deviceGroup.actions.js");
 /* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var primereact_steps__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! primereact/steps */ "./node_modules/primereact/steps.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2678,91 +2767,108 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+var CreateJob = function CreateJob(_ref) {
+  var history = _ref.history,
+      deviceGroupOptions = _ref.deviceGroupOptions,
+      isFetchingDeviceGroupOptions = _ref.isFetchingDeviceGroupOptions,
+      fetchDeviceGroupOptionsErrorMessage = _ref.fetchDeviceGroupOptionsErrorMessage,
+      fetchDeviceGroupOptionsStartAsync = _ref.fetchDeviceGroupOptionsStartAsync;
 
-var CreateJob = function CreateJob() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       activeIndex = _useState2[0],
       setActiveIndex = _useState2[1];
 
   var steps = [{
-    label: 'Enter Job Details'
-  }, {
-    label: 'Select Command'
+    label: 'Enter job details'
   }, {
     label: 'Confirmation'
+  }, {
+    label: 'Result'
   }];
   var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchDeviceGroupOptionsStartAsync();
+  }, []);
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCol, {
         xs: "12",
         md: "12",
         className: "mb-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCard, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardHeader, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCard, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardHeader, {
             children: "Create new job"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardBody, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(primereact_steps__WEBPACK_IMPORTED_MODULE_10__.Steps, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardBody, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(primereact_steps__WEBPACK_IMPORTED_MODULE_5__.Steps, {
               className: "mb-5",
               model: steps,
               activeIndex: activeIndex,
               onSelect: function onSelect(e) {
                 return setActiveIndex(e.index);
               }
-            }), activeIndex === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CAlert, {
+            }), activeIndex === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CAlert, {
               color: "secondary",
               children: "To create a new job, enter a job name and select a device group."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Formik, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Formik, {
               enableReinitialize: true,
               innerRef: formRef,
               initialValues: {
                 name: '',
-                category: ''
+                group: ''
               },
               validationSchema: validationSchema,
-              onSubmit: function onSubmit(values, _ref) {
-                var setSubmitting = _ref.setSubmitting;
-                (0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__.createDeviceStartAsync)((0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.getSanitizedValues)(values), history);
+              onSubmit: function onSubmit(values, _ref2) {// createDeviceStartAsync(getSanitizedValues(values), history);
+
+                var setSubmitting = _ref2.setSubmitting;
               },
-              children: function children(_ref2) {
-                var values = _ref2.values;
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_3__.Form, {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+              children: function children(_ref3) {
+                var values = _ref3.values;
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_3__.Form, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
                     id: "name",
                     name: "name",
                     label: "Job Name",
                     placeholder: "Enter job name"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
                     id: "group",
                     name: "group",
                     label: "Device Group",
-                    placeholder: "Select a device group" // options={deviceCategories}
-                    ,
-                    value: values.category // onInputChange={(name) => fetchDeviceCategoriesStartAsync(name)}
-                    // isLoading={isFetchingDeviceCategories}
-                    ,
+                    placeholder: "Select a device group",
+                    options: deviceGroupOptions,
+                    value: values.group,
+                    onInputChange: function onInputChange(name) {
+                      return fetchDeviceGroupOptionsStartAsync(name);
+                    },
+                    isLoading: isFetchingDeviceGroupOptions,
                     isSearchable: true,
                     isClearable: true
                   })]
                 });
               }
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardFooter, {})]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardFooter, {})]
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_4__.Toaster, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_4__.Toaster, {})]
   });
 };
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    deviceGroupOptions: state.deviceGroup.deviceGroupOptions,
+    isFetchingDeviceGroupOptions: state.deviceGroup.isFetchingDeviceGroupOptions,
+    fetchDeviceGroupOptionsErrorMessage: state.deviceGroup.fetchDeviceGroupOptionsErrorMessage
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    fetchDeviceGroupOptionsStartAsync: function fetchDeviceGroupOptionsStartAsync(name) {
+      return dispatch((0,_redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceGroupOptionsStartAsync)(name));
+    }
+  };
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CreateJob));

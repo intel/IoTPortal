@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { submitFotaStartAsync } from '../../redux/fota/fota.actions';
 
-import FotaCard from '../FotaCard/FotaCard';
+import FotaCard from '../../components/FotaCard/FotaCard';
 
 const SubmitFotaCardForm = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
   return (

@@ -13170,7 +13170,7 @@ var _nav = [{
   _tag: 'CSidebarNavDropdown',
   name: 'Saved Commands',
   to: '/commands/saved',
-  icon: 'cil-note-add',
+  icon: 'cil-command',
   _children: [{
     _tag: 'CSidebarNavItem',
     name: 'Saved Commands',
@@ -13185,8 +13185,8 @@ var _nav = [{
   _children: ['Administrations']
 }, {
   _tag: 'CSidebarNavItem',
-  name: 'API Keys',
-  to: '/administration/api',
+  name: 'API Tokens',
+  to: '/tokens',
   icon: 'cil-applications-settings'
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_nav);
@@ -13334,8 +13334,17 @@ var EditDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(fu
 var CreateJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_jobs_CreateJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/jobs/CreateJob */ "./resources/js/views/jobs/CreateJob.js"));
 });
+var ListSavedCommands = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_ListSavedCommands_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/ListSavedCommands */ "./resources/js/views/savedCommands/ListSavedCommands.js"));
+});
 var CreateSavedCommand = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_CreateSavedCommand_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/CreateSavedCommand */ "./resources/js/views/savedCommands/CreateSavedCommand.js"));
+});
+var ViewSavedCommand = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_ViewSavedCommand_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/ViewSavedCommand */ "./resources/js/views/savedCommands/ViewSavedCommand.js"));
+});
+var ListApiTokens = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_apiTokens_ListApiTokens_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/apiTokens/ListApiTokens */ "./resources/js/views/apiTokens/ListApiTokens.js"));
 });
 var routes = [{
   path: '/dashboard',
@@ -13408,10 +13417,25 @@ var routes = [{
   name: 'Create Job',
   component: CreateJob
 }, {
+  path: '/commands/saved',
+  exact: true,
+  name: 'Saved Commands',
+  component: ListSavedCommands
+}, {
   path: '/commands/saved/create',
   exact: true,
   name: 'Create Saved Commands',
   component: CreateSavedCommand
+}, {
+  path: '/commands/saved/:id',
+  exact: true,
+  name: 'Saved Command Details',
+  component: ViewSavedCommand
+}, {
+  path: '/tokens',
+  exact: true,
+  name: 'API Tokens',
+  component: ListApiTokens
 }, // { path: '/', exact: true, name: 'Home' },
 // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
 // { path: '/theme', name: 'Theme', component: Colors, exact: true },

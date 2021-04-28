@@ -17,8 +17,8 @@ const SelectedDevicesDataView = ({devices, onRemove}) => {
             <h5>{device.name}</h5>
             <small>ID: <b>{device.unique_id}</b></small><br/>
             <div className="mt-1">
-              <CBadge color="secondary" className="mr-2">{device.status.name.toUpperCase()}</CBadge>
-              <CBadge color="primary" className="">{device.category.name.toUpperCase()}</CBadge>
+              <CBadge color="secondary" className="mr-2">{device.status.name}</CBadge>
+              <CBadge color="primary" className="">{device.category.name}</CBadge>
             </div>
           </div>
         </CCol>

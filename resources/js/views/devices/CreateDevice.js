@@ -120,10 +120,7 @@ const CreateDevice = ({
 };
 
 const mapStateToProps = state => ({
-  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions ? state.deviceCategory.deviceCategoryOptions.map(option => ({
-    ...option,
-    label: option.label.toUpperCase()
-  })) : state.deviceCategory.deviceCategoryOptions,
+  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
   isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
   fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
   isCreatingDevice: state.device.isCreatingDevice,

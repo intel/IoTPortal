@@ -105,74 +105,84 @@ class DatabaseSeeder extends Seeder
                     }
                 }
 
-                $commandTypes = array();
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'ota',
-                    'method_name' => 'triggerota',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'aota',
-                    'method_name' => 'triggeraota',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'fota',
-                    'method_name' => 'triggerfota',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'sota',
-                    'method_name' => 'triggersota',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'cota',
-                    'method_name' => 'triggerconfig',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'shutdown',
-                    'method_name' => 'shutdown_device',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'reboot',
-                    'method_name' => 'reboot_device',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'decommission',
-                    'method_name' => 'decommission_device',
-                ]);
-
-                $commandTypes[] = $device->commands()->create([
-                    'name' => 'file upload',
-                    'method_name' => 'file_upload',
-                ]);
-
-                for ($a = 0; $a < 10; $a++) {
+                for ($a = 0; $a < 20; $a++) {
                     CommandHistory::factory()
-                        ->for(Arr::random($commandTypes))
+                        ->for(Arr::random($device->commands->all()))
                         ->create();
-                }
 
-                $eventTypes = array();
-
-                $eventTypes[] = $device->events()->create([
-                    'name' => 'property',
-                ]);
-
-                $eventTypes[] = $device->events()->create([
-                    'name' => 'telemetry',
-                ]);
-
-                for ($b = 0; $b < 10; $b++) {
                     EventHistory::factory()
-                        ->for(Arr::random($eventTypes))
+                        ->for(Arr::random($device->events->all()))
                         ->create();
                 }
+
+//                $commandTypes = array();
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'OTA',
+//                    'method_name' => 'triggerota',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'AOTA',
+//                    'method_name' => 'triggeraota',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'FOTA',
+//                    'method_name' => 'triggerfota',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'SOTA',
+//                    'method_name' => 'triggersota',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'COTA',
+//                    'method_name' => 'triggerconfig',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'SHUTDOWN',
+//                    'method_name' => 'shutdown_device',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'REBOOT',
+//                    'method_name' => 'reboot_device',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'DECOMMISSION',
+//                    'method_name' => 'decommission_device',
+//                ]);
+//
+//                $commandTypes[] = $device->commands()->create([
+//                    'name' => 'FILE_UPLOAD',
+//                    'method_name' => 'file_upload',
+//                ]);
+//
+//                for ($a = 0; $a < 10; $a++) {
+//                    CommandHistory::factory()
+//                        ->for(Arr::random($commandTypes))
+//                        ->create();
+//                }
+//
+//                $eventTypes = array();
+//
+//                $eventTypes[] = $device->events()->create([
+//                    'name' => 'PROPERTY',
+//                ]);
+//
+//                $eventTypes[] = $device->events()->create([
+//                    'name' => 'TELEMETRY',
+//                ]);
+//
+//                for ($b = 0; $b < 10; $b++) {
+//                    EventHistory::factory()
+//                        ->for(Arr::random($eventTypes))
+//                        ->create();
+//                }
             }
         }
     }

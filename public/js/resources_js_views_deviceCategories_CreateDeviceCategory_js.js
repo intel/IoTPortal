@@ -408,229 +408,6 @@ var fetchDeviceCategoryOptionsStartAsync = function fetchDeviceCategoryOptionsSt
 
 /***/ }),
 
-/***/ "./resources/js/redux/device/device.actions.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/redux/device/device.actions.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchDevicesStart": () => (/* binding */ fetchDevicesStart),
-/* harmony export */   "fetchDevicesSuccess": () => (/* binding */ fetchDevicesSuccess),
-/* harmony export */   "fetchDevicesFailure": () => (/* binding */ fetchDevicesFailure),
-/* harmony export */   "fetchDevicesStartAsync": () => (/* binding */ fetchDevicesStartAsync),
-/* harmony export */   "setFetchDevicesLazyParams": () => (/* binding */ setFetchDevicesLazyParams),
-/* harmony export */   "createDeviceStart": () => (/* binding */ createDeviceStart),
-/* harmony export */   "createDeviceSuccess": () => (/* binding */ createDeviceSuccess),
-/* harmony export */   "createDeviceFailure": () => (/* binding */ createDeviceFailure),
-/* harmony export */   "createDeviceStartAsync": () => (/* binding */ createDeviceStartAsync),
-/* harmony export */   "fetchDeviceStart": () => (/* binding */ fetchDeviceStart),
-/* harmony export */   "fetchDeviceSuccess": () => (/* binding */ fetchDeviceSuccess),
-/* harmony export */   "fetchDeviceFailure": () => (/* binding */ fetchDeviceFailure),
-/* harmony export */   "fetchDeviceStartAsync": () => (/* binding */ fetchDeviceStartAsync),
-/* harmony export */   "updateDeviceStart": () => (/* binding */ updateDeviceStart),
-/* harmony export */   "updateDeviceSuccess": () => (/* binding */ updateDeviceSuccess),
-/* harmony export */   "updateDeviceFailure": () => (/* binding */ updateDeviceFailure),
-/* harmony export */   "updateDeviceStartAsync": () => (/* binding */ updateDeviceStartAsync),
-/* harmony export */   "deleteDevicesStart": () => (/* binding */ deleteDevicesStart),
-/* harmony export */   "deleteDevicesSuccess": () => (/* binding */ deleteDevicesSuccess),
-/* harmony export */   "deleteDevicesFailure": () => (/* binding */ deleteDevicesFailure),
-/* harmony export */   "deleteDevicesStartAsync": () => (/* binding */ deleteDevicesStartAsync)
-/* harmony export */ });
-/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pluralize */ "./node_modules/pluralize/pluralize.js");
-/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pluralize__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _device_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./device.types */ "./resources/js/redux/device/device.types.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
- // Index
-
-var fetchDevicesStart = function fetchDevicesStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_START
-  };
-};
-var fetchDevicesSuccess = function fetchDevicesSuccess(devices) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_SUCCESS,
-    payload: devices
-  };
-};
-var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_FAILURE,
-    payload: errorMessage
-  };
-};
-var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupId) {
-  return function (dispatch) {
-    dispatch(fetchDevicesStart());
-
-    var params = _objectSpread({}, lazyParams);
-
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
-      params: params
-    }).then(function (result) {
-      dispatch(fetchDevicesSuccess(result.data.result.devices));
-    })["catch"](function (error) {
-      dispatch(fetchDevicesFailure(error.message));
-    });
-  };
-};
-var setFetchDevicesLazyParams = function setFetchDevicesLazyParams(lazyParams) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICES_LAZY_PARAMS,
-    payload: lazyParams
-  };
-}; // Create
-
-var createDeviceStart = function createDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_START
-  };
-};
-var createDeviceSuccess = function createDeviceSuccess() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_SUCCESS
-  };
-};
-var createDeviceFailure = function createDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var createDeviceStartAsync = function createDeviceStartAsync(data, history) {
-  return function (dispatch) {
-    dispatch(createDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Creating device');
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), data).then(function (result) {
-      dispatch(createDeviceSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device created successfully!', toastId);
-      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-    })["catch"](function (error) {
-      dispatch(createDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Failed to create device: ".concat(error.message), toastId);
-    });
-  };
-}; // Read
-
-var fetchDeviceStart = function fetchDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_START
-  };
-};
-var fetchDeviceSuccess = function fetchDeviceSuccess(device) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_SUCCESS,
-    payload: device
-  };
-};
-var fetchDeviceFailure = function fetchDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var fetchDeviceStartAsync = function fetchDeviceStartAsync(id) {
-  return function (dispatch) {
-    dispatch(fetchDeviceStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id)).then(function (result) {
-      dispatch(fetchDeviceSuccess(result.data.result.device));
-    })["catch"](function (error) {
-      dispatch(fetchDeviceFailure(error.message));
-    });
-  };
-}; // Update
-
-var updateDeviceStart = function updateDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_START
-  };
-};
-var updateDeviceSuccess = function updateDeviceSuccess(device) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_SUCCESS,
-    payload: device
-  };
-};
-var updateDeviceFailure = function updateDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var updateDeviceStartAsync = function updateDeviceStartAsync(id, data, history) {
-  return function (dispatch) {
-    dispatch(updateDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Updating device');
-    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id), data).then(function (result) {
-      dispatch(updateDeviceSuccess(result.data.result.device));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device updated successfully!', toastId);
-
-      if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-      }
-    })["catch"](function (error) {
-      dispatch(updateDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Device update failed: ".concat(error.message), toastId);
-    });
-  };
-}; // Delete Mass
-
-var deleteDevicesStart = function deleteDevicesStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_START
-  };
-};
-var deleteDevicesSuccess = function deleteDevicesSuccess() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_SUCCESS
-  };
-};
-var deleteDevicesFailure = function deleteDevicesFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_FAILURE,
-    payload: errorMessage
-  };
-};
-var deleteDevicesStartAsync = function deleteDevicesStartAsync(ids, history) {
-  return function (dispatch, getState) {
-    dispatch(deleteDevicesStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading("Deleting ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('device', ids.length)));
-    axios["delete"]("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
-      data: {
-        ids: ids
-      }
-    }).then(function (result) {
-      dispatch(deleteDevicesSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " deleted successfully!"), toastId);
-
-      if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-      } else {
-        dispatch(fetchDevicesStartAsync(getState().device.fetchDevicesLazyParams));
-      }
-    })["catch"](function (error) {
-      dispatch(deleteDevicesFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " delete failed: ").concat(error.message), toastId);
-    });
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/utils/utils.js":
 /*!*************************************!*\
   !*** ./resources/js/utils/utils.js ***!
@@ -643,6 +420,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "convertDeviceObjectToDeviceArrayObject": () => (/* binding */ convertDeviceObjectToDeviceArrayObject),
 /* harmony export */   "removeObjectEmptyString": () => (/* binding */ removeObjectEmptyString),
 /* harmony export */   "removeLastCharacterIfExists": () => (/* binding */ removeLastCharacterIfExists),
+/* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
+/* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
+/* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
@@ -657,8 +437,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -672,7 +451,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -705,6 +483,23 @@ var removeLastCharacterIfExists = function removeLastCharacterIfExists(str, need
   }
 
   return str;
+};
+var isNotEmptyString = function isNotEmptyString(str) {
+  return Boolean(str);
+};
+var isValidJSONObject = function isValidJSONObject(obj) {
+  return _typeof(obj) === 'object' && obj !== null;
+};
+var isValidJsonString = function isValidJsonString(str) {
+  if (str === null) return false;
+
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -755,7 +550,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -766,10 +561,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
           },

@@ -14,11 +14,11 @@ return [
     ],
 
     'commands' => [
-        'ota' => [
+        'OTA' => [
             'method_name' => 'triggerota',
             'configuration_map' => [],
         ],
-        'aota' => [
+        'AOTA' => [
             'method_name' => 'triggeraota',
             'configuration_map' => [
                 'app' => 'app',
@@ -36,7 +36,7 @@ return [
                 'docker_compose_file' => 'file',
             ],
         ],
-        'fota' => [
+        'FOTA' => [
             'method_name' => 'triggerfota',
             'configuration_map' => [
                 'bios_version' => 'biosversion',
@@ -52,7 +52,7 @@ return [
                 'server_password' => 'password',
             ],
         ],
-        'sota' => [
+        'SOTA' => [
             'method_name' => 'triggersota',
             'configuration_map' => [
                 'command' => 'cmd',
@@ -62,7 +62,7 @@ return [
                 'password' => 'password',
             ],
         ],
-        'cota' => [
+        'COTA' => [
             'method_name' => 'triggercota',
             'configuration_map' => [
                 'command' => 'cmd',
@@ -71,19 +71,19 @@ return [
                 'signature' => 'signature',
             ],
         ],
-        'shutdown' => [
+        'SHUTDOWN' => [
             'method_name' => 'shutdown_device',
             'configuration_map' => [],
         ],
-        'reboot' => [
+        'REBOOT' => [
             'method_name' => 'reboot_device',
             'configuration_map' => [],
         ],
-        'decommission' => [
+        'DECOMMISSION' => [
             'method_name' => 'decommission_device',
             'configuration_map' => [],
         ],
-        'file_upload' => [
+        'FILE_UPLOAD' => [
             'method_name' => 'file_upload',
             'configuration_map' => [],
         ],

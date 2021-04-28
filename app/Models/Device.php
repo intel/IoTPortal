@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Helpers\Helper;
+use App\Traits\HasMqttCredentials;
+use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Device extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUniqueId, HasMqttCredentials;
 
     /**
      * The attributes that are mass assignable.
@@ -35,11 +35,30 @@ class Device extends Model
     public static function boot()
     {
         parent::boot();
-        self::creating(function ($model) {
-            $uniqueId = Str::uuid()->toString();
+        static::creating(function ($model) {
+            $uniqueId = self::generateUniqueId();
             $model->unique_id = $uniqueId;
             $model->name = $model->name ? $model->name : $uniqueId;
-            $model->mqtt_password = Helper::generateMqttPassword();
+            $model->mqtt_password = self::generateEncryptedMqttPassword();
+        });
+
+        static::created(function ($model) {
+            $model->commands()->createMany([
+                ['name' => 'OTA', 'method_name' => 'triggerota'],
+                ['name' => 'AOTA', 'method_name' => 'triggeraota'],
+                ['name' => 'FOTA', 'method_name' => 'triggerfota'],
+                ['name' => 'SOTA', 'method_name' => 'triggersota'],
+                ['name' => 'COTA', 'method_name' => 'triggerconfig'],
+                ['name' => 'SHUTDOWN', 'method_name' => 'shutdown_device'],
+                ['name' => 'REBOOT', 'method_name' => 'reboot_device'],
+                ['name' => 'DECOMMISSION', 'method_name' => 'decommission_device'],
+                ['name' => 'FILE_UPLOAD', 'method_name' => 'file_upload'],
+            ]);
+
+            $model->events()->createMany([
+                ['name' => 'PROPERTY'],
+                ['name' => 'TELEMETRY'],
+            ]);
         });
     }
 
@@ -202,7 +221,7 @@ class Device extends Model
 
     public function scopeStatusId($query, $id)
     {
-        return $query->where('status_id',$id);
+        return $query->where('status_id', $id);
     }
 
     public function scopeDeviceGroupUniqueId($query, $id)

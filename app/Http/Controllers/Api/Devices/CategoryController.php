@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Devices;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -54,7 +53,7 @@ class CategoryController extends Controller
 
         $deviceCategories = $query->paginate($rows);
 
-        return Helper::apiResponse(['deviceCategories' => $deviceCategories]);
+        return Helper::apiResponseHttpOk(['deviceCategories' => $deviceCategories]);
     }
 
     /**
@@ -70,7 +69,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $deviceCategory = Auth::user()->deviceCategories()->create([
@@ -78,10 +77,10 @@ class CategoryController extends Controller
         ]);
 
         if ($deviceCategory->exists) {
-            return Helper::apiResponse(['deviceCategory' => $deviceCategory]);
+            return Helper::apiResponseHttpOk(['deviceCategory' => $deviceCategory]);
         }
 
-        return Helper::apiResponse([], false, 'Failed to create device category', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to create device category');
     }
 
     /**
@@ -92,7 +91,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return Helper::apiResponse(['deviceCategory' => $category]);
+        return Helper::apiResponseHttpOk(['deviceCategory' => $category]);
     }
 
     /**
@@ -114,7 +113,7 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = $category->update([
@@ -122,10 +121,10 @@ class CategoryController extends Controller
         ]);
 
         if ($success) {
-            return Helper::apiResponse(['deviceCategory' => $category]);
+            return Helper::apiResponseHttpOk(['deviceCategory' => $category]);
         }
 
-        return Helper::apiResponse([], false, 'Failed to update device category', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to update device category');
     }
 
     /**
@@ -151,12 +150,12 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $success = Auth::user()->deviceCategories()->whereIn('categories.id', $request->input('ids'))->delete();
 
-        return Helper::apiResponse([], $success);
+        return Helper::apiResponseHttpOk([], $success);
     }
 
     /**
@@ -171,7 +170,7 @@ class CategoryController extends Controller
             $query->where('name', 'like', "%{$request->input('name')}%");
         }
 
-        return Helper::apiResponse(['deviceCategories' => $query->get()]);
+        return Helper::apiResponseHttpOk(['deviceCategories' => $query->get()]);
     }
 
     /**
@@ -186,8 +185,8 @@ class CategoryController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
-        return Helper::apiResponse();
+        return Helper::apiResponseHttpOk();
     }
 }

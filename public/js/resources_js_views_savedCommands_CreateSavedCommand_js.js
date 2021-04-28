@@ -1953,306 +1953,9 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
-/***/ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-
-var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
-  var isHidden = _ref.isHidden,
-      isLabelHidden = _ref.isLabelHidden,
-      label = _ref.label,
-      value = _ref.value,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
-
-  var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
-      setFieldValue = _useFormikContext.setFieldValue,
-      setFieldTouched = _useFormikContext.setFieldTouched;
-
-  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
-      _useField2 = _slicedToArray(_useField, 2),
-      field = _useField2[0],
-      meta = _useField2[1];
-
-  var defaultStyle = {
-    control: function control(base) {
-      return _objectSpread(_objectSpread({}, base), {}, {
-        height: 35,
-        minHeight: 35,
-        '&:hover': {
-          boxShadow: '0 0 0 0.2rem rgb(50 31 219 / 25%)'
-        }
-      });
-    },
-    dropdownIndicator: function dropdownIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    },
-    clearIndicator: function clearIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    }
-  };
-  var errorStyle = {
-    control: function control(base) {
-      return _objectSpread(_objectSpread({}, base), {}, {
-        height: 35,
-        minHeight: 35,
-        border: '1px solid #e55353',
-        '&:hover': {
-          border: '1px solid #e55353',
-          boxShadow: '0 0 0 0.2rem rgb(255 0 0 / 25%)'
-        }
-      });
-    },
-    dropdownIndicator: function dropdownIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    },
-    clearIndicator: function clearIndicator(styles) {
-      return _objectSpread(_objectSpread({}, styles), {}, {
-        paddingTop: 7,
-        paddingBottom: 7
-      });
-    }
-  };
-
-  var handleOptionChange = function handleOptionChange(selection) {
-    setFieldValue(props.name, selection);
-    if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
-  };
-
-  var updateBlur = function updateBlur() {
-    setFieldTouched(props.name, true);
-  };
-
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
-      htmlFor: props.id || props.name,
-      children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
-      theme: function theme(_theme) {
-        return _objectSpread(_objectSpread({}, _theme), {}, {
-          colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
-            primary50: '#958bef80',
-            primary25: '#958bef26',
-            primary: '#958bef'
-          })
-        });
-      },
-      styles: defaultStyle
-    }, meta.touched && meta.error && {
-      className: 'is-invalid',
-      styles: errorStyle
-    }), {}, {
-      id: props.id || props.name,
-      name: field.name,
-      options: props.options,
-      value: value,
-      onBlur: updateBlur,
-      onChange: handleOptionChange
-    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
-      children: typeof meta.error === 'string' ? meta.error : meta.error.label
-    }) : null]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotSelectFormGroup);
-
-/***/ }),
-
-/***/ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-
-
-
-
-
-var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
-  var isHidden = _ref.isHidden,
-      isLabelHidden = _ref.isLabelHidden,
-      isDisabled = _ref.isDisabled,
-      label = _ref.label,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "isDisabled", "label"]);
-
-  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-  // which we can spread on <input>. We can use field meta to show an error
-  // message if the field is invalid and it has been touched (i.e. visited)
-  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
-      _useField2 = _slicedToArray(_useField, 2),
-      field = _useField2[0],
-      meta = _useField2[1];
-
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
-      htmlFor: props.id || props.name,
-      children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
-      invalid: true
-    }), {}, {
-      id: props.id || props.name
-    }, isDisabled && {
-      disabled: true
-    }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
-      children: meta.error
-    }) : null]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotTextInputFormGroup);
-
-/***/ }),
-
-/***/ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-var PrimarySecondaryButtons = function PrimarySecondaryButtons(_ref) {
-  var primaryButtonText = _ref.primaryButtonText,
-      secondaryButtonText = _ref.secondaryButtonText,
-      isPrimaryLoading = _ref.isPrimaryLoading,
-      isSecondaryLoading = _ref.isSecondaryLoading,
-      onClickPrimary = _ref.onClickPrimary,
-      onClickSecondary = _ref.onClickSecondary,
-      isPrimaryDisabled = _ref.isPrimaryDisabled,
-      isSecondaryDisabled = _ref.isSecondaryDisabled;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
-      type: "submit",
-      size: "sm",
-      color: "primary",
-      onClick: onClickPrimary,
-      disabled: isPrimaryDisabled,
-      children: [isPrimaryLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CSpinner, {
-        color: "white",
-        size: "sm"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-        name: "cil-scrubber"
-      }), " ", primaryButtonText || 'Submit']
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
-      type: "reset",
-      size: "sm",
-      color: "danger",
-      className: "ml-3",
-      onClick: onClickSecondary,
-      disabled: isSecondaryDisabled,
-      children: [isSecondaryLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CSpinner, {
-        color: "white",
-        size: "sm"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-        name: "cil-ban"
-      }), " ", secondaryButtonText || 'Reset']
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PrimarySecondaryButtons);
-
-/***/ }),
-
-/***/ "./resources/js/containers/AotaCard/AotaCard.js":
+/***/ "./resources/js/components/AotaCard/AotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/containers/AotaCard/AotaCard.js ***!
+  !*** ./resources/js/components/AotaCard/AotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2546,9 +2249,76 @@ var AotaCard = function AotaCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/CotaCard/CotaCard.js":
+/***/ "./resources/js/components/CommandPayloadViewer/CommandPayloadViewer.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/CommandPayloadViewer/CommandPayloadViewer.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-json-view */ "./node_modules/react-json-view/dist/main.js");
+/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_json_view__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+var CommandPayloadViewer = function CommandPayloadViewer(_ref) {
+  var label = _ref.label,
+      payload = _ref.payload,
+      isLabelHidden = _ref.isLabelHidden;
+
+  var textView = function textView(text) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+        children: text
+      })
+    });
+  };
+
+  var renderJSONView = function renderJSONView() {
+    if ((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.isValidJSONObject)(payload)) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
+        src: payload,
+        name: null
+      });
+    } else if ((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.isValidJsonString)(payload)) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
+        src: JSON.parse(payload),
+        name: null
+      });
+    } else if (_.isString(payload)) {
+      return textView(payload);
+    }
+
+    return textView('Empty payload');
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [!isLabelHidden && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+      children: label || 'Command payload'
+    }), renderJSONView()]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CommandPayloadViewer);
+
+/***/ }),
+
+/***/ "./resources/js/components/CotaCard/CotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/containers/CotaCard/CotaCard.js ***!
+  !*** ./resources/js/components/CotaCard/CotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2566,9 +2336,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_Configuration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../models/Configuration */ "./resources/js/models/Configuration.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 /* harmony import */ var _reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../reusable/FormikPatchTouched */ "./resources/js/reusable/FormikPatchTouched.js");
-/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2701,7 +2471,7 @@ var CotaCard = function CotaCard(_ref) {
         children: function children(_ref5) {
           var values = _ref5.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
               id: "command",
               name: "command",
               label: "Command (get, load, set, append, remove)",
@@ -2711,7 +2481,7 @@ var CotaCard = function CotaCard(_ref) {
               isHidden: isFieldHidden.command,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch link",
@@ -2730,7 +2500,7 @@ var CotaCard = function CotaCard(_ref) {
                       row: true,
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
                         sm: isFieldHidden.configuration_values ? 10 : 5,
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
                           id: "configurations.".concat(index, ".path"),
                           name: "configurations.".concat(index, ".path"),
                           placeholder: "Enter configuration path ".concat(index + 1),
@@ -2743,7 +2513,7 @@ var CotaCard = function CotaCard(_ref) {
                         })
                       }), !isFieldHidden.configuration_values && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
                         sm: "5",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
                           id: "configurations.".concat(index, ".value"),
                           name: "configurations.".concat(index, ".value"),
                           placeholder: "Enter configuration value ".concat(index + 1),
@@ -2787,7 +2557,7 @@ var CotaCard = function CotaCard(_ref) {
                   });
                 }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
               id: "signature",
               name: "signature",
               label: "Signature",
@@ -2798,7 +2568,7 @@ var CotaCard = function CotaCard(_ref) {
         }
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__.default, {
         primaryButtonText: primaryButtonText,
         secondaryButtonText: secondaryButtonText,
         isPrimaryLoading: isPrimaryLoading,
@@ -2816,9 +2586,9 @@ var CotaCard = function CotaCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/FotaCard/FotaCard.js":
+/***/ "./resources/js/components/FotaCard/FotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/containers/FotaCard/FotaCard.js ***!
+  !*** ./resources/js/components/FotaCard/FotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2832,8 +2602,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -2917,57 +2687,57 @@ var FotaCard = function FotaCard(_ref) {
           submitCallback(data);
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "bios_version",
             name: "bios_version",
             label: "BIOS version",
             placeholder: "Enter BIOS version"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "fetch_link",
             name: "fetch_link",
             label: "Fetch link",
             placeholder: "Enter fetch link"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "manufacturer",
             name: "manufacturer",
             label: "Manufacturer",
             placeholder: "Enter manufacturer"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "path",
             name: "path",
             label: "Path",
             placeholder: "Enter path"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "product",
             name: "product",
             label: "Product",
             placeholder: "Enter product"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "release_date",
             name: "release_date",
             label: "Release date",
             placeholder: "Enter release date"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "signature",
             name: "signature",
             label: "Signature",
             placeholder: "Enter signature"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "tool_options",
             name: "tool_options",
             label: "Tool options",
             placeholder: "Enter tool options"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "vendor",
             name: "vendor",
             label: "Vendor",
             placeholder: "Enter vendor"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "server_username",
             name: "server_username",
             label: "Server username",
             placeholder: "Enter server username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
             id: "server_password",
             name: "server_password",
             label: "Server password",
@@ -2976,7 +2746,7 @@ var FotaCard = function FotaCard(_ref) {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__.default, {
         primaryButtonText: primaryButtonText,
         secondaryButtonText: secondaryButtonText,
         isPrimaryLoading: isPrimaryLoading,
@@ -2994,9 +2764,425 @@ var FotaCard = function FotaCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/SotaCard/SotaCard.js":
+/***/ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+
+var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
+  var isHidden = _ref.isHidden,
+      isLabelHidden = _ref.isLabelHidden,
+      label = _ref.label,
+      value = _ref.value,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
+
+  var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
+      setFieldValue = _useFormikContext.setFieldValue,
+      setFieldTouched = _useFormikContext.setFieldTouched;
+
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
+      _useField2 = _slicedToArray(_useField, 2),
+      field = _useField2[0],
+      meta = _useField2[1];
+
+  var defaultStyle = {
+    control: function control(base) {
+      return _objectSpread(_objectSpread({}, base), {}, {
+        height: 35,
+        minHeight: 35,
+        '&:hover': {
+          boxShadow: '0 0 0 0.2rem rgb(50 31 219 / 25%)'
+        }
+      });
+    },
+    dropdownIndicator: function dropdownIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    },
+    clearIndicator: function clearIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    }
+  };
+  var errorStyle = {
+    control: function control(base) {
+      return _objectSpread(_objectSpread({}, base), {}, {
+        height: 35,
+        minHeight: 35,
+        border: '1px solid #e55353',
+        '&:hover': {
+          border: '1px solid #e55353',
+          boxShadow: '0 0 0 0.2rem rgb(255 0 0 / 25%)'
+        }
+      });
+    },
+    dropdownIndicator: function dropdownIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    },
+    clearIndicator: function clearIndicator(styles) {
+      return _objectSpread(_objectSpread({}, styles), {}, {
+        paddingTop: 7,
+        paddingBottom: 7
+      });
+    }
+  };
+
+  var handleOptionChange = function handleOptionChange(selection) {
+    setFieldValue(props.name, selection);
+    if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
+  };
+
+  var updateBlur = function updateBlur() {
+    setFieldTouched(props.name, true);
+  };
+
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+      htmlFor: props.id || props.name,
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
+      theme: function theme(_theme) {
+        return _objectSpread(_objectSpread({}, _theme), {}, {
+          colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
+            primary50: '#958bef80',
+            primary25: '#958bef26',
+            primary: '#958bef'
+          })
+        });
+      },
+      styles: defaultStyle
+    }, meta.touched && meta.error && {
+      className: 'is-invalid',
+      styles: errorStyle
+    }), {}, {
+      id: props.id || props.name,
+      name: field.name,
+      options: props.options,
+      value: value,
+      onBlur: updateBlur,
+      onChange: handleOptionChange
+    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+      children: typeof meta.error === 'string' ? meta.error : meta.error.label
+    }) : null]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotSelectFormGroup);
+
+/***/ }),
+
+/***/ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+
+
+var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
+  var isHidden = _ref.isHidden,
+      isLabelHidden = _ref.isLabelHidden,
+      isDisabled = _ref.isDisabled,
+      label = _ref.label,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "isDisabled", "label"]);
+
+  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+  // which we can spread on <input>. We can use field meta to show an error
+  // message if the field is invalid and it has been touched (i.e. visited)
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useField)(props),
+      _useField2 = _slicedToArray(_useField, 2),
+      field = _useField2[0],
+      meta = _useField2[1];
+
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+      htmlFor: props.id || props.name,
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
+      invalid: true
+    }), {}, {
+      id: props.id || props.name
+    }, isDisabled && {
+      disabled: true
+    }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+      children: meta.error
+    }) : null]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IotTextInputFormGroup);
+
+/***/ }),
+
+/***/ "./resources/js/components/PowerControlsCard/PowerControlsCard.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/PowerControlsCard/PowerControlsCard.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+var PowerControlsCard = function PowerControlsCard(_ref) {
+  var primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText,
+      isPrimaryLoading = _ref.isPrimaryLoading,
+      isSecondaryLoading = _ref.isSecondaryLoading,
+      isPrimaryDisabled = _ref.isPrimaryDisabled,
+      isSecondaryDisabled = _ref.isSecondaryDisabled,
+      submitCallback = _ref.submitCallback,
+      resetCallback = _ref.resetCallback;
+  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
+  var handleSubmit = function handleSubmit() {
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
+
+    if (resetCallback) {
+      resetCallback();
+    }
+  };
+
+  var handleReset = function handleReset() {
+    if (formRef.current) {
+      formRef.current.resetForm();
+    }
+
+    resetCallback();
+  };
+
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.POWER_CONTROLS_COMMAND_OPTIONS.map(function (_ref2) {
+        var label = _ref2.label;
+        return label;
+      }), "Invalid command option").required("Required")
+    }).nullable().required("Required")
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
+      children: "Power Controls"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
+        enableReinitialize: true,
+        innerRef: formRef,
+        initialValues: {
+          command: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: function onSubmit(values, _ref3) {
+          var setSubmitting = _ref3.setSubmitting;
+          submitCallback((0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values));
+        },
+        children: function children(_ref4) {
+          var values = _ref4.values;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "command",
+              name: "command",
+              label: "Command",
+              placeholder: "Enter your command",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.POWER_CONTROLS_COMMAND_OPTIONS,
+              value: values.command,
+              isSearchable: true,
+              isClearable: true
+            })
+          });
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__.default, {
+        primaryButtonText: primaryButtonText,
+        secondaryButtonText: secondaryButtonText,
+        isPrimaryLoading: isPrimaryLoading,
+        isSecondaryLoading: isSecondaryLoading,
+        isPrimaryDisabled: isPrimaryDisabled,
+        isSecondaryDisabled: isSecondaryDisabled,
+        onClickPrimary: handleSubmit,
+        onClickSecondary: handleReset
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PowerControlsCard);
+
+/***/ }),
+
+/***/ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+var PrimarySecondaryButtons = function PrimarySecondaryButtons(_ref) {
+  var primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText,
+      isPrimaryLoading = _ref.isPrimaryLoading,
+      isSecondaryLoading = _ref.isSecondaryLoading,
+      onClickPrimary = _ref.onClickPrimary,
+      onClickSecondary = _ref.onClickSecondary,
+      isPrimaryDisabled = _ref.isPrimaryDisabled,
+      isSecondaryDisabled = _ref.isSecondaryDisabled;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+      type: "submit",
+      size: "sm",
+      color: "primary",
+      onClick: onClickPrimary,
+      disabled: isPrimaryDisabled,
+      children: [isPrimaryLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CSpinner, {
+        color: "white",
+        size: "sm"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
+        name: "cil-scrubber"
+      }), " ", primaryButtonText || 'Submit']
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+      type: "reset",
+      size: "sm",
+      color: "danger",
+      className: "ml-3",
+      onClick: onClickSecondary,
+      disabled: isSecondaryDisabled,
+      children: [isSecondaryLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CSpinner, {
+        color: "white",
+        size: "sm"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
+        name: "cil-ban"
+      }), " ", secondaryButtonText || 'Reset']
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PrimarySecondaryButtons);
+
+/***/ }),
+
+/***/ "./resources/js/components/SotaCard/SotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/containers/SotaCard/SotaCard.js ***!
+  !*** ./resources/js/components/SotaCard/SotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3011,9 +3197,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -3139,7 +3325,7 @@ var SotaCard = function SotaCard(_ref) {
         children: function children(_ref6) {
           var values = _ref6.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
               id: "sota_option",
               name: "sota_option",
               label: "SOTA option",
@@ -3150,7 +3336,7 @@ var SotaCard = function SotaCard(_ref) {
               isHidden: isFieldHidden.sota_option,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
               id: "command",
               name: "command",
               label: "Command",
@@ -3160,13 +3346,13 @@ var SotaCard = function SotaCard(_ref) {
               value: values.command,
               isHidden: isFieldHidden.command,
               isDisabled: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch link",
               placeholder: "Enter fetch link",
               isHidden: isFieldHidden.fetch_link
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
               id: "log_to_file",
               name: "log_to_file",
               label: "Log to file (No, Yes)",
@@ -3176,13 +3362,13 @@ var SotaCard = function SotaCard(_ref) {
               isHidden: isFieldHidden.log_to_file,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
               id: "username",
               name: "username",
               label: "Username",
               placeholder: "Enter username",
               isHidden: isFieldHidden.username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
               id: "password",
               name: "password",
               label: "Password",
@@ -3193,7 +3379,7 @@ var SotaCard = function SotaCard(_ref) {
         }
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
         primaryButtonText: primaryButtonText,
         secondaryButtonText: secondaryButtonText,
         isPrimaryLoading: isPrimaryLoading,
@@ -3249,6 +3435,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "COTA_CONFIGURATION_PATH_OPTIONS": () => (/* binding */ COTA_CONFIGURATION_PATH_OPTIONS),
 /* harmony export */   "COTA_INITIAL_FIELDS_HIDDEN_STATE": () => (/* binding */ COTA_INITIAL_FIELDS_HIDDEN_STATE),
 /* harmony export */   "COTA_FIELDS_HIDDEN_STATES": () => (/* binding */ COTA_FIELDS_HIDDEN_STATES),
+/* harmony export */   "POWER_CONTROLS_COMMAND_OPTIONS": () => (/* binding */ POWER_CONTROLS_COMMAND_OPTIONS),
 /* harmony export */   "colourOptions": () => (/* binding */ colourOptions),
 /* harmony export */   "flavourOptions": () => (/* binding */ flavourOptions),
 /* harmony export */   "stateOptions": () => (/* binding */ stateOptions),
@@ -3660,6 +3847,16 @@ var COTA_FIELDS_HIDDEN_STATES = {
     signature: true
   }
 };
+var POWER_CONTROLS_COMMAND_OPTIONS = [{
+  value: 'shutdown',
+  label: 'shutdown'
+}, {
+  value: 'reboot',
+  label: 'reboot'
+}, {
+  value: 'decommission',
+  label: 'decommission'
+}];
 var colourOptions = [{
   value: 'ocean',
   label: 'Ocean',
@@ -3958,229 +4155,6 @@ var Configuration = function Configuration() {
 
 /***/ }),
 
-/***/ "./resources/js/redux/device/device.actions.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/redux/device/device.actions.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchDevicesStart": () => (/* binding */ fetchDevicesStart),
-/* harmony export */   "fetchDevicesSuccess": () => (/* binding */ fetchDevicesSuccess),
-/* harmony export */   "fetchDevicesFailure": () => (/* binding */ fetchDevicesFailure),
-/* harmony export */   "fetchDevicesStartAsync": () => (/* binding */ fetchDevicesStartAsync),
-/* harmony export */   "setFetchDevicesLazyParams": () => (/* binding */ setFetchDevicesLazyParams),
-/* harmony export */   "createDeviceStart": () => (/* binding */ createDeviceStart),
-/* harmony export */   "createDeviceSuccess": () => (/* binding */ createDeviceSuccess),
-/* harmony export */   "createDeviceFailure": () => (/* binding */ createDeviceFailure),
-/* harmony export */   "createDeviceStartAsync": () => (/* binding */ createDeviceStartAsync),
-/* harmony export */   "fetchDeviceStart": () => (/* binding */ fetchDeviceStart),
-/* harmony export */   "fetchDeviceSuccess": () => (/* binding */ fetchDeviceSuccess),
-/* harmony export */   "fetchDeviceFailure": () => (/* binding */ fetchDeviceFailure),
-/* harmony export */   "fetchDeviceStartAsync": () => (/* binding */ fetchDeviceStartAsync),
-/* harmony export */   "updateDeviceStart": () => (/* binding */ updateDeviceStart),
-/* harmony export */   "updateDeviceSuccess": () => (/* binding */ updateDeviceSuccess),
-/* harmony export */   "updateDeviceFailure": () => (/* binding */ updateDeviceFailure),
-/* harmony export */   "updateDeviceStartAsync": () => (/* binding */ updateDeviceStartAsync),
-/* harmony export */   "deleteDevicesStart": () => (/* binding */ deleteDevicesStart),
-/* harmony export */   "deleteDevicesSuccess": () => (/* binding */ deleteDevicesSuccess),
-/* harmony export */   "deleteDevicesFailure": () => (/* binding */ deleteDevicesFailure),
-/* harmony export */   "deleteDevicesStartAsync": () => (/* binding */ deleteDevicesStartAsync)
-/* harmony export */ });
-/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pluralize */ "./node_modules/pluralize/pluralize.js");
-/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pluralize__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _device_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./device.types */ "./resources/js/redux/device/device.types.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
- // Index
-
-var fetchDevicesStart = function fetchDevicesStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_START
-  };
-};
-var fetchDevicesSuccess = function fetchDevicesSuccess(devices) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_SUCCESS,
-    payload: devices
-  };
-};
-var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICES_FAILURE,
-    payload: errorMessage
-  };
-};
-var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupId) {
-  return function (dispatch) {
-    dispatch(fetchDevicesStart());
-
-    var params = _objectSpread({}, lazyParams);
-
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
-      params: params
-    }).then(function (result) {
-      dispatch(fetchDevicesSuccess(result.data.result.devices));
-    })["catch"](function (error) {
-      dispatch(fetchDevicesFailure(error.message));
-    });
-  };
-};
-var setFetchDevicesLazyParams = function setFetchDevicesLazyParams(lazyParams) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICES_LAZY_PARAMS,
-    payload: lazyParams
-  };
-}; // Create
-
-var createDeviceStart = function createDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_START
-  };
-};
-var createDeviceSuccess = function createDeviceSuccess() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_SUCCESS
-  };
-};
-var createDeviceFailure = function createDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var createDeviceStartAsync = function createDeviceStartAsync(data, history) {
-  return function (dispatch) {
-    dispatch(createDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Creating device');
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), data).then(function (result) {
-      dispatch(createDeviceSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device created successfully!', toastId);
-      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-    })["catch"](function (error) {
-      dispatch(createDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Failed to create device: ".concat(error.message), toastId);
-    });
-  };
-}; // Read
-
-var fetchDeviceStart = function fetchDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_START
-  };
-};
-var fetchDeviceSuccess = function fetchDeviceSuccess(device) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_SUCCESS,
-    payload: device
-  };
-};
-var fetchDeviceFailure = function fetchDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var fetchDeviceStartAsync = function fetchDeviceStartAsync(id) {
-  return function (dispatch) {
-    dispatch(fetchDeviceStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id)).then(function (result) {
-      dispatch(fetchDeviceSuccess(result.data.result.device));
-    })["catch"](function (error) {
-      dispatch(fetchDeviceFailure(error.message));
-    });
-  };
-}; // Update
-
-var updateDeviceStart = function updateDeviceStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_START
-  };
-};
-var updateDeviceSuccess = function updateDeviceSuccess(device) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_SUCCESS,
-    payload: device
-  };
-};
-var updateDeviceFailure = function updateDeviceFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_DEVICE_FAILURE,
-    payload: errorMessage
-  };
-};
-var updateDeviceStartAsync = function updateDeviceStartAsync(id, data, history) {
-  return function (dispatch) {
-    dispatch(updateDeviceStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Updating device');
-    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id), data).then(function (result) {
-      dispatch(updateDeviceSuccess(result.data.result.device));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Device updated successfully!', toastId);
-
-      if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-      }
-    })["catch"](function (error) {
-      dispatch(updateDeviceFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Device update failed: ".concat(error.message), toastId);
-    });
-  };
-}; // Delete Mass
-
-var deleteDevicesStart = function deleteDevicesStart() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_START
-  };
-};
-var deleteDevicesSuccess = function deleteDevicesSuccess() {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_SUCCESS
-  };
-};
-var deleteDevicesFailure = function deleteDevicesFailure(errorMessage) {
-  return {
-    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_DEVICES_FAILURE,
-    payload: errorMessage
-  };
-};
-var deleteDevicesStartAsync = function deleteDevicesStartAsync(ids, history) {
-  return function (dispatch, getState) {
-    dispatch(deleteDevicesStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading("Deleting ".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('device', ids.length)));
-    axios["delete"]("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
-      data: {
-        ids: ids
-      }
-    }).then(function (result) {
-      dispatch(deleteDevicesSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " deleted successfully!"), toastId);
-
-      if (history) {
-        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/devices');
-      } else {
-        dispatch(fetchDevicesStartAsync(getState().device.fetchDevicesLazyParams));
-      }
-    })["catch"](function (error) {
-      dispatch(deleteDevicesFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("".concat(pluralize__WEBPACK_IMPORTED_MODULE_0___default()('Device', ids.length), " delete failed: ").concat(error.message), toastId);
-    });
-  };
-};
-
-/***/ }),
-
 /***/ "./resources/js/redux/savedCommand/savedCommand.actions.js":
 /*!*****************************************************************!*\
   !*** ./resources/js/redux/savedCommand/savedCommand.actions.js ***!
@@ -4190,47 +4164,243 @@ var deleteDevicesStartAsync = function deleteDevicesStartAsync(ids, history) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchSavedCommandsStart": () => (/* binding */ fetchSavedCommandsStart),
+/* harmony export */   "fetchSavedCommandsSuccess": () => (/* binding */ fetchSavedCommandsSuccess),
+/* harmony export */   "fetchSavedCommandsFailure": () => (/* binding */ fetchSavedCommandsFailure),
+/* harmony export */   "fetchSavedCommandsStartAsync": () => (/* binding */ fetchSavedCommandsStartAsync),
+/* harmony export */   "setFetchSavedCommandsLazyParams": () => (/* binding */ setFetchSavedCommandsLazyParams),
 /* harmony export */   "createSavedCommandStart": () => (/* binding */ createSavedCommandStart),
 /* harmony export */   "createSavedCommandSuccess": () => (/* binding */ createSavedCommandSuccess),
 /* harmony export */   "createSavedCommandFailure": () => (/* binding */ createSavedCommandFailure),
-/* harmony export */   "createSavedCommandStartAsync": () => (/* binding */ createSavedCommandStartAsync)
+/* harmony export */   "createSavedCommandStartAsync": () => (/* binding */ createSavedCommandStartAsync),
+/* harmony export */   "fetchSavedCommandStart": () => (/* binding */ fetchSavedCommandStart),
+/* harmony export */   "fetchSavedCommandSuccess": () => (/* binding */ fetchSavedCommandSuccess),
+/* harmony export */   "fetchSavedCommandFailure": () => (/* binding */ fetchSavedCommandFailure),
+/* harmony export */   "fetchSavedCommandStartAsync": () => (/* binding */ fetchSavedCommandStartAsync),
+/* harmony export */   "updateSavedCommandStart": () => (/* binding */ updateSavedCommandStart),
+/* harmony export */   "updateSavedCommandSuccess": () => (/* binding */ updateSavedCommandSuccess),
+/* harmony export */   "updateSavedCommandFailure": () => (/* binding */ updateSavedCommandFailure),
+/* harmony export */   "updateSavedCommandStartAsync": () => (/* binding */ updateSavedCommandStartAsync),
+/* harmony export */   "deleteSavedCommandsStart": () => (/* binding */ deleteSavedCommandsStart),
+/* harmony export */   "deleteSavedCommandsSuccess": () => (/* binding */ deleteSavedCommandsSuccess),
+/* harmony export */   "deleteSavedCommandsFailure": () => (/* binding */ deleteSavedCommandsFailure),
+/* harmony export */   "deleteSavedCommandsStartAsync": () => (/* binding */ deleteSavedCommandsStartAsync),
+/* harmony export */   "fetchSavedCommandOptionsStart": () => (/* binding */ fetchSavedCommandOptionsStart),
+/* harmony export */   "fetchSavedCommandOptionsSuccess": () => (/* binding */ fetchSavedCommandOptionsSuccess),
+/* harmony export */   "fetchSavedCommandOptionsFailure": () => (/* binding */ fetchSavedCommandOptionsFailure),
+/* harmony export */   "fetchSavedCommandOptionsStartAsync": () => (/* binding */ fetchSavedCommandOptionsStartAsync)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _savedCommand_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./savedCommand.types */ "./resources/js/redux/savedCommand/savedCommand.types.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! pluralize */ "./node_modules/pluralize/pluralize.js");
+/* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(pluralize__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./savedCommand.types */ "./resources/js/redux/savedCommand/savedCommand.types.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 
 
 
- // Create
+
+ // Index
+
+var fetchSavedCommandsStart = function fetchSavedCommandsStart() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMANDS_START
+  };
+};
+var fetchSavedCommandsSuccess = function fetchSavedCommandsSuccess(savedCommands) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMANDS_SUCCESS,
+    payload: savedCommands
+  };
+};
+var fetchSavedCommandsFailure = function fetchSavedCommandsFailure(errorMessage) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMANDS_FAILURE,
+    payload: errorMessage
+  };
+};
+var fetchSavedCommandsStartAsync = function fetchSavedCommandsStartAsync(lazyParams) {
+  return function (dispatch) {
+    dispatch(fetchSavedCommandsStart());
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved"), {
+      params: lazyParams
+    }).then(function (result) {
+      dispatch(fetchSavedCommandsSuccess(result.data.result.savedCommands));
+    })["catch"](function (error) {
+      dispatch(fetchSavedCommandsFailure(error.message));
+    });
+  };
+};
+var setFetchSavedCommandsLazyParams = function setFetchSavedCommandsLazyParams(lazyParams) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.SET_FETCH_SAVED_COMMANDS_LAZY_PARAMS,
+    payload: lazyParams
+  };
+}; // Create
 
 var createSavedCommandStart = function createSavedCommandStart() {
   return {
-    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_SAVED_COMMAND_START
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.CREATE_SAVED_COMMAND_START
   };
 };
 var createSavedCommandSuccess = function createSavedCommandSuccess() {
   return {
-    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_SAVED_COMMAND_SUCCESS
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.CREATE_SAVED_COMMAND_SUCCESS
   };
 };
 var createSavedCommandFailure = function createSavedCommandFailure(errorMessage) {
   return {
-    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_SAVED_COMMAND_FAILURE,
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.CREATE_SAVED_COMMAND_FAILURE,
     payload: errorMessage
   };
 };
 var createSavedCommandStartAsync = function createSavedCommandStartAsync(data, history) {
   return function (dispatch) {
     dispatch(createSavedCommandStart());
-    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.loading('Creating saved command');
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/commands/saved"), data).then(function (result) {
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.loading('Creating saved command');
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved"), data).then(function (result) {
       dispatch(createSavedCommandSuccess());
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.success('Saved command created successfully!', toastId);
-      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.redirectToAfterToastSuccess)(history, '/commands/saved');
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.success('Saved command created successfully!', toastId);
+      (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.redirectToAfterToastSuccess)(history, '/commands/saved');
     })["catch"](function (error) {
       dispatch(createSavedCommandFailure(error.message));
-      _utils_utils__WEBPACK_IMPORTED_MODULE_3__.toastHelper.error("Failed to create saved command: ".concat(error.message), toastId);
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.error("Failed to create saved command: ".concat(error.message), toastId);
+    });
+  };
+}; // Read
+
+var fetchSavedCommandStart = function fetchSavedCommandStart() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_START
+  };
+};
+var fetchSavedCommandSuccess = function fetchSavedCommandSuccess(savedCommand) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_SUCCESS,
+    payload: savedCommand
+  };
+};
+var fetchSavedCommandFailure = function fetchSavedCommandFailure(errorMessage) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_FAILURE,
+    payload: errorMessage
+  };
+};
+var fetchSavedCommandStartAsync = function fetchSavedCommandStartAsync(id) {
+  return function (dispatch) {
+    dispatch(fetchSavedCommandStart());
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved/").concat(id)).then(function (result) {
+      dispatch(fetchSavedCommandSuccess(result.data.result.savedCommand));
+    })["catch"](function (error) {
+      dispatch(fetchSavedCommandFailure(error.message));
+    });
+  };
+}; // Update
+
+var updateSavedCommandStart = function updateSavedCommandStart() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.UPDATE_SAVED_COMMAND_START
+  };
+};
+var updateSavedCommandSuccess = function updateSavedCommandSuccess(savedCommand) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.UPDATE_SAVED_COMMAND_SUCCESS,
+    payload: savedCommand
+  };
+};
+var updateSavedCommandFailure = function updateSavedCommandFailure(errorMessage) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.UPDATE_SAVED_COMMAND_FAILURE,
+    payload: errorMessage
+  };
+};
+var updateSavedCommandStartAsync = function updateSavedCommandStartAsync(id, data, history) {
+  return function (dispatch) {
+    dispatch(updateSavedCommandStart());
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.loading('Updating saved command');
+    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved/").concat(id), data).then(function (result) {
+      dispatch(updateSavedCommandSuccess(result.data.result.savedCommand));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.success('Saved command updated successfully!', toastId);
+
+      if (history) {
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.redirectToAfterToastSuccess)(history, '/commands/saved');
+      }
+    })["catch"](function (error) {
+      dispatch(updateSavedCommandFailure(error.message));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.error("Saved command update failed: ".concat(error.message), toastId);
+    });
+  };
+}; // Delete Mass
+
+var deleteSavedCommandsStart = function deleteSavedCommandsStart() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.DELETE_SAVED_COMMANDS_START
+  };
+};
+var deleteSavedCommandsSuccess = function deleteSavedCommandsSuccess() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.DELETE_SAVED_COMMANDS_SUCCESS
+  };
+};
+var deleteSavedCommandsFailure = function deleteSavedCommandsFailure(errorMessage) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.DELETE_SAVED_COMMANDS_FAILURE,
+    payload: errorMessage
+  };
+};
+var deleteSavedCommandsStartAsync = function deleteSavedCommandsStartAsync(ids, history) {
+  return function (dispatch, getState) {
+    dispatch(deleteSavedCommandsStart());
+    var toastId = _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.loading("Deleting saved ".concat(pluralize__WEBPACK_IMPORTED_MODULE_1___default()('command', ids.length)));
+    axios["delete"]("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved"), {
+      data: {
+        ids: ids
+      }
+    }).then(function (result) {
+      dispatch(deleteSavedCommandsSuccess());
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.success("Saved ".concat(pluralize__WEBPACK_IMPORTED_MODULE_1___default()('command', ids.length), " deleted successfully!"), toastId);
+      console.log(history);
+
+      if (history) {
+        (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.redirectToAfterToastSuccess)(history, '/commands/saved');
+      } else {
+        dispatch(fetchSavedCommandsStartAsync(getState().savedCommand.fetchSavedCommandsLazyParams));
+      }
+    })["catch"](function (error) {
+      dispatch(deleteSavedCommandsFailure(error.message));
+      _utils_utils__WEBPACK_IMPORTED_MODULE_4__.toastHelper.error("Saved ".concat(pluralize__WEBPACK_IMPORTED_MODULE_1___default()('command', ids.length), " delete failed: ").concat(error.message), toastId);
+    });
+  };
+}; // Fetch dropdown options
+
+var fetchSavedCommandOptionsStart = function fetchSavedCommandOptionsStart() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_OPTIONS_START
+  };
+};
+var fetchSavedCommandOptionsSuccess = function fetchSavedCommandOptionsSuccess(savedCommandOptions) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_OPTIONS_SUCCESS,
+    payload: savedCommandOptions
+  };
+};
+var fetchSavedCommandOptionsFailure = function fetchSavedCommandOptionsFailure(errorMessage) {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.FETCH_SAVED_COMMAND_OPTIONS_FAILURE,
+    payload: errorMessage
+  };
+};
+var fetchSavedCommandOptionsStartAsync = function fetchSavedCommandOptionsStartAsync(name) {
+  return function (dispatch) {
+    dispatch(fetchSavedCommandOptionsStart());
+    var params = {};
+    if (name) params.name = name;
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/commands/saved/options"), {
+      params: params
+    }).then(function (result) {
+      dispatch(fetchSavedCommandOptionsSuccess(result.data.result.savedCommands));
+    })["catch"](function (error) {
+      dispatch(fetchSavedCommandOptionsFailure(error.message));
     });
   };
 };
@@ -4290,6 +4460,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "convertDeviceObjectToDeviceArrayObject": () => (/* binding */ convertDeviceObjectToDeviceArrayObject),
 /* harmony export */   "removeObjectEmptyString": () => (/* binding */ removeObjectEmptyString),
 /* harmony export */   "removeLastCharacterIfExists": () => (/* binding */ removeLastCharacterIfExists),
+/* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
+/* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
+/* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
@@ -4304,8 +4477,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -4319,7 +4491,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -4352,6 +4523,23 @@ var removeLastCharacterIfExists = function removeLastCharacterIfExists(str, need
   }
 
   return str;
+};
+var isNotEmptyString = function isNotEmptyString(str) {
+  return Boolean(str);
+};
+var isValidJSONObject = function isValidJSONObject(obj) {
+  return _typeof(obj) === 'object' && obj !== null;
+};
+var isValidJsonString = function isValidJsonString(str) {
+  if (str === null) return false;
+
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -4402,7 +4590,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -4413,10 +4601,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
           },
@@ -4499,18 +4687,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-json-view */ "./node_modules/react-json-view/dist/main.js");
-/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_json_view__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/savedCommand/savedCommand.actions */ "./resources/js/redux/savedCommand/savedCommand.actions.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _containers_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../containers/AotaCard/AotaCard */ "./resources/js/containers/AotaCard/AotaCard.js");
-/* harmony import */ var _containers_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../containers/FotaCard/FotaCard */ "./resources/js/containers/FotaCard/FotaCard.js");
-/* harmony import */ var _containers_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../containers/SotaCard/SotaCard */ "./resources/js/containers/SotaCard/SotaCard.js");
-/* harmony import */ var _containers_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../containers/CotaCard/CotaCard */ "./resources/js/containers/CotaCard/CotaCard.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/savedCommand/savedCommand.actions */ "./resources/js/redux/savedCommand/savedCommand.actions.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/AotaCard/AotaCard */ "./resources/js/components/AotaCard/AotaCard.js");
+/* harmony import */ var _components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/FotaCard/FotaCard */ "./resources/js/components/FotaCard/FotaCard.js");
+/* harmony import */ var _components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/SotaCard/SotaCard */ "./resources/js/components/SotaCard/SotaCard.js");
+/* harmony import */ var _components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/CotaCard/CotaCard */ "./resources/js/components/CotaCard/CotaCard.js");
+/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _components_PowerControlsCard_PowerControlsCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/PowerControlsCard/PowerControlsCard */ "./resources/js/components/PowerControlsCard/PowerControlsCard.js");
+/* harmony import */ var _components_CommandPayloadViewer_CommandPayloadViewer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/CommandPayloadViewer/CommandPayloadViewer */ "./resources/js/components/CommandPayloadViewer/CommandPayloadViewer.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4528,6 +4716,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -4590,20 +4779,20 @@ var CreateSavedCommand = function CreateSavedCommand(_ref) {
     name: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required").max(255, 'The name may not be greater than 255 characters')
   };
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCol, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
         xs: "12",
         md: "12",
         className: "mb-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCard, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardHeader, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCard, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardHeader, {
             children: "Create new saved command"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardBody, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CAlert, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardBody, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CAlert, {
               color: "secondary",
               children: "To create a new saved command, enter a command name and the payloads."
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Formik, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Formik, {
               enableReinitialize: true,
               innerRef: formRef,
               initialValues: {
@@ -4616,8 +4805,8 @@ var CreateSavedCommand = function CreateSavedCommand(_ref) {
               },
               children: function children(_ref3) {
                 var values = _ref3.values;
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Form, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_8__.default, {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(formik__WEBPACK_IMPORTED_MODULE_3__.Form, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
                     id: "name",
                     name: "name",
                     label: "Command name",
@@ -4625,78 +4814,88 @@ var CreateSavedCommand = function CreateSavedCommand(_ref) {
                   })
                 });
               }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CLabel, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CLabel, {
               htmlFor: "",
               children: "Command payload"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabs, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabs, {
               activeTab: "aota",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNav, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNav, {
                 variant: "tabs",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavLink, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
                     "data-tab": "aota",
                     children: "Application OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
                     "data-tab": "fota",
                     children: "Firmware OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
                     "data-tab": "sota",
                     children: "Software OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
                     "data-tab": "cota",
                     children: "Configuration OTA Update"
                   })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
+                    "data-tab": "power-control",
+                    children: "Power Controls"
+                  })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabContent, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabContent, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
                   className: "m-3",
                   "data-tab": "aota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_containers_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_9__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_8__.default, {
                     primaryButtonText: "Save",
                     submitCallback: setSavedCommandPayload,
                     resetCallback: resetCallback
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
                   className: "m-3",
                   "data-tab": "fota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_containers_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_10__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_9__.default, {
                     primaryButtonText: "Save",
                     submitCallback: setSavedCommandPayload,
                     resetCallback: resetCallback
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
                   className: "m-3",
                   "data-tab": "sota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_containers_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_10__.default, {
                     primaryButtonText: "Save",
                     submitCallback: setSavedCommandPayload,
                     resetCallback: resetCallback
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
                   className: "m-3",
                   "data-tab": "cota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_containers_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+                    primaryButtonText: "Save",
+                    submitCallback: setSavedCommandPayload,
+                    resetCallback: resetCallback
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
+                  className: "m-3",
+                  "data-tab": "power-control",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_PowerControlsCard_PowerControlsCard__WEBPACK_IMPORTED_MODULE_13__.default, {
                     primaryButtonText: "Save",
                     submitCallback: setSavedCommandPayload,
                     resetCallback: resetCallback
                   })
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CLabel, {
-              htmlFor: "",
-              children: "Resulting command payload"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_4___default()), {
-              src: savedCommandPayload ? savedCommandPayload : {},
-              name: null
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_CommandPayloadViewer_CommandPayloadViewer__WEBPACK_IMPORTED_MODULE_14__.default, {
+              label: "Resulting command payload",
+              payload: savedCommandPayload
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_6__.CCardFooter, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_13__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardFooter, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_12__.default, {
               primaryButtonText: "Create",
               isPrimaryLoading: isCreatingSavedCommand,
               onClickPrimary: handleSubmit,
@@ -4707,7 +4906,7 @@ var CreateSavedCommand = function CreateSavedCommand(_ref) {
           })]
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_5__.Toaster, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_4__.Toaster, {})]
   });
 };
 
@@ -4721,7 +4920,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createSavedCommandStartAsync: function createSavedCommandStartAsync(data, history) {
-      return dispatch((0,_redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_7__.createSavedCommandStartAsync)(data, history));
+      return dispatch((0,_redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_6__.createSavedCommandStartAsync)(data, history));
     }
   };
 };

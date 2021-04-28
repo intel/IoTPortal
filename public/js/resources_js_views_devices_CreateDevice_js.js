@@ -2750,6 +2750,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "convertDeviceObjectToDeviceArrayObject": () => (/* binding */ convertDeviceObjectToDeviceArrayObject),
 /* harmony export */   "removeObjectEmptyString": () => (/* binding */ removeObjectEmptyString),
 /* harmony export */   "removeLastCharacterIfExists": () => (/* binding */ removeLastCharacterIfExists),
+/* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
+/* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
+/* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
@@ -2764,8 +2767,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -2779,7 +2781,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -2812,6 +2813,23 @@ var removeLastCharacterIfExists = function removeLastCharacterIfExists(str, need
   }
 
   return str;
+};
+var isNotEmptyString = function isNotEmptyString(str) {
+  return Boolean(str);
+};
+var isValidJSONObject = function isValidJSONObject(obj) {
+  return _typeof(obj) === 'object' && obj !== null;
+};
+var isValidJsonString = function isValidJsonString(str) {
+  if (str === null) return false;
+
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -2862,7 +2880,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -2873,10 +2891,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
           },
@@ -2968,12 +2986,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
 /* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -3095,11 +3107,7 @@ var CreateDevice = function CreateDevice(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions ? state.deviceCategory.deviceCategoryOptions.map(function (option) {
-      return _objectSpread(_objectSpread({}, option), {}, {
-        label: option.label.toUpperCase()
-      });
-    }) : state.deviceCategory.deviceCategoryOptions,
+    deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
     isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
     fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
     isCreatingDevice: state.device.isCreatingDevice,

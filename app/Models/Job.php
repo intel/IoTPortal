@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Job extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUniqueId;
 
     /**
      * The attributes that are mass assignable.
@@ -26,8 +27,7 @@ class Job extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $uniqueId = Str::uuid()->toString();
-            $model->unique_id = $uniqueId;
+            $model->unique_id = self::generateUniqueId();
         });
     }
 

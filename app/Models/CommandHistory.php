@@ -17,7 +17,7 @@ class CommandHistory extends Model
     protected $fillable = [
         'type',
         'payload',
-        'response_time'
+        'responded_at',
     ];
 
     /**
@@ -46,9 +46,9 @@ class CommandHistory extends Model
         return $query->where('command_id', $value);
     }
 
-    public function scopeResponseTimeBetween($query, $dates)
+    public function scopeRespondedAtBetween($query, $dates)
     {
-        return $query->whereBetween('response_time', $dates);
+        return $query->whereBetween('responded_at', $dates);
     }
 
     public function scopeCreatedAtBetween($query, $dates)

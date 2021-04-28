@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
 import { fetchDeviceStartAsync, updateDeviceStartAsync } from '../../redux/device/device.actions';
-import { fetchDeviceCategoriesStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
+import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
 import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
@@ -24,13 +24,13 @@ const EditDevice = (props) => {
     device,
     isFetchingDevice,
     fetchDeviceErrorMessage,
-    deviceCategories,
-    isFetchingDeviceCategories,
-    fetchDeviceCategoriesErrorMessage,
+    deviceCategoryOptions,
+    isFetchingDeviceCategoryOptions,
+    fetchDeviceCategoryOptionsErrorMessage,
     isUpdatingDevice,
     updateDeviceErrorMessage,
     fetchDeviceStartAsync,
-    fetchDeviceCategoriesStartAsync,
+    fetchDeviceCategoryOptionsStartAsync,
     updateDeviceStartAsync
   } = props;
 
@@ -63,7 +63,7 @@ const EditDevice = (props) => {
 
   useEffect(() => {
     fetchDeviceStartAsync(deviceId);
-    fetchDeviceCategoriesStartAsync();
+    fetchDeviceCategoryOptionsErrorMessage();
   }, []);
 
   if (isFetchingDevice) {
@@ -108,10 +108,10 @@ const EditDevice = (props) => {
                       name="category"
                       label="Device Category"
                       placeholder="Select a device category"
-                      options={deviceCategories}
+                      options={deviceCategoryOptions}
                       value={values.category}
-                      onInputChange={(name) => fetchDeviceCategoriesStartAsync(name)}
-                      isLoading={isFetchingDeviceCategories}
+                      onInputChange={(name) => fetchDeviceCategoryOptionsStartAsync(name)}
+                      isLoading={isFetchingDeviceCategoryOptions}
                       isSearchable
                       isClearable
                     />
@@ -139,18 +139,16 @@ const mapStateToProps = state => ({
   } : state.device.device,
   isFetchingDevice: state.device.isFetchingDevice,
   fetchDeviceErrorMessage: state.device.fetchDeviceErrorMessage,
-  deviceCategories: state.deviceCategory.deviceCategories ? state.deviceCategory.deviceCategories.map(deviceCategory => {
-    return {value: deviceCategory.id, label: deviceCategory.name.toUpperCase()};
-  }) : state.deviceCategory.deviceCategories,
-  isFetchingDeviceCategories: state.deviceCategory.isFetchingDeviceCategories,
-  fetchDeviceCategoriesErrorMessage: state.deviceCategory.fetchDeviceCategoriesErrorMessage,
+  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
+  isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
+  fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
   isUpdatingDevice: state.device.isUpdatingDevice,
   updateDeviceErrorMessage: state.device.updateDeviceErrorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchDeviceStartAsync: (id) => dispatch(fetchDeviceStartAsync(id)),
-  fetchDeviceCategoriesStartAsync: (name) => dispatch(fetchDeviceCategoriesStartAsync(name)),
+  fetchDeviceCategoryOptionsStartAsync: (name) => dispatch(fetchDeviceCategoryOptionsStartAsync(name)),
   updateDeviceStartAsync: (id, data, history) => dispatch(updateDeviceStartAsync(id, data, history)),
 });
 

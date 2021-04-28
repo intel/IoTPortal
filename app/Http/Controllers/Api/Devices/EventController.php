@@ -77,6 +77,6 @@ class EventController extends Controller
             $query->where('name', 'like', "%{$request->input('name')}%");
         }
 
-        return Helper::apiResponse(['deviceEvents' => $query->get()]);
+        return Helper::apiResponseHttpOk(['deviceEvents' => $query->get()]);
     }
 }

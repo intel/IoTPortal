@@ -33,11 +33,11 @@ const EventHistoriesDataTable = ({
                                    setFetchDeviceEventHistoriesLazyParams
                                  }) => {
 
-  const [expandedRows, setExpandedRows] = useState(null);
-  const [globalFilter, setGlobalFilter] = useState(null);
   const [selectedDeviceEventHistories, setSelectedDeviceEventHistories] = useState(null);
   const [selectedEventType, setSelectedEventType] = useState(null);
   const [timestampFilter, setTimestampFilter] = useState(null);
+  const [expandedRows, setExpandedRows] = useState(null);
+  const [globalFilter, setGlobalFilter] = useState(null);
 
   const dt = useRef(null);
 
@@ -118,7 +118,7 @@ const EventHistoriesDataTable = ({
       <>
         <span className="p-column-title">Event Type</span>
         <span
-          className={classNames('event-badge', 'type-' + rowData.event.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.event.name.toUpperCase()}</span>
+          className={classNames('event-badge', 'type-' + rowData.event.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.event.name}</span>
       </>
     );
   };
@@ -165,7 +165,7 @@ const EventHistoriesDataTable = ({
                  rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceEventHistories}>
         <Column expander style={{width: '5em'}}/>
         <Column selectionMode="multiple" style={{width: '3em'}}/>
-        <Column field="raw_data" header="Raw Data" body={rawDataColumnBody} sortable filter
+        <Column field="raw_data" header="Raw data" body={rawDataColumnBody} sortable filter
                 filterPlaceholder="Search by raw data"/>
         <Column field="type" header="Type" body={eventTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={eventTypeFilterElement}/>
@@ -177,10 +177,7 @@ const EventHistoriesDataTable = ({
 };
 
 const mapStateToProps = state => ({
-  deviceEventOptions: state.deviceEvent.deviceEventOptions ? state.deviceEvent.deviceEventOptions.map(option => ({
-    ...option,
-    label: option.label.toUpperCase()
-  })) : state.deviceEvent.deviceEventOptions,
+  deviceEventOptions: state.deviceEvent.deviceEventOptions,
   isFetchingDeviceEventOptions: state.deviceEvent.isFetchingDeviceEventOptions,
   fetchDeviceEventOptionsErrorMessage: state.deviceEvent.fetchDeviceEventOptionsErrorMessage,
   deviceEventHistories: state.deviceEventHistory.deviceEventHistories,

@@ -336,6 +336,13 @@ export const COTA_FIELDS_HIDDEN_STATES = {
   }
 };
 
+export const POWER_CONTROLS_COMMAND_OPTIONS = [
+  {value: 'shutdown', label: 'shutdown'},
+  {value: 'reboot', label: 'reboot'},
+  {value: 'decommission', label: 'decommission'},
+];
+
+
 export const colourOptions = [
   {value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true},
   {value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true},

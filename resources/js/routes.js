@@ -56,7 +56,12 @@ const EditDeviceCategory = React.lazy(() => import('./views/deviceCategories/Edi
 
 const CreateJob = React.lazy(() => import('./views/jobs/CreateJob'));
 
+const ListSavedCommands = React.lazy(() => import('./views/savedCommands/ListSavedCommands'));
 const CreateSavedCommand = React.lazy(() => import('./views/savedCommands/CreateSavedCommand'));
+const ViewSavedCommand = React.lazy(() => import('./views/savedCommands/ViewSavedCommand'));
+
+const ListApiTokens = React.lazy(() => import('./views/apiTokens/ListApiTokens'));
+
 
 const routes = [
     { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
@@ -78,7 +83,11 @@ const routes = [
 
     { path: '/jobs/create', exact: true,  name: 'Create Job', component: CreateJob },
 
+    { path: '/commands/saved', exact: true,  name: 'Saved Commands', component: ListSavedCommands },
     { path: '/commands/saved/create', exact: true,  name: 'Create Saved Commands', component: CreateSavedCommand },
+    { path: '/commands/saved/:id', exact: true,  name: 'Saved Command Details', component: ViewSavedCommand },
+
+    { path: '/tokens', exact: true,  name: 'API Tokens', component: ListApiTokens },
 
 
     // { path: '/', exact: true, name: 'Home' },

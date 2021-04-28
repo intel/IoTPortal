@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 import { getSanitizedValues } from '../../utils/utils';
 
-import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
-import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
+import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
+import PrimarySecondaryButtons from '../PrimarySecondaryButtons/PrimarySecondaryButtons';
 
 const FotaCard = ({
                     primaryButtonText,

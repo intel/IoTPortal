@@ -38,7 +38,7 @@ class MetricController extends Controller
             ];
         });
 
-        return Helper::apiResponse(['cpuTemperatures' => $cpuTemperatures->toArray()]);
+        return Helper::apiResponseHttpOk(['cpuTemperatures' => $cpuTemperatures->toArray()]);
     }
 
     /**
@@ -67,7 +67,7 @@ class MetricController extends Controller
             ];
         });
 
-        return Helper::apiResponse(['cpuUsages' => $cpuUsages->toArray()]);
+        return Helper::apiResponseHttpOk(['cpuUsages' => $cpuUsages->toArray()]);
     }
 
     /**
@@ -96,7 +96,7 @@ class MetricController extends Controller
             ];
         });
 
-        return Helper::apiResponse(['diskUsages' => $diskUsages->toArray()]);
+        return Helper::apiResponseHttpOk(['diskUsages' => $diskUsages->toArray()]);
     }
 
     /**
@@ -125,7 +125,7 @@ class MetricController extends Controller
             ];
         });
 
-        return Helper::apiResponse(['availableMemories' => $availableMemories->toArray()]);
+        return Helper::apiResponseHttpOk(['availableMemories' => $availableMemories->toArray()]);
     }
 
     /**

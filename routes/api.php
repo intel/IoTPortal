@@ -36,16 +36,26 @@ Route::middleware(['json.response'])->group(function () {
 });
 
 Route::middleware(['json.response', 'auth'])->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
 
     // Devices
-    Route::apiResource('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController');
+    Route::post('/devices/validateField', 'App\Http\Controllers\Api\Devices\DeviceController@validateField');
 
-    Route::get('/device/statuses/options', 'App\Http\Controllers\Api\Devices\StatusController@options');
+    Route::delete('/devices', 'App\Http\Controllers\Api\Devices\DeviceController@destroySelected')->name('api.devices.destroySelected');
+
+    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
 
+    // Device Groups
+    Route::get('/device/groups/options', 'App\Http\Controllers\Api\Devices\GroupController@options');
+
+    Route::post('/device/groups/validateField', 'App\Http\Controllers\Api\Devices\GroupController@validateField');
+
+    Route::delete('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController@destroySelected')->name('api.device.groups.destroySelected');
+
+    Route::apiResource('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController');
+
+
+    // Device Categories
     Route::get('/device/categories/options', 'App\Http\Controllers\Api\Devices\CategoryController@options');
 
     Route::post('/device/categories/validateField', 'App\Http\Controllers\Api\Devices\CategoryController@validateField');
@@ -55,22 +65,21 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     Route::apiResource('/device/categories', 'App\Http\Controllers\Api\Devices\CategoryController');
 
 
-    Route::post('/device/groups/validateField', 'App\Http\Controllers\Api\Devices\GroupController@validateField');
+    // Saved Commands
+    Route::delete('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController@destroySelected');
 
-    Route::delete('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController@destroySelected')->name('api.device.groups.destroySelected');
-
-    Route::apiResource('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController');
-
+    Route::apiResource('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController')->parameters(['saved' => 'savedCommand']);;
 
 
-    Route::post('/devices/validateField', 'App\Http\Controllers\Api\Devices\DeviceController@validateField');
-
-    Route::delete('/devices', 'App\Http\Controllers\Api\Devices\DeviceController@destroySelected')->name('api.devices.destroySelected');
-
-    Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
+    // API Tokens
+    Route::get('/tokens', 'App\Http\Controllers\Api\ApiTokenController@show');
 
 
+    // Device OTA commands trigger endpoint
+    Route::post('/devices/{device}/commands', 'App\Http\Controllers\Api\Devices\DeviceController@commands')->name('api.devices.commands');
 
+
+    // Device Metrics aka. Charts
     Route::get('/devices/{device}/metrics/cpu/temperatures', 'App\Http\Controllers\Api\Devices\MetricController@cpuTemperatures')->name('api.devices.metrics.cpuTemperatures');
 
     Route::get('/devices/{device}/metrics/cpu/usages', 'App\Http\Controllers\Api\Devices\MetricController@cpuUsages')->name('api.devices.metrics.cpuUsages');
@@ -80,16 +89,33 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     Route::get('/devices/{device}/metrics/memory/availables', 'App\Http\Controllers\Api\Devices\MetricController@memoryAvailables')->name('api.devices.metrics.memoryAvailables');
 
 
-    Route::get('/devices/{device}/commands/options', 'App\Http\Controllers\Api\Devices\CommandController@options')->name('api.devices.commands.options');
-
-    Route::get('/devices/{device}/events/options', 'App\Http\Controllers\Api\Devices\EventController@options')->name('api.devices.events.options');
-
+    // Device Command Histories and Event Histories
     Route::get('/devices/{device}/commands/histories', 'App\Http\Controllers\Api\Devices\CommandHistoryController@index')->name('api.devices.commandHistories.index');
 
     Route::get('/devices/{device}/events/histories', 'App\Http\Controllers\Api\Devices\EventHistoryController@index')->name('api.devices.eventHistories.index');
 
 
-    Route::post('/devices/{device}/commands', 'App\Http\Controllers\Api\Devices\DeviceController@commands')->name('api.devices.commands');
+    // DataTable Dropdown Options
+    Route::get('/device/statuses/options', 'App\Http\Controllers\Api\Devices\StatusController@options');
+
+    Route::get('/devices/{device}/commands/options', 'App\Http\Controllers\Api\Devices\CommandController@options')->name('api.devices.commands.options');
+
+    Route::get('/devices/{device}/events/options', 'App\Http\Controllers\Api\Devices\EventController@options')->name('api.devices.events.options');
+
+
+
+
+
+
+
+
+
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+
 //    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');
 
 });

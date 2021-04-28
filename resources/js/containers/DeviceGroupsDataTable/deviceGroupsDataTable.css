@@ -43,7 +43,7 @@
 .datatable-device-groups .p-datatable.p-datatable-device-groups .p-datatable-header {
     padding: 1rem;
     text-align: left;
-    font-size: 1.5rem !important;
+    font-size: 1.5em;
 }
 
 .datatable-device-groups .p-datatable.p-datatable-device-groups .p-paginator {

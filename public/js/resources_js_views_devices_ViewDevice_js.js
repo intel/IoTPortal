@@ -2000,6 +2000,302 @@ function(){function t(t){t.remember("_draggable",this),this.el=t}t.prototype.ini
 
 /***/ }),
 
+/***/ "./resources/js/components/AotaCard/AotaCard.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/AotaCard/AotaCard.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+var AotaCard = function AotaCard(_ref) {
+  var primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText,
+      isPrimaryLoading = _ref.isPrimaryLoading,
+      isSecondaryLoading = _ref.isSecondaryLoading,
+      isPrimaryDisabled = _ref.isPrimaryDisabled,
+      isSecondaryDisabled = _ref.isSecondaryDisabled,
+      submitCallback = _ref.submitCallback,
+      resetCallback = _ref.resetCallback;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_COMMAND_OPTIONS.docker),
+      _useState2 = _slicedToArray(_useState, 2),
+      commandOptions = _useState2[0],
+      setCommandOptions = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isFieldHidden = _useState4[0],
+      setFieldHidden = _useState4[1];
+
+  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
+  var handleSubmit = function handleSubmit() {
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
+  };
+
+  var handleReset = function handleReset() {
+    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE);
+
+    if (formRef.current) {
+      formRef.current.resetForm();
+    }
+
+    if (resetCallback) {
+      resetCallback();
+    }
+  };
+
+  var validationObject = {
+    app: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_APP_OPTIONS.map(function (_ref2) {
+        var label = _ref2.label;
+        return label;
+      }), "Invalid application type").required("Required")
+    }).nullable().required("Required"),
+    command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(commandOptions.map(function (_ref3) {
+        var label = _ref3.label;
+        return label;
+      }), "Invalid command selection").required("Required")
+    }).nullable().required("Required")
+  };
+  if (!isFieldHidden.tag) validationObject.tag = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  if (!isFieldHidden.reboot) validationObject.reboot = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+    label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_REBOOT_OPTIONS.map(function (_ref4) {
+      var label = _ref4.label;
+      return label;
+    }), "Please select Yes or No only").required("Required")
+  }).nullable().required("Required");
+  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  if (!isFieldHidden.signature) validationObject.signature = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  if (!isFieldHidden.version) validationObject.version = yup__WEBPACK_IMPORTED_MODULE_2__.string().when(['app', 'command'], {
+    is: function is(app, command) {
+      return app.value === 'docker' && command.value === 'remove';
+    },
+    then: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    otherwise: yup__WEBPACK_IMPORTED_MODULE_2__.string()
+  });
+  if (!isFieldHidden.server_username) validationObject.server_username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.server_password) validationObject.server_password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.docker_registry) validationObject.docker_registry = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.docker_username) validationObject.docker_username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.docker_password) validationObject.docker_password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.docker_compose_file) validationObject.docker_compose_file = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
+
+  var updateSelectOptions = function updateSelectOptions(name, selectedOption) {
+    if (name === 'app' && selectedOption) {
+      handleReset();
+      formRef.current.setFieldValue('app', selectedOption);
+      setCommandOptions(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_COMMAND_OPTIONS[selectedOption.value]);
+      setFieldHidden(_objectSpread(_objectSpread({}, _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE), {}, {
+        command: false
+      }));
+    } else if (name === 'app' && !selectedOption) {
+      handleReset();
+    } else if (name === 'command' && selectedOption) {
+      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_FIELDS_HIDDEN_STATES[formRef.current.values.app.value][selectedOption.value]);
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
+      children: "Application OTA Update"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
+        enableReinitialize: true,
+        innerRef: formRef,
+        initialValues: {
+          app: '',
+          command: '',
+          tag: '',
+          reboot: '',
+          fetch_link: '',
+          signature: '',
+          version: '',
+          server_username: '',
+          server_password: '',
+          docker_registry: '',
+          docker_username: '',
+          docker_password: '',
+          docker_compose_file: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: function onSubmit(values, _ref5) {
+          var setSubmitting = _ref5.setSubmitting;
+          var data = {
+            command: 'aota',
+            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values)
+          };
+          submitCallback(data);
+        },
+        children: function children(_ref6) {
+          var values = _ref6.values;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "app",
+              name: "app",
+              label: "Application",
+              placeholder: "Choose your application",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_APP_OPTIONS,
+              value: values.app,
+              updateSelectOptions: updateSelectOptions,
+              isHidden: isFieldHidden.app,
+              isSearchable: true,
+              isClearable: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "command",
+              name: "command",
+              label: "Command",
+              placeholder: "Enter your command",
+              options: commandOptions,
+              value: values.command,
+              updateSelectOptions: updateSelectOptions,
+              isHidden: isFieldHidden.command,
+              isSearchable: true,
+              isClearable: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "tag",
+              name: "tag",
+              label: "Container tag",
+              placeholder: "Enter container tag",
+              isHidden: isFieldHidden.tag
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "reboot",
+              name: "reboot",
+              label: "Device reboot",
+              placeholder: "Choose device reboot",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_REBOOT_OPTIONS,
+              value: values.reboot,
+              isHidden: isFieldHidden.reboot,
+              isSearchable: true,
+              isClearable: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "fetch_link",
+              name: "fetch_link",
+              label: "Fetch link",
+              placeholder: "Enter fetch link",
+              isHidden: isFieldHidden.fetch_link
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "signature",
+              name: "signature",
+              label: "Signature",
+              placeholder: "Enter signature",
+              isHidden: isFieldHidden.signature
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "version",
+              name: "version",
+              label: "Version",
+              placeholder: "Enter version",
+              isHidden: isFieldHidden.version
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "server_username",
+              name: "server_username",
+              label: "Server username",
+              placeholder: "Enter server username",
+              isHidden: isFieldHidden.server_username
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "server_password",
+              name: "server_password",
+              label: "Server password",
+              placeholder: "Enter server password",
+              isHidden: isFieldHidden.server_password
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "docker_registry",
+              name: "docker_registry",
+              label: "Docker registry",
+              placeholder: "Enter Docker registry",
+              isHidden: isFieldHidden.docker_registry
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "docker_username",
+              name: "docker_username",
+              label: "Docker username",
+              placeholder: "Enter Docker username",
+              isHidden: isFieldHidden.docker_username
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "docker_password",
+              name: "docker_password",
+              label: "Docker password",
+              placeholder: "Enter Docker password",
+              isHidden: isFieldHidden.docker_password
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "docker_compose_file",
+              name: "docker_compose_file",
+              label: "Docker compose file",
+              placeholder: "Enter Docker Compose file",
+              isHidden: isFieldHidden.docker_compose_file
+            })]
+          });
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
+        primaryButtonText: primaryButtonText,
+        secondaryButtonText: secondaryButtonText,
+        isPrimaryLoading: isPrimaryLoading,
+        isSecondaryLoading: isSecondaryLoading,
+        isPrimaryDisabled: isPrimaryDisabled,
+        isSecondaryDisabled: isSecondaryDisabled,
+        onClickPrimary: handleSubmit,
+        onClickSecondary: handleReset
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AotaCard);
+
+/***/ }),
+
 /***/ "./resources/js/components/CardSkeleton/CardSkeleton.js":
 /*!**************************************************************!*\
   !*** ./resources/js/components/CardSkeleton/CardSkeleton.js ***!
@@ -2109,6 +2405,276 @@ var ChartSkeleton = function ChartSkeleton() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChartSkeleton);
+
+/***/ }),
+
+/***/ "./resources/js/components/CotaCard/CotaCard.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/CotaCard/CotaCard.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
+/* harmony import */ var _models_Configuration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../models/Configuration */ "./resources/js/models/Configuration.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../reusable/FormikPatchTouched */ "./resources/js/reusable/FormikPatchTouched.js");
+/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var CotaCard = function CotaCard(_ref) {
+  var primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText,
+      isPrimaryLoading = _ref.isPrimaryLoading,
+      isSecondaryLoading = _ref.isSecondaryLoading,
+      isPrimaryDisabled = _ref.isPrimaryDisabled,
+      isSecondaryDisabled = _ref.isSecondaryDisabled,
+      submitCallback = _ref.submitCallback,
+      resetCallback = _ref.resetCallback;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_INITIAL_FIELDS_HIDDEN_STATE),
+      _useState2 = _slicedToArray(_useState, 2),
+      isFieldHidden = _useState2[0],
+      setFieldHidden = _useState2[1];
+
+  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
+  var handleSubmit = function handleSubmit() {
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
+  };
+
+  var handleReset = function handleReset() {
+    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_INITIAL_FIELDS_HIDDEN_STATE);
+
+    if (formRef.current) {
+      formRef.current.resetForm();
+    }
+
+    if (resetCallback) {
+      resetCallback();
+    }
+  };
+
+  var validationObject = {
+    command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_COMMAND_OPTIONS.map(function (_ref2) {
+        var label = _ref2.label;
+        return label;
+      }), "Invalid command selection").required("Required")
+    }).nullable().required("Required")
+  };
+  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  if (!isFieldHidden.configurations) validationObject.configurations = yup__WEBPACK_IMPORTED_MODULE_2__.array().of(yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    path: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_CONFIGURATION_PATH_OPTIONS.map(function (_ref3) {
+        var label = _ref3.label;
+        return label;
+      }), "Invalid configuration path selection").required("Required")
+    }).nullable().required("Required").test("uniqueConfigurationPath", "Configuration paths need to be unique", function (value) {
+      var configurationsArr = this.from[2].value.configurations.map(function (configuration) {
+        return configuration.path ? configuration.path.value : null;
+      }).filter(Boolean);
+      return value ? configurationsArr.reduce(function (accumulator, currentValue) {
+        return accumulator + (currentValue === value.value);
+      }, 0) < 2 : true;
+    }),
+    // Using .test() instead of .when() because of accessing parent schema not possible in current Yup version
+    // https://github.com/jquense/yup/issues/225#issuecomment-692315453
+    value: yup__WEBPACK_IMPORTED_MODULE_2__.string().test('configurationValueRequired', 'Required', function (value) {
+      return this.from[1].value.command === null ? true : this.from[1].value.command.value === 'set' ? yup__WEBPACK_IMPORTED_MODULE_2__.string().required().isValidSync(value) : true;
+    })
+  })).required("Required");
+  if (!isFieldHidden.signature) validationObject.signature = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
+
+  var updateSelectOptions = function updateSelectOptions(name, selectedOption) {
+    if (name === 'command' && selectedOption) {
+      handleReset();
+      formRef.current.setFieldValue('command', selectedOption);
+      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_FIELDS_HIDDEN_STATES[selectedOption.value]);
+    } else if (name === 'command' && !selectedOption) {
+      handleReset();
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
+      children: "Configuration OTA Update"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
+        innerRef: formRef,
+        initialValues: {
+          command: '',
+          fetch_link: '',
+          configurations: [new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration()],
+          signature: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: function onSubmit(values, _ref4) {
+          var setSubmitting = _ref4.setSubmitting;
+          var data = {
+            command: 'cota',
+            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.getSanitizedValues)(values)
+          };
+          submitCallback(data);
+        },
+        children: function children(_ref5) {
+          var values = _ref5.values;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+              id: "command",
+              name: "command",
+              label: "Command (get, load, set, append, remove)",
+              placeholder: "Enter your command",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_COMMAND_OPTIONS,
+              updateSelectOptions: updateSelectOptions,
+              isHidden: isFieldHidden.command,
+              isSearchable: true,
+              isClearable: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+              id: "fetch_link",
+              name: "fetch_link",
+              label: "Fetch link",
+              placeholder: "Enter fetch link",
+              isHidden: isFieldHidden.fetch_link
+            }), !isFieldHidden.configurations && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CLabel, {
+                htmlFor: "configurations",
+                children: "Configurations"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.FieldArray, {
+                id: "configurations",
+                name: "configurations",
+                render: function render(arrayHelpers) {
+                  return values.configurations && values.configurations.length > 0 ? values.configurations.map(function (configuration, index) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CFormGroup, {
+                      row: true,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+                        sm: isFieldHidden.configuration_values ? 10 : 5,
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
+                          id: "configurations.".concat(index, ".path"),
+                          name: "configurations.".concat(index, ".path"),
+                          placeholder: "Enter configuration path ".concat(index + 1),
+                          options: _data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_CONFIGURATION_PATH_OPTIONS,
+                          value: configuration.path,
+                          updateSelectOptions: updateSelectOptions,
+                          isLabelHidden: true,
+                          isSearchable: true,
+                          isClearable: true
+                        })
+                      }), !isFieldHidden.configuration_values && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+                        sm: "5",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+                          id: "configurations.".concat(index, ".value"),
+                          name: "configurations.".concat(index, ".value"),
+                          placeholder: "Enter configuration value ".concat(index + 1),
+                          isDisabled: values.command.value === 'get',
+                          isLabelHidden: true
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+                        sm: "2",
+                        children: [values.configurations.length > 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                          size: "sm",
+                          color: "danger",
+                          className: "mr-1 mb-1",
+                          onClick: function onClick() {
+                            return arrayHelpers.remove(index);
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                            size: "sm",
+                            name: "cil-minus"
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                          size: "sm",
+                          color: "primary",
+                          className: "mr-1 mb-1",
+                          onClick: function onClick() {
+                            return arrayHelpers.insert(index + 1, new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration());
+                          },
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                            size: "sm",
+                            name: "cil-plus"
+                          })
+                        })]
+                      })]
+                    }, index);
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                    color: "primary",
+                    className: "m-2",
+                    onClick: function onClick() {
+                      return arrayHelpers.push(new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration());
+                    },
+                    children: "Add configuration"
+                  });
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
+              id: "signature",
+              name: "signature",
+              label: "Signature",
+              placeholder: "Enter signature",
+              isHidden: isFieldHidden.signature
+            })]
+          });
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__.default, {
+        primaryButtonText: primaryButtonText,
+        secondaryButtonText: secondaryButtonText,
+        isPrimaryLoading: isPrimaryLoading,
+        isSecondaryLoading: isSecondaryLoading,
+        isPrimaryDisabled: isPrimaryDisabled,
+        isSecondaryDisabled: isSecondaryDisabled,
+        onClickPrimary: handleSubmit,
+        onClickSecondary: handleReset
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CotaCard);
 
 /***/ }),
 
@@ -2465,6 +3031,184 @@ var Error = function Error(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
+
+/***/ }),
+
+/***/ "./resources/js/components/FotaCard/FotaCard.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/FotaCard/FotaCard.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+var FotaCard = function FotaCard(_ref) {
+  var primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText,
+      isPrimaryLoading = _ref.isPrimaryLoading,
+      isSecondaryLoading = _ref.isSecondaryLoading,
+      isPrimaryDisabled = _ref.isPrimaryDisabled,
+      isSecondaryDisabled = _ref.isSecondaryDisabled,
+      submitCallback = _ref.submitCallback,
+      resetCallback = _ref.resetCallback;
+  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+
+  var handleSubmit = function handleSubmit() {
+    if (formRef.current) {
+      formRef.current.handleSubmit();
+    }
+
+    if (resetCallback) {
+      resetCallback();
+    }
+  };
+
+  var handleReset = function handleReset() {
+    if (formRef.current) {
+      formRef.current.resetForm();
+    }
+
+    resetCallback();
+  };
+
+  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
+    bios_version: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    fetch_link: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    manufacturer: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    path: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    product: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    release_date: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    signature: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    tool_options: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    vendor: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
+    server_username: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    server_password: yup__WEBPACK_IMPORTED_MODULE_2__.string()
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
+      children: "Firmware OTA Update"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
+        enableReinitialize: true,
+        innerRef: formRef,
+        initialValues: {
+          bios_version: '',
+          fetch_link: '',
+          manufacturer: '',
+          path: '',
+          product: '',
+          release_date: '',
+          signature: '',
+          tool_options: '',
+          vendor: '',
+          server_username: '',
+          server_password: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: function onSubmit(values, _ref2) {
+          var setSubmitting = _ref2.setSubmitting;
+          var data = {
+            command: 'fota',
+            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.getSanitizedValues)(values)
+          };
+          submitCallback(data);
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "bios_version",
+            name: "bios_version",
+            label: "BIOS version",
+            placeholder: "Enter BIOS version"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "fetch_link",
+            name: "fetch_link",
+            label: "Fetch link",
+            placeholder: "Enter fetch link"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "manufacturer",
+            name: "manufacturer",
+            label: "Manufacturer",
+            placeholder: "Enter manufacturer"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "path",
+            name: "path",
+            label: "Path",
+            placeholder: "Enter path"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "product",
+            name: "product",
+            label: "Product",
+            placeholder: "Enter product"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "release_date",
+            name: "release_date",
+            label: "Release date",
+            placeholder: "Enter release date"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "signature",
+            name: "signature",
+            label: "Signature",
+            placeholder: "Enter signature"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "tool_options",
+            name: "tool_options",
+            label: "Tool options",
+            placeholder: "Enter tool options"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "vendor",
+            name: "vendor",
+            label: "Vendor",
+            placeholder: "Enter vendor"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "server_username",
+            name: "server_username",
+            label: "Server username",
+            placeholder: "Enter server username"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: "server_password",
+            name: "server_password",
+            label: "Server password",
+            placeholder: "Enter server password"
+          })]
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__.default, {
+        primaryButtonText: primaryButtonText,
+        secondaryButtonText: secondaryButtonText,
+        isPrimaryLoading: isPrimaryLoading,
+        isSecondaryLoading: isSecondaryLoading,
+        isPrimaryDisabled: isPrimaryDisabled,
+        isSecondaryDisabled: isSecondaryDisabled,
+        onClickPrimary: handleSubmit,
+        onClickSecondary: handleReset
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FotaCard);
 
 /***/ }),
 
@@ -3046,9 +3790,9 @@ var ShutDownDeviceModal = function ShutDownDeviceModal(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/AotaCard/AotaCard.js":
+/***/ "./resources/js/components/SotaCard/SotaCard.js":
 /*!******************************************************!*\
-  !*** ./resources/js/containers/AotaCard/AotaCard.js ***!
+  !*** ./resources/js/components/SotaCard/SotaCard.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3063,16 +3807,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
+/* harmony import */ var _IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
+/* harmony import */ var _IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
+/* harmony import */ var _PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3097,7 +3835,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AotaCard = function AotaCard(_ref) {
+var SotaCard = function SotaCard(_ref) {
   var primaryButtonText = _ref.primaryButtonText,
       secondaryButtonText = _ref.secondaryButtonText,
       isPrimaryLoading = _ref.isPrimaryLoading,
@@ -3107,15 +3845,10 @@ var AotaCard = function AotaCard(_ref) {
       submitCallback = _ref.submitCallback,
       resetCallback = _ref.resetCallback;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_COMMAND_OPTIONS.docker),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_INITIAL_FIELDS_HIDDEN_STATE),
       _useState2 = _slicedToArray(_useState, 2),
-      commandOptions = _useState2[0],
-      setCommandOptions = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE),
-      _useState4 = _slicedToArray(_useState3, 2),
-      isFieldHidden = _useState4[0],
-      setFieldHidden = _useState4[1];
+      isFieldHidden = _useState2[0],
+      setFieldHidden = _useState2[1];
 
   var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
 
@@ -3126,7 +3859,7 @@ var AotaCard = function AotaCard(_ref) {
   };
 
   var handleReset = function handleReset() {
-    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE);
+    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_INITIAL_FIELDS_HIDDEN_STATE);
 
     if (formRef.current) {
       formRef.current.resetForm();
@@ -3138,88 +3871,63 @@ var AotaCard = function AotaCard(_ref) {
   };
 
   var validationObject = {
-    app: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    sota_option: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
       value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_APP_OPTIONS.map(function (_ref2) {
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_OPTIONS.map(function (_ref2) {
         var label = _ref2.label;
         return label;
-      }), "Invalid application type").required("Required")
+      }), "Invalid SOTA option").required("Required")
     }).nullable().required("Required"),
     command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
       value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(commandOptions.map(function (_ref3) {
+      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS.map(function (_ref3) {
         var label = _ref3.label;
         return label;
       }), "Invalid command selection").required("Required")
     }).nullable().required("Required")
   };
-  if (!isFieldHidden.tag) validationObject.tag = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  if (!isFieldHidden.reboot) validationObject.reboot = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-    value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-    label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_REBOOT_OPTIONS.map(function (_ref4) {
+  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
+  if (!isFieldHidden.log_to_file) validationObject.log_to_file = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    value: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
+    label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_LOG_TO_FILE_OPTIONS.map(function (_ref4) {
       var label = _ref4.label;
       return label;
-    }), "Please select Yes or No only").required("Required")
-  }).nullable().required("Required");
-  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  if (!isFieldHidden.signature) validationObject.signature = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  if (!isFieldHidden.version) validationObject.version = yup__WEBPACK_IMPORTED_MODULE_2__.string().when(['app', 'command'], {
-    is: function is(app, command) {
-      return app.value === 'docker' && command.value === 'remove';
-    },
-    then: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    otherwise: yup__WEBPACK_IMPORTED_MODULE_2__.string()
+    }), "Please select Yes or No only")
   });
-  if (!isFieldHidden.server_username) validationObject.server_username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.server_password) validationObject.server_password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.docker_registry) validationObject.docker_registry = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.docker_username) validationObject.docker_username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.docker_password) validationObject.docker_password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.docker_compose_file) validationObject.docker_compose_file = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.username) validationObject.username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
+  if (!isFieldHidden.password) validationObject.password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
 
   var updateSelectOptions = function updateSelectOptions(name, selectedOption) {
-    if (name === 'app' && selectedOption) {
+    if (name === 'sota_option' && selectedOption) {
       handleReset();
-      formRef.current.setFieldValue('app', selectedOption);
-      setCommandOptions(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_COMMAND_OPTIONS[selectedOption.value]);
-      setFieldHidden(_objectSpread(_objectSpread({}, _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_INITIAL_FIELDS_HIDDEN_STATE), {}, {
-        command: false
-      }));
-    } else if (name === 'app' && !selectedOption) {
+      formRef.current.setFieldValue('sota_option', selectedOption);
+      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_FIELDS_HIDDEN_STATES[selectedOption.value]);
+    } else if (name === 'sota_option' && !selectedOption) {
       handleReset();
-    } else if (name === 'command' && selectedOption) {
-      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_FIELDS_HIDDEN_STATES[formRef.current.values.app.value][selectedOption.value]);
     }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-      children: "Application OTA Update"
+      children: "Software OTA Update"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
         enableReinitialize: true,
         innerRef: formRef,
         initialValues: {
-          app: '',
-          command: '',
-          tag: '',
-          reboot: '',
+          sota_option: '',
+          command: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS[0],
           fetch_link: '',
-          signature: '',
-          version: '',
-          server_username: '',
-          server_password: '',
-          docker_registry: '',
-          docker_username: '',
-          docker_password: '',
-          docker_compose_file: ''
+          log_to_file: '',
+          username: '',
+          password: ''
         },
         validationSchema: validationSchema,
         onSubmit: function onSubmit(values, _ref5) {
           var setSubmitting = _ref5.setSubmitting;
           var data = {
-            command: 'aota',
+            command: 'sota',
             payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values)
           };
           submitCallback(data);
@@ -3227,104 +3935,61 @@ var AotaCard = function AotaCard(_ref) {
         children: function children(_ref6) {
           var values = _ref6.values;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
-              id: "app",
-              name: "app",
-              label: "Application",
-              placeholder: "Choose your application",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_APP_OPTIONS,
-              value: values.app,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "sota_option",
+              name: "sota_option",
+              label: "SOTA option",
+              placeholder: "Enter your SOTA option",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_OPTIONS,
+              value: values.sota_option,
               updateSelectOptions: updateSelectOptions,
-              isHidden: isFieldHidden.app,
+              isHidden: isFieldHidden.sota_option,
               isSearchable: true,
               isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
               id: "command",
               name: "command",
               label: "Command",
+              defaultValue: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS[0],
               placeholder: "Enter your command",
-              options: commandOptions,
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS,
               value: values.command,
-              updateSelectOptions: updateSelectOptions,
               isHidden: isFieldHidden.command,
-              isSearchable: true,
-              isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "tag",
-              name: "tag",
-              label: "Container tag",
-              placeholder: "Enter container tag",
-              isHidden: isFieldHidden.tag
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
-              id: "reboot",
-              name: "reboot",
-              label: "Device reboot",
-              placeholder: "Choose device reboot",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.AOTA_REBOOT_OPTIONS,
-              value: values.reboot,
-              isHidden: isFieldHidden.reboot,
-              isSearchable: true,
-              isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              isDisabled: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
               id: "fetch_link",
               name: "fetch_link",
               label: "Fetch link",
               placeholder: "Enter fetch link",
               isHidden: isFieldHidden.fetch_link
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "signature",
-              name: "signature",
-              label: "Signature",
-              placeholder: "Enter signature",
-              isHidden: isFieldHidden.signature
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "version",
-              name: "version",
-              label: "Version",
-              placeholder: "Enter version",
-              isHidden: isFieldHidden.version
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "server_username",
-              name: "server_username",
-              label: "Server username",
-              placeholder: "Enter server username",
-              isHidden: isFieldHidden.server_username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "server_password",
-              name: "server_password",
-              label: "Server password",
-              placeholder: "Enter server password",
-              isHidden: isFieldHidden.server_password
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "docker_registry",
-              name: "docker_registry",
-              label: "Docker registry",
-              placeholder: "Enter Docker registry",
-              isHidden: isFieldHidden.docker_registry
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "docker_username",
-              name: "docker_username",
-              label: "Docker username",
-              placeholder: "Enter Docker username",
-              isHidden: isFieldHidden.docker_username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "docker_password",
-              name: "docker_password",
-              label: "Docker password",
-              placeholder: "Enter Docker password",
-              isHidden: isFieldHidden.docker_password
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "docker_compose_file",
-              name: "docker_compose_file",
-              label: "Docker compose file",
-              placeholder: "Enter Docker Compose file",
-              isHidden: isFieldHidden.docker_compose_file
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
+              id: "log_to_file",
+              name: "log_to_file",
+              label: "Log to file (No, Yes)",
+              placeholder: "Log to file (No, Yes)",
+              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_LOG_TO_FILE_OPTIONS,
+              value: values.log_to_file,
+              isHidden: isFieldHidden.log_to_file,
+              isSearchable: true,
+              isClearable: true
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "username",
+              name: "username",
+              label: "Username",
+              placeholder: "Enter username",
+              isHidden: isFieldHidden.username
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
+              id: "password",
+              name: "password",
+              label: "Password",
+              placeholder: "Enter password",
+              isHidden: isFieldHidden.password
             })]
           });
         }
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
         primaryButtonText: primaryButtonText,
         secondaryButtonText: secondaryButtonText,
         isPrimaryLoading: isPrimaryLoading,
@@ -3338,7 +4003,7 @@ var AotaCard = function AotaCard(_ref) {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AotaCard);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SotaCard);
 
 /***/ }),
 
@@ -3670,8 +4335,8 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
 
   var commandTypeItemTemplate = function commandTypeItemTemplate(option) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("span", {
-      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('command-badge', 'type-' + option.label.replace(/\s+/g, '-').toLowerCase()),
-      children: option.label.toUpperCase()
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('command-badge', 'type-' + option.label.replace(/\s+|_/g, '-').toLowerCase()),
+      children: option.label
     });
   };
 
@@ -3708,20 +4373,20 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("span", {
         className: "p-column-title",
-        children: "Command Type"
+        children: "Command type"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("span", {
-        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('command-badge', 'type-' + rowData.command.name.replace(/\s+/g, '-').toLowerCase()),
-        children: rowData.command.name.toUpperCase()
+        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('command-badge', 'type-' + rowData.command.name.replace(/\s+|_/g, '-').toLowerCase()),
+        children: rowData.command.name
       })]
     });
   };
 
-  var responseTimeColumnBody = function responseTimeColumnBody(rowData) {
+  var respondedAtColumnBody = function respondedAtColumnBody(rowData) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("span", {
         className: "p-column-title",
-        children: "Response Time"
-      }), rowData.response_time]
+        children: "Responded at"
+      }), rowData.responded_at]
     });
   };
 
@@ -3806,16 +4471,16 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
         filterPlaceholder: "Search by payload"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
         field: "type",
-        header: "Type",
+        header: "Command type",
         body: commandTypeColumnBody,
         sortable: true,
         filter: true,
         excludeGlobalFilter: true,
         filterElement: commandTypeFilterElement
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
-        field: "response_time",
-        header: "Response Time",
-        body: responseTimeColumnBody,
+        field: "responded_at",
+        header: "Responded at",
+        body: respondedAtColumnBody,
         sortable: true,
         filter: true,
         excludeGlobalFilter: true,
@@ -3835,11 +4500,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    deviceCommandOptions: state.deviceCommand.deviceCommandOptions ? state.deviceCommand.deviceCommandOptions.map(function (option) {
-      return _objectSpread(_objectSpread({}, option), {}, {
-        label: option.label.toUpperCase()
-      });
-    }) : state.deviceCommand.deviceCommandOptions,
+    deviceCommandOptions: state.deviceCommand.deviceCommandOptions,
     isFetchingDeviceCommandOptions: state.deviceCommand.isFetchingDeviceCommandOptions,
     fetchDeviceCommandOptionsErrorMessage: state.deviceCommand.fetchDeviceCommandOptionsErrorMessage,
     deviceCommandHistories: state.deviceCommandHistory.deviceCommandHistories,
@@ -3865,276 +4526,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CommandHistoriesDataTable));
-
-/***/ }),
-
-/***/ "./resources/js/containers/CotaCard/CotaCard.js":
-/*!******************************************************!*\
-  !*** ./resources/js/containers/CotaCard/CotaCard.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
-/* harmony import */ var _models_Configuration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../models/Configuration */ "./resources/js/models/Configuration.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../reusable/FormikPatchTouched */ "./resources/js/reusable/FormikPatchTouched.js");
-/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var CotaCard = function CotaCard(_ref) {
-  var primaryButtonText = _ref.primaryButtonText,
-      secondaryButtonText = _ref.secondaryButtonText,
-      isPrimaryLoading = _ref.isPrimaryLoading,
-      isSecondaryLoading = _ref.isSecondaryLoading,
-      isPrimaryDisabled = _ref.isPrimaryDisabled,
-      isSecondaryDisabled = _ref.isSecondaryDisabled,
-      submitCallback = _ref.submitCallback,
-      resetCallback = _ref.resetCallback;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_INITIAL_FIELDS_HIDDEN_STATE),
-      _useState2 = _slicedToArray(_useState, 2),
-      isFieldHidden = _useState2[0],
-      setFieldHidden = _useState2[1];
-
-  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-
-  var handleSubmit = function handleSubmit() {
-    if (formRef.current) {
-      formRef.current.handleSubmit();
-    }
-  };
-
-  var handleReset = function handleReset() {
-    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_INITIAL_FIELDS_HIDDEN_STATE);
-
-    if (formRef.current) {
-      formRef.current.resetForm();
-    }
-
-    if (resetCallback) {
-      resetCallback();
-    }
-  };
-
-  var validationObject = {
-    command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_COMMAND_OPTIONS.map(function (_ref2) {
-        var label = _ref2.label;
-        return label;
-      }), "Invalid command selection").required("Required")
-    }).nullable().required("Required")
-  };
-  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  if (!isFieldHidden.configurations) validationObject.configurations = yup__WEBPACK_IMPORTED_MODULE_2__.array().of(yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-    path: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_CONFIGURATION_PATH_OPTIONS.map(function (_ref3) {
-        var label = _ref3.label;
-        return label;
-      }), "Invalid configuration path selection").required("Required")
-    }).nullable().required("Required").test("uniqueConfigurationPath", "Configuration paths need to be unique", function (value) {
-      var configurationsArr = this.from[2].value.configurations.map(function (configuration) {
-        return configuration.path ? configuration.path.value : null;
-      }).filter(Boolean);
-      return value ? configurationsArr.reduce(function (accumulator, currentValue) {
-        return accumulator + (currentValue === value.value);
-      }, 0) < 2 : true;
-    }),
-    // Using .test() instead of .when() because of accessing parent schema not possible in current Yup version
-    // https://github.com/jquense/yup/issues/225#issuecomment-692315453
-    value: yup__WEBPACK_IMPORTED_MODULE_2__.string().test('configurationValueRequired', 'Required', function (value) {
-      return this.from[1].value.command === null ? true : this.from[1].value.command.value === 'set' ? yup__WEBPACK_IMPORTED_MODULE_2__.string().required().isValidSync(value) : true;
-    })
-  })).required("Required");
-  if (!isFieldHidden.signature) validationObject.signature = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
-
-  var updateSelectOptions = function updateSelectOptions(name, selectedOption) {
-    if (name === 'command' && selectedOption) {
-      handleReset();
-      formRef.current.setFieldValue('command', selectedOption);
-      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_FIELDS_HIDDEN_STATES[selectedOption.value]);
-    } else if (name === 'command' && !selectedOption) {
-      handleReset();
-    }
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-      children: "Configuration OTA Update"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
-        innerRef: formRef,
-        initialValues: {
-          command: '',
-          fetch_link: '',
-          configurations: [new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration()],
-          signature: ''
-        },
-        validationSchema: validationSchema,
-        onSubmit: function onSubmit(values, _ref4) {
-          var setSubmitting = _ref4.setSubmitting;
-          var data = {
-            command: 'cota',
-            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.getSanitizedValues)(values)
-          };
-          submitCallback(data);
-        },
-        children: function children(_ref5) {
-          var values = _ref5.values;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_reusable_FormikPatchTouched__WEBPACK_IMPORTED_MODULE_8__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
-              id: "command",
-              name: "command",
-              label: "Command (get, load, set, append, remove)",
-              placeholder: "Enter your command",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_COMMAND_OPTIONS,
-              updateSelectOptions: updateSelectOptions,
-              isHidden: isFieldHidden.command,
-              isSearchable: true,
-              isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
-              id: "fetch_link",
-              name: "fetch_link",
-              label: "Fetch link",
-              placeholder: "Enter fetch link",
-              isHidden: isFieldHidden.fetch_link
-            }), !isFieldHidden.configurations && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CLabel, {
-                htmlFor: "configurations",
-                children: "Configurations"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.FieldArray, {
-                id: "configurations",
-                name: "configurations",
-                render: function render(arrayHelpers) {
-                  return values.configurations && values.configurations.length > 0 ? values.configurations.map(function (configuration, index) {
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CFormGroup, {
-                      row: true,
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
-                        sm: isFieldHidden.configuration_values ? 10 : 5,
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_9__.default, {
-                          id: "configurations.".concat(index, ".path"),
-                          name: "configurations.".concat(index, ".path"),
-                          placeholder: "Enter configuration path ".concat(index + 1),
-                          options: _data_options__WEBPACK_IMPORTED_MODULE_5__.COTA_CONFIGURATION_PATH_OPTIONS,
-                          value: configuration.path,
-                          updateSelectOptions: updateSelectOptions,
-                          isLabelHidden: true,
-                          isSearchable: true,
-                          isClearable: true
-                        })
-                      }), !isFieldHidden.configuration_values && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
-                        sm: "5",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
-                          id: "configurations.".concat(index, ".value"),
-                          name: "configurations.".concat(index, ".value"),
-                          placeholder: "Enter configuration value ".concat(index + 1),
-                          isDisabled: values.command.value === 'get',
-                          isLabelHidden: true
-                        })
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
-                        sm: "2",
-                        children: [values.configurations.length > 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
-                          size: "sm",
-                          color: "danger",
-                          className: "mr-1 mb-1",
-                          onClick: function onClick() {
-                            return arrayHelpers.remove(index);
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
-                            size: "sm",
-                            name: "cil-minus"
-                          })
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
-                          size: "sm",
-                          color: "primary",
-                          className: "mr-1 mb-1",
-                          onClick: function onClick() {
-                            return arrayHelpers.insert(index + 1, new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration());
-                          },
-                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
-                            size: "sm",
-                            name: "cil-plus"
-                          })
-                        })]
-                      })]
-                    }, index);
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
-                    color: "primary",
-                    className: "m-2",
-                    onClick: function onClick() {
-                      return arrayHelpers.push(new _models_Configuration__WEBPACK_IMPORTED_MODULE_6__.Configuration());
-                    },
-                    children: "Add configuration"
-                  });
-                }
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
-              id: "signature",
-              name: "signature",
-              label: "Signature",
-              placeholder: "Enter signature",
-              isHidden: isFieldHidden.signature
-            })]
-          });
-        }
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__.default, {
-        primaryButtonText: primaryButtonText,
-        secondaryButtonText: secondaryButtonText,
-        isPrimaryLoading: isPrimaryLoading,
-        isSecondaryLoading: isSecondaryLoading,
-        isPrimaryDisabled: isPrimaryDisabled,
-        isSecondaryDisabled: isSecondaryDisabled,
-        onClickPrimary: handleSubmit,
-        onClickSecondary: handleReset
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CotaCard);
 
 /***/ }),
 
@@ -4690,28 +5081,28 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
-      expandedRows = _useState2[0],
-      setExpandedRows = _useState2[1];
+      selectedDeviceEventHistories = _useState2[0],
+      setSelectedDeviceEventHistories = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
-      globalFilter = _useState4[0],
-      setGlobalFilter = _useState4[1];
+      selectedEventType = _useState4[0],
+      setSelectedEventType = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState6 = _slicedToArray(_useState5, 2),
-      selectedDeviceEventHistories = _useState6[0],
-      setSelectedDeviceEventHistories = _useState6[1];
+      timestampFilter = _useState6[0],
+      setTimestampFilter = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      selectedEventType = _useState8[0],
-      setSelectedEventType = _useState8[1];
+      expandedRows = _useState8[0],
+      setExpandedRows = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState10 = _slicedToArray(_useState9, 2),
-      timestampFilter = _useState10[0],
-      setTimestampFilter = _useState10[1];
+      globalFilter = _useState10[0],
+      setGlobalFilter = _useState10[1];
 
   var dt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -4808,7 +5199,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
         children: "Event Type"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("span", {
         className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('event-badge', 'type-' + rowData.event.name.replace(/\s+/g, '-').toLowerCase()),
-        children: rowData.event.name.toUpperCase()
+        children: rowData.event.name
       })]
     });
   };
@@ -4886,7 +5277,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
         field: "raw_data",
-        header: "Raw Data",
+        header: "Raw data",
         body: rawDataColumnBody,
         sortable: true,
         filter: true,
@@ -4914,11 +5305,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    deviceEventOptions: state.deviceEvent.deviceEventOptions ? state.deviceEvent.deviceEventOptions.map(function (option) {
-      return _objectSpread(_objectSpread({}, option), {}, {
-        label: option.label.toUpperCase()
-      });
-    }) : state.deviceEvent.deviceEventOptions,
+    deviceEventOptions: state.deviceEvent.deviceEventOptions,
     isFetchingDeviceEventOptions: state.deviceEvent.isFetchingDeviceEventOptions,
     fetchDeviceEventOptionsErrorMessage: state.deviceEvent.fetchDeviceEventOptionsErrorMessage,
     deviceEventHistories: state.deviceEventHistory.deviceEventHistories,
@@ -4947,401 +5334,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/FotaCard/FotaCard.js":
-/*!******************************************************!*\
-  !*** ./resources/js/containers/FotaCard/FotaCard.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-
-var FotaCard = function FotaCard(_ref) {
-  var primaryButtonText = _ref.primaryButtonText,
-      secondaryButtonText = _ref.secondaryButtonText,
-      isPrimaryLoading = _ref.isPrimaryLoading,
-      isSecondaryLoading = _ref.isSecondaryLoading,
-      isPrimaryDisabled = _ref.isPrimaryDisabled,
-      isSecondaryDisabled = _ref.isSecondaryDisabled,
-      submitCallback = _ref.submitCallback,
-      resetCallback = _ref.resetCallback;
-  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-
-  var handleSubmit = function handleSubmit() {
-    if (formRef.current) {
-      formRef.current.handleSubmit();
-    }
-
-    if (resetCallback) {
-      resetCallback();
-    }
-  };
-
-  var handleReset = function handleReset() {
-    if (formRef.current) {
-      formRef.current.resetForm();
-    }
-
-    resetCallback();
-  };
-
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object({
-    bios_version: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    fetch_link: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    manufacturer: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    path: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
-    product: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    release_date: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    signature: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
-    tool_options: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
-    vendor: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required"),
-    server_username: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
-    server_password: yup__WEBPACK_IMPORTED_MODULE_2__.string()
-  });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-      children: "Firmware OTA Update"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
-        enableReinitialize: true,
-        innerRef: formRef,
-        initialValues: {
-          bios_version: '',
-          fetch_link: '',
-          manufacturer: '',
-          path: '',
-          product: '',
-          release_date: '',
-          signature: '',
-          tool_options: '',
-          vendor: '',
-          server_username: '',
-          server_password: ''
-        },
-        validationSchema: validationSchema,
-        onSubmit: function onSubmit(values, _ref2) {
-          var setSubmitting = _ref2.setSubmitting;
-          var data = {
-            command: 'fota',
-            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.getSanitizedValues)(values)
-          };
-          submitCallback(data);
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "bios_version",
-            name: "bios_version",
-            label: "BIOS version",
-            placeholder: "Enter BIOS version"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "fetch_link",
-            name: "fetch_link",
-            label: "Fetch link",
-            placeholder: "Enter fetch link"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "manufacturer",
-            name: "manufacturer",
-            label: "Manufacturer",
-            placeholder: "Enter manufacturer"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "path",
-            name: "path",
-            label: "Path",
-            placeholder: "Enter path"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "product",
-            name: "product",
-            label: "Product",
-            placeholder: "Enter product"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "release_date",
-            name: "release_date",
-            label: "Release date",
-            placeholder: "Enter release date"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "signature",
-            name: "signature",
-            label: "Signature",
-            placeholder: "Enter signature"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "tool_options",
-            name: "tool_options",
-            label: "Tool options",
-            placeholder: "Enter tool options"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "vendor",
-            name: "vendor",
-            label: "Vendor",
-            placeholder: "Enter vendor"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "server_username",
-            name: "server_username",
-            label: "Server username",
-            placeholder: "Enter server username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_5__.default, {
-            id: "server_password",
-            name: "server_password",
-            label: "Server password",
-            placeholder: "Enter server password"
-          })]
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_6__.default, {
-        primaryButtonText: primaryButtonText,
-        secondaryButtonText: secondaryButtonText,
-        isPrimaryLoading: isPrimaryLoading,
-        isSecondaryLoading: isSecondaryLoading,
-        isPrimaryDisabled: isPrimaryDisabled,
-        isSecondaryDisabled: isSecondaryDisabled,
-        onClickPrimary: handleSubmit,
-        onClickSecondary: handleReset
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FotaCard);
-
-/***/ }),
-
-/***/ "./resources/js/containers/SotaCard/SotaCard.js":
-/*!******************************************************!*\
-  !*** ./resources/js/containers/SotaCard/SotaCard.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
-/* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
-/* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-var SotaCard = function SotaCard(_ref) {
-  var primaryButtonText = _ref.primaryButtonText,
-      secondaryButtonText = _ref.secondaryButtonText,
-      isPrimaryLoading = _ref.isPrimaryLoading,
-      isSecondaryLoading = _ref.isSecondaryLoading,
-      isPrimaryDisabled = _ref.isPrimaryDisabled,
-      isSecondaryDisabled = _ref.isSecondaryDisabled,
-      submitCallback = _ref.submitCallback,
-      resetCallback = _ref.resetCallback;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_INITIAL_FIELDS_HIDDEN_STATE),
-      _useState2 = _slicedToArray(_useState, 2),
-      isFieldHidden = _useState2[0],
-      setFieldHidden = _useState2[1];
-
-  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-
-  var handleSubmit = function handleSubmit() {
-    if (formRef.current) {
-      formRef.current.handleSubmit();
-    }
-  };
-
-  var handleReset = function handleReset() {
-    setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_INITIAL_FIELDS_HIDDEN_STATE);
-
-    if (formRef.current) {
-      formRef.current.resetForm();
-    }
-
-    if (resetCallback) {
-      resetCallback();
-    }
-  };
-
-  var validationObject = {
-    sota_option: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_OPTIONS.map(function (_ref2) {
-        var label = _ref2.label;
-        return label;
-      }), "Invalid SOTA option").required("Required")
-    }).nullable().required("Required"),
-    command: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-      value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
-      label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS.map(function (_ref3) {
-        var label = _ref3.label;
-        return label;
-      }), "Invalid command selection").required("Required")
-    }).nullable().required("Required")
-  };
-  if (!isFieldHidden.fetch_link) validationObject.fetch_link = yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required");
-  if (!isFieldHidden.log_to_file) validationObject.log_to_file = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
-    value: yup__WEBPACK_IMPORTED_MODULE_2__.string(),
-    label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_LOG_TO_FILE_OPTIONS.map(function (_ref4) {
-      var label = _ref4.label;
-      return label;
-    }), "Please select Yes or No only")
-  });
-  if (!isFieldHidden.username) validationObject.username = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  if (!isFieldHidden.password) validationObject.password = yup__WEBPACK_IMPORTED_MODULE_2__.string();
-  var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
-
-  var updateSelectOptions = function updateSelectOptions(name, selectedOption) {
-    if (name === 'sota_option' && selectedOption) {
-      handleReset();
-      formRef.current.setFieldValue('sota_option', selectedOption);
-      setFieldHidden(_data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_FIELDS_HIDDEN_STATES[selectedOption.value]);
-    } else if (name === 'sota_option' && !selectedOption) {
-      handleReset();
-    }
-  };
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-      children: "Software OTA Update"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(formik__WEBPACK_IMPORTED_MODULE_1__.Formik, {
-        enableReinitialize: true,
-        innerRef: formRef,
-        initialValues: {
-          sota_option: '',
-          command: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS[0],
-          fetch_link: '',
-          log_to_file: '',
-          username: '',
-          password: ''
-        },
-        validationSchema: validationSchema,
-        onSubmit: function onSubmit(values, _ref5) {
-          var setSubmitting = _ref5.setSubmitting;
-          var data = {
-            command: 'sota',
-            payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values)
-          };
-          submitCallback(data);
-        },
-        children: function children(_ref6) {
-          var values = _ref6.values;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(formik__WEBPACK_IMPORTED_MODULE_1__.Form, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "sota_option",
-              name: "sota_option",
-              label: "SOTA option",
-              placeholder: "Enter your SOTA option",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_OPTIONS,
-              value: values.sota_option,
-              updateSelectOptions: updateSelectOptions,
-              isHidden: isFieldHidden.sota_option,
-              isSearchable: true,
-              isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "command",
-              name: "command",
-              label: "Command",
-              defaultValue: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS[0],
-              placeholder: "Enter your command",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_COMMAND_OPTIONS,
-              value: values.command,
-              isHidden: isFieldHidden.command,
-              isDisabled: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
-              id: "fetch_link",
-              name: "fetch_link",
-              label: "Fetch link",
-              placeholder: "Enter fetch link",
-              isHidden: isFieldHidden.fetch_link
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_6__.default, {
-              id: "log_to_file",
-              name: "log_to_file",
-              label: "Log to file (No, Yes)",
-              placeholder: "Log to file (No, Yes)",
-              options: _data_options__WEBPACK_IMPORTED_MODULE_4__.SOTA_LOG_TO_FILE_OPTIONS,
-              value: values.log_to_file,
-              isHidden: isFieldHidden.log_to_file,
-              isSearchable: true,
-              isClearable: true
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
-              id: "username",
-              name: "username",
-              label: "Username",
-              placeholder: "Enter username",
-              isHidden: isFieldHidden.username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_7__.default, {
-              id: "password",
-              name: "password",
-              label: "Password",
-              placeholder: "Enter password",
-              isHidden: isFieldHidden.password
-            })]
-          });
-        }
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardFooter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_8__.default, {
-        primaryButtonText: primaryButtonText,
-        secondaryButtonText: secondaryButtonText,
-        isPrimaryLoading: isPrimaryLoading,
-        isSecondaryLoading: isSecondaryLoading,
-        isPrimaryDisabled: isPrimaryDisabled,
-        isSecondaryDisabled: isSecondaryDisabled,
-        onClickPrimary: handleSubmit,
-        onClickSecondary: handleReset
-      })
-    })]
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SotaCard);
-
-/***/ }),
-
 /***/ "./resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js":
 /*!**************************************************************************!*\
   !*** ./resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js ***!
@@ -5356,7 +5348,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_aota_aota_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/aota/aota.actions */ "./resources/js/redux/aota/aota.actions.js");
-/* harmony import */ var _AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AotaCard/AotaCard */ "./resources/js/containers/AotaCard/AotaCard.js");
+/* harmony import */ var _components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/AotaCard/AotaCard */ "./resources/js/components/AotaCard/AotaCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5368,7 +5360,7 @@ var SubmitAotaCardForm = function SubmitAotaCardForm(_ref) {
   var deviceId = _ref.deviceId,
       isSubmittingAota = _ref.isSubmittingAota,
       submitAotaStartAsync = _ref.submitAotaStartAsync;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
       return submitAotaStartAsync(deviceId, data);
     },
@@ -5411,7 +5403,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_cota_cota_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/cota/cota.actions */ "./resources/js/redux/cota/cota.actions.js");
-/* harmony import */ var _CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CotaCard/CotaCard */ "./resources/js/containers/CotaCard/CotaCard.js");
+/* harmony import */ var _components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/CotaCard/CotaCard */ "./resources/js/components/CotaCard/CotaCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5423,7 +5415,7 @@ var SubmitCotaCardForm = function SubmitCotaCardForm(_ref) {
   var deviceId = _ref.deviceId,
       isSubmittingCota = _ref.isSubmittingCota,
       submitCotaStartAsync = _ref.submitCotaStartAsync;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
       return submitCotaStartAsync(deviceId, data);
     },
@@ -5466,7 +5458,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_fota_fota_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/fota/fota.actions */ "./resources/js/redux/fota/fota.actions.js");
-/* harmony import */ var _FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FotaCard/FotaCard */ "./resources/js/containers/FotaCard/FotaCard.js");
+/* harmony import */ var _components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/FotaCard/FotaCard */ "./resources/js/components/FotaCard/FotaCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5478,7 +5470,7 @@ var SubmitFotaCardForm = function SubmitFotaCardForm(_ref) {
   var deviceId = _ref.deviceId,
       isSubmittingFota = _ref.isSubmittingFota,
       submitFotaStartAsync = _ref.submitFotaStartAsync;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
       return submitFotaStartAsync(deviceId, data);
     },
@@ -5521,7 +5513,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_sota_sota_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/sota/sota.actions */ "./resources/js/redux/sota/sota.actions.js");
-/* harmony import */ var _SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SotaCard/SotaCard */ "./resources/js/containers/SotaCard/SotaCard.js");
+/* harmony import */ var _components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/SotaCard/SotaCard */ "./resources/js/components/SotaCard/SotaCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -5533,7 +5525,7 @@ var SubmitSotaCardForm = function SubmitSotaCardForm(_ref) {
   var deviceId = _ref.deviceId,
       isSubmittingSota = _ref.isSubmittingSota,
       submitSotaStartAsync = _ref.submitSotaStartAsync;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
       return submitSotaStartAsync(deviceId, data);
     },
@@ -5600,6 +5592,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "COTA_CONFIGURATION_PATH_OPTIONS": () => (/* binding */ COTA_CONFIGURATION_PATH_OPTIONS),
 /* harmony export */   "COTA_INITIAL_FIELDS_HIDDEN_STATE": () => (/* binding */ COTA_INITIAL_FIELDS_HIDDEN_STATE),
 /* harmony export */   "COTA_FIELDS_HIDDEN_STATES": () => (/* binding */ COTA_FIELDS_HIDDEN_STATES),
+/* harmony export */   "POWER_CONTROLS_COMMAND_OPTIONS": () => (/* binding */ POWER_CONTROLS_COMMAND_OPTIONS),
 /* harmony export */   "colourOptions": () => (/* binding */ colourOptions),
 /* harmony export */   "flavourOptions": () => (/* binding */ flavourOptions),
 /* harmony export */   "stateOptions": () => (/* binding */ stateOptions),
@@ -6011,6 +6004,16 @@ var COTA_FIELDS_HIDDEN_STATES = {
     signature: true
   }
 };
+var POWER_CONTROLS_COMMAND_OPTIONS = [{
+  value: 'shutdown',
+  label: 'shutdown'
+}, {
+  value: 'reboot',
+  label: 'reboot'
+}, {
+  value: 'decommission',
+  label: 'decommission'
+}];
 var colourOptions = [{
   value: 'ocean',
   label: 'Ocean',
@@ -7362,6 +7365,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "convertDeviceObjectToDeviceArrayObject": () => (/* binding */ convertDeviceObjectToDeviceArrayObject),
 /* harmony export */   "removeObjectEmptyString": () => (/* binding */ removeObjectEmptyString),
 /* harmony export */   "removeLastCharacterIfExists": () => (/* binding */ removeLastCharacterIfExists),
+/* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
+/* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
+/* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
@@ -7376,8 +7382,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -7391,7 +7396,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -7424,6 +7428,23 @@ var removeLastCharacterIfExists = function removeLastCharacterIfExists(str, need
   }
 
   return str;
+};
+var isNotEmptyString = function isNotEmptyString(str) {
+  return Boolean(str);
+};
+var isValidJSONObject = function isValidJSONObject(obj) {
+  return _typeof(obj) === 'object' && obj !== null;
+};
+var isValidJsonString = function isValidJsonString(str) {
+  if (str === null) return false;
+
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -7474,7 +7495,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -7485,10 +7506,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
           },
@@ -7700,15 +7721,15 @@ var ViewDevice = function ViewDevice(props) {
                 lg: "12",
                 xl: "8",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("div", {
-                  className: "d-flex my-auto",
+                  className: "d-flex",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
-                    className: "mx-4 my-auto",
+                    className: "m-4",
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
                       name: "cilDevices",
                       size: "4xl"
                     })
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)("div", {
-                    className: "flex-grow-1 overflow-hidden",
+                    className: "flex-grow-1 overflow-hidden my-auto",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(_components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_10__.default, {
                       style: {
                         minHeight: '48px'
@@ -7980,7 +8001,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-command-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-command-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-command-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-command-histories .p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th,\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.command-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.command-badge.type-ota {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.command-badge.type-aota {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n\r\n.command-badge.type-fota {\r\n    background-color: #FEEDAF;\r\n    color: #8A5340;\r\n}\r\n\r\n.command-badge.type-sota {\r\n    background-color: #B3E5FC;\r\n    color: #23547B;\r\n}\r\n\r\n.command-badge.type-cota {\r\n    background-color: #ECCFFF;\r\n    color: #694382;\r\n}\r\n\r\n.command-badge.type-shutdown {\r\n    background-color: #FFCDD2;\r\n    color: #C63737;\r\n}\r\n\r\n.command-badge.type-reboot {\r\n    background-color: #ff99ac;\r\n    color: #ff0a54;\r\n}\r\n\r\n.command-badge.type-decommission {\r\n    background-color: #9CC5A1;\r\n    color: #127475;\r\n}\r\n\r\n.command-badge.type-file-upload {\r\n    background-color: #FDF8E1;\r\n    color: #FDC500;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-command-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-command-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-command-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-command-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-command-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-command-histories .p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-thead > tr > th,\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.command-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.command-badge.type-ota {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.command-badge.type-aota {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n\r\n.command-badge.type-fota {\r\n    background-color: #FEEDAF;\r\n    color: #8A5340;\r\n}\r\n\r\n.command-badge.type-sota {\r\n    background-color: #B3E5FC;\r\n    color: #23547B;\r\n}\r\n\r\n.command-badge.type-cota {\r\n    background-color: #ECCFFF;\r\n    color: #694382;\r\n}\r\n\r\n.command-badge.type-shutdown {\r\n    background-color: #FFCDD2;\r\n    color: #C63737;\r\n}\r\n\r\n.command-badge.type-reboot {\r\n    background-color: #ff99ac;\r\n    color: #ff0a54;\r\n}\r\n\r\n.command-badge.type-decommission {\r\n    background-color: #9CC5A1;\r\n    color: #127475;\r\n}\r\n\r\n.command-badge.type-file-upload {\r\n    background-color: #FDF8E1;\r\n    color: #FDC500;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8004,7 +8025,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-event-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-event-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-event-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-event-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-event-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-event-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-event-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-event-histories .p-datatable-event-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-thead > tr > th,\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.event-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.event-badge.type-property {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.event-badge.type-telemetry {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-event-histories *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-event-histories .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-event-histories .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-event-histories .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-event-histories .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-event-histories .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-event-histories .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-event-histories .p-datatable.p-datatable-event-histories .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-event-histories .p-datatable-event-histories .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-thead > tr > th,\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-event-histories .p-datatable.p-datatable-event-histories .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.event-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.event-badge.type-property {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.event-badge.type-telemetry {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

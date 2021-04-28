@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { submitAotaStartAsync } from '../../redux/aota/aota.actions';
 
-import AotaCard from '../AotaCard/AotaCard';
+import AotaCard from '../../components/AotaCard/AotaCard';
+
 
 const SubmitAotaCardForm = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
   return (

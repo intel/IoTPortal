@@ -75,6 +75,6 @@ class StatusController extends Controller
             $query->where('name', 'like', "%{$request->input('name')}%");
         }
 
-        return Helper::apiResponse(['deviceStatuses' => $query->get()]);
+        return Helper::apiResponseHttpOk(['deviceStatuses' => $query->get()]);
     }
 }

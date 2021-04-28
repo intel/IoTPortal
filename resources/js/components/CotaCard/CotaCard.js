@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { connect } from 'react-redux';
 import { FieldArray, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CFormGroup, CLabel, CSpinner } from '@coreui/react';
+import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CFormGroup, CLabel } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 
 import {
@@ -14,13 +13,22 @@ import {
 } from '../../data/options';
 import { Configuration } from '../../models/Configuration';
 import { getSanitizedValues } from '../../utils/utils';
-import { submitCotaStartAsync } from '../../redux/cota/cota.actions';
 
 import FormikPatchTouched from '../../reusable/FormikPatchTouched';
-import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
-import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
+import IotSelectFormGroup from '../IotSelectFormGroup/IotSelectFormGroup';
+import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
+import PrimarySecondaryButtons from '../PrimarySecondaryButtons/PrimarySecondaryButtons';
 
-const CotaCard = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
+const CotaCard = ({
+                    primaryButtonText,
+                    secondaryButtonText,
+                    isPrimaryLoading,
+                    isSecondaryLoading,
+                    isPrimaryDisabled,
+                    isSecondaryDisabled,
+                    submitCallback,
+                    resetCallback
+                  }) => {
 
   const [isFieldHidden, setFieldHidden] = useState(COTA_INITIAL_FIELDS_HIDDEN_STATE);
 
@@ -36,6 +44,9 @@ const CotaCard = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
     setFieldHidden(COTA_INITIAL_FIELDS_HIDDEN_STATE);
     if (formRef.current) {
       formRef.current.resetForm();
+    }
+    if (resetCallback) {
+      resetCallback();
     }
   };
 
@@ -99,7 +110,8 @@ const CotaCard = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            submitCotaStartAsync(deviceId, getSanitizedValues(values));
+            const data = {command: 'cota', payload: getSanitizedValues(values)}
+            submitCallback(data);
           }}
         >
           {({values}) => (
@@ -187,24 +199,13 @@ const CotaCard = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
         </Formik>
       </CCardBody>
       <CCardFooter>
-        {/*<CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingCota}>*/}
-        {/*  {isSubmittingCota ? <CSpinner color="white" size="sm"/> : <CIcon name="cil-scrubber"/>} Submit*/}
-        {/*</CButton>*/}
-        {/*<CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset}*/}
-        {/*         disabled={isSubmittingCota}>*/}
-        {/*  <CIcon name="cil-ban"/> Reset*/}
-        {/*</CButton>*/}
+        <PrimarySecondaryButtons primaryButtonText={primaryButtonText} secondaryButtonText={secondaryButtonText}
+                                 isPrimaryLoading={isPrimaryLoading} isSecondaryLoading={isSecondaryLoading}
+                                 isPrimaryDisabled={isPrimaryDisabled} isSecondaryDisabled={isSecondaryDisabled}
+                                 onClickPrimary={handleSubmit} onClickSecondary={handleReset}/>
       </CCardFooter>
     </CCard>
   );
 };
 
-const mapStateToProps = state => ({
-  isSubmittingCota: state.cota.isSubmittingCota
-});
-
-const mapDispatchToProps = dispatch => ({
-  submitCotaStartAsync: (id, data) => dispatch(submitCotaStartAsync(id, data))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CotaCard);
+export default CotaCard;

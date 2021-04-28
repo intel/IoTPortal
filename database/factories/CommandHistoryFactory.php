@@ -24,7 +24,7 @@ class CommandHistoryFactory extends Factory
         return [
 //            'type' => config('constants.mqtt_methods_integer_types'. '.' . array_rand(config('constants.mqtt_methods_integer_types'))),
             'payload' => '{"app":"compose","cmd":"down","containerTag":"hjckhjkhjk"}',
-            'response_time' => $this->faker->dateTime(),
+            'responded_at' => $this->faker->dateTime(),
         ];
     }
 }

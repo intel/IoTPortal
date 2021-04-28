@@ -1,25 +1,33 @@
 import React, { useRef, useState } from 'react';
-import { connect } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { CButton, CCard, CCardBody, CCardFooter, CCardHeader, CSpinner } from '@coreui/react';
-import CIcon from '@coreui/icons-react';
+import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 
 import {
-  SOTA_OPTIONS,
   SOTA_COMMAND_OPTIONS,
-  SOTA_LOG_TO_FILE_OPTIONS,
+  SOTA_FIELDS_HIDDEN_STATES,
   SOTA_INITIAL_FIELDS_HIDDEN_STATE,
-  SOTA_FIELDS_HIDDEN_STATES
+  SOTA_LOG_TO_FILE_OPTIONS,
+  SOTA_OPTIONS
 } from '../../data/options';
-import { submitSotaStartAsync } from '../../redux/sota/sota.actions';
 import { getSanitizedValues } from '../../utils/utils';
 
-import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
-import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
+import IotSelectFormGroup from '../IotSelectFormGroup/IotSelectFormGroup';
+import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
+import PrimarySecondaryButtons from '../PrimarySecondaryButtons/PrimarySecondaryButtons';
 
-const SotaCard = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
+const SotaCard = ({
+                    primaryButtonText,
+                    secondaryButtonText,
+                    isPrimaryLoading,
+                    isSecondaryLoading,
+                    isPrimaryDisabled,
+                    isSecondaryDisabled,
+                    submitCallback,
+                    resetCallback
+                  }) => {
+
   const [isFieldHidden, setFieldHidden] = useState(SOTA_INITIAL_FIELDS_HIDDEN_STATE);
 
   const formRef = useRef();
@@ -34,6 +42,9 @@ const SotaCard = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
     setFieldHidden(SOTA_INITIAL_FIELDS_HIDDEN_STATE);
     if (formRef.current) {
       formRef.current.resetForm();
+    }
+    if (resetCallback) {
+      resetCallback();
     }
   };
 
@@ -96,7 +107,8 @@ const SotaCard = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            submitSotaStartAsync(deviceId, getSanitizedValues(values));
+            const data = {command: 'sota', payload: getSanitizedValues(values)}
+            submitCallback(data);
           }}
         >
           {({values}) => (
@@ -161,24 +173,13 @@ const SotaCard = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
         </Formik>
       </CCardBody>
       <CCardFooter>
-        <CButton type="submit" size="sm" color="primary" onClick={handleSubmit} disabled={isSubmittingSota}>
-          {isSubmittingSota ? <CSpinner color="white" size="sm"/> : <CIcon name="cil-scrubber"/>} Submit
-        </CButton>
-        <CButton type="reset" size="sm" color="danger" className="ml-3" onClick={handleReset}
-                 disabled={isSubmittingSota}>
-          <CIcon name="cil-ban"/> Reset
-        </CButton>
+        <PrimarySecondaryButtons primaryButtonText={primaryButtonText} secondaryButtonText={secondaryButtonText}
+                                 isPrimaryLoading={isPrimaryLoading} isSecondaryLoading={isSecondaryLoading}
+                                 isPrimaryDisabled={isPrimaryDisabled} isSecondaryDisabled={isSecondaryDisabled}
+                                 onClickPrimary={handleSubmit} onClickSecondary={handleReset}/>
       </CCardFooter>
     </CCard>
   );
 };
 
-const mapStateToProps = state => ({
-  isSubmittingSota: state.sota.isSubmittingSota
-});
-
-const mapDispatchToPros = dispatch => ({
-  submitSotaStartAsync: (id, data) => dispatch(submitSotaStartAsync(id, data))
-});
-
-export default connect(mapStateToProps, mapDispatchToPros)(SotaCard);
+export default SotaCard;

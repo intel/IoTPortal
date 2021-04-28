@@ -17,15 +17,16 @@ class CreateJobsTable extends Migration
             $table->id();
             $table->string('unique_id')->unique();
             $table->string('name');
-            $table->json('payload')->nullable();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('saved_command_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('saved_command_id')->references('id')->on('saved_commands')->onDelete('cascade');
         });
     }
 

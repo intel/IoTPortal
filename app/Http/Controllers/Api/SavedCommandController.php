@@ -9,28 +9,52 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class SavedCommandController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $query = Auth::user()->savedCommands();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if ($request->has('filters')) {
+            $filters = json_decode($request->input('filters'));
+
+            foreach ($filters as $key => $value) {
+                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
+                if ($key === 'name') $query->nameLike($value->value);
+                if ($key === 'command_name') $query->commandNameLike($value->value);
+                if ($key === 'globalFilter') {
+                    $query->where(function ($query) use ($value) {
+                        $query->uniqueIdLike($value->value)
+                            ->orWhere->nameLike($value->value)
+                            ->orWhere->commandNameLike($value->value);
+                    });
+                }
+            }
+        }
+
+        if ($request->has('sortField')) {
+            if ($request->input('sortOrder') === '1')
+                $query->orderBy($request->input('sortField'));
+            else
+                $query->orderByDesc($request->input('sortField'));
+        }
+
+        $maxRows = Config::get('constants.index_max_rows');
+        $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
+
+        $savedCommands = $query->paginate($rows);
+
+        return Helper::apiResponseHttpOk(['savedCommands' => $savedCommands]);
     }
 
     /**
@@ -48,7 +72,7 @@ class SavedCommandController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::apiResponse([], false, $validator->getMessageBag()->toArray(), [], Response::HTTP_BAD_REQUEST);
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
         $savedCommand = Auth::user()->savedCommands()->create([
@@ -58,40 +82,29 @@ class SavedCommandController extends Controller
         ]);
 
         if ($savedCommand->exists) {
-            return Helper::apiResponse(['savedCommand' => $savedCommand]);
+            return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
         }
 
-        return Helper::apiResponse([], false, 'Failed to create saved command', [], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return Helper::apiResponseHttpInternalServerError('Failed to create saved command');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\SavedCommand $savedCommand
-     * @return \Illuminate\Http\Response
+     * @param SavedCommand $savedCommand
+     * @return JsonResponse
      */
     public function show(SavedCommand $savedCommand)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\SavedCommand $savedCommand
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SavedCommand $savedCommand)
-    {
-        //
+        return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param \App\Models\SavedCommand $savedCommand
-     * @return \Illuminate\Http\Response
+     * @param SavedCommand $savedCommand
+     * @return Response
      */
     public function update(Request $request, SavedCommand $savedCommand)
     {
@@ -101,11 +114,39 @@ class SavedCommandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\SavedCommand $savedCommand
-     * @return \Illuminate\Http\Response
+     * @param SavedCommand $savedCommand
+     * @return Response
      */
     public function destroy(SavedCommand $savedCommand)
     {
         //
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function destroySelected(Request $request)
+    {
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'ids.*' => [
+                'required',
+                Rule::exists('saved_commands', 'id')->where(function ($query) use ($user) {
+                    return $query->where('user_id', $user->id);
+                }),
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
+        }
+
+        $success = $user->savedCommands()->whereIn('saved_commands.id', $request->input('ids'))->delete();
+
+        return Helper::apiResponseHttpOk([], $success);
     }
 }

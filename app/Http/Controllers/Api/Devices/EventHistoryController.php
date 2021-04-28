@@ -55,7 +55,7 @@ class EventHistoryController extends Controller
 
         $deviceEventHistories = $query->paginate($rows);
 
-        return Helper::apiResponse(['deviceEventHistories' => $deviceEventHistories]);
+        return Helper::apiResponseHttpOk(['deviceEventHistories' => $deviceEventHistories]);
     }
 
     /**

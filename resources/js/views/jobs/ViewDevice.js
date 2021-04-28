@@ -33,9 +33,9 @@ import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
 import MetricsCard from '../../components/MetricsCard/MetricsCard';
 import AotaCard from '../../containers/AotaCard/AotaCard';
-import FotaCard from '../../containers/FotaCard/FotaCard';
-import SotaCard from '../../containers/SotaCard/SotaCard';
-import CotaCard from '../../containers/CotaCard/CotaCard';
+import FotaCard from '../../components/FotaCard/FotaCard';
+import SotaCard from '../../components/SotaCard/SotaCard';
+import CotaCard from '../../components/CotaCard/CotaCard';
 import CommandHistoriesDataTable from '../../containers/CommandHistoriesDataTable/CommandHistoriesDataTable';
 import EventHistoriesDataTable from '../../containers/EventHistoriesDataTable/EventHistoriesDataTable';
 
@@ -101,8 +101,8 @@ const ViewDevice = (props) => {
                                     updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                       <small>ID: {device.unique_id}</small><br/>
                       <div className="mt-2">
-                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name.toUpperCase()}</CBadge>
-                        <CBadge color="primary" className="font-lg">{device.category.name.toUpperCase()}</CBadge>
+                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name}</CBadge>
+                        <CBadge color="primary" className="font-lg">{device.category.name}</CBadge>
                       </div>
                   </div>
                 </div>

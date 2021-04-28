@@ -43,7 +43,7 @@
 .datatable-devices .p-datatable.p-datatable-devices .p-datatable-header {
     padding: 1rem;
     text-align: left;
-    font-size: 1.5rem !important;
+    font-size: 1.5em;
 }
 
 .datatable-devices .p-datatable.p-datatable-devices .p-paginator {

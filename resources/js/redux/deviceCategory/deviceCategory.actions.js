@@ -199,7 +199,7 @@ export const fetchDeviceCategoryOptionsFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDeviceCategoryOptionsStartAsync = (name) => {
+export const fetchDeviceCategoryOptionsStartAsync = name => {
   return dispatch => {
     dispatch(fetchDeviceCategoryOptionsStart());
 

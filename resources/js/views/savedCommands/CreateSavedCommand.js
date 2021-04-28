@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
-import ReactJson from 'react-json-view';
 import { Toaster } from 'react-hot-toast';
 import {
   CAlert,
@@ -25,11 +24,13 @@ import {
 import { createSavedCommandStartAsync } from '../../redux/savedCommand/savedCommand.actions';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
-import AotaCard from '../../containers/AotaCard/AotaCard';
-import FotaCard from '../../containers/FotaCard/FotaCard';
-import SotaCard from '../../containers/SotaCard/SotaCard';
-import CotaCard from '../../containers/CotaCard/CotaCard';
+import AotaCard from '../../components/AotaCard/AotaCard';
+import FotaCard from '../../components/FotaCard/FotaCard';
+import SotaCard from '../../components/SotaCard/SotaCard';
+import CotaCard from '../../components/CotaCard/CotaCard';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
+import PowerControlsCard from '../../components/PowerControlsCard/PowerControlsCard';
+import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
 
 
 const CreateSavedCommand = ({
@@ -131,6 +132,11 @@ const CreateSavedCommand = ({
                       Configuration OTA Update
                     </CNavLink>
                   </CNavItem>
+                  <CNavItem>
+                    <CNavLink data-tab="power-control">
+                      Power Controls
+                    </CNavLink>
+                  </CNavItem>
                 </CNav>
                 <CTabContent>
                   <CTabPane className="m-3" data-tab="aota">
@@ -149,10 +155,13 @@ const CreateSavedCommand = ({
                     <CotaCard primaryButtonText="Save" submitCallback={setSavedCommandPayload}
                               resetCallback={resetCallback}/>
                   </CTabPane>
+                  <CTabPane className="m-3" data-tab="power-control">
+                    <PowerControlsCard primaryButtonText="Save" submitCallback={setSavedCommandPayload}
+                                       resetCallback={resetCallback}/>
+                  </CTabPane>
                 </CTabContent>
               </CTabs>
-              <CLabel htmlFor="">Resulting command payload</CLabel>
-              <ReactJson src={savedCommandPayload ? savedCommandPayload : {}} name={null}/>
+              <CommandPayloadViewer label="Resulting command payload" payload={savedCommandPayload}/>
             </CCardBody>
             <CCardFooter>
               <PrimarySecondaryButtons primaryButtonText="Create" isPrimaryLoading={isCreatingSavedCommand}

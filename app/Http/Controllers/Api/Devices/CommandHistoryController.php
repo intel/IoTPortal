@@ -31,9 +31,9 @@ class CommandHistoryController extends Controller
             foreach ($filters as $key => $value) {
                 if ($key === 'payload') $query->payloadLike($value->value);
                 if ($key === 'type') $query->commandId($value->value);
-                if ($key === 'response_time') {
+                if ($key === 'responded_at') {
                     $dates = explode(" - ", $value->value);
-                    $query->responseTimeBetween($dates);
+                    $query->respondedAtBetween($dates);
                 }
                 if ($key === 'created_at') {
                     $dates = explode(" - ", $value->value);
@@ -59,7 +59,7 @@ class CommandHistoryController extends Controller
 
         $deviceCommandHistories = $query->paginate($rows);
 
-        return Helper::apiResponse(['deviceCommandHistories' => $deviceCommandHistories]);
+        return Helper::apiResponseHttpOk(['deviceCommandHistories' => $deviceCommandHistories]);
     }
 
     /**

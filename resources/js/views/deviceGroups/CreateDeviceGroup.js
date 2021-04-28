@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useReducer, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { Steps } from 'primereact/steps';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
-import { getSanitizedValues, isDeviceGroupNameUnique, isDeviceNameUnique } from '../../utils/utils';
+import { getSanitizedValues, isDeviceGroupNameUnique, isNotEmptyString } from '../../utils/utils';
 import { createDeviceGroupStartAsync } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
@@ -25,21 +25,23 @@ const CreateDeviceGroup = ({
                              createDeviceGroupStartAsync
                            }) => {
 
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [showNoDeviceSelectedModal, setShowNoDeviceSelectedModal] = useState(false);
   const [selectedDevices, setSelectedDevices] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const steps = [
-    {label: 'Enter Device Group Name'},
-    {label: 'Select Devices'},
-    {label: 'Confirmation'}
+    {label: 'Enter device group name'},
+    {label: 'Select devices'},
+    {label: 'Confirmation'},
   ];
 
   const formRef = useRef();
 
   const handleStep0 = async () => {
     if (formRef.current) {
-      await formRef.current.setFieldTouched('name', true);
-      if (!formRef.current.errors.name) {
+      if (!formRef.current.touched.name) {
+        await formRef.current.setFieldTouched('name', true);
+      } else if (!formRef.current.errors.name) {
         setActiveIndex(activeIndex + 1);
       }
     }
@@ -59,12 +61,20 @@ const CreateDeviceGroup = ({
     }
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
+    if (formRef.current) {
+      await formRef.current.resetForm();
+      forceUpdate();
+    }
     setSelectedDevices(null);
     setActiveIndex(0);
-    if (formRef.current) {
-      formRef.current.values.devices = [];
-      formRef.current.resetForm();
+  };
+
+  const onSubmit = (values, {setSubmitting}) => {
+    if (activeIndex < 2) {
+      setActiveIndex(activeIndex + 1);
+    } else {
+      createDeviceGroupStartAsync(getSanitizedValues(values), history);
     }
   };
 
@@ -101,8 +111,8 @@ const CreateDeviceGroup = ({
   const validationSchema = Yup.object({
     name: Yup.string()
       .required("Required")
-      .max(255, 'The name may not be greater than 255 characters')
-      .test('isDeviceGroupNameUnique', 'The name has already been taken', isDeviceGroupNameUnique),
+      .max(255, 'The name may not be greater than 255 characters.')
+      .test('isDeviceGroupNameUnique', 'The name has already been taken.', isDeviceGroupNameUnique),
   });
 
   return (
@@ -112,6 +122,7 @@ const CreateDeviceGroup = ({
           <CCard>
             <CCardHeader>
               Create new device group
+              {isNotEmptyString(formRef.current?.values?.name) && (<>: <b>{formRef.current.values.name}</b></>)}
             </CCardHeader>
             <CCardBody>
               <Steps className="mb-5" model={steps} activeIndex={activeIndex}
@@ -126,9 +137,7 @@ const CreateDeviceGroup = ({
                   devices: [],
                 }}
                 validationSchema={validationSchema}
-                onSubmit={(values, {setSubmitting}) => {
-                  createDeviceGroupStartAsync(getSanitizedValues(values), history);
-                }}
+                onSubmit={onSubmit}
               >
                 <Form>
                   {activeIndex === 0 && renderStep0()}

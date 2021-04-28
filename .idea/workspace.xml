@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SavedCommandController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DecommissionDeviceModal/DecommissionDeviceModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceCategoriesModal/DeleteDeviceCategoriesModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceGroupModal/DeleteDeviceGroupModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceGroupsModal/DeleteDeviceGroupsModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceModal/DeleteDeviceModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDevicesModal/DeleteDevicesModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/DeviceGroupNoDeviceSelectedModal/DeviceGroupNoDeviceSelectedModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/RebootDeviceModal/RebootDeviceModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/SelectedDevicesDataView/SelectedDevicesDataView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCardBackup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/containers/SubmitCotaCardForm/SubmitCotaCardForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/containers/SubmitSotaCardForm/SubmitSotaCardForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/EditDeviceGroup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/devices/EditDevice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/devices/ListDevices.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/savedCommands/CreateSavedCommand.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/HasDeviceConnectionKey.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/HasMqttCredentials.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/HasUniqueId.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/CommandPayloadViewer/CommandPayloadViewer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteSavedCommandModal/DeleteSavedCommandModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/apiTokens/ListApiTokens.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/savedCommands/ViewSavedCommand.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/CategoryController.php" afterDir="false" />
@@ -30,108 +20,88 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/DeviceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/EventHistoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/GroupController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/MetricController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/MetricController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/StatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Devices/StatusController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Mqtt/EndpointController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SavedCommandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SavedCommandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/CommandHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CommandHistory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/EventHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EventHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Group.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Group.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Job.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SavedCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SavedCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/constants.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/constants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_073200_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073200_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/CommandHistoryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073203_create_devices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075630_create_memory_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075630_create_memory_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075655_create_disk_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075655_create_disk_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075742_create_container_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075742_create_container_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075810_create_network_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075810_create_network_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075820_create_commands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075820_create_commands_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075800_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075800_create_jobs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_080912_create_configuration_files_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_080912_create_configuration_files_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_081032_create_aota_configurations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_081032_create_aota_configurations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_081055_create_fota_configurations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_081055_create_fota_configurations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_081137_create_temperature_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_081137_create_temperature_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_082037_create_team_user_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_082037_create_team_user_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_28_014000_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_014000_create_events_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_28_014716_create_event_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_28_014716_create_event_histories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_05_094543_create_cpu_statistics_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_05_094543_create_cpu_statistics_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_12_091748_create_device_team_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_12_091748_create_device_team_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_23_030131_create_saved_commands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_073000_create_saved_commands_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Device_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_Devices_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_jobs_CreateJob_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_jobs_CreateJob_js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/assets/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/EditableText/editableText.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditableText/editableText.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Modal/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/AotaCard/AotaCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesCard/CommandHistoriesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesCard/commandHistoriesCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesCard/DevicesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesCard/devicesCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/devicesDataTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/EventHistoriesCard/EventHistoriesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/EventHistoriesCard/eventHistoriesCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/FotaCard/FotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/FotaCard/FotaCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/SotaCard/SotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SotaCard/SotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeviceGroupNoDeviceSelectedModal/DeviceGroupNoDeviceSelectedModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeviceGroupNoDeviceSelectedModal/DeviceGroupNoDeviceSelectedModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SelectedDevicesDataView/SelectedDevicesDataView.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SelectedDevicesDataView/SelectedDevicesDataView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/AotaCard/AotaCardBackup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCardBackup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/CotaCard/CotaCardBackup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCardBackup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DeviceCategoriesDataTable/DeviceCategoriesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DeviceCategoriesDataTable/DeviceCategoriesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DeviceCategoriesDataTable/deviceCategoriesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DeviceCategoriesDataTable/deviceCategoriesDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DeviceGroupsDataTable/DeviceGroupsDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DeviceGroupsDataTable/DeviceGroupsDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DeviceGroupsDataTable/deviceGroupsDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DeviceGroupsDataTable/deviceGroupsDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/devicesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/devicesDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/FotaCard/FotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/FotaCard/FotaCardBackup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCardBackup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SotaCard/SotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SotaCard/SotaCardBackup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCardBackup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SubmitCotaCardForm/SubmitCotaCardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SubmitCotaCardForm/SubmitCotaCardForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SubmitFotaCardForm/SubmitFotaCardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SubmitFotaCardForm/SubmitFotaCardForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/SubmitSotaCardForm/SubmitSotaCardForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/SubmitSotaCardForm/SubmitSotaCardForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/containers/_nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/_nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/cota/cota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/cota/cota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/cota/cota.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/data/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/data/options.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/fota/fota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/fota/fota.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/fota/fota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/fota/fota.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/fota/fota.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/fota/fota.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceGroup/deviceGroup.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceGroup/deviceGroup.actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/sota/sota.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/sota/sota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/sota/sota.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/utils/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Device.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/ViewDevice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/Devices.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/CreateDevice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/pages/layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceCategories/ViewDeviceCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceCategories/ViewDeviceCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceGroups/CreateDeviceGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/CreateDeviceGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceGroups/ViewDeviceGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/ViewDeviceGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/CreateDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/CreateDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/ViewDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/ViewDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/jobs/CreateJob.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/jobs/CreateJob.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/jobs/EditDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/jobs/EditDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/jobs/ViewDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/jobs/ViewDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/savedCommands/CreateSavedCommand.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/savedCommands/CreateSavedCommand.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -309,7 +279,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/redux" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -319,18 +289,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers\CotaCard" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers\SotaCard" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Traits" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views\apiTokens" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\views\savedCommands" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api\Devices" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\reusable" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\public\js" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\DevicePropertyCard" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
@@ -507,6 +477,14 @@
       <workItem from="1619140616480" duration="24137000" />
       <workItem from="1619196927266" duration="2330000" />
       <workItem from="1619244551946" duration="26596000" />
+      <workItem from="1619333989380" duration="5644000" />
+      <workItem from="1619398781112" duration="22762000" />
+      <workItem from="1619451620628" duration="4407000" />
+      <workItem from="1619456255260" duration="43000" />
+      <workItem from="1619456371312" duration="350000" />
+      <workItem from="1619485498594" duration="27597000" />
+      <workItem from="1619533446314" duration="8593000" />
+      <workItem from="1619572387270" duration="9497000" />
     </task>
     <servers />
   </component>

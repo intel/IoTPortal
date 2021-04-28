@@ -230,9 +230,9 @@ export const fetchDeviceGroupOptionsStart = () => ({
   type: deviceGroupActionTypes.FETCH_DEVICE_GROUP_OPTIONS_START,
 });
 
-export const fetchDeviceGroupOptionsSuccess = deviceGroups => ({
+export const fetchDeviceGroupOptionsSuccess = deviceGroupOptions => ({
   type: deviceGroupActionTypes.FETCH_DEVICE_GROUP_OPTIONS_SUCCESS,
-  payload: deviceGroups,
+  payload: deviceGroupOptions,
 });
 
 export const fetchDeviceGroupOptionsFailure = errorMessage => ({
@@ -240,11 +240,14 @@ export const fetchDeviceGroupOptionsFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDeviceGroupOptionsStartAsync = lazyParams => {
+export const fetchDeviceGroupOptionsStartAsync = name => {
   return dispatch => {
     dispatch(fetchDeviceGroupOptionsStart());
 
-    axios.get(`${API_ENDPOINT}/device/groups`, {params: lazyParams})
+    const params = {};
+    if (name) params.name = name;
+
+    axios.get(`${API_ENDPOINT}/device/groups/options`, {params: params})
       .then(result => {
         dispatch(fetchDeviceGroupOptionsSuccess(result.data.result.deviceGroups));
       })

@@ -1,7 +1,6 @@
 import { CButton } from '@coreui/react';
 import toast from 'react-hot-toast';
 import { API_ENDPOINT } from '../data/config';
-import { createDeviceFailure, createDeviceSuccess } from '../redux/device/device.actions';
 
 export const convertDeviceObjectToDeviceArrayObject = object => {
   return Object.entries(object).map(([key, value], index) => {
@@ -22,6 +21,24 @@ export const removeLastCharacterIfExists = (str, needle) => {
   }
   return str;
 };
+
+export const isNotEmptyString = (str) => {
+  return Boolean(str);
+}
+
+export const isValidJSONObject = (obj) => {
+  return typeof obj === 'object' && obj !== null;
+};
+
+export const isValidJsonString = (str) => {
+  if (str === null) return false;
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
 
 export const getSanitizedValues = object => {
   const clonedObject = _.cloneDeep(object);

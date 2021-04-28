@@ -21,6 +21,7 @@ import sotaReducer from './sota/sota.reducer';
 import cotaReducer from './cota/cota.reducer';
 import sidebarReducer from './sidebar/sidebar.reducer';
 import savedCommandReducer from './savedCommand/savedCommand.reducer';
+import apiTokenReducer from './apiToken/apiToken.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   deviceEventHistory: deviceEventHistoryReducer,
   deviceGroup: deviceGroupReducer,
   device: deviceReducer,
+  apiToken: apiTokenReducer,
   shutdown: shutdownReducer,
   reboot: rebootReducer,
   decommission: decommissionReducer,

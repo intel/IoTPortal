@@ -94,7 +94,7 @@ const CommandHistoriesDataTable = ({
   const commandTypeItemTemplate = (option) => {
     return (
       <span
-        className={classNames('command-badge', 'type-' + option.label.replace(/\s+/g, '-').toLowerCase())}>{option.label.toUpperCase()}</span>
+        className={classNames('command-badge', 'type-' + option.label.replace(/\s+|_/g, '-').toLowerCase())}>{option.label}</span>
     );
   };
 
@@ -124,18 +124,18 @@ const CommandHistoriesDataTable = ({
   const commandTypeColumnBody = (rowData) => {
     return (
       <>
-        <span className="p-column-title">Command Type</span>
+        <span className="p-column-title">Command type</span>
         <span
-          className={classNames('command-badge', 'type-' + rowData.command.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.command.name.toUpperCase()}</span>
+          className={classNames('command-badge', 'type-' + rowData.command.name.replace(/\s+|_/g, '-').toLowerCase())}>{rowData.command.name}</span>
       </>
     );
   };
 
-  const responseTimeColumnBody = (rowData) => {
+  const respondedAtColumnBody = (rowData) => {
     return (
       <>
-        <span className="p-column-title">Response Time</span>
-        {rowData.response_time}
+        <span className="p-column-title">Responded at</span>
+        {rowData.responded_at}
       </>
     );
   };
@@ -184,9 +184,9 @@ const CommandHistoriesDataTable = ({
         <Column selectionMode="multiple" style={{width: '3em'}}/>
         <Column field="payload" header="Payload" body={payloadColumnBody} sortable filter
                 filterPlaceholder="Search by payload"/>
-        <Column field="type" header="Type" body={commandTypeColumnBody} sortable filter excludeGlobalFilter={true}
+        <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={commandTypeFilterElement}/>
-        <Column field="response_time" header="Response Time" body={responseTimeColumnBody} sortable filter
+        <Column field="responded_at" header="Responded at" body={respondedAtColumnBody} sortable filter
                 excludeGlobalFilter={true} filterElement={responseTimeFilterElement}/>
         <Column field="created_at" header="Timestamp" body={timestampColumnBody} sortable filter
                 excludeGlobalFilter={true} filterElement={timestampFilterElement}/>
@@ -196,10 +196,7 @@ const CommandHistoriesDataTable = ({
 };
 
 const mapStateToProps = state => ({
-  deviceCommandOptions: state.deviceCommand.deviceCommandOptions ? state.deviceCommand.deviceCommandOptions.map(option => ({
-    ...option,
-    label: option.label.toUpperCase()
-  })) : state.deviceCommand.deviceCommandOptions,
+  deviceCommandOptions: state.deviceCommand.deviceCommandOptions,
   isFetchingDeviceCommandOptions: state.deviceCommand.isFetchingDeviceCommandOptions,
   fetchDeviceCommandOptionsErrorMessage: state.deviceCommand.fetchDeviceCommandOptionsErrorMessage,
   deviceCommandHistories: state.deviceCommandHistory.deviceCommandHistories,

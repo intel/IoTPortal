@@ -9,7 +9,7 @@ import CIcon from '@coreui/icons-react';
 import { submitFotaStartAsync } from '../../redux/fota/fota.actions';
 import { getSanitizedValues } from '../../utils/utils';
 
-import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
+import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
 
 const FotaCard = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
 

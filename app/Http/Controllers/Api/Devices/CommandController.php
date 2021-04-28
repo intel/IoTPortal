@@ -76,6 +76,6 @@ class CommandController extends Controller
             $query->where('name', 'like', "%{$request->input('name')}%");
         }
 
-        return Helper::apiResponse(['deviceCommands' => $query->get()]);
+        return Helper::apiResponseHttpOk(['deviceCommands' => $query->get()]);
     }
 }

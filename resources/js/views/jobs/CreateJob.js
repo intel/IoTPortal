@@ -4,26 +4,33 @@ import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
+import { Steps } from 'primereact/steps';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
-import { createDeviceStartAsync } from '../../redux/device/device.actions';
-import { getSanitizedValues } from '../../utils/utils';
+
+import { fetchDeviceGroupOptionsStartAsync } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
-import { Steps } from 'primereact/steps';
 
-const CreateJob = () => {
+const CreateJob = ({
+                     history,
+                     deviceGroupOptions,
+                     isFetchingDeviceGroupOptions,
+                     fetchDeviceGroupOptionsErrorMessage,
+                     fetchDeviceGroupOptionsStartAsync
+                   }) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const steps = [
-    {label: 'Enter Job Details'},
-    {label: 'Select Command'},
-    {label: 'Confirmation'}
+    {label: 'Enter job details'},
+    {label: 'Confirmation'},
+    {label: 'Result'},
   ];
 
   const formRef = useRef();
 
   useEffect(() => {
+    fetchDeviceGroupOptionsStartAsync();
   }, []);
 
   const validationSchema = Yup.object({});
@@ -46,11 +53,11 @@ const CreateJob = () => {
                 innerRef={formRef}
                 initialValues={{
                   name: '',
-                  category: '',
+                  group: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
-                  createDeviceStartAsync(getSanitizedValues(values), history);
+                  // createDeviceStartAsync(getSanitizedValues(values), history);
                 }}
               >
                 {({values}) => (
@@ -66,10 +73,10 @@ const CreateJob = () => {
                       name="group"
                       label="Device Group"
                       placeholder="Select a device group"
-                      // options={deviceCategories}
-                      value={values.category}
-                      // onInputChange={(name) => fetchDeviceCategoriesStartAsync(name)}
-                      // isLoading={isFetchingDeviceCategories}
+                      options={deviceGroupOptions}
+                      value={values.group}
+                      onInputChange={(name) => fetchDeviceGroupOptionsStartAsync(name)}
+                      isLoading={isFetchingDeviceGroupOptions}
                       isSearchable
                       isClearable
                     />
@@ -87,8 +94,14 @@ const CreateJob = () => {
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  deviceGroupOptions: state.deviceGroup.deviceGroupOptions,
+  isFetchingDeviceGroupOptions: state.deviceGroup.isFetchingDeviceGroupOptions,
+  fetchDeviceGroupOptionsErrorMessage: state.deviceGroup.fetchDeviceGroupOptionsErrorMessage,
+});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  fetchDeviceGroupOptionsStartAsync: (name) => dispatch(fetchDeviceGroupOptionsStartAsync(name)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateJob);
