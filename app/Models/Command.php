@@ -10,6 +10,16 @@ class Command extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'method_name'
+    ];
+
+    /**
      * Get the device that owns the command.
      */
     public function device()

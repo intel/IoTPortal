@@ -10,6 +10,15 @@ class Event extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
      * Get the device that owns the event.
      */
     public function device()

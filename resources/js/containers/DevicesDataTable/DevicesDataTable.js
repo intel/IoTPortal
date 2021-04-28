@@ -21,6 +21,7 @@ import DevicePropertyCard from '../../components/DevicePropertyCard/DeviceProper
 
 import './devicesDataTable.css';
 import DeleteDeviceModal from '../../components/DeleteDeviceModal/DeleteDeviceModal';
+import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
 
 const DevicesDataTable = ({
                             history,
@@ -48,6 +49,7 @@ const DevicesDataTable = ({
                             deleteDevicesStartAsync
                           }) => {
 
+  const [showConnectDeviceModal, setShowConnectDeviceModal] = useState(false);
   const [showDeleteDeviceModal, setShowDeleteDeviceModal] = useState(false);
   const [device, setDevice] = useState(null);
   const [selectedDeviceCategory, setSelectedDeviceCategory] = useState(null);
@@ -62,6 +64,11 @@ const DevicesDataTable = ({
     fetchDeviceStatusOptionsStartAsync();
     fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
   }, [fetchDevicesLazyParams]);
+
+  const onShowConnectDeviceModal = (device) => {
+    setDevice(device);
+    setShowConnectDeviceModal(!showConnectDeviceModal);
+  };
 
   const confirmDeleteDevice = (device) => {
     setDevice(device);
@@ -203,6 +210,8 @@ const DevicesDataTable = ({
   const actionColumnBody = (rowData) => {
     return (
       <>
+        <Button icon="pi pi-info-circle" className="p-button-rounded p-button-info mr-2"
+                onClick={() => onShowConnectDeviceModal(rowData)}/>
         <Button icon="pi pi-search" className="p-button-rounded p-button-success mr-2"
                 onClick={() => history.push(`/devices/${rowData.unique_id}`)}/>
         <Button icon="pi pi-pencil" className="p-button-rounded p-button-warning mr-2"
@@ -254,10 +263,14 @@ const DevicesDataTable = ({
                   excludeGlobalFilter={true} filterElement={deviceCategoryFilterElement}/>
           <Column field="status" header="Status" body={deviceStatusColumnBody} sortable filter
                   excludeGlobalFilter={true} filterElement={deviceStatusFilterElement}/>
-          {!hideActionsBar && <Column body={actionColumnBody} headerStyle={{width: '15em', textAlign: 'center'}}
+          {!hideActionsBar && <Column body={actionColumnBody} headerStyle={{width: '20em', textAlign: 'center'}}
                                       bodyStyle={{textAlign: 'center', overflow: 'visible'}}/>}
         </DataTable>
       </div>
+      {(showConnectDeviceModal && !hideActionsBar) &&
+      <ConnectDeviceModal device={device} show={showConnectDeviceModal}
+                           onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
+      />}
       {(showDeleteDeviceModal && !hideActionsBar) &&
       <DeleteDeviceModal device={device} show={showDeleteDeviceModal}
                          onClose={() => setShowDeleteDeviceModal(!showDeleteDeviceModal)}

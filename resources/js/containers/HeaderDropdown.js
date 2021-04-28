@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle, CImg } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 
-const HeaderDropdown = () => {
+import { logoutStartAsync } from '../redux/login/login.actions';
+
+const HeaderDropdown = ({logoutStartAsync}) => {
   return (
     <CDropdown
       inNav
@@ -25,7 +29,15 @@ const HeaderDropdown = () => {
           color="light"
           className="text-center"
         >
-          <strong>Account</strong>
+          <strong>Alex John</strong>
+        </CDropdownItem>
+        <CDropdownItem
+          header
+          tag="div"
+          color="light"
+          className="text-center"
+        >
+          <strong>alex@gmail.com</strong>
         </CDropdownItem>
         <CDropdownItem>
           <CIcon name="cil-user" className="mfe-2"/>Profile
@@ -35,8 +47,8 @@ const HeaderDropdown = () => {
           Settings
         </CDropdownItem>
         <CDropdownItem divider/>
-        <CDropdownItem>
-          <CIcon name="cil-lock-locked" className="mfe-2"/>
+        <CDropdownItem onClick={logoutStartAsync}>
+          <CIcon name="cil-account-logout" className="mfe-2"/>
           Logout
         </CDropdownItem>
       </CDropdownMenu>
@@ -44,4 +56,10 @@ const HeaderDropdown = () => {
   );
 };
 
-export default HeaderDropdown;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  logoutStartAsync: () => dispatch(logoutStartAsync()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderDropdown);

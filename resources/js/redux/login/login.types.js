@@ -1,0 +1,8 @@
+const loginActionTypes = {
+  // Logout
+  SUBMIT_LOGOUT_START: 'SUBMIT_LOGOUT_START',
+  SUBMIT_LOGOUT_SUCCESS: 'SUBMIT_LOGOUT_SUCCESS',
+  SUBMIT_LOGOUT_FAILURE: 'SUBMIT_LOGOUT_FAILURE',
+};
+
+export default loginActionTypes;

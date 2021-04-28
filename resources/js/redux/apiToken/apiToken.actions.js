@@ -9,9 +9,9 @@ export const fetchApiTokensStart = () => ({
   type: apiTokenActionTypes.FETCH_API_TOKENS_START,
 });
 
-export const fetchApiTokensSuccess = deviceConnectionKey => ({
+export const fetchApiTokensSuccess = tokens => ({
   type: apiTokenActionTypes.FETCH_API_TOKENS_SUCCESS,
-  payload: deviceConnectionKey,
+  payload: tokens,
 });
 
 export const fetchApiTokensFailure = errorMessage => ({
@@ -25,7 +25,7 @@ export const fetchApiTokensStartAsync = () => {
 
     axios.get(`${API_ENDPOINT}/tokens`)
       .then(result => {
-        dispatch(fetchApiTokensSuccess(result.data.result.deviceConnectionKey));
+        dispatch(fetchApiTokensSuccess(result.data.result));
       })
       .catch(error => {
         dispatch(fetchApiTokensFailure(error.message));

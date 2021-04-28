@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import ReactJson from 'react-json-view';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
@@ -17,6 +16,7 @@ import {
 import './commandHistoriesDataTable.css';
 import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
+import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
 
 const CommandHistoriesDataTable = ({
                                      deviceId,
@@ -153,7 +153,7 @@ const CommandHistoriesDataTable = ({
     return (
       <>
         <h5>Payload</h5>
-        <ReactJson src={JSON.parse(data.payload)} name="payload"/>
+        <CommandPayloadViewer payload={data.payload} isLabelHidden/>
       </>
     );
   };
@@ -184,7 +184,8 @@ const CommandHistoriesDataTable = ({
         <Column selectionMode="multiple" style={{width: '3em'}}/>
         <Column field="payload" header="Payload" body={payloadColumnBody} sortable filter
                 filterPlaceholder="Search by payload"/>
-        <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter excludeGlobalFilter={true}
+        <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter
+                excludeGlobalFilter={true}
                 filterElement={commandTypeFilterElement}/>
         <Column field="responded_at" header="Responded at" body={respondedAtColumnBody} sortable filter
                 excludeGlobalFilter={true} filterElement={responseTimeFilterElement}/>

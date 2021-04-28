@@ -1,31 +1,20 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import {
-  CButton,
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CFormGroup,
-  CInput,
-  CInputGroup,
-  CInputGroupAppend,
-  CLabel,
-  CRow
-} from '@coreui/react';
-
-import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import Error from '../../components/Error/Error';
+import { Toaster } from 'react-hot-toast';
+import { CAlert, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 
 import { fetchApiTokensStartAsync } from '../../redux/apiToken/apiToken.actions';
-import { toast, Toaster } from 'react-hot-toast';
+
+import Error from '../../components/Error/Error';
+import ApiToken from '../../components/ApiToken/ApiToken';
+import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 
 
 const ListApiTokens = (props) => {
 
   const {
+    uniqueId,
     deviceConnectionKey,
     isFetchingApiTokens,
     fetchApiTokensErrorMessage,
@@ -51,18 +40,11 @@ const ListApiTokens = (props) => {
               API Tokens
             </CCardHeader>
             <CCardBody>
-              <CFormGroup>
-                <CLabel htmlFor="device_connection_key">Device Connection Key</CLabel>
-                <CInputGroup>
-                  <CInput type="text" name="device_connection_key" value={deviceConnectionKey} disabled/>
-                  <CInputGroupAppend>
-                    <CopyToClipboard text={deviceConnectionKey}
-                                     onCopy={() => toast.success('Copied')}>
-                      <CButton type="button" color="primary">Copy</CButton>
-                    </CopyToClipboard>
-                  </CInputGroupAppend>
-                </CInputGroup>
-              </CFormGroup>
+              <CAlert color="danger">
+                You should never disclose your API tokens to anyone!
+              </CAlert>
+              <ApiToken name="unique_id" label="Unique ID" value={uniqueId}/>
+              <ApiToken name="device_connection_key" label="Device Connection Key" value={deviceConnectionKey}/>
             </CCardBody>
           </CCard>
         </CCol>
@@ -73,6 +55,7 @@ const ListApiTokens = (props) => {
 };
 
 const mapStateToProps = state => ({
+  uniqueId: state.apiToken.uniqueId,
   deviceConnectionKey: state.apiToken.deviceConnectionKey,
   isFetchingApiTokens: state.apiToken.isFetchingApiTokens,
   fetchApiTokensErrorMessage: state.apiToken.fetchApiTokensErrorMessage,

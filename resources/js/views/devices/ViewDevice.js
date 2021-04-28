@@ -40,6 +40,7 @@ import SubmitAotaCardForm from '../../containers/SubmitAotaCardForm/SubmitAotaCa
 import SubmitFotaCardForm from '../../containers/SubmitFotaCardForm/SubmitFotaCardForm';
 import SubmitSotaCardForm from '../../containers/SubmitSotaCardForm/SubmitSotaCardForm';
 import SubmitCotaCardForm from '../../containers/SubmitCotaCardForm/SubmitCotaCardForm';
+import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
 
 const ViewDevice = (props) => {
 
@@ -58,6 +59,7 @@ const ViewDevice = (props) => {
     submitDecommissionStartAsync,
   } = props;
 
+  const [showConnectDeviceModal, setShowConnectDeviceModal] = useState(false);
   const [showShutdownModal, setShowShutdownModal] = useState(false);
   const [showRebootModal, setShowRebootModal] = useState(false);
   const [showDecommissionModal, setShowDecommissionModal] = useState(false);
@@ -113,6 +115,9 @@ const ViewDevice = (props) => {
                 <CCol className="my-auto" lg="12" xl="4">
                   <div className="d-flex justify-content-center">
                     <CButtonGroup>
+                      <CButton color="dark" onClick={() => setShowConnectDeviceModal(true)}>
+                        Connect
+                      </CButton>
                       <CButton color="danger" onClick={() => setShowShutdownModal(true)}
                                disabled={isSubmittingShutdown}>{isSubmittingShutdown &&
                       <CSpinner color="white" size="sm"/>} Shut down</CButton>
@@ -202,6 +207,10 @@ const ViewDevice = (props) => {
           </CCard>
         </CCol>
       </CRow>
+      {showConnectDeviceModal &&
+      <ConnectDeviceModal device={device} show={showConnectDeviceModal}
+                          onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
+      />}
       <ShutDownDeviceModal show={showShutdownModal} onClose={() => setShowShutdownModal(!showShutdownModal)}
                            onConfirm={confirmShutdown}/>
       <RebootDeviceModal show={showRebootModal} onClose={() => setShowRebootModal(!showRebootModal)}

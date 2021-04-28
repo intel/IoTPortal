@@ -16,8 +16,7 @@ class ApiTokenController extends Controller
      */
     public function show()
     {
-        return Helper::apiResponseHttpOk(['deviceConnectionKey' => Auth::user()->device_connection_key]);
+        $user = Auth::user();
+        return Helper::apiResponseHttpOk(['uniqueId' => $user->unique_id, 'deviceConnectionKey' => $user->device_connection_key]);
     }
-
-
 }
