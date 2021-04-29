@@ -5,41 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ApiToken/ApiToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ApiTokenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ApiTokenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Command.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Command.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_apiTokens_ListApiTokens_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_apiTokens_ListApiTokens_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_jobs_CreateJob_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_jobs_CreateJob_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ListSavedCommands_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ListSavedCommands_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ViewSavedCommand_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ViewSavedCommand_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/data/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/data/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/apiTokens/ListApiTokens.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/apiTokens/ListApiTokens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/devices/ViewDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/ViewDevice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -422,7 +388,8 @@
       <workItem from="1619485498594" duration="27597000" />
       <workItem from="1619533446314" duration="8593000" />
       <workItem from="1619572387270" duration="24591000" />
-      <workItem from="1619625148950" duration="2267000" />
+      <workItem from="1619625148950" duration="3523000" />
+      <workItem from="1619662684268" duration="4400000" />
     </task>
     <servers />
   </component>
