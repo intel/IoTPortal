@@ -72,7 +72,7 @@ class Helper
         return $array;
     }
 
-    static function apiResponseHttpOk($result = [], bool $success = true, $errors = [], $message = [], $status = 200, array $headers = [], $options = 0)
+    static function apiResponseHttpOk($result = [], bool $success = true, $errors = [], $message = [], $status = Response::HTTP_OK, array $headers = [], $options = 0)
     {
         return response()->json(['result' => $result, 'success' => $success, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
     }
@@ -90,6 +90,36 @@ class Helper
     static function apiResponseHttpUnauthorized($errors = [], $message = [], $status = Response::HTTP_UNAUTHORIZED, array $headers = [], $options = 0)
     {
         return response()->json(['result' => [], 'success' => false, 'errors' => $errors, 'messages' => $message], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpOk($result = [], $status = Response::HTTP_OK, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpOkWithDisallowedTopics($result = [], $topics = [], $status = Response::HTTP_OK, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result, 'topics' => $topics], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpBadRequest($result = [], $status = Response::HTTP_BAD_REQUEST, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpInternalServerError($result = [], $status = Response::HTTP_INTERNAL_SERVER_ERROR, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpUnauthorized($result = [], $status = Response::HTTP_UNAUTHORIZED, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result], $status, $headers, $options);
+    }
+
+    static function mqttApiResponseHttpNotFound($result = [], $status = Response::HTTP_NOT_FOUND, array $headers = [], $options = 0)
+    {
+        return response()->json(['result' => $result], $status, $headers, $options);
     }
 
 }
