@@ -103,6 +103,41 @@ volumes:
         driver: local
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #version: "3.7"
 #services:
 #    app:
