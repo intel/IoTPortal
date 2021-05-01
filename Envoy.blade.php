@@ -6,10 +6,11 @@
 @endsetup
 
 @story('deploy')
+    shut_down_existing_containers
     delete_existing_project
     clone_repository
+    create_iotportaldata_dir
     build_artifacts
-    shut_down_existing_containers
     start_containers
 @endstory
 
@@ -41,21 +42,21 @@
 
 @task('create_iotportaldata_dir')
     echo 'Deleting existing iotportaldata directory if exists'
-    if [ -d {{ $project_dir }} ]
+    if [ -d 'iotportaldata' ]
     then
         echo 'Deleting existing iotportaldata directory'
         rm -rf iotportaldata
-        echo 'Creating new iotportaldata directories'
-        mkdir -p iotportaldata/app/storage/app
-        mkdir -p iotportaldata/app/storage/framework
-        mkdir -p iotportaldata/ca-certificates
-        mkdir -p iotportaldata/env
-        mkdir -p iotportaldata/logs/app
-        mkdir -p iotportaldata/logs/nginx
-        mkdir -p iotportaldata/mysql/data
-        mkdir -p iotportaldata/nginx/sites-available
-        mkdir -p iotportaldata/ssl
     fi
+    echo 'Creating new iotportaldata directories'
+    mkdir -p iotportaldata/app/storage/app
+    mkdir -p iotportaldata/app/storage/framework
+    mkdir -p iotportaldata/ca-certificates
+    mkdir -p iotportaldata/env
+    mkdir -p iotportaldata/logs/app
+    mkdir -p iotportaldata/logs/nginx
+    mkdir -p iotportaldata/mysql/data
+    mkdir -p iotportaldata/nginx/sites-available
+    mkdir -p iotportaldata/ssl
 @endtask
 
 @task('build_artifacts')
@@ -69,10 +70,8 @@
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
-    docker run -it -rm --name setup -v ../iotportaldata:/iotportaldata  inteliotportal-build
+    docker run -it --rm --name setup -v ../iotportaldata:/iotportaldata  inteliotportal-build
 @endtask
-
-
 
 @task('start_containers')
     echo "Starting deployment ({{ $release }})"
