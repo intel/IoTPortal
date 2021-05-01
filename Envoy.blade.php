@@ -61,6 +61,8 @@
 
 @task('build_artifacts')
     echo 'Building artifacts'
+    OUTPUT_DIR="$( cd iotportaldata && pwd )"
+    echo $OUTPUT_DIR
     cd {{ $project_dir }}
     sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
@@ -70,7 +72,8 @@
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
-    docker run -it --rm --name setup -v ../iotportaldata:/iotportaldata  inteliotportal-build
+    docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata inteliotportal-build
+    #docker run -it --rm --name setup -v /root/iotportaldata:/iotportaldata inteliotportal-build
 @endtask
 
 @task('start_containers')

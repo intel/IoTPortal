@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/build/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/setup.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -394,7 +396,7 @@
       <workItem from="1619697490012" duration="8700000" />
       <workItem from="1619748246993" duration="23362000" />
       <workItem from="1619799787320" duration="3095000" />
-      <workItem from="1619850219581" duration="11425000" />
+      <workItem from="1619850219581" duration="15713000" />
     </task>
     <servers />
   </component>
