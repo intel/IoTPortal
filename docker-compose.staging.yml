@@ -47,7 +47,7 @@ services:
     depends_on:
       - '${NGINX_PHP_UPSTREAM_CONTAINER}'
     volumes:
-      - ../iotportaldata/nginx:/etc/nginx
+      - ../iotportaldata/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ../iotportaldata/ssl:/etc/nginx/ssl
       - ../iotportaldata/logs/nginx:/var/log/nginx
     ports:
