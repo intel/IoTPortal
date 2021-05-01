@@ -11,12 +11,12 @@ import {
   fetchSavedCommandsStartAsync,
   setFetchSavedCommandsLazyParams
 } from '../../redux/savedCommand/savedCommand.actions';
-import { truncateToStringEllipsis } from '../../utils/utils';
 
 import DeleteSavedCommandModal from '../../components/DeleteSavedCommandModal/DeleteSavedCommandModal';
+import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 import './savedCommandsDataTable.css';
-import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
+
 
 const SavedCommandsDataTable = ({
                                   history,
@@ -100,7 +100,7 @@ const SavedCommandsDataTable = ({
     return (
       <>
         <span className="p-column-title">Saved command name</span>
-        {truncateToStringEllipsis(rowData.name)}
+        {rowData.name}
       </>
     );
   };
@@ -109,7 +109,7 @@ const SavedCommandsDataTable = ({
     return (
       <>
         <span className="p-column-title">Command name</span>
-        {truncateToStringEllipsis(rowData.command_name)}
+        {rowData.command_name}
       </>
     );
   };
@@ -131,7 +131,7 @@ const SavedCommandsDataTable = ({
     return (
       <>
         <h5>Command Payload</h5>
-        <CommandPayloadViewer payload={data.payload} isLabelHidden/>
+        <PayloadViewer payload={data.payload} isLabelHidden/>
       </>
     );
   };
@@ -159,7 +159,7 @@ const SavedCommandsDataTable = ({
                    rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingSavedCommands}>
           <Column expander style={{width: '5em'}}/>
           {(selectedSavedCommands !== undefined && setSelectedSavedCommands !== undefined) &&
-          <Column selectionMode="multiple" style={{width: '3em'}}/>}
+          <Column selectionMode="multiple" style={{width: '4em'}}/>}
           <Column field="unique_id" header="Saved command ID" body={savedCommandUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by saved command ID"/>
           <Column field="name" header="Saved command name" body={savedCommandNameColumnBody} sortable filter

@@ -22,15 +22,17 @@ import cotaReducer from './cota/cota.reducer';
 import sidebarReducer from './sidebar/sidebar.reducer';
 import savedCommandReducer from './savedCommand/savedCommand.reducer';
 import apiTokenReducer from './apiToken/apiToken.reducer';
+import profileReducer from './profile/profile.reducer';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user']
+  whitelist: []
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
+  profile: profileReducer,
   savedCommand: savedCommandReducer,
   deviceCategory: deviceCategoryReducer,
   deviceCommand: deviceCommandReducer,

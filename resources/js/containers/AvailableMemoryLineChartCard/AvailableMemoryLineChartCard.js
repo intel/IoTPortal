@@ -44,6 +44,9 @@ const AvailableMemoryLineChartCard = ({
     },
     xaxis: {
       type: 'datetime',
+      labels: {
+        datetimeUTC: false,
+      }
     },
     tooltip: {
       y: {

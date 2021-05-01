@@ -21,18 +21,18 @@ import { HeaderDropdown } from './index';
 
 
 const Header = () => {
-  const dispatch = useDispatch()
-  const sidebarShow = useSelector(state => state.sidebar.sidebarShow)
+  const dispatch = useDispatch();
+  const sidebarShow = useSelector(state => state.sidebar.sidebarShow);
 
   const toggleSidebar = () => {
-    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
-    dispatch({type: sidebarActionTypes.SET_SIDEBAR_SHOW, payload: val})
-  }
+    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive';
+    dispatch({type: sidebarActionTypes.SET_SIDEBAR_SHOW, payload: val});
+  };
 
   const toggleSidebarMobile = () => {
-    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
-    dispatch({type: sidebarActionTypes.SET_SIDEBAR_SHOW, payload: val})
-  }
+    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive';
+    dispatch({type: sidebarActionTypes.SET_SIDEBAR_SHOW, payload: val});
+  };
 
   return (
     <CHeader withSubheader>
@@ -67,7 +67,7 @@ const Header = () => {
         />
       </CSubheader>
     </CHeader>
-  )
-}
+  );
+};
 
 export default Header;

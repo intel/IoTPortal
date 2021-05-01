@@ -71,8 +71,8 @@ const SotaCard = ({
     label: Yup.string().oneOf(
       SOTA_LOG_TO_FILE_OPTIONS.map(({label}) => label),
       "Please select Yes or No only"
-    )
-  });
+    ).required("Required")
+  }).nullable().required("Required");
   if (!isFieldHidden.username) validationObject.username = Yup.string();
   if (!isFieldHidden.password) validationObject.password = Yup.string();
 

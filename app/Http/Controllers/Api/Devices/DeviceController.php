@@ -217,7 +217,7 @@ class DeviceController extends Controller
             $payloadJson = '';
 
             if ($request->has('payload')) {
-                $payloadJson = json_encode(Helper::mapArrayKeyByArray($request->input('payload'), config('constants.commands.' . strtolower($command->name) . '.configuration_map')));
+                $payloadJson = json_encode(Helper::mapArrayKeyByArray($request->input('payload'), config('constants.commands.' . $command->name . '.configuration_map')));
             }
 
             $commandHistory = $command->commandHistories()->create([
@@ -238,7 +238,7 @@ class DeviceController extends Controller
 
             if ($user && $user->validateDeviceConnectionKey($request->bearerToken())) {
                 if ($request->has('device_unique_id')) {
-                    $device = $user->devices()->where('unique_id', $request->input('device_unique_id'))->first();
+                    $device = $user->devices()->where('devices.unique_id', $request->input('device_unique_id'))->first();
 
                     if ($device) {
                         return Helper::apiResponseHttpOk(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);

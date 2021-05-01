@@ -54,8 +54,11 @@
     text-align: left;
 }
 
-.datatable-device-categories .p-datatable.p-datatable-device-categories .p-datatable-tbody > tr > td {
+.datatable-device-categories .p-datatable.p-datatable-device-categories .p-datatable-tbody > tr > td:not([colspan]) {
     cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .datatable-device-categories .p-datatable.p-datatable-device-categories .p-dropdown-label:not(.p-placeholder) {

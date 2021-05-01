@@ -1,19 +1,37 @@
-import { userActionTypes } from './user.types';
+import userActionTypes from './user.types';
+
 
 const INITIAL_STATE = {
-    userObj: null
-}
+  // Read
+  user: null,
+  isFetchingUser: true,
+  fetchUserErrorMessage: undefined,
+};
 
 const userReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        case userActionTypes.SET_USER_OBJ:
-            return {
-                ...state,
-                userObj: action.payload
-            };
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    // Read
+    case userActionTypes.FETCH_USER_START:
+      return {
+        ...state,
+        isFetchingUser: true,
+      };
+    case userActionTypes.FETCH_USER_SUCCESS:
+      console.log(action.payload)
+      return {
+        ...state,
+        user: action.payload,
+        isFetchingUser: false,
+      };
+    case userActionTypes.FETCH_USER_FAILURE:
+      return {
+        ...state,
+        isFetchingUser: false,
+        fetchUserErrorMessage: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 export default userReducer;

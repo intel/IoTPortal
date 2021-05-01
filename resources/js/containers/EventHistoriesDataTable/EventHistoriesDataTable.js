@@ -17,6 +17,7 @@ import {
 import './eventHistoriesDataTable.css';
 import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
+import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 const EventHistoriesDataTable = ({
                                    deviceId,
@@ -134,10 +135,10 @@ const EventHistoriesDataTable = ({
 
   const rowExpansionTemplate = (data) => {
     return (
-      <>
+      <div>
         <h5>Raw Data</h5>
-        <ReactJson src={JSON.parse(data.raw_data)} name="raw_data"/>
-      </>
+        <PayloadViewer payload={data.raw_data} isLabelHidden/>
+      </div>
     );
   };
 
@@ -164,8 +165,8 @@ const EventHistoriesDataTable = ({
                  expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                  rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceEventHistories}>
         <Column expander style={{width: '5em'}}/>
-        <Column selectionMode="multiple" style={{width: '3em'}}/>
-        <Column field="raw_data" header="Raw data" body={rawDataColumnBody} sortable filter
+        <Column selectionMode="multiple" style={{width: '4em'}}/>
+        <Column field="raw_data" header="Raw data" body={rawDataColumnBody} style={{width:'61%'}} sortable filter
                 filterPlaceholder="Search by raw data"/>
         <Column field="type" header="Type" body={eventTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={eventTypeFilterElement}/>

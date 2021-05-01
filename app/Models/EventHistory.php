@@ -16,6 +16,7 @@ class EventHistory extends Model
      */
     protected $fillable = [
         'raw_data',
+        'event_id',
     ];
 
     /**

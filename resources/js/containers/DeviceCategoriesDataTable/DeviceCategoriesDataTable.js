@@ -7,15 +7,15 @@ import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
-import { truncateToStringEllipsis } from '../../utils/utils';
-
-import './deviceCategoriesDataTable.css';
 import {
   deleteDeviceCategoriesStartAsync,
   fetchDeviceCategoriesStartAsync,
   setFetchDeviceCategoriesLazyParams
 } from '../../redux/deviceCategory/deviceCategory.actions';
+
 import DeleteDeviceCategoryModal from '../../components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal';
+
+import './deviceCategoriesDataTable.css';
 
 const DeviceCategoriesDataTable = ({
                                      history,
@@ -98,7 +98,7 @@ const DeviceCategoriesDataTable = ({
     return (
       <>
         <span className="p-column-title">Name</span>
-        <b>{truncateToStringEllipsis(rowData.name)}</b>
+        <b>{rowData.name}</b>
       </>
     );
   };
@@ -137,7 +137,7 @@ const DeviceCategoriesDataTable = ({
                    filters={fetchDeviceCategoriesLazyParams.filters} filterDelay={800}
                    loading={isFetchingDeviceCategories}>
           {(selectedDeviceCategories !== undefined && setSelectedDeviceCategories !== undefined) &&
-          <Column selectionMode="multiple" style={{width: '3em'}}/>}
+          <Column selectionMode="multiple" style={{width: '4em'}}/>}
           <Column field="unique_id" header="Device category ID" body={deviceCategoryUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device category ID"/>
           <Column field="name" header="Device category name" body={deviceCategoryNameColumnBody} sortable filter

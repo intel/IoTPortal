@@ -7,16 +7,18 @@ import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
+import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import { fetchDeviceCommandOptionsStartAsync } from '../../redux/deviceCommand/deviceCommand.actions';
 import {
   fetchDeviceCommandHistoriesStartAsync,
   setFetchDeviceCommandHistoriesLazyParams
 } from '../../redux/deviceCommandHistory/deviceCommandHistory.actions';
 
-import './commandHistoriesDataTable.css';
-import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
-import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
+import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
+
+import './commandHistoriesDataTable.css';
+
 
 const CommandHistoriesDataTable = ({
                                      deviceId,
@@ -37,7 +39,7 @@ const CommandHistoriesDataTable = ({
   const [globalFilter, setGlobalFilter] = useState(null);
   const [selectedCommandHistories, setSelectedCommandHistories] = useState(null);
   const [selectedCommandType, setSelectedCommandType] = useState(null);
-  const [responseTimeFilter, setResponseTimeFilter] = useState(null);
+  const [respondedAtFilter, setRespondedAtFilter] = useState(null);
   const [timestampFilter, setTimestampFilter] = useState(null);
 
   const dt = useRef(null);
@@ -98,10 +100,10 @@ const CommandHistoriesDataTable = ({
     );
   };
 
-  const renderResponseTimeFilter = () => {
+  const renderRespondedAtFilter = () => {
     return (
-      <DataTableDateRangeFilter value={responseTimeFilter} setValueCallback={setResponseTimeFilter} dataTable={dt}
-                                filterField="response_time" filterMatchMode="equals"/>
+      <DataTableDateRangeFilter value={respondedAtFilter} setValueCallback={setRespondedAtFilter} dataTable={dt}
+                                filterField="responded_at" filterMatchMode="equals"/>
     );
   }
 
@@ -153,14 +155,14 @@ const CommandHistoriesDataTable = ({
     return (
       <>
         <h5>Payload</h5>
-        <CommandPayloadViewer payload={data.payload} isLabelHidden/>
+        <PayloadViewer payload={data.payload} isLabelHidden/>
       </>
     );
   };
 
   const header = renderHeader();
   const commandTypeFilterElement = renderCommandTypeFilter();
-  const responseTimeFilterElement = renderResponseTimeFilter();
+  const respondedAtFilterElement = renderRespondedAtFilter();
   const timestampFilterElement = renderTimestampFilter();
 
   return (
@@ -181,14 +183,14 @@ const CommandHistoriesDataTable = ({
                  expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                  rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceCommandHistories}>
         <Column expander style={{width: '5em'}}/>
-        <Column selectionMode="multiple" style={{width: '3em'}}/>
-        <Column field="payload" header="Payload" body={payloadColumnBody} sortable filter
+        <Column selectionMode="multiple" style={{width: '4em'}}/>
+        <Column field="payload" header="Payload" body={payloadColumnBody} style={{width:'57%'}} sortable filter
                 filterPlaceholder="Search by payload"/>
         <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter
                 excludeGlobalFilter={true}
                 filterElement={commandTypeFilterElement}/>
         <Column field="responded_at" header="Responded at" body={respondedAtColumnBody} sortable filter
-                excludeGlobalFilter={true} filterElement={responseTimeFilterElement}/>
+                excludeGlobalFilter={true} filterElement={respondedAtFilterElement}/>
         <Column field="created_at" header="Timestamp" body={timestampColumnBody} sortable filter
                 excludeGlobalFilter={true} filterElement={timestampFilterElement}/>
       </DataTable>

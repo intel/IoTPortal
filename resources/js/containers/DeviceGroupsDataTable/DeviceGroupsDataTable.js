@@ -12,7 +12,7 @@ import {
   fetchDeviceGroupsStartAsync,
   setFetchDeviceGroupsLazyParams,
 } from '../../redux/deviceGroup/deviceGroup.actions';
-import { truncateToStringEllipsis } from '../../utils/utils';
+
 import DeleteDeviceGroupModal from '../../components/DeleteDeviceGroupModal/DeleteDeviceGroupModal';
 
 import './deviceGroupsDataTable.css';
@@ -98,7 +98,7 @@ const DeviceGroupsDataTable = ({
     return (
       <>
         <span className="p-column-title">Name</span>
-        {truncateToStringEllipsis(rowData.name)}
+        {rowData.name}
       </>
     );
   };
@@ -137,7 +137,7 @@ const DeviceGroupsDataTable = ({
                    filters={fetchDeviceGroupsLazyParams.filters} filterDelay={800}
                    loading={isFetchingDeviceGroups}>
           {(selectedDeviceGroups !== undefined && setSelectedDeviceGroups !== undefined) &&
-          <Column selectionMode="multiple" style={{width: '3em'}}/>}
+          <Column selectionMode="multiple" style={{width: '4em'}}/>}
           <Column field="unique_id" header="Device group ID" body={deviceGroupUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device group ID"/>
           <Column field="name" header="Device group name" body={deviceGroupNameColumnBody} sortable filter

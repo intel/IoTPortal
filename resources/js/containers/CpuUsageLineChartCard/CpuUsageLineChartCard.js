@@ -44,6 +44,9 @@ const CpuUsageLineChartCard = ({
     },
     xaxis: {
       type: 'datetime',
+      labels: {
+        datetimeUTC: false,
+      }
     },
     tooltip: {
       y: {

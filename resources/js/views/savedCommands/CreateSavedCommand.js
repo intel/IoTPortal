@@ -30,7 +30,7 @@ import SotaCard from '../../components/SotaCard/SotaCard';
 import CotaCard from '../../components/CotaCard/CotaCard';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 import PowerControlsCard from '../../components/PowerControlsCard/PowerControlsCard';
-import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
+import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 
 const CreateSavedCommand = ({
@@ -161,7 +161,7 @@ const CreateSavedCommand = ({
                   </CTabPane>
                 </CTabContent>
               </CTabs>
-              <CommandPayloadViewer label="Resulting command payload" payload={savedCommandPayload}/>
+              <PayloadViewer label="Resulting command payload" payload={savedCommandPayload}/>
             </CCardBody>
             <CCardFooter>
               <PrimarySecondaryButtons primaryButtonText="Create" isPrimaryLoading={isCreatingSavedCommand}

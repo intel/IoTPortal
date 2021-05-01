@@ -4,7 +4,6 @@ import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { Skeleton } from 'primereact/skeleton';
 
 const CardSkeleton = () => {
-
   return (
     <CCard>
       <CCardHeader>

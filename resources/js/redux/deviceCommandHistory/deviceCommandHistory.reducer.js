@@ -11,6 +11,8 @@ const INITIAL_STATE = {
     first: 0,
     rows: 10,
     page: 1,
+    sortField: 'created_at',
+    sortOrder: -1,
   },
 };
 

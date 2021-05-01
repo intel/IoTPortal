@@ -54,8 +54,11 @@
     text-align: left;
 }
 
-.datatable-saved-commands .p-datatable.p-datatable-saved-commands .p-datatable-tbody > tr > td {
+.datatable-saved-commands .p-datatable.p-datatable-saved-commands .p-datatable-tbody > tr > td:not([colspan]) {
     cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .datatable-saved-commands .p-datatable.p-datatable-saved-commands .p-dropdown-label:not(.p-placeholder) {

@@ -13,7 +13,7 @@ import {
 import Error from '../../components/Error/Error';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DeleteSavedCommandModal from '../../components/DeleteSavedCommandModal/DeleteSavedCommandModal';
-import CommandPayloadViewer from '../../components/CommandPayloadViewer/CommandPayloadViewer';
+import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 const ViewSavedCommand = (props) => {
 
@@ -79,7 +79,7 @@ const ViewSavedCommand = (props) => {
                 <CLabel>Command name</CLabel>
                 <div><span>{savedCommand.command_name}</span></div>
               </div>
-              <CommandPayloadViewer payload={savedCommand.payload}/>
+              <PayloadViewer payload={savedCommand.payload}/>
             </CCardBody>
           </CCard>
         </CCol>

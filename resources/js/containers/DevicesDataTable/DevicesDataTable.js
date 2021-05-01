@@ -16,12 +16,13 @@ import {
   fetchDevicesStartAsync,
   setFetchDevicesLazyParams,
 } from '../../redux/device/device.actions';
-import { truncateToStringEllipsis } from '../../utils/utils';
-import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
 
-import './devicesDataTable.css';
+import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
 import DeleteDeviceModal from '../../components/DeleteDeviceModal/DeleteDeviceModal';
 import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
+
+import './devicesDataTable.css';
+
 
 const DevicesDataTable = ({
                             history,
@@ -165,7 +166,7 @@ const DevicesDataTable = ({
     return (
       <>
         <span className="p-column-title">Name</span>
-        {truncateToStringEllipsis(rowData.name)}
+        {rowData.name}
       </>
     );
   };
@@ -174,7 +175,7 @@ const DevicesDataTable = ({
     return (
       <>
         <span className="p-column-title">BIOS Vendor</span>
-        {truncateToStringEllipsis(rowData.bios_vendor)}
+        {rowData.bios_vendor}
       </>
     );
   };
@@ -183,7 +184,7 @@ const DevicesDataTable = ({
     return (
       <>
         <span className="p-column-title">BIOS Version</span>
-        {truncateToStringEllipsis(rowData.bios_version)}
+        {rowData.bios_version}
       </>
     );
   };
@@ -243,14 +244,17 @@ const DevicesDataTable = ({
                    paginator emptyMessage="No device found"
                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                   rowsPerPageOptions={[10, 50, 100, 200]} first={fetchDevicesLazyParams.first} rows={fetchDevicesLazyParams.rows}
-                   totalRecords={devicesTotalRecords} onPage={onPage} onSort={onSort} sortField={fetchDevicesLazyParams.sortField}
-                   sortOrder={fetchDevicesLazyParams.sortOrder} onFilter={onFilter} filters={fetchDevicesLazyParams.filters} filterDelay={800}
+                   rowsPerPageOptions={[10, 50, 100, 200]} first={fetchDevicesLazyParams.first}
+                   rows={fetchDevicesLazyParams.rows}
+                   totalRecords={devicesTotalRecords} onPage={onPage} onSort={onSort}
+                   sortField={fetchDevicesLazyParams.sortField}
+                   sortOrder={fetchDevicesLazyParams.sortOrder} onFilter={onFilter}
+                   filters={fetchDevicesLazyParams.filters} filterDelay={800}
                    expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)}
                    rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDevices}>
           <Column expander style={{width: '5em'}}/>
           {(selectedDevices !== undefined && setSelectedDevices !== undefined) &&
-          <Column selectionMode="multiple" style={{width: '3em'}}/>}
+          <Column selectionMode="multiple" style={{width: '4em'}}/>}
           <Column field="unique_id" header="Device ID" body={deviceUniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device ID"/>
           <Column field="name" header="Device name" body={deviceNameColumnBody} sortable filter
@@ -269,7 +273,7 @@ const DevicesDataTable = ({
       </div>
       {(showConnectDeviceModal && !hideActionsBar) &&
       <ConnectDeviceModal device={device} show={showConnectDeviceModal}
-                           onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
+                          onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
       />}
       {(showDeleteDeviceModal && !hideActionsBar) &&
       <DeleteDeviceModal device={device} show={showDeleteDeviceModal}

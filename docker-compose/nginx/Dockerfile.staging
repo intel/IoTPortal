@@ -1,9 +1,9 @@
 ARG NGINX_VERSION=alpine
 FROM nginx:${NGINX_VERSION}
 
-COPY --from=inteliotportal-build /var/www/docker-compose/nginx/nginx.conf /etc/nginx/
+#COPY --from=inteliotportal-build /var/www/docker-compose/nginx/nginx.conf /etc/nginx/
 
-COPY --from=inteliotportal-build /certs /etc/nginx/ssl
+#COPY --from=inteliotportal-build /certs /etc/nginx/ssl
 
 COPY --from=inteliotportal-build /var/www /var/www
 

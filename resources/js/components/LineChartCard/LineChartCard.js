@@ -34,25 +34,24 @@ const LineChartCard = ({
                     className="float-right"
                     onClick={onRefresh}/>
             <CButtonGroup className="float-right mr-3">
-              {
-                timeRangeFilters.map(value => (
-                  <CButton
-                    color="outline-secondary"
-                    key={value.value}
-                    value={value.value}
-                    className="mx-0"
-                    active={value.value === selectedTimeRangeFilter}
-                    onClick={onTimeRangeFilter}
-                  >
-                    {value.label}
-                  </CButton>
-                ))
-              }
+              {timeRangeFilters.map(value => (
+                <CButton
+                  color="outline-secondary"
+                  key={value.value}
+                  value={value.value}
+                  className="mx-0"
+                  active={value.value === selectedTimeRangeFilter}
+                  onClick={onTimeRangeFilter}
+                >
+                  {value.label}
+                </CButton>
+              ))}
             </CButtonGroup>
           </CCol>
         </CRow>
         {isLoading ?
-          (<ChartSkeleton/>) : (
+          (<ChartSkeleton/>)
+          : (
             <div className="mt-3">
               <Chart
                 options={options}

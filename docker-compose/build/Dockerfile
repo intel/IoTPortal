@@ -67,3 +67,15 @@ RUN php artisan route:cache
 
 RUN php artisan optimize
 
+CMD ["/bin/bash", "docker-compose/build/setup.sh"]
+
+#COPY /certs /iotportaldata/ca-certificates
+#
+#COPY /certs /iotportaldata/ssl
+#
+#COPY /var/www/docker-compose/nginx/nginx.conf /iotportaldata/nginx
+#
+#COPY /var/www/docker-compose/nginx/sites-available /iotportaldata/nginx/sites-available
+#
+#COPY /var/www/.env /iotportaldata/env/.env
+

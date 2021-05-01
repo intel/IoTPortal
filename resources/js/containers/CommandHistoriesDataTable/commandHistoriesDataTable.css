@@ -54,8 +54,11 @@
     text-align: left;
 }
 
-.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td {
+.datatable-command-histories .p-datatable.p-datatable-command-histories .p-datatable-tbody > tr > td:not([colspan]) {
     cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .datatable-command-histories .p-datatable.p-datatable-command-histories .p-dropdown-label:not(.p-placeholder) {

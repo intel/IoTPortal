@@ -19,10 +19,11 @@ Route::middleware(['json.response'])->group(function () {
 //    Route::post('/register', 'App\Http\Controllers\Api\Auth\AuthController@register')->name('api.auth.register');
 //    Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
 
-    Route::get('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
 
     // direct method invocation from cloud
 //    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceActionController@methods')->name('api.devices.methods');
+
+    Route::post('/devices/register', 'App\Http\Controllers\Api\Devices\DeviceController@register')->name('api.devices.register');
 
     Route::post('/mqtt/endpoint', 'App\Http\Controllers\Api\Mqtt\EndpointController@mqttEndpoint')->name('api.mqtt.endpoint');
 
@@ -36,6 +37,8 @@ Route::middleware(['json.response'])->group(function () {
 });
 
 Route::middleware(['json.response', 'auth'])->group(function () {
+
+    Route::get('/profile', 'App\Http\Controllers\Api\ProfileController@show');
 
     // Devices
     Route::post('/devices/validateField', 'App\Http\Controllers\Api\Devices\DeviceController@validateField');
@@ -110,10 +113,9 @@ Route::middleware(['json.response', 'auth'])->group(function () {
 
 
 
-
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+//    Route::get('/user', function (Request $request) {
+//        return $request->user();
+//    });
 
 
 //    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\Devices\DeviceController@methods')->name('api.devices.methods');

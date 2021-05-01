@@ -102,7 +102,7 @@ export const fetchDeviceStartAsync = id => {
       .catch(error => {
         dispatch(fetchDeviceFailure(error.message));
       });
-  }
+  };
 };
 
 

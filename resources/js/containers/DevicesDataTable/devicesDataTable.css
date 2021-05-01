@@ -54,8 +54,11 @@
     text-align: left;
 }
 
-.datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td {
+.datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td:not([colspan]) {
     cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .datatable-devices .p-datatable.p-datatable-devices .p-dropdown-label:not(.p-placeholder) {
