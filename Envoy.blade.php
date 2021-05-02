@@ -11,7 +11,7 @@
     clone_repository
     create_iotportaldata_dir
     create_uid_env
-    build_artifacts
+    #build_artifacts
     start_containers
 @endstory
 
@@ -75,9 +75,7 @@
         echo $LGID >>$ENV_DIR/uid.env
     fi
     echo 'Creating uid.env completed'
-@endtask
 
-@task('build_artifacts')
     echo 'Building artifacts'
     OUTPUT_DIR="$( cd iotportaldata && pwd )"
     echo $OUTPUT_DIR
@@ -93,6 +91,23 @@
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
     docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
 @endtask
+
+{{--@task('build_artifacts')--}}
+{{--    echo 'Building artifacts'--}}
+{{--    OUTPUT_DIR="$( cd iotportaldata && pwd )"--}}
+{{--    echo $OUTPUT_DIR--}}
+{{--    ENV_DIR="$OUTPUT_DIR/env"--}}
+{{--    cd {{ $project_dir }}--}}
+{{--    sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf--}}
+{{--    sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging--}}
+{{--    sed -i 's~DB_PASSWORD=.*~DB_PASSWORD={{ $dbPassword }}~g' .env.staging--}}
+{{--    sed -i 's~MQTT_HOST=.*~MQTT_HOST={{ $mqttHost }}~g' .env.staging--}}
+{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
+{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
+{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
+{{--    docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .--}}
+{{--    docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build--}}
+{{--@endtask--}}
 
 @task('start_containers')
     echo "Starting deployment ({{ $release }})"
