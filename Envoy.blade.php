@@ -6,68 +6,74 @@
 @endsetup
 
 @story('deploy')
-    shut_down_existing_containers_and_delete_project
-    clone_repository_and_create_iotportaldata_dir
     setup_build_run
 @endstory
 
-@task('shut_down_existing_containers_and_delete_project')
+@task('setup_build_run')
+    ROOT_DIR=`pwd`
+    PROJECT_DIR="$ROOT_DIR/i-iot-portal"
+    OUTPUT_DIR="$ROOT_DIR/iotportaldata"
+    ENV_DIR="$OUTPUT_DIR/env"
+    echo $ROOT_DIR
+    echo $PROJECT_DIR
+    echo $OUTPUT_DIR
+    echo $ENV_DIR
+
+
     # Shut down deployment
     echo 'Shutting down existing deployment if exists'
-    if [ -d {{ $project_dir }} ]
+    if [ -d "$PROJECT_DIR" ]
     then
-        echo 'Shutting down existing deployment'
-        cd {{ $project_dir }}
-        docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
+        cd $PROJECT_DIR
+        if [ $(docker-compose -f docker-compose.staging.yml --env-file ./.env.staging ps | wc -l) -gt 2 ]
+        then
+            echo 'Shutting down existing deployment'
+            docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
+        fi
     fi
 
 
     # Delete existing project folder
     echo 'Deleting existing project folder if exists'
-    if [ -d {{ $project_dir }} ]
+    if [ -d "$PROJECT_DIR" ]
     then
         echo 'Deleting existing project folder'
-        rm -rf {{ $project_dir }}
+        rm -rf $PROJECT_DIR
     fi
-@endtask
 
-@task('clone_repository_and_create_iotportaldata_dir')
+
     # Clone repository
     echo 'Cloning repository'
+    cd $ROOT_DIR
     git clone --depth 1 {{ $projectRepository }}
-    cd {{ $project_dir }}
+    cd $PROJECT_DIR
     git reset --hard {{ $commit }}
 
 
     # Delete iotportaldata directory
     echo 'Deleting existing iotportaldata directory if exists'
-    if [ -d 'iotportaldata' ]
+    if [ -d "$OUTPUT_DIR" ]
     then
         echo 'Deleting existing iotportaldata directory'
-        rm -rf iotportaldata
+        rm -rf $OUTPUT_DIR
     fi
 
 
     #Create iotportaldata directory
     echo 'Creating new iotportaldata directories'
-    mkdir -p iotportaldata/app/storage/app
-    mkdir -p iotportaldata/app/storage/framework
-    mkdir -p iotportaldata/ca-certificates
-    mkdir -p iotportaldata/env
-    mkdir -p iotportaldata/logs/app
-    mkdir -p iotportaldata/logs/nginx
-    mkdir -p iotportaldata/mysql/data
-    mkdir -p iotportaldata/nginx/sites-available
-    mkdir -p iotportaldata/ssl
-@endtask
+    mkdir -p $OUTPUT_DIR/app/storage/app
+    mkdir -p $OUTPUT_DIR/app/storage/framework
+    mkdir -p $OUTPUT_DIR/ca-certificates
+    mkdir -p $OUTPUT_DIR/env
+    mkdir -p $OUTPUT_DIR/logs/app
+    mkdir -p $OUTPUT_DIR/logs/nginx
+    mkdir -p $OUTPUT_DIR/mysql/data
+    mkdir -p $OUTPUT_DIR/nginx/sites-available
+    mkdir -p $OUTPUT_DIR/ssl
 
 
-@task('setup_build_run')
     # Create uid.env
     echo 'Creating uid.env'
-    OUTPUT_DIR="$( cd iotportaldata && pwd )"
-    echo $OUTPUT_DIR
-    ENV_DIR="$OUTPUT_DIR/env"
     if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null
     then
         LUID="LOCAL_UID=`id -u $USER`"
@@ -82,7 +88,7 @@
 
     # Build artifacts
     echo 'Building artifacts'
-    cd {{ $project_dir }}
+    cd $PROJECT_DIR
     sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
     sed -i 's~DB_PASSWORD=.*~DB_PASSWORD={{ $dbPassword }}~g' .env.staging
@@ -96,7 +102,7 @@
 
     # Start deployment
     echo "Starting deployment ({{ $release }})"
-    cd {{ $project_dir }}
+    cd $PROJECT_DIR
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
 @endtask
 

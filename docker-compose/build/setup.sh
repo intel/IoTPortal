@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cp -r /certs/. /iotportaldata/ca-certificates
+cp -r /certs/* /iotportaldata/ca-certificates
 
-cp -r /certs/. /iotportaldata/ssl
+cp -r /certs/* /iotportaldata/ssl
 
 cp /var/www/docker-compose/nginx/nginx.conf /iotportaldata/nginx
 
