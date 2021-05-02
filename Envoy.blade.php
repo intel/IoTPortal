@@ -3,10 +3,6 @@
 @setup
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
-    #$LUID=`id -u $USER`
-    #[ {{ $LUID }} == "0" ] && $LUID="65534"
-    #$LGID=`id -g $USER`
-    #[ {{ $LGID }} == "0" ] && $LUID="65534"
 @endsetup
 
 @story('deploy')
@@ -69,15 +65,15 @@
     OUTPUT_DIR="$( cd iotportaldata && pwd )"
     echo $OUTPUT_DIR
     ENV_DIR="$OUTPUT_DIR/env"
-    if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null
-    then
-        LUID="LOCAL_UID=`id -u $USER`"
-        [ "$LUID" == "LOCAL_UID=0" ] && LUID="LOCAL_UID=65534"
-        LGID="LOCAL_GID=`id -g $USER`"
-        [ "$LGID" == "LOCAL_GID=0" ] && LGID="LOCAL_GID=65534"
-        echo $LUID >$ENV_DIR/uid.env
-        echo $LGID >>$ENV_DIR/uid.env
-    fi
+{{--    if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null--}}
+{{--    then--}}
+{{--        LUID="LOCAL_UID=`id -u $USER`"--}}
+{{--        [ "$LUID" == "LOCAL_UID=0" ] && LUID="LOCAL_UID=65534"--}}
+{{--        LGID="LOCAL_GID=`id -g $USER`"--}}
+{{--        [ "$LGID" == "LOCAL_GID=0" ] && LGID="LOCAL_GID=65534"--}}
+{{--        echo $LUID >$ENV_DIR/uid.env--}}
+{{--        echo $LGID >>$ENV_DIR/uid.env--}}
+{{--    fi--}}
 @endtask
 
 @task('build_artifacts')
