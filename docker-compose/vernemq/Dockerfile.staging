@@ -9,4 +9,8 @@ COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certif
 
 RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
 
+RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
+                                   /vernemq/etc/vm.args \
+                                   /vernemq
+
 USER $LOCAL_UID:$LOCAL_GID

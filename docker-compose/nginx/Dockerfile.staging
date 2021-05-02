@@ -29,6 +29,12 @@ RUN set -x ; \
     addgroup -g 82 -S www-data ; \
     adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
+RUN chown -R $LOCAL_UID:$LOCAL_GID /var/cache/nginx && \
+        chown -R $LOCAL_UID:$LOCAL_GID /var/log/nginx && \
+        chown -R $LOCAL_UID:$LOCAL_GID /etc/nginx/conf.d
+RUN touch /var/run/nginx.pid && \
+        chown -R $LOCAL_UID:$LOCAL_GID /var/run/nginx.pid
+
 ARG PHP_UPSTREAM_CONTAINER=app
 ARG PHP_UPSTREAM_PORT=9000
 
