@@ -74,6 +74,7 @@
         echo $LUID >$ENV_DIR/uid.env
         echo $LGID >>$ENV_DIR/uid.env
     fi
+    echo 'Creating uid.env completed'
 @endtask
 
 @task('build_artifacts')
