@@ -7,9 +7,6 @@
     #[ {{ $LUID }} == "0" ] && $LUID="65534"
     #$LGID=`id -g $USER`
     #[ {{ $LGID }} == "0" ] && $LUID="65534"
-    OUTPUT_DIR="$( cd iotportaldata && pwd )"
-    echo $OUTPUT_DIR
-    ENV_DIR="$OUTPUT_DIR/env"
 @endsetup
 
 @story('deploy')
@@ -69,6 +66,9 @@
 
 @task('create_uid_env')
     echo 'Creating uid.env'
+    OUTPUT_DIR="$( cd iotportaldata && pwd )"
+    echo $OUTPUT_DIR
+    ENV_DIR="$OUTPUT_DIR/env"
     if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null
     then
         LUID="LOCAL_UID=`id -u $USER`"
