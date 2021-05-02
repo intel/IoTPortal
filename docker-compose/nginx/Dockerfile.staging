@@ -8,7 +8,7 @@ ENV LOCAL_GID=65534
 
 #COPY --from=inteliotportal-build /certs /etc/nginx/ssl
 
-COPY --from=inteliotportal-build --chown=LOCAL_UID:LOCAL_GID /var/www /var/www
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
 
 # If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
 ARG CHANGE_SOURCE=false
@@ -45,7 +45,7 @@ RUN echo "upstream php-upstream { server ${PHP_UPSTREAM_CONTAINER}:${PHP_UPSTREA
 ADD ./docker-compose/nginx/startup.sh /opt/startup.sh
 RUN sed -i 's/\r//g' /opt/startup.sh
 
-USER LOCAL_UID:LOCAL_GID
+USER $LOCAL_UID:$LOCAL_GID
 
 CMD ["/bin/bash", "/opt/startup.sh"]
 
