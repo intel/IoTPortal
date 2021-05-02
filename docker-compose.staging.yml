@@ -48,7 +48,6 @@ services:
       - '${NGINX_PHP_UPSTREAM_CONTAINER}'
     volumes:
       - ../iotportaldata/nginx/nginx.conf:/etc/nginx/nginx.conf
-#      TODO: check sites available
       - ../iotportaldata/nginx/sites-available:/etc/nginx/sites-available
       - ../iotportaldata/ssl:/etc/nginx/ssl
       - ../iotportaldata/logs/nginx:/var/log/nginx

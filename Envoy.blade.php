@@ -3,6 +3,13 @@
 @setup
     $project_dir = 'i-iot-portal';
     $release = date('YmdHis');
+    #$LUID=`id -u $USER`
+    #[ {{ $LUID }} == "0" ] && $LUID="65534"
+    #$LGID=`id -g $USER`
+    #[ {{ $LGID }} == "0" ] && $LUID="65534"
+    OUTPUT_DIR="$( cd iotportaldata && pwd )"
+    echo $OUTPUT_DIR
+    ENV_DIR="$OUTPUT_DIR/env"
 @endsetup
 
 @story('deploy')
@@ -10,6 +17,7 @@
     delete_existing_project
     clone_repository
     create_iotportaldata_dir
+    create_uid_env
     build_artifacts
     start_containers
 @endstory
@@ -59,10 +67,24 @@
     mkdir -p iotportaldata/ssl
 @endtask
 
+@task('create_uid_env')
+    echo 'Creating uid.env'
+    if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null
+    then
+        LUID="LOCAL_UID=`id -u $USER`"
+        [ "$LUID" == "LOCAL_UID=0" ] && LUID="LOCAL_UID=65534"
+        LGID="LOCAL_GID=`id -g $USER`"
+        [ "$LGID" == "LOCAL_GID=0" ] && LGID="LOCAL_GID=65534"
+        echo $LUID >$ENV_DIR/uid.env
+        echo $LGID >>$ENV_DIR/uid.env
+    fi
+@endtask
+
 @task('build_artifacts')
     echo 'Building artifacts'
     OUTPUT_DIR="$( cd iotportaldata && pwd )"
     echo $OUTPUT_DIR
+    ENV_DIR="$OUTPUT_DIR/env"
     cd {{ $project_dir }}
     sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
@@ -72,7 +94,7 @@
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
-    docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata inteliotportal-build
+    docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
     #docker run -it --rm --name setup -v /root/iotportaldata:/iotportaldata inteliotportal-build
 @endtask
 
