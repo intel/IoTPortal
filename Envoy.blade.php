@@ -91,7 +91,6 @@
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
     docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
-    #docker run -it --rm --name setup -v /root/iotportaldata:/iotportaldata inteliotportal-build
 @endtask
 
 @task('start_containers')

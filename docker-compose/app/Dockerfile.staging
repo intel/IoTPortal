@@ -1,5 +1,8 @@
 FROM php:fpm
 
+ENV LOCAL_UID=65534
+ENV LOCAL_GID=65534
+
 # Install PHP and composer dependencies TODO: remove unused in future
 RUN apt update && apt install -qq -y \
     git \
@@ -24,16 +27,18 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 # Get latest Composer TODO: remove in future
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY --from=inteliotportal-build --chown=www-data:www-data /var/www /var/www
+COPY --from=inteliotportal-build --chown=LOCAL_UID:LOCAL_GID /var/www /var/www
 
 WORKDIR /var/www
 
-RUN chown -R www-data:www-data \
+#RUN chown -R www-data:www-data \
         /var/www \
         /var/www/storage \
         /var/www/bootstrap/cache
 
-RUN find /var/www/storage -type f -exec chown www-data:www-data {} +
+#RUN find /var/www/storage -type f -exec chown www-data:www-data {} +
+
+USER LOCAL_UID:LOCAL_GID
 
 
 

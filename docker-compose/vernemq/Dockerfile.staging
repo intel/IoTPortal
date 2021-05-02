@@ -6,4 +6,4 @@ COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certif
 
 RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
 
-USER vernemq
+USER LOCAL_UID:LOCAL_GID
