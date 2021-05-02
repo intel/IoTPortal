@@ -10,8 +10,9 @@
     delete_existing_project
     clone_repository
     create_iotportaldata_dir
+    gg
     create_uid_env
-    build_artifacts
+    #build_artifacts
     start_containers
 @endstory
 
@@ -58,6 +59,10 @@
     mkdir -p iotportaldata/mysql/data
     mkdir -p iotportaldata/nginx/sites-available
     mkdir -p iotportaldata/ssl
+@endtask
+
+@task('gg')
+    echo 'gg'
 @endtask
 
 @task('create_uid_env')
