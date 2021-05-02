@@ -1,5 +1,8 @@
 FROM vernemq/vernemq:latest-alpine
 
+ENV LOCAL_UID=65534
+ENV LOCAL_GID=65534
+
 USER root
 
 COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certificates/localhost.crt

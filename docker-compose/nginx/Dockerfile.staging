@@ -1,6 +1,9 @@
 ARG NGINX_VERSION=alpine
 FROM nginx:${NGINX_VERSION}
 
+ENV LOCAL_UID=65534
+ENV LOCAL_GID=65534
+
 #COPY --from=inteliotportal-build /var/www/docker-compose/nginx/nginx.conf /etc/nginx/
 
 #COPY --from=inteliotportal-build /certs /etc/nginx/ssl

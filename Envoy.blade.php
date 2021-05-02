@@ -6,17 +6,13 @@
 @endsetup
 
 @story('deploy')
-    shut_down_existing_containers
-    delete_existing_project
-    clone_repository
-    create_iotportaldata_dir
-    gg
-    create_uid_env
-    #build_artifacts
-    start_containers
+    shut_down_existing_containers_and_delete_project
+    clone_repository_and_create_iotportaldata_dir
+    setup_build_run
 @endstory
 
-@task('shut_down_existing_containers')
+@task('shut_down_existing_containers_and_delete_project')
+    # Shut down deployment
     echo 'Shutting down existing deployment if exists'
     if [ -d {{ $project_dir }} ]
     then
@@ -24,9 +20,9 @@
         cd {{ $project_dir }}
         docker-compose -f docker-compose.staging.yml --env-file ./.env.staging down
     fi
-@endtask
 
-@task('delete_existing_project')
+
+    # Delete existing project folder
     echo 'Deleting existing project folder if exists'
     if [ -d {{ $project_dir }} ]
     then
@@ -35,20 +31,24 @@
     fi
 @endtask
 
-@task('clone_repository')
+@task('clone_repository_and_create_iotportaldata_dir')
+    # Clone repository
     echo 'Cloning repository'
     git clone --depth 1 {{ $projectRepository }}
     cd {{ $project_dir }}
     git reset --hard {{ $commit }}
-@endtask
 
-@task('create_iotportaldata_dir')
+
+    # Delete iotportaldata directory
     echo 'Deleting existing iotportaldata directory if exists'
     if [ -d 'iotportaldata' ]
     then
         echo 'Deleting existing iotportaldata directory'
         rm -rf iotportaldata
     fi
+
+
+    #Create iotportaldata directory
     echo 'Creating new iotportaldata directories'
     mkdir -p iotportaldata/app/storage/app
     mkdir -p iotportaldata/app/storage/framework
@@ -61,11 +61,9 @@
     mkdir -p iotportaldata/ssl
 @endtask
 
-@task('gg')
-    echo 'gg'
-@endtask
 
-@task('create_uid_env')
+@task('setup_build_run')
+    # Create uid.env
     echo 'Creating uid.env'
     OUTPUT_DIR="$( cd iotportaldata && pwd )"
     echo $OUTPUT_DIR
@@ -81,27 +79,9 @@
     fi
     echo 'Creating uid.env completed'
 
-{{--    echo 'Building artifacts'--}}
-{{--    OUTPUT_DIR="$( cd iotportaldata && pwd )"--}}
-{{--    echo $OUTPUT_DIR--}}
-{{--    ENV_DIR="$OUTPUT_DIR/env"--}}
-{{--    cd {{ $project_dir }}--}}
-{{--    sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf--}}
-{{--    sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging--}}
-{{--    sed -i 's~DB_PASSWORD=.*~DB_PASSWORD={{ $dbPassword }}~g' .env.staging--}}
-{{--    sed -i 's~MQTT_HOST=.*~MQTT_HOST={{ $mqttHost }}~g' .env.staging--}}
-{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
-{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
-{{--    sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging--}}
-{{--    docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .--}}
-{{--    docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build--}}
-@endtask
 
-@task('build_artifacts')
+    # Build artifacts
     echo 'Building artifacts'
-    OUTPUT_DIR="$( cd iotportaldata && pwd )"
-    echo $OUTPUT_DIR
-    ENV_DIR="$OUTPUT_DIR/env"
     cd {{ $project_dir }}
     sed -i 's~server_name localhost host.docker.internal~server_name {{ $serverName }}~g' docker-compose/nginx/sites/default.conf
     sed -i 's~APP_URL=.*~APP_URL={{ $appUrl }}~g' .env.staging
@@ -112,13 +92,15 @@
     sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     docker build --no-cache -t inteliotportal-build -f docker-compose/build/Dockerfile .
     docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
-@endtask
 
-@task('start_containers')
+
+    # Start deployment
     echo "Starting deployment ({{ $release }})"
     cd {{ $project_dir }}
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
 @endtask
+
+
 
 
 
