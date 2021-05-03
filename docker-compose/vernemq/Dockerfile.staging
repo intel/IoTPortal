@@ -21,9 +21,9 @@ RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certif
 #
 #RUN ls -l /vernemq
 
-COPY --chown=$LOCAL_UID:$LOCAL_GID ./docker-compose/vernemq/startup.sh /opt/startup.sh
+#COPY --chown=$LOCAL_UID:$LOCAL_GID ./docker-compose/vernemq/startup.sh /opt/startup.sh
 
 USER $LOCAL_UID:$LOCAL_GID
 
-CMD ["/bin/bash", "/opt/startup.sh"]
+#CMD ["/bin/bash", "/opt/startup.sh"]
 
