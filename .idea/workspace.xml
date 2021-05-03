@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/startup.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -403,7 +394,7 @@
       <workItem from="1619799787320" duration="3095000" />
       <workItem from="1619850219581" duration="27809000" />
       <workItem from="1619932764578" duration="29351000" />
-      <workItem from="1620017823093" duration="19443000" />
+      <workItem from="1620017823093" duration="20113000" />
     </task>
     <servers />
   </component>
