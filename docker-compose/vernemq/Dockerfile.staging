@@ -1,20 +1,9 @@
 FROM vernemq/vernemq:latest-alpine
 
-ENV LOCAL_UID=65534
-ENV LOCAL_GID=65534
-
 USER root
 
 COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certificates/localhost.crt
 
 RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
 
-RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
-                                   /vernemq/etc/vm.args \
-                                   /vernemq
-
-RUN ls -l
-
-RUN ls -l /vernemq
-
-USER $LOCAL_UID:$LOCAL_GID
+USER vernemq

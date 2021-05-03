@@ -103,7 +103,8 @@
     # Start deployment
     echo "Starting deployment ({{ $release }})"
     cd $PROJECT_DIR
-    docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate --build
+    docker-compose -f docker-compose.staging.yml --env-file ./.env.staging build --no-cache
+    docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate
 @endtask
 
 
