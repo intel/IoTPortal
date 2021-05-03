@@ -214,14 +214,14 @@ class DeviceController extends Controller
         $command = $device->commands()->where('name', $commandName)->first();
 
         if ($command) {
-            $payloadJson = '';
+            $payloadJson = 'null';
 
             if ($request->has('payload')) {
                 $payloadJson = json_encode(Helper::mapArrayKeyByArray($request->input('payload'), config('constants.commands.' . $command->name . '.configuration_map')));
             }
 
             $commandHistory = $command->commandHistories()->create([
-                'payload' => $payloadJson === '' ? null : $payloadJson,
+                'payload' => $payloadJson === 'null' ? null : $payloadJson,
             ]);
 
             Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $command->method_name . '/?$rid=' . $commandHistory->id, $payloadJson);
