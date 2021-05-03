@@ -19,7 +19,12 @@ services:
       - inteliotportal
 
   mysql:
-    image: mysql:${MYSQL_VERSION}
+    build:
+      context: ./
+      dockerfile: docker-compose/mysql/Dockerfile.staging
+    #image: mysql:${MYSQL_VERSION}
+    args:
+      - MYSQL_VERSION=${MYSQL_VERSION}
     container_name: inteliotportal-mysql
     restart: always
     environment:
