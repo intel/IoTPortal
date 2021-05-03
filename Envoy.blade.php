@@ -67,9 +67,12 @@
     mkdir -p $OUTPUT_DIR/env
     mkdir -p $OUTPUT_DIR/logs/app
     mkdir -p $OUTPUT_DIR/logs/nginx
+    mkdir -p $OUTPUT_DIR/logs/vernemq
     mkdir -p $OUTPUT_DIR/mysql/data
     mkdir -p $OUTPUT_DIR/nginx/sites-available
     mkdir -p $OUTPUT_DIR/ssl
+    mkdir -p $OUTPUT_DIR/vernemq/etc
+    mkdir -p $OUTPUT_DIR/vernemq/data
 
 
     # Create uid.env
