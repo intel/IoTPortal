@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/docker-compose/vernemq/startup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/build/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/build/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/setup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" afterDir="false" />
     </list>
@@ -400,7 +401,7 @@
       <workItem from="1619799787320" duration="3095000" />
       <workItem from="1619850219581" duration="27809000" />
       <workItem from="1619932764578" duration="29351000" />
-      <workItem from="1620017823093" duration="13054000" />
+      <workItem from="1620017823093" duration="13553000" />
     </task>
     <servers />
   </component>

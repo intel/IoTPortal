@@ -67,7 +67,7 @@ RUN php artisan route:cache
 
 RUN php artisan optimize
 
-mkdir -p /vernemq/log /vernemq/data /vernemq/etc
+RUN mkdir -p /vernemq/log /vernemq/data /vernemq/etc
 
 COPY --from=vernemq/vernemq:latest-alpine /vernemq/log /vernemq/log
 
