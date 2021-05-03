@@ -13,4 +13,8 @@ RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
                                    /vernemq/etc/vm.args \
                                    /vernemq
 
+RUN ls -l
+
+RUN ls -l /vernemq
+
 USER $LOCAL_UID:$LOCAL_GID
