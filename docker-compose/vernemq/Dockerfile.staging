@@ -1,9 +1,29 @@
 FROM vernemq/vernemq:latest-alpine
 
+ENV LOCAL_UID=65534
+ENV LOCAL_GID=65534
+
 USER root
 
 COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certificates/localhost.crt
 
 RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
 
-USER vernemq
+#RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
+#                                   /vernemq/etc/vm.args \
+#                                   /vernemq
+#
+#RUN ls -l /
+#
+#RUN ls -l /usr/sbin/
+#
+#RUN ls -l /vernemq/etc
+#
+#RUN ls -l /vernemq
+
+COPY --chown=$LOCAL_UID:$LOCAL_GID ./docker-compose/vernemq/startup.sh /opt/startup.sh
+
+USER $LOCAL_UID:$LOCAL_GID
+
+CMD ["/bin/bash", "/opt/startup.sh"]
+

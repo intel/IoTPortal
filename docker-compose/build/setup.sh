@@ -14,4 +14,10 @@ cp -r /var/www/storage/framework/* /iotportaldata/app/storage/framework
 
 cp /var/www/.env /iotportaldata/env
 
+cp -r /vernemq/log/* /iotportaldata/logs/vernemq
+
+cp -r /vernemq/data/* /iotportaldata/vernemq/data
+
+cp -r /vernemq/etc/* /iotportaldata/vernemq/etc
+
 chown -R $LOCAL_UID:$LOCAL_GID /iotportaldata

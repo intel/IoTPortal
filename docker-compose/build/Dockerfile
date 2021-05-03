@@ -67,4 +67,12 @@ RUN php artisan route:cache
 
 RUN php artisan optimize
 
+mkdir -p /vernemq/log /vernemq/data /vernemq/etc
+
+COPY --from=vernemq/vernemq:latest-alpine /vernemq/log /vernemq/log
+
+COPY --from=vernemq/vernemq:latest-alpine /vernemq/data /vernemq/data
+
+COPY --from=vernemq/vernemq:latest-alpine /vernemq/etc /vernemq/etc
+
 CMD ["/bin/bash", "docker-compose/build/setup.sh"]
