@@ -27,7 +27,7 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 # Get latest Composer TODO: remove in future
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY --from=phpmyadmin/phpmyadmin:latest /usr/bin/mysqladmin /usr/bin/mysqladmin
+COPY --from=mysql:alpine /usr/bin/mysqladmin /usr/bin/mysqladmin
 
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
 
