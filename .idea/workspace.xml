@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,7 +398,7 @@
       <workItem from="1619850219581" duration="27809000" />
       <workItem from="1619932764578" duration="29351000" />
       <workItem from="1620017823093" duration="24386000" />
-      <workItem from="1620095084737" duration="22051000" />
+      <workItem from="1620095084737" duration="23778000" />
     </task>
     <servers />
   </component>
