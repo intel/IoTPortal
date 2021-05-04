@@ -96,7 +96,7 @@ services:
       - inteliotportal
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:${MYSQL_VERSION}
+    image: phpmyadmin/phpmyadmin:${PMA_VERSION}
     container_name: inteliotportal-phpmyadmin
     restart: always
     depends_on:

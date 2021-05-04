@@ -108,11 +108,6 @@
     cd $PROJECT_DIR
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging build --no-cache
     docker-compose -f docker-compose.staging.yml --env-file ./.env.staging up -d --force-recreate
-
-    echo "Pausing 30 seconds for database to come online. Please wait..."
-    sleep 30
-
-
 @endtask
 
 
