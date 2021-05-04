@@ -28,9 +28,8 @@ const HeaderDropdown = ({profile, isFetchingProfile, fetchProfileStartAsync}) =>
         inNav
         className="c-header-nav-items mx-2"
         direction="down"
-        visible={true}
       >
-        <CDropdownToggle className="c-header-nav-link" caret={false} active={true}>
+        <CDropdownToggle className="c-header-nav-link" caret={false}>
           <div className="c-avatar">
             <CImg
               src={'/avatars/default2.png'}

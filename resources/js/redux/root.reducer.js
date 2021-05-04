@@ -33,17 +33,16 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
-  savedCommand: savedCommandReducer,
-  deviceCategory: deviceCategoryReducer,
+  device: deviceReducer,
   deviceCommand: deviceCommandReducer,
   deviceEvent: deviceEventReducer,
   deviceStatus: deviceStatusReducer,
+  savedCommand: savedCommandReducer,
   deviceMetric: deviceMetricReducer,
   deviceCommandHistory: deviceCommandHistoryReducer,
   deviceEventHistory: deviceEventHistoryReducer,
+  deviceCategory: deviceCategoryReducer,
   deviceGroup: deviceGroupReducer,
-  device: deviceReducer,
-  apiToken: apiTokenReducer,
   shutdown: shutdownReducer,
   reboot: rebootReducer,
   decommission: decommissionReducer,
@@ -51,6 +50,7 @@ const rootReducer = combineReducers({
   fota: fotaReducer,
   sota: sotaReducer,
   cota: cotaReducer,
+  apiToken: apiTokenReducer,
   sidebar: sidebarReducer,
 });
 

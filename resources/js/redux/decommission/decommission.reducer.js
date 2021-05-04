@@ -13,11 +13,12 @@ const decommissionReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingDecommission: true,
+        submitDecommissionErrorMessage: undefined,
       };
     case decommissionActionTypes.SUBMIT_DECOMMISSION_SUCCESS:
       return {
         ...state,
-        submitDecommissionErrorMessage: false,
+        isSubmittingDecommission: false,
       };
     case decommissionActionTypes.SUBMIT_DECOMMISSION_FAILURE:
       return {

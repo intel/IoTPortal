@@ -13,6 +13,7 @@ const cotaReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingCota: true,
+        submitCotaErrorMessage: undefined,
       };
     case cotaActionTypes.SUBMIT_COTA_SUCCESS:
       return {

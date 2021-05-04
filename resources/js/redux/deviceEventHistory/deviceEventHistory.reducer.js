@@ -23,6 +23,7 @@ const deviceEventHistoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceEventHistories: true,
+        fetchDeviceEventHistoriesErrorMessage: undefined,
       };
     case deviceEventHistoryActionTypes.FETCH_DEVICE_EVENT_HISTORIES_SUCCESS:
       return {

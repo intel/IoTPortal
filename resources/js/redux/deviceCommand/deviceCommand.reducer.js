@@ -15,6 +15,7 @@ const deviceCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceCommandOptions: true,
+        fetchDeviceCommandOptionsErrorMessage: undefined,
       };
     case deviceCommandActionTypes.FETCH_DEVICE_COMMAND_OPTIONS_SUCCESS:
       return {

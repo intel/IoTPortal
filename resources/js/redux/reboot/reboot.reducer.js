@@ -13,11 +13,12 @@ const rebootReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingReboot: true,
+        submitRebootErrorMessage: undefined,
       };
     case rebootActionTypes.SUBMIT_REBOOT_SUCCESS:
       return {
         ...state,
-        submitRebootErrorMessage: false,
+        isSubmittingReboot: false,
       };
     case rebootActionTypes.SUBMIT_REBOOT_FAILURE:
       return {

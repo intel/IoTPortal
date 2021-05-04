@@ -43,6 +43,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingSavedCommands: true,
+        fetchSavedCommandsErrorMessage: undefined,
       };
     case savedCommandActionTypes.FETCH_SAVED_COMMANDS_SUCCESS:
       return {
@@ -68,6 +69,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isCreatingSavedCommand: true,
+        createSavedCommandErrorMessage: undefined,
       };
     case savedCommandActionTypes.CREATE_SAVED_COMMAND_SUCCESS:
       return {
@@ -86,6 +88,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingSavedCommand: true,
+        fetchSavedCommandErrorMessage: undefined,
       };
     case savedCommandActionTypes.FETCH_SAVED_COMMAND_SUCCESS:
       return {
@@ -105,6 +108,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isUpdatingSavedCommand: true,
+        updateSavedCommandErrorMessage: undefined,
       };
     case savedCommandActionTypes.UPDATE_SAVED_COMMAND_SUCCESS:
       return {
@@ -124,6 +128,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isDeletingSavedCommands: true,
+        deleteSavedCommandsErrorMessage: undefined,
       };
     case savedCommandActionTypes.DELETE_SAVED_COMMANDS_SUCCESS:
       return {
@@ -142,6 +147,7 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingSavedCommandOptions: true,
+        fetchSavedCommandOptionsErrorMessage: undefined,
       };
     case savedCommandActionTypes.FETCH_SAVED_COMMAND_OPTIONS_SUCCESS:
       return {

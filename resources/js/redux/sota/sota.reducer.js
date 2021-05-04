@@ -14,6 +14,7 @@ const sotaReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingSota: true,
+        submitSotaErrorMessage: undefined,
       };
     case sotaActionTypes.SUBMIT_SOTA_SUCCESS:
       return {

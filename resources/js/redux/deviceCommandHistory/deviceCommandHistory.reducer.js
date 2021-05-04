@@ -23,6 +23,7 @@ const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceCommandHistories: true,
+        fetchDeviceCommandHistoriesErrorMessage: undefined,
       };
     case deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_SUCCESS:
       return {

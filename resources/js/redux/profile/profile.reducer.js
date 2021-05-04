@@ -15,6 +15,7 @@ const profileReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingProfile: true,
+        fetchProfileErrorMessage: undefined,
       };
     case profileActionTypes.FETCH_PROFILE_SUCCESS:
       console.log(action.payload)

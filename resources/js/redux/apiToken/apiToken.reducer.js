@@ -16,6 +16,7 @@ const apiTokenReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingApiTokens: true,
+        fetchApiTokensErrorMessage: undefined,
       };
     case apiTokenActionTypes.FETCH_API_TOKENS_SUCCESS:
       return {

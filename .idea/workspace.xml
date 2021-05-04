@@ -6,8 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/layoutApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/layoutApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/HeaderDropdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/aota/aota.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/apiToken/apiToken.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/cota/cota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/cota/cota.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/decommission/decommission.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/device/device.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCategory/deviceCategory.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommand/deviceCommand.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceCommandHistory/deviceCommandHistory.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEvent/deviceEvent.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceEventHistory/deviceEventHistory.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceGroup/deviceGroup.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceGroup/deviceGroup.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceMetric/deviceMetric.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceStatus/deviceStatus.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/fota/fota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/fota/fota.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/login/login.actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/login/login.reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/login/login.types.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/profile/profile.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/profile/profile.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/reboot/reboot.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/shutdown/shutdown.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sidebar/sidebar.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/sota/sota.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/sota/sota.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/user/user.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/user/user.reducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +428,8 @@
       <workItem from="1619799787320" duration="3095000" />
       <workItem from="1619850219581" duration="27809000" />
       <workItem from="1619932764578" duration="29351000" />
-      <workItem from="1620017823093" duration="23126000" />
+      <workItem from="1620017823093" duration="24386000" />
+      <workItem from="1620095084737" duration="5429000" />
     </task>
     <servers />
   </component>

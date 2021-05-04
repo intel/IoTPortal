@@ -38,6 +38,7 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDevices: true,
+        fetchDevicesErrorMessage: undefined,
       };
     case deviceActionTypes.FETCH_DEVICES_SUCCESS:
       return {
@@ -63,6 +64,7 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isCreatingDevice: true,
+        createDeviceErrorMessage: undefined,
       };
     case deviceActionTypes.CREATE_DEVICE_SUCCESS:
       return {
@@ -81,6 +83,7 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDevice: true,
+        fetchDeviceErrorMessage: undefined,
       };
     case deviceActionTypes.FETCH_DEVICE_SUCCESS:
       return {
@@ -100,6 +103,7 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isUpdatingDevice: true,
+        updateDeviceErrorMessage: undefined,
       };
     case deviceActionTypes.UPDATE_DEVICE_SUCCESS:
       return {
@@ -119,6 +123,7 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isDeletingDevices: true,
+        deleteDevicesErrorMessage: undefined,
       };
     case deviceActionTypes.DELETE_DEVICES_SUCCESS:
       return {

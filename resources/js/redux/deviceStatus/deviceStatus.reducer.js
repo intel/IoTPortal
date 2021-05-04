@@ -14,19 +14,20 @@ const deviceStatusReducer = (state = INITIAL_STATE, action) => {
     case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_START:
       return {
         ...state,
-        isFetchingDeviceStatusOptions: true
+        isFetchingDeviceStatusOptions: true,
+        fetchDeviceStatusOptionsErrorMessage: undefined,
       };
     case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_SUCCESS:
       return {
         ...state,
         deviceStatusOptions: action.payload,
-        isFetchingDeviceStatusOptions: false
+        isFetchingDeviceStatusOptions: false,
       };
     case deviceStatusActionTypes.FETCH_DEVICE_STATUS_OPTIONS_FAILURE:
       return {
         ...state,
         isFetchingDeviceStatusOptions: false,
-        fetchDeviceStatusOptionsErrorMessage: action.payload
+        fetchDeviceStatusOptionsErrorMessage: action.payload,
       };
     default:
       return state;

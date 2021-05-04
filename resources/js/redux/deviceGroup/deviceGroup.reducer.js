@@ -48,6 +48,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroups: true,
+        fetchDeviceGroupsErrorMessage: undefined,
       };
     case deviceGroupActionTypes.FETCH_DEVICE_GROUPS_SUCCESS:
       return {
@@ -73,6 +74,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroupDevices: true,
+        fetchDeviceGroupDevicesErrorMessage: undefined,
       };
     case deviceGroupActionTypes.FETCH_DEVICE_GROUP_DEVICES_SUCCESS:
       return {
@@ -92,6 +94,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isCreatingDeviceGroup: true,
+        createDeviceGroupErrorMessage: undefined,
       };
     case deviceGroupActionTypes.CREATE_DEVICE_GROUP_SUCCESS:
       return {
@@ -110,6 +113,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroup: true,
+        fetchDeviceErrorMessage: undefined,
       };
     case deviceGroupActionTypes.FETCH_DEVICE_GROUP_SUCCESS:
       return {
@@ -129,6 +133,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isUpdatingDeviceGroup: true,
+        updateDeviceGroupErrorMessage: undefined,
       };
     case deviceGroupActionTypes.UPDATE_DEVICE_GROUP_SUCCESS:
       return {
@@ -148,6 +153,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isDeletingDeviceGroups: true,
+        deleteDeviceGroupsErrorMessage: undefined,
       };
     case deviceGroupActionTypes.DELETE_DEVICE_GROUPS_SUCCESS:
       return {
@@ -173,6 +179,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroupOptions: true,
+        fetchDeviceGroupOptionsErrorMessage: undefined,
       };
     case deviceGroupActionTypes.FETCH_DEVICE_GROUP_OPTIONS_SUCCESS:
       return {

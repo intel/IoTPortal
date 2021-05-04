@@ -29,76 +29,80 @@ const deviceMetricReducer = (state = INITIAL_STATE, action) => {
     case deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_START:
       return {
         ...state,
-        isFetchingCpuTemperatures: true
+        isFetchingCpuTemperatures: true,
+        fetchCpuTemperaturesErrorMessage: undefined,
       };
     case deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_SUCCESS:
       return {
         ...state,
         cpuTemperatures: action.payload,
-        isFetchingCpuTemperatures: false
+        isFetchingCpuTemperatures: false,
       };
     case deviceMetricActionTypes.FETCH_CPU_TEMPERATURES_FAILURE:
       return {
         ...state,
         isFetchingCpuTemperatures: false,
-        fetchCpuTemperaturesErrorMessage: action.payload
+        fetchCpuTemperaturesErrorMessage: action.payload,
       };
 
     // CPU usages
     case deviceMetricActionTypes.FETCH_CPU_USAGES_START:
       return {
         ...state,
-        isFetchingCpuUsages: true
+        isFetchingCpuUsages: true,
+        fetchCpuUsagesErrorMessage: undefined,
       };
     case deviceMetricActionTypes.FETCH_CPU_USAGES_SUCCESS:
       return {
         ...state,
         cpuUsages: action.payload,
-        isFetchingCpuUsages: false
+        isFetchingCpuUsages: false,
       };
     case deviceMetricActionTypes.FETCH_CPU_USAGES_FAILURE:
       return {
         ...state,
         isFetchingCpuUsages: false,
-        fetchCpuTemperaturesErrorMessage: action.payload
+        fetchCpuUsagesErrorMessage: action.payload,
       };
 
     // Disk usages
     case deviceMetricActionTypes.FETCH_DISK_USAGES_START:
       return {
         ...state,
-        isFetchingDiskUsages: true
+        isFetchingDiskUsages: true,
+        fetchDiskUsagesErrorMessage: undefined,
       };
     case deviceMetricActionTypes.FETCH_DISK_USAGES_SUCCESS:
       return {
         ...state,
         diskUsages: action.payload,
-        isFetchingDiskUsages: false
+        isFetchingDiskUsages: false,
       };
     case deviceMetricActionTypes.FETCH_DISK_USAGES_FAILURE:
       return {
         ...state,
         isFetchingDiskUsages: false,
-        fetchDiskUsagesErrorMessage: action.payload
+        fetchDiskUsagesErrorMessage: action.payload,
       };
 
     // Available memories
     case deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_START:
       return {
         ...state,
-        isFetchingAvailableMemories: true
+        isFetchingAvailableMemories: true,
+        fetchAvailableMemoriesErrorMessage: undefined,
       };
     case deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_SUCCESS:
       return {
         ...state,
         availableMemories: action.payload,
-        isFetchingAvailableMemories: false
+        isFetchingAvailableMemories: false,
       };
     case deviceMetricActionTypes.FETCH_AVAILABLE_MEMORIES_FAILURE:
       return {
         ...state,
         isFetchingAvailableMemories: false,
-        fetchAvailableMemoriesErrorMessage: action.payload
+        fetchAvailableMemoriesErrorMessage: action.payload,
       };
     default:
       return state;

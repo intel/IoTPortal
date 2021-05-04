@@ -43,6 +43,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceCategories: true,
+        fetchDeviceCategoriesErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.FETCH_DEVICE_CATEGORIES_SUCCESS:
       return {
@@ -68,6 +69,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isCreatingDeviceCategory: true,
+        createDeviceCategoryErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.CREATE_DEVICE_CATEGORY_SUCCESS:
       return {
@@ -86,6 +88,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceCategory: true,
+        fetchDeviceCategoryErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.FETCH_DEVICE_CATEGORY_SUCCESS:
       return {
@@ -105,6 +108,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isUpdatingDeviceCategory: true,
+        updateDeviceCategoryErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.UPDATE_DEVICE_CATEGORY_SUCCESS:
       return {
@@ -124,6 +128,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isDeletingDeviceCategories: true,
+        deleteDeviceCategoriesErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.DELETE_DEVICE_CATEGORIES_SUCCESS:
       return {
@@ -142,6 +147,7 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceCategoryOptions: true,
+        fetchDeviceCategoryOptionsErrorMessage: undefined,
       };
     case deviceCategoryActionTypes.FETCH_DEVICE_CATEGORY_OPTIONS_SUCCESS:
       return {

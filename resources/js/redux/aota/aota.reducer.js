@@ -14,6 +14,7 @@ const aotaReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingAota: true,
+        submitAotaErrorMessage: undefined,
       };
     case aotaActionTypes.SUBMIT_AOTA_SUCCESS:
       return {

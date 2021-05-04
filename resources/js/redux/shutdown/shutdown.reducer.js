@@ -13,6 +13,7 @@ const shutdownReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingShutdown: true,
+        submitShutdownErrorMessage: undefined,
       };
     case shutdownActionTypes.SUBMIT_SHUTDOWN_SUCCESS:
       return {

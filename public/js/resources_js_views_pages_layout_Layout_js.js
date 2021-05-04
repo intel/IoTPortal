@@ -12514,11 +12514,9 @@ var HeaderDropdown = function HeaderDropdown(_ref) {
       inNav: true,
       className: "c-header-nav-items mx-2",
       direction: "down",
-      visible: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CDropdownToggle, {
         className: "c-header-nav-link",
         caret: false,
-        active: true,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "c-avatar",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CImg, {

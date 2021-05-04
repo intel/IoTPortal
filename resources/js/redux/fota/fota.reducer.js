@@ -13,6 +13,7 @@ const fotaReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isSubmittingFota: true,
+        submitFotaErrorMessage: undefined,
       };
     case fotaActionTypes.SUBMIT_FOTA_SUCCESS:
       return {

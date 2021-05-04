@@ -15,6 +15,7 @@ const deviceEventReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceEventOptions: true,
+        fetchDeviceEventOptionsErrorMessage: undefined,
       };
     case deviceEventActionTypes.FETCH_DEVICE_EVENT_OPTIONS_SUCCESS:
       return {
