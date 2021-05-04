@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docker-compose/app/startup.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +184,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker-compose" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker-compose/app" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -192,11 +194,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\app" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\vernemq" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\build" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\app" />
@@ -397,7 +399,7 @@
       <workItem from="1619850219581" duration="27809000" />
       <workItem from="1619932764578" duration="29351000" />
       <workItem from="1620017823093" duration="24386000" />
-      <workItem from="1620095084737" duration="12002000" />
+      <workItem from="1620095084737" duration="13841000" />
     </task>
     <servers />
   </component>

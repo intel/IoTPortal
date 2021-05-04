@@ -29,6 +29,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
 
+COPY /var/www/docker-compose/app/startup.sh /var/www
+
+RUN chmod u+x /var/www/docker-compose/app/wait-for-mysql.sh \
+                /var/www/docker-compose/app/startup.sh
+
 WORKDIR /var/www
 
 #RUN chown -R www-data:www-data \
@@ -38,9 +43,10 @@ WORKDIR /var/www
 
 #RUN find /var/www/storage -type f -exec chown www-data:www-data {} +
 
+
 USER $LOCAL_UID:$LOCAL_GID
 
-CMD ["./docker-compose/app/wait-for-mysql.sh", "mysql", "php-fpm"]
+CMD ["./docker-compose/app/wait-for-mysql.sh", "mysql", "", "php-fpm"]
 
 
 
