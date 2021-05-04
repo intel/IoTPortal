@@ -31,10 +31,10 @@ COPY --from=mysql:latest /usr/bin/mysqladmin /usr/bin/mysqladmin
 
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
 
-RUN cp -p /var/www/docker-compose/app/startup.sh /var/www
+RUN cp -p /var/www/docker-compose/app/*.sh /var/www
 
-RUN chmod u+x /var/www/docker-compose/app/wait-for-mysql.sh \
-                /var/www/docker-compose/app/startup.sh
+RUN chmod u+x /var/www/wait-for-mysql.sh \
+                /var/www/startup.sh
 
 WORKDIR /var/www
 
@@ -48,7 +48,7 @@ WORKDIR /var/www
 
 USER $LOCAL_UID:$LOCAL_GID
 
-CMD ["./docker-compose/app/wait-for-mysql.sh", "mysql", "./startup.sh"]
+CMD ["./wait-for-mysql.sh", "mysql", "./startup.sh"]
 
 
 
