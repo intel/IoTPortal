@@ -40,7 +40,7 @@ WORKDIR /var/www
 
 USER $LOCAL_UID:$LOCAL_GID
 
-
+CMD ["./docker-compose/app/wait-for-mysql.sh", "mysql", "php-fpm"]
 
 
 
