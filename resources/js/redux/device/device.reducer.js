@@ -58,6 +58,11 @@ const deviceReducer = (state = INITIAL_STATE, action) => {
         ...state,
         fetchDevicesLazyParams: action.payload,
       };
+    case deviceActionTypes.RESET_FETCH_DEVICES_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDevicesLazyParams: INITIAL_STATE.fetchDevicesLazyParams,
+      };
 
     // Create
     case deviceActionTypes.CREATE_DEVICE_START:

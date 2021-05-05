@@ -2387,6 +2387,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceCategoriesFailure": () => (/* binding */ fetchDeviceCategoriesFailure),
 /* harmony export */   "fetchDeviceCategoriesStartAsync": () => (/* binding */ fetchDeviceCategoriesStartAsync),
 /* harmony export */   "setFetchDeviceCategoriesLazyParams": () => (/* binding */ setFetchDeviceCategoriesLazyParams),
+/* harmony export */   "resetFetchDeviceCategoriesLazyParams": () => (/* binding */ resetFetchDeviceCategoriesLazyParams),
 /* harmony export */   "createDeviceCategoryStart": () => (/* binding */ createDeviceCategoryStart),
 /* harmony export */   "createDeviceCategorySuccess": () => (/* binding */ createDeviceCategorySuccess),
 /* harmony export */   "createDeviceCategoryFailure": () => (/* binding */ createDeviceCategoryFailure),
@@ -2451,6 +2452,11 @@ var setFetchDeviceCategoriesLazyParams = function setFetchDeviceCategoriesLazyPa
   return {
     type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.SET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceCategoriesLazyParams = function resetFetchDeviceCategoriesLazyParams() {
+  return {
+    type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS
   };
 }; // Create
 
@@ -2637,6 +2643,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDevicesFailure": () => (/* binding */ fetchDevicesFailure),
 /* harmony export */   "fetchDevicesStartAsync": () => (/* binding */ fetchDevicesStartAsync),
 /* harmony export */   "setFetchDevicesLazyParams": () => (/* binding */ setFetchDevicesLazyParams),
+/* harmony export */   "resetFetchDevicesLazyParams": () => (/* binding */ resetFetchDevicesLazyParams),
 /* harmony export */   "createDeviceStart": () => (/* binding */ createDeviceStart),
 /* harmony export */   "createDeviceSuccess": () => (/* binding */ createDeviceSuccess),
 /* harmony export */   "createDeviceFailure": () => (/* binding */ createDeviceFailure),
@@ -2707,6 +2714,11 @@ var setFetchDevicesLazyParams = function setFetchDevicesLazyParams(lazyParams) {
   return {
     type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDevicesLazyParams = function resetFetchDevicesLazyParams() {
+  return {
+    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICES_LAZY_PARAMS
   };
 }; // Create
 
@@ -3245,16 +3257,12 @@ var mapStateToProps = function mapStateToProps(state) {
     device: state.device.device ? _objectSpread(_objectSpread({}, state.device.device), {}, {
       category: {
         value: state.device.device.category.id,
-        label: state.device.device.category.name.toUpperCase()
+        label: state.device.device.category.name
       }
     }) : state.device.device,
     isFetchingDevice: state.device.isFetchingDevice,
     fetchDeviceErrorMessage: state.device.fetchDeviceErrorMessage,
-    deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions ? state.deviceCategory.deviceCategoryOptions.map(function (option) {
-      return _objectSpread(_objectSpread({}, option), {}, {
-        label: option.label.toUpperCase()
-      });
-    }) : state.deviceCategory.deviceCategoryOptions,
+    deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
     isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
     fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
     isUpdatingDevice: state.device.isUpdatingDevice,

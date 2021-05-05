@@ -129,7 +129,7 @@ const AotaCard = ({
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            const data = {command: 'aota', payload: getSanitizedValues(values)}
+            const data = {command: 'AOTA', payload: getSanitizedValues(values)}
             submitCallback(data);
           }}
         >

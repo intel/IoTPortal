@@ -235,6 +235,7 @@ var DeviceCategoriesDataTable = function DeviceCategoriesDataTable(_ref) {
       deleteDeviceCategoriesErrorMessage = _ref.deleteDeviceCategoriesErrorMessage,
       fetchDeviceCategoriesStartAsync = _ref.fetchDeviceCategoriesStartAsync,
       setFetchDeviceCategoriesLazyParams = _ref.setFetchDeviceCategoriesLazyParams,
+      resetFetchDeviceCategoriesLazyParams = _ref.resetFetchDeviceCategoriesLazyParams,
       deleteDeviceCategoriesStartAsync = _ref.deleteDeviceCategoriesStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
@@ -256,6 +257,9 @@ var DeviceCategoriesDataTable = function DeviceCategoriesDataTable(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchDeviceCategoriesStartAsync(fetchDeviceCategoriesLazyParams);
   }, [fetchDeviceCategoriesLazyParams]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return resetFetchDeviceCategoriesLazyParams;
+  }, []);
 
   var confirmDeleteDeviceCategory = function confirmDeleteDeviceCategory(deviceCategory) {
     setDeviceCategory(deviceCategory);
@@ -451,6 +455,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     setFetchDeviceCategoriesLazyParams: function setFetchDeviceCategoriesLazyParams(lazyParams) {
       return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_6__.setFetchDeviceCategoriesLazyParams)(lazyParams));
     },
+    resetFetchDeviceCategoriesLazyParams: function resetFetchDeviceCategoriesLazyParams() {
+      return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_6__.resetFetchDeviceCategoriesLazyParams)());
+    },
     deleteDeviceCategoriesStartAsync: function deleteDeviceCategoriesStartAsync(ids, history) {
       return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_6__.deleteDeviceCategoriesStartAsync)(ids, history));
     }
@@ -475,6 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceCategoriesFailure": () => (/* binding */ fetchDeviceCategoriesFailure),
 /* harmony export */   "fetchDeviceCategoriesStartAsync": () => (/* binding */ fetchDeviceCategoriesStartAsync),
 /* harmony export */   "setFetchDeviceCategoriesLazyParams": () => (/* binding */ setFetchDeviceCategoriesLazyParams),
+/* harmony export */   "resetFetchDeviceCategoriesLazyParams": () => (/* binding */ resetFetchDeviceCategoriesLazyParams),
 /* harmony export */   "createDeviceCategoryStart": () => (/* binding */ createDeviceCategoryStart),
 /* harmony export */   "createDeviceCategorySuccess": () => (/* binding */ createDeviceCategorySuccess),
 /* harmony export */   "createDeviceCategoryFailure": () => (/* binding */ createDeviceCategoryFailure),
@@ -539,6 +547,11 @@ var setFetchDeviceCategoriesLazyParams = function setFetchDeviceCategoriesLazyPa
   return {
     type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.SET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceCategoriesLazyParams = function resetFetchDeviceCategoriesLazyParams() {
+  return {
+    type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS
   };
 }; // Create
 

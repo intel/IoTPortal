@@ -7,11 +7,13 @@ import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
+import useInterval from '../../hooks/useInterval';
 import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import { fetchDeviceCommandOptionsStartAsync } from '../../redux/deviceCommand/deviceCommand.actions';
 import {
   fetchDeviceCommandHistoriesStartAsync,
-  setFetchDeviceCommandHistoriesLazyParams
+  setFetchDeviceCommandHistoriesLazyParams,
+  resetFetchDeviceCommandHistoriesLazyParams,
 } from '../../redux/deviceCommandHistory/deviceCommandHistory.actions';
 
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
@@ -32,7 +34,8 @@ const CommandHistoriesDataTable = ({
                                      fetchDeviceCommandHistoriesLazyParams,
                                      fetchDeviceCommandOptionsStartAsync,
                                      fetchDeviceCommandHistoriesStartAsync,
-                                     setFetchDeviceCommandHistoriesLazyParams
+                                     setFetchDeviceCommandHistoriesLazyParams,
+                                     resetFetchDeviceCommandHistoriesLazyParams
                                    }) => {
 
   const [expandedRows, setExpandedRows] = useState(null);
@@ -48,6 +51,10 @@ const CommandHistoriesDataTable = ({
     fetchDeviceCommandOptionsStartAsync(deviceId);
     fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams);
   }, [fetchDeviceCommandHistoriesLazyParams]);
+
+  useEffect(() => resetFetchDeviceCommandHistoriesLazyParams, []);
+
+  useInterval(() => fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams, false), 5000);
 
   const onPage = (event) => {
     let _lazyParams = {...fetchDeviceCommandHistoriesLazyParams, ...event};
@@ -184,7 +191,7 @@ const CommandHistoriesDataTable = ({
                  rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceCommandHistories}>
         <Column expander style={{width: '5em'}}/>
         <Column selectionMode="multiple" style={{width: '4em'}}/>
-        <Column field="payload" header="Payload" body={payloadColumnBody} style={{width:'57%'}} sortable filter
+        <Column field="payload" header="Payload" body={payloadColumnBody} style={{width: '57%'}} sortable filter
                 filterPlaceholder="Search by payload"/>
         <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter
                 excludeGlobalFilter={true}
@@ -211,8 +218,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchDeviceCommandOptionsStartAsync: (id, name) => dispatch(fetchDeviceCommandOptionsStartAsync(id, name)),
-  fetchDeviceCommandHistoriesStartAsync: (id, lazyParams) => dispatch(fetchDeviceCommandHistoriesStartAsync(id, lazyParams)),
+  fetchDeviceCommandHistoriesStartAsync: (id, lazyParams, showIsFetchingIndicator) => dispatch(fetchDeviceCommandHistoriesStartAsync(id, lazyParams, showIsFetchingIndicator)),
   setFetchDeviceCommandHistoriesLazyParams: (lazyParams) => dispatch(setFetchDeviceCommandHistoriesLazyParams(lazyParams)),
+  resetFetchDeviceCommandHistoriesLazyParams: () => dispatch(resetFetchDeviceCommandHistoriesLazyParams()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommandHistoriesDataTable);

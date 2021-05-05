@@ -63,6 +63,11 @@ const deviceCategoryReducer = (state = INITIAL_STATE, action) => {
         ...state,
         fetchDeviceCategoriesLazyParams: action.payload,
       };
+    case deviceCategoryActionTypes.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDeviceCategoriesLazyParams: INITIAL_STATE.fetchDeviceCategoriesLazyParams,
+      };
 
     // Create
     case deviceCategoryActionTypes.CREATE_DEVICE_CATEGORY_START:

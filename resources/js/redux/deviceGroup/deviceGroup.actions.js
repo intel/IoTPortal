@@ -39,6 +39,10 @@ export const setFetchDeviceGroupsLazyParams = lazyParams => ({
   payload: lazyParams,
 });
 
+export const resetFetchDeviceGroupsLazyParams = () => ({
+  type: deviceGroupActionTypes.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS,
+});
+
 
 // Device group devices index
 export const fetchDeviceGroupDevicesStart = () => ({

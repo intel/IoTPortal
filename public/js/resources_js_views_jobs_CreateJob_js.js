@@ -2199,6 +2199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceGroupsFailure": () => (/* binding */ fetchDeviceGroupsFailure),
 /* harmony export */   "fetchDeviceGroupsStartAsync": () => (/* binding */ fetchDeviceGroupsStartAsync),
 /* harmony export */   "setFetchDeviceGroupsLazyParams": () => (/* binding */ setFetchDeviceGroupsLazyParams),
+/* harmony export */   "resetFetchDeviceGroupsLazyParams": () => (/* binding */ resetFetchDeviceGroupsLazyParams),
 /* harmony export */   "fetchDeviceGroupDevicesStart": () => (/* binding */ fetchDeviceGroupDevicesStart),
 /* harmony export */   "fetchDeviceGroupDevicesSuccess": () => (/* binding */ fetchDeviceGroupDevicesSuccess),
 /* harmony export */   "fetchDeviceGroupDevicesFailure": () => (/* binding */ fetchDeviceGroupDevicesFailure),
@@ -2268,6 +2269,11 @@ var setFetchDeviceGroupsLazyParams = function setFetchDeviceGroupsLazyParams(laz
   return {
     type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICE_GROUPS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceGroupsLazyParams = function resetFetchDeviceGroupsLazyParams() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS
   };
 }; // Device group devices index
 

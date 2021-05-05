@@ -137,14 +137,11 @@ const EditDevice = (props) => {
 const mapStateToProps = state => ({
   device: state.device.device ? {
     ...state.device.device,
-    category: {value: state.device.device.category.id, label: state.device.device.category.name.toUpperCase()}
+    category: {value: state.device.device.category.id, label: state.device.device.category.name}
   } : state.device.device,
   isFetchingDevice: state.device.isFetchingDevice,
   fetchDeviceErrorMessage: state.device.fetchDeviceErrorMessage,
-  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions ? state.deviceCategory.deviceCategoryOptions.map(option => ({
-    ...option,
-    label: option.label.toUpperCase()
-  })) : state.deviceCategory.deviceCategoryOptions,
+  deviceCategoryOptions: state.deviceCategory.deviceCategoryOptions,
   isFetchingDeviceCategoryOptions: state.deviceCategory.isFetchingDeviceCategoryOptions,
   fetchDeviceCategoryOptionsErrorMessage: state.deviceCategory.fetchDeviceCategoryOptionsErrorMessage,
   isUpdatingDevice: state.device.isUpdatingDevice,

@@ -2126,7 +2126,7 @@ var AotaCard = function AotaCard(_ref) {
         onSubmit: function onSubmit(values, _ref5) {
           var setSubmitting = _ref5.setSubmitting;
           var data = {
-            command: 'aota',
+            command: 'AOTA',
             payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values)
           };
           submitCallback(data);
@@ -2396,7 +2396,7 @@ var CotaCard = function CotaCard(_ref) {
         onSubmit: function onSubmit(values, _ref4) {
           var setSubmitting = _ref4.setSubmitting;
           var data = {
-            command: 'cota',
+            command: 'COTA',
             payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.getSanitizedValues)(values)
           };
           submitCallback(data);
@@ -2614,7 +2614,7 @@ var FotaCard = function FotaCard(_ref) {
         onSubmit: function onSubmit(values, _ref2) {
           var setSubmitting = _ref2.setSubmitting;
           var data = {
-            command: 'fota',
+            command: 'FOTA',
             payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_4__.getSanitizedValues)(values)
           };
           submitCallback(data);
@@ -3317,7 +3317,7 @@ var SotaCard = function SotaCard(_ref) {
         onSubmit: function onSubmit(values, _ref5) {
           var setSubmitting = _ref5.setSubmitting;
           var data = {
-            command: 'sota',
+            command: 'SOTA',
             payload: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.getSanitizedValues)(values)
           };
           submitCallback(data);
@@ -3833,14 +3833,14 @@ var COTA_FIELDS_HIDDEN_STATES = {
   }
 };
 var POWER_CONTROLS_COMMAND_OPTIONS = [{
-  value: 'shutdown',
-  label: 'shutdown'
+  value: 'SHUTDOWN',
+  label: 'SHUTDOWN'
 }, {
-  value: 'reboot',
-  label: 'reboot'
+  value: 'REBOOT',
+  label: 'REBOOT'
 }, {
-  value: 'decommission',
-  label: 'decommission'
+  value: 'DECOMMISSION',
+  label: 'DECOMMISSION'
 }];
 var colourOptions = [{
   value: 'ocean',
@@ -4154,6 +4154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchSavedCommandsFailure": () => (/* binding */ fetchSavedCommandsFailure),
 /* harmony export */   "fetchSavedCommandsStartAsync": () => (/* binding */ fetchSavedCommandsStartAsync),
 /* harmony export */   "setFetchSavedCommandsLazyParams": () => (/* binding */ setFetchSavedCommandsLazyParams),
+/* harmony export */   "resetFetchSavedCommandsLazyParams": () => (/* binding */ resetFetchSavedCommandsLazyParams),
 /* harmony export */   "createSavedCommandStart": () => (/* binding */ createSavedCommandStart),
 /* harmony export */   "createSavedCommandSuccess": () => (/* binding */ createSavedCommandSuccess),
 /* harmony export */   "createSavedCommandFailure": () => (/* binding */ createSavedCommandFailure),
@@ -4220,6 +4221,11 @@ var setFetchSavedCommandsLazyParams = function setFetchSavedCommandsLazyParams(l
   return {
     type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.SET_FETCH_SAVED_COMMANDS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchSavedCommandsLazyParams = function resetFetchSavedCommandsLazyParams() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.RESET_FETCH_SAVED_COMMANDS_LAZY_PARAMS
   };
 }; // Create
 

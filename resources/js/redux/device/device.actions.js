@@ -41,6 +41,10 @@ export const setFetchDevicesLazyParams = lazyParams => ({
   payload: lazyParams,
 });
 
+export const resetFetchDevicesLazyParams = () => ({
+  type: deviceActionTypes.RESET_FETCH_DEVICES_LAZY_PARAMS,
+});
+
 
 // Create
 export const createDeviceStart = () => ({

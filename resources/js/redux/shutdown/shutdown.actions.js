@@ -23,7 +23,7 @@ export const submitShutdownStartAsync = (id) => {
 
     const toastId = toastHelper.loading('Shutting down device...');
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'shutdown'})
+    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'SHUTDOWN'})
       .then(result => {
         dispatch(submitShutdownSuccess());
         toastHelper.success('Shut down device successfully!', toastId);

@@ -38,14 +38,6 @@ RUN chmod u+x /var/www/wait-for-mysql.sh \
 
 WORKDIR /var/www
 
-#RUN chown -R www-data:www-data \
-#        /var/www \
-#        /var/www/storage \
-#        /var/www/bootstrap/cache
-
-#RUN find /var/www/storage -type f -exec chown www-data:www-data {} +
-
-
 USER $LOCAL_UID:$LOCAL_GID
 
 CMD ["./wait-for-mysql.sh", "mysql", "./startup.sh"]

@@ -11,6 +11,7 @@ import {
   deleteDeviceGroupsStartAsync,
   fetchDeviceGroupsStartAsync,
   setFetchDeviceGroupsLazyParams,
+  resetFetchDeviceGroupsLazyParams,
 } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import DeleteDeviceGroupModal from '../../components/DeleteDeviceGroupModal/DeleteDeviceGroupModal';
@@ -31,6 +32,7 @@ const DeviceGroupsDataTable = ({
                                  deleteDeviceGroupsErrorMessage,
                                  fetchDeviceGroupsStartAsync,
                                  setFetchDeviceGroupsLazyParams,
+                                 resetFetchDeviceGroupsLazyParams,
                                  deleteDeviceGroupsStartAsync
                                }) => {
 
@@ -43,6 +45,8 @@ const DeviceGroupsDataTable = ({
   useEffect(() => {
     fetchDeviceGroupsStartAsync(fetchDeviceGroupsLazyParams);
   }, [fetchDeviceGroupsLazyParams]);
+
+  useEffect(() => resetFetchDeviceGroupsLazyParams, []);
 
   const confirmDeleteDeviceGroup = (deviceGroup) => {
     setDeviceGroup(deviceGroup);
@@ -168,6 +172,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchDeviceGroupsStartAsync: (params) => dispatch(fetchDeviceGroupsStartAsync(params)),
   setFetchDeviceGroupsLazyParams: (lazyParams) => dispatch(setFetchDeviceGroupsLazyParams(lazyParams)),
+  resetFetchDeviceGroupsLazyParams: () => dispatch(resetFetchDeviceGroupsLazyParams()),
   deleteDeviceGroupsStartAsync: (ids, history) => dispatch(deleteDeviceGroupsStartAsync(ids, history)),
 });
 

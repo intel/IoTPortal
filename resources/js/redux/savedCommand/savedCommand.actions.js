@@ -40,6 +40,10 @@ export const setFetchSavedCommandsLazyParams = lazyParams => ({
   payload: lazyParams,
 });
 
+export const resetFetchSavedCommandsLazyParams = () => ({
+  type: savedCommandActionTypes.RESET_FETCH_SAVED_COMMANDS_LAZY_PARAMS,
+});
+
 
 // Create
 export const createSavedCommandStart = () => ({

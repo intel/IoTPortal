@@ -107,7 +107,7 @@ const SotaCard = ({
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            const data = {command: 'sota', payload: getSanitizedValues(values)}
+            const data = {command: 'SOTA', payload: getSanitizedValues(values)}
             submitCallback(data);
           }}
         >

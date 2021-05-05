@@ -315,6 +315,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchSavedCommandsFailure": () => (/* binding */ fetchSavedCommandsFailure),
 /* harmony export */   "fetchSavedCommandsStartAsync": () => (/* binding */ fetchSavedCommandsStartAsync),
 /* harmony export */   "setFetchSavedCommandsLazyParams": () => (/* binding */ setFetchSavedCommandsLazyParams),
+/* harmony export */   "resetFetchSavedCommandsLazyParams": () => (/* binding */ resetFetchSavedCommandsLazyParams),
 /* harmony export */   "createSavedCommandStart": () => (/* binding */ createSavedCommandStart),
 /* harmony export */   "createSavedCommandSuccess": () => (/* binding */ createSavedCommandSuccess),
 /* harmony export */   "createSavedCommandFailure": () => (/* binding */ createSavedCommandFailure),
@@ -381,6 +382,11 @@ var setFetchSavedCommandsLazyParams = function setFetchSavedCommandsLazyParams(l
   return {
     type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.SET_FETCH_SAVED_COMMANDS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchSavedCommandsLazyParams = function resetFetchSavedCommandsLazyParams() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.RESET_FETCH_SAVED_COMMANDS_LAZY_PARAMS
   };
 }; // Create
 

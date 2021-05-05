@@ -25,7 +25,7 @@ export const submitDecommissionStartAsync = (id) => {
 
     const toastId = toastHelper.loading('Decommissioning device...');
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'decommission'})
+    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'DECOMMISSION'})
       .then(result => {
         dispatch(submitDecommissionSuccess());
         toastHelper.success('Decommissioned device successfully!', toastId);

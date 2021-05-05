@@ -22,7 +22,7 @@ const deviceEventHistoryReducer = (state = INITIAL_STATE, action) => {
     case deviceEventHistoryActionTypes.FETCH_DEVICE_EVENT_HISTORIES_START:
       return {
         ...state,
-        isFetchingDeviceEventHistories: true,
+        isFetchingDeviceEventHistories: action.payload,
         fetchDeviceEventHistoriesErrorMessage: undefined,
       };
     case deviceEventHistoryActionTypes.FETCH_DEVICE_EVENT_HISTORIES_SUCCESS:
@@ -42,6 +42,11 @@ const deviceEventHistoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         fetchDeviceEventHistoriesLazyParams: action.payload,
+      };
+    case deviceEventHistoryActionTypes.RESET_FETCH_DEVICE_EVENT_HISTORIES_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDeviceEventHistoriesLazyParams: INITIAL_STATE.fetchDeviceEventHistoriesLazyParams,
       };
     default:
       return state;

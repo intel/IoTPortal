@@ -10,6 +10,7 @@ import { InputText } from 'primereact/inputtext';
 import {
   deleteDeviceCategoriesStartAsync,
   fetchDeviceCategoriesStartAsync,
+  resetFetchDeviceCategoriesLazyParams,
   setFetchDeviceCategoriesLazyParams
 } from '../../redux/deviceCategory/deviceCategory.actions';
 
@@ -31,6 +32,7 @@ const DeviceCategoriesDataTable = ({
                                      deleteDeviceCategoriesErrorMessage,
                                      fetchDeviceCategoriesStartAsync,
                                      setFetchDeviceCategoriesLazyParams,
+                                     resetFetchDeviceCategoriesLazyParams,
                                      deleteDeviceCategoriesStartAsync
                                    }) => {
 
@@ -43,6 +45,8 @@ const DeviceCategoriesDataTable = ({
   useEffect(() => {
     fetchDeviceCategoriesStartAsync(fetchDeviceCategoriesLazyParams);
   }, [fetchDeviceCategoriesLazyParams]);
+
+  useEffect(() => resetFetchDeviceCategoriesLazyParams, []);
 
   const confirmDeleteDeviceCategory = (deviceCategory) => {
     setDeviceCategory(deviceCategory);
@@ -168,6 +172,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchDeviceCategoriesStartAsync: (lazyParams) => dispatch(fetchDeviceCategoriesStartAsync(lazyParams)),
   setFetchDeviceCategoriesLazyParams: (lazyParams) => dispatch(setFetchDeviceCategoriesLazyParams(lazyParams)),
+  resetFetchDeviceCategoriesLazyParams: () => dispatch(resetFetchDeviceCategoriesLazyParams()),
   deleteDeviceCategoriesStartAsync: (ids, history) => dispatch(deleteDeviceCategoriesStartAsync(ids, history)),
 });
 

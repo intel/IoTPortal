@@ -772,6 +772,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
       fetchDeviceStatusOptionsStartAsync = _ref.fetchDeviceStatusOptionsStartAsync,
       fetchDevicesStartAsync = _ref.fetchDevicesStartAsync,
       setFetchDevicesLazyParams = _ref.setFetchDevicesLazyParams,
+      resetFetchDevicesLazyParams = _ref.resetFetchDevicesLazyParams,
       deleteDevicesStartAsync = _ref.deleteDevicesStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
@@ -811,10 +812,13 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
 
   var dt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
     fetchDeviceCategoryOptionsStartAsync();
     fetchDeviceStatusOptionsStartAsync();
-    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
   }, [fetchDevicesLazyParams]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return resetFetchDevicesLazyParams;
+  }, []);
 
   var onShowConnectDeviceModal = function onShowConnectDeviceModal(device) {
     setDevice(device);
@@ -1173,6 +1177,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     setFetchDevicesLazyParams: function setFetchDevicesLazyParams(lazyParams) {
       return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_10__.setFetchDevicesLazyParams)(lazyParams));
     },
+    resetFetchDevicesLazyParams: function resetFetchDevicesLazyParams() {
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_10__.resetFetchDevicesLazyParams)());
+    },
     deleteDevicesStartAsync: function deleteDevicesStartAsync(ids, history) {
       return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_10__.deleteDevicesStartAsync)(ids, history));
     }
@@ -1197,6 +1204,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceCategoriesFailure": () => (/* binding */ fetchDeviceCategoriesFailure),
 /* harmony export */   "fetchDeviceCategoriesStartAsync": () => (/* binding */ fetchDeviceCategoriesStartAsync),
 /* harmony export */   "setFetchDeviceCategoriesLazyParams": () => (/* binding */ setFetchDeviceCategoriesLazyParams),
+/* harmony export */   "resetFetchDeviceCategoriesLazyParams": () => (/* binding */ resetFetchDeviceCategoriesLazyParams),
 /* harmony export */   "createDeviceCategoryStart": () => (/* binding */ createDeviceCategoryStart),
 /* harmony export */   "createDeviceCategorySuccess": () => (/* binding */ createDeviceCategorySuccess),
 /* harmony export */   "createDeviceCategoryFailure": () => (/* binding */ createDeviceCategoryFailure),
@@ -1261,6 +1269,11 @@ var setFetchDeviceCategoriesLazyParams = function setFetchDeviceCategoriesLazyPa
   return {
     type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.SET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceCategoriesLazyParams = function resetFetchDeviceCategoriesLazyParams() {
+  return {
+    type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS
   };
 }; // Create
 
@@ -1447,6 +1460,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceGroupsFailure": () => (/* binding */ fetchDeviceGroupsFailure),
 /* harmony export */   "fetchDeviceGroupsStartAsync": () => (/* binding */ fetchDeviceGroupsStartAsync),
 /* harmony export */   "setFetchDeviceGroupsLazyParams": () => (/* binding */ setFetchDeviceGroupsLazyParams),
+/* harmony export */   "resetFetchDeviceGroupsLazyParams": () => (/* binding */ resetFetchDeviceGroupsLazyParams),
 /* harmony export */   "fetchDeviceGroupDevicesStart": () => (/* binding */ fetchDeviceGroupDevicesStart),
 /* harmony export */   "fetchDeviceGroupDevicesSuccess": () => (/* binding */ fetchDeviceGroupDevicesSuccess),
 /* harmony export */   "fetchDeviceGroupDevicesFailure": () => (/* binding */ fetchDeviceGroupDevicesFailure),
@@ -1516,6 +1530,11 @@ var setFetchDeviceGroupsLazyParams = function setFetchDeviceGroupsLazyParams(laz
   return {
     type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICE_GROUPS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceGroupsLazyParams = function resetFetchDeviceGroupsLazyParams() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS
   };
 }; // Device group devices index
 
@@ -1795,6 +1814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDevicesFailure": () => (/* binding */ fetchDevicesFailure),
 /* harmony export */   "fetchDevicesStartAsync": () => (/* binding */ fetchDevicesStartAsync),
 /* harmony export */   "setFetchDevicesLazyParams": () => (/* binding */ setFetchDevicesLazyParams),
+/* harmony export */   "resetFetchDevicesLazyParams": () => (/* binding */ resetFetchDevicesLazyParams),
 /* harmony export */   "createDeviceStart": () => (/* binding */ createDeviceStart),
 /* harmony export */   "createDeviceSuccess": () => (/* binding */ createDeviceSuccess),
 /* harmony export */   "createDeviceFailure": () => (/* binding */ createDeviceFailure),
@@ -1865,6 +1885,11 @@ var setFetchDevicesLazyParams = function setFetchDevicesLazyParams(lazyParams) {
   return {
     type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDevicesLazyParams = function resetFetchDevicesLazyParams() {
+  return {
+    type: _device_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICES_LAZY_PARAMS
   };
 }; // Create
 
@@ -2420,15 +2445,51 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
     };
   }();
 
-  var onSubmit = function onSubmit(values, _ref5) {
-    var setSubmitting = _ref5.setSubmitting;
+  var onSubmit = /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(values, _ref5) {
+      var setSubmitting;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              setSubmitting = _ref5.setSubmitting;
 
-    if (activeIndex < 2) {
-      setActiveIndex(activeIndex + 1);
-    } else {
-      createDeviceGroupStartAsync((0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.getSanitizedValues)(values), history);
-    }
-  };
+              if (!formRef.current) {
+                _context3.next = 8;
+                break;
+              }
+
+              if (formRef.current.touched.name) {
+                _context3.next = 7;
+                break;
+              }
+
+              _context3.next = 5;
+              return formRef.current.setFieldTouched('name', true);
+
+            case 5:
+              _context3.next = 8;
+              break;
+
+            case 7:
+              if (formRef.current.touched.name && !formRef.current.errors.name && activeIndex === 0) {
+                setActiveIndex(activeIndex + 1);
+              } else if (formRef.current.touched.name && !formRef.current.errors.name && selectedDevices !== null && selectedDevices !== void 0 && selectedDevices.length && selectedDevices.length > 0) {
+                createDeviceGroupStartAsync((0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.getSanitizedValues)(values), history);
+              }
+
+            case 8:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function onSubmit(_x, _x2) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
 
   var renderSelectedDevicesDataView = function renderSelectedDevicesDataView() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_SelectedDevicesDataView_SelectedDevicesDataView__WEBPACK_IMPORTED_MODULE_14__.default, {

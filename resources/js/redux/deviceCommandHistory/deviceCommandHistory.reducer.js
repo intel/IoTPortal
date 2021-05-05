@@ -22,7 +22,7 @@ const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
     case deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_START:
       return {
         ...state,
-        isFetchingDeviceCommandHistories: true,
+        isFetchingDeviceCommandHistories: action.payload,
         fetchDeviceCommandHistoriesErrorMessage: undefined,
       };
     case deviceCommandHistoryActionTypes.FETCH_DEVICE_COMMAND_HISTORIES_SUCCESS:
@@ -42,6 +42,11 @@ const deviceCommandHistoryReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         fetchDeviceCommandHistoriesLazyParams: action.payload,
+      };
+    case deviceCommandHistoryActionTypes.RESET_FETCH_DEVICE_COMMAND_HISTORIES_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDeviceCommandHistoriesLazyParams: INITIAL_STATE.fetchDeviceCommandHistoriesLazyParams,
       };
     default:
       return state;

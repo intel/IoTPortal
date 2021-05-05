@@ -9,7 +9,8 @@ import { InputText } from 'primereact/inputtext';
 import {
   deleteSavedCommandsStartAsync,
   fetchSavedCommandsStartAsync,
-  setFetchSavedCommandsLazyParams
+  setFetchSavedCommandsLazyParams,
+  resetFetchSavedCommandsLazyParams,
 } from '../../redux/savedCommand/savedCommand.actions';
 
 import DeleteSavedCommandModal from '../../components/DeleteSavedCommandModal/DeleteSavedCommandModal';
@@ -32,6 +33,7 @@ const SavedCommandsDataTable = ({
                                   deleteSavedCommandsErrorMessage,
                                   fetchSavedCommandsStartAsync,
                                   setFetchSavedCommandsLazyParams,
+                                  resetFetchSavedCommandsLazyParams,
                                   deleteSavedCommandsStartAsync
                                 }) => {
 
@@ -45,6 +47,8 @@ const SavedCommandsDataTable = ({
   useEffect(() => {
     fetchSavedCommandsStartAsync(fetchSavedCommandsLazyParams);
   }, [fetchSavedCommandsLazyParams]);
+
+  useEffect(() => resetFetchSavedCommandsLazyParams, []);
 
   const confirmDeleteSavedCommand = (savedCommand) => {
     setSavedCommand(savedCommand);
@@ -192,6 +196,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchSavedCommandsStartAsync: (params) => dispatch(fetchSavedCommandsStartAsync(params)),
   setFetchSavedCommandsLazyParams: (lazyParams) => dispatch(setFetchSavedCommandsLazyParams(lazyParams)),
+  resetFetchSavedCommandsLazyParams: () => dispatch(resetFetchSavedCommandsLazyParams()),
   deleteSavedCommandsStartAsync: (ids, history) => dispatch(deleteSavedCommandsStartAsync(ids, history)),
 });
 

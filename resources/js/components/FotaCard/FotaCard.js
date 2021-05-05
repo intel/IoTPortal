@@ -75,7 +75,7 @@ const FotaCard = ({
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            const data = {command: 'fota', payload: getSanitizedValues(values)}
+            const data = {command: 'FOTA', payload: getSanitizedValues(values)}
             submitCallback(data);
           }}
         >

@@ -96,7 +96,7 @@ const ViewDevice = (props) => {
           <CCard>
             <CCardHeader>
               <CRow>
-                <CCol className="mb-3" lg="12" xl="8">
+                <CCol className="mb-3" lg="12" xl="7">
                   <div className="d-flex">
                     <div className="m-4">
                       <CIcon name='cilDevices' size="4xl"/>
@@ -106,13 +106,13 @@ const ViewDevice = (props) => {
                                     updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                       <small>ID: {device.unique_id}</small><br/>
                       <div className="mt-2">
-                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name.toUpperCase()}</CBadge>
-                        <CBadge color="primary" className="font-lg">{device.category.name.toUpperCase()}</CBadge>
+                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name}</CBadge>
+                        <CBadge color="primary" className="font-lg">{device.category.name}</CBadge>
                       </div>
                     </div>
                   </div>
                 </CCol>
-                <CCol className="my-auto" lg="12" xl="4">
+                <CCol className="my-auto" lg="12" xl="5">
                   <div className="d-flex justify-content-center">
                     <CButtonGroup>
                       <CButton color="dark" onClick={() => setShowConnectDeviceModal(true)}>

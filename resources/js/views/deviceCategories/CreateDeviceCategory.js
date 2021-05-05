@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
 import { createDeviceCategoryStartAsync, } from '../../redux/deviceCategory/deviceCategory.actions';
-import { getSanitizedValues, isDeviceCategoryNameUnique, isDeviceGroupNameUnique } from '../../utils/utils';
+import { getSanitizedValues, isDeviceCategoryNameUnique } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';

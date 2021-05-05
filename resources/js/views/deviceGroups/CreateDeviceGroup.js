@@ -70,11 +70,15 @@ const CreateDeviceGroup = ({
     setActiveIndex(0);
   };
 
-  const onSubmit = (values, {setSubmitting}) => {
-    if (activeIndex < 2) {
-      setActiveIndex(activeIndex + 1);
-    } else {
-      createDeviceGroupStartAsync(getSanitizedValues(values), history);
+  const onSubmit = async (values, {setSubmitting}) => {
+    if (formRef.current) {
+      if (!formRef.current.touched.name) {
+        await formRef.current.setFieldTouched('name', true);
+      } else if (formRef.current.touched.name && !formRef.current.errors.name && activeIndex === 0) {
+        setActiveIndex(activeIndex + 1);
+      } else if (formRef.current.touched.name && !formRef.current.errors.name && selectedDevices?.length && selectedDevices.length > 0) {
+        createDeviceGroupStartAsync(getSanitizedValues(values), history);
+      }
     }
   };
 

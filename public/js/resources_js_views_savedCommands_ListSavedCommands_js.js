@@ -304,6 +304,7 @@ var SavedCommandsDataTable = function SavedCommandsDataTable(_ref) {
       deleteSavedCommandsErrorMessage = _ref.deleteSavedCommandsErrorMessage,
       fetchSavedCommandsStartAsync = _ref.fetchSavedCommandsStartAsync,
       setFetchSavedCommandsLazyParams = _ref.setFetchSavedCommandsLazyParams,
+      resetFetchSavedCommandsLazyParams = _ref.resetFetchSavedCommandsLazyParams,
       deleteSavedCommandsStartAsync = _ref.deleteSavedCommandsStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
@@ -330,6 +331,9 @@ var SavedCommandsDataTable = function SavedCommandsDataTable(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchSavedCommandsStartAsync(fetchSavedCommandsLazyParams);
   }, [fetchSavedCommandsLazyParams]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return resetFetchSavedCommandsLazyParams;
+  }, []);
 
   var confirmDeleteSavedCommand = function confirmDeleteSavedCommand(savedCommand) {
     setSavedCommand(savedCommand);
@@ -554,6 +558,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     setFetchSavedCommandsLazyParams: function setFetchSavedCommandsLazyParams(lazyParams) {
       return dispatch((0,_redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_6__.setFetchSavedCommandsLazyParams)(lazyParams));
     },
+    resetFetchSavedCommandsLazyParams: function resetFetchSavedCommandsLazyParams() {
+      return dispatch((0,_redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_6__.resetFetchSavedCommandsLazyParams)());
+    },
     deleteSavedCommandsStartAsync: function deleteSavedCommandsStartAsync(ids, history) {
       return dispatch((0,_redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_6__.deleteSavedCommandsStartAsync)(ids, history));
     }
@@ -578,6 +585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchSavedCommandsFailure": () => (/* binding */ fetchSavedCommandsFailure),
 /* harmony export */   "fetchSavedCommandsStartAsync": () => (/* binding */ fetchSavedCommandsStartAsync),
 /* harmony export */   "setFetchSavedCommandsLazyParams": () => (/* binding */ setFetchSavedCommandsLazyParams),
+/* harmony export */   "resetFetchSavedCommandsLazyParams": () => (/* binding */ resetFetchSavedCommandsLazyParams),
 /* harmony export */   "createSavedCommandStart": () => (/* binding */ createSavedCommandStart),
 /* harmony export */   "createSavedCommandSuccess": () => (/* binding */ createSavedCommandSuccess),
 /* harmony export */   "createSavedCommandFailure": () => (/* binding */ createSavedCommandFailure),
@@ -644,6 +652,11 @@ var setFetchSavedCommandsLazyParams = function setFetchSavedCommandsLazyParams(l
   return {
     type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.SET_FETCH_SAVED_COMMANDS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchSavedCommandsLazyParams = function resetFetchSavedCommandsLazyParams() {
+  return {
+    type: _savedCommand_types__WEBPACK_IMPORTED_MODULE_2__.default.RESET_FETCH_SAVED_COMMANDS_LAZY_PARAMS
   };
 }; // Create
 

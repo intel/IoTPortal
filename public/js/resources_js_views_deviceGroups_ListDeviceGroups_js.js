@@ -235,6 +235,7 @@ var DeviceGroupsDataTable = function DeviceGroupsDataTable(_ref) {
       deleteDeviceGroupsErrorMessage = _ref.deleteDeviceGroupsErrorMessage,
       fetchDeviceGroupsStartAsync = _ref.fetchDeviceGroupsStartAsync,
       setFetchDeviceGroupsLazyParams = _ref.setFetchDeviceGroupsLazyParams,
+      resetFetchDeviceGroupsLazyParams = _ref.resetFetchDeviceGroupsLazyParams,
       deleteDeviceGroupsStartAsync = _ref.deleteDeviceGroupsStartAsync;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
@@ -256,6 +257,9 @@ var DeviceGroupsDataTable = function DeviceGroupsDataTable(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchDeviceGroupsStartAsync(fetchDeviceGroupsLazyParams);
   }, [fetchDeviceGroupsLazyParams]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return resetFetchDeviceGroupsLazyParams;
+  }, []);
 
   var confirmDeleteDeviceGroup = function confirmDeleteDeviceGroup(deviceGroup) {
     setDeviceGroup(deviceGroup);
@@ -449,6 +453,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     setFetchDeviceGroupsLazyParams: function setFetchDeviceGroupsLazyParams(lazyParams) {
       return dispatch((0,_redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_6__.setFetchDeviceGroupsLazyParams)(lazyParams));
     },
+    resetFetchDeviceGroupsLazyParams: function resetFetchDeviceGroupsLazyParams() {
+      return dispatch((0,_redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_6__.resetFetchDeviceGroupsLazyParams)());
+    },
     deleteDeviceGroupsStartAsync: function deleteDeviceGroupsStartAsync(ids, history) {
       return dispatch((0,_redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_6__.deleteDeviceGroupsStartAsync)(ids, history));
     }
@@ -473,6 +480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceGroupsFailure": () => (/* binding */ fetchDeviceGroupsFailure),
 /* harmony export */   "fetchDeviceGroupsStartAsync": () => (/* binding */ fetchDeviceGroupsStartAsync),
 /* harmony export */   "setFetchDeviceGroupsLazyParams": () => (/* binding */ setFetchDeviceGroupsLazyParams),
+/* harmony export */   "resetFetchDeviceGroupsLazyParams": () => (/* binding */ resetFetchDeviceGroupsLazyParams),
 /* harmony export */   "fetchDeviceGroupDevicesStart": () => (/* binding */ fetchDeviceGroupDevicesStart),
 /* harmony export */   "fetchDeviceGroupDevicesSuccess": () => (/* binding */ fetchDeviceGroupDevicesSuccess),
 /* harmony export */   "fetchDeviceGroupDevicesFailure": () => (/* binding */ fetchDeviceGroupDevicesFailure),
@@ -542,6 +550,11 @@ var setFetchDeviceGroupsLazyParams = function setFetchDeviceGroupsLazyParams(laz
   return {
     type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_DEVICE_GROUPS_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceGroupsLazyParams = function resetFetchDeviceGroupsLazyParams() {
+  return {
+    type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS
   };
 }; // Device group devices index
 

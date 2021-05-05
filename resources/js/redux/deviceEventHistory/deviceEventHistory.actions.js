@@ -5,8 +5,9 @@ import { API_ENDPOINT } from '../../data/config';
 
 
 // Index
-export const fetchDeviceEventHistoriesStart = () => ({
+export const fetchDeviceEventHistoriesStart = showIsFetchingIndicator => ({
   type: deviceEventHistoryActionTypes.FETCH_DEVICE_EVENT_HISTORIES_START,
+  payload: showIsFetchingIndicator,
 });
 
 export const fetchDeviceEventHistoriesSuccess = deviceEventHistories => ({
@@ -19,9 +20,9 @@ export const fetchDeviceEventHistoriesFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDeviceEventHistoriesStartAsync = (id, lazyParams) => {
+export const fetchDeviceEventHistoriesStartAsync = (id, lazyParams, showIsFetchingIndicator = true) => {
   return dispatch => {
-    dispatch(fetchDeviceEventHistoriesStart());
+    dispatch(fetchDeviceEventHistoriesStart(showIsFetchingIndicator));
 
     axios.get(`${API_ENDPOINT}/devices/${id}/events/histories`, {params: lazyParams})
       .then(result => {
@@ -36,4 +37,8 @@ export const fetchDeviceEventHistoriesStartAsync = (id, lazyParams) => {
 export const setFetchDeviceEventHistoriesLazyParams = lazyParams => ({
   type: deviceEventHistoryActionTypes.SET_FETCH_DEVICE_EVENT_HISTORIES_LAZY_PARAMS,
   payload: lazyParams,
+});
+
+export const resetFetchDeviceEventHistoriesLazyParams = () => ({
+  type: deviceEventHistoryActionTypes.RESET_FETCH_DEVICE_EVENT_HISTORIES_LAZY_PARAMS
 });

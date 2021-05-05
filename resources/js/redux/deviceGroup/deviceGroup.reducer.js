@@ -68,6 +68,11 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
         ...state,
         fetchDeviceGroupsLazyParams: action.payload,
       };
+    case deviceGroupActionTypes.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchDeviceGroupsLazyParams: INITIAL_STATE.fetchDeviceGroupsLazyParams,
+      };
 
     // Device group devices index
     case deviceGroupActionTypes.FETCH_DEVICE_GROUP_DEVICES_START:

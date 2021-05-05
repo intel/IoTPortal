@@ -110,7 +110,7 @@ const CotaCard = ({
           }}
           validationSchema={validationSchema}
           onSubmit={(values, {setSubmitting}) => {
-            const data = {command: 'cota', payload: getSanitizedValues(values)}
+            const data = {command: 'COTA', payload: getSanitizedValues(values)}
             submitCallback(data);
           }}
         >

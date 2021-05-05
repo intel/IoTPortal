@@ -157,6 +157,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "fetchDeviceCategoriesFailure": () => (/* binding */ fetchDeviceCategoriesFailure),
 /* harmony export */   "fetchDeviceCategoriesStartAsync": () => (/* binding */ fetchDeviceCategoriesStartAsync),
 /* harmony export */   "setFetchDeviceCategoriesLazyParams": () => (/* binding */ setFetchDeviceCategoriesLazyParams),
+/* harmony export */   "resetFetchDeviceCategoriesLazyParams": () => (/* binding */ resetFetchDeviceCategoriesLazyParams),
 /* harmony export */   "createDeviceCategoryStart": () => (/* binding */ createDeviceCategoryStart),
 /* harmony export */   "createDeviceCategorySuccess": () => (/* binding */ createDeviceCategorySuccess),
 /* harmony export */   "createDeviceCategoryFailure": () => (/* binding */ createDeviceCategoryFailure),
@@ -221,6 +222,11 @@ var setFetchDeviceCategoriesLazyParams = function setFetchDeviceCategoriesLazyPa
   return {
     type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.SET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS,
     payload: lazyParams
+  };
+};
+var resetFetchDeviceCategoriesLazyParams = function resetFetchDeviceCategoriesLazyParams() {
+  return {
+    type: _deviceCategory_types__WEBPACK_IMPORTED_MODULE_0__.default.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS
   };
 }; // Create
 

@@ -25,7 +25,7 @@ export const submitRebootStartAsync = (id) => {
 
     const toastId = toastHelper.loading('Rebooting device...');
 
-    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'reboot'})
+    axios.post(`${API_ENDPOINT}/devices/${id}/commands`, {command: 'REBOOT'})
       .then(result => {
         dispatch(submitRebootSuccess());
         toastHelper.success('Rebooted device successfully!', toastId);

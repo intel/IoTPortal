@@ -38,6 +38,10 @@ export const setFetchDeviceCategoriesLazyParams = lazyParams => ({
   payload: lazyParams,
 });
 
+export const resetFetchDeviceCategoriesLazyParams = () => ({
+  type: deviceCategoryActionTypes.RESET_FETCH_DEVICE_CATEGORIES_LAZY_PARAMS,
+});
+
 
 // Create
 export const createDeviceCategoryStart = () => ({

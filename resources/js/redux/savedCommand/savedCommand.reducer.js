@@ -63,6 +63,11 @@ const savedCommandReducer = (state = INITIAL_STATE, action) => {
         ...state,
         fetchSavedCommandsLazyParams: action.payload,
       };
+    case savedCommandActionTypes.RESET_FETCH_SAVED_COMMANDS_LAZY_PARAMS:
+      return {
+        ...state,
+        fetchSavedCommandsLazyParams: INITIAL_STATE.fetchSavedCommandsLazyParams,
+      };
 
     // Create
     case savedCommandActionTypes.CREATE_SAVED_COMMAND_START:

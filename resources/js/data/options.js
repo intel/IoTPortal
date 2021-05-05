@@ -337,9 +337,9 @@ export const COTA_FIELDS_HIDDEN_STATES = {
 };
 
 export const POWER_CONTROLS_COMMAND_OPTIONS = [
-  {value: 'shutdown', label: 'shutdown'},
-  {value: 'reboot', label: 'reboot'},
-  {value: 'decommission', label: 'decommission'},
+  {value: 'SHUTDOWN', label: 'SHUTDOWN'},
+  {value: 'REBOOT', label: 'REBOOT'},
+  {value: 'DECOMMISSION', label: 'DECOMMISSION'},
 ];
 
 

@@ -15,6 +15,7 @@ import {
   deleteDevicesStartAsync,
   fetchDevicesStartAsync,
   setFetchDevicesLazyParams,
+  resetFetchDevicesLazyParams
 } from '../../redux/device/device.actions';
 
 import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
@@ -47,6 +48,7 @@ const DevicesDataTable = ({
                             fetchDeviceStatusOptionsStartAsync,
                             fetchDevicesStartAsync,
                             setFetchDevicesLazyParams,
+                            resetFetchDevicesLazyParams,
                             deleteDevicesStartAsync
                           }) => {
 
@@ -61,10 +63,12 @@ const DevicesDataTable = ({
   const dt = useRef(null);
 
   useEffect(() => {
+    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
     fetchDeviceCategoryOptionsStartAsync();
     fetchDeviceStatusOptionsStartAsync();
-    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
   }, [fetchDevicesLazyParams]);
+
+  useEffect(() => resetFetchDevicesLazyParams, []);
 
   const onShowConnectDeviceModal = (device) => {
     setDevice(device);
@@ -305,6 +309,7 @@ const mapDispatchToProps = dispatch => ({
   fetchDeviceStatusOptionsStartAsync: (name) => dispatch(fetchDeviceStatusOptionsStartAsync(name)),
   fetchDevicesStartAsync: (lazyParams, deviceGroupId) => dispatch(fetchDevicesStartAsync(lazyParams, deviceGroupId)),
   setFetchDevicesLazyParams: (lazyParams) => dispatch(setFetchDevicesLazyParams(lazyParams)),
+  resetFetchDevicesLazyParams: () => dispatch(resetFetchDevicesLazyParams()),
   deleteDevicesStartAsync: (ids, history) => dispatch(deleteDevicesStartAsync(ids, history)),
 });
 
