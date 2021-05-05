@@ -665,7 +665,6 @@ var CreateDeviceCategory = function CreateDeviceCategory(_ref) {
       createDeviceCategoryErrorMessage = _ref.createDeviceCategoryErrorMessage,
       createDeviceCategoryStartAsync = _ref.createDeviceCategoryStartAsync;
   var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {}, []);
 
   var handleSubmit = function handleSubmit() {
     if (formRef.current) {

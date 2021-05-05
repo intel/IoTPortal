@@ -21,10 +21,6 @@ const CreateDeviceCategory = ({
 
   const formRef = useRef();
 
-  useEffect(() => {
-
-  }, []);
-
   const handleSubmit = () => {
     if (formRef.current) {
       formRef.current.handleSubmit();
