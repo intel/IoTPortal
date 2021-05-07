@@ -2137,6 +2137,9 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
       field = _useField2[0],
       meta = _useField2[1];
 
+  var onChange = field.onChange,
+      fieldRest = _objectWithoutProperties(field, ["onChange"]);
+
   var defaultStyle = {
     control: function control(base) {
       return _objectSpread(_objectSpread({}, base), {}, {
@@ -2199,7 +2202,7 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
       htmlFor: props.id || props.name,
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
       theme: function theme(_theme) {
         return _objectSpread(_objectSpread({}, _theme), {}, {
           colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
@@ -2213,14 +2216,12 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     }, meta.touched && meta.error && {
       className: 'is-invalid',
       styles: errorStyle
-    }), {}, {
-      id: props.id || props.name,
-      name: field.name,
-      options: props.options,
-      value: value,
-      onBlur: updateBlur,
+    }), fieldRest), props), {}, {
+      // options={props.options}
+      // value={value}
+      // onBlur={updateBlur}
       onChange: handleOptionChange
-    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: typeof meta.error === 'string' ? meta.error : meta.error.label
     }) : null]
   });
@@ -2882,7 +2883,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceGroupNameUnique": () => (/* binding */ isDeviceGroupNameUnique),
-/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique)
+/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
+/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -3071,6 +3073,17 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
+      name: name
+    }).then(function (result) {
+      if (result.data.success) resolve(true);else resolve(false);
+    })["catch"](function (error) {
+      resolve(false);
+    });
+  });
+};
+var isJobNameUnique = function isJobNameUnique(name) {
+  return new Promise(function (resolve, reject) {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);

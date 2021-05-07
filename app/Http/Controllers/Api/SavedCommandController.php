@@ -91,11 +91,15 @@ class SavedCommandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param SavedCommand $savedCommand
+     * @param $id
      * @return JsonResponse
      */
-    public function show(SavedCommand $savedCommand)
+    public function show($id)
     {
+        $savedCommand = SavedCommand::where('id', $id)
+            ->orWhere('unique_id', $id)
+            ->first();
+
         return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
     }
 
@@ -148,5 +152,39 @@ class SavedCommandController extends Controller
         $success = $user->savedCommands()->whereIn('saved_commands.id', $request->input('ids'))->delete();
 
         return Helper::apiResponseHttpOk([], $success);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function options(Request $request)
+    {
+        $query = Auth::user()->savedCommands()->select(['id as value', 'name as label']);
+
+        if ($request->has('name')) {
+            $query->where('name', 'like', "%{$request->input('name')}%");
+        }
+
+        return Helper::apiResponseHttpOk(['savedCommands' => $query->get()]);
+    }
+
+    /**
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function validateField(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            //            TODO unique validation based on user
+            'name' => 'required|string|max:255|unique:saved_commands,name',
+        ]);
+
+        if ($validator->fails()) {
+            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
+        }
+
+        return Helper::apiResponseHttpOk();
     }
 }

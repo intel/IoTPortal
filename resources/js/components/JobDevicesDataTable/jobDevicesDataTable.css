@@ -1,0 +1,125 @@
+@keyframes pulse {
+    0% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+    50% {
+        background-color: rgba(165, 165, 165, 0.3)
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+}
+
+.datatable-job-devices *:not(.table-header) {
+    font-size: 14px;
+}
+
+.datatable-job-devices .p-paginator .p-paginator-current {
+    margin-left: auto;
+}
+
+.datatable-job-devices .p-progressbar {
+    height: .5rem;
+    background-color: #D8DADC;
+}
+
+.datatable-job-devices .p-progressbar .p-progressbar-value {
+    background-color: #607D8B;
+}
+
+.datatable-job-devices .table-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datatable-job-devices .p-datepicker {
+    min-width: 25rem;
+}
+
+.datatable-job-devices .p-datepicker td {
+    font-weight: 400;
+}
+
+.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.datatable-job-devices .p-datatable.p-datatable-job-devices .p-paginator {
+    padding: 1rem;
+}
+
+.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-thead > tr > th {
+    text-align: left;
+}
+
+.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td:not([colspan]) {
+    cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.datatable-job-devices .p-datatable.p-datatable-job-devices .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+}
+
+.datatable-job-devices .p-datatable-job-devices .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-thead > tr > th,
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tfoot > tr > td {
+        display: none !important;
+    }
+
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr {
+        border-bottom: 1px solid var(--layer-2);
+    }
+
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        border: 0 none !important;
+        width: 100% !important;
+        float: left;
+        clear: left;
+    }
+
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td .p-column-title {
+        padding: .4rem;
+        min-width: 30%;
+        display: inline-block;
+        margin: -.4rem 1rem -.4rem -.4rem;
+        font-weight: bold;
+    }
+
+    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td .p-progressbar {
+        margin-top: .5rem;
+    }
+}
+
+.p-column-filter {
+    width: 100%;
+}
+
+.device-badge {
+    border-radius: 2px;
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+.device-badge.status-registered {
+    background-color: #C8E6C9;
+    color: #256029;
+}
+
+.device-badge.status-provisioned {
+    background-color: #FFD8B2;
+    color: #805B36;
+}

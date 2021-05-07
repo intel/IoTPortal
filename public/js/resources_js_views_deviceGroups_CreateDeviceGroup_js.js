@@ -2053,7 +2053,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceGroupNameUnique": () => (/* binding */ isDeviceGroupNameUnique),
-/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique)
+/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
+/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -2250,6 +2251,17 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
+var isJobNameUnique = function isJobNameUnique(name) {
+  return new Promise(function (resolve, reject) {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
+      name: name
+    }).then(function (result) {
+      if (result.data.success) resolve(true);else resolve(false);
+    })["catch"](function (error) {
+      resolve(false);
+    });
+  });
+};
 
 /***/ }),
 
@@ -2329,7 +2341,6 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
     return x + 1;
   }, 0),
       _useReducer2 = _slicedToArray(_useReducer, 2),
-      ignored = _useReducer2[0],
       forceUpdate = _useReducer2[1];
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
@@ -2363,12 +2374,12 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               if (!formRef.current) {
-                _context.next = 7;
+                _context.next = 8;
                 break;
               }
 
               if (formRef.current.touched.name) {
-                _context.next = 6;
+                _context.next = 5;
                 break;
               }
 
@@ -2376,15 +2387,18 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
               return formRef.current.setFieldTouched('name', true);
 
             case 4:
-              _context.next = 7;
-              break;
+              return _context.abrupt("return");
 
-            case 6:
-              if (!formRef.current.errors.name) {
+            case 5:
+              _context.next = 7;
+              return formRef.current.validateForm();
+
+            case 7:
+              if (formRef.current.isValid) {
                 setActiveIndex(activeIndex + 1);
               }
 
-            case 7:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -2426,6 +2440,7 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
               return formRef.current.resetForm();
 
             case 3:
+              // Force React to rerender the component so that the device group name in card header would be updated
               forceUpdate();
 
             case 4:
@@ -2455,12 +2470,12 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
               setSubmitting = _ref5.setSubmitting;
 
               if (!formRef.current) {
-                _context3.next = 8;
+                _context3.next = 9;
                 break;
               }
 
               if (formRef.current.touched.name) {
-                _context3.next = 7;
+                _context3.next = 6;
                 break;
               }
 
@@ -2468,17 +2483,20 @@ var CreateDeviceGroup = function CreateDeviceGroup(_ref) {
               return formRef.current.setFieldTouched('name', true);
 
             case 5:
-              _context3.next = 8;
-              break;
+              return _context3.abrupt("return");
 
-            case 7:
-              if (formRef.current.touched.name && !formRef.current.errors.name && activeIndex === 0) {
+            case 6:
+              _context3.next = 8;
+              return formRef.current.validateForm();
+
+            case 8:
+              if (formRef.current.isValid && activeIndex === 0) {
                 setActiveIndex(activeIndex + 1);
-              } else if (formRef.current.touched.name && !formRef.current.errors.name && selectedDevices !== null && selectedDevices !== void 0 && selectedDevices.length && selectedDevices.length > 0) {
+              } else if (formRef.current.isValid && activeIndex === 2 && selectedDevices !== null && selectedDevices !== void 0 && selectedDevices.length && selectedDevices.length > 0) {
                 createDeviceGroupStartAsync((0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.getSanitizedValues)(values), history);
               }
 
-            case 8:
+            case 9:
             case "end":
               return _context3.stop();
           }

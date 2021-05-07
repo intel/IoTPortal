@@ -9,7 +9,6 @@ use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +27,8 @@ class DeviceController extends Controller
     {
         $query = Auth::user()->devices()->with('category:id,name', 'status:id,name');
 
-        if ($request->has('deviceGroupId')) $query->deviceGroupUniqueId($request->input('deviceGroupId'));
+        if ($request->has('deviceGroupId')) $query->deviceGroupId($request->input('deviceGroupId'));
+        if ($request->has('deviceGroupUniqueId')) $query->deviceGroupUniqueId($request->input('deviceGroupUniqueId'));
 
         if ($request->has('filters')) {
             $filters = json_decode($request->input('filters'));
@@ -105,12 +105,16 @@ class DeviceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Device $device
+     * @param $id
      * @return JsonResponse
      */
-    public function show(Device $device)
+    public function show($id)
     {
-        return Helper::apiResponseHttpOk(['device' => $device->load('category:id,name', 'status:id,name')]);
+        $device = Device::where('id', $id)
+            ->orWhere('unique_id', $id)
+            ->with('category:id,name', 'status:id,name')->first();
+
+        return Helper::apiResponseHttpOk(['device' => $device]);
     }
 
     /**
@@ -146,17 +150,6 @@ class DeviceController extends Controller
         }
 
         return Helper::apiResponseHttpInternalServerError('Failed to update device');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Device $device
-     * @return JsonResponse
-     */
-    public function destroy(Device $device)
-    {
-        //
     }
 
     /**

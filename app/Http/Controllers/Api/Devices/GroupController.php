@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Devices;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\Device;
 use App\Models\Group;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -88,11 +89,15 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Group $group
+     * @param $id
      * @return JsonResponse
      */
-    public function show(Group $group)
+    public function show($id)
     {
+        $group = Group::where('id', $id)
+            ->orWhere('unique_id', $id)
+            ->first();
+
         return Helper::apiResponseHttpOk(['deviceGroup' => $group]);
     }
 
@@ -129,16 +134,6 @@ class GroupController extends Controller
             return Helper::apiResponseHttpOk(['deviceGroup' => $group]);
         }
         return Helper::apiResponseHttpInternalServerError('Failed to update device group');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Group $group
-     * @return JsonResponse
-     */
-    public function destroy(Group $group)
-    {
     }
 
     /**

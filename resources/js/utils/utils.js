@@ -192,3 +192,16 @@ export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject
     });
 });
 
+export const isJobNameUnique = (name) => new Promise((resolve, reject) => {
+  axios.post(`${API_ENDPOINT}/jobs/validateField`, {name: name})
+    .then(result => {
+      if (result.data.success)
+        resolve(true);
+      else
+        resolve(false);
+    })
+    .catch(error => {
+      resolve(false);
+    });
+});
+

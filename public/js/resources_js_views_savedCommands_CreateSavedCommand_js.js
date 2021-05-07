@@ -2758,6 +2758,9 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
       field = _useField2[0],
       meta = _useField2[1];
 
+  var onChange = field.onChange,
+      fieldRest = _objectWithoutProperties(field, ["onChange"]);
+
   var defaultStyle = {
     control: function control(base) {
       return _objectSpread(_objectSpread({}, base), {}, {
@@ -2820,7 +2823,7 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
       htmlFor: props.id || props.name,
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
       theme: function theme(_theme) {
         return _objectSpread(_objectSpread({}, _theme), {}, {
           colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
@@ -2834,14 +2837,12 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     }, meta.touched && meta.error && {
       className: 'is-invalid',
       styles: errorStyle
-    }), {}, {
-      id: props.id || props.name,
-      name: field.name,
-      options: props.options,
-      value: value,
-      onBlur: updateBlur,
+    }), fieldRest), props), {}, {
+      // options={props.options}
+      // value={value}
+      // onBlur={updateBlur}
       onChange: handleOptionChange
-    }, props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: typeof meta.error === 'string' ? meta.error : meta.error.label
     }) : null]
   });
@@ -2945,7 +2946,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_json_view__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var primereact_skeleton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/skeleton */ "./node_modules/primereact/skeleton.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -2957,24 +2960,27 @@ __webpack_require__.r(__webpack_exports__);
 var PayloadViewer = function PayloadViewer(_ref) {
   var label = _ref.label,
       payload = _ref.payload,
-      isLabelHidden = _ref.isLabelHidden;
+      isLabelHidden = _ref.isLabelHidden,
+      isLoading = _ref.isLoading;
 
   var textView = function textView(text) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
         children: text
       })
     });
   };
 
   var renderJSONView = function renderJSONView() {
-    if ((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.isValidJSONObject)(payload)) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
+    if (isLoading) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_4__.Skeleton, {});
+    } else if ((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.isValidJSONObject)(payload)) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
         src: payload,
         name: null
       });
     } else if ((0,_utils_utils__WEBPACK_IMPORTED_MODULE_3__.isValidJsonString)(payload)) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((react_json_view__WEBPACK_IMPORTED_MODULE_1___default()), {
         src: JSON.parse(payload),
         name: null
       });
@@ -2985,8 +2991,8 @@ var PayloadViewer = function PayloadViewer(_ref) {
     return textView('Empty payload');
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [!isLabelHidden && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [!isLabelHidden && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
       children: label || 'Command payload'
     }), renderJSONView()]
   });
@@ -4415,7 +4421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
 
 
- // https://github.com/formium/formik/issues/445#issuecomment-677592750
+ // See path field isTocuhed to true using this patch so that errors would show up
+// @see https://github.com/formium/formik/issues/445#issuecomment-677592750
 
 var FormikPatchTouched = function FormikPatchTouched() {
   var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_2__.useFormikContext)(),
@@ -4463,7 +4470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceGroupNameUnique": () => (/* binding */ isDeviceGroupNameUnique),
-/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique)
+/* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
+/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -4652,6 +4660,17 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
+      name: name
+    }).then(function (result) {
+      if (result.data.success) resolve(true);else resolve(false);
+    })["catch"](function (error) {
+      resolve(false);
+    });
+  });
+};
+var isJobNameUnique = function isJobNameUnique(name) {
+  return new Promise(function (resolve, reject) {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);

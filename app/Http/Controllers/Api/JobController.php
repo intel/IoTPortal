@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\Devices;
+namespace App\Http\Controllers\Api;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Device;
+use App\Models\SavedCommand;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,9 +13,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class CategoryController extends Controller
+class JobController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Auth::user()->deviceCategories()->select(['id', 'unique_id', 'name']);
+        $query = Auth::user()->savedCommands();
 
         if ($request->has('filters')) {
             $filters = json_decode($request->input('filters'));
@@ -33,10 +31,12 @@ class CategoryController extends Controller
             foreach ($filters as $key => $value) {
                 if ($key === 'unique_id') $query->uniqueIdLike($value->value);
                 if ($key === 'name') $query->nameLike($value->value);
+                if ($key === 'command_name') $query->commandNameLike($value->value);
                 if ($key === 'globalFilter') {
                     $query->where(function ($query) use ($value) {
                         $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value);
+                            ->orWhere->nameLike($value->value)
+                            ->orWhere->commandNameLike($value->value);
                     });
                 }
             }
@@ -52,9 +52,9 @@ class CategoryController extends Controller
         $maxRows = Config::get('constants.index_max_rows');
         $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
 
-        $deviceCategories = $query->paginate($rows);
+        $savedCommands = $query->paginate($rows);
 
-        return Helper::apiResponseHttpOk(['deviceCategories' => $deviceCategories]);
+        return Helper::apiResponseHttpOk(['savedCommands' => $savedCommands]);
     }
 
     /**
@@ -66,71 +66,60 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-//            TODO unique validation based on user
-            'name' => 'required|string|max:255|unique:categories,name',
+            'name' => 'required|string|max:255|unique:saved_commands,name',
+            'command' => 'required|string|max:255',
+            'payload' => 'nullable'
         ]);
 
         if ($validator->fails()) {
             return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
-        $deviceCategory = Auth::user()->deviceCategories()->create([
+        $savedCommand = Auth::user()->savedCommands()->create([
             'name' => $request->input('name'),
+            'command_name' => $request->input('command'),
+            'payload' => is_null($request->input('payload')) ? null : json_encode($request->input('payload')),
         ]);
 
-        if ($deviceCategory->exists) {
-            return Helper::apiResponseHttpOk(['deviceCategory' => $deviceCategory]);
+        if ($savedCommand->exists) {
+            return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
         }
 
-        return Helper::apiResponseHttpInternalServerError('Failed to create device category');
+        return Helper::apiResponseHttpInternalServerError('Failed to create saved command');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param SavedCommand $savedCommand
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(SavedCommand $savedCommand)
     {
-        $category = Category::where('id', $id)
-            ->orWhere('unique_id', $id)
-            ->first();
-
-        return Helper::apiResponseHttpOk(['deviceCategory' => $category]);
+        return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Category $category
-     * @return JsonResponse
+     * @param SavedCommand $savedCommand
+     * @return Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, SavedCommand $savedCommand)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('categories', 'name')->ignore($category->id),
-            ],
-        ]);
+        //
+    }
 
-        if ($validator->fails()) {
-            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
-        }
-
-        $success = $category->update([
-            'name' => $request->input('name'),
-        ]);
-
-        if ($success) {
-            return Helper::apiResponseHttpOk(['deviceCategory' => $category]);
-        }
-
-        return Helper::apiResponseHttpInternalServerError('Failed to update device category');
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param SavedCommand $savedCommand
+     * @return Response
+     */
+    public function destroy(SavedCommand $savedCommand)
+    {
+        //
     }
 
     /**
@@ -141,15 +130,22 @@ class CategoryController extends Controller
      */
     public function destroySelected(Request $request)
     {
+        $user = Auth::user();
+
         $validator = Validator::make($request->all(), [
-            'ids.*' => 'required|exists:categories,id',
+            'ids.*' => [
+                'required',
+                Rule::exists('saved_commands', 'id')->where(function ($query) use ($user) {
+                    return $query->where('user_id', $user->id);
+                }),
+            ],
         ]);
 
         if ($validator->fails()) {
             return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
         }
 
-        $success = Auth::user()->deviceCategories()->whereIn('categories.id', $request->input('ids'))->delete();
+        $success = $user->savedCommands()->whereIn('saved_commands.id', $request->input('ids'))->delete();
 
         return Helper::apiResponseHttpOk([], $success);
     }
@@ -160,13 +156,13 @@ class CategoryController extends Controller
      */
     public function options(Request $request)
     {
-        $query = Auth::user()->deviceCategories()->select(['id as value', 'name as label']);
+        $query = Auth::user()->savedCommands()->select(['id as value', 'name as label']);
 
         if ($request->has('name')) {
             $query->where('name', 'like', "%{$request->input('name')}%");
         }
 
-        return Helper::apiResponseHttpOk(['deviceCategories' => $query->get()]);
+        return Helper::apiResponseHttpOk(['savedCommands' => $query->get()]);
     }
 
     /**
@@ -178,7 +174,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             //            TODO unique validation based on user
-            'name' => 'required|string|max:255|unique:categories,name',
+            'name' => 'required|string|max:255|unique:jobs,name',
         ]);
 
         if ($validator->fails()) {

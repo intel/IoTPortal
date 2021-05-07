@@ -25,7 +25,7 @@ const CreateDeviceGroup = ({
                              createDeviceGroupStartAsync
                            }) => {
 
-  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+  const [, forceUpdate] = useReducer(x => x + 1, 0);
   const [showNoDeviceSelectedModal, setShowNoDeviceSelectedModal] = useState(false);
   const [selectedDevices, setSelectedDevices] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,7 +41,12 @@ const CreateDeviceGroup = ({
     if (formRef.current) {
       if (!formRef.current.touched.name) {
         await formRef.current.setFieldTouched('name', true);
-      } else if (!formRef.current.errors.name) {
+        return;
+      }
+
+      await formRef.current.validateForm();
+
+      if (formRef.current.isValid) {
         setActiveIndex(activeIndex + 1);
       }
     }
@@ -63,7 +68,10 @@ const CreateDeviceGroup = ({
 
   const handleReset = async () => {
     if (formRef.current) {
+      // Because resetForm() is async, we would need to wait for it before triggering rerender
       await formRef.current.resetForm();
+
+      // Force React to rerender the component so that the device group name in card header would be updated
       forceUpdate();
     }
     setSelectedDevices(null);
@@ -74,9 +82,14 @@ const CreateDeviceGroup = ({
     if (formRef.current) {
       if (!formRef.current.touched.name) {
         await formRef.current.setFieldTouched('name', true);
-      } else if (formRef.current.touched.name && !formRef.current.errors.name && activeIndex === 0) {
+        return;
+      }
+
+      await formRef.current.validateForm();
+
+      if (formRef.current.isValid && activeIndex === 0) {
         setActiveIndex(activeIndex + 1);
-      } else if (formRef.current.touched.name && !formRef.current.errors.name && selectedDevices?.length && selectedDevices.length > 0) {
+      } else if (formRef.current.isValid && activeIndex === 2 && selectedDevices?.length && selectedDevices.length > 0) {
         createDeviceGroupStartAsync(getSanitizedValues(values), history);
       }
     }

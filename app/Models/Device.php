@@ -224,6 +224,13 @@ class Device extends Model
         return $query->where('status_id', $id);
     }
 
+    public function scopeDeviceGroupId($query, $id)
+    {
+        return $query->whereHas('groups', function (Builder $query) use ($id) {
+            $query->where('groups.id', $id);
+        });
+    }
+
     public function scopeDeviceGroupUniqueId($query, $id)
     {
         return $query->whereHas('groups', function (Builder $query) use ($id) {

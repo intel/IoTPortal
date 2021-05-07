@@ -4,8 +4,9 @@ import ReactJson from 'react-json-view';
 import { CLabel } from '@coreui/react';
 
 import { isValidJSONObject, isValidJsonString } from '../../utils/utils';
+import { Skeleton } from 'primereact/skeleton';
 
-const PayloadViewer = ({label, payload, isLabelHidden}) => {
+const PayloadViewer = ({label, payload, isLabelHidden, isLoading}) => {
 
   const textView = (text) => (
     <div>
@@ -14,7 +15,9 @@ const PayloadViewer = ({label, payload, isLabelHidden}) => {
   );
 
   const renderJSONView = () => {
-    if (isValidJSONObject(payload)) {
+    if (isLoading) {
+      return (<Skeleton/>);
+    } else if (isValidJSONObject(payload)) {
       return (<ReactJson src={payload} name={null}/>);
     } else if (isValidJsonString(payload)) {
       return (<ReactJson src={JSON.parse(payload)} name={null}/>);

@@ -43,7 +43,9 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     // Devices
     Route::post('/devices/validateField', 'App\Http\Controllers\Api\Devices\DeviceController@validateField');
 
-    Route::delete('/devices', 'App\Http\Controllers\Api\Devices\DeviceController@destroySelected')->name('api.devices.destroySelected');
+    Route::delete('/devices', 'App\Http\Controllers\Api\Devices\DeviceController@destroySelected');
+
+    Route::get('/devices/{id}', 'App\Http\Controllers\Api\Devices\DeviceController@show');
 
     Route::apiResource('/devices', 'App\Http\Controllers\Api\Devices\DeviceController');
 
@@ -53,7 +55,9 @@ Route::middleware(['json.response', 'auth'])->group(function () {
 
     Route::post('/device/groups/validateField', 'App\Http\Controllers\Api\Devices\GroupController@validateField');
 
-    Route::delete('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController@destroySelected')->name('api.device.groups.destroySelected');
+    Route::delete('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController@destroySelected');
+
+    Route::get('/device/groups/{id}', 'App\Http\Controllers\Api\Devices\GroupController@show');
 
     Route::apiResource('/device/groups', 'App\Http\Controllers\Api\Devices\GroupController');
 
@@ -63,15 +67,33 @@ Route::middleware(['json.response', 'auth'])->group(function () {
 
     Route::post('/device/categories/validateField', 'App\Http\Controllers\Api\Devices\CategoryController@validateField');
 
-    Route::delete('/device/categories', 'App\Http\Controllers\Api\Devices\CategoryController@destroySelected')->name('api.device.categories.destroySelected');
+    Route::delete('/device/categories', 'App\Http\Controllers\Api\Devices\CategoryController@destroySelected');
+
+    Route::get('/device/categories/{id}', 'App\Http\Controllers\Api\Devices\CategoryController@show');
 
     Route::apiResource('/device/categories', 'App\Http\Controllers\Api\Devices\CategoryController');
 
 
+    // Jobs
+    Route::get('/jobs/options', 'App\Http\Controllers\Api\JobController@options');
+
+    Route::post('/jobs/validateField', 'App\Http\Controllers\Api\JobController@validateField');
+
+    Route::delete('/jobs', 'App\Http\Controllers\Api\JobController@destroySelected');
+
+    Route::get('/jobs/{id}', 'App\Http\Controllers\Api\JobController@show');
+
+    Route::apiResource('/jobs', 'App\Http\Controllers\Api\JobController');
+
+
     // Saved Commands
+    Route::get('/commands/saved/options', 'App\Http\Controllers\Api\SavedCommandController@options');
+
     Route::delete('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController@destroySelected');
 
-    Route::apiResource('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController')->parameters(['saved' => 'savedCommand']);;
+    Route::get('/commands/saved/{id}', 'App\Http\Controllers\Api\SavedCommandController@show');
+
+    Route::apiResource('/commands/saved', 'App\Http\Controllers\Api\SavedCommandController')->parameters(['saved' => 'savedCommand']);
 
 
     // API Tokens

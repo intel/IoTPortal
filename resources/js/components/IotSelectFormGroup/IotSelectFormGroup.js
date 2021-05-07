@@ -5,8 +5,11 @@ import Select from 'react-select';
 import { CFormGroup, CInvalidFeedback, CLabel } from '@coreui/react';
 
 const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, ...props}) => {
+
   const {setFieldValue, setFieldTouched} = useFormikContext();
   const [field, meta] = useField(props);
+
+  const {onChange, ...fieldRest} = field;
 
   const defaultStyle = {
     control: base => ({
@@ -77,13 +80,14 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, ...props}) =
         })}
         styles={defaultStyle}
         {...(meta.touched && meta.error && {className: 'is-invalid', styles: errorStyle})}
-        id={props.id || props.name}
-        name={field.name}
-        options={props.options}
-        value={value}
-        onBlur={updateBlur}
-        onChange={handleOptionChange}
+        // id={props.id || props.name}
+        // name={field.name}
+        {...fieldRest}
         {...props}
+        // options={props.options}
+        // value={value}
+        // onBlur={updateBlur}
+        onChange={handleOptionChange}
       />
       {meta.touched && meta.error ? (
         <CInvalidFeedback>{typeof meta.error === 'string' ? meta.error : meta.error.label}</CInvalidFeedback>
