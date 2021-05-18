@@ -5,11 +5,10 @@ import { submitFotaStartAsync } from '../../redux/fota/fota.actions';
 
 import FotaCard from '../../components/FotaCard/FotaCard';
 
-const SubmitFotaCardForm = ({deviceId, isSubmittingFota, submitFotaStartAsync}) => {
+const SubmitFotaCardForm = ({deviceUniqueId, isSubmittingFota, submitFotaStartAsync}) => {
   return (
-    <FotaCard submitCallback={(data) => submitFotaStartAsync(deviceId, data)} isPrimaryLoading={isSubmittingFota}
-              isSecondaryLoading={isSubmittingFota} isPrimaryDisabled={isSubmittingFota}
-              isSecondaryDisabled={isSubmittingFota}/>
+    <FotaCard submitCallback={(data) => submitFotaStartAsync(deviceUniqueId, data)} isPrimaryLoading={isSubmittingFota}
+              isPrimaryDisabled={isSubmittingFota} isSecondaryDisabled={isSubmittingFota}/>
   );
 };
 
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToPros = dispatch => ({
-  submitFotaStartAsync: (id, data) => dispatch(submitFotaStartAsync(id, data)),
+  submitFotaStartAsync: (deviceUniqueId, data) => dispatch(submitFotaStartAsync(deviceUniqueId, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToPros)(SubmitFotaCardForm);

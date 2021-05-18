@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\DeviceCategory;
 use App\Models\CommandHistory;
 use App\Models\CpuStatistic;
 use App\Models\Device;
 use App\Models\DiskStatistic;
 use App\Models\EventHistory;
 use App\Models\MemoryStatistic;
-use App\Models\Status;
+use App\Models\DeviceStatus;
 use App\Models\TemperatureStatistic;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
     {
         $deviceStatuses = array();
 
-        $deviceStatuses[] = Status::create([
+        $deviceStatuses[] = DeviceStatus::create([
             'name' => 'REGISTERED',
         ]);
 
-        $deviceStatuses[] = Status::create([
+        $deviceStatuses[] = DeviceStatus::create([
             'name' => 'PROVISIONED',
         ]);
 

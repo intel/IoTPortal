@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Toaster } from 'react-hot-toast';
 
+import { Toaster } from 'react-hot-toast';
 import {
   CBadge,
   CButton,
@@ -44,7 +44,7 @@ import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDevic
 
 const ViewDevice = (props) => {
 
-  const deviceId = props.match.params.id;
+  const deviceUniqueId = props.match.params.id;
   const {
     device,
     isFetchingDevice,
@@ -65,22 +65,22 @@ const ViewDevice = (props) => {
   const [showDecommissionModal, setShowDecommissionModal] = useState(false);
 
   useEffect(() => {
-    fetchDeviceStartAsync(deviceId);
+    fetchDeviceStartAsync(deviceUniqueId);
   }, [])
 
   const confirmShutdown = () => {
     setShowShutdownModal(!showShutdownModal);
-    submitShutdownStartAsync(deviceId);
+    submitShutdownStartAsync(deviceUniqueId);
   }
 
   const confirmReboot = () => {
     setShowRebootModal(!showRebootModal);
-    submitRebootStartAsync(deviceId);
+    submitRebootStartAsync(deviceUniqueId);
   }
 
   const confirmDecommission = () => {
     setShowDecommissionModal(!showDecommissionModal);
-    submitDecommissionStartAsync(deviceId);
+    submitDecommissionStartAsync(deviceUniqueId);
   }
 
   if (isFetchingDevice) {
@@ -103,11 +103,11 @@ const ViewDevice = (props) => {
                     </div>
                     <div className="flex-grow-1 overflow-hidden my-auto">
                       <EditableText style={{minHeight: '48px'}} tag="h2" value={device.name} maxLength="255"
-                                    updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
+                                    updateFunction={(value) => updateDeviceStartAsync(deviceUniqueId, {name: value})}/>
                       <small>ID: {device.unique_id}</small><br/>
                       <div className="mt-2">
-                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name}</CBadge>
-                        <CBadge color="primary" className="font-lg">{device.category.name}</CBadge>
+                        <CBadge color="secondary" className="font-lg mr-2">{device.device_status.name}</CBadge>
+                        <CBadge color="primary" className="font-lg">{device.device_category.name}</CBadge>
                       </div>
                     </div>
                   </div>
@@ -181,25 +181,25 @@ const ViewDevice = (props) => {
                     <DevicePropertyCard device={device}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="metrics">
-                    <MetricsCard deviceId={deviceId}/>
+                    <MetricsCard deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="aota">
-                    <SubmitAotaCardForm deviceId={deviceId}/>
+                    <SubmitAotaCardForm deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="fota">
-                    <SubmitFotaCardForm deviceId={deviceId}/>
+                    <SubmitFotaCardForm deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="sota">
-                    <SubmitSotaCardForm deviceId={deviceId}/>
+                    <SubmitSotaCardForm deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="cota">
-                    <SubmitCotaCardForm deviceId={deviceId}/>
+                    <SubmitCotaCardForm deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="command-histories">
-                    <CommandHistoriesDataTable deviceId={deviceId}/>
+                    <CommandHistoriesDataTable deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="event-histories">
-                    <EventHistoriesDataTable deviceId={deviceId}/>
+                    <EventHistoriesDataTable deviceUniqueId={deviceUniqueId}/>
                   </CTabPane>
                 </CTabContent>
               </CTabs>
@@ -235,11 +235,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceStartAsync: (id) => dispatch(fetchDeviceStartAsync(id)),
-  updateDeviceStartAsync: (id, params) => dispatch(updateDeviceStartAsync(id, params)),
-  submitShutdownStartAsync: (id) => dispatch(submitShutdownStartAsync(id)),
-  submitRebootStartAsync: (id) => dispatch(submitRebootStartAsync(id)),
-  submitDecommissionStartAsync: (id) => dispatch(submitDecommissionStartAsync(id)),
+  fetchDeviceStartAsync: (deviceUniqueId) => dispatch(fetchDeviceStartAsync(deviceUniqueId)),
+  updateDeviceStartAsync: (deviceUniqueId, params) => dispatch(updateDeviceStartAsync(deviceUniqueId, params)),
+  submitShutdownStartAsync: (deviceUniqueId) => dispatch(submitShutdownStartAsync(deviceUniqueId)),
+  submitRebootStartAsync: (deviceUniqueId) => dispatch(submitRebootStartAsync(deviceUniqueId)),
+  submitDecommissionStartAsync: (deviceUniqueId) => dispatch(submitDecommissionStartAsync(deviceUniqueId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewDevice);

@@ -16,13 +16,14 @@ class CreateCommandHistoriesTable extends Migration
         Schema::create('command_histories', function (Blueprint $table) {
             $table->id();
             $table->json('payload')->nullable();
+            $table->string('error')->nullable();
             $table->timestamp('responded_at')->nullable();
             $table->unsignedBigInteger('command_id');
-            $table->unsignedBigInteger('job_id')->nullable();
+            $table->unsignedBigInteger('device_job_id')->nullable();
             $table->timestamps();
 
             $table->foreign('command_id')->references('id')->on('commands')->onDelete('cascade');
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->foreign('device_job_id')->references('id')->on('device_jobs')->onDelete('cascade');
         });
     }
 

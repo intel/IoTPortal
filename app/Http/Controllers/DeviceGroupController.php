@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DeviceGroup;
+use App\Models\DeviceDeviceGroup;
 use Illuminate\Http\Request;
 
 class DeviceGroupController extends Controller
@@ -41,10 +41,10 @@ class DeviceGroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DeviceGroup  $deviceGroup
+     * @param  \App\Models\DeviceDeviceGroup  $deviceGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(DeviceGroup $deviceGroup)
+    public function show(DeviceDeviceGroup $deviceGroup)
     {
         //
     }
@@ -52,10 +52,10 @@ class DeviceGroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DeviceGroup  $deviceGroup
+     * @param  \App\Models\DeviceDeviceGroup  $deviceGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(DeviceGroup $deviceGroup)
+    public function edit(DeviceDeviceGroup $deviceGroup)
     {
         //
     }
@@ -64,10 +64,10 @@ class DeviceGroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DeviceGroup  $deviceGroup
+     * @param  \App\Models\DeviceDeviceGroup  $deviceGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DeviceGroup $deviceGroup)
+    public function update(Request $request, DeviceDeviceGroup $deviceGroup)
     {
         //
     }
@@ -75,10 +75,10 @@ class DeviceGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DeviceGroup  $deviceGroup
+     * @param  \App\Models\DeviceDeviceGroup  $deviceGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DeviceGroup $deviceGroup)
+    public function destroy(DeviceDeviceGroup $deviceGroup)
     {
         //
     }

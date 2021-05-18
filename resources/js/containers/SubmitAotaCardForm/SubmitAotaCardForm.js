@@ -5,12 +5,10 @@ import { submitAotaStartAsync } from '../../redux/aota/aota.actions';
 
 import AotaCard from '../../components/AotaCard/AotaCard';
 
-
-const SubmitAotaCardForm = ({deviceId, isSubmittingAota, submitAotaStartAsync}) => {
+const SubmitAotaCardForm = ({deviceUniqueId, isSubmittingAota, submitAotaStartAsync}) => {
   return (
-    <AotaCard submitCallback={(data) => submitAotaStartAsync(deviceId, data)} isPrimaryLoading={isSubmittingAota}
-              isSecondaryLoading={isSubmittingAota} isPrimaryDisabled={isSubmittingAota}
-              isSecondaryDisabled={isSubmittingAota}/>
+    <AotaCard submitCallback={(data) => submitAotaStartAsync(deviceUniqueId, data)} isPrimaryLoading={isSubmittingAota}
+              isPrimaryDisabled={isSubmittingAota} isSecondaryDisabled={isSubmittingAota}/>
   );
 };
 
@@ -19,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitAotaStartAsync: (id, data) => dispatch(submitAotaStartAsync(id, data)),
+  submitAotaStartAsync: (deviceUniqueId, data) => dispatch(submitAotaStartAsync(deviceUniqueId, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitAotaCardForm);

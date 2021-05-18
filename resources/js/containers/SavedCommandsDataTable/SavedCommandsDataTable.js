@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 
 import {
   deleteSavedCommandsStartAsync,
   fetchSavedCommandsStartAsync,
-  setFetchSavedCommandsLazyParams,
   resetFetchSavedCommandsLazyParams,
+  setFetchSavedCommandsLazyParams,
 } from '../../redux/savedCommand/savedCommand.actions';
 
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 import DeleteSavedCommandModal from '../../components/DeleteSavedCommandModal/DeleteSavedCommandModal';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 import './savedCommandsDataTable.css';
-
 
 const SavedCommandsDataTable = ({
                                   history,
@@ -79,17 +79,8 @@ const SavedCommandsDataTable = ({
     setFetchSavedCommandsLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Saved Commands
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Saved Commands" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const savedCommandUniqueIdColumnBody = (rowData) => {
     return (
@@ -139,8 +130,6 @@ const SavedCommandsDataTable = ({
       </>
     );
   };
-
-  const header = renderHeader();
 
   return (
     <>

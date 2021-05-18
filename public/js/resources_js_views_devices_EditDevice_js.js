@@ -2089,9 +2089,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2121,12 +2122,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
   var isHidden = _ref.isHidden,
       isLabelHidden = _ref.isLabelHidden,
       label = _ref.label,
       value = _ref.value,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
+      onInputChange = _ref.onInputChange,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value", "onInputChange"]);
 
   var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
       setFieldValue = _useFormikContext.setFieldValue,
@@ -2194,15 +2197,16 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
   };
 
-  var updateBlur = function updateBlur() {
-    setFieldTouched(props.name, true);
+  var onInputChangeDebounced = function onInputChangeDebounced() {
+    if (onInputChange) return _.debounce(onInputChange, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+    return false;
   };
 
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
       htmlFor: props.id || props.name,
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
       theme: function theme(_theme) {
         return _objectSpread(_objectSpread({}, _theme), {}, {
           colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
@@ -2217,11 +2221,9 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
       className: 'is-invalid',
       styles: errorStyle
     }), fieldRest), props), {}, {
-      // options={props.options}
-      // value={value}
-      // onBlur={updateBlur}
+      onInputChange: onInputChangeDebounced(),
       onChange: handleOptionChange
-    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: typeof meta.error === 'string' ? meta.error : meta.error.label
     }) : null]
   });
@@ -2295,9 +2297,7 @@ var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
       children: label
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
       invalid: true
-    }), {}, {
-      id: props.id || props.name
-    }, isDisabled && {
+    }), isDisabled && {
       disabled: true
     }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: meta.error
@@ -2582,7 +2582,6 @@ var deleteDeviceCategoriesStartAsync = function deleteDeviceCategoriesStartAsync
     }).then(function (result) {
       dispatch(deleteDeviceCategoriesSuccess());
       _utils_utils__WEBPACK_IMPORTED_MODULE_2__.toastHelper.success("Device ".concat(pluralize__WEBPACK_IMPORTED_MODULE_3___default()('category', ids.length), " deleted successfully!"), toastId);
-      console.log(history);
 
       if (history) {
         (0,_utils_utils__WEBPACK_IMPORTED_MODULE_2__.redirectToAfterToastSuccess)(history, '/device/categories');
@@ -2695,13 +2694,13 @@ var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
     payload: errorMessage
   };
 };
-var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupId) {
+var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupUniqueId) {
   return function (dispatch) {
     dispatch(fetchDevicesStart());
 
     var params = _objectSpread({}, lazyParams);
 
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
+    if (deviceGroupUniqueId) params.deviceGroupUniqueId = deviceGroupUniqueId;
     axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
       params: params
     }).then(function (result) {
@@ -2882,9 +2881,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
+/* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
 /* harmony export */   "isDeviceGroupNameUnique": () => (/* binding */ isDeviceGroupNameUnique),
+/* harmony export */   "isDeviceGroupNameUniqueDebounced": () => (/* binding */ isDeviceGroupNameUniqueDebounced),
 /* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
-/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique)
+/* harmony export */   "isDeviceCategoryNameUniqueDebounced": () => (/* binding */ isDeviceCategoryNameUniqueDebounced),
+/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique),
+/* harmony export */   "isJobNameUniqueDebounced": () => (/* binding */ isJobNameUniqueDebounced)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -3059,6 +3062,7 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
+var isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/validateField"), {
@@ -3070,6 +3074,7 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
+var isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
@@ -3081,6 +3086,7 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
+var isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isJobNameUnique = function isJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
@@ -3092,6 +3098,7 @@ var isJobNameUnique = function isJobNameUnique(name) {
     });
   });
 };
+var isJobNameUniqueDebounced = _.debounce(isJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -3146,7 +3153,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var EditDevice = function EditDevice(props) {
-  var deviceId = props.match.params.id;
+  var deviceUniqueId = props.match.params.id;
   var history = props.history,
       device = props.device,
       isFetchingDevice = props.isFetchingDevice,
@@ -3185,7 +3192,7 @@ var EditDevice = function EditDevice(props) {
   };
   var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object(validationObject);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDeviceStartAsync(deviceId);
+    fetchDeviceStartAsync(deviceUniqueId);
     fetchDeviceCategoryOptionsStartAsync();
   }, []);
 
@@ -3222,7 +3229,7 @@ var EditDevice = function EditDevice(props) {
               validationSchema: validationSchema,
               onSubmit: function onSubmit(values, _ref2) {
                 var setSubmitting = _ref2.setSubmitting;
-                updateDeviceStartAsync(deviceId, (0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.getSanitizedValues)(values), history);
+                updateDeviceStartAsync(deviceUniqueId, (0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.getSanitizedValues)(values), history);
               },
               children: function children(_ref3) {
                 var values = _ref3.values;
@@ -3269,8 +3276,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     device: state.device.device ? _objectSpread(_objectSpread({}, state.device.device), {}, {
       category: {
-        value: state.device.device.category.id,
-        label: state.device.device.category.name
+        value: state.device.device.device_category.id,
+        label: state.device.device.device_category.name
       }
     }) : state.device.device,
     isFetchingDevice: state.device.isFetchingDevice,
@@ -3285,14 +3292,14 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchDeviceStartAsync: function fetchDeviceStartAsync(id) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__.fetchDeviceStartAsync)(id));
+    fetchDeviceStartAsync: function fetchDeviceStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__.fetchDeviceStartAsync)(deviceUniqueId));
     },
     fetchDeviceCategoryOptionsStartAsync: function fetchDeviceCategoryOptionsStartAsync(name) {
       return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceCategoryOptionsStartAsync)(name));
     },
-    updateDeviceStartAsync: function updateDeviceStartAsync(id, data, history) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__.updateDeviceStartAsync)(id, data, history));
+    updateDeviceStartAsync: function updateDeviceStartAsync(deviceUniqueId, data, history) {
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_6__.updateDeviceStartAsync)(deviceUniqueId, data, history));
     }
   };
 };

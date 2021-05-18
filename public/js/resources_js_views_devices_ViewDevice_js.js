@@ -2883,6 +2883,57 @@ var DataTableDateRangeFilter = function DataTableDateRangeFilter(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/DataTableHeader/DataTableHeader.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/DataTableHeader/DataTableHeader.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var primereact_inputtext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/inputtext */ "./node_modules/primereact/inputtext.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var DataTableHeader = function DataTableHeader(_ref) {
+  var headerName = _ref.headerName,
+      onSearchInputChange = _ref.onSearchInputChange;
+  var debouncedInputSearch = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(_.debounce(function (e) {
+    return onSearchInputChange(e);
+  }, 500), []);
+
+  var handleOnChange = function handleOnChange(e) {
+    debouncedInputSearch(e);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "table-header",
+    children: [headerName, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+      className: "p-input-icon-left",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+        className: "pi pi-search"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_inputtext__WEBPACK_IMPORTED_MODULE_1__.InputText, {
+        type: "search",
+        onChange: function onChange(e) {
+          return handleOnChange(e);
+        },
+        placeholder: "Search"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DataTableHeader);
+
+/***/ }),
+
 /***/ "./resources/js/components/DecommissionDeviceModal/DecommissionDeviceModal.js":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/DecommissionDeviceModal/DecommissionDeviceModal.js ***!
@@ -3378,9 +3429,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3410,12 +3462,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
 var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
   var isHidden = _ref.isHidden,
       isLabelHidden = _ref.isLabelHidden,
       label = _ref.label,
       value = _ref.value,
-      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value"]);
+      onInputChange = _ref.onInputChange,
+      props = _objectWithoutProperties(_ref, ["isHidden", "isLabelHidden", "label", "value", "onInputChange"]);
 
   var _useFormikContext = (0,formik__WEBPACK_IMPORTED_MODULE_1__.useFormikContext)(),
       setFieldValue = _useFormikContext.setFieldValue,
@@ -3483,15 +3537,16 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
     if (props.updateSelectOptions) props.updateSelectOptions(props.name, selection);
   };
 
-  var updateBlur = function updateBlur() {
-    setFieldTouched(props.name, true);
+  var onInputChangeDebounced = function onInputChangeDebounced() {
+    if (onInputChange) return _.debounce(onInputChange, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+    return false;
   };
 
-  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
-    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
+  return isHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CFormGroup, {
+    children: [isLabelHidden ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CLabel, {
       htmlFor: props.id || props.name,
       children: label
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, _objectSpread(_objectSpread(_objectSpread(_objectSpread({
       theme: function theme(_theme) {
         return _objectSpread(_objectSpread({}, _theme), {}, {
           colors: _objectSpread(_objectSpread({}, _theme.colors), {}, {
@@ -3506,11 +3561,9 @@ var IotSelectFormGroup = function IotSelectFormGroup(_ref) {
       className: 'is-invalid',
       styles: errorStyle
     }), fieldRest), props), {}, {
-      // options={props.options}
-      // value={value}
-      // onBlur={updateBlur}
+      onInputChange: onInputChangeDebounced(),
       onChange: handleOptionChange
-    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
+    })), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: typeof meta.error === 'string' ? meta.error : meta.error.label
     }) : null]
   });
@@ -3584,9 +3637,7 @@ var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
       children: label
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInput, _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, meta.touched && meta.error && {
       invalid: true
-    }), {}, {
-      id: props.id || props.name
-    }, isDisabled && {
+    }), isDisabled && {
       disabled: true
     }), field), props)), meta.touched && meta.error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CInvalidFeedback, {
       children: meta.error
@@ -3719,33 +3770,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MetricsCard = function MetricsCard(_ref) {
-  var deviceId = _ref.deviceId;
+  var deviceUniqueId = _ref.deviceUniqueId;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
       children: "Metrics"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuTemperatureLineChartCard_CpuTemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
-        deviceId: deviceId
+        deviceUniqueId: deviceUniqueId
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__.default, {
-        deviceId: deviceId
+        deviceUniqueId: deviceUniqueId
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__.default, {
-        deviceId: deviceId
+        deviceUniqueId: deviceUniqueId
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__.default, {
-        deviceId: deviceId
+        deviceUniqueId: deviceUniqueId
       })]
     })]
   });
 };
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {};
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(MetricsCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MetricsCard);
 
 /***/ }),
 
@@ -4268,7 +4311,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       availableMemories = _ref.availableMemories,
       isFetchingAvailableMemories = _ref.isFetchingAvailableMemories,
       fetchAvailableMemoriesErrorMessage = _ref.fetchAvailableMemoriesErrorMessage,
@@ -4349,7 +4392,7 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchAvailableMemoriesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "Available Memory",
@@ -4367,7 +4410,7 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchAvailableMemoriesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
     },
     isLoading: isFetchingAvailableMemories,
     errorMessage: fetchAvailableMemoriesErrorMessage
@@ -4384,8 +4427,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchAvailableMemoriesStartAsync: function fetchAvailableMemoriesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAvailableMemoriesStartAsync)(id, timeRangeFilter));
+    fetchAvailableMemoriesStartAsync: function fetchAvailableMemoriesStartAsync(deviceUniqueId, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchAvailableMemoriesStartAsync)(deviceUniqueId, timeRangeFilter));
     }
   };
 };
@@ -4411,15 +4454,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
 /* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
-/* harmony import */ var primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/inputtext */ "./node_modules/primereact/inputtext.js");
-/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
-/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceCommand/deviceCommand.actions */ "./resources/js/redux/deviceCommand/deviceCommand.actions.js");
-/* harmony import */ var _redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/deviceCommandHistory/deviceCommandHistory.actions */ "./resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js");
-/* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
-/* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
-/* harmony import */ var _commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./commandHistoriesDataTable.css */ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
+/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
+/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/deviceCommand/deviceCommand.actions */ "./resources/js/redux/deviceCommand/deviceCommand.actions.js");
+/* harmony import */ var _redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceCommandHistory/deviceCommandHistory.actions */ "./resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js");
+/* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
+/* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
+/* harmony import */ var _commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./commandHistoriesDataTable.css */ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
+/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -4458,7 +4501,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       deviceCommandOptions = _ref.deviceCommandOptions,
       isFetchingDeviceCommandOptions = _ref.isFetchingDeviceCommandOptions,
       fetchDeviceCommandOptionsErrorMessage = _ref.fetchDeviceCommandOptionsErrorMessage,
@@ -4504,14 +4547,14 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
 
   var dt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDeviceCommandOptionsStartAsync(deviceId);
-    fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams);
+    fetchDeviceCommandOptionsStartAsync(deviceUniqueId);
+    fetchDeviceCommandHistoriesStartAsync(deviceUniqueId, fetchDeviceCommandHistoriesLazyParams);
   }, [fetchDeviceCommandHistoriesLazyParams]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return resetFetchDeviceCommandHistoriesLazyParams;
   }, []);
-  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_7__.default)(function () {
-    return fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams, false);
+  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_6__.default)(function () {
+    return fetchDeviceCommandHistoriesStartAsync(deviceUniqueId, fetchDeviceCommandHistoriesLazyParams, false);
   }, 5000);
 
   var onPage = function onPage(event) {
@@ -4535,26 +4578,15 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
     setFetchDeviceCommandHistoriesLazyParams(_lazyParams);
   };
 
-  var renderHeader = function renderHeader() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
-      className: "table-header",
-      children: ["Command Histories", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("span", {
-        className: "p-input-icon-left",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("i", {
-          className: "pi pi-search"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__.InputText, {
-          type: "search",
-          onInput: function onInput(e) {
-            return setGlobalFilter(e.target.value);
-          },
-          placeholder: "Search"
-        })]
-      })]
-    });
-  };
+  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__.default, {
+    headerName: "Command Histories",
+    onSearchInputChange: function onSearchInputChange(e) {
+      return setGlobalFilter(e.target.value);
+    }
+  });
 
   var renderCommandTypeFilter = function renderCommandTypeFilter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__.Dropdown, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_dropdown__WEBPACK_IMPORTED_MODULE_5__.Dropdown, {
       value: selectedCommandType,
       options: deviceCommandOptions,
       onChange: onCommandTypeFilterChange,
@@ -4578,7 +4610,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
   };
 
   var renderRespondedAtFilter = function renderRespondedAtFilter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_11__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__.default, {
       value: respondedAtFilter,
       setValueCallback: setRespondedAtFilter,
       dataTable: dt,
@@ -4588,7 +4620,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
   };
 
   var renderTimestampFilter = function renderTimestampFilter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_11__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__.default, {
       value: timestampFilter,
       setValueCallback: setTimestampFilter,
       dataTable: dt,
@@ -4632,7 +4664,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
         className: "p-column-title",
         children: "Timestamp"
-      }), (0,_utils_utils__WEBPACK_IMPORTED_MODULE_8__.formatDateTimeISOStringToCommonString)(rowData.created_at)]
+      }), (0,_utils_utils__WEBPACK_IMPORTED_MODULE_7__.formatDateTimeISOStringToCommonString)(rowData.created_at)]
     });
   };
 
@@ -4640,14 +4672,13 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("h5", {
         children: "Payload"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_12__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__.default, {
         payload: data.payload,
         isLabelHidden: true
       })]
     });
   };
 
-  var header = renderHeader();
   var commandTypeFilterElement = renderCommandTypeFilter();
   var respondedAtFilterElement = renderRespondedAtFilter();
   var timestampFilterElement = renderTimestampFilter();
@@ -4754,16 +4785,16 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchDeviceCommandOptionsStartAsync: function fetchDeviceCommandOptionsStartAsync(id, name) {
-      return dispatch((0,_redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_9__.fetchDeviceCommandOptionsStartAsync)(id, name));
+      return dispatch((0,_redux_deviceCommand_deviceCommand_actions__WEBPACK_IMPORTED_MODULE_8__.fetchDeviceCommandOptionsStartAsync)(id, name));
     },
     fetchDeviceCommandHistoriesStartAsync: function fetchDeviceCommandHistoriesStartAsync(id, lazyParams, showIsFetchingIndicator) {
-      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__.fetchDeviceCommandHistoriesStartAsync)(id, lazyParams, showIsFetchingIndicator));
+      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_9__.fetchDeviceCommandHistoriesStartAsync)(id, lazyParams, showIsFetchingIndicator));
     },
     setFetchDeviceCommandHistoriesLazyParams: function setFetchDeviceCommandHistoriesLazyParams(lazyParams) {
-      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__.setFetchDeviceCommandHistoriesLazyParams)(lazyParams));
+      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_9__.setFetchDeviceCommandHistoriesLazyParams)(lazyParams));
     },
     resetFetchDeviceCommandHistoriesLazyParams: function resetFetchDeviceCommandHistoriesLazyParams() {
-      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_10__.resetFetchDeviceCommandHistoriesLazyParams)());
+      return dispatch((0,_redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_9__.resetFetchDeviceCommandHistoriesLazyParams)());
     }
   };
 };
@@ -4807,7 +4838,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       cpuTemperatures = _ref.cpuTemperatures,
       isFetchingCpuTemperatures = _ref.isFetchingCpuTemperatures,
       fetchCpuTemperaturesErrorMessage = _ref.fetchCpuTemperaturesErrorMessage,
@@ -4888,7 +4919,7 @@ var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchCpuTemperaturesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "Temperature",
@@ -4906,7 +4937,7 @@ var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchCpuTemperaturesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
     },
     isLoading: isFetchingCpuTemperatures,
     errorMessage: fetchCpuTemperaturesErrorMessage
@@ -4923,8 +4954,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchCpuTemperaturesStartAsync: function fetchCpuTemperaturesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuTemperaturesStartAsync)(id, timeRangeFilter));
+    fetchCpuTemperaturesStartAsync: function fetchCpuTemperaturesStartAsync(deviceUniqueId, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuTemperaturesStartAsync)(deviceUniqueId, timeRangeFilter));
     }
   };
 };
@@ -4968,7 +4999,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       cpuUsages = _ref.cpuUsages,
       isFetchingCpuUsages = _ref.isFetchingCpuUsages,
       fetchCpuUsagesErrorMessage = _ref.fetchCpuUsagesErrorMessage,
@@ -5049,7 +5080,7 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchCpuUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "CPU Usage %",
@@ -5067,7 +5098,7 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchCpuUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
     },
     isLoading: isFetchingCpuUsages,
     errorMessage: fetchCpuUsagesErrorMessage
@@ -5084,8 +5115,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchCpuUsagesStartAsync: function fetchCpuUsagesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuUsagesStartAsync)(id, timeRangeFilter));
+    fetchCpuUsagesStartAsync: function fetchCpuUsagesStartAsync(deviceUniqueId, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchCpuUsagesStartAsync)(deviceUniqueId, timeRangeFilter));
     }
   };
 };
@@ -5129,7 +5160,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       diskUsages = _ref.diskUsages,
       isFetchingDiskUsages = _ref.isFetchingDiskUsages,
       fetchDiskUsagesErrorMessage = _ref.fetchDiskUsagesErrorMessage,
@@ -5210,7 +5241,7 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
       setChartOptions = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchDiskUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
   var series = [{
     name: "Disk Usage",
@@ -5228,7 +5259,7 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
     },
     onRefresh: function onRefresh() {
-      return fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+      return fetchDiskUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
     },
     isLoading: isFetchingDiskUsages,
     errorMessage: fetchDiskUsagesErrorMessage
@@ -5245,8 +5276,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchDiskUsagesStartAsync: function fetchDiskUsagesStartAsync(id, timeRangeFilter) {
-      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchDiskUsagesStartAsync)(id, timeRangeFilter));
+    fetchDiskUsagesStartAsync: function fetchDiskUsagesStartAsync(deviceUniqueId, timeRangeFilter) {
+      return dispatch((0,_redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__.fetchDiskUsagesStartAsync)(deviceUniqueId, timeRangeFilter));
     }
   };
 };
@@ -5270,20 +5301,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-json-view */ "./node_modules/react-json-view/dist/main.js");
-/* harmony import */ var react_json_view__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_json_view__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
-/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
-/* harmony import */ var primereact_inputtext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primereact/inputtext */ "./node_modules/primereact/inputtext.js");
-/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
-/* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
-/* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
-/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
-/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
-/* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
-/* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
-/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
+/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
+/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
+/* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
+/* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
+/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
+/* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
+/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
+/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5320,9 +5349,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       deviceEventOptions = _ref.deviceEventOptions,
       isFetchingDeviceEventOptions = _ref.isFetchingDeviceEventOptions,
       fetchDeviceEventOptionsErrorMessage = _ref.fetchDeviceEventOptionsErrorMessage,
@@ -5363,14 +5391,14 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
 
   var dt = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDeviceEventOptionsStartAsync(deviceId);
-    fetchDeviceEventHistoriesStartAsync(deviceId, fetchDeviceEventHistoriesLazyParams);
+    fetchDeviceEventOptionsStartAsync(deviceUniqueId);
+    fetchDeviceEventHistoriesStartAsync(deviceUniqueId, fetchDeviceEventHistoriesLazyParams);
   }, [fetchDeviceEventHistoriesLazyParams]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return resetFetchDeviceEventHistoriesLazyParams;
   }, []);
-  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_14__.default)(function () {
-    return fetchDeviceEventHistoriesStartAsync(deviceId, fetchDeviceEventHistoriesLazyParams, false);
+  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_12__.default)(function () {
+    return fetchDeviceEventHistoriesStartAsync(deviceUniqueId, fetchDeviceEventHistoriesLazyParams, false);
   }, 5000);
 
   var onPage = function onPage(event) {
@@ -5394,26 +5422,15 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
     setFetchDeviceEventHistoriesLazyParams(_lazyParams);
   };
 
-  var renderHeader = function renderHeader() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-      className: "table-header",
-      children: ["Event Histories", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("span", {
-        className: "p-input-icon-left",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("i", {
-          className: "pi pi-search"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_inputtext__WEBPACK_IMPORTED_MODULE_6__.InputText, {
-          type: "search",
-          onInput: function onInput(e) {
-            return setGlobalFilter(e.target.value);
-          },
-          placeholder: "Search"
-        })]
-      })]
-    });
-  };
+  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__.default, {
+    headerName: "Event Histories",
+    onSearchInputChange: function onSearchInputChange(e) {
+      return setGlobalFilter(e.target.value);
+    }
+  });
 
   var renderEventTypeFilter = function renderEventTypeFilter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_dropdown__WEBPACK_IMPORTED_MODULE_7__.Dropdown, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_dropdown__WEBPACK_IMPORTED_MODULE_5__.Dropdown, {
       value: selectedEventType,
       options: deviceEventOptions,
       onChange: onEventTypeFilterChange,
@@ -5430,14 +5447,14 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   };
 
   var eventTypeItemTemplate = function eventTypeItemTemplate(option) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
       className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('event-badge', 'type-' + option.label.replace(/\s+/g, '-').toLowerCase()),
       children: option.label
     });
   };
 
   var renderTimestampFilter = function renderTimestampFilter() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_12__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__.default, {
       value: timestampFilter,
       setValueCallback: setTimestampFilter,
       dataTable: dt,
@@ -5447,8 +5464,8 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   };
 
   var rawDataColumnBody = function rawDataColumnBody(rowData) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
         className: "p-column-title",
         children: "Raw Data"
       }), rowData.raw_data]
@@ -5456,11 +5473,11 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   };
 
   var eventTypeColumnBody = function eventTypeColumnBody(rowData) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
         className: "p-column-title",
         children: "Event Type"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
         className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('event-badge', 'type-' + rowData.event.name.replace(/\s+/g, '-').toLowerCase()),
         children: rowData.event.name
       })]
@@ -5468,31 +5485,30 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   };
 
   var timestampColumnBody = function timestampColumnBody(rowData) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("span", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("span", {
         className: "p-column-title",
         children: "Timestamp"
-      }), (0,_utils_utils__WEBPACK_IMPORTED_MODULE_11__.formatDateTimeISOStringToCommonString)(rowData.created_at)]
+      }), (0,_utils_utils__WEBPACK_IMPORTED_MODULE_9__.formatDateTimeISOStringToCommonString)(rowData.created_at)]
     });
   };
 
   var rowExpansionTemplate = function rowExpansionTemplate(data) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("h5", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("h5", {
         children: "Raw Data"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_13__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__.default, {
         payload: data.raw_data,
         isLabelHidden: true
       })]
     });
   };
 
-  var header = renderHeader();
   var eventTypeFilterElement = renderEventTypeFilter();
   var timestampFilterElement = renderTimestampFilter();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
     className: "datatable-event-histories",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_4__.DataTable, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__.DataTable, {
       ref: dt,
       value: deviceEventHistories,
       resizableColumns: true,
@@ -5528,17 +5544,17 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
       },
       rowExpansionTemplate: rowExpansionTemplate,
       loading: isFetchingDeviceEventHistories,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         expander: true,
         style: {
           width: '5em'
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         selectionMode: "multiple",
         style: {
           width: '4em'
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         field: "raw_data",
         header: "Raw data",
         body: rawDataColumnBody,
@@ -5548,7 +5564,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
         sortable: true,
         filter: true,
         filterPlaceholder: "Search by raw data"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         field: "type",
         header: "Type",
         body: eventTypeColumnBody,
@@ -5556,7 +5572,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
         filter: true,
         excludeGlobalFilter: true,
         filterElement: eventTypeFilterElement
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_5__.Column, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
         field: "created_at",
         header: "Timestamp",
         body: timestampColumnBody,
@@ -5584,17 +5600,17 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchDeviceEventOptionsStartAsync: function fetchDeviceEventOptionsStartAsync(id) {
-      return dispatch((0,_redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_8__.fetchDeviceEventOptionsStartAsync)(id));
+    fetchDeviceEventOptionsStartAsync: function fetchDeviceEventOptionsStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_6__.fetchDeviceEventOptionsStartAsync)(deviceUniqueId));
     },
-    fetchDeviceEventHistoriesStartAsync: function fetchDeviceEventHistoriesStartAsync(id, lazyParams, showIsFetchingIndicator) {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_9__.fetchDeviceEventHistoriesStartAsync)(id, lazyParams, showIsFetchingIndicator));
+    fetchDeviceEventHistoriesStartAsync: function fetchDeviceEventHistoriesStartAsync(deviceUniqueId, lazyParams, showIsFetchingIndicator) {
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceEventHistoriesStartAsync)(deviceUniqueId, lazyParams, showIsFetchingIndicator));
     },
     setFetchDeviceEventHistoriesLazyParams: function setFetchDeviceEventHistoriesLazyParams(lazyParams) {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_9__.setFetchDeviceEventHistoriesLazyParams)(lazyParams));
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.setFetchDeviceEventHistoriesLazyParams)(lazyParams));
     },
     resetFetchDeviceEventHistoriesLazyParams: function resetFetchDeviceEventHistoriesLazyParams() {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_9__.resetFetchDeviceEventHistoriesLazyParams)());
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.resetFetchDeviceEventHistoriesLazyParams)());
     }
   };
 };
@@ -5626,15 +5642,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SubmitAotaCardForm = function SubmitAotaCardForm(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       isSubmittingAota = _ref.isSubmittingAota,
       submitAotaStartAsync = _ref.submitAotaStartAsync;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_AotaCard_AotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
-      return submitAotaStartAsync(deviceId, data);
+      return submitAotaStartAsync(deviceUniqueId, data);
     },
     isPrimaryLoading: isSubmittingAota,
-    isSecondaryLoading: isSubmittingAota,
     isPrimaryDisabled: isSubmittingAota,
     isSecondaryDisabled: isSubmittingAota
   });
@@ -5648,8 +5663,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    submitAotaStartAsync: function submitAotaStartAsync(id, data) {
-      return dispatch((0,_redux_aota_aota_actions__WEBPACK_IMPORTED_MODULE_2__.submitAotaStartAsync)(id, data));
+    submitAotaStartAsync: function submitAotaStartAsync(deviceUniqueId, data) {
+      return dispatch((0,_redux_aota_aota_actions__WEBPACK_IMPORTED_MODULE_2__.submitAotaStartAsync)(deviceUniqueId, data));
     }
   };
 };
@@ -5681,15 +5696,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SubmitCotaCardForm = function SubmitCotaCardForm(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       isSubmittingCota = _ref.isSubmittingCota,
       submitCotaStartAsync = _ref.submitCotaStartAsync;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_CotaCard_CotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
-      return submitCotaStartAsync(deviceId, data);
+      return submitCotaStartAsync(deviceUniqueId, data);
     },
     isPrimaryLoading: isSubmittingCota,
-    isSecondaryLoading: isSubmittingCota,
     isPrimaryDisabled: isSubmittingCota,
     isSecondaryDisabled: isSubmittingCota
   });
@@ -5703,8 +5717,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    submitCotaStartAsync: function submitCotaStartAsync(id, data) {
-      return dispatch((0,_redux_cota_cota_actions__WEBPACK_IMPORTED_MODULE_2__.submitCotaStartAsync)(id, data));
+    submitCotaStartAsync: function submitCotaStartAsync(deviceUniqueId, data) {
+      return dispatch((0,_redux_cota_cota_actions__WEBPACK_IMPORTED_MODULE_2__.submitCotaStartAsync)(deviceUniqueId, data));
     }
   };
 };
@@ -5736,15 +5750,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SubmitFotaCardForm = function SubmitFotaCardForm(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       isSubmittingFota = _ref.isSubmittingFota,
       submitFotaStartAsync = _ref.submitFotaStartAsync;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_FotaCard_FotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
-      return submitFotaStartAsync(deviceId, data);
+      return submitFotaStartAsync(deviceUniqueId, data);
     },
     isPrimaryLoading: isSubmittingFota,
-    isSecondaryLoading: isSubmittingFota,
     isPrimaryDisabled: isSubmittingFota,
     isSecondaryDisabled: isSubmittingFota
   });
@@ -5758,8 +5771,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToPros = function mapDispatchToPros(dispatch) {
   return {
-    submitFotaStartAsync: function submitFotaStartAsync(id, data) {
-      return dispatch((0,_redux_fota_fota_actions__WEBPACK_IMPORTED_MODULE_2__.submitFotaStartAsync)(id, data));
+    submitFotaStartAsync: function submitFotaStartAsync(deviceUniqueId, data) {
+      return dispatch((0,_redux_fota_fota_actions__WEBPACK_IMPORTED_MODULE_2__.submitFotaStartAsync)(deviceUniqueId, data));
     }
   };
 };
@@ -5791,15 +5804,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SubmitSotaCardForm = function SubmitSotaCardForm(_ref) {
-  var deviceId = _ref.deviceId,
+  var deviceUniqueId = _ref.deviceUniqueId,
       isSubmittingSota = _ref.isSubmittingSota,
       submitSotaStartAsync = _ref.submitSotaStartAsync;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_SotaCard_SotaCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     submitCallback: function submitCallback(data) {
-      return submitSotaStartAsync(deviceId, data);
+      return submitSotaStartAsync(deviceUniqueId, data);
     },
     isPrimaryLoading: isSubmittingSota,
-    isSecondaryLoading: isSubmittingSota,
     isPrimaryDisabled: isSubmittingSota,
     isSecondaryDisabled: isSubmittingSota
   });
@@ -5813,8 +5825,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToPros = function mapDispatchToPros(dispatch) {
   return {
-    submitSotaStartAsync: function submitSotaStartAsync(id, data) {
-      return dispatch((0,_redux_sota_sota_actions__WEBPACK_IMPORTED_MODULE_2__.submitSotaStartAsync)(id, data));
+    submitSotaStartAsync: function submitSotaStartAsync(deviceUniqueId, data) {
+      return dispatch((0,_redux_sota_sota_actions__WEBPACK_IMPORTED_MODULE_2__.submitSotaStartAsync)(deviceUniqueId, data));
     }
   };
 };
@@ -7238,13 +7250,13 @@ var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
     payload: errorMessage
   };
 };
-var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupId) {
+var fetchDevicesStartAsync = function fetchDevicesStartAsync(lazyParams, deviceGroupUniqueId) {
   return function (dispatch) {
     dispatch(fetchDevicesStart());
 
     var params = _objectSpread({}, lazyParams);
 
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
+    if (deviceGroupUniqueId) params.deviceGroupUniqueId = deviceGroupUniqueId;
     axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
       params: params
     }).then(function (result) {
@@ -7690,9 +7702,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
+/* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
 /* harmony export */   "isDeviceGroupNameUnique": () => (/* binding */ isDeviceGroupNameUnique),
+/* harmony export */   "isDeviceGroupNameUniqueDebounced": () => (/* binding */ isDeviceGroupNameUniqueDebounced),
 /* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
-/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique)
+/* harmony export */   "isDeviceCategoryNameUniqueDebounced": () => (/* binding */ isDeviceCategoryNameUniqueDebounced),
+/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique),
+/* harmony export */   "isJobNameUniqueDebounced": () => (/* binding */ isJobNameUniqueDebounced)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -7867,6 +7883,7 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
+var isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/validateField"), {
@@ -7878,6 +7895,7 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
+var isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
@@ -7889,6 +7907,7 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
+var isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isJobNameUnique = function isJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
     axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
@@ -7900,6 +7919,7 @@ var isJobNameUnique = function isJobNameUnique(name) {
     });
   });
 };
+var isJobNameUniqueDebounced = _.debounce(isJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -7980,7 +8000,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var ViewDevice = function ViewDevice(props) {
-  var deviceId = props.match.params.id;
+  var deviceUniqueId = props.match.params.id;
   var device = props.device,
       isFetchingDevice = props.isFetchingDevice,
       fetchDeviceErrorMessage = props.fetchDeviceErrorMessage,
@@ -8014,22 +8034,22 @@ var ViewDevice = function ViewDevice(props) {
       setShowDecommissionModal = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchDeviceStartAsync(deviceId);
+    fetchDeviceStartAsync(deviceUniqueId);
   }, []);
 
   var confirmShutdown = function confirmShutdown() {
     setShowShutdownModal(!showShutdownModal);
-    submitShutdownStartAsync(deviceId);
+    submitShutdownStartAsync(deviceUniqueId);
   };
 
   var confirmReboot = function confirmReboot() {
     setShowRebootModal(!showRebootModal);
-    submitRebootStartAsync(deviceId);
+    submitRebootStartAsync(deviceUniqueId);
   };
 
   var confirmDecommission = function confirmDecommission() {
     setShowDecommissionModal(!showDecommissionModal);
-    submitDecommissionStartAsync(deviceId);
+    submitDecommissionStartAsync(deviceUniqueId);
   };
 
   if (isFetchingDevice) {
@@ -8071,7 +8091,7 @@ var ViewDevice = function ViewDevice(props) {
                       value: device.name,
                       maxLength: "255",
                       updateFunction: function updateFunction(value) {
-                        return updateDeviceStartAsync(deviceId, {
+                        return updateDeviceStartAsync(deviceUniqueId, {
                           name: value
                         });
                       }
@@ -8082,11 +8102,11 @@ var ViewDevice = function ViewDevice(props) {
                       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CBadge, {
                         color: "secondary",
                         className: "font-lg mr-2",
-                        children: device.status.name
+                        children: device.device_status.name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CBadge, {
                         color: "primary",
                         className: "font-lg",
-                        children: device.category.name
+                        children: device.device_category.name
                       })]
                     })]
                   })]
@@ -8196,43 +8216,43 @@ var ViewDevice = function ViewDevice(props) {
                   className: "m-3",
                   "data-tab": "metrics",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_13__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "aota",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitAotaCardForm_SubmitAotaCardForm__WEBPACK_IMPORTED_MODULE_19__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "fota",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitFotaCardForm_SubmitFotaCardForm__WEBPACK_IMPORTED_MODULE_20__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "sota",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitSotaCardForm_SubmitSotaCardForm__WEBPACK_IMPORTED_MODULE_21__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "cota",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitCotaCardForm_SubmitCotaCardForm__WEBPACK_IMPORTED_MODULE_22__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "command-histories",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_14__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
                   className: "m-3",
                   "data-tab": "event-histories",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_15__.default, {
-                    deviceId: deviceId
+                    deviceUniqueId: deviceUniqueId
                   })
                 })]
               })]
@@ -8283,20 +8303,20 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchDeviceStartAsync: function fetchDeviceStartAsync(id) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.fetchDeviceStartAsync)(id));
+    fetchDeviceStartAsync: function fetchDeviceStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.fetchDeviceStartAsync)(deviceUniqueId));
     },
-    updateDeviceStartAsync: function updateDeviceStartAsync(id, params) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.updateDeviceStartAsync)(id, params));
+    updateDeviceStartAsync: function updateDeviceStartAsync(deviceUniqueId, params) {
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.updateDeviceStartAsync)(deviceUniqueId, params));
     },
-    submitShutdownStartAsync: function submitShutdownStartAsync(id) {
-      return dispatch((0,_redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_6__.submitShutdownStartAsync)(id));
+    submitShutdownStartAsync: function submitShutdownStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_6__.submitShutdownStartAsync)(deviceUniqueId));
     },
-    submitRebootStartAsync: function submitRebootStartAsync(id) {
-      return dispatch((0,_redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_7__.submitRebootStartAsync)(id));
+    submitRebootStartAsync: function submitRebootStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_7__.submitRebootStartAsync)(deviceUniqueId));
     },
-    submitDecommissionStartAsync: function submitDecommissionStartAsync(id) {
-      return dispatch((0,_redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_8__.submitDecommissionStartAsync)(id));
+    submitDecommissionStartAsync: function submitDecommissionStartAsync(deviceUniqueId) {
+      return dispatch((0,_redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_8__.submitDecommissionStartAsync)(deviceUniqueId));
     }
   };
 };

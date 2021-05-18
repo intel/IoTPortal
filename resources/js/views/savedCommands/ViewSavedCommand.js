@@ -17,7 +17,7 @@ import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 const ViewSavedCommand = (props) => {
 
-  const savedCommandId = props.match.params.id;
+  const savedCommandUniqueId = props.match.params.id;
   const {
     history,
     match,
@@ -31,7 +31,7 @@ const ViewSavedCommand = (props) => {
   const [showDeleteSavedCommandModal, setShowDeleteSavedCommandModal] = useState(false);
 
   useEffect(() => {
-    fetchSavedCommandStartAsync(savedCommandId);
+    fetchSavedCommandStartAsync(savedCommandUniqueId);
   }, []);
 
   const deleteSavedCommand = () => {
@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSavedCommandStartAsync: (id) => dispatch(fetchSavedCommandStartAsync(id)),
+  fetchSavedCommandStartAsync: (savedCommandUniqueId) => dispatch(fetchSavedCommandStartAsync(savedCommandUniqueId)),
   deleteSavedCommandsStartAsync: (ids, history) => dispatch(deleteSavedCommandsStartAsync(ids, history)),
 });
 

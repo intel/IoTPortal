@@ -16,7 +16,7 @@ class Command extends Model
      */
     protected $fillable = [
         'name',
-        'method_name'
+        'method_name',
     ];
 
     /**
@@ -33,5 +33,40 @@ class Command extends Model
     public function commandHistories()
     {
         return $this->hasMany(CommandHistory::class);
+    }
+
+    public function scopeId($query, $value)
+    {
+        return $query->where('id', $value);
+    }
+
+    public function scopeIdIn($query, $value)
+    {
+        return $query->whereIn('devices.id', $value);
+    }
+
+    public function scopeUniqueId($query, $value)
+    {
+        return $query->where('unique_id', $value);
+    }
+
+    public function scopeUniqueIdLike($query, $value)
+    {
+        return $query->where('devices.unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeName($query, $value)
+    {
+        return $query->where('name', $value);
+    }
+
+    public function scopeNameLike($query, $value)
+    {
+        return $query->where('name', 'like', "%{$value}%");
+    }
+
+    public function scopeGetOptions($query)
+    {
+        return $query->get(['id as value', 'name as label']);
     }
 }

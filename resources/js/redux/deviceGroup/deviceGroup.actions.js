@@ -59,12 +59,13 @@ export const fetchDeviceGroupDevicesFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDeviceGroupDevicesStartAsync = (deviceGroupId, fetchAll = true) => {
+export const fetchDeviceGroupDevicesStartAsync = (deviceGroupId, deviceGroupUniqueId, fetchAll = true) => {
   return dispatch => {
     dispatch(fetchDeviceGroupDevicesStart());
 
     const params = {};
     if (deviceGroupId) params.deviceGroupId = deviceGroupId;
+    if (deviceGroupUniqueId) params.deviceGroupUniqueId = deviceGroupUniqueId;
     if (fetchAll) params.fetchAll = true;
 
     axios.get(`${API_ENDPOINT}/devices`, {params: params})

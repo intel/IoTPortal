@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
 import useInterval from '../../hooks/useInterval';
@@ -12,18 +11,18 @@ import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import { fetchDeviceCommandOptionsStartAsync } from '../../redux/deviceCommand/deviceCommand.actions';
 import {
   fetchDeviceCommandHistoriesStartAsync,
-  setFetchDeviceCommandHistoriesLazyParams,
   resetFetchDeviceCommandHistoriesLazyParams,
+  setFetchDeviceCommandHistoriesLazyParams,
 } from '../../redux/deviceCommandHistory/deviceCommandHistory.actions';
 
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 
 import './commandHistoriesDataTable.css';
-
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const CommandHistoriesDataTable = ({
-                                     deviceId,
+                                     deviceUniqueId,
                                      deviceCommandOptions,
                                      isFetchingDeviceCommandOptions,
                                      fetchDeviceCommandOptionsErrorMessage,
@@ -48,13 +47,13 @@ const CommandHistoriesDataTable = ({
   const dt = useRef(null);
 
   useEffect(() => {
-    fetchDeviceCommandOptionsStartAsync(deviceId);
-    fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams);
+    fetchDeviceCommandOptionsStartAsync(deviceUniqueId);
+    fetchDeviceCommandHistoriesStartAsync(deviceUniqueId, fetchDeviceCommandHistoriesLazyParams);
   }, [fetchDeviceCommandHistoriesLazyParams]);
 
   useEffect(() => resetFetchDeviceCommandHistoriesLazyParams, []);
 
-  useInterval(() => fetchDeviceCommandHistoriesStartAsync(deviceId, fetchDeviceCommandHistoriesLazyParams, false), 5000);
+  useInterval(() => fetchDeviceCommandHistoriesStartAsync(deviceUniqueId, fetchDeviceCommandHistoriesLazyParams, false), 5000);
 
   const onPage = (event) => {
     let _lazyParams = {...fetchDeviceCommandHistoriesLazyParams, ...event};
@@ -74,17 +73,8 @@ const CommandHistoriesDataTable = ({
     setFetchDeviceCommandHistoriesLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Command Histories
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Command Histories" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const renderCommandTypeFilter = () => {
     return (
@@ -167,7 +157,6 @@ const CommandHistoriesDataTable = ({
     );
   };
 
-  const header = renderHeader();
   const commandTypeFilterElement = renderCommandTypeFilter();
   const respondedAtFilterElement = renderRespondedAtFilter();
   const timestampFilterElement = renderTimestampFilter();

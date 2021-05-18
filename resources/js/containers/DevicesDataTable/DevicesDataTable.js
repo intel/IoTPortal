@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
 import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
@@ -14,8 +13,8 @@ import { fetchDeviceStatusOptionsStartAsync } from '../../redux/deviceStatus/dev
 import {
   deleteDevicesStartAsync,
   fetchDevicesStartAsync,
-  setFetchDevicesLazyParams,
-  resetFetchDevicesLazyParams
+  resetFetchDevicesLazyParams,
+  setFetchDevicesLazyParams
 } from '../../redux/device/device.actions';
 
 import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
@@ -23,14 +22,14 @@ import DeleteDeviceModal from '../../components/DeleteDeviceModal/DeleteDeviceMo
 import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
 
 import './devicesDataTable.css';
-
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const DevicesDataTable = ({
                             history,
                             hideActionsBar,
                             selectedDevices,
                             setSelectedDevices,
-                            deviceGroupId,
+                            deviceGroupUniqueId,
                             deviceCategoryOptions,
                             isFetchingDeviceCategoryOptions,
                             fetchDeviceCategoryOptionsErrorMessage,
@@ -63,7 +62,7 @@ const DevicesDataTable = ({
   const dt = useRef(null);
 
   useEffect(() => {
-    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupId);
+    fetchDevicesStartAsync(fetchDevicesLazyParams, deviceGroupUniqueId);
     fetchDeviceCategoryOptionsStartAsync();
     fetchDeviceStatusOptionsStartAsync();
   }, [fetchDevicesLazyParams]);
@@ -104,17 +103,8 @@ const DevicesDataTable = ({
     setFetchDevicesLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Devices
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Devices" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const renderDeviceCategoryFilter = () => {
     return (
@@ -197,7 +187,7 @@ const DevicesDataTable = ({
     return (
       <>
         <span className="p-column-title">Category</span>
-        <b>{rowData.category.name}</b>
+        <b>{rowData.device_category.name}</b>
       </>
     );
   };
@@ -207,7 +197,7 @@ const DevicesDataTable = ({
       <>
         <span className="p-column-title">Status</span>
         <span
-          className={classNames('device-badge', 'status-' + rowData.status.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.status.name}</span>
+          className={classNames('device-badge', 'status-' + rowData.device_status.name.replace(/\s+/g, '-').toLowerCase())}>{rowData.device_status.name}</span>
       </>
     );
   };
@@ -233,7 +223,6 @@ const DevicesDataTable = ({
     );
   };
 
-  const header = renderHeader();
   const deviceCategoryFilterElement = renderDeviceCategoryFilter();
   const deviceStatusFilterElement = renderDeviceStatusFilter();
 
@@ -307,7 +296,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchDeviceCategoryOptionsStartAsync: (name) => dispatch(fetchDeviceCategoryOptionsStartAsync(name)),
   fetchDeviceStatusOptionsStartAsync: (name) => dispatch(fetchDeviceStatusOptionsStartAsync(name)),
-  fetchDevicesStartAsync: (lazyParams, deviceGroupId) => dispatch(fetchDevicesStartAsync(lazyParams, deviceGroupId)),
+  fetchDevicesStartAsync: (lazyParams, deviceGroupUniqueId) => dispatch(fetchDevicesStartAsync(lazyParams, deviceGroupUniqueId)),
   setFetchDevicesLazyParams: (lazyParams) => dispatch(setFetchDevicesLazyParams(lazyParams)),
   resetFetchDevicesLazyParams: () => dispatch(resetFetchDevicesLazyParams()),
   deleteDevicesStartAsync: (ids, history) => dispatch(deleteDevicesStartAsync(ids, history)),

@@ -8,7 +8,7 @@ import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '
 
 import { fetchDeviceStartAsync, updateDeviceStartAsync } from '../../redux/device/device.actions';
 import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
-import { getSanitizedValues, isDeviceNameUnique } from '../../utils/utils';
+import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -18,7 +18,7 @@ import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/Pr
 
 const EditDevice = (props) => {
 
-  const deviceId = props.match.params.id;
+  const deviceUniqueId = props.match.params.id;
   const {
     history,
     device,
@@ -64,7 +64,7 @@ const EditDevice = (props) => {
   const validationSchema = Yup.object(validationObject);
 
   useEffect(() => {
-    fetchDeviceStartAsync(deviceId);
+    fetchDeviceStartAsync(deviceUniqueId);
     fetchDeviceCategoryOptionsStartAsync();
   }, []);
 
@@ -94,7 +94,7 @@ const EditDevice = (props) => {
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
-                  updateDeviceStartAsync(deviceId, getSanitizedValues(values), history);
+                  updateDeviceStartAsync(deviceUniqueId, getSanitizedValues(values), history);
                 }}
               >
                 {({values}) => (
@@ -137,7 +137,7 @@ const EditDevice = (props) => {
 const mapStateToProps = state => ({
   device: state.device.device ? {
     ...state.device.device,
-    category: {value: state.device.device.category.id, label: state.device.device.category.name}
+    category: {value: state.device.device.device_category.id, label: state.device.device.device_category.name}
   } : state.device.device,
   isFetchingDevice: state.device.isFetchingDevice,
   fetchDeviceErrorMessage: state.device.fetchDeviceErrorMessage,
@@ -149,9 +149,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceStartAsync: (id) => dispatch(fetchDeviceStartAsync(id)),
+  fetchDeviceStartAsync: (deviceUniqueId) => dispatch(fetchDeviceStartAsync(deviceUniqueId)),
   fetchDeviceCategoryOptionsStartAsync: (name) => dispatch(fetchDeviceCategoryOptionsStartAsync(name)),
-  updateDeviceStartAsync: (id, data, history) => dispatch(updateDeviceStartAsync(id, data, history)),
+  updateDeviceStartAsync: (deviceUniqueId, data, history) => dispatch(updateDeviceStartAsync(deviceUniqueId, data, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditDevice);

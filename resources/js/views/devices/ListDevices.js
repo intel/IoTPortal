@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { Toaster } from 'react-hot-toast';
-import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
+
 import { deleteDevicesStartAsync } from '../../redux/device/device.actions';
+
 import DevicesDataTable from '../../containers/DevicesDataTable/DevicesDataTable';
 import DeleteDevicesModal from '../../components/DeleteDevicesModal/DeleteDevicesModal';
 

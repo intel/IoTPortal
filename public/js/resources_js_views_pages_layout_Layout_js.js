@@ -13300,10 +13300,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "APP_URL": () => (/* binding */ APP_URL),
-/* harmony export */   "API_ENDPOINT": () => (/* binding */ API_ENDPOINT)
+/* harmony export */   "API_ENDPOINT": () => (/* binding */ API_ENDPOINT),
+/* harmony export */   "ASYNC_VALIDATION_TIMEOUT_IN_MS": () => (/* binding */ ASYNC_VALIDATION_TIMEOUT_IN_MS)
 /* harmony export */ });
 var APP_URL = "http://127.0.0.1:8000";
 var API_ENDPOINT = "http://127.0.0.1:8000/api";
+var ASYNC_VALIDATION_TIMEOUT_IN_MS = "800";
 
 /***/ }),
 

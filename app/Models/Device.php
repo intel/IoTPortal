@@ -28,8 +28,17 @@ class Device extends Model
         'system_manufacturer',
         'system_product_name',
         'total_memory',
-        'category_id',
-        'status_id',
+        'device_category_id',
+        'device_status_id',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'laravel_through_key',
     ];
 
     public static function boot()
@@ -43,22 +52,11 @@ class Device extends Model
         });
 
         static::created(function ($model) {
-            $model->commands()->createMany([
-                ['name' => 'OTA', 'method_name' => 'triggerota'],
-                ['name' => 'AOTA', 'method_name' => 'triggeraota'],
-                ['name' => 'FOTA', 'method_name' => 'triggerfota'],
-                ['name' => 'SOTA', 'method_name' => 'triggersota'],
-                ['name' => 'COTA', 'method_name' => 'triggerconfig'],
-                ['name' => 'SHUTDOWN', 'method_name' => 'shutdown_device'],
-                ['name' => 'REBOOT', 'method_name' => 'reboot_device'],
-                ['name' => 'DECOMMISSION', 'method_name' => 'decommission_device'],
-                ['name' => 'FILE_UPLOAD', 'method_name' => 'file_upload'],
-            ]);
+            $commandRecords = config('constants.command_records');
+            $eventRecords = config('constants.event_records');
 
-            $model->events()->createMany([
-                ['name' => 'PROPERTY'],
-                ['name' => 'TELEMETRY'],
-            ]);
+            $model->commands()->createMany($commandRecords);
+            $model->events()->createMany($eventRecords);
         });
     }
 
@@ -78,19 +76,19 @@ class Device extends Model
     }
 
     /**
-     * Get the category for the device.
+     * Get the device category for the device.
      */
-    public function category()
+    public function deviceCategory()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(DeviceCategory::class);
     }
 
     /**
-     * Get the groups for the device.
+     * Get the device groups for the device.
      */
-    public function groups()
+    public function deviceGroups()
     {
-        return $this->belongsToMany(Group::class);
+        return $this->belongsToMany(DeviceGroup::class);
     }
 
     /**
@@ -102,11 +100,11 @@ class Device extends Model
     }
 
     /**
-     * Get the status for the device.
+     * Get the device status for the device.
      */
-    public function status()
+    public function deviceStatus()
     {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(DeviceStatus::class);
     }
 
     /**
@@ -126,7 +124,7 @@ class Device extends Model
     }
 
     /**
-     * Get the raw data for the device.
+     * Get the events for the device.
      */
     public function events()
     {
@@ -189,14 +187,29 @@ class Device extends Model
         return $this->hasMany(CpuStatistic::class);
     }
 
-    public function getRegisteredAttribute()
+    public function scopeId($query, $value)
     {
-        return strtolower($this->status->name) === 'registered';
+        return $query->where('id', $value);
+    }
+
+    public function scopeIdIn($query, $value)
+    {
+        return $query->whereIn('devices.id', $value);
+    }
+
+    public function scopeUniqueId($query, $value)
+    {
+        return $query->where('unique_id', $value);
     }
 
     public function scopeUniqueIdLike($query, $value)
     {
         return $query->where('devices.unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeName($query, $value)
+    {
+        return $query->where('devices.name', $value);
     }
 
     public function scopeNameLike($query, $value)
@@ -214,27 +227,49 @@ class Device extends Model
         return $query->where('bios_version', 'like', "%{$value}%");
     }
 
-    public function scopeCategoryId($query, $id)
+    public function scopeDeviceCategoryId($query, $value)
     {
-        return $query->where('category_id', $id);
+        return $query->where('device_category_id', $value);
     }
 
-    public function scopeStatusId($query, $id)
+    public function scopeDeviceStatusId($query, $value)
     {
-        return $query->where('status_id', $id);
+        return $query->where('device_status_id', $value);
     }
 
-    public function scopeDeviceGroupId($query, $id)
+    public function scopeDeviceGroupId($query, $value)
     {
-        return $query->whereHas('groups', function (Builder $query) use ($id) {
-            $query->where('groups.id', $id);
+        return $query->whereHas('deviceGroups', function (Builder $query) use ($value) {
+            $query->where('device_groups.id', $value);
         });
     }
 
-    public function scopeDeviceGroupUniqueId($query, $id)
+    public function scopeDeviceGroupUniqueId($query, $value)
     {
-        return $query->whereHas('groups', function (Builder $query) use ($id) {
-            $query->where('groups.unique_id', $id);
+        return $query->whereHas('deviceGroups', function (Builder $query) use ($value) {
+            $query->where('device_groups.unique_id', $value);
         });
+    }
+
+    public function scopeExcludeId($query, $value)
+    {
+        return $query->where('devices.id', '!=', $value);
+    }
+
+    public function scopeUserId($query, $value)
+    {
+        return $query->whereHas('deviceCategory', function (Builder $query) use ($value) {
+            $query->userId($value);
+        });
+    }
+
+    public function isRegistered()
+    {
+        return $this->deviceStatus->name === DeviceStatus::TYPE_REGISTERED;
+    }
+
+    public function isProvisioned()
+    {
+        return $this->deviceStatus->name === DeviceStatus::TYPE_PROVISIONED;
     }
 }

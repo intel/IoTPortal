@@ -5,11 +5,10 @@ import { submitSotaStartAsync } from '../../redux/sota/sota.actions';
 
 import SotaCard from '../../components/SotaCard/SotaCard';
 
-const SubmitSotaCardForm = ({deviceId, isSubmittingSota, submitSotaStartAsync}) => {
+const SubmitSotaCardForm = ({deviceUniqueId, isSubmittingSota, submitSotaStartAsync}) => {
   return (
-    <SotaCard submitCallback={(data) => submitSotaStartAsync(deviceId, data)} isPrimaryLoading={isSubmittingSota}
-              isSecondaryLoading={isSubmittingSota} isPrimaryDisabled={isSubmittingSota}
-              isSecondaryDisabled={isSubmittingSota}/>
+    <SotaCard submitCallback={(data) => submitSotaStartAsync(deviceUniqueId, data)} isPrimaryLoading={isSubmittingSota}
+              isPrimaryDisabled={isSubmittingSota} isSecondaryDisabled={isSubmittingSota}/>
   );
 };
 
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToPros = dispatch => ({
-  submitSotaStartAsync: (id, data) => dispatch(submitSotaStartAsync(id, data)),
+  submitSotaStartAsync: (deviceUniqueId, data) => dispatch(submitSotaStartAsync(deviceUniqueId, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToPros)(SubmitSotaCardForm);

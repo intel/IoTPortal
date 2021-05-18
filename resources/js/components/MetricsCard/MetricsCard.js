@@ -8,25 +8,20 @@ import CpuUsageLineChartCard from '../../containers/CpuUsageLineChartCard/CpuUsa
 import DiskUsageLineChartCard from '../../containers/DiskUsageLineChartCard/DiskUsageLineChartCard';
 import AvailableMemoryLineChartCard from '../../containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard';
 
-const MetricsCard = ({deviceId}) => {
-
+const MetricsCard = ({deviceUniqueId}) => {
   return (
     <CCard>
       <CCardHeader>
         Metrics
       </CCardHeader>
       <CCardBody>
-        <CpuTemperatureLineChartCard deviceId={deviceId}/>
-        <CpuUsageLineChartCard deviceId={deviceId}/>
-        <DiskUsageLineChartCard deviceId={deviceId}/>
-        <AvailableMemoryLineChartCard deviceId={deviceId}/>
+        <CpuTemperatureLineChartCard deviceUniqueId={deviceUniqueId}/>
+        <CpuUsageLineChartCard deviceUniqueId={deviceUniqueId}/>
+        <DiskUsageLineChartCard deviceUniqueId={deviceUniqueId}/>
+        <AvailableMemoryLineChartCard deviceUniqueId={deviceUniqueId}/>
       </CCardBody>
     </CCard>
   );
 };
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MetricsCard);
+export default MetricsCard;

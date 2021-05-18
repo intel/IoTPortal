@@ -172,13 +172,11 @@ export const deleteDeviceCategoriesStartAsync = (ids, history) => {
         dispatch(deleteDeviceCategoriesSuccess());
         toastHelper.success(`Device ${pluralize('category', ids.length)} deleted successfully!`, toastId);
 
-        console.log(history)
         if (history) {
           redirectToAfterToastSuccess(history, '/device/categories')
         } else {
           dispatch(fetchDeviceCategoriesStartAsync(getState().deviceCategory.fetchDeviceCategoriesLazyParams));
         }
-
       })
       .catch(error => {
         dispatch(deleteDeviceCategoriesFailure(error.message));

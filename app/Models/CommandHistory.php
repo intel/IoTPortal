@@ -17,7 +17,9 @@ class CommandHistory extends Model
     protected $fillable = [
         'type',
         'payload',
+        'error',
         'responded_at',
+        'device_job_id',
     ];
 
     /**
@@ -29,11 +31,11 @@ class CommandHistory extends Model
     }
 
     /**
-     * Get the job that owns the command history.
+     * Get the device job that owns the command history.
      */
-    public function job()
+    public function deviceJob()
     {
-        return $this->belongsTo(Command::class);
+        return $this->belongsTo(DeviceJob::class);
     }
 
     public function scopePayloadLike($query, $value)

@@ -4,7 +4,9 @@ import { useField, useFormikContext } from 'formik';
 import Select from 'react-select';
 import { CFormGroup, CInvalidFeedback, CLabel } from '@coreui/react';
 
-const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, ...props}) => {
+import { ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../../data/config';
+
+const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, onInputChange, ...props}) => {
 
   const {setFieldValue, setFieldTouched} = useFormikContext();
   const [field, meta] = useField(props);
@@ -61,8 +63,11 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, ...props}) =
       props.updateSelectOptions(props.name, selection);
   };
 
-  const updateBlur = () => {
-    setFieldTouched(props.name, true);
+  const onInputChangeDebounced = () => {
+    if (onInputChange)
+      return _.debounce(onInputChange, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+
+    return false;
   };
 
   return isHidden ? null : (
@@ -80,13 +85,9 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, ...props}) =
         })}
         styles={defaultStyle}
         {...(meta.touched && meta.error && {className: 'is-invalid', styles: errorStyle})}
-        // id={props.id || props.name}
-        // name={field.name}
         {...fieldRest}
         {...props}
-        // options={props.options}
-        // value={value}
-        // onBlur={updateBlur}
+        onInputChange={onInputChangeDebounced()}
         onChange={handleOptionChange}
       />
       {meta.touched && meta.error ? (

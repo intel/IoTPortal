@@ -1,7 +1,8 @@
-import { CBadge, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
-import { DataView } from 'primereact/dataview';
 import React from 'react';
+
+import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
+import { CBadge, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 
 const SelectedDevicesDataView = ({devices, onRemove}) => {
 
@@ -17,8 +18,8 @@ const SelectedDevicesDataView = ({devices, onRemove}) => {
             <h5>{device.name}</h5>
             <small>ID: <b>{device.unique_id}</b></small><br/>
             <div className="mt-1">
-              <CBadge color="secondary" className="mr-2">{device.status.name}</CBadge>
-              <CBadge color="primary" className="">{device.category.name}</CBadge>
+              <CBadge color="secondary" className="mr-2">{device.device_status.name}</CBadge>
+              <CBadge color="primary" className="">{device.device_category.name}</CBadge>
             </div>
           </div>
         </CCol>

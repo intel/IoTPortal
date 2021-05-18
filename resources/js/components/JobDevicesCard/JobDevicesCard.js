@@ -4,8 +4,7 @@ import { CCard, CCardBody, CCardHeader } from '@coreui/react';
 
 import JobDevicesDataTable from '../JobDevicesDataTable/JobDevicesDataTable';
 
-
-const JobDetailsCard = ({deviceGroupName, deviceGroupDevices}) => {
+const JobDevicesCard = ({deviceGroupName, deviceGroupDevices}) => {
   return (
     <CCard>
       <CCardHeader>
@@ -18,4 +17,4 @@ const JobDetailsCard = ({deviceGroupName, deviceGroupDevices}) => {
   );
 };
 
-export default JobDetailsCard;
+export default JobDevicesCard;

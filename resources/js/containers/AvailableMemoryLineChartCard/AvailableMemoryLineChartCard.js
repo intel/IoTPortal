@@ -6,7 +6,7 @@ import { fetchAvailableMemoriesStartAsync } from '../../redux/deviceMetric/devic
 import LineChartCard from '../../components/LineChartCard/LineChartCard';
 
 const AvailableMemoryLineChartCard = ({
-                                        deviceId,
+                                        deviceUniqueId,
                                         availableMemories,
                                         isFetchingAvailableMemories,
                                         fetchAvailableMemoriesErrorMessage,
@@ -70,7 +70,7 @@ const AvailableMemoryLineChartCard = ({
   });
 
   useEffect(() => {
-    fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchAvailableMemoriesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
 
   const series = [{
@@ -88,7 +88,7 @@ const AvailableMemoryLineChartCard = ({
       timeRangeFilters={timeRangeFilters}
       selectedTimeRangeFilter={selectedTimeRangeFilter}
       onTimeRangeFilter={(event) => setSelectedTimeRangeFilter(parseInt(event.target.value))}
-      onRefresh={() => fetchAvailableMemoriesStartAsync(deviceId, selectedTimeRangeFilter)}
+      onRefresh={() => fetchAvailableMemoriesStartAsync(deviceUniqueId, selectedTimeRangeFilter)}
       isLoading={isFetchingAvailableMemories}
       errorMessage={fetchAvailableMemoriesErrorMessage}
     />
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAvailableMemoriesStartAsync: (id, timeRangeFilter) => dispatch(fetchAvailableMemoriesStartAsync(id, timeRangeFilter)),
+  fetchAvailableMemoriesStartAsync: (deviceUniqueId, timeRangeFilter) => dispatch(fetchAvailableMemoriesStartAsync(deviceUniqueId, timeRangeFilter)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvailableMemoryLineChartCard);

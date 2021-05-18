@@ -19,12 +19,12 @@ export const fetchDevicesFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const fetchDevicesStartAsync = (lazyParams, deviceGroupId) => {
+export const fetchDevicesStartAsync = (lazyParams, deviceGroupUniqueId) => {
   return dispatch => {
     dispatch(fetchDevicesStart());
 
     const params = {...lazyParams};
-    if (deviceGroupId) params.deviceGroupId = deviceGroupId;
+    if (deviceGroupUniqueId) params.deviceGroupUniqueId = deviceGroupUniqueId;
 
     axios.get(`${API_ENDPOINT}/devices`, {params: params})
       .then(result => {

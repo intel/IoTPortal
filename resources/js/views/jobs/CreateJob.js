@@ -1,13 +1,16 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
+import Chart from 'react-apexcharts';
+import { ProgressBar } from 'primereact/progressbar';
+import { Knob } from 'primereact/knob';
 import { Steps } from 'primereact/steps';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
-import { isJobNameUnique, isNotEmptyString } from '../../utils/utils';
+import { createJobStartAsync } from '../../redux/job/job.actions';
 import {
   fetchDeviceGroupDevicesStartAsync,
   fetchDeviceGroupOptionsStartAsync
@@ -16,6 +19,7 @@ import {
   fetchSavedCommandOptionsStartAsync,
   fetchSavedCommandStartAsync
 } from '../../redux/savedCommand/savedCommand.actions';
+import { getSanitizedValues, isJobNameUniqueDebounced, isNotEmptyString } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -37,13 +41,15 @@ const CreateJob = ({
                      deviceGroupDevices,
                      isFetchingDeviceGroupDevices,
                      fetchDeviceGroupDevicesErrorMessage,
+                     isCreatingJob,
+                     createJobErrorMessage,
                      fetchDeviceGroupOptionsStartAsync,
                      fetchSavedCommandOptionsStartAsync,
                      fetchSavedCommandStartAsync,
-                     fetchDeviceGroupDevicesStartAsync
+                     fetchDeviceGroupDevicesStartAsync,
+                     createJobStartAsync
                    }) => {
 
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
   const [job, setJob] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const steps = [
@@ -52,19 +58,37 @@ const CreateJob = ({
     {label: 'Result'},
   ];
 
+  const series = [44, 55];
+
+  const [chartOptions, setChartOptions] = useState({
+    chart: {
+      width: 380,
+      type: 'pie',
+    },
+    labels: ['Success', 'Failure'],
+    colors: ['#00e396', '#ff4560'],
+    legend: {
+      position: 'top'
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 200
+        },
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+  });
+
   const formRef = useRef();
 
   useEffect(() => {
     fetchDeviceGroupOptionsStartAsync();
     fetchSavedCommandOptionsStartAsync();
   }, []);
-
-  const onSubmit = (values, {setSubmitting}) => {
-    setJob(values);
-    setActiveIndex(activeIndex + 1);
-    fetchSavedCommandStartAsync(values.saved_command.value);
-    fetchDeviceGroupDevicesStartAsync(values.group.value);
-  };
 
   const handleStep0 = () => {
     if (formRef.current) {
@@ -74,9 +98,10 @@ const CreateJob = ({
 
   const handleStep1 = () => {
     setActiveIndex(activeIndex + 1);
-    if (formRef.current) {
-      formRef.current.handleSubmit();
-    }
+    const sanitizedValues = getSanitizedValues(formRef.current.values);
+    createJobStartAsync(sanitizedValues);
+    // send create job
+    // and loop to check status
   };
 
   const handleReset = async () => {
@@ -85,6 +110,13 @@ const CreateJob = ({
     }
     setJob(null);
     setActiveIndex(0);
+  };
+
+  const onSubmit = (values, {setSubmitting}) => {
+    setJob(values);
+    setActiveIndex(activeIndex + 1);
+    fetchSavedCommandStartAsync(values.saved_command.value);
+    fetchDeviceGroupDevicesStartAsync(values.group.value);
   };
 
   const renderStep0 = () => (
@@ -129,11 +161,44 @@ const CreateJob = ({
     </>
   );
 
+  const renderStep2 = () => (
+    <>
+      <JobDetailsCard deviceGroupName={job.group.label} savedCommandName={savedCommand?.name}
+                      commandName={savedCommand?.command_name} payload={savedCommand?.payload}
+                      isLoading={isFetchingSavedCommand}/>
+      <CCard>
+        <CCardHeader>
+          Job Status
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol className="mb-5" md="8">
+              <Chart
+                options={chartOptions}
+                series={series}
+                type="pie"
+                height={380}
+              />
+            </CCol>
+            <CCol className="d-flex justify-content-center align-items-center" md="4">
+              <div className="text-center">
+                <h5>Time taken (seconds)</h5>
+                <Knob value={50} readOnly/>
+              </div>
+            </CCol>
+          </CRow>
+          <ProgressBar value={50}/>
+        </CCardBody>
+      </CCard>
+      <JobDevicesCard deviceGroupName={job.group.label} deviceGroupDevices={deviceGroupDevices}/>
+    </>
+  );
+
   const validationSchema = Yup.object({
     name: Yup.string()
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters.')
-      .test('isJobNameUnique', 'The name has already been taken.', isJobNameUnique),
+      .test('isJobNameUnique', 'The name has already been taken.', isJobNameUniqueDebounced),
     group: Yup.object().shape({
       value: Yup.string().required(),
       label: Yup.string().oneOf(
@@ -179,7 +244,7 @@ const CreateJob = ({
                 <Form>
                   {activeIndex === 0 && renderStep0()}
                   {activeIndex === 1 && renderStep1()}
-
+                  {activeIndex === 2 && renderStep2()}
                 </Form>
               </Formik>
             </CCardBody>
@@ -211,13 +276,16 @@ const mapStateToProps = state => ({
   deviceGroupDevices: state.deviceGroup.deviceGroupDevices,
   isFetchingDeviceGroupDevices: state.deviceGroup.isFetchingDeviceGroupDevices,
   fetchDeviceGroupDevicesErrorMessage: state.deviceGroup.fetchDeviceGroupDevicesErrorMessage,
+  isCreatingJob: state.job.isCreatingJob,
+  createJobErrorMessage: state.device.createJobErrorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchDeviceGroupOptionsStartAsync: (name) => dispatch(fetchDeviceGroupOptionsStartAsync(name)),
   fetchSavedCommandOptionsStartAsync: (name) => dispatch(fetchSavedCommandOptionsStartAsync(name)),
   fetchSavedCommandStartAsync: (id) => dispatch(fetchSavedCommandStartAsync(id)),
-  fetchDeviceGroupDevicesStartAsync: (id) => dispatch(fetchDeviceGroupDevicesStartAsync(id)),
+  fetchDeviceGroupDevicesStartAsync: (deviceGroupId, deviceGroupUniqueId) => dispatch(fetchDeviceGroupDevicesStartAsync(deviceGroupId, deviceGroupUniqueId)),
+  createJobStartAsync: (data, history) => dispatch(createJobStartAsync(data, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateJob);

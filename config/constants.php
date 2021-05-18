@@ -1,17 +1,36 @@
 <?php
 
+use App\Models\Event;
+
 return [
     'index_max_rows' => 500,
 
-    'device_statuses' => [
-        'registered' => 0,
-        'provisioned' => 1
+    'command_records' => [
+        ['name' => 'OTA', 'method_name' => 'triggerota'],
+        ['name' => 'AOTA', 'method_name' => 'triggeraota'],
+        ['name' => 'FOTA', 'method_name' => 'triggerfota'],
+        ['name' => 'SOTA', 'method_name' => 'triggersota'],
+        ['name' => 'COTA', 'method_name' => 'triggerconfig'],
+        ['name' => 'SHUTDOWN', 'method_name' => 'shutdown_device'],
+        ['name' => 'REBOOT', 'method_name' => 'reboot_device'],
+        ['name' => 'DECOMMISSION', 'method_name' => 'decommission_device'],
+        ['name' => 'FILE_UPLOAD', 'method_name' => 'file_upload'],
     ],
 
-    'raw_data_types' => [
-        'property' => 0,
-        'telemetry' => 1
+    'event_records' => [
+        ['name' => Event::TYPE_PROPERTY],
+        ['name' => Event::TYPE_TELEMETRY],
     ],
+
+//    'device_statuses' => [
+//        'registered' => 0,
+//        'provisioned' => 1
+//    ],
+//
+//    'raw_data_types' => [
+//        'property' => 0,
+//        'telemetry' => 1
+//    ],
 
     'commands' => [
         'OTA' => [
@@ -101,17 +120,17 @@ return [
 //        'file_upload' => 'file_upload'
 //    ],
 
-    'mqtt_methods_integer_types' => [
-        'triggerota' => 0,
-        'triggeraota' => 1,
-        'triggerfota' => 2,
-        'triggersota' => 3,
-        'triggerconfig' => 4,
-        'shutdown_device' => 5,
-        'reboot_device' => 6,
-        'decommission_device' => 7,
-        'file_upload' => 8
-    ],
+//    'mqtt_methods_integer_types' => [
+//        'triggerota' => 0,
+//        'triggeraota' => 1,
+//        'triggerfota' => 2,
+//        'triggersota' => 3,
+//        'triggerconfig' => 4,
+//        'shutdown_device' => 5,
+//        'reboot_device' => 6,
+//        'decommission_device' => 7,
+//        'file_upload' => 8
+//    ],
 
 //    'aota_configurations_map' => [
 //        'app' => 'app',

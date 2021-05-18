@@ -14,7 +14,7 @@ import DeleteDeviceCategoryModal from '../../components/DeleteDeviceCategoryModa
 
 const ViewDeviceCategory = (props) => {
 
-  const deviceCategoryId = props.match.params.id;
+  const deviceCategoryUniqueId = props.match.params.id;
   const {
     history,
     match,
@@ -28,7 +28,7 @@ const ViewDeviceCategory = (props) => {
   const [showDeleteDeviceCategoryModal, setShowDeleteDeviceCategoryModal] = useState(false);
 
   useEffect(() => {
-    fetchDeviceCategoryStartAsync(deviceCategoryId);
+    fetchDeviceCategoryStartAsync(deviceCategoryUniqueId);
   }, [])
 
   const deleteDeviceCategory = () => {
@@ -89,7 +89,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceCategoryStartAsync: (id) => dispatch(fetchDeviceCategoryStartAsync(id)),
+  fetchDeviceCategoryStartAsync: (deviceCategoryUniqueId) => dispatch(fetchDeviceCategoryStartAsync(deviceCategoryUniqueId)),
   deleteDeviceCategoriesStartAsync: (ids, history) => dispatch(deleteDeviceCategoriesStartAsync(ids, history)),
 });
 

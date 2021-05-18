@@ -14,7 +14,7 @@ import DeleteDeviceGroupModal from '../../components/DeleteDeviceGroupModal/Dele
 
 const ViewDeviceGroup = (props) => {
 
-  const deviceGroupId = props.match.params.id;
+  const deviceGroupUniqueId = props.match.params.id;
   const {
     history,
     match,
@@ -28,7 +28,7 @@ const ViewDeviceGroup = (props) => {
   const [showDeleteDeviceGroupModal, setShowDeleteDeviceGroupModal] = useState(false);
 
   useEffect(() => {
-    fetchDeviceGroupStartAsync(deviceGroupId);
+    fetchDeviceGroupStartAsync(deviceGroupUniqueId);
   }, []);
 
   const deleteDeviceGroup = () => {
@@ -77,7 +77,7 @@ const ViewDeviceGroup = (props) => {
                   Devices under this group
                 </CCardHeader>
                 <CCardBody>
-                  <DevicesDataTable deviceGroupId={deviceGroupId}/>
+                  <DevicesDataTable deviceGroupUniqueId={deviceGroupUniqueId}/>
                 </CCardBody>
               </CCard>
             </CCardBody>
@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceGroupStartAsync: (id) => dispatch(fetchDeviceGroupStartAsync(id)),
+  fetchDeviceGroupStartAsync: (deviceGroupUniqueId) => dispatch(fetchDeviceGroupStartAsync(deviceGroupUniqueId)),
   deleteDeviceGroupsStartAsync: (ids, history) => dispatch(deleteDeviceGroupsStartAsync(ids, history)),
 });
 

@@ -8,7 +8,7 @@ import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '
 
 import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
 import { createDeviceStartAsync } from '../../redux/device/device.actions';
-import { getSanitizedValues, isDeviceNameUnique } from '../../utils/utils';
+import { getSanitizedValues, isDeviceNameUniqueDebounced } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -47,7 +47,7 @@ const CreateDevice = ({
     name: Yup.string()
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters')
-      .test('isDeviceNameUnique', 'The name has already been taken', isDeviceNameUnique),
+      .test('isDeviceNameUnique', 'The name has already been taken', isDeviceNameUniqueDebounced),
     category: Yup.object().shape({
       value: Yup.string().required(),
       label: Yup.string().oneOf(

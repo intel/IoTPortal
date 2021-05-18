@@ -27,12 +27,12 @@ class CreateDevicesTable extends Migration
             $table->string('system_product_name')->nullable();
             $table->unsignedBigInteger('total_memory')->nullable();
             $table->text('mqtt_password');
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('device_category_id');
+            $table->unsignedBigInteger('device_status_id');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
+            $table->foreign('device_category_id')->references('id')->on('device_categories')->onDelete('cascade');
+            $table->foreign('device_status_id')->references('id')->on('device_statuses')->onDelete('cascade');
         });
     }
 

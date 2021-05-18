@@ -18,7 +18,7 @@ import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/Pr
 
 const EditDeviceCategory = (props) => {
 
-  const deviceCategoryId = props.match.params.id;
+  const deviceCategoryUniqueId = props.match.params.id;
   const {
     history,
     deviceCategory,
@@ -53,7 +53,7 @@ const EditDeviceCategory = (props) => {
   const validationSchema = Yup.object(validationObject);
 
   useEffect(() => {
-    fetchDeviceCategoryStartAsync(deviceCategoryId);
+    fetchDeviceCategoryStartAsync(deviceCategoryUniqueId);
   }, []);
 
   if (isFetchingDeviceCategory) {
@@ -80,7 +80,7 @@ const EditDeviceCategory = (props) => {
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
-                  updateDeviceCategoryStartAsync(deviceCategoryId, getSanitizedValues(values), history);
+                  updateDeviceCategoryStartAsync(deviceCategoryUniqueId, getSanitizedValues(values), history);
                 }}
               >
                 {({values}) => (
@@ -118,8 +118,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceCategoryStartAsync: (id) => dispatch(fetchDeviceCategoryStartAsync(id)),
-  updateDeviceCategoryStartAsync: (id, data, history) => dispatch(updateDeviceCategoryStartAsync(id, data, history)),
+  fetchDeviceCategoryStartAsync: (deviceCategoryUniqueId) => dispatch(fetchDeviceCategoryStartAsync(deviceCategoryUniqueId)),
+  updateDeviceCategoryStartAsync: (deviceCategoryUniqueId, data, history) => dispatch(updateDeviceCategoryStartAsync(deviceCategoryUniqueId, data, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditDeviceCategory);

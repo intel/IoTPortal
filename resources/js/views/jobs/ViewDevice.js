@@ -101,8 +101,8 @@ const ViewDevice = (props) => {
                                     updateFunction={(value) => updateDeviceStartAsync(deviceId, {name: value})}/>
                       <small>ID: {device.unique_id}</small><br/>
                       <div className="mt-2">
-                        <CBadge color="secondary" className="font-lg mr-2">{device.status.name}</CBadge>
-                        <CBadge color="primary" className="font-lg">{device.category.name}</CBadge>
+                        <CBadge color="secondary" className="font-lg mr-2">{device.device_status.name}</CBadge>
+                        <CBadge color="primary" className="font-lg">{device.device_category.name}</CBadge>
                       </div>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ const ViewDevice = (props) => {
                   <CotaCard deviceId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="command-histories">
-                  <CommandHistoriesDataTable deviceId={deviceId}/>
+                  <CommandHistoriesDataTable deviceUniqueId={deviceId}/>
                 </CTabPane>
                 <CTabPane className="m-3" data-tab="event-histories">
                   <EventHistoriesDataTable deviceId={deviceId}/>

@@ -7,7 +7,12 @@ import { Toaster } from 'react-hot-toast';
 import { Steps } from 'primereact/steps';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
-import { getSanitizedValues, isDeviceGroupNameUnique, isNotEmptyString } from '../../utils/utils';
+import {
+  getSanitizedValues,
+  isDeviceGroupNameUnique,
+  isDeviceGroupNameUniqueDebounced,
+  isNotEmptyString
+} from '../../utils/utils';
 import { createDeviceGroupStartAsync } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
@@ -129,7 +134,7 @@ const CreateDeviceGroup = ({
     name: Yup.string()
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters.')
-      .test('isDeviceGroupNameUnique', 'The name has already been taken.', isDeviceGroupNameUnique),
+      .test('isDeviceGroupNameUnique', 'The name has already been taken.', isDeviceGroupNameUniqueDebounced),
   });
 
   return (

@@ -1,6 +1,6 @@
 import { CButton } from '@coreui/react';
 import toast from 'react-hot-toast';
-import { API_ENDPOINT } from '../data/config';
+import { API_ENDPOINT, ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../data/config';
 
 export const convertDeviceObjectToDeviceArrayObject = object => {
   return Object.entries(object).map(([key, value], index) => {
@@ -166,6 +166,8 @@ export const isDeviceNameUnique = (name) => new Promise((resolve, reject) => {
     });
 });
 
+export const isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+
 export const isDeviceGroupNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/device/groups/validateField`, {name: name})
     .then(result => {
@@ -178,6 +180,8 @@ export const isDeviceGroupNameUnique = (name) => new Promise((resolve, reject) =
       resolve(false);
     });
 });
+
+export const isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/device/categories/validateField`, {name: name})
@@ -192,6 +196,8 @@ export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject
     });
 });
 
+export const isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+
 export const isJobNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/jobs/validateField`, {name: name})
     .then(result => {
@@ -205,3 +211,4 @@ export const isJobNameUnique = (name) => new Promise((resolve, reject) => {
     });
 });
 
+export const isJobNameUniqueDebounced = _.debounce(isJobNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);

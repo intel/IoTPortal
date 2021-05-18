@@ -6,7 +6,7 @@ import { fetchCpuTemperaturesStartAsync } from '../../redux/deviceMetric/deviceM
 import LineChartCard from '../../components/LineChartCard/LineChartCard';
 
 const CpuTemperatureLineChartCard = ({
-                                    deviceId,
+                                    deviceUniqueId,
                                     cpuTemperatures,
                                     isFetchingCpuTemperatures,
                                     fetchCpuTemperaturesErrorMessage,
@@ -70,7 +70,7 @@ const CpuTemperatureLineChartCard = ({
   });
 
   useEffect(() => {
-    fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchCpuTemperaturesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
 
   const series = [{
@@ -88,7 +88,7 @@ const CpuTemperatureLineChartCard = ({
       timeRangeFilters={timeRangeFilters}
       selectedTimeRangeFilter={selectedTimeRangeFilter}
       onTimeRangeFilter={(event) => setSelectedTimeRangeFilter(parseInt(event.target.value))}
-      onRefresh={() => fetchCpuTemperaturesStartAsync(deviceId, selectedTimeRangeFilter)}
+      onRefresh={() => fetchCpuTemperaturesStartAsync(deviceUniqueId, selectedTimeRangeFilter)}
       isLoading={isFetchingCpuTemperatures}
       errorMessage={fetchCpuTemperaturesErrorMessage}
     />
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCpuTemperaturesStartAsync: (id, timeRangeFilter) => dispatch(fetchCpuTemperaturesStartAsync(id, timeRangeFilter)),
+  fetchCpuTemperaturesStartAsync: (deviceUniqueId, timeRangeFilter) => dispatch(fetchCpuTemperaturesStartAsync(deviceUniqueId, timeRangeFilter)),
 
 });
 

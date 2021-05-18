@@ -6,7 +6,7 @@ import { fetchDiskUsagesStartAsync } from '../../redux/deviceMetric/deviceMetric
 import LineChartCard from '../../components/LineChartCard/LineChartCard';
 
 const DiskUsageLineChartCard = ({
-                                  deviceId,
+                                  deviceUniqueId,
                                   diskUsages,
                                   isFetchingDiskUsages,
                                   fetchDiskUsagesErrorMessage,
@@ -70,7 +70,7 @@ const DiskUsageLineChartCard = ({
   });
 
   useEffect(() => {
-    fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchDiskUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
 
   const series = [{
@@ -88,7 +88,7 @@ const DiskUsageLineChartCard = ({
       timeRangeFilters={timeRangeFilters}
       selectedTimeRangeFilter={selectedTimeRangeFilter}
       onTimeRangeFilter={(event) => setSelectedTimeRangeFilter(parseInt(event.target.value))}
-      onRefresh={() => fetchDiskUsagesStartAsync(deviceId, selectedTimeRangeFilter)}
+      onRefresh={() => fetchDiskUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter)}
       isLoading={isFetchingDiskUsages}
       errorMessage={fetchDiskUsagesErrorMessage}
     />
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDiskUsagesStartAsync: (id, timeRangeFilter) => dispatch(fetchDiskUsagesStartAsync(id, timeRangeFilter)),
+  fetchDiskUsagesStartAsync: (deviceUniqueId, timeRangeFilter) => dispatch(fetchDiskUsagesStartAsync(deviceUniqueId, timeRangeFilter)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DiskUsageLineChartCard);

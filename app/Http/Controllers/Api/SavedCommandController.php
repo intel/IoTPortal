@@ -4,14 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DestroySelectedSavedCommandRequest;
+use App\Http\Requests\StoreSavedCommandRequest;
+use App\Http\Requests\ValidateSavedCommandFieldsRequest;
 use App\Models\SavedCommand;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class SavedCommandController extends Controller
 {
@@ -30,8 +31,11 @@ class SavedCommandController extends Controller
 
             foreach ($filters as $key => $value) {
                 if ($key === 'unique_id') $query->uniqueIdLike($value->value);
+
                 if ($key === 'name') $query->nameLike($value->value);
+
                 if ($key === 'command_name') $query->commandNameLike($value->value);
+
                 if ($key === 'globalFilter') {
                     $query->where(function ($query) use ($value) {
                         $query->uniqueIdLike($value->value)
@@ -43,10 +47,10 @@ class SavedCommandController extends Controller
         }
 
         if ($request->has('sortField')) {
-            if ($request->input('sortOrder') === '1')
-                $query->orderBy($request->input('sortField'));
+            if ($request->sortOrder === '1')
+                $query->orderBy($request->sortField);
             else
-                $query->orderByDesc($request->input('sortField'));
+                $query->orderByDesc($request->sortField);
         }
 
         $maxRows = Config::get('constants.index_max_rows');
@@ -60,32 +64,20 @@ class SavedCommandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param StoreSavedCommandRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(StoreSavedCommandRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255|unique:saved_commands,name',
-            'command' => 'required|string|max:255',
-            'payload' => 'nullable'
-        ]);
-
-        if ($validator->fails()) {
-            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
-        }
-
         $savedCommand = Auth::user()->savedCommands()->create([
-            'name' => $request->input('name'),
-            'command_name' => $request->input('command'),
-            'payload' => is_null($request->input('payload')) ? null : json_encode($request->input('payload')),
+            'name' => $request->name,
+            'command_name' => $request->command,
+            'payload' => is_null($request->payload) ? null : json_encode($request->input('payload')),
         ]);
 
-        if ($savedCommand->exists) {
-            return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
-        }
-
-        return Helper::apiResponseHttpInternalServerError('Failed to create saved command');
+        return $savedCommand->exists
+            ? Helper::apiResponseHttpOk(['savedCommand' => $savedCommand])
+            : Helper::apiResponseHttpInternalServerError('Failed to create saved command.');
     }
 
     /**
@@ -96,8 +88,8 @@ class SavedCommandController extends Controller
      */
     public function show($id)
     {
-        $savedCommand = SavedCommand::where('id', $id)
-            ->orWhere('unique_id', $id)
+        $savedCommand = SavedCommand::id($id)
+            ->orWhere->uniqueId($id)
             ->first();
 
         return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
@@ -129,27 +121,12 @@ class SavedCommandController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param Request $request
+     * @param DestroySelectedSavedCommandRequest $request
      * @return JsonResponse
      */
-    public function destroySelected(Request $request)
+    public function destroySelected(DestroySelectedSavedCommandRequest $request)
     {
-        $user = Auth::user();
-
-        $validator = Validator::make($request->all(), [
-            'ids.*' => [
-                'required',
-                Rule::exists('saved_commands', 'id')->where(function ($query) use ($user) {
-                    return $query->where('user_id', $user->id);
-                }),
-            ],
-        ]);
-
-        if ($validator->fails()) {
-            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
-        }
-
-        $success = $user->savedCommands()->whereIn('saved_commands.id', $request->input('ids'))->delete();
+        $success = Auth::user()->savedCommands()->idIn($request->ids)->delete();
 
         return Helper::apiResponseHttpOk([], $success);
     }
@@ -160,31 +137,22 @@ class SavedCommandController extends Controller
      */
     public function options(Request $request)
     {
-        $query = Auth::user()->savedCommands()->select(['id as value', 'name as label']);
+        $query = Auth::user()->savedCommands();
 
         if ($request->has('name')) {
-            $query->where('name', 'like', "%{$request->input('name')}%");
+            $query->nameLike($request->name);
         }
 
-        return Helper::apiResponseHttpOk(['savedCommands' => $query->get()]);
+        return Helper::apiResponseHttpOk(['savedCommands' => $query->getOptions()]);
     }
 
     /**
      *
-     * @param Request $request
+     * @param ValidateSavedCommandFieldsRequest $request
      * @return JsonResponse
      */
-    public function validateField(Request $request)
+    public function validateField(ValidateSavedCommandFieldsRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            //            TODO unique validation based on user
-            'name' => 'required|string|max:255|unique:saved_commands,name',
-        ]);
-
-        if ($validator->fails()) {
-            return Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray());
-        }
-
         return Helper::apiResponseHttpOk();
     }
 }

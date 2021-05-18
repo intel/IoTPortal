@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 
 import {
   deleteDeviceCategoriesStartAsync,
@@ -17,6 +16,7 @@ import {
 import DeleteDeviceCategoryModal from '../../components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal';
 
 import './deviceCategoriesDataTable.css';
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const DeviceCategoriesDataTable = ({
                                      history,
@@ -77,17 +77,8 @@ const DeviceCategoriesDataTable = ({
     setFetchDeviceCategoriesLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Device Categories
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Device Categories" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const deviceCategoryUniqueIdColumnBody = (rowData) => {
     return (
@@ -119,8 +110,6 @@ const DeviceCategoriesDataTable = ({
       </>
     );
   }
-
-  const header = renderHeader();
 
   return (
     <>

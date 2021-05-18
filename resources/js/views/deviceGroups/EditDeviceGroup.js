@@ -25,7 +25,7 @@ import DeviceGroupNoDeviceSelectedModal
 
 const EditDeviceGroup = (props) => {
 
-  const deviceGroupId = props.match.params.id;
+  const deviceGroupUniqueId = props.match.params.id;
   const {
     history,
     deviceGroup,
@@ -47,8 +47,8 @@ const EditDeviceGroup = (props) => {
   const formRef = useRef();
 
   useEffect(() => {
-    fetchDeviceGroupStartAsync(deviceGroupId);
-    fetchDeviceGroupDevicesStartAsync(deviceGroupId)
+    fetchDeviceGroupStartAsync(deviceGroupUniqueId);
+    fetchDeviceGroupDevicesStartAsync(undefined, deviceGroupUniqueId)
   }, []);
 
   const handleSubmit = () => {
@@ -124,7 +124,7 @@ const EditDeviceGroup = (props) => {
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
-                  updateDeviceGroupStartAsync(deviceGroupId, getSanitizedValues(values), history);
+                  updateDeviceGroupStartAsync(deviceGroupUniqueId, getSanitizedValues(values), history);
                 }}
               >
                 <Form>
@@ -161,8 +161,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceGroupStartAsync: (id) => dispatch(fetchDeviceGroupStartAsync(id)),
-  fetchDeviceGroupDevicesStartAsync: (id) => dispatch(fetchDeviceGroupDevicesStartAsync(id)),
+  fetchDeviceGroupStartAsync: (deviceGroupUniqueId) => dispatch(fetchDeviceGroupStartAsync(deviceGroupUniqueId)),
+  fetchDeviceGroupDevicesStartAsync: (deviceGroupId, deviceGroupUniqueId) => dispatch(fetchDeviceGroupDevicesStartAsync(deviceGroupId, deviceGroupUniqueId)),
   setDeviceGroupDevices: (deviceGroupDevices) => dispatch(setDeviceGroupDevices(deviceGroupDevices)),
   updateDeviceGroupStartAsync: (id, data, history) => dispatch(updateDeviceGroupStartAsync(id, data, history)),
 });

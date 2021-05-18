@@ -14,7 +14,6 @@ const IotTextInputFormGroup = ({isHidden, isLabelHidden, isDisabled, label, ...p
       {isLabelHidden ? null : (<CLabel htmlFor={props.id || props.name}>{label}</CLabel>)}
       <CInput
         {...(meta.touched && meta.error && {invalid: true})}
-        id={props.id || props.name}
         {...(isDisabled && {disabled: true})}
         {...field}
         {...props}

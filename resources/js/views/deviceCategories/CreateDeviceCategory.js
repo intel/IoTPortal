@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 
@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
 import { createDeviceCategoryStartAsync, } from '../../redux/deviceCategory/deviceCategory.actions';
-import { getSanitizedValues, isDeviceCategoryNameUnique } from '../../utils/utils';
+import { getSanitizedValues, isDeviceCategoryNameUniqueDebounced } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
@@ -37,7 +37,7 @@ const CreateDeviceCategory = ({
     name: Yup.string()
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters')
-      .test('isDeviceCategoryNameUnique', 'The name has already been taken', isDeviceCategoryNameUnique),
+      .test('isDeviceCategoryNameUnique', 'The name has already been taken', isDeviceCategoryNameUniqueDebounced),
   };
 
   const validationSchema = Yup.object(validationObject);

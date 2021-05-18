@@ -69,11 +69,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all of the jobs for the user.
+     * Get all of the device jobs for the user.
      */
-    public function jobs()
+    public function deviceJobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(DeviceJob::class);
     }
 
     /**
@@ -81,7 +81,7 @@ class User extends Authenticatable
      */
     public function deviceCategories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(DeviceCategory::class);
     }
 
     /**
@@ -89,7 +89,7 @@ class User extends Authenticatable
      */
     public function deviceGroups()
     {
-        return $this->hasMany(Group::class);
+        return $this->hasMany(DeviceGroup::class);
     }
 
     /**
@@ -105,7 +105,7 @@ class User extends Authenticatable
      */
     public function devices()
     {
-        return $this->hasManyThrough(Device::class, Category::class);
+        return $this->hasManyThrough(Device::class, DeviceCategory::class);
     }
 
     /**
@@ -130,5 +130,30 @@ class User extends Authenticatable
     public function configurationFiles()
     {
         return $this->hasMany(ConfigurationFile::class);
+    }
+
+    public function scopeId($query, $value)
+    {
+        return $query->where('id', $value);
+    }
+
+    public function scopeIdIn($query, $value)
+    {
+        return $query->whereIn('users.id', $value);
+    }
+
+    public function scopeUniqueId($query, $value)
+    {
+        return $query->where('unique_id', $value);
+    }
+
+    public function scopeUniqueIdLike($query, $value)
+    {
+        return $query->where('unique_id', 'like', "%{$value}%");
+    }
+
+    public function scopeNameLike($query, $value)
+    {
+        return $query->where('name', 'like', "%{$value}%");
     }
 }

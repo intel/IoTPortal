@@ -6,7 +6,7 @@ import { fetchCpuUsagesStartAsync } from '../../redux/deviceMetric/deviceMetric.
 import LineChartCard from '../../components/LineChartCard/LineChartCard';
 
 const CpuUsageLineChartCard = ({
-                                 deviceId,
+                                 deviceUniqueId,
                                  cpuUsages,
                                  isFetchingCpuUsages,
                                  fetchCpuUsagesErrorMessage,
@@ -70,7 +70,7 @@ const CpuUsageLineChartCard = ({
   });
 
   useEffect(() => {
-    fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter);
+    fetchCpuUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
   }, [selectedTimeRangeFilter]);
 
   const series = [{
@@ -88,7 +88,7 @@ const CpuUsageLineChartCard = ({
       timeRangeFilters={timeRangeFilters}
       selectedTimeRangeFilter={selectedTimeRangeFilter}
       onTimeRangeFilter={(event) => setSelectedTimeRangeFilter(parseInt(event.target.value))}
-      onRefresh={() => fetchCpuUsagesStartAsync(deviceId, selectedTimeRangeFilter)}
+      onRefresh={() => fetchCpuUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter)}
       isLoading={isFetchingCpuUsages}
       errorMessage={fetchCpuUsagesErrorMessage}
     />
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCpuUsagesStartAsync: (id, timeRangeFilter) => dispatch(fetchCpuUsagesStartAsync(id, timeRangeFilter)),
+  fetchCpuUsagesStartAsync: (deviceUniqueId, timeRangeFilter) => dispatch(fetchCpuUsagesStartAsync(deviceUniqueId, timeRangeFilter)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CpuUsageLineChartCard);

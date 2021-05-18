@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Api\Mqtt;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
-use App\Models\Status;
+use App\Models\DeviceStatus;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,9 +34,9 @@ class EndpointController extends Controller
 
     protected function authOnRegister(Request $request)
     {
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $clientId = $request->input('client_id');
+        $username = $request->username;
+        $password = $request->password;
+        $clientId = $request->client_id;
 
         $mqttConfig = config('mqttclient.connections.default');
 
@@ -68,8 +67,8 @@ class EndpointController extends Controller
 
     protected function authOnSubscribe(Request $request)
     {
-        $username = $request->input('username');
-        $clientId = $request->input('client_id');
+        $username = $request->username;
+        $clientId = $request->client_id;
 
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
@@ -85,7 +84,7 @@ class EndpointController extends Controller
             $device = Device::where('unique_id', $username)->first();
 
             if ($device) {
-                $topics = $request->input('topics');
+                $topics = $request->topics;
 
                 $disallowedTopics = [];
 
@@ -111,9 +110,9 @@ class EndpointController extends Controller
 
     protected function authOnPublish(Request $request)
     {
-        $username = $request->input('username');
-        $clientId = $request->input('client_id');
-        $topic = $request->input('topic');
+        $username = $request->username;
+        $clientId = $request->client_id;
+        $topic = $request->topic;
 
         $mqttConfig = config('mqttclient.connections.default');
 
@@ -167,7 +166,9 @@ class EndpointController extends Controller
     protected function messagesEvents(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $telemetryEvent = $device->events()->where('name', 'telemetry')->first();
+
+        $telemetryEvent = $device->events()->getTelemetry();
+
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
             'event_id' => $telemetryEvent->id,
@@ -224,7 +225,9 @@ class EndpointController extends Controller
     protected function propertiesReported(Device $device, ?string $payload)
     {
         Log::debug('Upper $payload->' . $payload);
-        $propertyEvent = $device->events()->where('name', 'property')->first();
+
+        $propertyEvent = $device->events()->getProperty();
+
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
             'event_id' => $propertyEvent->id,
@@ -288,9 +291,8 @@ class EndpointController extends Controller
 
     protected function updateDeviceStatus(Device $device)
     {
-        if ($device->registered) {
-            $provisionedStatus = Status::where('name', 'PROVISIONED')->first();
-            $device->status()->associate($provisionedStatus)->save();
+        if ($device->isRegistered()) {
+            $device->deviceStatus()->associate(DeviceStatus::getProvisioned())->save();
         }
     }
 }

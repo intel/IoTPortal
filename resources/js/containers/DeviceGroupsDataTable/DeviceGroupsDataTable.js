@@ -5,18 +5,18 @@ import { withRouter } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
 
 import {
   deleteDeviceGroupsStartAsync,
   fetchDeviceGroupsStartAsync,
-  setFetchDeviceGroupsLazyParams,
   resetFetchDeviceGroupsLazyParams,
+  setFetchDeviceGroupsLazyParams,
 } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import DeleteDeviceGroupModal from '../../components/DeleteDeviceGroupModal/DeleteDeviceGroupModal';
 
 import './deviceGroupsDataTable.css';
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const DeviceGroupsDataTable = ({
                                  history,
@@ -77,17 +77,8 @@ const DeviceGroupsDataTable = ({
     setFetchDeviceGroupsLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Device Groups
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Device Groups" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const deviceGroupUniqueIdColumnBody = (rowData) => {
     return (
@@ -119,8 +110,6 @@ const DeviceGroupsDataTable = ({
       </>
     );
   }
-
-  const header = renderHeader();
 
   return (
     <>

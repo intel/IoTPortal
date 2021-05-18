@@ -5,11 +5,10 @@ import { submitCotaStartAsync } from '../../redux/cota/cota.actions';
 
 import CotaCard from '../../components/CotaCard/CotaCard';
 
-const SubmitCotaCardForm = ({deviceId, isSubmittingCota, submitCotaStartAsync}) => {
+const SubmitCotaCardForm = ({deviceUniqueId, isSubmittingCota, submitCotaStartAsync}) => {
   return (
-    <CotaCard submitCallback={(data) => submitCotaStartAsync(deviceId, data)} isPrimaryLoading={isSubmittingCota}
-              isSecondaryLoading={isSubmittingCota} isPrimaryDisabled={isSubmittingCota}
-              isSecondaryDisabled={isSubmittingCota}/>
+    <CotaCard submitCallback={(data) => submitCotaStartAsync(deviceUniqueId, data)} isPrimaryLoading={isSubmittingCota}
+              isPrimaryDisabled={isSubmittingCota} isSecondaryDisabled={isSubmittingCota}/>
   );
 };
 
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitCotaStartAsync: (id, data) => dispatch(submitCotaStartAsync(id, data)),
+  submitCotaStartAsync: (deviceUniqueId, data) => dispatch(submitCotaStartAsync(deviceUniqueId, data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitCotaCardForm);

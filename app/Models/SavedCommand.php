@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class SavedCommand extends Model
 {
@@ -48,6 +47,21 @@ class SavedCommand extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeId($query, $value)
+    {
+        return $query->where('id', $value);
+    }
+
+    public function scopeIdIn($query, $value)
+    {
+        return $query->whereIn('saved_commands.id', $value);
+    }
+
+    public function scopeUniqueId($query, $value)
+    {
+        return $query->where('unique_id', $value);
+    }
+
     public function scopeUniqueIdLike($query, $value)
     {
         return $query->where('unique_id', 'like', "%{$value}%");
@@ -61,5 +75,10 @@ class SavedCommand extends Model
     public function scopeCommandNameLike($query, $value)
     {
         return $query->where('command_name', 'like', "%{$value}%");
+    }
+
+    public function scopeGetOptions($query)
+    {
+        return $query->get(['id as value', 'name as label']);
     }
 }

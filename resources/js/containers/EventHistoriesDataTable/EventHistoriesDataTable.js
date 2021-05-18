@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import ReactJson from 'react-json-view';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
 import { fetchDeviceEventOptionsStartAsync } from '../../redux/deviceEvent/deviceEvent.actions';
 import {
   fetchDeviceEventHistoriesStartAsync,
-  setFetchDeviceEventHistoriesLazyParams,
   resetFetchDeviceEventHistoriesLazyParams,
+  setFetchDeviceEventHistoriesLazyParams,
 } from '../../redux/deviceEventHistory/deviceEventHistory.actions';
 
 import './eventHistoriesDataTable.css';
@@ -20,10 +18,10 @@ import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 import useInterval from '../../hooks/useInterval';
-
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const EventHistoriesDataTable = ({
-                                   deviceId,
+                                   deviceUniqueId,
                                    deviceEventOptions,
                                    isFetchingDeviceEventOptions,
                                    fetchDeviceEventOptionsErrorMessage,
@@ -47,13 +45,13 @@ const EventHistoriesDataTable = ({
   const dt = useRef(null);
 
   useEffect(() => {
-    fetchDeviceEventOptionsStartAsync(deviceId);
-    fetchDeviceEventHistoriesStartAsync(deviceId, fetchDeviceEventHistoriesLazyParams);
+    fetchDeviceEventOptionsStartAsync(deviceUniqueId);
+    fetchDeviceEventHistoriesStartAsync(deviceUniqueId, fetchDeviceEventHistoriesLazyParams);
   }, [fetchDeviceEventHistoriesLazyParams]);
 
   useEffect(() => resetFetchDeviceEventHistoriesLazyParams, []);
 
-  useInterval(() => fetchDeviceEventHistoriesStartAsync(deviceId, fetchDeviceEventHistoriesLazyParams, false), 5000);
+  useInterval(() => fetchDeviceEventHistoriesStartAsync(deviceUniqueId, fetchDeviceEventHistoriesLazyParams, false), 5000);
 
   const onPage = (event) => {
     let _lazyParams = {...fetchDeviceEventHistoriesLazyParams, ...event};
@@ -73,17 +71,8 @@ const EventHistoriesDataTable = ({
     setFetchDeviceEventHistoriesLazyParams(_lazyParams);
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="table-header">
-        Event Histories
-        <span className="p-input-icon-left">
-          <i className="pi pi-search"/>
-          <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search"/>
-        </span>
-      </div>
-    );
-  };
+  const header = (
+    <DataTableHeader headerName="Event Histories" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
   const renderEventTypeFilter = () => {
     return (
@@ -150,7 +139,6 @@ const EventHistoriesDataTable = ({
     );
   };
 
-  const header = renderHeader();
   const eventTypeFilterElement = renderEventTypeFilter();
   const timestampFilterElement = renderTimestampFilter();
 
@@ -174,7 +162,7 @@ const EventHistoriesDataTable = ({
                  rowExpansionTemplate={rowExpansionTemplate} loading={isFetchingDeviceEventHistories}>
         <Column expander style={{width: '5em'}}/>
         <Column selectionMode="multiple" style={{width: '4em'}}/>
-        <Column field="raw_data" header="Raw data" body={rawDataColumnBody} style={{width:'61%'}} sortable filter
+        <Column field="raw_data" header="Raw data" body={rawDataColumnBody} style={{width: '61%'}} sortable filter
                 filterPlaceholder="Search by raw data"/>
         <Column field="type" header="Type" body={eventTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={eventTypeFilterElement}/>
@@ -197,8 +185,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceEventOptionsStartAsync: (id) => dispatch(fetchDeviceEventOptionsStartAsync(id)),
-  fetchDeviceEventHistoriesStartAsync: (id, lazyParams, showIsFetchingIndicator) => dispatch(fetchDeviceEventHistoriesStartAsync(id, lazyParams, showIsFetchingIndicator)),
+  fetchDeviceEventOptionsStartAsync: (deviceUniqueId) => dispatch(fetchDeviceEventOptionsStartAsync(deviceUniqueId)),
+  fetchDeviceEventHistoriesStartAsync: (deviceUniqueId, lazyParams, showIsFetchingIndicator) => dispatch(fetchDeviceEventHistoriesStartAsync(deviceUniqueId, lazyParams, showIsFetchingIndicator)),
   setFetchDeviceEventHistoriesLazyParams: (lazyParams) => dispatch(setFetchDeviceEventHistoriesLazyParams(lazyParams)),
   resetFetchDeviceEventHistoriesLazyParams: () => dispatch(resetFetchDeviceEventHistoriesLazyParams()),
 });
