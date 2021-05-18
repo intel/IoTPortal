@@ -199,7 +199,7 @@ class Device extends Model
 
     public function scopeUniqueId($query, $value)
     {
-        return $query->where('unique_id', $value);
+        return $query->where('devices.unique_id', $value);
     }
 
     public function scopeUniqueIdLike($query, $value)

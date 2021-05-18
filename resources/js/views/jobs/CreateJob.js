@@ -100,6 +100,7 @@ const CreateJob = ({
     setActiveIndex(activeIndex + 1);
     const sanitizedValues = getSanitizedValues(formRef.current.values);
     createJobStartAsync(sanitizedValues);
+
     // send create job
     // and loop to check status
   };
