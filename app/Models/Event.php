@@ -47,30 +47,28 @@ class Event extends Model
         return $query->where('name', 'like', "%{$value}%");
     }
 
-    public function scopeProperty()
+    public function scopeProperty($query)
     {
-        return $this->name(self::TYPE_PROPERTY);
+        return $query->name(self::TYPE_PROPERTY);
     }
 
-    public function scopeTelemetry()
+    public function scopeTelemetry($query)
     {
-        return $this->name(self::TYPE_TELEMETRY);
+        return $query->name(self::TYPE_TELEMETRY);
     }
 
-    public function scopeGetProperty()
+    public function scopeGetProperty($query)
     {
-        return $this->property()->first();
+        return $query->property()->first();
     }
 
-    public function scopeGetTelemetry()
+    public function scopeGetTelemetry($query)
     {
-        return $this->telemetry()->first();
+        return $query->telemetry()->first();
     }
 
     public function scopeGetOptions($query)
     {
         return $query->get(['id as value', 'name as label']);
     }
-
-
 }
