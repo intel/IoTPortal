@@ -17,9 +17,9 @@ import {
 
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 import './commandHistoriesDataTable.css';
-import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const CommandHistoriesDataTable = ({
                                      deviceUniqueId,
@@ -182,7 +182,7 @@ const CommandHistoriesDataTable = ({
         <Column selectionMode="multiple" style={{width: '4em'}}/>
         <Column field="payload" header="Payload" body={payloadColumnBody} style={{width: '57%'}} sortable filter
                 filterPlaceholder="Search by payload"/>
-        <Column field="type" header="Command type" body={commandTypeColumnBody} sortable filter
+        <Column field="command_id" header="Command type" body={commandTypeColumnBody} sortable filter
                 excludeGlobalFilter={true}
                 filterElement={commandTypeFilterElement}/>
         <Column field="responded_at" header="Responded at" body={respondedAtColumnBody} sortable filter

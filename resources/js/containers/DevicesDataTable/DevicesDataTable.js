@@ -256,9 +256,9 @@ const DevicesDataTable = ({
                   filterPlaceholder="Search by BIOS vendor"/>
           <Column field="bios_version" header="BIOS version" body={deviceBiosVersionColumnBody} sortable filter
                   filterPlaceholder="Search by BIOS version"/>
-          <Column field="category" header="Category" body={deviceCategoryColumnBody} sortable filter
+          <Column field="device_category_id" header="Category" body={deviceCategoryColumnBody} sortable filter
                   excludeGlobalFilter={true} filterElement={deviceCategoryFilterElement}/>
-          <Column field="status" header="Status" body={deviceStatusColumnBody} sortable filter
+          <Column field="device_status_id" header="Status" body={deviceStatusColumnBody} sortable filter
                   excludeGlobalFilter={true} filterElement={deviceStatusFilterElement}/>
           {!hideActionsBar && <Column body={actionColumnBody} headerStyle={{width: '20em', textAlign: 'center'}}
                                       bodyStyle={{textAlign: 'center', overflow: 'visible'}}/>}

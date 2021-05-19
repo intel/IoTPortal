@@ -28,7 +28,7 @@ class EventHistoryController extends Controller
             foreach ($filters as $key => $value) {
                 if ($key === 'raw_data') $query->rawDataLike($value->value);
 
-                if ($key === 'type') $query->eventId($value->value);
+                if ($key === 'event_id') $query->eventId($value->value);
 
                 if ($key === 'created_at') {
                     $dates = explode(" - ", $value->value);

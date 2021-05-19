@@ -45,9 +45,9 @@ class DeviceController extends Controller
 
                 if ($key === 'bios_version') $query->biosVersionLike($value->value);
 
-                if ($key === 'category') $query->deviceCategoryId($value->value);
+                if ($key === 'device_category_id') $query->deviceCategoryId($value->value);
 
-                if ($key === 'status') $query->deviceStatusId($value->value);
+                if ($key === 'device_status_id') $query->deviceStatusId($value->value);
 
                 if ($key === 'globalFilter') {
                     $query->where(function ($query) use ($value) {

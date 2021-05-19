@@ -6,6 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Dropdown } from 'primereact/dropdown';
 
+import useInterval from '../../hooks/useInterval';
 import { fetchDeviceEventOptionsStartAsync } from '../../redux/deviceEvent/deviceEvent.actions';
 import {
   fetchDeviceEventHistoriesStartAsync,
@@ -13,12 +14,12 @@ import {
   setFetchDeviceEventHistoriesLazyParams,
 } from '../../redux/deviceEventHistory/deviceEventHistory.actions';
 
-import './eventHistoriesDataTable.css';
 import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
-import useInterval from '../../hooks/useInterval';
 import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
+
+import './eventHistoriesDataTable.css';
 
 const EventHistoriesDataTable = ({
                                    deviceUniqueId,
@@ -164,7 +165,7 @@ const EventHistoriesDataTable = ({
         <Column selectionMode="multiple" style={{width: '4em'}}/>
         <Column field="raw_data" header="Raw data" body={rawDataColumnBody} style={{width: '61%'}} sortable filter
                 filterPlaceholder="Search by raw data"/>
-        <Column field="type" header="Type" body={eventTypeColumnBody} sortable filter excludeGlobalFilter={true}
+        <Column field="event_id" header="Type" body={eventTypeColumnBody} sortable filter excludeGlobalFilter={true}
                 filterElement={eventTypeFilterElement}/>
         <Column field="created_at" header="Timestamp" body={timestampColumnBody} sortable filter
                 excludeGlobalFilter={true} filterElement={timestampFilterElement}/>

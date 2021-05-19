@@ -28,7 +28,7 @@ class CommandHistoryController extends Controller
             foreach ($filters as $key => $value) {
                 if ($key === 'payload') $query->payloadLike($value->value);
 
-                if ($key === 'type') $query->commandId($value->value);
+                if ($key === 'command_id') $query->commandId($value->value);
 
                 if ($key === 'responded_at') {
                     $dates = explode(" - ", $value->value);
