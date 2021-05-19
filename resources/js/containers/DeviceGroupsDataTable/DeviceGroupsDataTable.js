@@ -119,7 +119,7 @@ const DeviceGroupsDataTable = ({
                    globalFilter={globalFilter}
                    {...(selectedDeviceGroups !== undefined && {selection: selectedDeviceGroups})}
                    {...(setSelectedDeviceGroups !== undefined && {onSelectionChange: e => setSelectedDeviceGroups(e.value)})}
-                   paginator emptyMessage="No device found"
+                   paginator emptyMessage="No device group found"
                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                    rowsPerPageOptions={[10, 50, 100, 200]} first={fetchDeviceGroupsLazyParams.first}

@@ -415,7 +415,7 @@ var DeviceGroupsDataTable = function DeviceGroupsDataTable(_ref) {
         }
       }), {}, {
         paginator: true,
-        emptyMessage: "No device found",
+        emptyMessage: "No device group found",
         currentPageReportTemplate: "Showing {first} to {last} of {totalRecords} entries",
         paginatorTemplate: "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown",
         rowsPerPageOptions: [10, 50, 100, 200],
