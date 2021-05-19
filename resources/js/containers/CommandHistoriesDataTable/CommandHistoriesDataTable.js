@@ -134,7 +134,7 @@ const CommandHistoriesDataTable = ({
     return (
       <>
         <span className="p-column-title">Responded at</span>
-        {rowData.responded_at}
+        {formatDateTimeISOStringToCommonString(rowData.responded_at)}
       </>
     );
   };

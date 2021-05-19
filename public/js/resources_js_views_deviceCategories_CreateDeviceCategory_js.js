@@ -517,8 +517,12 @@ var getSanitizedValues = function getSanitizedValues(object) {
   return clonedObject;
 };
 var formatDateTimeISOStringToCommonString = function formatDateTimeISOStringToCommonString(dateTimeISOString) {
-  var dt = new Date(dateTimeISOString);
-  return "".concat(dt.getFullYear().toString().padStart(4, '0'), "-").concat((dt.getMonth() + 1).toString().padStart(2, '0'), "-").concat(dt.getDate().toString().padStart(2, '0'), " ").concat(dt.getHours().toString().padStart(2, '0'), ":").concat(dt.getMinutes().toString().padStart(2, '0'), ":").concat(dt.getSeconds().toString().padStart(2, '0'));
+  if (dateTimeISOString) {
+    var dt = new Date(dateTimeISOString);
+    return "".concat(dt.getFullYear().toString().padStart(4, '0'), "-").concat((dt.getMonth() + 1).toString().padStart(2, '0'), "-").concat(dt.getDate().toString().padStart(2, '0'), " ").concat(dt.getHours().toString().padStart(2, '0'), ":").concat(dt.getMinutes().toString().padStart(2, '0'), ":").concat(dt.getSeconds().toString().padStart(2, '0'));
+  }
+
+  return null;
 };
 var formatDateTimeRangeToCommonString = function formatDateTimeRangeToCommonString(dateTimeRangeArr) {
   return "".concat(dateTimeRangeArr[0].getFullYear().toString().padStart(4, '0'), "-").concat((dateTimeRangeArr[0].getMonth() + 1).toString().padStart(2, '0'), "-").concat(dateTimeRangeArr[0].getDate().toString().padStart(2, '0'), " ").concat(dateTimeRangeArr[0].getHours().toString().padStart(2, '0'), ":").concat(dateTimeRangeArr[0].getMinutes().toString().padStart(2, '0'), ":").concat(dateTimeRangeArr[0].getSeconds().toString().padStart(2, '0'), " - ").concat(dateTimeRangeArr[1].getFullYear().toString().padStart(4, '0'), "-").concat((dateTimeRangeArr[1].getMonth() + 1).toString().padStart(2, '0'), "-").concat(dateTimeRangeArr[1].getDate().toString().padStart(2, '0'), " ").concat(dateTimeRangeArr[1].getHours().toString().padStart(2, '0'), ":").concat(dateTimeRangeArr[1].getMinutes().toString().padStart(2, '0'), ":").concat(dateTimeRangeArr[1].getSeconds().toString().padStart(2, '0'));

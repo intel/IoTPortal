@@ -23,6 +23,15 @@ class CommandHistory extends Model
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'responded_at' => 'datetime',
+    ];
+
+    /**
      * Get the command that owns the command history.
      */
     public function command()
