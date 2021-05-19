@@ -973,7 +973,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
   };
 
   var onDeviceCategoryFilterChange = function onDeviceCategoryFilterChange(event) {
-    dt.current.filter(event.value, 'category', 'equals');
+    dt.current.filter(event.value, 'device_category_id', 'equals');
     setSelectedDeviceCategory(event.value);
   };
 
@@ -996,7 +996,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
   };
 
   var onDeviceStatusFilterChange = function onDeviceStatusFilterChange(event) {
-    dt.current.filter(event.value, 'status', 'equals');
+    dt.current.filter(event.value, 'device_status_id', 'equals');
     setSelectedDeviceStatus(event.value);
   };
 
@@ -1185,7 +1185,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
           filter: true,
           filterPlaceholder: "Search by BIOS version"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
-          field: "category",
+          field: "device_category_id",
           header: "Category",
           body: deviceCategoryColumnBody,
           sortable: true,
@@ -1193,7 +1193,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
           excludeGlobalFilter: true,
           filterElement: deviceCategoryFilterElement
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
-          field: "status",
+          field: "device_status_id",
           header: "Status",
           body: deviceStatusColumnBody,
           sortable: true,

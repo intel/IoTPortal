@@ -77,15 +77,14 @@ const EventHistoriesDataTable = ({
 
   const renderEventTypeFilter = () => {
     return (
-      <Dropdown value={selectedEventType} options={deviceEventOptions}
-                onChange={onEventTypeFilterChange}
+      <Dropdown value={selectedEventType} options={deviceEventOptions} onChange={onEventTypeFilterChange}
                 itemTemplate={eventTypeItemTemplate} showClear placeholder="Select an event type"
                 className="p-column-filter"/>
     );
   };
 
   const onEventTypeFilterChange = (event) => {
-    dt.current.filter(event.value, 'type', 'equals');
+    dt.current.filter(event.value, 'event_id', 'equals');
     setSelectedEventType(event.value);
   };
 

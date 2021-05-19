@@ -4461,8 +4461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_deviceCommandHistory_deviceCommandHistory_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/deviceCommandHistory/deviceCommandHistory.actions */ "./resources/js/redux/deviceCommandHistory/deviceCommandHistory.actions.js");
 /* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
 /* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
-/* harmony import */ var _commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./commandHistoriesDataTable.css */ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
-/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _commandHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./commandHistoriesDataTable.css */ "./resources/js/containers/CommandHistoriesDataTable/commandHistoriesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -4578,7 +4578,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
     setFetchDeviceCommandHistoriesLazyParams(_lazyParams);
   };
 
-  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__.default, {
+  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_12__.default, {
     headerName: "Command Histories",
     onSearchInputChange: function onSearchInputChange(e) {
       return setGlobalFilter(e.target.value);
@@ -4598,7 +4598,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
   };
 
   var onCommandTypeFilterChange = function onCommandTypeFilterChange(event) {
-    dt.current.filter(event.value, 'type', 'equals');
+    dt.current.filter(event.value, 'command_id', 'equals');
     setSelectedCommandType(event.value);
   };
 
@@ -4741,7 +4741,7 @@ var CommandHistoriesDataTable = function CommandHistoriesDataTable(_ref) {
         filter: true,
         filterPlaceholder: "Search by payload"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
-        field: "type",
+        field: "command_id",
         header: "Command type",
         body: commandTypeColumnBody,
         sortable: true,
@@ -5304,14 +5304,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
 /* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
 /* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/dropdown */ "./node_modules/primereact/dropdown.js");
-/* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
-/* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
-/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
+/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
+/* harmony import */ var _redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceEvent/deviceEvent.actions */ "./resources/js/redux/deviceEvent/deviceEvent.actions.js");
+/* harmony import */ var _redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/deviceEventHistory/deviceEventHistory.actions */ "./resources/js/redux/deviceEventHistory/deviceEventHistory.actions.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 /* harmony import */ var _components_DataTableDateRangeFilter_DataTableDateRangeFilter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/DataTableDateRangeFilter/DataTableDateRangeFilter */ "./resources/js/components/DataTableDateRangeFilter/DataTableDateRangeFilter.js");
 /* harmony import */ var _components_PayloadViewer_PayloadViewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PayloadViewer/PayloadViewer */ "./resources/js/components/PayloadViewer/PayloadViewer.js");
-/* harmony import */ var _hooks_useInterval__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../hooks/useInterval */ "./resources/js/hooks/useInterval.js");
-/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _eventHistoriesDataTable_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./eventHistoriesDataTable.css */ "./resources/js/containers/EventHistoriesDataTable/eventHistoriesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -5397,7 +5397,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return resetFetchDeviceEventHistoriesLazyParams;
   }, []);
-  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_12__.default)(function () {
+  (0,_hooks_useInterval__WEBPACK_IMPORTED_MODULE_6__.default)(function () {
     return fetchDeviceEventHistoriesStartAsync(deviceUniqueId, fetchDeviceEventHistoriesLazyParams, false);
   }, 5000);
 
@@ -5422,7 +5422,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
     setFetchDeviceEventHistoriesLazyParams(_lazyParams);
   };
 
-  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__.default, {
+  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_12__.default, {
     headerName: "Event Histories",
     onSearchInputChange: function onSearchInputChange(e) {
       return setGlobalFilter(e.target.value);
@@ -5442,7 +5442,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
   };
 
   var onEventTypeFilterChange = function onEventTypeFilterChange(event) {
-    dt.current.filter(event.value, 'type', 'equals');
+    dt.current.filter(event.value, 'event_id', 'equals');
     setSelectedEventType(event.value);
   };
 
@@ -5565,7 +5565,7 @@ var EventHistoriesDataTable = function EventHistoriesDataTable(_ref) {
         filter: true,
         filterPlaceholder: "Search by raw data"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_4__.Column, {
-        field: "type",
+        field: "event_id",
         header: "Type",
         body: eventTypeColumnBody,
         sortable: true,
@@ -5601,16 +5601,16 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchDeviceEventOptionsStartAsync: function fetchDeviceEventOptionsStartAsync(deviceUniqueId) {
-      return dispatch((0,_redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_6__.fetchDeviceEventOptionsStartAsync)(deviceUniqueId));
+      return dispatch((0,_redux_deviceEvent_deviceEvent_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceEventOptionsStartAsync)(deviceUniqueId));
     },
     fetchDeviceEventHistoriesStartAsync: function fetchDeviceEventHistoriesStartAsync(deviceUniqueId, lazyParams, showIsFetchingIndicator) {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceEventHistoriesStartAsync)(deviceUniqueId, lazyParams, showIsFetchingIndicator));
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_8__.fetchDeviceEventHistoriesStartAsync)(deviceUniqueId, lazyParams, showIsFetchingIndicator));
     },
     setFetchDeviceEventHistoriesLazyParams: function setFetchDeviceEventHistoriesLazyParams(lazyParams) {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.setFetchDeviceEventHistoriesLazyParams)(lazyParams));
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_8__.setFetchDeviceEventHistoriesLazyParams)(lazyParams));
     },
     resetFetchDeviceEventHistoriesLazyParams: function resetFetchDeviceEventHistoriesLazyParams() {
-      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_7__.resetFetchDeviceEventHistoriesLazyParams)());
+      return dispatch((0,_redux_deviceEventHistory_deviceEventHistory_actions__WEBPACK_IMPORTED_MODULE_8__.resetFetchDeviceEventHistoriesLazyParams)());
     }
   };
 };

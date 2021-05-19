@@ -54,7 +54,7 @@ class SavedCommandController extends Controller
         }
 
         $maxRows = Config::get('constants.index_max_rows');
-        $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
+        $rows = min((int) $request->input('rows', 10), $maxRows);
 
         $savedCommands = $query->paginate($rows);
 

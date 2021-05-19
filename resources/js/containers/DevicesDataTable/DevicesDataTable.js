@@ -116,7 +116,7 @@ const DevicesDataTable = ({
   };
 
   const onDeviceCategoryFilterChange = (event) => {
-    dt.current.filter(event.value, 'category', 'equals');
+    dt.current.filter(event.value, 'device_category_id', 'equals');
     setSelectedDeviceCategory(event.value);
   };
 
@@ -128,15 +128,14 @@ const DevicesDataTable = ({
 
   const renderDeviceStatusFilter = () => {
     return (
-      <Dropdown value={selectedDeviceStatus} options={deviceStatusOptions}
-                onChange={onDeviceStatusFilterChange}
+      <Dropdown value={selectedDeviceStatus} options={deviceStatusOptions} onChange={onDeviceStatusFilterChange}
                 itemTemplate={deviceStatusItemTemplate} showClear placeholder="Select a device status"
                 className="p-column-filter"/>
     );
   };
 
   const onDeviceStatusFilterChange = (event) => {
-    dt.current.filter(event.value, 'status', 'equals');
+    dt.current.filter(event.value, 'device_status_id', 'equals');
     setSelectedDeviceStatus(event.value);
   };
 

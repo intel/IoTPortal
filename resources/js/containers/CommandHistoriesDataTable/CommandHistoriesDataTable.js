@@ -86,7 +86,7 @@ const CommandHistoriesDataTable = ({
   };
 
   const onCommandTypeFilterChange = (event) => {
-    dt.current.filter(event.value, 'type', 'equals');
+    dt.current.filter(event.value, 'command_id', 'equals');
     setSelectedCommandType(event.value);
   };
 

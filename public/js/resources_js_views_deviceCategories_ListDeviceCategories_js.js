@@ -417,7 +417,7 @@ var DeviceCategoriesDataTable = function DeviceCategoriesDataTable(_ref) {
         }
       }), {}, {
         paginator: true,
-        emptyMessage: "No device found",
+        emptyMessage: "No device category found",
         currentPageReportTemplate: "Showing {first} to {last} of {totalRecords} entries",
         paginatorTemplate: "FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown",
         rowsPerPageOptions: [10, 50, 100, 200],
