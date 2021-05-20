@@ -23,7 +23,7 @@ import sidebarReducer from './sidebar/sidebar.reducer';
 import savedCommandReducer from './savedCommand/savedCommand.reducer';
 import apiTokenReducer from './apiToken/apiToken.reducer';
 import profileReducer from './profile/profile.reducer';
-import jobReducer from './job/job.reducer';
+import deviceJobReducer from './deviceJob/deviceJob.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -44,7 +44,7 @@ const rootReducer = combineReducers({
   deviceEventHistory: deviceEventHistoryReducer,
   deviceCategory: deviceCategoryReducer,
   deviceGroup: deviceGroupReducer,
-  job: jobReducer,
+  deviceJob: deviceJobReducer,
   shutdown: shutdownReducer,
   reboot: rebootReducer,
   decommission: decommissionReducer,

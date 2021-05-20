@@ -74,16 +74,16 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     Route::apiResource('/device/categories', 'App\Http\Controllers\Api\DeviceCategoryController')->parameters(['categories' => 'deviceCategory']);
 
 
-    // Jobs
-    Route::get('/jobs/options', 'App\Http\Controllers\Api\DeviceJobController@options');
+    // Device jobs
+    Route::get('/device/jobs/options', 'App\Http\Controllers\Api\DeviceJobController@options');
 
-    Route::post('/jobs/validateField', 'App\Http\Controllers\Api\DeviceJobController@validateField');
+    Route::post('/device/jobs/validateField', 'App\Http\Controllers\Api\DeviceJobController@validateField');
 
-    Route::delete('/jobs', 'App\Http\Controllers\Api\DeviceJobController@destroySelected');
+    Route::delete('/device/jobs', 'App\Http\Controllers\Api\DeviceJobController@destroySelected');
 
-    Route::get('/jobs/{id}', 'App\Http\Controllers\Api\DeviceJobController@show');
+    Route::get('/device/jobs/{id}', 'App\Http\Controllers\Api\DeviceJobController@show');
 
-    Route::apiResource('/jobs', 'App\Http\Controllers\Api\DeviceJobController');
+    Route::apiResource('/device/jobs', 'App\Http\Controllers\Api\DeviceJobController');
 
 
     // Saved Commands

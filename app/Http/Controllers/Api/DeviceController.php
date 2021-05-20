@@ -126,7 +126,7 @@ class DeviceController extends Controller
     {
         $success = $device->update([
             'name' => $request->input('name', $device->name),
-            'category_id' => $request->input('category', $device->category_id),
+            'device_category_id' => $request->input('category', $device->category_id),
         ]);
 
         if ($success) {

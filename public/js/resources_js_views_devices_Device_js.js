@@ -6059,7 +6059,7 @@ var submitAotaStartAsync = function submitAotaStartAsync(id, data) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'triggeraota',
       payload: data
     }).then(function (result) {
@@ -6151,7 +6151,7 @@ var submitCotaStartAsync = function submitCotaStartAsync(id, data) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'triggerconfig',
       payload: data
     }).then(function (result) {
@@ -6243,7 +6243,7 @@ var submitDecommissionStartAsync = function submitDecommissionStartAsync(id) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'decommission_device'
     }).then(function (result) {
       dispatch(submitDecommissionSuccess(result.data));
@@ -6323,7 +6323,7 @@ var fetchDeviceCommandHistoriesFailure = function fetchDeviceCommandHistoriesFai
 var fetchDeviceCommandHistoriesStartAsync = function fetchDeviceCommandHistoriesStartAsync(id, params) {
   return function (dispatch) {
     dispatch(fetchDeviceCommandHistoriesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/commands/histories"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/commands/histories"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDeviceCommandHistoriesSuccess(result.data.result.deviceCommandHistories));
@@ -6373,7 +6373,7 @@ var fetchDeviceCommandsFailure = function fetchDeviceCommandsFailure(errorMessag
 var fetchDeviceCommandsStartAsync = function fetchDeviceCommandsStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceCommandsStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/commands")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/commands")).then(function (result) {
       dispatch(fetchDeviceCommandsSuccess(result.data.result.deviceCommands));
     })["catch"](function (error) {
       dispatch(fetchDeviceCommandsFailure(error.message));
@@ -6423,7 +6423,7 @@ var fetchDeviceEventHistoriesFailure = function fetchDeviceEventHistoriesFailure
 var fetchDeviceEventHistoriesStartAsync = function fetchDeviceEventHistoriesStartAsync(id, params) {
   return function (dispatch) {
     dispatch(fetchDeviceEventHistoriesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/").concat(id, "/events/histories"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/events/histories"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDeviceEventHistoriesSuccess(result.data.result.deviceEventHistories));
@@ -6473,7 +6473,7 @@ var fetchDeviceEventsFailure = function fetchDeviceEventsFailure(errorMessage) {
 var fetchDeviceEventsStartAsync = function fetchDeviceEventsStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceEventsStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/events")).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/events")).then(function (result) {
       dispatch(fetchDeviceEventsSuccess(result.data.result.deviceEvents));
     })["catch"](function (error) {
       dispatch(fetchDeviceEventsFailure(error.message));
@@ -6536,7 +6536,7 @@ var fetchCpuTemperaturesStartAsync = function fetchCpuTemperaturesStartAsync(id,
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/cpu/temperatures"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/metrics/cpu/temperatures"), {
       params: params
     }).then(function (result) {
       dispatch(fetchCpuTemperaturesSuccess(result.data.result.cpuTemperatures));
@@ -6568,7 +6568,7 @@ var fetchCpuUsagesStartAsync = function fetchCpuUsagesStartAsync(id, timeRangeFi
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/cpu/usages"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/metrics/cpu/usages"), {
       params: params
     }).then(function (result) {
       dispatch(fetchCpuUsagesSuccess(result.data.result.cpuUsages));
@@ -6600,7 +6600,7 @@ var fetchDiskUsagesStartAsync = function fetchDiskUsagesStartAsync(id, timeRange
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/disk/usages"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/metrics/disk/usages"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDiskUsagesSuccess(result.data.result.diskUsages));
@@ -6632,7 +6632,7 @@ var fetchAvailableMemoriesStartAsync = function fetchAvailableMemoriesStartAsync
     var params = {
       timeRangeFilter: timeRangeFilter
     };
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id, "/metrics/memory/availables"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/metrics/memory/availables"), {
       params: params
     }).then(function (result) {
       dispatch(fetchAvailableMemoriesSuccess(result.data.result.availableMemories));
@@ -6694,7 +6694,7 @@ var fetchDeviceFailure = function fetchDeviceFailure(errorMessage) {
 var fetchDeviceStartAsync = function fetchDeviceStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id)).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id)).then(function (result) {
       dispatch(fetchDeviceSuccess(result.data.result.device));
     })["catch"](function (error) {
       dispatch(fetchDeviceFailure(error.message));
@@ -6721,7 +6721,7 @@ var updateDeviceFailure = function updateDeviceFailure(errorMessage) {
 var updateDeviceStartAsync = function updateDeviceStartAsync(id, params) {
   return function (dispatch) {
     dispatch(updateDeviceStart());
-    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id), params).then(function (result) {
+    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id), params).then(function (result) {
       dispatch(updateDeviceSuccess(result.data.result.device));
       react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
         children: "Device updated successfully!"
@@ -6754,7 +6754,7 @@ var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
 var fetchDevicesStartAsync = function fetchDevicesStartAsync(params) {
   return function (dispatch) {
     dispatch(fetchDevicesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDevicesSuccess(result.data.result.devices));
@@ -6817,7 +6817,7 @@ var submitFotaStartAsync = function submitFotaStartAsync(id, data) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'triggerfota',
       payload: data
     }).then(function (result) {
@@ -6909,7 +6909,7 @@ var submitRebootStartAsync = function submitRebootStartAsync(id) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'reboot_device'
     }).then(function (result) {
       dispatch(submitRebootSuccess());
@@ -7000,7 +7000,7 @@ var submitShutdownStartAsync = function submitShutdownStartAsync(id) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'shutdown_device'
     }).then(function (result) {
       dispatch(submitShutdownSuccess(result.data));
@@ -7091,7 +7091,7 @@ var submitSotaStartAsync = function submitSotaStartAsync(id, data) {
         minWidth: '500px'
       }
     });
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/").concat(id, "/methods"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/deviceJobDevices/").concat(id, "/methods"), {
       method_name: 'triggersota',
       payload: data
     }).then(function (result) {
@@ -7260,7 +7260,7 @@ var formatTimestampToString = function formatTimestampToString(timestamp) {
 
 /***/ "./resources/js/views/devices/Device.js":
 /*!**********************************************!*\
-  !*** ./resources/js/views/devices/Device.js ***!
+  !*** ./resources/js/views/deviceJobDevices/Device.js ***!
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -38223,7 +38223,7 @@ function useScrollLock(_ref) {
       if (targetStyle) {
         targetStyle.paddingRight = "".concat(adjustedPadding, "px");
       }
-    } // account for touch devices
+    } // account for touch deviceJobDevices
 
 
     if (target && isTouchDevice()) {
@@ -41595,7 +41595,7 @@ var optionCSS = function optionCSS(_ref) {
     width: '100%',
     userSelect: 'none',
     WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-    // provide some affordance on touch devices
+    // provide some affordance on touch deviceJobDevices
     ':active': {
       backgroundColor: !isDisabled && (isSelected ? colors.primary : colors.primary50)
     }

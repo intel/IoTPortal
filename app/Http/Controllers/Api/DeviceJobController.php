@@ -72,9 +72,9 @@ class DeviceJobController extends Controller
     public function store(StoreDeviceJobRequest $request)
     {
         $deviceJob = Auth::user()->deviceJobs()->create([
-            'name' => $request->name,
+            'name' => $request->device_job_name,
             'started_at' => now(),
-            'device_group_id' => $request->group,
+            'device_group_id' => $request->device_group,
             'saved_command_id' => $request->saved_command,
         ]);
 
@@ -98,7 +98,9 @@ class DeviceJobController extends Controller
             ->orWhere->uniqueId($id)
             ->first();
 
-        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->commandHistories()->with('user:id,name', 'command:id,name,device_id', 'command.device:id,unique_id,name')->get()]);
+        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with('commandHistories', 'commandHistories.command:id,device_id')->get()]);
+//        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with('commandHistories:id,device_job_id', 'command:id,device_id', 'command.device:id,unique_id,name')->get()]);
+//        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->commandHistories()->with('command:id,device_id', 'command.device:id,unique_id,name')->get()]);
     }
 
     /**

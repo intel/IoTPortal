@@ -2246,7 +2246,7 @@ var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
 
 /***/ "./resources/js/components/JobDetailsCard/JobDetailsCard.js":
 /*!******************************************************************!*\
-  !*** ./resources/js/components/JobDetailsCard/JobDetailsCard.js ***!
+  !*** ./resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js ***!
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2309,7 +2309,7 @@ var JobDetailsCard = function JobDetailsCard(_ref) {
 
 /***/ "./resources/js/components/JobDevicesCard/JobDevicesCard.js":
 /*!******************************************************************!*\
-  !*** ./resources/js/components/JobDevicesCard/JobDevicesCard.js ***!
+  !*** ./resources/js/components/DeviceJobDevicesCard/DeviceJobDevicesCard.js ***!
   \******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2320,7 +2320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _JobDevicesDataTable_JobDevicesDataTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../JobDevicesDataTable/JobDevicesDataTable */ "./resources/js/components/JobDevicesDataTable/JobDevicesDataTable.js");
+/* harmony import */ var _JobDevicesDataTable_JobDevicesDataTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../DeviceJobDevicesDataTable/DeviceJobDevicesDataTable */ "./resources/js/components/JobDevicesDataTable/JobDevicesDataTable.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -2330,15 +2330,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var JobDevicesCard = function JobDevicesCard(_ref) {
   var deviceGroupName = _ref.deviceGroupName,
-      deviceGroupDevices = _ref.deviceGroupDevices;
+      deviceGroupDevices = _ref.deviceGroupDevices,
+      deviceJobStatuses = _ref.deviceJobStatuses;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCard, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardHeader, {
-      children: [(deviceGroupDevices === null || deviceGroupDevices === void 0 ? void 0 : deviceGroupDevices.length) || 0, " devices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+      children: [(deviceGroupDevices === null || deviceGroupDevices === void 0 ? void 0 : deviceGroupDevices.length) || 0, " deviceJobDevices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
         children: deviceGroupName
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCardBody, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_JobDevicesDataTable_JobDevicesDataTable__WEBPACK_IMPORTED_MODULE_2__.default, {
-        devices: deviceGroupDevices
+        devices: deviceGroupDevices,
+        deviceJobStatuses: deviceJobStatuses
       })
     })]
   });
@@ -2350,7 +2352,7 @@ var JobDevicesCard = function JobDevicesCard(_ref) {
 
 /***/ "./resources/js/components/JobDevicesDataTable/JobDevicesDataTable.js":
 /*!****************************************************************************!*\
-  !*** ./resources/js/components/JobDevicesDataTable/JobDevicesDataTable.js ***!
+  !*** ./resources/js/components/DeviceJobDevicesDataTable/DeviceJobDevicesDataTable.js ***!
   \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -2378,7 +2380,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var JobDevicesDataTable = function JobDevicesDataTable(_ref) {
-  var devices = _ref.devices;
+  var devices = _ref.devices,
+      deviceJobStatuses = _ref.deviceJobStatuses;
 
   var deviceUniqueIdColumnBody = function deviceUniqueIdColumnBody(rowData) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
@@ -2437,10 +2440,10 @@ var JobDevicesDataTable = function JobDevicesDataTable(_ref) {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: "datatable-job-devices",
+      className: "datatable-job-deviceJobDevices",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__.DataTable, {
         value: devices,
-        className: "p-datatable-job-devices",
+        className: "p-datatable-job-deviceJobDevices",
         rowHover: true,
         resizableColumns: true,
         columnResizeMode: "fit",
@@ -2709,7 +2712,7 @@ var resetFetchDeviceGroupsLazyParams = function resetFetchDeviceGroupsLazyParams
   return {
     type: _deviceGroup_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_DEVICE_GROUPS_LAZY_PARAMS
   };
-}; // Device group devices index
+}; // Device group deviceJobDevices index
 
 var fetchDeviceGroupDevicesStart = function fetchDeviceGroupDevicesStart() {
   return {
@@ -2736,7 +2739,7 @@ var fetchDeviceGroupDevicesStartAsync = function fetchDeviceGroupDevicesStartAsy
     if (deviceGroupId) params.deviceGroupId = deviceGroupId;
     if (deviceGroupUniqueId) params.deviceGroupUniqueId = deviceGroupUniqueId;
     if (fetchAll) params.fetchAll = true;
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/deviceJobDevices"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDeviceGroupDevicesSuccess(result.data.result.devices));
@@ -2921,10 +2924,10 @@ var fetchDeviceGroupOptionsStartAsync = function fetchDeviceGroupOptionsStartAsy
 
 /***/ }),
 
-/***/ "./resources/js/redux/job/job.actions.js":
-/*!***********************************************!*\
-  !*** ./resources/js/redux/job/job.actions.js ***!
-  \***********************************************/
+/***/ "./resources/js/redux/deviceJob/deviceJob.actions.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/redux/deviceJob/deviceJob.actions.js ***!
+  \***********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2955,7 +2958,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pluralize */ "./node_modules/pluralize/pluralize.js");
 /* harmony import */ var pluralize__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pluralize__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _job_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./job.types */ "./resources/js/redux/job/job.types.js");
+/* harmony import */ var _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deviceJob.types */ "./resources/js/redux/deviceJob/deviceJob.types.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/config */ "./resources/js/data/config.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -2971,18 +2974,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var fetchJobsStart = function fetchJobsStart() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_START
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_START
   };
 };
 var fetchJobsSuccess = function fetchJobsSuccess(jobs) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_SUCCESS,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_SUCCESS,
     payload: jobs
   };
 };
 var fetchJobsFailure = function fetchJobsFailure(errorMessage) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_FAILURE,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOBS_FAILURE,
     payload: errorMessage
   };
 };
@@ -3004,29 +3007,29 @@ var fetchJobsStartAsync = function fetchJobsStartAsync(lazyParams, jobGroupId) {
 };
 var setFetchJobsLazyParams = function setFetchJobsLazyParams(lazyParams) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_JOBS_LAZY_PARAMS,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.SET_FETCH_JOBS_LAZY_PARAMS,
     payload: lazyParams
   };
 };
 var resetFetchJobsLazyParams = function resetFetchJobsLazyParams() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_JOBS_LAZY_PARAMS
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.RESET_FETCH_JOBS_LAZY_PARAMS
   };
 }; // Create
 
 var createJobStart = function createJobStart() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_START
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_START
   };
 };
 var createJobSuccess = function createJobSuccess() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_SUCCESS
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_SUCCESS
   };
 };
 var createJobFailure = function createJobFailure(errorMessage) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_FAILURE,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.CREATE_JOB_FAILURE,
     payload: errorMessage
   };
 };
@@ -3046,18 +3049,18 @@ var createJobStartAsync = function createJobStartAsync(data, history) {
 
 var fetchJobStart = function fetchJobStart() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_START
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_START
   };
 };
 var fetchJobSuccess = function fetchJobSuccess(job) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_SUCCESS,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_SUCCESS,
     payload: job
   };
 };
 var fetchJobFailure = function fetchJobFailure(errorMessage) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_FAILURE,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.FETCH_JOB_FAILURE,
     payload: errorMessage
   };
 };
@@ -3074,18 +3077,18 @@ var fetchJobStartAsync = function fetchJobStartAsync(id) {
 
 var updateJobStart = function updateJobStart() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_START
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_START
   };
 };
 var updateJobSuccess = function updateJobSuccess(job) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_SUCCESS,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_SUCCESS,
     payload: job
   };
 };
 var updateJobFailure = function updateJobFailure(errorMessage) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_FAILURE,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.UPDATE_JOB_FAILURE,
     payload: errorMessage
   };
 };
@@ -3109,17 +3112,17 @@ var updateJobStartAsync = function updateJobStartAsync(id, data, history) {
 
 var deleteJobsStart = function deleteJobsStart() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_START
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_START
   };
 };
 var deleteJobsSuccess = function deleteJobsSuccess() {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_SUCCESS
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_SUCCESS
   };
 };
 var deleteJobsFailure = function deleteJobsFailure(errorMessage) {
   return {
-    type: _job_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_FAILURE,
+    type: _deviceJob_types__WEBPACK_IMPORTED_MODULE_1__.default.DELETE_JOBS_FAILURE,
     payload: errorMessage
   };
 };
@@ -3606,7 +3609,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/deviceJobDevices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -3678,15 +3681,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_knob__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! primereact/knob */ "./node_modules/primereact/knob.js");
 /* harmony import */ var primereact_steps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! primereact/steps */ "./node_modules/primereact/steps.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _redux_job_job_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/job/job.actions */ "./resources/js/redux/job/job.actions.js");
+/* harmony import */ var _redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/deviceJob/deviceJob.actions */ "./resources/js/redux/deviceJob/deviceJob.actions.js");
 /* harmony import */ var _redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../redux/deviceGroup/deviceGroup.actions */ "./resources/js/redux/deviceGroup/deviceGroup.actions.js");
 /* harmony import */ var _redux_savedCommand_savedCommand_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../redux/savedCommand/savedCommand.actions */ "./resources/js/redux/savedCommand/savedCommand.actions.js");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
 /* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var _components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/IotSelectFormGroup/IotSelectFormGroup */ "./resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js");
 /* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
-/* harmony import */ var _components_JobDetailsCard_JobDetailsCard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/JobDetailsCard/JobDetailsCard */ "./resources/js/components/JobDetailsCard/JobDetailsCard.js");
-/* harmony import */ var _components_JobDevicesCard_JobDevicesCard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/JobDevicesCard/JobDevicesCard */ "./resources/js/components/JobDevicesCard/JobDevicesCard.js");
+/* harmony import */ var _components_JobDetailsCard_JobDetailsCard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/DeviceJobDetailsCard/DeviceJobDetailsCard */ "./resources/js/components/JobDetailsCard/JobDetailsCard.js");
+/* harmony import */ var _components_JobDevicesCard_JobDevicesCard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/DeviceJobDevicesCard/DeviceJobDevicesCard */ "./resources/js/components/JobDevicesCard/JobDevicesCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -4054,7 +4057,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch((0,_redux_deviceGroup_deviceGroup_actions__WEBPACK_IMPORTED_MODULE_12__.fetchDeviceGroupDevicesStartAsync)(deviceGroupId, deviceGroupUniqueId));
     },
     createJobStartAsync: function createJobStartAsync(data, history) {
-      return dispatch((0,_redux_job_job_actions__WEBPACK_IMPORTED_MODULE_11__.createJobStartAsync)(data, history));
+      return dispatch((0,_redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_11__.createJobStartAsync)(data, history));
     }
   };
 };
@@ -4065,7 +4068,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/JobDevicesDataTable/jobDevicesDataTable.css":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/JobDevicesDataTable/jobDevicesDataTable.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/js/components/DeviceJobDevicesDataTable/jobDevicesDataTable.css ***!
   \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -4080,7 +4083,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-job-devices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-job-devices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-job-devices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-job-devices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-job-devices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-job-devices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-job-devices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-job-devices .p-datatable.p-datatable-job-devices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td:not([colspan]) {\r\n    cursor: auto;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.datatable-job-devices .p-datatable.p-datatable-job-devices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-job-devices .p-datatable-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-thead > tr > th,\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n    }\r\n\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-job-devices .p-datatable.p-datatable-job-devices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-provisioned {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-job-deviceJobDevices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tbody > tr > td:not([colspan]) {\r\n    cursor: auto;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-job-deviceJobDevices .p-datatable-job-deviceJobDevices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-thead > tr > th,\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n    }\r\n\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-job-deviceJobDevices .p-datatable.p-datatable-job-deviceJobDevices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-provisioned {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31139,7 +31142,7 @@ function useScrollLock(_ref) {
       if (targetStyle) {
         targetStyle.paddingRight = "".concat(adjustedPadding, "px");
       }
-    } // account for touch devices
+    } // account for touch deviceJobDevices
 
 
     if (target && isTouchDevice()) {
@@ -34511,7 +34514,7 @@ var optionCSS = function optionCSS(_ref) {
     width: '100%',
     userSelect: 'none',
     WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
-    // provide some affordance on touch devices
+    // provide some affordance on touch deviceJobDevices
     ':active': {
       backgroundColor: !isDisabled && (isSelected ? colors.primary : colors.primary50)
     }
@@ -36173,7 +36176,7 @@ function getNextChildMapping(nextProps, prevChildMapping, onExited) {
 
 /***/ "./resources/js/components/JobDevicesDataTable/jobDevicesDataTable.css":
 /*!*****************************************************************************!*\
-  !*** ./resources/js/components/JobDevicesDataTable/jobDevicesDataTable.css ***!
+  !*** ./resources/js/components/DeviceJobDevicesDataTable/jobDevicesDataTable.css ***!
   \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

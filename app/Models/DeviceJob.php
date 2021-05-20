@@ -24,6 +24,16 @@ class DeviceJob extends Model
         'saved_command_id',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'started_at' => 'datetime',
+        'completed_at' => 'datetime',
+    ];
+
     public static function boot()
     {
         parent::boot();

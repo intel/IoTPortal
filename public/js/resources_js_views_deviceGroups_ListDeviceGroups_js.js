@@ -835,8 +835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceGroupNameUniqueDebounced": () => (/* binding */ isDeviceGroupNameUniqueDebounced),
 /* harmony export */   "isDeviceCategoryNameUnique": () => (/* binding */ isDeviceCategoryNameUnique),
 /* harmony export */   "isDeviceCategoryNameUniqueDebounced": () => (/* binding */ isDeviceCategoryNameUniqueDebounced),
-/* harmony export */   "isJobNameUnique": () => (/* binding */ isJobNameUnique),
-/* harmony export */   "isJobNameUniqueDebounced": () => (/* binding */ isJobNameUniqueDebounced)
+/* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
+/* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
@@ -1040,9 +1040,9 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   });
 };
 var isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
-var isJobNameUnique = function isJobNameUnique(name) {
+var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1051,7 +1051,7 @@ var isJobNameUnique = function isJobNameUnique(name) {
     });
   });
 };
-var isJobNameUniqueDebounced = _.debounce(isJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = _.debounce(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 

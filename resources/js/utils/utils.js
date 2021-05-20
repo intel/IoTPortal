@@ -203,8 +203,8 @@ export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject
 
 export const isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
-export const isJobNameUnique = (name) => new Promise((resolve, reject) => {
-  axios.post(`${API_ENDPOINT}/jobs/validateField`, {name: name})
+export const isDeviceJobNameUnique = (name) => new Promise((resolve, reject) => {
+  axios.post(`${API_ENDPOINT}/device/jobs/validateField`, {name: name})
     .then(result => {
       if (result.data.success)
         resolve(true);
@@ -216,4 +216,4 @@ export const isJobNameUnique = (name) => new Promise((resolve, reject) => {
     });
 });
 
-export const isJobNameUniqueDebounced = _.debounce(isJobNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+export const isDeviceJobNameUniqueDebounced = _.debounce(isDeviceJobNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);

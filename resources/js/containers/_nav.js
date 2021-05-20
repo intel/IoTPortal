@@ -68,19 +68,19 @@ const _nav = [
   },
   {
     _tag: 'CSidebarNavDropdown',
-    name: 'Jobs',
-    to: '/jobs',
+    name: 'Device Jobs',
+    to: '/device/jobs',
     icon: 'cil-calendar-check',
     _children: [
       {
         _tag: 'CSidebarNavItem',
-        name: 'Jobs',
-        to: '/jobs',
+        name: 'Device Jobs',
+        to: '/device/jobs',
       },
       {
         _tag: 'CSidebarNavItem',
-        name: 'Create new job',
-        to: '/jobs/create',
+        name: 'Create new device job',
+        to: '/device/jobs/create',
       },
     ],
   },

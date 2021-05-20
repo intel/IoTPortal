@@ -434,7 +434,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
   var deviceCategoryFilterElement = renderDeviceCategoryFilter();
   var deviceStatusFilterElement = renderDeviceStatusFilter();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
-    className: "datatable-devices",
+    className: "datatable-deviceJobDevices",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__.DataTable, {
       ref: dt,
       value: devices,
@@ -442,7 +442,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
       columnResizeMode: "fit",
       lazy: true,
       header: header,
-      className: "p-datatable-devices",
+      className: "p-datatable-deviceJobDevices",
       dataKey: "id",
       rowHover: true,
       globalFilter: globalFilter,
@@ -734,7 +734,7 @@ var fetchDeviceFailure = function fetchDeviceFailure(errorMessage) {
 var fetchDeviceStartAsync = function fetchDeviceStartAsync(id) {
   return function (dispatch) {
     dispatch(fetchDeviceStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id)).then(function (result) {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id)).then(function (result) {
       dispatch(fetchDeviceSuccess(result.data.result.device));
     })["catch"](function (error) {
       dispatch(fetchDeviceFailure(error.message));
@@ -761,7 +761,7 @@ var updateDeviceFailure = function updateDeviceFailure(errorMessage) {
 var updateDeviceStartAsync = function updateDeviceStartAsync(id, params) {
   return function (dispatch) {
     dispatch(updateDeviceStart());
-    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices/").concat(id), params).then(function (result) {
+    axios.patch("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices/").concat(id), params).then(function (result) {
       dispatch(updateDeviceSuccess(result.data.result.device));
       react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
         children: "Device updated successfully!"
@@ -794,7 +794,7 @@ var fetchDevicesFailure = function fetchDevicesFailure(errorMessage) {
 var fetchDevicesStartAsync = function fetchDevicesStartAsync(params) {
   return function (dispatch) {
     dispatch(fetchDevicesStart());
-    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/devices"), {
+    axios.get("".concat(_data_config__WEBPACK_IMPORTED_MODULE_1__.API_ENDPOINT, "/deviceJobDevices"), {
       params: params
     }).then(function (result) {
       dispatch(fetchDevicesSuccess(result.data.result.devices));
@@ -808,7 +808,7 @@ var fetchDevicesStartAsync = function fetchDevicesStartAsync(params) {
 
 /***/ "./resources/js/views/devices/Devices.js":
 /*!***********************************************!*\
-  !*** ./resources/js/views/devices/Devices.js ***!
+  !*** ./resources/js/views/deviceJobDevices/Devices.js ***!
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -865,7 +865,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-devices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-devices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-devices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-devices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-devices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-devices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-devices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-devices .p-datatable.p-datatable-devices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-devices .p-datatable.p-datatable-devices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-devices .p-datatable.p-datatable-devices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-devices .p-datatable.p-datatable-devices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-devices .p-datatable-devices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-thead > tr > th,\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-devices .p-datatable.p-datatable-devices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-provisioned {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-deviceJobDevices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-deviceJobDevices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5rem !important;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tbody > tr > td {\r\n    cursor: auto;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-deviceJobDevices .p-datatable-deviceJobDevices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-thead > tr > th,\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n        border: 0 none;\r\n    }\r\n\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-deviceJobDevices .p-datatable.p-datatable-deviceJobDevices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-provisioned {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

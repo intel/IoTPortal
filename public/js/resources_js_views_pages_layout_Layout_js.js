@@ -13209,17 +13209,17 @@ var _nav = [{
   }]
 }, {
   _tag: 'CSidebarNavDropdown',
-  name: 'Jobs',
-  to: '/jobs',
+  name: 'Device Jobs',
+  to: '/device/jobs',
   icon: 'cil-calendar-check',
   _children: [{
     _tag: 'CSidebarNavItem',
-    name: 'Jobs',
-    to: '/jobs'
+    name: 'Device Jobs',
+    to: '/device/jobs'
   }, {
     _tag: 'CSidebarNavItem',
-    name: 'Create new job',
-    to: '/jobs/create'
+    name: 'Create new device job',
+    to: '/device/jobs/create'
   }]
 }, {
   _tag: 'CSidebarNavTitle',
@@ -13301,11 +13301,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "APP_URL": () => (/* binding */ APP_URL),
 /* harmony export */   "API_ENDPOINT": () => (/* binding */ API_ENDPOINT),
-/* harmony export */   "ASYNC_VALIDATION_TIMEOUT_IN_MS": () => (/* binding */ ASYNC_VALIDATION_TIMEOUT_IN_MS)
+/* harmony export */   "ASYNC_VALIDATION_TIMEOUT_IN_MS": () => (/* binding */ ASYNC_VALIDATION_TIMEOUT_IN_MS),
+/* harmony export */   "DATA_POLLING_INTERVAL_IN_MS": () => (/* binding */ DATA_POLLING_INTERVAL_IN_MS)
 /* harmony export */ });
 var APP_URL = "http://127.0.0.1:8000";
 var API_ENDPOINT = "http://127.0.0.1:8000/api";
 var ASYNC_VALIDATION_TIMEOUT_IN_MS = "800";
+var DATA_POLLING_INTERVAL_IN_MS = "5000";
 
 /***/ }),
 
@@ -13457,8 +13459,8 @@ var ViewDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(fu
 var EditDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_EditDeviceCategory_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/EditDeviceCategory */ "./resources/js/views/deviceCategories/EditDeviceCategory.js"));
 });
-var CreateJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_views_jobs_CreateJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/jobs/CreateJob */ "./resources/js/views/jobs/CreateJob.js"));
+var CreateDeviceJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceJobs_CreateDeviceJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceJobs/CreateDeviceJob */ "./resources/js/views/deviceJobs/CreateDeviceJob.js"));
 });
 var ListSavedCommands = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_ListSavedCommands_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/ListSavedCommands */ "./resources/js/views/savedCommands/ListSavedCommands.js"));
@@ -13538,10 +13540,10 @@ var routes = [{
   name: 'Edit Device Category',
   component: EditDeviceCategory
 }, {
-  path: '/jobs/create',
+  path: '/device/jobs/create',
   exact: true,
-  name: 'Create Job',
-  component: CreateJob
+  name: 'Create Device Job',
+  component: CreateDeviceJob
 }, {
   path: '/commands/saved',
   exact: true,

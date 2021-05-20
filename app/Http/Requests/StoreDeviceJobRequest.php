@@ -25,7 +25,7 @@ class StoreDeviceJobRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'device_job_name' => [
                 'required',
                 'string',
                 'max:255',
@@ -33,7 +33,7 @@ class StoreDeviceJobRequest extends BaseFormRequest
                     return $query->where('user_id', Auth::user()->id);
                 }),
             ],
-            'group' => [
+            'device_group' => [
                 'required',
                 Rule::exists('device_groups', 'id')->where(function ($query) {
                     return $query->where('user_id', Auth::user()->id);
