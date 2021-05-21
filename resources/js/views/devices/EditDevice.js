@@ -52,7 +52,7 @@ const EditDevice = (props) => {
     name: Yup.string()
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters'),
-    category: Yup.object().shape({
+    device_category: Yup.object().shape({
       value: Yup.string().required(),
       label: Yup.string().oneOf(
         deviceCategoryOptions ? deviceCategoryOptions.map(({label}) => label) : [],
@@ -90,7 +90,7 @@ const EditDevice = (props) => {
                 innerRef={formRef}
                 initialValues={{
                   name: device.name,
-                  category: device.category,
+                  device_category: device.category,
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
@@ -106,12 +106,12 @@ const EditDevice = (props) => {
                       placeholder="Enter device name"
                     />
                     <IotSelectFormGroup
-                      id="category"
-                      name="category"
+                      id="device_category"
+                      name="device_category"
                       label="Device category"
                       placeholder="Select a device category"
                       options={deviceCategoryOptions}
-                      value={values.category}
+                      value={values.device_category}
                       onInputChange={(name) => fetchDeviceCategoryOptionsStartAsync(name)}
                       isLoading={isFetchingDeviceCategoryOptions}
                       isSearchable

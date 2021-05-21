@@ -2,12 +2,11 @@
 
 namespace App\Rules;
 
-use App\Models\Device;
 use App\Models\DeviceCategory;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
-class ExistsCategoryId implements Rule
+class ExistsDeviceCategoryId implements Rule
 {
     /**
      * Create a new rule instance.
@@ -22,8 +21,8 @@ class ExistsCategoryId implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value)

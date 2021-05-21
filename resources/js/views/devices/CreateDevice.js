@@ -48,7 +48,7 @@ const CreateDevice = ({
       .required("Required")
       .max(255, 'The name may not be greater than 255 characters')
       .test('isDeviceNameUnique', 'The name has already been taken', isDeviceNameUniqueDebounced),
-    category: Yup.object().shape({
+    device_category: Yup.object().shape({
       value: Yup.string().required(),
       label: Yup.string().oneOf(
         deviceCategoryOptions ? deviceCategoryOptions.map(({label}) => label) : [],
@@ -75,7 +75,7 @@ const CreateDevice = ({
                 innerRef={formRef}
                 initialValues={{
                   name: '',
-                  category: '',
+                  device_category: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, {setSubmitting}) => {
@@ -91,8 +91,8 @@ const CreateDevice = ({
                       placeholder="Enter device name"
                     />
                     <IotSelectFormGroup
-                      id="category"
-                      name="category"
+                      id="device_category"
+                      name="device_category"
                       label="Device category"
                       placeholder="Select a device category"
                       options={deviceCategoryOptions}

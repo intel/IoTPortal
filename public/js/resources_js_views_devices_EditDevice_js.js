@@ -3186,7 +3186,7 @@ var EditDevice = function EditDevice(props) {
 
   var validationObject = {
     name: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required").max(255, 'The name may not be greater than 255 characters'),
-    category: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    device_category: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
       value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
       label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(deviceCategoryOptions ? deviceCategoryOptions.map(function (_ref) {
         var label = _ref.label;
@@ -3228,7 +3228,7 @@ var EditDevice = function EditDevice(props) {
               innerRef: formRef,
               initialValues: {
                 name: device.name,
-                category: device.category
+                device_category: device.category
               },
               validationSchema: validationSchema,
               onSubmit: function onSubmit(values, _ref2) {
@@ -3244,12 +3244,12 @@ var EditDevice = function EditDevice(props) {
                     label: "Device name",
                     placeholder: "Enter device name"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
-                    id: "category",
-                    name: "category",
+                    id: "device_category",
+                    name: "device_category",
                     label: "Device category",
                     placeholder: "Select a device category",
                     options: deviceCategoryOptions,
-                    value: values.category,
+                    value: values.device_category,
                     onInputChange: function onInputChange(name) {
                       return fetchDeviceCategoryOptionsStartAsync(name);
                     },

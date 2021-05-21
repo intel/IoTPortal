@@ -89,7 +89,7 @@ class DeviceController extends Controller
     {
         $device = Auth::user()->devices()->create([
             'name' => $request->name,
-            'device_category_id' => $request->category,
+            'device_category_id' => $request->device_category,
             'device_status_id' => DeviceStatus::getRegistered()->id,
         ]);
 
@@ -126,7 +126,7 @@ class DeviceController extends Controller
     {
         $success = $device->update([
             'name' => $request->input('name', $device->name),
-            'device_category_id' => $request->input('category', $device->category_id),
+            'device_category_id' => $request->input('device_category', $device->device_category_id),
         ]);
 
         if ($success) {

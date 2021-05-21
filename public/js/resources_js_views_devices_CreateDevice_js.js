@@ -3051,7 +3051,7 @@ var CreateDevice = function CreateDevice(_ref) {
 
   var validationObject = {
     name: yup__WEBPACK_IMPORTED_MODULE_2__.string().required("Required").max(255, 'The name may not be greater than 255 characters').test('isDeviceNameUnique', 'The name has already been taken', _utils_utils__WEBPACK_IMPORTED_MODULE_8__.isDeviceNameUniqueDebounced),
-    category: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
+    device_category: yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
       value: yup__WEBPACK_IMPORTED_MODULE_2__.string().required(),
       label: yup__WEBPACK_IMPORTED_MODULE_2__.string().oneOf(deviceCategoryOptions ? deviceCategoryOptions.map(function (_ref2) {
         var label = _ref2.label;
@@ -3078,7 +3078,7 @@ var CreateDevice = function CreateDevice(_ref) {
               innerRef: formRef,
               initialValues: {
                 name: '',
-                category: ''
+                device_category: ''
               },
               validationSchema: validationSchema,
               onSubmit: function onSubmit(values, _ref3) {
@@ -3094,8 +3094,8 @@ var CreateDevice = function CreateDevice(_ref) {
                     label: "Device name",
                     placeholder: "Enter device name"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_10__.default, {
-                    id: "category",
-                    name: "category",
+                    id: "device_category",
+                    name: "device_category",
                     label: "Device category",
                     placeholder: "Select a device category",
                     options: deviceCategoryOptions,

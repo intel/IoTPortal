@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\ExistsCategoryId;
+use App\Rules\ExistsDeviceCategoryId;
 use App\Rules\UniqueDeviceName;
 
 class StoreDeviceRequest extends BaseFormRequest
@@ -31,9 +31,9 @@ class StoreDeviceRequest extends BaseFormRequest
                 'max:255',
                 new UniqueDeviceName,
             ],
-            'category' => [
+            'device_category' => [
                 'required',
-                new ExistsCategoryId,
+                new ExistsDeviceCategoryId,
             ],
         ];
     }
