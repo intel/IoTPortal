@@ -11,7 +11,7 @@ const DeleteSavedCommandModal = ({
                                    savedCommand
                                  }) => {
 
-  const modalMessageSingle = () => {
+  const modalMessage = () => {
     return (
       <>
         Are you sure you want to permanently delete this saved command?
@@ -25,7 +25,7 @@ const DeleteSavedCommandModal = ({
   return (
     <Modal show={show}
            modalTitle="Delete Saved Command"
-           modalMessage={modalMessageSingle()}
+           modalMessage={modalMessage()}
            onClose={onClose}
            onConfirm={onConfirm}
     />

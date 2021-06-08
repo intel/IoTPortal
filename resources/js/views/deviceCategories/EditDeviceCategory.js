@@ -1,19 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
+
+import { getSanitizedValues } from '../../utils/utils';
+import editDeviceCategoryValidationSchema from '../../schemas/deviceCategory/editDeviceCategoryValidationSchema';
 import {
   fetchDeviceCategoryStartAsync,
   updateDeviceCategoryStartAsync
 } from '../../redux/deviceCategory/deviceCategory.actions';
-import { getSanitizedValues } from '../../utils/utils';
 
-import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import Error from '../../components/Error/Error';
+import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 
 const EditDeviceCategory = (props) => {
@@ -32,6 +33,10 @@ const EditDeviceCategory = (props) => {
 
   const formRef = useRef();
 
+  useEffect(() => {
+    fetchDeviceCategoryStartAsync(deviceCategoryUniqueId);
+  }, []);
+
   const handleSubmit = () => {
     if (formRef.current) {
       formRef.current.handleSubmit();
@@ -44,17 +49,7 @@ const EditDeviceCategory = (props) => {
     }
   };
 
-  const validationObject = {
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters'),
-  };
-
-  const validationSchema = Yup.object(validationObject);
-
-  useEffect(() => {
-    fetchDeviceCategoryStartAsync(deviceCategoryUniqueId);
-  }, []);
+  const validationSchema = editDeviceCategoryValidationSchema();
 
   if (isFetchingDeviceCategory) {
     return (<CardSkeleton/>);
@@ -83,16 +78,14 @@ const EditDeviceCategory = (props) => {
                   updateDeviceCategoryStartAsync(deviceCategoryUniqueId, getSanitizedValues(values), history);
                 }}
               >
-                {({values}) => (
-                  <Form>
-                    <IotTextInputFormGroup
-                      id="name"
-                      name="name"
-                      label="Device category name"
-                      placeholder="Enter device category name"
-                    />
-                  </Form>
-                )}
+                <Form>
+                  <IotTextInputFormGroup
+                    id="name"
+                    name="name"
+                    label="Device category name"
+                    placeholder="Enter device category name"
+                  />
+                </Form>
               </Formik>
             </CCardBody>
             <CCardFooter>

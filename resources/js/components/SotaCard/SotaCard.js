@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 
 import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 
@@ -12,6 +11,7 @@ import {
   SOTA_OPTIONS
 } from '../../data/options';
 import { getSanitizedValues } from '../../utils/utils';
+import sotaValidationSchema from '../../schemas/sota/sotaValidationSchema';
 
 import IotSelectFormGroup from '../IotSelectFormGroup/IotSelectFormGroup';
 import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
@@ -48,36 +48,6 @@ const SotaCard = ({
     }
   };
 
-  const validationObject = {
-    sota_option: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        SOTA_OPTIONS.map(({label}) => label),
-        "Invalid SOTA option"
-      ).required("Required")
-    }).nullable().required("Required"),
-    command: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        SOTA_COMMAND_OPTIONS.map(({label}) => label),
-        "Invalid command selection"
-      ).required("Required")
-    }).nullable().required("Required")
-  };
-
-  if (!isFieldHidden.fetch_link) validationObject.fetch_link = Yup.string().required("Required");
-  if (!isFieldHidden.log_to_file) validationObject.log_to_file = Yup.object().shape({
-    value: Yup.string(),
-    label: Yup.string().oneOf(
-      SOTA_LOG_TO_FILE_OPTIONS.map(({label}) => label),
-      "Please select Yes or No only"
-    ).required("Required")
-  }).nullable().required("Required");
-  if (!isFieldHidden.username) validationObject.username = Yup.string();
-  if (!isFieldHidden.password) validationObject.password = Yup.string();
-
-  const validationSchema = Yup.object(validationObject);
-
   const updateSelectOptions = (name, selectedOption) => {
     if (name === 'sota_option' && selectedOption) {
       handleReset();
@@ -87,6 +57,8 @@ const SotaCard = ({
       handleReset();
     }
   };
+
+  const validationSchema = sotaValidationSchema(isFieldHidden);
 
   return (
     <CCard>

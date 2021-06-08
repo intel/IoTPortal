@@ -5,30 +5,43 @@ import { Toaster } from 'react-hot-toast';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-import { deleteDevicesStartAsync } from '../../redux/device/device.actions';
-import DevicesDataTable from '../../containers/DevicesDataTable/DevicesDataTable';
-import DeleteDevicesModal from '../../components/DeleteDevicesModal/DeleteDevicesModal';
+import DeviceJobsDataTable from '../../components/DeviceJobsDataTable/DeviceJobsDataTable';
+import {
+  deleteDeviceJobsStartAsync,
+  fetchDeviceJobsStartAsync,
+  resetFetchDeviceJobsLazyParams,
+  setFetchDeviceJobsLazyParams
+} from '../../redux/deviceJob/deviceJob.actions';
+import DeleteDeviceJobsModal from '../../components/DeleteDeviceJobsModal/DeleteDeviceJobsModal';
 
 const ListDeviceJobs = ({
-                       history,
-                       match,
-                       isDeletingDevices,
-                       deleteDevicesErrorMessage,
-                       deleteDevicesStartAsync
-                     }) => {
+                          history,
+                          match,
+                          deviceJobs,
+                          deviceJobsTotalRecords,
+                          isFetchingDeviceJobs,
+                          fetchDeviceJobsErrorMessage,
+                          fetchDeviceJobsLazyParams,
+                          isDeletingDeviceJobs,
+                          deleteDeviceJobsErrorMessage,
+                          fetchDeviceJobsStartAsync,
+                          setFetchDeviceJobsLazyParams,
+                          resetFetchDeviceJobsLazyParams,
+                          deleteDeviceJobsStartAsync
+                        }) => {
 
-  const [showDeleteDevicesModal, setShowDeleteDevicesModal] = useState(false);
-  const [selectedDevices, setSelectedDevices] = useState(null);
+  const [showDeleteDeviceJobsModal, setShowDeleteDeviceJobsModal] = useState(false);
+  const [selectedDeviceJobs, setSelectedDeviceJobs] = useState(null);
 
-  const confirmDeleteSelectedDevices = () => {
-    setShowDeleteDevicesModal(!showDeleteDevicesModal);
+  const confirmDeleteSelectedDeviceJobs = () => {
+    setShowDeleteDeviceJobsModal(!showDeleteDeviceJobsModal);
   };
 
-  const deleteSelectedDevices = () => {
-    const selectedDeviceIds = selectedDevices.map(selectedDevice => selectedDevice.id);
-    deleteDevicesStartAsync(selectedDeviceIds);
-    setShowDeleteDevicesModal(!showDeleteDevicesModal);
-    setSelectedDevices(null);
+  const deleteSelectedDeviceJobs = () => {
+    const selectedDeviceJobIds = selectedDeviceJobs.map(selectedDeviceJob => selectedDeviceJob.id);
+    deleteDeviceJobsStartAsync(selectedDeviceJobIds);
+    setShowDeleteDeviceJobsModal(!showDeleteDeviceJobsModal);
+    setSelectedDeviceJobs(null);
   };
 
   const leftToolbar = () => {
@@ -37,8 +50,8 @@ const ListDeviceJobs = ({
         <Button label="New" icon="pi pi-plus" className="p-button-success mr-2"
                 onClick={() => history.push(`${match.url}/create`)}/>
         <Button label="Delete" icon="pi pi-trash" className="p-button-danger mr-2"
-                onClick={confirmDeleteSelectedDevices}
-                disabled={!selectedDevices || !selectedDevices.length}/>
+                onClick={confirmDeleteSelectedDeviceJobs}
+                disabled={!selectedDeviceJobs || !selectedDeviceJobs.length}/>
       </>
     );
   };
@@ -49,19 +62,32 @@ const ListDeviceJobs = ({
         <CCol xs="12" md="12" className="mb-4">
           <CCard>
             <CCardHeader>
-              Devices
+              Devices Jobs
             </CCardHeader>
             <CCardBody>
               <Toolbar className="mb-4" left={leftToolbar}/>
-              <DevicesDataTable selectedDevices={selectedDevices} setSelectedDevices={setSelectedDevices}/>
+              <DeviceJobsDataTable selectedDeviceJobs={selectedDeviceJobs}
+                                   setSelectedDeviceJobs={setSelectedDeviceJobs}
+                                   deviceJobs={deviceJobs}
+                                   deviceJobsTotalRecords={deviceJobsTotalRecords}
+                                   isFetchingDeviceJobs={isFetchingDeviceJobs}
+                                   fetchDeviceJobsErrorMessage={fetchDeviceJobsErrorMessage}
+                                   fetchDeviceJobsLazyParams={fetchDeviceJobsLazyParams}
+                                   isDeletingDeviceJobs={isDeletingDeviceJobs}
+                                   deleteDeviceJobsErrorMessage={deleteDeviceJobsErrorMessage}
+                                   fetchDeviceJobsStartAsync={fetchDeviceJobsStartAsync}
+                                   setFetchDeviceJobsLazyParams={setFetchDeviceJobsLazyParams}
+                                   resetFetchDeviceJobsLazyParams={resetFetchDeviceJobsLazyParams}
+                                   deleteDeviceJobsStartAsync={deleteDeviceJobsStartAsync}
+              />
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
-      {showDeleteDevicesModal &&
-      <DeleteDevicesModal show={showDeleteDevicesModal}
-                          onClose={() => setShowDeleteDevicesModal(!showDeleteDevicesModal)}
-                          onConfirm={deleteSelectedDevices}
+      {showDeleteDeviceJobsModal &&
+      <DeleteDeviceJobsModal show={showDeleteDeviceJobsModal}
+                             onClose={() => setShowDeleteDeviceJobsModal(!showDeleteDeviceJobsModal)}
+                             onConfirm={deleteSelectedDeviceJobs}
       />}
       <Toaster/>
     </>
@@ -69,12 +95,20 @@ const ListDeviceJobs = ({
 };
 
 const mapStateToProps = state => ({
-  isDeletingDevices: state.device.isDeletingDevices,
-  deleteDevicesErrorMessage: state.device.deleteDevicesErrorMessage,
+  deviceJobs: state.deviceJob.deviceJobs,
+  deviceJobsTotalRecords: state.deviceJob.deviceJobsTotalRecords,
+  isFetchingDeviceJobs: state.deviceJob.isFetchingDeviceJobs,
+  fetchDeviceJobsErrorMessage: state.deviceJob.fetchDeviceJobsErrorMessage,
+  fetchDeviceJobsLazyParams: state.deviceJob.fetchDeviceJobsLazyParams,
+  isDeletingDeviceJobs: state.deviceJob.isDeletingDeviceJobs,
+  deleteDeviceJobsErrorMessage: state.deviceJob.deleteDeviceJobsErrorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteDevicesStartAsync: (ids, params) => dispatch(deleteDevicesStartAsync(ids, params)),
+  fetchDeviceJobsStartAsync: (lazyParams) => dispatch(fetchDeviceJobsStartAsync(lazyParams)),
+  setFetchDeviceJobsLazyParams: (lazyParams) => dispatch(setFetchDeviceJobsLazyParams(lazyParams)),
+  resetFetchDeviceJobsLazyParams: () => dispatch(resetFetchDeviceJobsLazyParams()),
+  deleteDeviceJobsStartAsync: (ids, history) => dispatch(deleteDeviceJobsStartAsync(ids, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListDeviceJobs);

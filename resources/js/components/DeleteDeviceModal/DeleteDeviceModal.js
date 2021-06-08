@@ -11,7 +11,7 @@ const DeleteDeviceModal = ({
                              device
                            }) => {
 
-  const modalMessageSingle = () => {
+  const modalMessage = () => {
     return (
       <>
         Are you sure you want to permanently delete this device?
@@ -25,7 +25,7 @@ const DeleteDeviceModal = ({
   return (
     <Modal show={show}
            modalTitle="Delete Device"
-           modalMessage={modalMessageSingle()}
+           modalMessage={modalMessage()}
            onClose={onClose}
            onConfirm={onConfirm}
     />

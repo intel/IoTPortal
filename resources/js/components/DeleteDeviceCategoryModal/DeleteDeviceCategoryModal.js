@@ -11,7 +11,7 @@ const DeleteDeviceCategoryModal = ({
                                      deviceCategory
                                    }) => {
 
-  const modalMessageSingle = () => {
+  const modalMessage = () => {
     return (
       <>
         Are you sure you want to permanently delete this device category?
@@ -25,7 +25,7 @@ const DeleteDeviceCategoryModal = ({
   return (
     <Modal show={show}
            modalTitle="Delete Device Category"
-           modalMessage={modalMessageSingle()}
+           modalMessage={modalMessage()}
            onClose={onClose}
            onConfirm={onConfirm}
     />

@@ -1,0 +1,37 @@
+ARG HORIZON_VERSION=alpine
+FROM php:${HORIZON_VERSION}
+
+ENV LOCAL_UID=65534
+ENV LOCAL_GID=65534
+
+# Install PHP and composer dependencies
+RUN apk --no-cache --update --available upgrade \
+        && apk add --no-cache --virtual .build-deps \
+                   oniguruma-dev \
+                   $PHPIZE_DEPS
+
+# Install PHP extensions
+RUN pecl install redis \
+            && rm -rf /tmp/pear \
+            && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
+            && apk del -f .build-deps \
+            && docker-php-ext-enable redis
+
+RUN rm -r /var/www/*
+
+# Get latest Composer TODO: remove in future
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
+
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/horizon/start_horizon.sh /usr/sbin/start_horizon
+
+RUN chmod u+x /usr/sbin/start_horizon
+
+RUN sed -i 's/\r//g' /usr/sbin/start_horizon
+
+WORKDIR /var/www
+
+USER $LOCAL_UID:$LOCAL_GID
+
+CMD ["start_horizon"]

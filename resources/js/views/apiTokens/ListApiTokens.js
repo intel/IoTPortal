@@ -10,7 +10,6 @@ import Error from '../../components/Error/Error';
 import ApiToken from '../../components/ApiToken/ApiToken';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 
-
 const ListApiTokens = (props) => {
 
   const {

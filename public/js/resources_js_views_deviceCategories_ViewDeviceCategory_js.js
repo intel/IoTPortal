@@ -103,7 +103,7 @@ var DeleteDeviceCategoryModal = function DeleteDeviceCategoryModal(_ref) {
       onConfirm = _ref.onConfirm,
       deviceCategory = _ref.deviceCategory;
 
-  var modalMessageSingle = function modalMessageSingle() {
+  var modalMessage = function modalMessage() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
       children: ["Are you sure you want to permanently delete this device category?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "Device Category ID: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
         children: deviceCategory.unique_id
@@ -116,7 +116,7 @@ var DeleteDeviceCategoryModal = function DeleteDeviceCategoryModal(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Modal_Modal__WEBPACK_IMPORTED_MODULE_2__.default, {
     show: show,
     modalTitle: "Delete Device Category",
-    modalMessage: modalMessageSingle(),
+    modalMessage: modalMessage(),
     onClose: onClose,
     onConfirm: onConfirm
   });
@@ -520,10 +520,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -537,6 +539,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -633,14 +636,14 @@ var filterDateTimeRange = function filterDateTimeRange(value, filter) {
 };
 var toastHelper = {
   loading: function loading(message) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.loading(message, {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.loading(message, {
       style: {
         minWidth: '500px'
       }
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -650,13 +653,13 @@ var toastHelper = {
     });
   },
   error: function error(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
           onClick: function onClick() {
-            return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
+            return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
           color: "primary",
           size: "sm",
@@ -688,7 +691,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -697,10 +700,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -709,10 +712,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -721,10 +724,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -733,7 +736,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = _.debounce(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -751,11 +754,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
-/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
-/* harmony import */ var _redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceCategory/deviceCategory.actions */ "./resources/js/redux/deviceCategory/deviceCategory.actions.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/deviceCategory/deviceCategory.actions */ "./resources/js/redux/deviceCategory/deviceCategory.actions.js");
+/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
+/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
 /* harmony import */ var _components_DeleteDeviceCategoryModal_DeleteDeviceCategoryModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal */ "./resources/js/components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -808,23 +811,23 @@ var ViewDeviceCategory = function ViewDeviceCategory(props) {
   };
 
   if (isFetchingDeviceCategory) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_6__.default, {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_7__.default, {});
   } else if (fetchDeviceCategoryErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_5__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_6__.default, {
       errorMessage: fetchDeviceCategoryErrorMessage
     });
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
         xs: "12",
         md: "12",
         className: "mb-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardHeader, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
                 className: "mb-3",
                 lg: "12",
                 xl: "9",
@@ -832,7 +835,7 @@ var ViewDeviceCategory = function ViewDeviceCategory(props) {
                   className: "d-flex",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
                     className: "m-4",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
                       name: "cilLibraryAdd",
                       size: "4xl"
                     })
@@ -845,20 +848,20 @@ var ViewDeviceCategory = function ViewDeviceCategory(props) {
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {})]
                   })]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
                 className: "my-auto",
                 lg: "12",
                 xl: "3",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
                   className: "d-flex justify-content-center",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButtonGroup, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButtonGroup, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
                       color: "primary",
                       onClick: function onClick() {
                         return history.push("".concat(match.url, "/edit"));
                       },
                       children: " Edit"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
                       color: "danger",
                       onClick: function onClick() {
                         return setShowDeleteDeviceCategoryModal(!showDeleteDeviceCategoryModal);
@@ -894,15 +897,98 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchDeviceCategoryStartAsync: function fetchDeviceCategoryStartAsync(deviceCategoryUniqueId) {
-      return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceCategoryStartAsync)(deviceCategoryUniqueId));
+      return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_5__.fetchDeviceCategoryStartAsync)(deviceCategoryUniqueId));
     },
     deleteDeviceCategoriesStartAsync: function deleteDeviceCategoriesStartAsync(ids, history) {
-      return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_7__.deleteDeviceCategoriesStartAsync)(ids, history));
+      return dispatch((0,_redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_5__.deleteDeviceCategoriesStartAsync)(ids, history));
     }
   };
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(ViewDeviceCategory));
+
+/***/ }),
+
+/***/ "./node_modules/debounce-promise/dist/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/debounce-promise/dist/index.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/* global setTimeout, clearTimeout */
+
+module.exports = function debounce(fn) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var lastCallAt = void 0;
+  var deferred = void 0;
+  var timer = void 0;
+  var pendingArgs = [];
+  return function debounced() {
+    var currentWait = getWait(wait);
+    var currentTime = new Date().getTime();
+
+    var isCold = !lastCallAt || currentTime - lastCallAt > currentWait;
+
+    lastCallAt = currentTime;
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (isCold && options.leading) {
+      return options.accumulate ? Promise.resolve(fn.call(this, [args])).then(function (result) {
+        return result[0];
+      }) : Promise.resolve(fn.call.apply(fn, [this].concat(args)));
+    }
+
+    if (deferred) {
+      clearTimeout(timer);
+    } else {
+      deferred = defer();
+    }
+
+    pendingArgs.push(args);
+    timer = setTimeout(flush.bind(this), currentWait);
+
+    if (options.accumulate) {
+      var argsIndex = pendingArgs.length - 1;
+      return deferred.promise.then(function (results) {
+        return results[argsIndex];
+      });
+    }
+
+    return deferred.promise;
+  };
+
+  function flush() {
+    var thisDeferred = deferred;
+    clearTimeout(timer);
+
+    Promise.resolve(options.accumulate ? fn.call(this, pendingArgs) : fn.apply(this, pendingArgs[pendingArgs.length - 1])).then(thisDeferred.resolve, thisDeferred.reject);
+
+    pendingArgs = [];
+    deferred = null;
+  }
+};
+
+function getWait(wait) {
+  return typeof wait === 'function' ? wait() : wait;
+}
+
+function defer() {
+  var deferred = {};
+  deferred.promise = new Promise(function (resolve, reject) {
+    deferred.resolve = resolve;
+    deferred.reject = reject;
+  });
+  return deferred;
+}
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 

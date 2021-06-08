@@ -1,4 +1,5 @@
-FROM php:fpm
+ARG PHP_VERSION=fpm
+FROM php:${PHP_VERSION}
 
 ENV LOCAL_UID=65534
 ENV LOCAL_GID=65534
@@ -22,7 +23,12 @@ RUN apt update && apt install -qq -y \
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+RUN pecl install -o -f redis \
+            && rm -rf /tmp/pear \
+            && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
+            && docker-php-ext-enable redis
+
+RUN rm -r /var/www/*
 
 # Get latest Composer TODO: remove in future
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -31,10 +37,13 @@ COPY --from=mysql:latest /usr/bin/mysqladmin /usr/bin/mysqladmin
 
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
 
-RUN cp -p /var/www/docker-compose/app/*.sh /var/www
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/app/*.sh /var/www
 
 RUN chmod u+x /var/www/wait-for-mysql.sh \
                 /var/www/startup.sh
+
+RUN sed -i 's/\r//g' /var/www/wait-for-mysql.sh \
+                        /var/www/startup.sh
 
 WORKDIR /var/www
 

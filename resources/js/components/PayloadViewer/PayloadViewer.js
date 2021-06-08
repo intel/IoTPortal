@@ -2,9 +2,10 @@ import React from 'react';
 
 import ReactJson from 'react-json-view';
 import { CLabel } from '@coreui/react';
+import { Skeleton } from 'primereact/skeleton';
 
 import { isValidJSONObject, isValidJsonString } from '../../utils/utils';
-import { Skeleton } from 'primereact/skeleton';
+
 
 const PayloadViewer = ({label, payload, isLabelHidden, isLoading}) => {
 

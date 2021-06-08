@@ -10,11 +10,11 @@ use App\Http\Requests\ValidateDeviceJobFieldsRequest;
 use App\Jobs\ProcessDeviceJob;
 use App\Models\DeviceJob;
 use App\Models\SavedCommand;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class DeviceJobController extends Controller
 {
@@ -26,41 +26,38 @@ class DeviceJobController extends Controller
      */
     public function index(Request $request)
     {
-//        $query = Auth::user()->savedCommands();
-//
-//        if ($request->has('filters')) {
-//            $filters = json_decode($request->filters);
-//
-//            foreach ($filters as $key => $value) {
-//                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
-//
-//                if ($key === 'name') $query->nameLike($value->value);
-//
-//                if ($key === 'command_name') $query->commandNameLike($value->value);
-//
-//                if ($key === 'globalFilter') {
-//                    $query->where(function ($query) use ($value) {
-//                        $query->uniqueIdLike($value->value)
-//                            ->orWhere->nameLike($value->value)
-//                            ->orWhere->commandNameLike($value->value);
-//                    });
-//                }
-//            }
-//        }
-//
-//        if ($request->has('sortField')) {
-//            if ($request->sortOrder === '1')
-//                $query->orderBy($request->sortField);
-//            else
-//                $query->orderByDesc($request->sortField);
-//        }
-//
-//        $maxRows = Config::get('constants.index_max_rows');
-//        $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
-//
-//        $savedCommands = $query->paginate($rows);
-//
-//        return Helper::apiResponseHttpOk(['savedCommands' => $savedCommands]);
+        $query = Auth::user()->deviceJobs()->with(['deviceGroup', 'savedCommand']);
+
+        if ($request->has('filters')) {
+            $filters = json_decode($request->filters);
+
+            foreach ($filters as $key => $value) {
+                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
+
+                if ($key === 'name') $query->nameLike($value->value);
+
+                if ($key === 'globalFilter') {
+                    $query->where(function ($query) use ($value) {
+                        $query->uniqueIdLike($value->value)
+                            ->orWhere->nameLike($value->value);
+                    });
+                }
+            }
+        }
+
+        if ($request->has('sortField')) {
+            if ($request->sortOrder === '1')
+                $query->orderBy($request->sortField);
+            else
+                $query->orderByDesc($request->sortField);
+        }
+
+        $maxRows = Config::get('constants.index_max_rows');
+        $rows = (int)$request->input('rows', 10) > $maxRows ? $maxRows : (int)$request->input('rows', 10);
+
+        $deviceJobs = $query->paginate($rows);
+
+        return Helper::apiResponseHttpOk(['deviceJobs' => $deviceJobs]);
     }
 
     /**
@@ -73,13 +70,12 @@ class DeviceJobController extends Controller
     {
         $deviceJob = Auth::user()->deviceJobs()->create([
             'name' => $request->device_job_name,
-            'started_at' => now(),
             'device_group_id' => $request->device_group,
             'saved_command_id' => $request->saved_command,
         ]);
 
         if ($deviceJob->exists) {
-            $this->dispatch(new ProcessDeviceJob($deviceJob));
+            ProcessDeviceJob::dispatch($deviceJob);
             return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob]);
         }
 
@@ -94,13 +90,13 @@ class DeviceJobController extends Controller
      */
     public function show($id)
     {
-        $deviceJob = DeviceJob::id($id)
-            ->orWhere->uniqueId($id)
-            ->first();
+        if (is_numeric($id)) {
+            $deviceJob = DeviceJob::id($id);
+        } else {
+            $deviceJob = DeviceJob::uniqueId($id);
+        }
 
-        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with('commandHistories', 'commandHistories.command:id,device_id')->get()]);
-//        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with('commandHistories:id,device_job_id', 'command:id,device_id', 'command.device:id,unique_id,name')->get()]);
-//        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->commandHistories()->with('command:id,device_id', 'command.device:id,unique_id,name')->get()]);
+        return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with(['deviceGroup', 'savedCommand', 'deviceGroup.devices.deviceCategory', 'deviceGroup.devices.deviceStatus', 'commandHistories.command:id,device_id'])->first()]);
     }
 
     /**

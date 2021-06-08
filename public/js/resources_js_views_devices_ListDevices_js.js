@@ -1,26 +1,5 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_devices_ListDevices_js"],{
 
-/***/ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _assertThisInitialized)
-/* harmony export */ });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/ApiToken/ApiToken.js":
 /*!******************************************************!*\
   !*** ./resources/js/components/ApiToken/ApiToken.js ***!
@@ -253,7 +232,7 @@ var DeleteDeviceModal = function DeleteDeviceModal(_ref) {
       onConfirm = _ref.onConfirm,
       device = _ref.device;
 
-  var modalMessageSingle = function modalMessageSingle() {
+  var modalMessage = function modalMessage() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
       children: ["Are you sure you want to permanently delete this device?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "Device ID: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
         children: device.unique_id
@@ -266,7 +245,7 @@ var DeleteDeviceModal = function DeleteDeviceModal(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Modal_Modal__WEBPACK_IMPORTED_MODULE_2__.default, {
     show: show,
     modalTitle: "Delete Device",
-    modalMessage: modalMessageSingle(),
+    modalMessage: modalMessage(),
     onClose: onClose,
     onConfirm: onConfirm
   });
@@ -509,8 +488,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
 /* harmony import */ var _components_DeleteDeviceModal_DeleteDeviceModal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/DeleteDeviceModal/DeleteDeviceModal */ "./resources/js/components/DeleteDeviceModal/DeleteDeviceModal.js");
 /* harmony import */ var _components_ConnectDeviceModal_ConnectDeviceModal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/ConnectDeviceModal/ConnectDeviceModal */ "./resources/js/components/ConnectDeviceModal/ConnectDeviceModal.js");
-/* harmony import */ var _devicesDataTable_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./devicesDataTable.css */ "./resources/js/containers/DevicesDataTable/devicesDataTable.css");
-/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DataTableHeader/DataTableHeader */ "./resources/js/components/DataTableHeader/DataTableHeader.js");
+/* harmony import */ var _devicesDataTable_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./devicesDataTable.css */ "./resources/js/containers/DevicesDataTable/devicesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -658,7 +637,7 @@ var DevicesDataTable = function DevicesDataTable(_ref) {
     setFetchDevicesLazyParams(_lazyParams);
   };
 
-  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_14__.default, {
+  var header = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_components_DataTableHeader_DataTableHeader__WEBPACK_IMPORTED_MODULE_13__.default, {
     headerName: "Devices",
     onSearchInputChange: function onSearchInputChange(e) {
       return setGlobalFilter(e.target.value);
@@ -947,8 +926,8 @@ var mapStateToProps = function mapStateToProps(state) {
     isFetchingDevices: state.device.isFetchingDevices,
     fetchDevicesErrorMessage: state.device.fetchDevicesErrorMessage,
     fetchDevicesLazyParams: state.device.fetchDevicesLazyParams,
-    isDeletingDevices: state.device.isFetchingDevices,
-    deleteDevicesErrorMessage: state.device.fetchDevicesErrorMessage
+    isDeletingDevices: state.device.isDeletingDevices,
+    deleteDevicesErrorMessage: state.device.deleteDevicesErrorMessage
   };
 };
 
@@ -1547,10 +1526,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -1564,6 +1545,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1660,14 +1642,14 @@ var filterDateTimeRange = function filterDateTimeRange(value, filter) {
 };
 var toastHelper = {
   loading: function loading(message) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.loading(message, {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.loading(message, {
       style: {
         minWidth: '500px'
       }
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -1677,13 +1659,13 @@ var toastHelper = {
     });
   },
   error: function error(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_0__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
           onClick: function onClick() {
-            return react_hot_toast__WEBPACK_IMPORTED_MODULE_1__.default.dismiss(t.id);
+            return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
           color: "primary",
           size: "sm",
@@ -1715,7 +1697,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1724,10 +1706,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1736,10 +1718,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1748,10 +1730,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_2__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1760,7 +1742,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = _.debounce(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_2__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -2053,6 +2035,89 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
+
+/***/ }),
+
+/***/ "./node_modules/debounce-promise/dist/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/debounce-promise/dist/index.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+/* global setTimeout, clearTimeout */
+
+module.exports = function debounce(fn) {
+  var wait = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var lastCallAt = void 0;
+  var deferred = void 0;
+  var timer = void 0;
+  var pendingArgs = [];
+  return function debounced() {
+    var currentWait = getWait(wait);
+    var currentTime = new Date().getTime();
+
+    var isCold = !lastCallAt || currentTime - lastCallAt > currentWait;
+
+    lastCallAt = currentTime;
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    if (isCold && options.leading) {
+      return options.accumulate ? Promise.resolve(fn.call(this, [args])).then(function (result) {
+        return result[0];
+      }) : Promise.resolve(fn.call.apply(fn, [this].concat(args)));
+    }
+
+    if (deferred) {
+      clearTimeout(timer);
+    } else {
+      deferred = defer();
+    }
+
+    pendingArgs.push(args);
+    timer = setTimeout(flush.bind(this), currentWait);
+
+    if (options.accumulate) {
+      var argsIndex = pendingArgs.length - 1;
+      return deferred.promise.then(function (results) {
+        return results[argsIndex];
+      });
+    }
+
+    return deferred.promise;
+  };
+
+  function flush() {
+    var thisDeferred = deferred;
+    clearTimeout(timer);
+
+    Promise.resolve(options.accumulate ? fn.call(this, pendingArgs) : fn.apply(this, pendingArgs[pendingArgs.length - 1])).then(thisDeferred.resolve, thisDeferred.reject);
+
+    pendingArgs = [];
+    deferred = null;
+  }
+};
+
+function getWait(wait) {
+  return typeof wait === 'function' ? wait() : wait;
+}
+
+function defer() {
+  var deferred = {};
+  deferred.promise = new Promise(function (resolve, reject) {
+    deferred.resolve = resolve;
+    deferred.reject = reject;
+  });
+  return deferred;
+}
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 

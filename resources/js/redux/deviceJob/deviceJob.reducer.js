@@ -30,14 +30,13 @@ const INITIAL_STATE = {
   isDeletingDeviceJobs: false,
   deleteDeviceJobsErrorMessage: undefined,
 
-  // Read device job device statuses
-  deviceJobDeviceStatuses: null,
-  isFetchingDeviceJobDeviceStatuses: true,
-  fetchDeviceJobDeviceStatusesErrorMessage: undefined,
-
   // Poll device job
   isPollingFetchDeviceJob: false,
-  fetchDeviceJobPollingId: null,
+  pollFetchDeviceJobId: null,
+
+  // Tick device job elapsed time
+  deviceJobElapsedTimeInSeconds: 0,
+  deviceJobElapsedTimeId: null,
 };
 
 const deviceJobReducer = (state = INITIAL_STATE, action) => {
@@ -152,43 +151,22 @@ const deviceJobReducer = (state = INITIAL_STATE, action) => {
       };
 
     // Poll device job
-    case deviceJobActionTypes.POLL_DEVICE_JOB_START:
+    case deviceJobActionTypes.POLL_FETCH_DEVICE_JOB_START:
       return {
         ...state,
         isPollingFetchDeviceJob: true,
-        fetchDeviceJobPollingId: setInterval(action.fetch, action.interval),
+        pollFetchDeviceJobId: setInterval(action.fetch, action.interval),
       };
-    case deviceJobActionTypes.POLL_DEVICE_JOB_STOP:
-      clearInterval(state.fetchDeviceJobPollingId);
+    case deviceJobActionTypes.POLL_FETCH_DEVICE_JOB_STOP:
+      if (state.pollFetchDeviceJobId) {
+        clearInterval(state.pollFetchDeviceJobId);
+      }
       return {
         ...state,
         isPollingFetchDeviceJob: false,
-        fetchDeviceJobPollingId: null
+        pollFetchDeviceJobId: null
       };
 
-
-
-
-
-    // // Read device job device statuses
-    // case deviceJobActionTypes.FETCH_DEVICE_JOB_DEVICE_STATUSES_START:
-    //   return {
-    //     ...state,
-    //     isFetchingDeviceJobDeviceStatuses: true,
-    //     fetchDeviceJobDeviceStatusesErrorMessage: undefined,
-    //   };
-    // case deviceJobActionTypes.FETCH_DEVICE_JOB_DEVICE_STATUSES_SUCCESS:
-    //   return {
-    //     ...state,
-    //     deviceJobDeviceStatuses: action.payload,
-    //     isFetchingDeviceJobDeviceStatuses: false,
-    //   };
-    // case deviceJobActionTypes.FETCH_DEVICE_JOB_DEVICE_STATUSES_FAILURE:
-    //   return {
-    //     ...state,
-    //     isFetchingDeviceJobDeviceStatuses: false,
-    //     fetchDeviceJobDeviceStatusesErrorMessage: action.payload,
-    //   };
     default:
       return state;
   }

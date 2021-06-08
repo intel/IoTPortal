@@ -17,6 +17,8 @@ class CreateCommandHistoriesTable extends Migration
             $table->id();
             $table->json('payload')->nullable();
             $table->string('error')->nullable();
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('completed_at')->nullable();
             $table->timestamp('responded_at')->nullable();
             $table->unsignedBigInteger('command_id');
             $table->unsignedBigInteger('device_job_id')->nullable();

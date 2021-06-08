@@ -3,13 +3,16 @@
 namespace App\Jobs;
 
 use App\Helpers\Helper;
+use App\Models\Device;
 use App\Models\DeviceJob;
+use Exception;
+use Illuminate\Bus\Batch;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Throwable;
+use Illuminate\Support\Facades\Bus;
 
 class ProcessDeviceJob implements ShouldQueue
 {
@@ -33,43 +36,76 @@ class ProcessDeviceJob implements ShouldQueue
     }
 
     /**
+     * @return DeviceJob
+     */
+    public function getDeviceJob(): DeviceJob
+    {
+        return $this->deviceJob;
+    }
+
+    /**
      * Execute the job.
      *
      * @return void
+     * @throws Exception
+     * @throws \Throwable
      */
     public function handle()
     {
-        foreach ($this->deviceJob->deviceGroup->devices as $device) {
-            $command = $device->commands()->name($this->deviceJob->savedCommand->command_name)->first();
+        $this->deviceJob->update([
+            'started_at' => now(),
+        ]);
 
-            if ($command) {
-                $payloadJson = 'null';
+        $payloadJson = 'null';
 
-                if ($this->deviceJob->savedCommand->payload) {
-                    $payloadArray = json_decode($this->deviceJob->savedCommand->payload, true);
-                    $payloadJson = json_encode(Helper::mapArrayKeyByArray($payloadArray, config('constants.commands.' . $command->name . '.configuration_map')));
-                }
-
-                $commandHistory = $command->commandHistories()->create([
-                    'payload' => $payloadJson === 'null' ? null : $payloadJson,
-                    'device_job_id' => $this->deviceJob->id,
-                ]);
-
-                try {
-                    Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $command->method_name . '/?$rid=' . $commandHistory->id, $payloadJson);
-                } catch (Throwable $error) {
-                    // TODO : log error into logger
-                    $commandHistory->update([
-                        'error' => 'An error occurred while sending the command to the device.',
-                    ]);
-                }
-
-            } else {
-                $command->commandHistories()->create([
-                    'error' => 'This command not supported for this device',
-                    'device_job_id' => $this->deviceJob->id,
-                ]);
-            }
+        if ($this->deviceJob->savedCommand->payload) {
+            $payloadArray = json_decode($this->deviceJob->savedCommand->payload, true);
+            $payloadJson = json_encode(Helper::mapArrayKeyByArray($payloadArray, config('constants.commands.' . $this->deviceJob->savedCommand->command_name . '.configuration_map')));
         }
+
+        $jobs = $this->deviceJob->deviceGroup->devices
+            ->map(fn(Device $device) => $this->createSendDeviceCommandJob($this->deviceJob, $device, $payloadJson))
+            ->filter(function (?SendDeviceCommandJob $sendDeviceCommandJob) {
+                return !is_null($sendDeviceCommandJob);
+            })
+            ->toArray();
+
+        $deviceJob = $this->deviceJob;
+
+        $jobBatch = Bus::batch($jobs)
+            ->finally(function (Batch $batch) use ($deviceJob) {
+                $deviceJob->update([
+                    'completed_at' => now(),
+                ]);
+            })
+            ->name($this->deviceJob->id)
+            ->allowFailures()
+            ->dispatch();
+
+        $this->deviceJob->update([
+            'job_batch_id' => $jobBatch->id,
+        ]);
+    }
+
+    public function createSendDeviceCommandJob(DeviceJob $deviceJob, Device $device, string $payloadJson): ?SendDeviceCommandJob
+    {
+        $command = $device->commands()->name($deviceJob->savedCommand->command_name)->first();
+
+        if ($command) {
+            $commandHistory = $command->commandHistories()->create([
+                'payload' => $payloadJson === 'null' ? null : $payloadJson,
+                'device_job_id' => $deviceJob->id,
+            ]);
+        } else {
+            $commandHistory = $command->commandHistories()->create([
+                'payload' => $payloadJson === 'null' ? null : $payloadJson,
+                'error' => 'The command not supported for this device',
+                'device_job_id' => $deviceJob->id,
+            ]);
+        }
+
+        return $commandHistory->error
+            ? null
+            : new SendDeviceCommandJob($commandHistory, $payloadJson);
     }
 }

@@ -1,33 +1,5 @@
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_pages_layout_Layout_js"],{
 
-/***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _defineProperty)
-/* harmony export */ });
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-/***/ }),
-
 /***/ "./node_modules/@coreui/icons-react/es/CIcon.js":
 /*!******************************************************!*\
   !*** ./node_modules/@coreui/icons-react/es/CIcon.js ***!
@@ -13459,8 +13431,14 @@ var ViewDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(fu
 var EditDeviceCategory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_deviceCategories_EditDeviceCategory_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceCategories/EditDeviceCategory */ "./resources/js/views/deviceCategories/EditDeviceCategory.js"));
 });
+var ListDeviceJobs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceJobs_ListDeviceJobs_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceJobs/ListDeviceJobs */ "./resources/js/views/deviceJobs/ListDeviceJobs.js"));
+});
 var CreateDeviceJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_deviceJobs_CreateDeviceJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceJobs/CreateDeviceJob */ "./resources/js/views/deviceJobs/CreateDeviceJob.js"));
+});
+var ViewDeviceJob = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_views_deviceJobs_ViewDeviceJob_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/deviceJobs/ViewDeviceJob */ "./resources/js/views/deviceJobs/ViewDeviceJob.js"));
 });
 var ListSavedCommands = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_views_savedCommands_ListSavedCommands_js").then(__webpack_require__.bind(__webpack_require__, /*! ./views/savedCommands/ListSavedCommands */ "./resources/js/views/savedCommands/ListSavedCommands.js"));
@@ -13540,10 +13518,20 @@ var routes = [{
   name: 'Edit Device Category',
   component: EditDeviceCategory
 }, {
+  path: '/device/jobs',
+  exact: true,
+  name: 'Device Jobs',
+  component: ListDeviceJobs
+}, {
   path: '/device/jobs/create',
   exact: true,
   name: 'Create Device Job',
   component: CreateDeviceJob
+}, {
+  path: '/device/jobs/:id',
+  exact: true,
+  name: 'Device Job Details',
+  component: ViewDeviceJob
 }, {
   path: '/commands/saved',
   exact: true,

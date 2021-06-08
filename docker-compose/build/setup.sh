@@ -1,23 +1,37 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-cp -r /certs/* /iotportaldata/ca-certificates
+OUTPUT_DIR="/iotportaldata"
+ENV_DIR="$OUTPUT_DIR/env"
+UID_FILE="$ENV_DIR/uid.env"
 
-cp -r /certs/* /iotportaldata/ssl
+cp -rn /certs/. /iotportaldata/ca-certificates
 
-cp /var/www/docker-compose/nginx/nginx.conf /iotportaldata/nginx
+cp -rn /certs/. /iotportaldata/ssl
 
-cp -r /var/www/docker-compose/nginx/sites/* /iotportaldata/nginx/sites-available
+cp -n /var/www/docker-compose/nginx/nginx.conf /iotportaldata/nginx
 
-cp -r /var/www/storage/app/* /iotportaldata/app/storage/app
+cp -rn /var/www/docker-compose/nginx/sites/. /iotportaldata/nginx/sites-available
 
-cp -r /var/www/storage/framework/* /iotportaldata/app/storage/framework
+cp -rn /var/www/storage/app/. /iotportaldata/app/storage/app
 
-cp /var/www/.env /iotportaldata/env
+cp -rn /var/www/storage/framework/. /iotportaldata/app/storage/framework
 
-cp -r /vernemq/log/* /iotportaldata/logs/vernemq
+cp -n /var/www/.env /iotportaldata/env
 
-cp -r /vernemq/data/* /iotportaldata/vernemq/data
+cp -rn /vernemq/log/. /iotportaldata/logs/vernemq
 
-cp -r /vernemq/etc/* /iotportaldata/vernemq/etc
+cp -rn /vernemq/data/. /iotportaldata/vernemq/data
+
+cp -rn /vernemq/etc/. /iotportaldata/vernemq/etc
+
+if [ ! -e "$UID_FILE" ] ; then
+    touch "$UID_FILE"
+fi
+
+if [ "$LOCAL_UID" == "" ] || [ "$LOCAL_GID" == "" ]
+then
+    LOCAL_UID="65534"
+    LOCAL_GID="65534"
+fi
 
 chown -R $LOCAL_UID:$LOCAL_GID /iotportaldata

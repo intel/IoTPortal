@@ -19,6 +19,8 @@ import 'react-app-polyfill/ie11'; // For IE 11 support
 import 'react-app-polyfill/stable';
 import 'core-js';
 import './polyfill'
+import './locales/i18n'
+import './locales/yupLocale';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'

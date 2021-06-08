@@ -20,15 +20,15 @@ services:
         depends_on:
             - mysql
             - redis
-            # - selenium
-    # selenium:
-    #     image: 'selenium/standalone-chrome'
-    #     volumes:
-    #         - '/dev/shm:/dev/shm'
-    #     networks:
-    #         - sail
-    #     depends_on:
-    #         - laravel.test
+            - selenium
+    selenium:
+        image: 'selenium/standalone-chrome'
+        volumes:
+             - '/dev/shm:/dev/shm'
+        networks:
+             - sail
+        depends_on:
+             - laravel.test
     mysql:
         image: 'mysql:8.0'
         ports:
@@ -50,12 +50,12 @@ services:
             - 'sailredis:/data'
         networks:
             - sail
-    # memcached:
-    #     image: 'memcached:alpine'
-    #     ports:
-    #         - '11211:11211'
-    #     networks:
-    #         - sail
+    memcached:
+        image: 'memcached:alpine'
+        ports:
+            - '11211:11211'
+        networks:
+            - sail
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:

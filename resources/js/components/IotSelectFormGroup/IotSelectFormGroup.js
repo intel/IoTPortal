@@ -1,13 +1,16 @@
 import React from 'react';
 import { useField, useFormikContext } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 import Select from 'react-select';
 import { CFormGroup, CInvalidFeedback, CLabel } from '@coreui/react';
 
 import { ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../../data/config';
+import { isValidJSONObject } from '../../utils/utils';
 
 const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, onInputChange, ...props}) => {
 
+  const {t} = useTranslation();
   const {setFieldValue, setFieldTouched} = useFormikContext();
   const [field, meta] = useField(props);
 
@@ -70,6 +73,21 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, onInputChang
     return false;
   };
 
+  const renderErrorMessage = () => {
+    console.log(meta.error)
+    if (_.isString(meta.error)) {
+      return meta.error;
+    } else if (isValidJSONObject(meta.error) && _.has(meta.error, 'key') && _.has(meta.error, 'values')) {
+      return t(meta.error.key, meta.error.values);
+    } else if (isValidJSONObject(meta.error) && _.has(meta.error, 'label') && _.has(meta.error.label, 'key') && _.has(meta.error.label, 'values')) {
+      return t(meta.error.label.key, meta.error.label.values);
+    } else if (isValidJSONObject(meta.error) && _.has(meta.error, 'label') && _.isString(meta.error.label)) {
+      return meta.error.label;
+    }
+
+    return null;
+  }
+
   return isHidden ? null : (
     <CFormGroup>
       {isLabelHidden ? null : (<CLabel htmlFor={props.id || props.name}>{label}</CLabel>)}
@@ -90,9 +108,7 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, onInputChang
         onInputChange={onInputChangeDebounced()}
         onChange={handleOptionChange}
       />
-      {meta.touched && meta.error ? (
-        <CInvalidFeedback>{typeof meta.error === 'string' ? meta.error : meta.error.label}</CInvalidFeedback>
-      ) : null}
+      {meta.touched && meta.error && (<CInvalidFeedback>{renderErrorMessage()}</CInvalidFeedback>)}
     </CFormGroup>
   );
 };

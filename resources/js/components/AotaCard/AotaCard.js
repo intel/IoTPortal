@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 
 import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
 
@@ -12,6 +11,7 @@ import {
   AOTA_REBOOT_OPTIONS
 } from '../../data/options';
 import { getSanitizedValues } from '../../utils/utils';
+import aotaValidationSchema from '../../schemas/aota/aotaValidationSchema';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -29,7 +29,7 @@ const AotaCard = ({
                   }) => {
 
   const [commandOptions, setCommandOptions] = useState(AOTA_COMMAND_OPTIONS.docker);
-  const [isFieldHidden, setFieldHidden] = useState(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
+  const [isFieldHidden, setIsFieldHidden] = useState(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
 
   const formRef = useRef();
 
@@ -40,7 +40,7 @@ const AotaCard = ({
   };
 
   const handleReset = () => {
-    setFieldHidden(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
+    setIsFieldHidden(AOTA_INITIAL_FIELDS_HIDDEN_STATE);
     if (formRef.current) {
       formRef.current.resetForm();
     }
@@ -49,59 +49,20 @@ const AotaCard = ({
     }
   };
 
-  const validationObject = {
-    app: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        AOTA_APP_OPTIONS.map(({label}) => label),
-        "Invalid application type"
-      ).required("Required")
-    }).nullable().required("Required"),
-    command: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        commandOptions.map(({label}) => label),
-        "Invalid command selection"
-      ).required("Required")
-    }).nullable().required("Required")
-  };
-
-  if (!isFieldHidden.tag) validationObject.tag = Yup.string().required("Required");
-  if (!isFieldHidden.reboot) validationObject.reboot = Yup.object().shape({
-    value: Yup.string().required(),
-    label: Yup.string().oneOf(
-      AOTA_REBOOT_OPTIONS.map(({label}) => label),
-      "Please select Yes or No only"
-    ).required("Required")
-  }).nullable().required("Required");
-  if (!isFieldHidden.fetch_link) validationObject.fetch_link = Yup.string().required("Required");
-  if (!isFieldHidden.signature) validationObject.signature = Yup.string().required("Required");
-  if (!isFieldHidden.version) validationObject.version = Yup.string().when(['app', 'command'], {
-    is: (app, command) => app.value === 'docker' && command.value === 'remove',
-    then: Yup.string().required("Required"),
-    otherwise: Yup.string(),
-  });
-  if (!isFieldHidden.server_username) validationObject.server_username = Yup.string();
-  if (!isFieldHidden.server_password) validationObject.server_password = Yup.string();
-  if (!isFieldHidden.docker_registry) validationObject.docker_registry = Yup.string();
-  if (!isFieldHidden.docker_username) validationObject.docker_username = Yup.string();
-  if (!isFieldHidden.docker_password) validationObject.docker_password = Yup.string();
-  if (!isFieldHidden.docker_compose_file) validationObject.docker_compose_file = Yup.string();
-
-  const validationSchema = Yup.object(validationObject);
-
   const updateSelectOptions = (name, selectedOption) => {
     if (name === 'app' && selectedOption) {
       handleReset();
       formRef.current.setFieldValue('app', selectedOption);
       setCommandOptions(AOTA_COMMAND_OPTIONS[selectedOption.value]);
-      setFieldHidden({...AOTA_INITIAL_FIELDS_HIDDEN_STATE, command: false});
+      setIsFieldHidden({...AOTA_INITIAL_FIELDS_HIDDEN_STATE, command: false});
     } else if (name === 'app' && !selectedOption) {
       handleReset();
     } else if (name === 'command' && selectedOption) {
-      setFieldHidden(AOTA_FIELDS_HIDDEN_STATES[formRef.current.values.app.value][selectedOption.value]);
+      setIsFieldHidden(AOTA_FIELDS_HIDDEN_STATES[formRef.current.values.app.value][selectedOption.value]);
     }
   };
+
+  const validationSchema = aotaValidationSchema(commandOptions, isFieldHidden);
 
   return (
     <CCard>

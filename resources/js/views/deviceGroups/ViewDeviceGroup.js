@@ -99,7 +99,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchDeviceGroupStartAsync: (deviceGroupUniqueId) => dispatch(fetchDeviceGroupStartAsync(deviceGroupUniqueId)),
+  fetchDeviceGroupStartAsync: (id) => dispatch(fetchDeviceGroupStartAsync(id)),
   deleteDeviceGroupsStartAsync: (ids, history) => dispatch(deleteDeviceGroupsStartAsync(ids, history)),
 });
 

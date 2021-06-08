@@ -1,0 +1,106 @@
+@keyframes pulse {
+    0% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+    50% {
+        background-color: rgba(165, 165, 165, 0.3)
+    }
+    100% {
+        background-color: rgba(165, 165, 165, 0.1)
+    }
+}
+
+.datatable-devices-jobs *:not(.table-header) {
+    font-size: 14px;
+}
+
+.datatable-devices-jobs .p-paginator .p-paginator-current {
+    margin-left: auto;
+}
+
+.datatable-devices-jobs .p-progressbar {
+    height: .5rem;
+    background-color: #D8DADC;
+}
+
+.datatable-devices-jobs .p-progressbar .p-progressbar-value {
+    background-color: #607D8B;
+}
+
+.datatable-devices-jobs .table-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datatable-devices-jobs .p-datepicker {
+    min-width: 25rem;
+}
+
+.datatable-devices-jobs .p-datepicker td {
+    font-weight: 400;
+}
+
+.datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-paginator {
+    padding: 1rem;
+}
+
+.datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-thead > tr > th {
+    text-align: left;
+}
+
+.datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tbody > tr > td:not([colspan]) {
+    cursor: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+}
+
+.datatable-devices-jobs .p-datatable-devices-jobs .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-thead > tr > th,
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tfoot > tr > td {
+        display: none !important;
+    }
+
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tbody > tr {
+        border-bottom: 1px solid var(--layer-2);
+    }
+
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tbody > tr > td {
+        text-align: left;
+        display: block;
+        border: 0 none !important;
+        width: 100% !important;
+        float: left;
+        clear: left;
+    }
+
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tbody > tr > td .p-column-title {
+        padding: .4rem;
+        min-width: 30%;
+        display: inline-block;
+        margin: -.4rem 1rem -.4rem -.4rem;
+        font-weight: bold;
+    }
+
+    .datatable-devices-jobs .p-datatable.p-datatable-devices-jobs .p-datatable-tbody > tr > td .p-progressbar {
+        margin-top: .5rem;
+    }
+}
+
+.p-column-filter {
+    width: 100%;
+}

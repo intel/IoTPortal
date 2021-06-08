@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Toaster } from 'react-hot-toast';
 
-import { CButton, CButtonGroup, CCard, CCardHeader, CCol, CRow } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import Error from '../../components/Error/Error';
-import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
+import { CButton, CButtonGroup, CCard, CCardHeader, CCol, CRow } from '@coreui/react'
+
 import {
   deleteDeviceCategoriesStartAsync,
   fetchDeviceCategoryStartAsync
 } from '../../redux/deviceCategory/deviceCategory.actions';
+
+import Error from '../../components/Error/Error';
+import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DeleteDeviceCategoryModal from '../../components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal';
 
 const ViewDeviceCategory = (props) => {

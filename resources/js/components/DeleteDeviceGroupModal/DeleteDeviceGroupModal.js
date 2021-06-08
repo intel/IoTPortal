@@ -11,7 +11,7 @@ const DeleteDeviceGroupModal = ({
                                   deviceGroup
                                 }) => {
 
-  const modalMessageSingle = () => {
+  const modalMessage = () => {
     return (
       <>
         Are you sure you want to permanently delete this device group?
@@ -25,7 +25,7 @@ const DeleteDeviceGroupModal = ({
   return (
     <Modal show={show}
            modalTitle="Delete Device Group"
-           modalMessage={modalMessageSingle()}
+           modalMessage={modalMessage()}
            onClose={onClose}
            onConfirm={onConfirm}
     />

@@ -1,13 +1,20 @@
-FROM vernemq/vernemq:latest-alpine
+ARG VERNEMQ_VERSION=latest-alpine
+FROM vernemq/vernemq:${VERNEMQ_VERSION}
 
 ENV LOCAL_UID=65534
 ENV LOCAL_GID=65534
 
 USER root
 
-COPY --from=inteliotportal-build /certs/localhost.crt /usr/local/share/ca-certificates/localhost.crt
+COPY --from=inteliotportal-build /certs/rootCA.crt /usr/share/ca-certificates/
 
-RUN chmod 644 /usr/local/share/ca-certificates/localhost.crt && update-ca-certificates
+RUN chmod 644 /usr/share/ca-certificates/rootCA.crt && update-ca-certificates
+
+RUN cat /usr/share/ca-certificates/rootCA.crt >> /etc/ssl/cert.pem
+
+RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
+                                    /vernemq/etc/vm.args \
+                                    /vernemq
 
 USER $LOCAL_UID:$LOCAL_GID
 

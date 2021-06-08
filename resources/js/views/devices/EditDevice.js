@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
+import { getSanitizedValues } from '../../utils/utils';
+import editDeviceValidationSchema from '../../schemas/device/editDeviceValidationSchema';
 import { fetchDeviceStartAsync, updateDeviceStartAsync } from '../../redux/device/device.actions';
 import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
-import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -36,6 +36,11 @@ const EditDevice = (props) => {
 
   const formRef = useRef();
 
+  useEffect(() => {
+    fetchDeviceStartAsync(deviceUniqueId);
+    fetchDeviceCategoryOptionsStartAsync();
+  }, []);
+
   const handleSubmit = () => {
     if (formRef.current) {
       formRef.current.handleSubmit();
@@ -48,25 +53,7 @@ const EditDevice = (props) => {
     }
   };
 
-  const validationObject = {
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters'),
-    device_category: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        deviceCategoryOptions ? deviceCategoryOptions.map(({label}) => label) : [],
-        "Invalid device category selection"
-      ).required("Required")
-    }).nullable().required("Required"),
-  };
-
-  const validationSchema = Yup.object(validationObject);
-
-  useEffect(() => {
-    fetchDeviceStartAsync(deviceUniqueId);
-    fetchDeviceCategoryOptionsStartAsync();
-  }, []);
+  const validationSchema = editDeviceValidationSchema();
 
   if (isFetchingDevice) {
     return (<CardSkeleton/>);

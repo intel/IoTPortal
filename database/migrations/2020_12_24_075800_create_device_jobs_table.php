@@ -17,6 +17,8 @@ class CreateDeviceJobsTable extends Migration
             $table->id();
             $table->string('unique_id')->unique();
             $table->string('name');
+            $table->string('error')->nullable();
+            $table->string('job_batch_id')->nullable();
             $table->timestamp('started_at')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->unsignedBigInteger('user_id');

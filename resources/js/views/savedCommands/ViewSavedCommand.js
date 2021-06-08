@@ -66,7 +66,6 @@ const ViewSavedCommand = (props) => {
                 <CCol className="my-auto" lg="12" xl="3">
                   <div className="d-flex justify-content-center">
                     <CButtonGroup>
-                      {/*<CButton color="primary" onClick={() => history.push(`${match.url}/edit`)}> Edit</CButton>*/}
                       <CButton color="danger"
                                onClick={() => setShowDeleteSavedCommandModal(!showDeleteSavedCommandModal)}> Delete</CButton>
                     </CButtonGroup>

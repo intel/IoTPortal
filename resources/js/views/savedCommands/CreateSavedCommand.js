@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
@@ -31,7 +30,7 @@ import CotaCard from '../../components/CotaCard/CotaCard';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 import PowerControlsCard from '../../components/PowerControlsCard/PowerControlsCard';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
-
+import createSavedCommandValidationSchema from '../../schemas/savedCommand/createSavedCommandValidationSchema';
 
 const CreateSavedCommand = ({
                               history,
@@ -69,13 +68,7 @@ const CreateSavedCommand = ({
     }
   };
 
-  const validationObject = {
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters'),
-  };
-
-  const validationSchema = Yup.object(validationObject);
+  const validationSchema = createSavedCommandValidationSchema();
 
   return (
     <>
@@ -98,16 +91,14 @@ const CreateSavedCommand = ({
                   handleFormSubmit(values)
                 }}
               >
-                {({values}) => (
-                  <Form>
-                    <IotTextInputFormGroup
-                      id="name"
-                      name="name"
-                      label="Command name"
-                      placeholder="Enter command name"
-                    />
-                  </Form>
-                )}
+                <Form>
+                  <IotTextInputFormGroup
+                    id="name"
+                    name="name"
+                    label="Command name"
+                    placeholder="Enter command name"
+                  />
+                </Form>
               </Formik>
               <CLabel htmlFor="">Command payload</CLabel>
               <CTabs activeTab="aota">

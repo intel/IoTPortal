@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
 import CIcon from '@coreui/icons-react';
 import { CAlert, CButton, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
+import { getSanitizedValues } from '../../utils/utils';
+import editDeviceGroupValidationSchema from '../../schemas/deviceGroup/editDeviceGroupValidationSchema';
 import {
   fetchDeviceGroupDevicesStartAsync,
   fetchDeviceGroupStartAsync,
   setDeviceGroupDevices,
   updateDeviceGroupStartAsync
 } from '../../redux/deviceGroup/deviceGroup.actions';
-import { getSanitizedValues } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import DevicesDataTable from '../../containers/DevicesDataTable/DevicesDataTable';
@@ -91,12 +91,7 @@ const EditDeviceGroup = (props) => {
     </>
   );
 
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters'),
-
-  });
+  const validationSchema = editDeviceGroupValidationSchema();
 
   if (isFetchingDeviceGroup || isFetchingDeviceGroupDevices) {
     return (<CardSkeleton/>);

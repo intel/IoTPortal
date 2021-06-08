@@ -1,14 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { Tag } from 'primereact/tag';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Tag } from 'primereact/tag';
 
 import './deviceJobDevicesDataTable.css';
 
-
-const DeviceJobDevicesDataTable = ({deviceJobDevices, deviceStatuses}) => {
+const DeviceJobDevicesDataTable = ({deviceJobDevices}) => {
 
   const deviceUniqueIdColumnBody = (rowData) => {
     return (
@@ -51,8 +50,26 @@ const DeviceJobDevicesDataTable = ({deviceJobDevices, deviceStatuses}) => {
     return (
       <>
         <span className="p-column-title">Job status</span>
-        {/*<span className="d-flex align-items-center"><i className="pi pi-spin pi-spinner mr-2"/>Processing</span>*/}
-        <Tag className="p-mr-2" icon="pi pi-check" severity="success" value="Successful"/>
+        {/*Pending*/}
+        {(_.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at')
+          && rowData.error === undefined && rowData.started_at === undefined && rowData.responded_at === undefined)
+        && <Tag icon="pi pi-info-circle" severity="info" value="Pending"/>}
+
+        {/*Preparing commands*/}
+        {(_.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at')
+          && rowData.error === null && rowData.started_at === null && rowData.responded_at === null)
+        && <span className="d-flex align-items-center"><i
+          className="pi pi-spin pi-spinner mr-2"/>Preparing commands</span>}
+
+        {/*Processing*/}
+        {(_.has(rowData, 'started_at') && !rowData.error && rowData.started_at && !rowData.responded_at)
+        && <span className="d-flex align-items-center"><i className="pi pi-spin pi-spinner mr-2"/>Processing</span>}
+
+        {/*Successful*/}
+        {rowData.responded_at && <Tag icon="pi pi-check" severity="success" value="Successful"/>}
+
+        {/*Failed*/}
+        {rowData.error && <Tag icon="pi pi-times" severity="danger" value="Failed"/>}
       </>
     );
   };
@@ -60,8 +77,9 @@ const DeviceJobDevicesDataTable = ({deviceJobDevices, deviceStatuses}) => {
   return (
     <>
       <div className="datatable-device-job-devices">
-        <DataTable value={deviceJobDevices} className="p-datatable-device-job-devices" rowHover resizableColumns columnResizeMode="fit"
-                   scrollable scrollHeight="600px" emptyMessage="No device found">
+        <DataTable value={deviceJobDevices} className="p-datatable-device-job-devices" rowHover
+                   resizableColumns columnResizeMode="fit" scrollable scrollHeight="600px"
+                   emptyMessage="No device found">
           <Column field="unique_id" header="Device ID" body={deviceUniqueIdColumnBody} sortable/>
           <Column field="name" header="Device name" body={deviceNameColumnBody} sortable/>
           <Column field="category" header="Category" body={deviceCategoryColumnBody} sortable/>

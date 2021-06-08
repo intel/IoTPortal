@@ -54,7 +54,9 @@ const CreateDeviceCategory = React.lazy(() => import('./views/deviceCategories/C
 const ViewDeviceCategory = React.lazy(() => import('./views/deviceCategories/ViewDeviceCategory'));
 const EditDeviceCategory = React.lazy(() => import('./views/deviceCategories/EditDeviceCategory'));
 
+const ListDeviceJobs = React.lazy(() => import('./views/deviceJobs/ListDeviceJobs'));
 const CreateDeviceJob = React.lazy(() => import('./views/deviceJobs/CreateDeviceJob'));
+const ViewDeviceJob = React.lazy(() => import('./views/deviceJobs/ViewDeviceJob'));
 
 const ListSavedCommands = React.lazy(() => import('./views/savedCommands/ListSavedCommands'));
 const CreateSavedCommand = React.lazy(() => import('./views/savedCommands/CreateSavedCommand'));
@@ -81,7 +83,9 @@ const routes = [
     { path: '/device/categories/:id', exact: true,  name: 'Device Category Details', component: ViewDeviceCategory },
     { path: '/device/categories/:id/edit', exact: true,  name: 'Edit Device Category', component: EditDeviceCategory },
 
+    { path: '/device/jobs', exact: true,  name: 'Device Jobs', component: ListDeviceJobs },
     { path: '/device/jobs/create', exact: true,  name: 'Create Device Job', component: CreateDeviceJob },
+    { path: '/device/jobs/:id', exact: true,  name: 'Device Job Details', component: ViewDeviceJob },
 
     { path: '/commands/saved', exact: true,  name: 'Saved Commands', component: ListSavedCommands },
     { path: '/commands/saved/create', exact: true,  name: 'Create Saved Commands', component: CreateSavedCommand },

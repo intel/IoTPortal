@@ -17,9 +17,11 @@ class DeviceJob extends Model
      */
     protected $fillable = [
         'name',
-        'payload',
+        'error',
+        'job_batch_id',
         'started_at',
         'completed_at',
+        'user_id',
         'device_group_id',
         'saved_command_id',
     ];
@@ -69,7 +71,7 @@ class DeviceJob extends Model
     }
 
     /**
-     * Get the saved command that owns the job.
+     * Get the saved command for the job.
      */
     public function savedCommand()
     {
@@ -91,7 +93,7 @@ class DeviceJob extends Model
 
     public function scopeIdIn($query, $value)
     {
-        return $query->whereIn('device_groups.id', $value);
+        return $query->whereIn('device_jobs.id', $value);
     }
 
     public function scopeUniqueId($query, $value)

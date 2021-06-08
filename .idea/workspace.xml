@@ -5,15 +5,143 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Jobs/SendDeviceCommandJob.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/HorizonServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/horizon.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_06_01_161706_create_job_batches_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/build/certificate.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/horizon/Dockerfile.staging" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/horizon/start_horizon.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/redis/Dockerfile.staging" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceJobs_ViewDeviceJob_js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app-dark.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/horizon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/img/sprite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vendor/horizon/mix-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceJobModal/DeleteDeviceJobModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceJobsModal/DeleteDeviceJobsModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Duration/Duration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/StartTimeEndTime/StartTimeEndTime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/containers/DeviceJobStatusCard/DeviceJobStatusCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/hooks/useYupLocale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/locales/en/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/locales/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/locales/yupLocale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceGroup/deviceGroup.selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/savedCommand/savedCommand.selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/timer/timer.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/timer/timer.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/timer/timer.selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/redux/timer/timer.types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/aota/aotaValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/cota/cotaValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/device/createDeviceValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/device/editDeviceValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/deviceCategory/createDeviceCategoryValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/deviceCategory/editDeviceCategoryValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/deviceGroup/createDeviceGroupValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/deviceGroup/editDeviceGroupValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/deviceJob/createDeviceJobValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/fota/fotaValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/savedCommand/createSavedCommandValidationSchema.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/schemas/sota/sotaValidationSchema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/intel-iot-portal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/DeviceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/DeviceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreDeviceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreDeviceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateDeviceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateDeviceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Rules/ExistsCategoryId.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Rules/ExistsDeviceCategoryId.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/DeviceJobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/DeviceJobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/ProcessDeviceJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/ProcessDeviceJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CommandHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CommandHistory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DeviceJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeviceJob.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075800_create_device_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075800_create_device_jobs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_24_075936_create_command_histories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/build/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/build/san.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/build/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/setup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/sites/default.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/phpmyadmin/Dockerfile.staging" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_dashboard_Dashboard_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_dashboard_Dashboard_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_CreateDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_EditDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ListDeviceCategories_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceCategories_ViewDeviceCategory_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_CreateDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_EditDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ListDeviceGroups_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceGroups_ViewDeviceGroup_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_deviceJobs_CreateDeviceJob_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_deviceJobs_CreateDeviceJob_js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_CreateDevice_js.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_EditDevice_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ListDevices_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_devices_ViewDevice_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_login_Login_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_login_Login_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_page404_Page404_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_page404_Page404_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_page500_Page500_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_page500_Page500_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_register_Register_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_register_Register_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_CreateSavedCommand_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ListSavedCommands_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ListSavedCommands_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ViewSavedCommand_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_savedCommands_ViewSavedCommand_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AotaCard/AotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/CotaCard/CotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeleteDeviceGroupModal/DeleteDeviceGroupModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceGroupModal/DeleteDeviceGroupModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeleteDeviceModal/DeleteDeviceModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeleteDeviceModal/DeleteDeviceModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeleteSavedCommandModal/DeleteSavedCommandModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeleteSavedCommandModal/DeleteSavedCommandModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeviceJobDevicesCard/DeviceJobDevicesCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeviceJobDevicesCard/DeviceJobDevicesCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/DeviceJobDevicesDataTable/DeviceJobDevicesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/DeviceJobDevicesDataTable/DeviceJobDevicesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FotaCard/FotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/IotSelectFormGroup/IotSelectFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PayloadViewer/PayloadViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PayloadViewer/PayloadViewer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/SotaCard/SotaCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/DevicesDataTable/DevicesDataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/deviceJob/deviceJob.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/redux/root.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/reusable/FormikPatchTouched.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/reusable/FormikPatchTouched.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/apiTokens/ListApiTokens.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/apiTokens/ListApiTokens.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceCategories/CreateDeviceCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceCategories/CreateDeviceCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceCategories/EditDeviceCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceCategories/EditDeviceCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceCategories/ListDeviceCategories.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceCategories/ListDeviceCategories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceCategories/ViewDeviceCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceCategories/ViewDeviceCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceGroups/CreateDeviceGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/CreateDeviceGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceGroups/EditDeviceGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/EditDeviceGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceGroups/ViewDeviceGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceGroups/ViewDeviceGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceJobs/CreateDeviceJob.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceJobs/CreateDeviceJob.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceJobs/EditDeviceJob.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceJobs/ListDeviceJobs.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceJobs/ListDeviceJobs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/deviceJobs/ViewDeviceJob.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/deviceJobs/ViewDeviceJob.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/devices/CreateDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/CreateDevice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/devices/EditDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/devices/EditDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/savedCommands/CreateSavedCommand.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/savedCommands/CreateSavedCommand.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/savedCommands/ViewSavedCommand.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/savedCommands/ViewSavedCommand.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +304,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/laravel/envoy" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/vendor/laravel/horizon" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ljN573d2c0UNeJ9Zo5or68Cgi0" />
@@ -190,7 +320,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Shell Script" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -200,18 +330,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Requests" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Rules" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\redux\job" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\JobDevicesDataTable" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers\JobDevicesDataTable" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\schemas\sota" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\schemas\fota" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\schemas\cota" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\schemas" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\schemas" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\hooks" />
+      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\locales" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\app\Http\Controllers\Api" />
       <recent name="C:\Users\csow\intel-iot\intel-iot-portal\docker-compose\app" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components\ApiToken" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\components" />
-      <recent name="C:\Users\csow\intel-iot\intel-iot-portal\resources\js\containers" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml">
@@ -422,7 +552,32 @@
       <workItem from="1621389722472" duration="17573000" />
       <workItem from="1621473050264" duration="6858000" />
       <workItem from="1621482944578" duration="18238000" />
-      <workItem from="1621559314932" duration="5867000" />
+      <workItem from="1621559314932" duration="30603000" />
+      <workItem from="1621752463763" duration="17530000" />
+      <workItem from="1621817927526" duration="29619000" />
+      <workItem from="1621866755497" duration="9385000" />
+      <workItem from="1621907806250" duration="13490000" />
+      <workItem from="1621954607829" duration="5822000" />
+      <workItem from="1622011708263" duration="14714000" />
+      <workItem from="1622079531862" duration="24043000" />
+      <workItem from="1622164553347" duration="21991000" />
+      <workItem from="1622305208841" duration="4385000" />
+      <workItem from="1622357942839" duration="18895000" />
+      <workItem from="1622423539598" duration="29253000" />
+      <workItem from="1622469185306" duration="8053000" />
+      <workItem from="1622509398745" duration="27872000" />
+      <workItem from="1622563377608" duration="4038000" />
+      <workItem from="1622599408890" duration="25691000" />
+      <workItem from="1622641555898" duration="9900000" />
+      <workItem from="1622686287956" duration="24168000" />
+      <workItem from="1622735571351" duration="3498000" />
+      <workItem from="1622768725329" duration="27677000" />
+      <workItem from="1622824467799" duration="3301000" />
+      <workItem from="1622874374136" duration="17290000" />
+      <workItem from="1622974155488" duration="9190000" />
+      <workItem from="1623059458479" duration="345000" />
+      <workItem from="1623072997002" duration="8329000" />
+      <workItem from="1623114859097" duration="20224000" />
     </task>
     <servers />
   </component>

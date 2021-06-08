@@ -24,6 +24,7 @@ import savedCommandReducer from './savedCommand/savedCommand.reducer';
 import apiTokenReducer from './apiToken/apiToken.reducer';
 import profileReducer from './profile/profile.reducer';
 import deviceJobReducer from './deviceJob/deviceJob.reducer';
+import timerReducer from './timer/timer.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -45,6 +46,7 @@ const rootReducer = combineReducers({
   deviceCategory: deviceCategoryReducer,
   deviceGroup: deviceGroupReducer,
   deviceJob: deviceJobReducer,
+  timer: timerReducer,
   shutdown: shutdownReducer,
   reboot: rebootReducer,
   decommission: decommissionReducer,

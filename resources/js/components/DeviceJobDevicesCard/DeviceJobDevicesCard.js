@@ -1,18 +1,18 @@
 import React from 'react';
 
+import { Skeleton } from 'primereact/skeleton';
 import { CCard, CCardBody, CCardHeader } from '@coreui/react';
 
 import DeviceJobDevicesDataTable from '../DeviceJobDevicesDataTable/DeviceJobDevicesDataTable';
 
-
-const DeviceJobDevicesCard = ({deviceGroupName, deviceGroupDevices, deviceStatuses}) => {
+const DeviceJobDevicesCard = ({deviceGroupName, deviceJobDevices}) => {
   return (
     <CCard>
       <CCardHeader>
-        {deviceGroupDevices?.length || 0} devices under device group: <b>{deviceGroupName}</b>
+        {deviceJobDevices?.length || 0} devices under device group: <b>{deviceGroupName || <Skeleton/>}</b>
       </CCardHeader>
       <CCardBody>
-        <DeviceJobDevicesDataTable deviceJobDevices={deviceGroupDevices} deviceStatuses={deviceStatuses}/>
+        <DeviceJobDevicesDataTable deviceJobDevices={deviceJobDevices}/>
       </CCardBody>
     </CCard>
   );

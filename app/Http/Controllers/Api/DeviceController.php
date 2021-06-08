@@ -9,6 +9,7 @@ use App\Http\Requests\StoreDeviceRequest;
 use App\Http\Requests\TriggerCommandRequest;
 use App\Http\Requests\UpdateDeviceRequest;
 use App\Http\Requests\ValidateDeviceFieldsRequest;
+use App\Jobs\ProcessDeviceJob;
 use App\Models\Device;
 use App\Models\DeviceStatus;
 use App\Models\User;
@@ -16,6 +17,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DeviceController extends Controller
 {
@@ -172,6 +175,7 @@ class DeviceController extends Controller
 
             $commandHistory = $command->commandHistories()->create([
                 'payload' => $payloadJson === 'null' ? null : $payloadJson,
+                'started_at' => now(),
             ]);
 
             Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $command->method_name . '/?$rid=' . $commandHistory->id, $payloadJson);

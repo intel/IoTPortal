@@ -20,9 +20,9 @@ import {
 import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
 import DeleteDeviceModal from '../../components/DeleteDeviceModal/DeleteDeviceModal';
 import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
+import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 import './devicesDataTable.css';
-import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
 
 const DevicesDataTable = ({
                             history,
@@ -288,8 +288,8 @@ const mapStateToProps = state => ({
   isFetchingDevices: state.device.isFetchingDevices,
   fetchDevicesErrorMessage: state.device.fetchDevicesErrorMessage,
   fetchDevicesLazyParams: state.device.fetchDevicesLazyParams,
-  isDeletingDevices: state.device.isFetchingDevices,
-  deleteDevicesErrorMessage: state.device.fetchDevicesErrorMessage,
+  isDeletingDevices: state.device.isDeletingDevices,
+  deleteDevicesErrorMessage: state.device.deleteDevicesErrorMessage,
 });
 
 const mapDispatchToProps = dispatch => ({

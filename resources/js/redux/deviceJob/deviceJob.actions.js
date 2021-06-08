@@ -58,7 +58,7 @@ export const createDeviceJobFailure = errorMessage => ({
   payload: errorMessage,
 });
 
-export const createDeviceJobStartAsync = data => {
+export const createDeviceJobStartAsync = (data, history) => {
   return dispatch => {
     dispatch(createDeviceJobStart());
 
@@ -68,7 +68,7 @@ export const createDeviceJobStartAsync = data => {
       .then(result => {
         dispatch(createDeviceJobSuccess());
         toastHelper.success('Device job created successfully!', toastId);
-        dispatch(pollDeviceJobStartAsync(result.data.result.deviceJob.id))
+        redirectToAfterToastSuccess(history, `/device/jobs/${result.data.result.deviceJob.unique_id}`)
       })
       .catch(error => {
         dispatch(createDeviceJobFailure(error.message));
@@ -100,9 +100,13 @@ export const fetchDeviceJobStartAsync = id => {
     axios.get(`${API_ENDPOINT}/device/jobs/${id}`)
       .then(result => {
         dispatch(fetchDeviceJobSuccess(result.data.result.deviceJob));
-        // TODO: if device job all done, stop the polling
+
+        if (!getState().deviceJob.isPollingFetchDeviceJob && !result.data.result.deviceJob.completed_at) {
+          dispatch(pollFetchDeviceJobStartAsync(result.data.result.deviceJob.unique_id))
+        }
+
         if (getState().deviceJob.isPollingFetchDeviceJob && result.data.result.deviceJob.completed_at) {
-          dispatch(pollDeviceJobStopAsync())
+          dispatch(pollFetchDeviceJobStop());
         }
       })
       .catch(error => {
@@ -142,7 +146,6 @@ export const updateDeviceJobStartAsync = (id, data, history) => {
         if (history) {
           redirectToAfterToastSuccess(history, '/device/jobs')
         }
-
       })
       .catch(error => {
         dispatch(updateDeviceJobFailure(error.message));
@@ -193,48 +196,20 @@ export const deleteDeviceJobsStartAsync = (ids, history) => {
 
 
 // Poll device job
-export const pollDeviceJobStartAsync = (id, interval = DATA_POLLING_INTERVAL_IN_MS) => {
+export const pollFetchDeviceJobStartAsync = (id, interval = DATA_POLLING_INTERVAL_IN_MS) => {
   return dispatch => {
+    dispatch(fetchDeviceJobStartAsync(id));
+
     const fetch = () => dispatch(fetchDeviceJobStartAsync(id));
 
     dispatch({
-      type: deviceJobActionTypes.POLL_DEVICE_JOB_START,
+      type: deviceJobActionTypes.POLL_FETCH_DEVICE_JOB_START,
       fetch,
       interval,
     });
   };
 };
 
-export const pollDeviceJobStopAsync = () => ({
-  type: deviceJobActionTypes.POLL_DEVICE_JOB_STOP,
+export const pollFetchDeviceJobStop = () => ({
+  type: deviceJobActionTypes.POLL_FETCH_DEVICE_JOB_STOP,
 });
-
-
-// // Read device job device statuses
-// export const fetchDeviceJobDeviceStatusesStart = () => ({
-//   type: deviceJobActionTypes.FETCH_DEVICE_JOB_START,
-// });
-//
-// export const fetchDeviceJobDeviceStatusesSuccess = deviceJob => ({
-//   type: deviceJobActionTypes.FETCH_DEVICE_JOB_SUCCESS,
-//   payload: deviceJob,
-// });
-//
-// export const fetchDeviceJobDeviceStatusesFailure = errorMessage => ({
-//   type: deviceJobActionTypes.FETCH_DEVICE_JOB_FAILURE,
-//   payload: errorMessage,
-// });
-//
-// export const fetchDeviceJobDeviceStatusesStartAsync = id => {
-//   return dispatch => {
-//     dispatch(fetchDeviceJobDeviceStatusesStart());
-//
-//     axios.get(`${API_ENDPOINT}/device/jobs/${id}`)
-//       .then(result => {
-//         dispatch(fetchDeviceJobDeviceStatusesSuccess(result.data.result.deviceJob));
-//       })
-//       .catch(error => {
-//         dispatch(fetchDeviceJobDeviceStatusesFailure(error.message));
-//       });
-//   };
-// };

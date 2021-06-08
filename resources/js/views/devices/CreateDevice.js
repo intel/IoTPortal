@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
+import { getSanitizedValues } from '../../utils/utils';
+import createDeviceValidationSchema from '../../schemas/device/createDeviceValidationSchema';
 import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
 import { createDeviceStartAsync } from '../../redux/device/device.actions';
-import { getSanitizedValues, isDeviceNameUniqueDebounced } from '../../utils/utils';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
@@ -43,21 +43,7 @@ const CreateDevice = ({
     }
   };
 
-  const validationObject = {
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters')
-      .test('isDeviceNameUnique', 'The name has already been taken', isDeviceNameUniqueDebounced),
-    device_category: Yup.object().shape({
-      value: Yup.string().required(),
-      label: Yup.string().oneOf(
-        deviceCategoryOptions ? deviceCategoryOptions.map(({label}) => label) : [],
-        "Invalid device category selection"
-      ).required("Required")
-    }).nullable().required("Required")
-  };
-
-  const validationSchema = Yup.object(validationObject);
+  const validationSchema = createDeviceValidationSchema(deviceCategoryOptions);
 
   return (
     <>

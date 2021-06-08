@@ -1,18 +1,13 @@
 import React, { useReducer, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { Toaster } from 'react-hot-toast';
 import { Steps } from 'primereact/steps';
 import { CAlert, CCard, CCardBody, CCardFooter, CCardHeader, CCol, CRow } from '@coreui/react';
 
-import {
-  getSanitizedValues,
-  isDeviceGroupNameUnique,
-  isDeviceGroupNameUniqueDebounced,
-  isNotEmptyString
-} from '../../utils/utils';
+import { getSanitizedValues, isNotEmptyString } from '../../utils/utils';
+import createDeviceGroupValidationSchema from '../../schemas/deviceGroup/createDeviceGroupValidationSchema';
 import { createDeviceGroupStartAsync } from '../../redux/deviceGroup/deviceGroup.actions';
 
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
@@ -21,7 +16,6 @@ import DeviceGroupNoDeviceSelectedModal
   from '../../components/DeviceGroupNoDeviceSelectedModal/DeviceGroupNoDeviceSelectedModal';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 import SelectedDevicesDataView from '../../components/SelectedDevicesDataView/SelectedDevicesDataView';
-
 
 const CreateDeviceGroup = ({
                              history,
@@ -34,13 +28,14 @@ const CreateDeviceGroup = ({
   const [showNoDeviceSelectedModal, setShowNoDeviceSelectedModal] = useState(false);
   const [selectedDevices, setSelectedDevices] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const formRef = useRef();
+
   const steps = [
     {label: 'Enter device group name'},
     {label: 'Select devices'},
     {label: 'Confirmation'},
   ];
-
-  const formRef = useRef();
 
   const handleStep0 = async () => {
     if (formRef.current) {
@@ -130,12 +125,7 @@ const CreateDeviceGroup = ({
 
   const renderStep2 = renderSelectedDevicesDataView;
 
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .required("Required")
-      .max(255, 'The name may not be greater than 255 characters.')
-      .test('isDeviceGroupNameUnique', 'The name has already been taken.', isDeviceGroupNameUniqueDebounced),
-  });
+  const validationSchema = createDeviceGroupValidationSchema();
 
   return (
     <>

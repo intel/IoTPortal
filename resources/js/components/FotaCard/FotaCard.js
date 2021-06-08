@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 
 import { CCard, CCardBody, CCardFooter, CCardHeader } from '@coreui/react';
+
 import { getSanitizedValues } from '../../utils/utils';
+import fotaValidationSchema from '../../schemas/fota/fotaValidationSchema';
 
 import IotTextInputFormGroup from '../IotTextInputFormGroup/IotTextInputFormGroup';
 import PrimarySecondaryButtons from '../PrimarySecondaryButtons/PrimarySecondaryButtons';
@@ -37,19 +38,7 @@ const FotaCard = ({
     resetCallback();
   };
 
-  const validationSchema = Yup.object({
-    bios_version: Yup.string().required("Required"),
-    fetch_link: Yup.string().required("Required"),
-    manufacturer: Yup.string().required("Required"),
-    path: Yup.string(),
-    product: Yup.string().required("Required"),
-    release_date: Yup.string().required("Required"),
-    signature: Yup.string(),
-    tool_options: Yup.string(),
-    vendor: Yup.string().required("Required"),
-    server_username: Yup.string(),
-    server_password: Yup.string()
-  });
+  const validationSchema = fotaValidationSchema();
 
   return (
     <CCard>

@@ -15,10 +15,12 @@ class CommandHistory extends Model
      * @var array
      */
     protected $fillable = [
-        'type',
         'payload',
         'error',
+        'started_at',
+        'completed_at',
         'responded_at',
+        'command_id',
         'device_job_id',
     ];
 

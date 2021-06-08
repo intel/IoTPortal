@@ -6,7 +6,7 @@ import { CCard, CCardBody, CCardHeader, CFormGroup, CLabel } from '@coreui/react
 import PayloadViewer from '../PayloadViewer/PayloadViewer';
 
 
-const DeviceJobDetailsCard = ({deviceGroupName, savedCommandName, commandName, payload, isLoading}) => {
+const DeviceJobDetailsCard = ({deviceGroupName, savedCommandName, commandName, payload}) => {
   return (
     <CCard>
       <CCardHeader>
@@ -14,19 +14,21 @@ const DeviceJobDetailsCard = ({deviceGroupName, savedCommandName, commandName, p
       </CCardHeader>
       <CCardBody>
         <CFormGroup>
-          <CLabel>Device group: <b>{deviceGroupName}</b></CLabel>
-        </CFormGroup>
-        <CFormGroup>
           <CLabel>
-            Saved command: {isLoading ? <Skeleton/> : <b>{savedCommandName}</b>}
+            Device group: <b>{deviceGroupName || <Skeleton/>}</b>
           </CLabel>
         </CFormGroup>
         <CFormGroup>
           <CLabel>
-            Command name: {isLoading ? <Skeleton/> : <b>{commandName}</b>}
+            Saved command: <b>{savedCommandName || <Skeleton/>}</b>
           </CLabel>
         </CFormGroup>
-        <PayloadViewer payload={payload} isLoading={isLoading}/>
+        <CFormGroup>
+          <CLabel>
+            Command name: <b>{commandName || <Skeleton/>}</b>
+          </CLabel>
+        </CFormGroup>
+        <PayloadViewer payload={payload} isLoading={!payload}/>
       </CCardBody>
     </CCard>
   );

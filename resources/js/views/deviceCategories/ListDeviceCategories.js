@@ -5,8 +5,10 @@ import { Toaster } from 'react-hot-toast';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-import DeviceCategoriesDataTable from '../../containers/DeviceCategoriesDataTable/DeviceCategoriesDataTable';
+
 import { deleteDeviceCategoriesStartAsync } from '../../redux/deviceCategory/deviceCategory.actions';
+
+import DeviceCategoriesDataTable from '../../containers/DeviceCategoriesDataTable/DeviceCategoriesDataTable';
 import DeleteDeviceCategoriesModal from '../../components/DeleteDeviceCategoriesModal/DeleteDeviceCategoriesModal';
 
 const ListDeviceCategories = ({

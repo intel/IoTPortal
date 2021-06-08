@@ -1,6 +1,10 @@
+import debounce from 'debounce-promise';
+
 import { CButton } from '@coreui/react';
 import toast from 'react-hot-toast';
+
 import { API_ENDPOINT, ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../data/config';
+
 
 export const convertDeviceObjectToDeviceArrayObject = object => {
   return Object.entries(object).map(([key, value], index) => {
@@ -171,7 +175,7 @@ export const isDeviceNameUnique = (name) => new Promise((resolve, reject) => {
     });
 });
 
-export const isDeviceNameUniqueDebounced = _.debounce(isDeviceNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+export const isDeviceNameUniqueDebounced = debounce(isDeviceNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 export const isDeviceGroupNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/device/groups/validateField`, {name: name})
@@ -186,7 +190,7 @@ export const isDeviceGroupNameUnique = (name) => new Promise((resolve, reject) =
     });
 });
 
-export const isDeviceGroupNameUniqueDebounced = _.debounce(isDeviceGroupNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+export const isDeviceGroupNameUniqueDebounced = debounce(isDeviceGroupNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/device/categories/validateField`, {name: name})
@@ -201,7 +205,7 @@ export const isDeviceCategoryNameUnique = (name) => new Promise((resolve, reject
     });
 });
 
-export const isDeviceCategoryNameUniqueDebounced = _.debounce(isDeviceCategoryNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+export const isDeviceCategoryNameUniqueDebounced = debounce(isDeviceCategoryNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 export const isDeviceJobNameUnique = (name) => new Promise((resolve, reject) => {
   axios.post(`${API_ENDPOINT}/device/jobs/validateField`, {name: name})
@@ -216,4 +220,4 @@ export const isDeviceJobNameUnique = (name) => new Promise((resolve, reject) => 
     });
 });
 
-export const isDeviceJobNameUniqueDebounced = _.debounce(isDeviceJobNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
+export const isDeviceJobNameUniqueDebounced = debounce(isDeviceJobNameUnique, ASYNC_VALIDATION_TIMEOUT_IN_MS);
