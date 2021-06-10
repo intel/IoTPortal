@@ -1942,14 +1942,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var DeviceJobDevicesCard = function DeviceJobDevicesCard(_ref) {
   var deviceGroupName = _ref.deviceGroupName,
       deviceJobDevices = _ref.deviceJobDevices;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
-      children: [(deviceJobDevices === null || deviceJobDevices === void 0 ? void 0 : deviceJobDevices.length) || 0, " devices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
-        children: deviceGroupName || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {})
-      })]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
+      children: deviceJobDevices && deviceGroupName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+        children: [(deviceJobDevices === null || deviceJobDevices === void 0 ? void 0 : deviceJobDevices.length) || 0, " devices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+          children: deviceGroupName
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DeviceJobDevicesDataTable_DeviceJobDevicesDataTable__WEBPACK_IMPORTED_MODULE_3__.default, {
         deviceJobDevices: deviceJobDevices
@@ -1976,9 +1979,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
-/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
-/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
+/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
+/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
+/* harmony import */ var _DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
 /* harmony import */ var _deviceJobDevicesDataTable_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./deviceJobDevicesDataTable.css */ "./resources/js/components/DeviceJobDevicesDataTable/deviceJobDevicesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -2040,28 +2043,16 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
         className: "p-column-title",
         children: "Job status"
-      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === undefined && rowData.started_at === undefined && rowData.responded_at === undefined && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-info-circle",
-        severity: "info",
-        value: "Pending"
-      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === null && rowData.started_at === null && rowData.responded_at === null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        className: "d-flex align-items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-          className: "pi pi-spin pi-spinner mr-2"
-        }), "Preparing commands"]
-      }), _.has(rowData, 'started_at') && !rowData.error && rowData.started_at && !rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        className: "d-flex align-items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-          className: "pi pi-spin pi-spinner mr-2"
-        }), "Processing"]
-      }), rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-check",
-        severity: "success",
-        value: "Successful"
-      }), rowData.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-times",
-        severity: "danger",
-        value: "Failed"
+      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === undefined && rowData.started_at === undefined && rowData.responded_at === undefined && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "pending"
+      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === null && rowData.started_at === null && rowData.responded_at === null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "preparing"
+      }), !rowData.error && rowData.started_at && !rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "processing"
+      }), !rowData.error && rowData.started_at && rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "successful"
+      }), rowData.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "failed"
       })]
     });
   };
@@ -2069,7 +2060,7 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "datatable-device-job-devices",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_2__.DataTable, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__.DataTable, {
         value: deviceJobDevices,
         className: "p-datatable-device-job-devices",
         rowHover: true,
@@ -2078,27 +2069,27 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
         scrollable: true,
         scrollHeight: "600px",
         emptyMessage: "No device found",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "unique_id",
           header: "Device ID",
           body: deviceUniqueIdColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "name",
           header: "Device name",
           body: deviceNameColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "category",
           header: "Category",
           body: deviceCategoryColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "status",
           header: "Status",
           body: deviceStatusColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "job_status",
           header: "Job status",
           body: jobStatusColumnBody,
@@ -2110,6 +2101,55 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobDevicesDataTable);
+
+/***/ }),
+
+/***/ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var DeviceJobStatusIndicator = function DeviceJobStatusIndicator(_ref) {
+  var status = _ref.status;
+  if (status === 'pending') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-info-circle",
+    value: "Pending"
+  });else if (status === 'preparing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    className: "d-inline-flex align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+      className: "pi pi-spin pi-spinner mr-2"
+    }), "Preparing commands"]
+  });else if (status === 'processing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    className: "d-inline-flex align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+      className: "pi pi-spin pi-spinner mr-2"
+    }), "Processing"]
+  });else if (status === 'successful') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-check",
+    severity: "success",
+    value: "Successful"
+  });else if (status === 'failed') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-times",
+    severity: "danger",
+    value: "Failed"
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobStatusIndicator);
 
 /***/ }),
 
@@ -3453,7 +3493,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var createDeviceJobValidationSchema = function createDeviceJobValidationSchema(deviceGroupOptions, savedCommandOptions) {
   return yup__WEBPACK_IMPORTED_MODULE_0__.object({
-    device_job_name: yup__WEBPACK_IMPORTED_MODULE_0__.string().label('device job name').required().max(255).test('isDeviceJobNameUnique', function (_ref) {
+    name: yup__WEBPACK_IMPORTED_MODULE_0__.string().label('device job name').required().max(255).test('isDeviceJobNameUnique', function (_ref) {
       var path = _ref.path;
       return {
         key: 'validation.unique',
@@ -3519,7 +3559,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -3533,6 +3575,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -3637,7 +3681,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -3648,10 +3692,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -3896,8 +3940,8 @@ var CreateDeviceJob = function CreateDeviceJob(_ref) {
   var renderStep0 = function renderStep0() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_15__.default, {
-        id: "device_job_name",
-        name: "device_job_name",
+        id: "name",
+        name: "name",
         label: "Device job name",
         placeholder: "Enter device job name"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_components_IotSelectFormGroup_IotSelectFormGroup__WEBPACK_IMPORTED_MODULE_16__.default, {
@@ -3971,7 +4015,7 @@ var CreateDeviceJob = function CreateDeviceJob(_ref) {
               enableReinitialize: true,
               innerRef: formRef,
               initialValues: {
-                device_job_name: '',
+                name: '',
                 device_group: '',
                 saved_command: ''
               },

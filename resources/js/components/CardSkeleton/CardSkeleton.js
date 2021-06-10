@@ -10,12 +10,12 @@ const CardSkeleton = () => {
         <CRow>
           <CCol className="my-auto" xs="12" md="12" lg="1" xl="1">
             <div className="d-flex justify-content-center">
-              <Skeleton size="5rem"/>
+              <Skeleton size="6rem"/>
             </div>
           </CCol>
           <CCol className="my-auto" xs="12" md="12" lg="11" xl="11">
-            <Skeleton className="mb-2"/>
-            <Skeleton width="10rem"/>
+            <Skeleton height="2rem" width="60%" className="mb-2"/>
+            <Skeleton width="20rem"/>
           </CCol>
         </CRow>
       </CCardHeader>

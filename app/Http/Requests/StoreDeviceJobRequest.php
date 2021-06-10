@@ -25,7 +25,7 @@ class StoreDeviceJobRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'device_job_name' => [
+            'name' => [
                 'required',
                 'string',
                 'max:255',

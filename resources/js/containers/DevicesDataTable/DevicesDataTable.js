@@ -263,11 +263,11 @@ const DevicesDataTable = ({
                                       bodyStyle={{textAlign: 'center', overflow: 'visible'}}/>}
         </DataTable>
       </div>
-      {(showConnectDeviceModal && !hideActionsBar) &&
+      {(!hideActionsBar && showConnectDeviceModal) &&
       <ConnectDeviceModal device={device} show={showConnectDeviceModal}
                           onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
       />}
-      {(showDeleteDeviceModal && !hideActionsBar) &&
+      {(!hideActionsBar && showDeleteDeviceModal) &&
       <DeleteDeviceModal device={device} show={showDeleteDeviceModal}
                          onClose={() => setShowDeleteDeviceModal(!showDeleteDeviceModal)}
                          onConfirm={deleteDevice}

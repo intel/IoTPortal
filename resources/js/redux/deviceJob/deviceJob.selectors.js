@@ -19,6 +19,11 @@ export const selectFetchDeviceJobErrorMessage = createSelector(
   deviceJobReducer => deviceJobReducer?.fetchDeviceJobErrorMessage
 );
 
+export const selectIsPollingFetchDeviceJob = createSelector(
+  [selectDeviceJobReducer],
+  deviceJobReducer => deviceJobReducer?.isPollingFetchDeviceJob
+);
+
 export const selectDeviceJobSavedCommand = createSelector(
   [selectDeviceJob],
   deviceJob => deviceJob?.saved_command
@@ -113,7 +118,7 @@ export const selectDeviceJobPendingDevicesCount = createSelector(
 
 export const selectDeviceJobCompletedPercentage = createSelector(
   [selectDeviceJobDevicesCount, selectDeviceJobCompletedDevicesCount],
-  (deviceJobDevicesCount, deviceJobCompletedDevicesCount) => (deviceJobCompletedDevicesCount / deviceJobDevicesCount) * 100
+  (deviceJobDevicesCount, deviceJobCompletedDevicesCount) => (deviceJobCompletedDevicesCount / deviceJobDevicesCount) * 100 || 0
 );
 
 export const selectDeviceJobStartedAt = createSelector(
@@ -136,9 +141,4 @@ export const selectDeviceJobDurationInMs = createSelector(
     }
     return 0;
   }
-);
-
-export const selectIsPollingFetchDeviceJob = createSelector(
-  [selectDeviceJobReducer],
-  deviceJobReducer => deviceJobReducer?.isPollingFetchDeviceJob
 );

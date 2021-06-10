@@ -84,9 +84,11 @@ const ViewDeviceGroup = (props) => {
           </CCard>
         </CCol>
       </CRow>
+      {showDeleteDeviceGroupModal &&
       <DeleteDeviceGroupModal deviceGroup={deviceGroup} show={showDeleteDeviceGroupModal}
-                              onClose={() => setShowDeleteDeviceGroupModal(!showDeleteDeviceGroupModal)}
-                              onConfirm={deleteDeviceGroup}/>
+                               onClose={() => setShowDeleteDeviceGroupModal(!showDeleteDeviceGroupModal)}
+                               onConfirm={deleteDeviceGroup}
+      />}
       <Toaster/>
     </>
   );

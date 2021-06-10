@@ -9,10 +9,8 @@ use App\Http\Requests\StoreDeviceJobRequest;
 use App\Http\Requests\ValidateDeviceJobFieldsRequest;
 use App\Jobs\ProcessDeviceJob;
 use App\Models\DeviceJob;
-use App\Models\SavedCommand;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -36,10 +34,28 @@ class DeviceJobController extends Controller
 
                 if ($key === 'name') $query->nameLike($value->value);
 
+                if ($key === 'device_group_name') $query->deviceGroupNameLike($value->value);
+
+                if ($key === 'saved_command_name') $query->savedCommandNameLike($value->value);
+
+                if ($key === 'status') $query->status($value->value);
+
+                if ($key === 'started_at') {
+                    $dates = explode(" - ", $value->value);
+                    $query->startedAtBetween($dates);
+                }
+
+                if ($key === 'completed_at') {
+                    $dates = explode(" - ", $value->value);
+                    $query->completedAtBetween($dates);
+                }
+
                 if ($key === 'globalFilter') {
                     $query->where(function ($query) use ($value) {
                         $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value);
+                            ->orWhere->nameLike($value->value)
+                            ->orWhere->deviceGroupNameLike($value->value)
+                            ->orWhere->savedCommandNameLike($value->value);
                     });
                 }
             }
@@ -69,7 +85,7 @@ class DeviceJobController extends Controller
     public function store(StoreDeviceJobRequest $request)
     {
         $deviceJob = Auth::user()->deviceJobs()->create([
-            'name' => $request->device_job_name,
+            'name' => $request->name,
             'device_group_id' => $request->device_group,
             'saved_command_id' => $request->saved_command,
         ]);
@@ -90,25 +106,9 @@ class DeviceJobController extends Controller
      */
     public function show($id)
     {
-        if (is_numeric($id)) {
-            $deviceJob = DeviceJob::id($id);
-        } else {
-            $deviceJob = DeviceJob::uniqueId($id);
-        }
+        $deviceJob = is_numeric($id) ? DeviceJob::id($id) : DeviceJob::uniqueId($id);
 
         return Helper::apiResponseHttpOk(['deviceJob' => $deviceJob->with(['deviceGroup', 'savedCommand', 'deviceGroup.devices.deviceCategory', 'deviceGroup.devices.deviceStatus', 'commandHistories.command:id,device_id'])->first()]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param SavedCommand $savedCommand
-     * @return Response
-     */
-    public function update(Request $request, SavedCommand $savedCommand)
-    {
-        //
     }
 
     /**
@@ -119,18 +119,9 @@ class DeviceJobController extends Controller
      */
     public function destroySelected(DestroySelectedDeviceJobRequest $request)
     {
-//        $success = Auth::user()->savedCommands()->whereIn('saved_commands.id', $request->ids)->delete();
-//
-//        return Helper::apiResponseHttpOk([], $success);
-    }
+        $success = Auth::user()->deviceJobs()->whereIn('device_jobs.id', $request->ids)->delete();
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function options(Request $request)
-    {
-        //
+        return Helper::apiResponseHttpOk([], $success);
     }
 
     /**

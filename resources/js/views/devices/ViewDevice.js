@@ -211,13 +211,19 @@ const ViewDevice = (props) => {
       <ConnectDeviceModal device={device} show={showConnectDeviceModal}
                           onClose={() => setShowConnectDeviceModal(!showConnectDeviceModal)}
       />}
+      {showShutdownModal &&
       <ShutDownDeviceModal show={showShutdownModal} onClose={() => setShowShutdownModal(!showShutdownModal)}
-                           onConfirm={confirmShutdown}/>
+                            onConfirm={confirmShutdown}
+      />}
+      {showRebootModal &&
       <RebootDeviceModal show={showRebootModal} onClose={() => setShowRebootModal(!showRebootModal)}
-                         onConfirm={confirmReboot}/>
+                          onConfirm={confirmReboot}
+      />}
+      {showDecommissionModal &&
       <DecommissionDeviceModal show={showDecommissionModal}
-                               onClose={() => setShowDecommissionModal(!showDecommissionModal)}
-                               onConfirm={confirmDecommission}/>
+                                onClose={() => setShowDecommissionModal(!showDecommissionModal)}
+                                onConfirm={confirmDecommission}
+      />}
       <Toaster/>
     </>
   );

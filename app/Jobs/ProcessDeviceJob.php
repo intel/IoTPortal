@@ -13,6 +13,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Bus;
+use Throwable;
 
 class ProcessDeviceJob implements ShouldQueue
 {
@@ -73,7 +74,11 @@ class ProcessDeviceJob implements ShouldQueue
         $deviceJob = $this->deviceJob;
 
         $jobBatch = Bus::batch($jobs)
-            ->finally(function (Batch $batch) use ($deviceJob) {
+            ->catch(function (Batch $batch, Throwable $e) use ($deviceJob) {
+                $deviceJob->update([
+                    'error' => 'An error has occurred.',
+                ]);
+            })->finally(function (Batch $batch) use ($deviceJob) {
                 $deviceJob->update([
                     'completed_at' => now(),
                 ]);

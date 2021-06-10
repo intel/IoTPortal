@@ -83,9 +83,11 @@ const ViewSavedCommand = (props) => {
           </CCard>
         </CCol>
       </CRow>
+      {showDeleteSavedCommandModal &&
       <DeleteSavedCommandModal savedCommand={savedCommand} show={showDeleteSavedCommandModal}
-                               onClose={() => setShowDeleteSavedCommandModal(!showDeleteSavedCommandModal)}
-                               onConfirm={deleteSavedCommand}/>
+                                onClose={() => setShowDeleteSavedCommandModal(!showDeleteSavedCommandModal)}
+                                onConfirm={deleteSavedCommand}
+      />}
       <Toaster/>
     </>
   );

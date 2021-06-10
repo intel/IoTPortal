@@ -34,14 +34,14 @@ class AppServiceProvider extends ServiceProvider
 
             if ($jobModel instanceof ProcessDeviceJob) {
                 $jobModel->getDeviceJob()->update([
-                    'error' => 'An error occurred.',
+                    'error' => 'An error has occurred.',
                     'completed_at' => now(),
                 ]);
             }
 
             if ($jobModel instanceof SendDeviceCommandJob) {
                 $jobModel->getCommandHistory()->update([
-                    'error' => 'An error occurred.',
+                    'error' => 'An error has occurred.',
                     'completed_at' => now(),
                 ]);
             }

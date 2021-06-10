@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasUniqueId;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -111,8 +112,67 @@ class DeviceJob extends Model
         return $query->where('name', 'like', "%{$value}%");
     }
 
+    public function scopeStartedAtBetween($query, $dates)
+    {
+        return $query->whereBetween('started_at', $dates);
+    }
+
+    public function scopeCompletedAtBetween($query, $dates)
+    {
+        return $query->whereBetween('completed_at', $dates);
+    }
+
     public function scopeUserId($query, $value)
     {
         return $query->where('user_id', $value);
+    }
+
+    public function scopePending($query)
+    {
+        return $query->whereNull('error')
+            ->whereNull('started_at')
+            ->whereNull('completed_at');
+    }
+
+    public function scopeProcessing($query)
+    {
+        return $query->whereNull('error')
+            ->whereNotNull('started_at')
+            ->whereNull('completed_at');
+    }
+
+    public function scopeSuccessful($query)
+    {
+        return $query->whereNull('error')
+            ->whereNotNull('started_at')
+            ->whereNotNull('completed_at');
+    }
+
+    public function scopeFailed($query)
+    {
+        return $query->whereNotNull('error');
+    }
+
+    public function scopeStatus($query, $value)
+    {
+        if ($value === 'pending') return $query->pending();
+        if ($value === 'processing') return $query->processing();
+        if ($value === 'successful') return $query->successful();
+        if ($value === 'failed') return $query->failed();
+        return $query;
+    }
+
+    public function scopeDeviceGroupNameLike($query, $value)
+    {
+        return $query->whereHas('deviceGroup', function (Builder $query) use ($value) {
+            $query->where('name', 'like', "%{$value}%");
+        });
+    }
+
+    public function scopeSavedCommandNameLike($query, $value)
+    {
+        return $query->whereHas('savedCommand', function (Builder $query) use ($value) {
+            $query->where('name', 'like', "%{$value}%");
+        });
     }
 }

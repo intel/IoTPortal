@@ -105,8 +105,8 @@ const CreateDeviceJob = ({
   const renderStep0 = () => (
     <>
       <IotTextInputFormGroup
-        id="device_job_name"
-        name="device_job_name"
+        id="name"
+        name="name"
         label="Device job name"
         placeholder="Enter device job name"
       />
@@ -164,7 +164,7 @@ const CreateDeviceJob = ({
                 enableReinitialize={true}
                 innerRef={formRef}
                 initialValues={{
-                  device_job_name: '',
+                  name: '',
                   device_group: '',
                   saved_command: '',
                 }}

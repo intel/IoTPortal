@@ -26,6 +26,57 @@ function(){function t(t){t.remember("_draggable",this),this.el=t}t.prototype.ini
 
 /***/ }),
 
+/***/ "./resources/js/components/DeleteDeviceJobModal/DeleteDeviceJobModal.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/DeleteDeviceJobModal/DeleteDeviceJobModal.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _Modal_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Modal/Modal */ "./resources/js/components/Modal/Modal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+var DeleteDeviceJobModal = function DeleteDeviceJobModal(_ref) {
+  var show = _ref.show,
+      onClose = _ref.onClose,
+      onConfirm = _ref.onConfirm,
+      deviceJob = _ref.deviceJob;
+
+  var modalMessage = function modalMessage() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+      children: ["Are you sure you want to permanently delete this device job?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "Device Job ID: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+        children: deviceJob.unique_id
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), "Device Job Name: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("b", {
+        children: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.truncateToStringEllipsis)(deviceJob.name)
+      })]
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Modal_Modal__WEBPACK_IMPORTED_MODULE_2__.default, {
+    show: show,
+    modalTitle: "Delete Device Job",
+    modalMessage: modalMessage(),
+    onClose: onClose,
+    onConfirm: onConfirm
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteDeviceJobModal);
+
+/***/ }),
+
 /***/ "./resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js ***!
@@ -111,14 +162,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var DeviceJobDevicesCard = function DeviceJobDevicesCard(_ref) {
   var deviceGroupName = _ref.deviceGroupName,
       deviceJobDevices = _ref.deviceJobDevices;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
-      children: [(deviceJobDevices === null || deviceJobDevices === void 0 ? void 0 : deviceJobDevices.length) || 0, " devices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
-        children: deviceGroupName || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {})
-      })]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
+      children: deviceJobDevices && deviceGroupName ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+        children: [(deviceJobDevices === null || deviceJobDevices === void 0 ? void 0 : deviceJobDevices.length) || 0, " devices under device group: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+          children: deviceGroupName
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_1__.Skeleton, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_DeviceJobDevicesDataTable_DeviceJobDevicesDataTable__WEBPACK_IMPORTED_MODULE_3__.default, {
         deviceJobDevices: deviceJobDevices
@@ -145,9 +199,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
-/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
-/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
+/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/column */ "./node_modules/primereact/column.js");
+/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "./node_modules/primereact/datatable.js");
+/* harmony import */ var _DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
 /* harmony import */ var _deviceJobDevicesDataTable_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./deviceJobDevicesDataTable.css */ "./resources/js/components/DeviceJobDevicesDataTable/deviceJobDevicesDataTable.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -209,28 +263,16 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
         className: "p-column-title",
         children: "Job status"
-      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === undefined && rowData.started_at === undefined && rowData.responded_at === undefined && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-info-circle",
-        severity: "info",
-        value: "Pending"
-      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === null && rowData.started_at === null && rowData.responded_at === null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        className: "d-flex align-items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-          className: "pi pi-spin pi-spinner mr-2"
-        }), "Preparing commands"]
-      }), _.has(rowData, 'started_at') && !rowData.error && rowData.started_at && !rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        className: "d-flex align-items-center",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
-          className: "pi pi-spin pi-spinner mr-2"
-        }), "Processing"]
-      }), rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-check",
-        severity: "success",
-        value: "Successful"
-      }), rowData.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_4__.Tag, {
-        icon: "pi pi-times",
-        severity: "danger",
-        value: "Failed"
+      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === undefined && rowData.started_at === undefined && rowData.responded_at === undefined && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "pending"
+      }), _.has(rowData, 'error') && _.has(rowData, 'started_at') && _.has(rowData, 'responded_at') && rowData.error === null && rowData.started_at === null && rowData.responded_at === null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "preparing"
+      }), !rowData.error && rowData.started_at && !rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "processing"
+      }), !rowData.error && rowData.started_at && rowData.responded_at && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "successful"
+      }), rowData.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__.default, {
+        status: "failed"
       })]
     });
   };
@@ -238,7 +280,7 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "datatable-device-job-devices",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_2__.DataTable, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__.DataTable, {
         value: deviceJobDevices,
         className: "p-datatable-device-job-devices",
         rowHover: true,
@@ -247,27 +289,27 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
         scrollable: true,
         scrollHeight: "600px",
         emptyMessage: "No device found",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "unique_id",
           header: "Device ID",
           body: deviceUniqueIdColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "name",
           header: "Device name",
           body: deviceNameColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "category",
           header: "Category",
           body: deviceCategoryColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "status",
           header: "Status",
           body: deviceStatusColumnBody,
           sortable: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_3__.Column, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_column__WEBPACK_IMPORTED_MODULE_2__.Column, {
           field: "job_status",
           header: "Job status",
           body: jobStatusColumnBody,
@@ -279,6 +321,55 @@ var DeviceJobDevicesDataTable = function DeviceJobDevicesDataTable(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobDevicesDataTable);
+
+/***/ }),
+
+/***/ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var DeviceJobStatusIndicator = function DeviceJobStatusIndicator(_ref) {
+  var status = _ref.status;
+  if (status === 'pending') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-info-circle",
+    value: "Pending"
+  });else if (status === 'preparing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    className: "d-inline-flex align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+      className: "pi pi-spin pi-spinner mr-2"
+    }), "Preparing commands"]
+  });else if (status === 'processing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
+    className: "d-inline-flex align-items-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+      className: "pi pi-spin pi-spinner mr-2"
+    }), "Processing"]
+  });else if (status === 'successful') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-check",
+    severity: "success",
+    value: "Successful"
+  });else if (status === 'failed') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
+    icon: "pi pi-times",
+    severity: "danger",
+    value: "Failed"
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobStatusIndicator);
 
 /***/ }),
 
@@ -461,6 +552,66 @@ var Error = function Error(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Modal/Modal.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Modal/Modal.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var Modal = function Modal(_ref) {
+  var show = _ref.show,
+      onClose = _ref.onClose,
+      onConfirm = _ref.onConfirm,
+      modalTitle = _ref.modalTitle,
+      modalMessage = _ref.modalMessage,
+      hidePrimaryButton = _ref.hidePrimaryButton,
+      hideSecondaryButton = _ref.hideSecondaryButton,
+      primaryButtonText = _ref.primaryButtonText,
+      secondaryButtonText = _ref.secondaryButtonText;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModal, {
+    show: show,
+    onClose: onClose,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalHeader, {
+      closeButton: true,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalTitle, {
+        children: modalTitle
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalBody, {
+      children: modalMessage
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CModalFooter, {
+      children: [!hideSecondaryButton && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+          color: "secondary",
+          onClick: onClose,
+          children: secondaryButtonText || 'No'
+        }), ' ']
+      }), !hidePrimaryButton && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        color: "primary",
+        onClick: onConfirm,
+        children: primaryButtonText || 'Yes'
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
+
+/***/ }),
+
 /***/ "./resources/js/components/PayloadViewer/PayloadViewer.js":
 /*!****************************************************************!*\
   !*** ./resources/js/components/PayloadViewer/PayloadViewer.js ***!
@@ -612,9 +763,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_knob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/knob */ "./node_modules/primereact/knob.js");
 /* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _components_Duration_Duration__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Duration/Duration */ "./resources/js/components/Duration/Duration.js");
-/* harmony import */ var _components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/StartTimeEndTime/StartTimeEndTime */ "./resources/js/components/StartTimeEndTime/StartTimeEndTime.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/useDeviceJobStatusRenderer */ "./resources/js/hooks/useDeviceJobStatusRenderer.js");
+/* harmony import */ var _components_Duration_Duration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Duration/Duration */ "./resources/js/components/Duration/Duration.js");
+/* harmony import */ var _components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/StartTimeEndTime/StartTimeEndTime */ "./resources/js/components/StartTimeEndTime/StartTimeEndTime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -637,8 +789,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
-  var completedPercentage = _ref.completedPercentage,
+  var deviceJob = _ref.deviceJob,
+      completedPercentage = _ref.completedPercentage,
       successfulDevicesCount = _ref.successfulDevicesCount,
       failedDevicesCount = _ref.failedDevicesCount,
       processingDevicesCount = _ref.processingDevicesCount,
@@ -646,7 +800,7 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
       startedAt = _ref.startedAt,
       completedAt = _ref.completedAt,
       durationInMs = _ref.durationInMs;
-  var series = [successfulDevicesCount, failedDevicesCount, processingDevicesCount, pendingDevicesCount];
+  var renderDeviceJobStatus = (0,_hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_5__.default)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
@@ -663,26 +817,28 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
       chartOptions = _useState2[0],
       setChartOptions = _useState2[1];
 
+  var series = [successfulDevicesCount, failedDevicesCount, processingDevicesCount, pendingDevicesCount];
   var duration = moment__WEBPACK_IMPORTED_MODULE_1___default().duration(durationInMs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardHeader, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardHeader, {
       children: "Device job status"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
         className: "m-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
           md: "6",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h4", {
+              className: "mr-3 d-inline-block",
               children: "Results"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            }), renderDeviceJobStatus(deviceJob)]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "d-flex flex-row align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-              className: "mt-3 text-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h6", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "mt-3 mr-5 text-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
                 children: "Completed"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(primereact_knob__WEBPACK_IMPORTED_MODULE_2__.Knob, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(primereact_knob__WEBPACK_IMPORTED_MODULE_2__.Knob, {
                 value: completedPercentage,
                 valueTemplate: "{value}%",
                 strokeWidth: 5,
@@ -690,30 +846,30 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
                 size: 250,
                 readOnly: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_3__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_3__.default, {
               options: chartOptions,
               series: series,
               type: "pie",
               height: 200
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
           md: "6",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h4", {
               children: "Duration"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "d-flex flex-column justify-content-center",
             style: {
               height: '250px'
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Duration_Duration__WEBPACK_IMPORTED_MODULE_5__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_Duration_Duration__WEBPACK_IMPORTED_MODULE_6__.default, {
               className: "mb-5",
               hours: duration.hours(),
               minutes: duration.minutes(),
               seconds: duration.seconds()
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_6__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_7__.default, {
               startTime: startedAt,
               endTime: completedAt
             })]
@@ -725,6 +881,58 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobStatusCard);
+
+/***/ }),
+
+/***/ "./resources/js/hooks/useDeviceJobStatusRenderer.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/hooks/useDeviceJobStatusRenderer.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var useDeviceJobStatusRenderer = function useDeviceJobStatusRenderer() {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (data) {
+    if (data) {
+      if (!data.error && !data.started_at && !data.completed_at) {
+        // Pending
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_1__.default, {
+          status: "pending"
+        });
+      } else if (data.started_at && !data.completed_at) {
+        // Processing
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_1__.default, {
+          status: "processing"
+        });
+      } else if (!data.error && data.started_at && data.completed_at) {
+        // Successful
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_1__.default, {
+          status: "successful"
+        });
+      } else if (data.error && data.started_at && data.completed_at) {
+        // Failed
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_1__.default, {
+          status: "failed"
+        });
+      }
+    }
+
+    return null;
+  }, []);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useDeviceJobStatusRenderer);
 
 /***/ }),
 
@@ -991,6 +1199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "selectDeviceJob": () => (/* binding */ selectDeviceJob),
 /* harmony export */   "selectIsFetchingDeviceJob": () => (/* binding */ selectIsFetchingDeviceJob),
 /* harmony export */   "selectFetchDeviceJobErrorMessage": () => (/* binding */ selectFetchDeviceJobErrorMessage),
+/* harmony export */   "selectIsPollingFetchDeviceJob": () => (/* binding */ selectIsPollingFetchDeviceJob),
 /* harmony export */   "selectDeviceJobSavedCommand": () => (/* binding */ selectDeviceJobSavedCommand),
 /* harmony export */   "selectDeviceJobDeviceGroup": () => (/* binding */ selectDeviceJobDeviceGroup),
 /* harmony export */   "selectDeviceJobDevices": () => (/* binding */ selectDeviceJobDevices),
@@ -1005,8 +1214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "selectDeviceJobCompletedPercentage": () => (/* binding */ selectDeviceJobCompletedPercentage),
 /* harmony export */   "selectDeviceJobStartedAt": () => (/* binding */ selectDeviceJobStartedAt),
 /* harmony export */   "selectDeviceJobCompletedAt": () => (/* binding */ selectDeviceJobCompletedAt),
-/* harmony export */   "selectDeviceJobDurationInMs": () => (/* binding */ selectDeviceJobDurationInMs),
-/* harmony export */   "selectIsPollingFetchDeviceJob": () => (/* binding */ selectIsPollingFetchDeviceJob)
+/* harmony export */   "selectDeviceJobDurationInMs": () => (/* binding */ selectDeviceJobDurationInMs)
 /* harmony export */ });
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
@@ -1032,6 +1240,9 @@ var selectIsFetchingDeviceJob = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createS
 });
 var selectFetchDeviceJobErrorMessage = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJobReducer], function (deviceJobReducer) {
   return deviceJobReducer === null || deviceJobReducer === void 0 ? void 0 : deviceJobReducer.fetchDeviceJobErrorMessage;
+});
+var selectIsPollingFetchDeviceJob = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJobReducer], function (deviceJobReducer) {
+  return deviceJobReducer === null || deviceJobReducer === void 0 ? void 0 : deviceJobReducer.isPollingFetchDeviceJob;
 });
 var selectDeviceJobSavedCommand = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJob], function (deviceJob) {
   return deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.saved_command;
@@ -1095,7 +1306,7 @@ var selectDeviceJobPendingDevicesCount = (0,reselect__WEBPACK_IMPORTED_MODULE_1_
   }, 0)) || 0;
 });
 var selectDeviceJobCompletedPercentage = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJobDevicesCount, selectDeviceJobCompletedDevicesCount], function (deviceJobDevicesCount, deviceJobCompletedDevicesCount) {
-  return deviceJobCompletedDevicesCount / deviceJobDevicesCount * 100;
+  return deviceJobCompletedDevicesCount / deviceJobDevicesCount * 100 || 0;
 });
 var selectDeviceJobStartedAt = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJob], function (deviceJob) {
   return deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.started_at;
@@ -1111,9 +1322,6 @@ var selectDeviceJobDurationInMs = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.creat
   }
 
   return 0;
-});
-var selectIsPollingFetchDeviceJob = (0,reselect__WEBPACK_IMPORTED_MODULE_1__.createSelector)([selectDeviceJobReducer], function (deviceJobReducer) {
-  return deviceJobReducer === null || deviceJobReducer === void 0 ? void 0 : deviceJobReducer.isPollingFetchDeviceJob;
 });
 
 /***/ }),
@@ -1154,7 +1362,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
 /* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -1168,6 +1378,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -1272,7 +1484,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -1283,10 +1495,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -1393,7 +1605,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
 /* harmony import */ var _containers_DeviceJobStatusCard_DeviceJobStatusCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../containers/DeviceJobStatusCard/DeviceJobStatusCard */ "./resources/js/containers/DeviceJobStatusCard/DeviceJobStatusCard.js");
 /* harmony import */ var _components_DeviceJobDevicesCard_DeviceJobDevicesCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DeviceJobDevicesCard/DeviceJobDevicesCard */ "./resources/js/components/DeviceJobDevicesCard/DeviceJobDevicesCard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_DeleteDeviceJobModal_DeleteDeviceJobModal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DeleteDeviceJobModal/DeleteDeviceJobModal */ "./resources/js/components/DeleteDeviceJobModal/DeleteDeviceJobModal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -1416,7 +1642,6 @@ var ViewDeviceJob = function ViewDeviceJob(props) {
 
   var deviceJobUniqueId = props.match.params.id;
   var history = props.history,
-      match = props.match,
       deviceJob = props.deviceJob,
       fetchDeviceJobErrorMessage = props.fetchDeviceJobErrorMessage,
       deviceJobDevicesWithStatus = props.deviceJobDevicesWithStatus,
@@ -1428,55 +1653,91 @@ var ViewDeviceJob = function ViewDeviceJob(props) {
       startedAt = props.startedAt,
       completedAt = props.completedAt,
       durationInMs = props.durationInMs,
-      fetchDeviceJobStartAsync = props.fetchDeviceJobStartAsync;
+      fetchDeviceJobStartAsync = props.fetchDeviceJobStartAsync,
+      deleteDeviceJobsStartAsync = props.deleteDeviceJobsStartAsync,
+      pollFetchDeviceJobStop = props.pollFetchDeviceJobStop;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showDeleteDeviceJobModal = _useState2[0],
+      setShowDeleteDeviceJobModal = _useState2[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchDeviceJobStartAsync(deviceJobUniqueId);
+    return pollFetchDeviceJobStop;
   }, []);
 
+  var deleteDeviceJob = function deleteDeviceJob() {
+    deleteDeviceJobsStartAsync([deviceJob.id], history);
+    setShowDeleteDeviceJobModal(!showDeleteDeviceJobModal);
+  };
+
   if (fetchDeviceJobErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_10__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_10__.default, {
       errorMessage: fetchDeviceJobErrorMessage
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
         xs: "12",
         md: "12",
         className: "mb-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCard, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardHeader, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCard, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardHeader, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CRow, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
                 className: "mb-3",
                 lg: "12",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
+                xl: "9",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
                   className: "d-flex",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
                     className: "m-4",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
                       name: "cilCalendarCheck",
                       size: "4xl"
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
                     className: "flex-grow-1 my-auto",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("h2", {
-                      children: (deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.name) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_6__.Skeleton, {})
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("small", {
-                      children: ["ID: ", (deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.unique_id) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_6__.Skeleton, {})]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("br", {})]
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("h2", {
+                      children: (deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.name) || /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_6__.Skeleton, {
+                        height: "2rem"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("small", {
+                      children: deviceJob !== null && deviceJob !== void 0 && deviceJob.unique_id ? "ID: ".concat(deviceJob === null || deviceJob === void 0 ? void 0 : deviceJob.unique_id) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_6__.Skeleton, {
+                        width: "20rem"
+                      })
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("br", {})]
                   })]
                 })
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCol, {
+                className: "my-auto",
+                lg: "12",
+                xl: "3",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+                  className: "d-flex justify-content-center",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CButtonGroup, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CButton, {
+                      color: "danger",
+                      onClick: function onClick() {
+                        return setShowDeleteDeviceJobModal(!showDeleteDeviceJobModal);
+                      },
+                      children: " Delete"
+                    })
+                  })
+                })
+              })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardBody, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_DeviceJobDetailsCard_DeviceJobDetailsCard__WEBPACK_IMPORTED_MODULE_9__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CCardBody, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DeviceJobDetailsCard_DeviceJobDetailsCard__WEBPACK_IMPORTED_MODULE_9__.default, {
               deviceGroupName: deviceJob === null || deviceJob === void 0 ? void 0 : (_deviceJob$device_gro = deviceJob.device_group) === null || _deviceJob$device_gro === void 0 ? void 0 : _deviceJob$device_gro.name,
               savedCommandName: deviceJob === null || deviceJob === void 0 ? void 0 : (_deviceJob$saved_comm = deviceJob.saved_command) === null || _deviceJob$saved_comm === void 0 ? void 0 : _deviceJob$saved_comm.name,
               commandName: deviceJob === null || deviceJob === void 0 ? void 0 : (_deviceJob$saved_comm2 = deviceJob.saved_command) === null || _deviceJob$saved_comm2 === void 0 ? void 0 : _deviceJob$saved_comm2.command_name,
               payload: deviceJob === null || deviceJob === void 0 ? void 0 : (_deviceJob$saved_comm3 = deviceJob.saved_command) === null || _deviceJob$saved_comm3 === void 0 ? void 0 : _deviceJob$saved_comm3.payload
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_containers_DeviceJobStatusCard_DeviceJobStatusCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_containers_DeviceJobStatusCard_DeviceJobStatusCard__WEBPACK_IMPORTED_MODULE_11__.default, {
+              deviceJob: deviceJob,
               completedPercentage: completedPercentage,
               successfulDevicesCount: successfulDevicesCount,
               failedDevicesCount: failedDevicesCount,
@@ -1485,14 +1746,21 @@ var ViewDeviceJob = function ViewDeviceJob(props) {
               startedAt: startedAt,
               completedAt: completedAt,
               durationInMs: durationInMs
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_DeviceJobDevicesCard_DeviceJobDevicesCard__WEBPACK_IMPORTED_MODULE_12__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DeviceJobDevicesCard_DeviceJobDevicesCard__WEBPACK_IMPORTED_MODULE_12__.default, {
               deviceGroupName: deviceJob === null || deviceJob === void 0 ? void 0 : (_deviceJob$device_gro2 = deviceJob.device_group) === null || _deviceJob$device_gro2 === void 0 ? void 0 : _deviceJob$device_gro2.name,
               deviceJobDevices: deviceJobDevicesWithStatus
             })]
           })]
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_3__.Toaster, {})]
+    }), showDeleteDeviceJobModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_DeleteDeviceJobModal_DeleteDeviceJobModal__WEBPACK_IMPORTED_MODULE_13__.default, {
+      deviceJob: deviceJob,
+      show: showDeleteDeviceJobModal,
+      onClose: function onClose() {
+        return setShowDeleteDeviceJobModal(!showDeleteDeviceJobModal);
+      },
+      onConfirm: deleteDeviceJob
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_3__.Toaster, {})]
   });
 };
 
@@ -1514,6 +1782,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchDeviceJobStartAsync: function fetchDeviceJobStartAsync(id) {
       return dispatch((0,_redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceJobStartAsync)(id));
+    },
+    deleteDeviceJobsStartAsync: function deleteDeviceJobsStartAsync(ids, history) {
+      return dispatch((0,_redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_7__.deleteDeviceJobsStartAsync)(ids, history));
+    },
+    pollFetchDeviceJobStop: function pollFetchDeviceJobStop() {
+      return dispatch((0,_redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_7__.pollFetchDeviceJobStop)());
     }
   };
 };

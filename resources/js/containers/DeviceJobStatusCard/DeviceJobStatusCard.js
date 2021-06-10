@@ -5,10 +5,13 @@ import { Knob } from 'primereact/knob';
 import Chart from 'react-apexcharts';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 
+import useDeviceJobStatusRenderer from '../../hooks/useDeviceJobStatusRenderer';
+
 import Duration from '../../components/Duration/Duration';
 import StartTimeEndTime from '../../components/StartTimeEndTime/StartTimeEndTime';
 
 const DeviceJobStatusCard = ({
+                               deviceJob,
                                completedPercentage,
                                successfulDevicesCount,
                                failedDevicesCount,
@@ -19,12 +22,7 @@ const DeviceJobStatusCard = ({
                                durationInMs,
                              }) => {
 
-  const series = [
-    successfulDevicesCount,
-    failedDevicesCount,
-    processingDevicesCount,
-    pendingDevicesCount
-  ];
+  const renderDeviceJobStatus = useDeviceJobStatusRenderer()
 
   const [chartOptions, setChartOptions] = useState({
     chart: {
@@ -38,6 +36,13 @@ const DeviceJobStatusCard = ({
     },
   });
 
+  const series = [
+    successfulDevicesCount,
+    failedDevicesCount,
+    processingDevicesCount,
+    pendingDevicesCount
+  ];
+
   const duration = moment.duration(durationInMs);
 
   return (
@@ -49,10 +54,11 @@ const DeviceJobStatusCard = ({
         <CRow className="m-3">
           <CCol md="6">
             <div>
-              <h4>Results</h4>
+              <h4 className="mr-3 d-inline-block">Results</h4>
+              {renderDeviceJobStatus(deviceJob)}
             </div>
             <div className="d-flex flex-row align-items-center">
-              <div className="mt-3 text-center">
+              <div className="mt-3 mr-5 text-center">
                 <h6>Completed</h6>
                 <Knob value={completedPercentage} valueTemplate={"{value}%"} strokeWidth={5}
                       valueColor="#00e396" size={250} readOnly/>

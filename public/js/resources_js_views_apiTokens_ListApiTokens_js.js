@@ -93,7 +93,7 @@ var CardSkeleton = function CardSkeleton() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "d-flex justify-content-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-              size: "5rem"
+              size: "6rem"
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
@@ -103,9 +103,11 @@ var CardSkeleton = function CardSkeleton() {
           lg: "11",
           xl: "11",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
+            height: "2rem",
+            width: "60%",
             className: "mb-2"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(primereact_skeleton__WEBPACK_IMPORTED_MODULE_2__.Skeleton, {
-            width: "10rem"
+            width: "20rem"
           })]
         })]
       })

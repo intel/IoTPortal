@@ -13,8 +13,8 @@ import {
   resetFetchDeviceEventHistoriesLazyParams,
   setFetchDeviceEventHistoriesLazyParams,
 } from '../../redux/deviceEventHistory/deviceEventHistory.actions';
-
 import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
+
 import DataTableDateRangeFilter from '../../components/DataTableDateRangeFilter/DataTableDateRangeFilter';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
 import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';

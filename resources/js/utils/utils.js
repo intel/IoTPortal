@@ -4,6 +4,8 @@ import { CButton } from '@coreui/react';
 import toast from 'react-hot-toast';
 
 import { API_ENDPOINT, ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../data/config';
+import DeviceJobStatusIndicator from '../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator';
+import React from 'react';
 
 
 export const convertDeviceObjectToDeviceArrayObject = object => {

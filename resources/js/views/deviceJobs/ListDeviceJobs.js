@@ -5,13 +5,15 @@ import { Toaster } from 'react-hot-toast';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-import DeviceJobsDataTable from '../../components/DeviceJobsDataTable/DeviceJobsDataTable';
+
 import {
   deleteDeviceJobsStartAsync,
   fetchDeviceJobsStartAsync,
   resetFetchDeviceJobsLazyParams,
   setFetchDeviceJobsLazyParams
 } from '../../redux/deviceJob/deviceJob.actions';
+
+import DeviceJobsDataTable from '../../components/DeviceJobsDataTable/DeviceJobsDataTable';
 import DeleteDeviceJobsModal from '../../components/DeleteDeviceJobsModal/DeleteDeviceJobsModal';
 
 const ListDeviceJobs = ({

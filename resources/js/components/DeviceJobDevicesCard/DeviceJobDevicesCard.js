@@ -9,7 +9,9 @@ const DeviceJobDevicesCard = ({deviceGroupName, deviceJobDevices}) => {
   return (
     <CCard>
       <CCardHeader>
-        {deviceJobDevices?.length || 0} devices under device group: <b>{deviceGroupName || <Skeleton/>}</b>
+        {(deviceJobDevices && deviceGroupName)
+          ? <>{deviceJobDevices?.length || 0} devices under device group: <b>{deviceGroupName}</b></>
+          : <Skeleton/>}
       </CCardHeader>
       <CCardBody>
         <DeviceJobDevicesDataTable deviceJobDevices={deviceJobDevices}/>

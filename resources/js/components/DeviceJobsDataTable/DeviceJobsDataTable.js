@@ -1,17 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import classNames from 'classnames';
 
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+
+import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
+import useDeviceJobStatusRenderer from '../../hooks/useDeviceJobStatusRenderer';
+
 import DataTableHeader from '../../components/DataTableHeader/DataTableHeader';
+import DataTableDateRangeFilter from '../DataTableDateRangeFilter/DataTableDateRangeFilter';
+import DeleteDeviceJobModal from '../DeleteDeviceJobModal/DeleteDeviceJobModal';
+import DeviceJobStatusIndicator from '../DeviceJobStatusIndicator/DeviceJobStatusIndicator';
 
 import './deviceJobsDataTable.css';
-import { formatDateTimeISOStringToCommonString } from '../../utils/utils';
-import DataTableDateRangeFilter from '../DataTableDateRangeFilter/DataTableDateRangeFilter';
-import { Tag } from 'primereact/tag';
-import DeleteDeviceJobModal from '../DeleteDeviceJobModal/DeleteDeviceJobModal';
 
 const DeviceJobsDataTable = ({
                                history,
@@ -33,18 +36,27 @@ const DeviceJobsDataTable = ({
 
   const [showDeleteDeviceJobModal, setShowDeleteDeviceJobModal] = useState(false);
   const [deviceJob, setDeviceJob] = useState(null);
-  const [deviceJobStatusFilter, setDeviceJobStatusFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState(null);
   const [startedAtFilter, setStartedAtFilter] = useState(null);
   const [completedAtFilter, setCompletedAtFilter] = useState(null);
   const [globalFilter, setGlobalFilter] = useState(null);
-
-  const dt = useRef(null);
 
   useEffect(() => {
     fetchDeviceJobsStartAsync(fetchDeviceJobsLazyParams);
   }, [fetchDeviceJobsLazyParams]);
 
   useEffect(() => resetFetchDeviceJobsLazyParams, []);
+
+  const dt = useRef(null);
+
+  const renderDeviceJobStatus = useDeviceJobStatusRenderer();
+
+  const statusOptions = [
+    {value: 'pending', label: 'Pending'},
+    {value: 'processing', label: 'Processing'},
+    {value: 'successful', label: 'Successful'},
+    {value: 'failed', label: 'Failed'},
+  ];
 
   const confirmDeleteDeviceJob = (deviceJob) => {
     setDeviceJob(deviceJob);
@@ -78,26 +90,23 @@ const DeviceJobsDataTable = ({
   const header = (
     <DataTableHeader headerName="Device Jobs" onSearchInputChange={(e) => setGlobalFilter(e.target.value)}/>);
 
-  const renderDeviceJobStatusFilter = () => {
+  const renderStatusFilter = () => {
     return (
-      <></>
-      // <Dropdown value={deviceJobStatusFilter} options={deviceCommandOptions}
-      //           onChange={onCommandTypeFilterChange}
-      //           itemTemplate={commandTypeItemTemplate} showClear placeholder="Select a command type"
-      //           className="p-column-filter"/>
+      <Dropdown value={statusFilter} options={statusOptions}
+                onChange={onStatusFilterChange}
+                itemTemplate={statusItemTemplate} showClear placeholder="Select a status"
+                className="p-column-filter"
+      />
     );
   };
 
-  const onCommandTypeFilterChange = (event) => {
-    dt.current.filter(event.value, 'command_id', 'equals');
-    setDeviceJobStatusFilter(event.value);
+  const onStatusFilterChange = (event) => {
+    dt.current.filter(event.value, 'status', 'equals');
+    setStatusFilter(event.value);
   };
 
-  const commandTypeItemTemplate = (option) => {
-    return (
-      <span
-        className={classNames('command-badge', 'type-' + option.label.replace(/\s+|_/g, '-').toLowerCase())}>{option.label}</span>
-    );
+  const statusItemTemplate = (option) => {
+    return <DeviceJobStatusIndicator status={option.value}/>
   };
 
   const renderStartedAtFilter = () => {
@@ -114,7 +123,7 @@ const DeviceJobsDataTable = ({
     );
   };
 
-  const deviceJobUniqueIdColumnBody = (rowData) => {
+  const uniqueIdColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">ID</span>
@@ -123,7 +132,7 @@ const DeviceJobsDataTable = ({
     );
   };
 
-  const deviceJobNameColumnBody = (rowData) => {
+  const nameColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">Name</span>
@@ -132,7 +141,7 @@ const DeviceJobsDataTable = ({
     );
   };
 
-  const deviceGroupColumnBody = (rowData) => {
+  const deviceGroupNameColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">Device group</span>
@@ -141,7 +150,7 @@ const DeviceJobsDataTable = ({
     );
   };
 
-  const savedCommandColumnBody = (rowData) => {
+  const savedCommandNameColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">Saved command</span>
@@ -150,28 +159,11 @@ const DeviceJobsDataTable = ({
     );
   };
 
-  const deviceJobStatusColumnBody = (rowData) => {
-
-    const renderStatus = () => {
-      if (!rowData.error && !rowData.started_at && !rowData.completed_at) {
-        // Pending
-        return <Tag icon="pi pi-info-circle" severity="info" value="Pending"/>;
-      } else if (!rowData.error && rowData.started_at && !rowData.completed_at) {
-        // Processing
-        return <span className="d-flex align-items-center"><i className="pi pi-spin pi-spinner mr-2"/>Processing</span>;
-      } else if (!rowData.error && rowData.started_at && rowData.completed_at) {
-        // Successful
-        return <Tag icon="pi pi-check" severity="success" value="Successful"/>;
-      } else if (rowData.error) {
-        // Failed
-        return <Tag icon="pi pi-times" severity="danger" value="Failed"/>;
-      }
-    };
-
+  const statusColumnBody = (rowData) => {
     return (
       <>
         <span className="p-column-title">Status</span>
-        {renderStatus()}
+        {renderDeviceJobStatus(rowData)}
       </>
     );
   };
@@ -205,7 +197,7 @@ const DeviceJobsDataTable = ({
     );
   }
 
-  const deviceJobStatusFilterElement = renderDeviceJobStatusFilter();
+  const statusFilterElement = renderStatusFilter();
   const startedAtFilterElement = renderStartedAtFilter();
   const completedFilterElement = renderCompletedAtFilter();
 
@@ -228,16 +220,16 @@ const DeviceJobsDataTable = ({
                    filters={fetchDeviceJobsLazyParams.filters} filterDelay={800} loading={isFetchingDeviceJobs}>
           {(selectedDeviceJobs !== undefined && setSelectedDeviceJobs !== undefined) &&
           <Column selectionMode="multiple" style={{width: '4em'}}/>}
-          <Column field="unique_id" header="Device job ID" body={deviceJobUniqueIdColumnBody} sortable filter
+          <Column field="unique_id" header="Device job ID" body={uniqueIdColumnBody} sortable filter
                   filterPlaceholder="Search by device job ID"/>
-          <Column field="name" header="Device job name" body={deviceJobNameColumnBody} sortable filter
+          <Column field="name" header="Device job name" body={nameColumnBody} sortable filter
                   filterPlaceholder="Search by device job name"/>
-          <Column field="device_group" header="Device group" body={deviceGroupColumnBody} sortable filter
+          <Column field="device_group_name" header="Device group" body={deviceGroupNameColumnBody} sortable filter
                   filterPlaceholder="Search by device group"/>
-          <Column field="saved_command" header="Saved command" body={savedCommandColumnBody} sortable filter
+          <Column field="saved_command_name" header="Saved command" body={savedCommandNameColumnBody} sortable filter
                   filterPlaceholder="Search by saved command"/>
-          <Column field="status" header="Status" body={deviceJobStatusColumnBody} sortable filter
-                  excludeGlobalFilter={true} filterElement={deviceJobStatusFilterElement}/>
+          <Column field="status" header="Status" body={statusColumnBody} sortable filter
+                  excludeGlobalFilter={true} filterElement={statusFilterElement}/>
           <Column field="started_at" header="Started at" body={startedAtColumnBody} sortable filter
                   excludeGlobalFilter={true} filterElement={startedAtFilterElement}/>
           <Column field="completed_at" header="Completed at" body={completedAtColumnBody} sortable filter

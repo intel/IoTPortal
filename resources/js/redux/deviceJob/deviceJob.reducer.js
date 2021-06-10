@@ -35,8 +35,8 @@ const INITIAL_STATE = {
   pollFetchDeviceJobId: null,
 
   // Tick device job elapsed time
-  deviceJobElapsedTimeInSeconds: 0,
-  deviceJobElapsedTimeId: null,
+  // deviceJobElapsedTimeInSeconds: 0,
+  // deviceJobElapsedTimeId: null,
 };
 
 const deviceJobReducer = (state = INITIAL_STATE, action) => {
@@ -95,6 +95,7 @@ const deviceJobReducer = (state = INITIAL_STATE, action) => {
     case deviceJobActionTypes.FETCH_DEVICE_JOB_START:
       return {
         ...state,
+        ...(!state.isPollingFetchDeviceJob && {deviceJob: null}),
         isFetchingDeviceJob: true,
         fetchDeviceJobErrorMessage: undefined,
       };

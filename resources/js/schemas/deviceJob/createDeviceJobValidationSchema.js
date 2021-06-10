@@ -4,7 +4,7 @@ import { isDeviceJobNameUniqueDebounced } from '../../utils/utils';
 
 const createDeviceJobValidationSchema = (deviceGroupOptions, savedCommandOptions) => {
   return Yup.object({
-    device_job_name: Yup.string()
+    name: Yup.string()
       .label('device job name')
       .required()
       .max(255)

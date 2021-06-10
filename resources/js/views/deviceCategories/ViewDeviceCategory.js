@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
 import { Toaster } from 'react-hot-toast';
 
 import CIcon from '@coreui/icons-react'
@@ -76,9 +75,11 @@ const ViewDeviceCategory = (props) => {
           </CCard>
         </CCol>
       </CRow>
+      {showDeleteDeviceCategoryModal &&
       <DeleteDeviceCategoryModal deviceCategory={deviceCategory} show={showDeleteDeviceCategoryModal}
                                  onClose={() => setShowDeleteDeviceCategoryModal(!showDeleteDeviceCategoryModal)}
-                                 onConfirm={deleteDeviceCategory}/>
+                                 onConfirm={deleteDeviceCategory}
+      />}
       <Toaster/>
     </>
   )
