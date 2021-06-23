@@ -28,7 +28,7 @@ import {
 } from '../../redux/deviceJob/deviceJob.selectors';
 
 import DeviceJobDetailsCard from '../../components/DeviceJobDetailsCard/DeviceJobDetailsCard';
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import DeviceJobStatusCard from '../../containers/DeviceJobStatusCard/DeviceJobStatusCard';
 import DeviceJobDevicesCard from '../../components/DeviceJobDevicesCard/DeviceJobDevicesCard';
 import DeleteDeviceJobModal from '../../components/DeleteDeviceJobModal/DeleteDeviceJobModal';
@@ -67,7 +67,7 @@ const ViewDeviceJob = (props) => {
   };
 
   if (fetchDeviceJobErrorMessage) {
-    return (<Error errorMessage={fetchDeviceJobErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceJobErrorMessage}/>);
   }
 
   return (

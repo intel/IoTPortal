@@ -115,11 +115,21 @@
 }
 
 .device-badge.status-registered {
+    background-color: #B3E5FC;
+    color: #23547b;
+}
+
+/*.device-badge.status-provisioned {*/
+/*    background-color: #FFD8B2;*/
+/*    color: #805B36;*/
+/*}*/
+
+.device-badge.status-online {
     background-color: #C8E6C9;
     color: #256029;
 }
 
-.device-badge.status-provisioned {
-    background-color: #FFD8B2;
-    color: #805B36;
+.device-badge.status-offline {
+    background: #FFCDD2;
+    color: #C63737;
 }

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\DeviceCategories\CreateDeviceCategoryAction;
+use App\Actions\DeviceCategories\DeleteMultipleDeviceCategoriesAction;
+use App\Actions\DeviceCategories\FilterDataTableDeviceCategoriesAction;
+use App\Actions\DeviceCategories\FindDeviceCategoryByIdOrUniqueIdAction;
+use App\Actions\DeviceCategories\UpdateDeviceCategoryAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroySelectedDeviceCategoryRequest;
 use App\Http\Requests\StoreDeviceCategoryRequest;
@@ -12,116 +16,97 @@ use App\Models\DeviceCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 
 class DeviceCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,App\Models\DeviceCategory')->only(['index', 'options']);
+        $this->middleware('can:create,App\Models\DeviceCategory')->only('store');
+        $this->middleware('can:update,deviceCategory')->only('update');
+        $this->middleware('can:deleteMany,App\Models\DeviceCategory')->only('destroySelected');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDataTableDeviceCategoriesAction $filterDataTableDeviceCategoriesAction
      * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request, FilterDataTableDeviceCategoriesAction $filterDataTableDeviceCategoriesAction): JsonResponse
     {
-        $query = Auth::user()->deviceCategories();
+        $deviceCategories = $filterDataTableDeviceCategoriesAction->execute($request->all());
 
-        if ($request->has('filters')) {
-            $filters = json_decode($request->filters);
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
-
-                if ($key === 'name') $query->nameLike($value->value);
-
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value);
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->sortOrder === '1')
-                $query->orderBy($request->sortField);
-            else
-                $query->orderByDesc($request->sortField);
-        }
-
-        $maxRows = Config::get('constants.index_max_rows');
-        $rows = min((int) $request->input('rows', 10), $maxRows);
-
-        $deviceCategories = $query->paginate($rows, ['id', 'unique_id', 'name']);
-
-        return Helper::apiResponseHttpOk(['deviceCategories' => $deviceCategories]);
+        return $this->apiOk(['deviceCategories' => $deviceCategories]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param StoreDeviceCategoryRequest $request
+     * @param CreateDeviceCategoryAction $createDeviceCategoryAction
      * @return JsonResponse
      */
-    public function store(StoreDeviceCategoryRequest $request)
+    public function store(StoreDeviceCategoryRequest $request, CreateDeviceCategoryAction $createDeviceCategoryAction): JsonResponse
     {
-        $deviceCategory = Auth::user()->deviceCategories()->create($request->validated());
+        $deviceCategory = $createDeviceCategoryAction->execute($request->user(), $request->validated());
 
-        return $deviceCategory->exists
-            ? Helper::apiResponseHttpOk(['deviceCategory' => $deviceCategory])
-            : Helper::apiResponseHttpInternalServerError('Failed to create device category.');
+        return $this->apiOk(['deviceCategory' => $deviceCategory]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param FindDeviceCategoryByIdOrUniqueIdAction $findDeviceCategoryByIdOrUniqueIdAction
+     * @param string $id
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(FindDeviceCategoryByIdOrUniqueIdAction $findDeviceCategoryByIdOrUniqueIdAction, string $id): JsonResponse
     {
-        $deviceCategory = DeviceCategory::id($id)
-            ->orWhere->uniqueId($id)
-            ->first();
+        $deviceCategory = $findDeviceCategoryByIdOrUniqueIdAction->execute($id);
 
-        return Helper::apiResponseHttpOk(['deviceCategory' => $deviceCategory]);
+        $this->authorize('view', $deviceCategory);
+
+        return $this->apiOk(['deviceCategory' => $deviceCategory]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UpdateDeviceCategoryRequest $request
+     * @param UpdateDeviceCategoryAction $updateDeviceCategoryAction
      * @param DeviceCategory $deviceCategory
      * @return JsonResponse
      */
-    public function update(UpdateDeviceCategoryRequest $request, DeviceCategory $deviceCategory)
+    public function update(UpdateDeviceCategoryRequest $request, UpdateDeviceCategoryAction $updateDeviceCategoryAction, DeviceCategory $deviceCategory): JsonResponse
     {
-        $success = $deviceCategory->update($request->validated());
+        $success = $updateDeviceCategoryAction->execute($deviceCategory, $request->validated());
 
         return $success
-            ? Helper::apiResponseHttpOk(['deviceCategory' => $deviceCategory])
-            : Helper::apiResponseHttpInternalServerError('Failed to update device category.');
+            ? $this->apiOk(['deviceCategory' => $deviceCategory])
+            : $this->apiInternalServerError('Failed to update device category.');
     }
 
     /**
      * Remove the specified resources from storage.
      *
      * @param DestroySelectedDeviceCategoryRequest $request
+     * @param DeleteMultipleDeviceCategoriesAction $deleteMultipleDeviceCategoriesAction
      * @return JsonResponse
      */
-    public function destroySelected(DestroySelectedDeviceCategoryRequest $request)
+    public function destroySelected(DestroySelectedDeviceCategoryRequest $request, DeleteMultipleDeviceCategoriesAction $deleteMultipleDeviceCategoriesAction): JsonResponse
     {
-        $success = Auth::user()->deviceCategories()->idIn($request->ids)->delete();
+        $success = $deleteMultipleDeviceCategoriesAction->execute($request->ids);
 
-        return Helper::apiResponseHttpOk([], $success);
+        return $this->apiOk([], $success);
     }
 
     /**
      * @param Request $request
      * @return JsonResponse
      */
-    public function options(Request $request)
+    public function options(Request $request): JsonResponse
     {
         $query = Auth::user()->deviceCategories();
 
@@ -129,7 +114,7 @@ class DeviceCategoryController extends Controller
             $query->nameLike($request->name);
         }
 
-        return Helper::apiResponseHttpOk(['deviceCategories' => $query->getOptions()]);
+        return $this->apiOk(['deviceCategories' => $query->getOptions()]);
     }
 
     /**
@@ -137,8 +122,8 @@ class DeviceCategoryController extends Controller
      * @param ValidateDeviceCategoryFieldsRequest $request
      * @return JsonResponse
      */
-    public function validateField(ValidateDeviceCategoryFieldsRequest $request)
+    public function validateField(ValidateDeviceCategoryFieldsRequest $request): JsonResponse
     {
-        return Helper::apiResponseHttpOk();
+        return $this->apiOk();
     }
 }

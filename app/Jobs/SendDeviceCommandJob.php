@@ -2,15 +2,17 @@
 
 namespace App\Jobs;
 
-use App\Helpers\Helper;
+use App\Actions\Mqtt\PublishMqttToDeviceAction;
+use App\Exceptions\DeviceTimeoutException;
 use App\Models\CommandHistory;
-use Exception;
+use Carbon\Carbon;
 use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendDeviceCommandJob implements ShouldQueue
 {
@@ -53,10 +55,11 @@ class SendDeviceCommandJob implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param PublishMqttToDeviceAction $publishMqttToDeviceAction
      * @return void
-     * @throws Exception
+     * @throws DeviceTimeoutException
      */
-    public function handle()
+    public function handle(PublishMqttToDeviceAction $publishMqttToDeviceAction)
     {
         if ($this->batch()->cancelled()) {
             return;
@@ -66,20 +69,30 @@ class SendDeviceCommandJob implements ShouldQueue
             'started_at' => now(),
         ]);
 
-        Helper::mqttPublish('iotportal/' . $this->commandHistory->command->device->unique_id . '/methods/POST/' . $this->commandHistory->command->methodName . '/?$rid=' . $this->commandHistory->id, $this->payloadJson);
+        $publishMqttToDeviceAction->execute($this->commandHistory->command->device->unique_id, $this->commandHistory->command->method_name, $this->commandHistory->id, $this->payloadJson);
 
         $this->commandHistory->refresh();
-        $elapsedTimeInSeconds = 0;
-        while (!$this->commandHistory->responded_at && $elapsedTimeInSeconds <= 30) {
-            $elapsedTimeInSeconds++;
+        $startedAt = new Carbon($this->commandHistory->started_at);
+        while (!$this->commandHistory->responded_at && $startedAt->diffInSeconds() <= 30) {
+            Log::debug('startedAt diffinseconds' . $startedAt->diffInSeconds());
             sleep(1);
             $this->commandHistory->refresh();
         }
 
+//        $this->commandHistory->refresh();
+//        $elapsedTimeInSeconds = 0;
+//        while (!$this->commandHistory->responded_at && $elapsedTimeInSeconds <= 30) {
+//            $elapsedTimeInSeconds++;
+//            sleep(1);
+//            $this->commandHistory->refresh();
+//        }
+
         if (!$this->commandHistory->responded_at) {
-            $this->commandHistory->update([
-                'error' => 'Timeout waiting for device to respond.',
-            ]);
+            throw new DeviceTimeoutException('Timeout waiting for device to respond.');
+//            $this->commandHistory->update([
+//                'error' => 'Timeout waiting for device to respond.',
+//                'completed_at' => now(),
+//            ]);
         }
     }
 }

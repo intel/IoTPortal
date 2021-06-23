@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DeviceCategory extends Model
 {
-    use HasFactory, HasUniqueId;
+    use HasFactory, EloquentGetTableName, HasUniqueId;
+
+    const CATEGORY_UNCATEGORIZED = 'UNCATEGORIZED';
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +20,7 @@ class DeviceCategory extends Model
      */
     protected $fillable = [
         'name',
+        'user_id',
     ];
 
     /**
@@ -87,6 +91,11 @@ class DeviceCategory extends Model
         return $query->where('unique_id', 'like', "%{$value}%");
     }
 
+    public function scopeName($query, $value)
+    {
+        return $query->where('name', $value);
+    }
+
     public function scopeNameLike($query, $value)
     {
         return $query->where('name', 'like', "%{$value}%");
@@ -95,6 +104,16 @@ class DeviceCategory extends Model
     public function scopeUserId($query, $value)
     {
         return $query->where('user_id', $value);
+    }
+
+    public function scopeUncategorized()
+    {
+        return $this->name(self::CATEGORY_UNCATEGORIZED);
+    }
+
+    public function scopeGetUncategorized()
+    {
+        return $this->uncategorized()->firstOrFail();
     }
 
     public function scopeGetOptions($query)

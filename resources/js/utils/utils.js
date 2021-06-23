@@ -1,11 +1,10 @@
+import React from 'react';
 import debounce from 'debounce-promise';
-
-import { CButton } from '@coreui/react';
 import toast from 'react-hot-toast';
 
+import { CButton } from '@coreui/react';
+
 import { API_ENDPOINT, ASYNC_VALIDATION_TIMEOUT_IN_MS } from '../data/config';
-import DeviceJobStatusIndicator from '../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator';
-import React from 'react';
 
 
 export const convertDeviceObjectToDeviceArrayObject = object => {
@@ -30,7 +29,7 @@ export const removeLastCharacterIfExists = (str, needle) => {
 
 export const isNotEmptyString = (str) => {
   return Boolean(str);
-}
+};
 
 export const isValidJSONObject = (obj) => {
   return typeof obj === 'object' && obj !== null;
@@ -44,7 +43,11 @@ export const isValidJsonString = (str) => {
     return false;
   }
   return true;
-}
+};
+
+export const roundToTwoDecimalPlaces = (num) => {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
+};
 
 export const getSanitizedValues = object => {
   const clonedObject = _.cloneDeep(object);
@@ -156,6 +159,13 @@ export const truncateToStringEllipsis = (str) => {
     });
   }
   return null;
+};
+
+export const stripStringAfterLastSlash = (str) => {
+  if (typeof str === 'string' || str instanceof String) {
+    return str.substr(0, str.lastIndexOf('/') + 1)
+  }
+  return str;
 };
 
 export const redirectToAfterToastSuccess = (history, location) => {

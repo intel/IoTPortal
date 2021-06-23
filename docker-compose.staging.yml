@@ -23,6 +23,7 @@ services:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
       - ../iotportaldata/app/storage/framework:/var/www/storage/framework
+      - ../iotportaldata/ca-certificates:/iotportal/ca-certificates
       - ../iotportaldata/logs/app:/var/www/storage/logs
     networks:
       - inteliotportal
@@ -92,6 +93,9 @@ services:
     environment:
       DOCKER_VERNEMQ_ACCEPT_EULA: '${VERNEMQ_ACCEPT_EULA}'
       DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${VERNEMQ_ALLOW_ANONYMOUS}'
+      DOCKER_VERNEMQ_LISTENER__SSL__CAFILE: '${VERNEMQ_LISTENER_SSL_CAFILE}'
+      DOCKER_VERNEMQ_LISTENER__SSL__CERTFILE: '${VERNEMQ_LISTENER_SSL_CERTFILE}'
+      DOCKER_VERNEMQ_LISTENER__SSL__KEYFILE: '${VERNEMQ_LISTENER_SSL_KEYFILE}'
       DOCKER_VERNEMQ_PLUGINS__VMQ_ACL: '${VERNEMQ_PLUGINS_VMQ_ACL}'
       DOCKER_VERNEMQ_PLUGINS__VMQ_WEBHOOKS: '${VERNEMQ_PLUGINS_VMQ_WEBHOOKS}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__HOOK: '${VERNEMQ_VMQ_WEBHOOKS_AUTH_ON_REGISTER_HOOK}'
@@ -100,6 +104,10 @@ services:
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__ENDPOINT: '${VERNEMQ_VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__HOOK: '${VERNEMQ_VMQ_WEBHOOKS_AUTH_ON_PUBLISH_HOOK}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__ENDPOINT: '${VERNEMQ_VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT}'
+      DOCKER_VERNEMQ_VMQ_WEBHOOKS__ON_CLIENT_OFFLINE__HOOK: '${VERNEMQ_VMQ_WEBHOOKS_ON_CLIENT_OFFLINE_HOOK}'
+      DOCKER_VERNEMQ_VMQ_WEBHOOKS__ON_CLIENT_OFFLINE__ENDPOINT: '${VERNEMQ_VMQ_WEBHOOKS_ON_CLIENT_OFFLINE_ENDPOINT}'
+      DOCKER_VERNEMQ_VMQ_WEBHOOKS__ON_CLIENT_GONE__HOOK: '${VERNEMQ_VMQ_WEBHOOKS_ON_CLIENT_GONE_HOOK}'
+      DOCKER_VERNEMQ_VMQ_WEBHOOKS__ON_CLIENT_GONE__ENDPOINT: '${VERNEMQ_VMQ_WEBHOOKS_ON_CLIENT_GONE_ENDPOINT}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__CAFILE: '${VERNEMQ_VMQ_WEBHOOKS_CAFILE}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__USE_CRLS: '${VERNEMQ_VMQ_WEBHOOKS_USE_CRLS}'
     env_file:
@@ -110,7 +118,8 @@ services:
       - ../iotportaldata/ssl:/vernemq/ssl
       - ../iotportaldata/logs/vernemq:/vernemq/log
     ports:
-      - '${VERNEMQ_PORT:-1883}:1883'
+      - '${VERNEMQ_TCP_PORT:-1883}:1883'
+      - '${VERNEMQ_SSL_PORT:-8883}:8883'
     networks:
       - inteliotportal
 
@@ -123,10 +132,13 @@ services:
     image: inteliotportal-redis
     container_name: inteliotportal-redis
     restart: always
+    environment:
+      REDIS_PASSWORD: '${DOCKER_REDIS_PASSWORD}'
     env_file:
       - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/redis/data:/data
+      - ../iotportaldata/redis/conf:/usr/local/etc/redis
     ports:
       - '${DOCKER_REDIS_PORT:-6379}:6379'
     networks:
@@ -151,10 +163,12 @@ services:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
       - ../iotportaldata/app/storage/framework:/var/www/storage/framework
+      - ../iotportaldata/ca-certificates:/iotportal/ca-certificates
       - ../iotportaldata/logs/app:/var/www/storage/logs
     networks:
       - inteliotportal
 
+#  Enable only development environment
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:${PMA_VERSION}
     container_name: inteliotportal-phpmyadmin
@@ -171,250 +185,3 @@ services:
 networks:
   inteliotportal:
     driver: bridge
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#version: "3.7"
-#services:
-#    app:
-#        build:
-#            context: ./
-#            dockerfile: docker-compose/app/Dockerfile.staging
-#        image: inteliotportal
-#        container_name: inteliotportal-app
-#        restart: unless-stopped
-#        depends_on:
-#            - '${DB_CONNECTION}'
-#        networks:
-#            - inteliotportal
-#
-#    mysql:
-#        image: mysql:${MYSQL_VERSION}
-#        container_name: inteliotportal-mysql
-#        restart: unless-stopped
-#        environment:
-#            MYSQL_DATABASE: '${MYSQL_DATABASE}'
-#            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
-#        #            MYSQL_USER: '${MYSQL_USER}'
-#        #            MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-#        volumes:
-#            - mysqldata:/var/lib/mysql/
-#        ports:
-#            - '${MYSQL_PORT}:3306'
-#        networks:
-#            - inteliotportal
-#
-#    nginx:
-#        build:
-#            context: ./
-#            dockerfile: docker-compose/nginx/Dockerfile.staging
-#            args:
-#                - NGINX_VERSION=${NGINX_VERSION}
-#                - CHANGE_SOURCE=${CHANGE_SOURCE}
-#                - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
-#                - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
-#                - http_proxy
-#                - https_proxy
-#                - no_proxy
-#        container_name: inteliotportal-nginx
-#        restart: unless-stopped
-#        volumes:
-#            - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
-#            - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
-#        #            - ${NGINX_SSL_PATH}:/etc/nginx/ssl
-#        ports:
-#            - '${NGINX_HOST_HTTP_PORT}:80'
-#            - '${NGINX_HOST_HTTPS_PORT}:443'
-#        depends_on:
-#            - '${NGINX_PHP_UPSTREAM_CONTAINER}'
-#        networks:
-#            - inteliotportal
-#
-#    vernemq:
-#        #image: vernemq/vernemq:${VERNEMQ_VERSION}
-#        build:
-#            context: ./
-#            dockerfile: docker-compose/vernemq/Dockerfile.staging
-#        container_name: inteliotportal-vernemq
-#        restart: unless-stopped
-#        environment:
-#            DOCKER_VERNEMQ_ACCEPT_EULA: '${ACCEPT_EULA}'
-#            DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${ALLOW_ANONYMOUS}'
-#            DOCKER_VERNEMQ_PLUGINS__VMQ_ACL: '${PLUGINS_VMQ_ACL}'
-#            DOCKER_VERNEMQ_PLUGINS__VMQ_WEBHOOKS: '${PLUGINS_VMQ_WEBHOOKS}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT}'
-#        ports:
-#            - '${VERNEMQ_PORT}:1883'
-#        depends_on:
-#            - app
-#        networks:
-#            - inteliotportal
-#
-#    phpmyadmin:
-#        image: phpmyadmin/phpmyadmin:${MYSQL_VERSION}
-#        container_name: inteliotportal-phpmyadmin
-#        restart: unless-stopped
-#        environment:
-#            PMA_ARBITRARY: '1'
-#            MYSQL_USER: '${PMA_USER}'
-#            MYSQL_PASSWORD: '${PMA_PASSWORD}'
-#            MYSQL_ROOT_PASSWORD: '${PMA_ROOT_PASSWORD}'
-#        ports:
-#            - '${PMA_PORT}:80'
-#        depends_on:
-#            - '${PMA_DB_ENGINE}'
-#        networks:
-#            - inteliotportal
-#
-#networks:
-#    inteliotportal:
-#        driver: bridge
-#volumes:
-#    mysqldata:
-#        driver: local
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#version: "3.7"
-#services:
-#    app:
-#        build:
-#            context: ./
-#            dockerfile: docker-compose/app/Dockerfile.staging
-#        image: inteliotportal
-#        container_name: inteliotportal-app
-#        restart: unless-stopped
-#        volumes:
-#            - ./storage:/var/www/storage
-#        depends_on:
-#            - '${DB_CONNECTION}'
-#        networks:
-#            - inteliotportal
-#
-#    mysql:
-#        image: mysql:${MYSQL_VERSION}
-#        container_name: inteliotportal-mysql
-#        restart: unless-stopped
-#        environment:
-#            MYSQL_DATABASE: '${MYSQL_DATABASE}'
-#            MYSQL_USER: '${MYSQL_USER}'
-#            MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-#            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
-#            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-#        ports:
-#            - '${MYSQL_PORT}:3306'
-#        networks:
-#            - inteliotportal
-#
-#    nginx:
-#        build:
-#            context: ./
-#            dockerfile: docker-compose/nginx/Dockerfile.staging
-#            args:
-#                - NGINX_VERSION=${NGINX_VERSION}
-#                - CHANGE_SOURCE=${CHANGE_SOURCE}
-#                - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
-#                - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
-#                - http_proxy
-#                - https_proxy
-#                - no_proxy
-#        container_name: inteliotportal-nginx
-#        restart: unless-stopped
-#        volumes:
-#            - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
-#            - ${NGINX_SITES_PATH}:/etc/nginx/sites-available
-#            - ${NGINX_SSL_PATH}:/etc/nginx/ssl
-#        ports:
-#            - '${NGINX_HOST_HTTP_PORT}:80'
-#            - '${NGINX_HOST_HTTPS_PORT}:443'
-#        depends_on:
-#            - '${NGINX_PHP_UPSTREAM_CONTAINER}'
-#        networks:
-#            - inteliotportal
-#
-#    mqtt:
-#        image: vernemq/vernemq:${VERNEMQ_VERSION}
-#        container_name: inteliotportal-mqtt
-#        restart: unless-stopped
-#        environment:
-#            DOCKER_VERNEMQ_ACCEPT_EULA: '${ACCEPT_EULA}'
-#            DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${ALLOW_ANONYMOUS}'
-#            DOCKER_VERNEMQ_PLUGINS__VMQ_ACL: '${PLUGINS_VMQ_ACL}'
-#            DOCKER_VERNEMQ_PLUGINS__VMQ_WEBHOOKS: '${PLUGINS_VMQ_WEBHOOKS}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_REGISTER__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_SUBSCRIBE__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__HOOK: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_HOOK}'
-#            DOCKER_VERNEMQ_VMQ_WEBHOOKS__AUTH_ON_PUBLISH__ENDPOINT: '${VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT}'
-#        ports:
-#            - '${VERNEMQ_PORT}:1883'
-#        depends_on:
-#            - app
-#        networks:
-#            - inteliotportal
-#
-#    phpmyadmin:
-#        image: phpmyadmin/phpmyadmin:${MYSQL_VERSION}
-#        container_name: inteliotportal-phpmyadmin
-#        restart: unless-stopped
-#        environment:
-#            PMA_ARBITRARY: '1'
-#            MYSQL_USER: '${PMA_USER}'
-#            MYSQL_PASSWORD: '${PMA_PASSWORD}'
-#            MYSQL_ROOT_PASSWORD: '${PMA_ROOT_PASSWORD}'
-#        ports:
-#            - '${PMA_PORT}:80'
-#        depends_on:
-#            - '${PMA_DB_ENGINE}'
-#        networks:
-#            - inteliotportal
-#
-#networks:
-#    inteliotportal:
-#        driver: bridge

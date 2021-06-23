@@ -27,7 +27,8 @@ return [
 
     'connections' => [
         'default' => [
-            'host' => env('MQTT_HOST', 'localhost'),
+            'external_endpoint' => env('MQTT_EXTERNAL_ENDPOINT', 'vernemq'),
+            'host' => env('MQTT_HOST', 'vernemq'),
             'port' => (int)env('MQTT_PORT', 1883),
             'client_id' => env('MQTT_CLIENT_ID'),
             'username' => env('MQTT_USERNAME'),

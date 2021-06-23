@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-import { Toaster } from 'react-hot-toast';
 import {
   CBadge,
   CButton,
@@ -18,15 +17,17 @@ import {
   CTabContent,
   CTabPane,
   CTabs
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import { Toaster } from 'react-hot-toast';
 
+import { DEVICE_VIEW_TAB_OPTIONS } from '../../data/options';
+import { stripStringAfterLastSlash } from '../../utils/utils';
 import { fetchDeviceStartAsync, updateDeviceStartAsync } from '../../redux/device/device.actions';
-import { submitShutdownStartAsync } from '../../redux/shutdown/shutdown.actions'
-import { submitRebootStartAsync } from '../../redux/reboot/reboot.actions'
-import { submitDecommissionStartAsync } from '../../redux/decommission/decommission.actions'
+import { submitShutdownStartAsync } from '../../redux/shutdown/shutdown.actions';
+import { submitRebootStartAsync } from '../../redux/reboot/reboot.actions';
+import { submitDecommissionStartAsync } from '../../redux/decommission/decommission.actions';
 
-import Error from '../../components/Error/Error';
 import EditableText from '../../components/EditableText/EditableText';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DevicePropertyCard from '../../components/DevicePropertyCard/DevicePropertyCard';
@@ -41,11 +42,15 @@ import SubmitFotaCardForm from '../../containers/SubmitFotaCardForm/SubmitFotaCa
 import SubmitSotaCardForm from '../../containers/SubmitSotaCardForm/SubmitSotaCardForm';
 import SubmitCotaCardForm from '../../containers/SubmitCotaCardForm/SubmitCotaCardForm';
 import ConnectDeviceModal from '../../components/ConnectDeviceModal/ConnectDeviceModal';
+import ContentError from '../../components/ContentError/ContentError';
 
 const ViewDevice = (props) => {
 
   const deviceUniqueId = props.match.params.id;
+  const activeTab = props.match.params.tab;
   const {
+    history,
+    match,
     device,
     isFetchingDevice,
     fetchDeviceErrorMessage,
@@ -64,9 +69,21 @@ const ViewDevice = (props) => {
   const [showRebootModal, setShowRebootModal] = useState(false);
   const [showDecommissionModal, setShowDecommissionModal] = useState(false);
 
+  const DEFAULT_ACTIVE_TAB = 'overview';
+
   useEffect(() => {
+    if (!activeTab) {
+      history.push(`${match.url}/${DEFAULT_ACTIVE_TAB}`);
+    }
+    if (activeTab && !DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
+      history.push(`${stripStringAfterLastSlash(match.url)}${DEFAULT_ACTIVE_TAB}`);
+    }
     fetchDeviceStartAsync(deviceUniqueId);
-  }, [])
+  }, []);
+
+  const handleNavChange = (tab) => {
+    history.push(`${stripStringAfterLastSlash(match.url)}${tab}`);
+  };
 
   const confirmShutdown = () => {
     setShowShutdownModal(!showShutdownModal);
@@ -86,7 +103,7 @@ const ViewDevice = (props) => {
   if (isFetchingDevice) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceErrorMessage) {
-    return (<Error errorMessage={fetchDeviceErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceErrorMessage}/>);
   }
 
   return (
@@ -133,73 +150,73 @@ const ViewDevice = (props) => {
               </CRow>
             </CCardHeader>
             <CCardBody>
-              <CTabs activeTab="overview">
+              <CTabs activeTab={activeTab}>
                 <CNav variant="tabs">
                   <CNavItem>
-                    <CNavLink data-tab="overview">
+                    <CNavLink data-tab="overview" onClick={() => handleNavChange('overview')}>
                       Overview
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="metrics">
+                    <CNavLink data-tab="metrics" onClick={() => handleNavChange('metrics')}>
                       Metrics
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="aota">
+                    <CNavLink data-tab="aota" onClick={() => handleNavChange('aota')}>
                       Application OTA Update
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="fota">
+                    <CNavLink data-tab="fota" onClick={() => handleNavChange('fota')}>
                       Firmware OTA Update
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="sota">
+                    <CNavLink data-tab="sota" onClick={() => handleNavChange('sota')}>
                       Software OTA Update
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="cota">
+                    <CNavLink data-tab="cota" onClick={() => handleNavChange('cota')}>
                       Configuration OTA Update
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="command-histories">
+                    <CNavLink data-tab="command-histories" onClick={() => handleNavChange('command-histories')}>
                       Command Histories
                     </CNavLink>
                   </CNavItem>
                   <CNavItem>
-                    <CNavLink data-tab="event-histories">
+                    <CNavLink data-tab="event-histories" onClick={() => handleNavChange('event-histories')}>
                       Event Histories
                     </CNavLink>
                   </CNavItem>
                 </CNav>
                 <CTabContent>
                   <CTabPane className="m-3" data-tab="overview">
-                    <DevicePropertyCard device={device}/>
+                    {activeTab === 'overview' && <DevicePropertyCard device={device}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="metrics">
-                    <MetricsCard deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'metrics' && <MetricsCard deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="aota">
-                    <SubmitAotaCardForm deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'aota' && <SubmitAotaCardForm deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="fota">
-                    <SubmitFotaCardForm deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'fota' && <SubmitFotaCardForm deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="sota">
-                    <SubmitSotaCardForm deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'sota' && <SubmitSotaCardForm deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="cota">
-                    <SubmitCotaCardForm deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'cota' && <SubmitCotaCardForm deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="command-histories">
-                    <CommandHistoriesDataTable deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'command-histories' && <CommandHistoriesDataTable deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                   <CTabPane className="m-3" data-tab="event-histories">
-                    <EventHistoriesDataTable deviceUniqueId={deviceUniqueId}/>
+                    {activeTab === 'event-histories' && <EventHistoriesDataTable deviceUniqueId={deviceUniqueId}/>}
                   </CTabPane>
                 </CTabContent>
               </CTabs>
@@ -213,16 +230,16 @@ const ViewDevice = (props) => {
       />}
       {showShutdownModal &&
       <ShutDownDeviceModal show={showShutdownModal} onClose={() => setShowShutdownModal(!showShutdownModal)}
-                            onConfirm={confirmShutdown}
+                           onConfirm={confirmShutdown}
       />}
       {showRebootModal &&
       <RebootDeviceModal show={showRebootModal} onClose={() => setShowRebootModal(!showRebootModal)}
-                          onConfirm={confirmReboot}
+                         onConfirm={confirmReboot}
       />}
       {showDecommissionModal &&
       <DecommissionDeviceModal show={showDecommissionModal}
-                                onClose={() => setShowDecommissionModal(!showDecommissionModal)}
-                                onConfirm={confirmDecommission}
+                               onClose={() => setShowDecommissionModal(!showDecommissionModal)}
+                               onConfirm={confirmDecommission}
       />}
       <Toaster/>
     </>

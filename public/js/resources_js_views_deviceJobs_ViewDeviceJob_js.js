@@ -504,54 +504,6 @@ var Duration = function Duration(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Error/Error.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Error/Error.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Error = function Error(_ref) {
-  var errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
-    className: "justify-content-center",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-      md: "6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "clearfix text-center mt-5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          size: "5xl",
-          name: "cil-warning"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-          className: "pt-3",
-          children: "Oops! Something went wrong."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-muted",
-          children: errorMessage || 'The resource you are looking for was not found.'
-        })]
-      })
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
-
-/***/ }),
-
 /***/ "./resources/js/components/Modal/Modal.js":
 /*!************************************************!*\
   !*** ./resources/js/components/Modal/Modal.js ***!
@@ -763,10 +715,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_knob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! primereact/knob */ "./node_modules/primereact/knob.js");
 /* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/useDeviceJobStatusRenderer */ "./resources/js/hooks/useDeviceJobStatusRenderer.js");
-/* harmony import */ var _components_Duration_Duration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Duration/Duration */ "./resources/js/components/Duration/Duration.js");
-/* harmony import */ var _components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/StartTimeEndTime/StartTimeEndTime */ "./resources/js/components/StartTimeEndTime/StartTimeEndTime.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/useDeviceJobStatusRenderer */ "./resources/js/hooks/useDeviceJobStatusRenderer.js");
+/* harmony import */ var _components_Duration_Duration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Duration/Duration */ "./resources/js/components/Duration/Duration.js");
+/* harmony import */ var _components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/StartTimeEndTime/StartTimeEndTime */ "./resources/js/components/StartTimeEndTime/StartTimeEndTime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -790,6 +743,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
   var deviceJob = _ref.deviceJob,
       completedPercentage = _ref.completedPercentage,
@@ -800,7 +754,7 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
       startedAt = _ref.startedAt,
       completedAt = _ref.completedAt,
       durationInMs = _ref.durationInMs;
-  var renderDeviceJobStatus = (0,_hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_5__.default)();
+  var renderDeviceJobStatus = (0,_hooks_useDeviceJobStatusRenderer__WEBPACK_IMPORTED_MODULE_6__.default)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
@@ -819,57 +773,57 @@ var DeviceJobStatusCard = function DeviceJobStatusCard(_ref) {
 
   var series = [successfulDevicesCount, failedDevicesCount, processingDevicesCount, pendingDevicesCount];
   var duration = moment__WEBPACK_IMPORTED_MODULE_1___default().duration(durationInMs);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardHeader, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardHeader, {
       children: "Device job status"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
         className: "m-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
           md: "6",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h4", {
               className: "mr-3 d-inline-block",
               children: "Results"
             }), renderDeviceJobStatus(deviceJob)]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
             className: "d-flex flex-row align-items-center",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "mt-3 mr-5 text-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h6", {
-                children: "Completed"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(primereact_knob__WEBPACK_IMPORTED_MODULE_2__.Knob, {
-                value: completedPercentage,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h6", {
+                children: "Completed %"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(primereact_knob__WEBPACK_IMPORTED_MODULE_2__.Knob, {
+                value: (0,_utils_utils__WEBPACK_IMPORTED_MODULE_5__.roundToTwoDecimalPlaces)(completedPercentage),
                 valueTemplate: "{value}%",
                 strokeWidth: 5,
                 valueColor: "#00e396",
                 size: 250,
                 readOnly: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_3__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_3__.default, {
               options: chartOptions,
               series: series,
               type: "pie",
               height: 200
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
           md: "6",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h4", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h4", {
               children: "Duration"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
             className: "d-flex flex-column justify-content-center",
             style: {
               height: '250px'
             },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_Duration_Duration__WEBPACK_IMPORTED_MODULE_6__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Duration_Duration__WEBPACK_IMPORTED_MODULE_7__.default, {
               className: "mb-5",
               hours: duration.hours(),
               minutes: duration.minutes(),
               seconds: duration.seconds()
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_StartTimeEndTime_StartTimeEndTime__WEBPACK_IMPORTED_MODULE_8__.default, {
               startTime: startedAt,
               endTime: completedAt
             })]
@@ -1341,12 +1295,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
 /* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
 /* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
+/* harmony export */   "roundToTwoDecimalPlaces": () => (/* binding */ roundToTwoDecimalPlaces),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
 /* harmony export */   "filterDateTimeRange": () => (/* binding */ filterDateTimeRange),
 /* harmony export */   "toastHelper": () => (/* binding */ toastHelper),
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
+/* harmony export */   "stripStringAfterLastSlash": () => (/* binding */ stripStringAfterLastSlash),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
@@ -1357,14 +1313,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -1378,7 +1333,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -1430,6 +1384,9 @@ var isValidJsonString = function isValidJsonString(str) {
   }
 
   return true;
+};
+var roundToTwoDecimalPlaces = function roundToTwoDecimalPlaces(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -1484,7 +1441,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -1495,10 +1452,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -1525,6 +1482,13 @@ var truncateToStringEllipsis = function truncateToStringEllipsis(str) {
 
   return null;
 };
+var stripStringAfterLastSlash = function stripStringAfterLastSlash(str) {
+  if (typeof str === 'string' || str instanceof String) {
+    return str.substr(0, str.lastIndexOf('/') + 1);
+  }
+
+  return str;
+};
 var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, location) {
   setTimeout(function () {
     history.push(location);
@@ -1532,7 +1496,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1541,10 +1505,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1553,10 +1517,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1565,10 +1529,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1577,7 +1541,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -1602,7 +1566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_deviceJob_deviceJob_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceJob/deviceJob.actions */ "./resources/js/redux/deviceJob/deviceJob.actions.js");
 /* harmony import */ var _redux_deviceJob_deviceJob_selectors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/deviceJob/deviceJob.selectors */ "./resources/js/redux/deviceJob/deviceJob.selectors.js");
 /* harmony import */ var _components_DeviceJobDetailsCard_DeviceJobDetailsCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/DeviceJobDetailsCard/DeviceJobDetailsCard */ "./resources/js/components/DeviceJobDetailsCard/DeviceJobDetailsCard.js");
-/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
+/* harmony import */ var _components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/ContentError/ContentError */ "./resources/js/components/ContentError/ContentError.js");
 /* harmony import */ var _containers_DeviceJobStatusCard_DeviceJobStatusCard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../containers/DeviceJobStatusCard/DeviceJobStatusCard */ "./resources/js/containers/DeviceJobStatusCard/DeviceJobStatusCard.js");
 /* harmony import */ var _components_DeviceJobDevicesCard_DeviceJobDevicesCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DeviceJobDevicesCard/DeviceJobDevicesCard */ "./resources/js/components/DeviceJobDevicesCard/DeviceJobDevicesCard.js");
 /* harmony import */ var _components_DeleteDeviceJobModal_DeleteDeviceJobModal__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DeleteDeviceJobModal/DeleteDeviceJobModal */ "./resources/js/components/DeleteDeviceJobModal/DeleteDeviceJobModal.js");
@@ -1673,7 +1637,7 @@ var ViewDeviceJob = function ViewDeviceJob(props) {
   };
 
   if (fetchDeviceJobErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_10__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_10__.default, {
       errorMessage: fetchDeviceJobErrorMessage
     });
   }
@@ -1813,7 +1777,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-device-job-devices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-device-job-devices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-device-job-devices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-device-job-devices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-device-job-devices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-device-job-devices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-device-job-devices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td:not([colspan]) {\r\n    cursor: auto;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-thead > tr > th,\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-provisioned {\r\n    background-color: #FFD8B2;\r\n    color: #805B36;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@-webkit-keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n@keyframes pulse {\r\n    0% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n    50% {\r\n        background-color: rgba(165, 165, 165, 0.3)\r\n    }\r\n    100% {\r\n        background-color: rgba(165, 165, 165, 0.1)\r\n    }\r\n}\r\n\r\n.datatable-device-job-devices *:not(.table-header) {\r\n    font-size: 14px;\r\n}\r\n\r\n.datatable-device-job-devices .p-paginator .p-paginator-current {\r\n    margin-left: auto;\r\n}\r\n\r\n.datatable-device-job-devices .p-progressbar {\r\n    height: .5rem;\r\n    background-color: #D8DADC;\r\n}\r\n\r\n.datatable-device-job-devices .p-progressbar .p-progressbar-value {\r\n    background-color: #607D8B;\r\n}\r\n\r\n.datatable-device-job-devices .table-header {\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.datatable-device-job-devices .p-datepicker {\r\n    min-width: 25rem;\r\n}\r\n\r\n.datatable-device-job-devices .p-datepicker td {\r\n    font-weight: 400;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-header {\r\n    padding: 1rem;\r\n    text-align: left;\r\n    font-size: 1.5em;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-paginator {\r\n    padding: 1rem;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-thead > tr > th {\r\n    text-align: left;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td:not([colspan]) {\r\n    cursor: auto;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-dropdown-label:not(.p-placeholder) {\r\n    text-transform: uppercase;\r\n}\r\n\r\n.datatable-device-job-devices .p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n    display: none;\r\n}\r\n\r\n@media screen and (max-width: 960px) {\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-thead > tr > th,\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tfoot > tr > td {\r\n        display: none !important;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr {\r\n        border-bottom: 1px solid var(--layer-2);\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td {\r\n        text-align: left;\r\n        display: block;\r\n        border: 0 none !important;\r\n        width: 100% !important;\r\n        float: left;\r\n        clear: left;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-column-title {\r\n        padding: .4rem;\r\n        min-width: 30%;\r\n        display: inline-block;\r\n        margin: -.4rem 1rem -.4rem -.4rem;\r\n        font-weight: bold;\r\n    }\r\n\r\n    .datatable-device-job-devices .p-datatable.p-datatable-device-job-devices .p-datatable-tbody > tr > td .p-progressbar {\r\n        margin-top: .5rem;\r\n    }\r\n}\r\n\r\n.p-column-filter {\r\n    width: 100%;\r\n}\r\n\r\n.device-badge {\r\n    border-radius: 2px;\r\n    padding: .25em .5rem;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 12px;\r\n    letter-spacing: .3px;\r\n}\r\n\r\n.device-badge.status-registered {\r\n    background-color: #B3E5FC;\r\n    color: #23547b;\r\n}\r\n\r\n/*.device-badge.status-provisioned {*/\r\n/*    background-color: #FFD8B2;*/\r\n/*    color: #805B36;*/\r\n/*}*/\r\n\r\n.device-badge.status-online {\r\n    background-color: #C8E6C9;\r\n    color: #256029;\r\n}\r\n\r\n.device-badge.status-offline {\r\n    background: #FFCDD2;\r\n    color: #C63737;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

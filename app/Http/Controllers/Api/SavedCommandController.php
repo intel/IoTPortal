@@ -2,140 +2,90 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\SavedCommands\CreateSavedCommandAction;
+use App\Actions\SavedCommands\DeleteMultipleSavedCommandsAction;
+use App\Actions\SavedCommands\FilterDataTableSavedCommandsAction;
+use App\Actions\SavedCommands\FindSavedCommandByIdOrUniqueIdAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroySelectedSavedCommandRequest;
 use App\Http\Requests\StoreSavedCommandRequest;
 use App\Http\Requests\ValidateSavedCommandFieldsRequest;
-use App\Models\SavedCommand;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 
 class SavedCommandController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,App\Models\SavedCommand')->only(['index', 'options']);
+        $this->middleware('can:create,App\Models\SavedCommand')->only('store');
+        $this->middleware('can:deleteMany,App\Models\SavedCommand')->only('destroySelected');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDataTableSavedCommandsAction $filterDataTableSavedCommandsAction
      * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request, FilterDataTableSavedCommandsAction $filterDataTableSavedCommandsAction): JsonResponse
     {
-        $query = Auth::user()->savedCommands();
+        $savedCommands = $filterDataTableSavedCommandsAction->execute($request->all());
 
-        if ($request->has('filters')) {
-            $filters = json_decode($request->input('filters'));
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
-
-                if ($key === 'name') $query->nameLike($value->value);
-
-                if ($key === 'command_name') $query->commandNameLike($value->value);
-
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value)
-                            ->orWhere->commandNameLike($value->value);
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->sortOrder === '1')
-                $query->orderBy($request->sortField);
-            else
-                $query->orderByDesc($request->sortField);
-        }
-
-        $maxRows = Config::get('constants.index_max_rows');
-        $rows = min((int) $request->input('rows', 10), $maxRows);
-
-        $savedCommands = $query->paginate($rows);
-
-        return Helper::apiResponseHttpOk(['savedCommands' => $savedCommands]);
+        return $this->apiOk(['savedCommands' => $savedCommands]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param StoreSavedCommandRequest $request
+     * @param CreateSavedCommandAction $createSavedCommandAction
      * @return JsonResponse
      */
-    public function store(StoreSavedCommandRequest $request)
+    public function store(StoreSavedCommandRequest $request, CreateSavedCommandAction $createSavedCommandAction): JsonResponse
     {
-        $savedCommand = Auth::user()->savedCommands()->create([
-            'name' => $request->name,
-            'command_name' => $request->command,
-            'payload' => is_null($request->payload) ? null : json_encode($request->input('payload')),
-        ]);
+        $savedCommand = $createSavedCommandAction->execute($request->user(), $request->validated());
 
-        return $savedCommand->exists
-            ? Helper::apiResponseHttpOk(['savedCommand' => $savedCommand])
-            : Helper::apiResponseHttpInternalServerError('Failed to create saved command.');
+        return $this->apiOk(['savedCommand' => $savedCommand]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param FindSavedCommandByIdOrUniqueIdAction $findSavedCommandByIdOrUniqueIdAction
+     * @param string $id
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(FindSavedCommandByIdOrUniqueIdAction $findSavedCommandByIdOrUniqueIdAction, string $id): JsonResponse
     {
-        $savedCommand = SavedCommand::id($id)
-            ->orWhere->uniqueId($id)
-            ->first();
+        $savedCommand = $findSavedCommandByIdOrUniqueIdAction->execute($id);
 
-        return Helper::apiResponseHttpOk(['savedCommand' => $savedCommand]);
-    }
+        $this->authorize('view', $savedCommand);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param SavedCommand $savedCommand
-     * @return Response
-     */
-    public function update(Request $request, SavedCommand $savedCommand)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param SavedCommand $savedCommand
-     * @return Response
-     */
-    public function destroy(SavedCommand $savedCommand)
-    {
-        //
+        return $this->apiOk(['savedCommand' => $savedCommand]);
     }
 
     /**
      * Remove the specified resources from storage.
      *
      * @param DestroySelectedSavedCommandRequest $request
+     * @param DeleteMultipleSavedCommandsAction $deleteMultipleSavedCommandsAction
      * @return JsonResponse
      */
-    public function destroySelected(DestroySelectedSavedCommandRequest $request)
+    public function destroySelected(DestroySelectedSavedCommandRequest $request, DeleteMultipleSavedCommandsAction $deleteMultipleSavedCommandsAction): JsonResponse
     {
-        $success = Auth::user()->savedCommands()->idIn($request->ids)->delete();
+        $success = $deleteMultipleSavedCommandsAction->execute($request->ids);
 
-        return Helper::apiResponseHttpOk([], $success);
+        return $this->apiOk([], $success);
     }
 
     /**
      * @param Request $request
      * @return JsonResponse
      */
-    public function options(Request $request)
+    public function options(Request $request): JsonResponse
     {
         $query = Auth::user()->savedCommands();
 
@@ -143,7 +93,7 @@ class SavedCommandController extends Controller
             $query->nameLike($request->name);
         }
 
-        return Helper::apiResponseHttpOk(['savedCommands' => $query->getOptions()]);
+        return $this->apiOk(['savedCommands' => $query->getOptions()]);
     }
 
     /**
@@ -151,8 +101,8 @@ class SavedCommandController extends Controller
      * @param ValidateSavedCommandFieldsRequest $request
      * @return JsonResponse
      */
-    public function validateField(ValidateSavedCommandFieldsRequest $request)
+    public function validateField(ValidateSavedCommandFieldsRequest $request): JsonResponse
     {
-        return Helper::apiResponseHttpOk();
+        return $this->apiOk();
     }
 }

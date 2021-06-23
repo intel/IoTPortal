@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Jobs\ProcessDeviceJob;
+use App\Exceptions\DeviceTimeoutException;
+use App\Jobs\ProcessDeviceJobJob;
 use App\Jobs\SendDeviceCommandJob;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Queue;
@@ -32,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
 
             $jobModel = unserialize($payload['data']['command']);
 
-            if ($jobModel instanceof ProcessDeviceJob) {
+            if ($jobModel instanceof ProcessDeviceJobJob) {
                 $jobModel->getDeviceJob()->update([
                     'error' => 'An error has occurred.',
                     'completed_at' => now(),
@@ -40,10 +41,21 @@ class AppServiceProvider extends ServiceProvider
             }
 
             if ($jobModel instanceof SendDeviceCommandJob) {
-                $jobModel->getCommandHistory()->update([
-                    'error' => 'An error has occurred.',
-                    'completed_at' => now(),
-                ]);
+                if ($event->exception instanceof DeviceTimeoutException) {
+                    $jobModel->getCommandHistory()->update([
+                        'error' => $event->exception->getMessage(),
+                        'completed_at' => now(),
+                    ]);
+                } else {
+                    $jobModel->getCommandHistory()->update([
+                        'error' => 'An error has occurred.',
+                        'completed_at' => now(),
+                    ]);
+                }
+//                $jobModel->getCommandHistory()->update([
+//                    'error' => 'An error has occurred.',
+//                    'completed_at' => now(),
+//                ]);
             }
         });
     }

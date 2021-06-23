@@ -54,15 +54,6 @@ const HeaderDropdown = ({profile, isFetchingProfile, fetchProfileStartAsync}) =>
           >
             {isFetchingProfile ? (<Skeleton/>) : <strong>{profile.email}</strong>}
           </CDropdownItem>
-          <CDropdownItem>
-            <CIcon name="cil-user" className="mfe-2"/>
-            Profile
-          </CDropdownItem>
-          <CDropdownItem>
-            <CIcon name="cil-settings" className="mfe-2"/>
-            Settings
-          </CDropdownItem>
-          <CDropdownItem divider/>
           <CDropdownItem href={`${APP_URL}/logout`} onClick={submitLogout}>
             <CIcon name="cil-account-logout" className="mfe-2"/>
             Logout

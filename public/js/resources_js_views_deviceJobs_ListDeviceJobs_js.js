@@ -1032,12 +1032,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
 /* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
 /* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
+/* harmony export */   "roundToTwoDecimalPlaces": () => (/* binding */ roundToTwoDecimalPlaces),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
 /* harmony export */   "filterDateTimeRange": () => (/* binding */ filterDateTimeRange),
 /* harmony export */   "toastHelper": () => (/* binding */ toastHelper),
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
+/* harmony export */   "stripStringAfterLastSlash": () => (/* binding */ stripStringAfterLastSlash),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
@@ -1048,14 +1050,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -1069,7 +1070,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -1121,6 +1121,9 @@ var isValidJsonString = function isValidJsonString(str) {
   }
 
   return true;
+};
+var roundToTwoDecimalPlaces = function roundToTwoDecimalPlaces(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -1175,7 +1178,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -1186,10 +1189,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -1216,6 +1219,13 @@ var truncateToStringEllipsis = function truncateToStringEllipsis(str) {
 
   return null;
 };
+var stripStringAfterLastSlash = function stripStringAfterLastSlash(str) {
+  if (typeof str === 'string' || str instanceof String) {
+    return str.substr(0, str.lastIndexOf('/') + 1);
+  }
+
+  return str;
+};
 var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, location) {
   setTimeout(function () {
     history.push(location);
@@ -1223,7 +1233,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1232,10 +1242,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1244,10 +1254,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1256,10 +1266,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -1268,7 +1278,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 

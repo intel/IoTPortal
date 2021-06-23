@@ -32,6 +32,7 @@ class DeviceFactory extends Factory
             'system_manufacturer' => $this->faker->company,
             'system_product_name' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             'total_memory' => $this->faker->numberBetween($min = 50000, $max = 900000),
+            'last_seen' => $this->faker->dateTime(),
         ];
     }
 }

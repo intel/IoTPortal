@@ -2615,7 +2615,7 @@ var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
 
 /***/ "./resources/js/components/LineChartCard/LineChartCard.js":
 /*!****************************************************************!*\
-  !*** ./resources/js/components/LineChartCard/LineChartCard.js ***!
+  !*** ./resources/js/components/ChartCard/ChartCard.js ***!
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -3151,7 +3151,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4007,7 +4007,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4165,7 +4165,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4323,7 +4323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 

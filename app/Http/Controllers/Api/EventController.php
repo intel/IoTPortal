@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use Illuminate\Http\JsonResponse;
@@ -10,12 +9,17 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:view,device')->only('options');
+    }
+
     /**
      * @param Request $request
      * @param Device $device
      * @return JsonResponse
      */
-    public function options(Request $request, Device $device)
+    public function options(Request $request, Device $device): JsonResponse
     {
         $query = $device->events();
 
@@ -23,6 +27,6 @@ class EventController extends Controller
             $query->nameLike($request->name);
         }
 
-        return Helper::apiResponseHttpOk(['deviceEvents' => $query->getOptions()]);
+        return $this->apiOk(['deviceEvents' => $query->getOptions()]);
     }
 }

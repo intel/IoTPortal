@@ -2,154 +2,108 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\Commands\TriggerCommandAction;
+use App\Actions\Devices\CreateDeviceAction;
+use App\Actions\Devices\DeleteMultipleDevicesAction;
+use App\Actions\Devices\FilterDataTableDevicesAction;
+use App\Actions\Devices\FindDeviceByIdOrUniqueIdAction;
+use App\Actions\Devices\RegisterDeviceAction;
+use App\Actions\Devices\UpdateDeviceAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DestroySelectedDeviceRequest;
+use App\Http\Requests\DestroySelectedDevicesRequest;
+use App\Http\Requests\RegisterDeviceRequest;
 use App\Http\Requests\StoreDeviceRequest;
 use App\Http\Requests\TriggerCommandRequest;
 use App\Http\Requests\UpdateDeviceRequest;
 use App\Http\Requests\ValidateDeviceFieldsRequest;
-use App\Jobs\ProcessDeviceJob;
 use App\Models\Device;
-use App\Models\DeviceStatus;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class DeviceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,App\Models\Device')->only('index');
+        $this->middleware('can:create,App\Models\Device')->only('store');
+        $this->middleware('can:update,device')->only('update');
+        $this->middleware('can:deleteMany,App\Models\Device')->only('destroySelected');
+        $this->middleware('can:triggerCommand,device')->only('commands');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDataTableDevicesAction $filterDataTableDevicesAction
      * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request, FilterDataTableDevicesAction $filterDataTableDevicesAction): JsonResponse
     {
-        $query = Auth::user()->devices()->with('deviceCategory:id,name', 'deviceStatus:id,name');
+        $devices = $filterDataTableDevicesAction->execute($request->all());
 
-        if ($request->has('deviceGroupId')) $query->deviceGroupId($request->deviceGroupId);
-
-        if ($request->has('deviceGroupUniqueId')) $query->deviceGroupUniqueId($request->deviceGroupUniqueId);
-
-        if ($request->has('filters')) {
-            $filters = json_decode($request->filters);
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
-
-                if ($key === 'name') $query->nameLike($value->value);
-
-                if ($key === 'bios_vendor') $query->biosVendorLike($value->value);
-
-                if ($key === 'bios_version') $query->biosVersionLike($value->value);
-
-                if ($key === 'device_category_id') $query->deviceCategoryId($value->value);
-
-                if ($key === 'device_status_id') $query->deviceStatusId($value->value);
-
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value)
-                            ->orWhere->biosVendorLike($value->value)
-                            ->orWhere->biosVersionLike($value->value);
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->sortOrder === '1')
-                $query->orderBy($request->sortField);
-            else
-                $query->orderByDesc($request->sortField);
-        }
-
-        if ($request->boolean('fetchAll') === true) {
-            $devices = $query->paginate($query->count());
-        } else {
-            $maxRows = Config::get('constants.index_max_rows');
-            $rows = min((int) $request->input('rows', 10), $maxRows);
-
-            $devices = $query->paginate($rows);
-        }
-
-        return Helper::apiResponseHttpOk(['devices' => $devices]);
+        return $this->apiOk(['devices' => $devices]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param StoreDeviceRequest $request
+     * @param CreateDeviceAction $createDeviceAction
      * @return JsonResponse
      */
-    public function store(StoreDeviceRequest $request)
+    public function store(StoreDeviceRequest $request, CreateDeviceAction $createDeviceAction): JsonResponse
     {
-        $device = Auth::user()->devices()->create([
-            'name' => $request->name,
-            'device_category_id' => $request->device_category,
-            'device_status_id' => DeviceStatus::getRegistered()->id,
-        ]);
+        $device = $createDeviceAction->execute($request->user(), $request->validated());
 
-        if ($device->exists) {
-            return Helper::apiResponseHttpOk(['device' => $device]);
-        }
-
-        return Helper::apiResponseHttpInternalServerError('Failed to create device.');
+        return $this->apiOk(['device' => $device]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param FindDeviceByIdOrUniqueIdAction $findDeviceByIdOrUniqueIdAction
+     * @param string $id
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(FindDeviceByIdOrUniqueIdAction $findDeviceByIdOrUniqueIdAction, string $id): JsonResponse
     {
-        $device = Device::id($id)
-            ->orWhere->uniqueId($id)
-            ->with('deviceCategory:id,name', 'deviceStatus:id,name')->first();
+        $device = $findDeviceByIdOrUniqueIdAction->execute($id);
 
-        return Helper::apiResponseHttpOk(['device' => $device]);
+        $this->authorize('view', $device);
+
+        return $this->apiOk(['device' => $device]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UpdateDeviceRequest $request
+     * @param UpdateDeviceAction $updateDeviceAction
      * @param Device $device
      * @return JsonResponse
      */
-    public function update(UpdateDeviceRequest $request, Device $device)
+    public function update(UpdateDeviceRequest $request, UpdateDeviceAction $updateDeviceAction, Device $device): JsonResponse
     {
-        $success = $device->update([
-            'name' => $request->input('name', $device->name),
-            'device_category_id' => $request->input('device_category', $device->device_category_id),
-        ]);
+        $success = $updateDeviceAction->execute($device, $request->validated());
 
-        if ($success) {
-            return Helper::apiResponseHttpOk(['device' => $device->load('deviceCategory:id,name', 'deviceStatus:id,name')]);
-        }
-
-        return Helper::apiResponseHttpInternalServerError('Failed to update device.');
+        return $success
+            ? $this->apiOk(['device' => $device->load('deviceCategory:id,name', 'deviceStatus:id,name')])
+            : $this->apiInternalServerError('Failed to update device.');
     }
 
     /**
      * Remove the specified resources from storage.
      *
-     * @param DestroySelectedDeviceRequest $request
+     * @param DestroySelectedDevicesRequest $request
+     * @param DeleteMultipleDevicesAction $deleteMultipleDevicesAction
      * @return JsonResponse
      */
-    public function destroySelected(DestroySelectedDeviceRequest $request)
+    public function destroySelected(DestroySelectedDevicesRequest $request, DeleteMultipleDevicesAction $deleteMultipleDevicesAction): JsonResponse
     {
-        $success = Auth::user()->devices()->idIn($request->ids)->delete();
+        $success = $deleteMultipleDevicesAction->execute($request->ids);
 
-        return Helper::apiResponseHttpOk([], $success);
+        return $this->apiOk([], $success);
     }
 
     /**
@@ -157,129 +111,30 @@ class DeviceController extends Controller
      * @param ValidateDeviceFieldsRequest $request
      * @return JsonResponse
      */
-    public function validateField(ValidateDeviceFieldsRequest $request)
+    public function validateField(ValidateDeviceFieldsRequest $request): JsonResponse
     {
-        return Helper::apiResponseHttpOk();
+        return $this->apiOk();
     }
 
-    public function commands(TriggerCommandRequest $request, Device $device)
+    public function commands(TriggerCommandRequest $request, TriggerCommandAction $triggerCommandAction, Device $device): JsonResponse
     {
-        $command = $device->commands()->name($request->command)->first();
+        $commandHistory = $triggerCommandAction->execute($device, $request->validated());
 
-        if ($command) {
-            $payloadJson = 'null';
+        return $this->apiOk(['commandHistory' => $commandHistory]);
+    }
 
-            if ($request->has('payload')) {
-                $payloadJson = json_encode(Helper::mapArrayKeyByArray($request->payload, config('constants.commands.' . $command->name . '.configuration_map')));
-            }
+    public function register(RegisterDeviceRequest $request, RegisterDeviceAction $registerDeviceAction): JsonResponse
+    {
+        $device = $registerDeviceAction->execute($request->validated(), $request->bearerToken());
 
-            $commandHistory = $command->commandHistories()->create([
-                'payload' => $payloadJson === 'null' ? null : $payloadJson,
-                'started_at' => now(),
+//        TODO: Possible refactoring, remove if statement since it is not necessary.
+        if ($device) {
+            return $this->apiOk([
+                'mqttEndpoint' => config('mqttclient.connections.default.external_endpoint'),
+                'device' => $device
             ]);
-
-            Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $command->method_name . '/?$rid=' . $commandHistory->id, $payloadJson);
-            return Helper::apiResponseHttpOk();
         }
 
-        return Helper::apiResponseHttpBadRequest('Command not found for device.');
+        return $this->apiBadRequest('Invalid device_connection_key.');
     }
-
-    public function register(Request $request)
-    {
-        if ($request->has('unique_id') && $request->bearerToken()) {
-            $user = User::uniqueId($request->unique_id)->first();
-
-            if ($user && $user->validateDeviceConnectionKey($request->bearerToken())) {
-                if ($request->has('device_unique_id')) {
-                    $device = $user->devices()->uniqueId($request->device_unique_id)->first();
-
-                    if ($device) {
-                        return Helper::apiResponseHttpOk(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
-                    }
-
-                    return Helper::apiResponseHttpBadRequest('device_unique_id provided not found.');
-                } else {
-                    $device = $user->devices()->create([
-                        'status_id' => DeviceStatus::getRegistered()->id,
-                    ]);
-
-                    return Helper::apiResponseHttpOk(['mqttEndpoint' => config('mqttclient.connections.default.host'), 'device' => $device]);
-                }
-            }
-        }
-
-        return Helper::apiResponseHttpBadRequest('Invalid device_connection_key.');
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    public function methods(Request $request, Device $device)
-//    {
-//        $methodName = $request->input('method_name');
-//
-//        switch ($methodName) {
-//            case config('constants.mqtt_methods.aota'):
-//                return $this->ota($device, $methodName, $request->input('payload'), config('constants.aota_configurations_map'));
-//            case config('constants.mqtt_methods.fota'):
-//                return $this->ota($device, $methodName, $request->input('payload'), config('constants.fota_configurations_map'));
-//            case config('constants.mqtt_methods.sota'):
-//                return $this->ota($device, $methodName, $request->input('payload'), config('constants.sota_configurations_map'));
-//            case config('constants.mqtt_methods.cota'):
-//                return $this->ota($device, $methodName, $request->input('payload'), config('constants.cota_configurations_map'));
-//            case config('constants.mqtt_methods.shutdown_device'):
-//            case config('constants.mqtt_methods.reboot_device'):
-//            case config('constants.mqtt_methods.decommission_device'):
-//                return $this->powerControls($methodName, $device);
-//            default:
-//                return response(['result' => [], 'success' => false, 'errors' => 'Invalid methodName.', 'messages' => []], Response::HTTP_BAD_REQUEST);
-//        }
-//    }
-
-//    protected function ota(Device $device, string $methodName, array $payload, array $configurationsMap)
-//    {
-//        $payloadJson = json_encode(Helper::mapArrayKeyByArray($payload, $configurationsMap));
-//
-//        $commandHistory = $device->commandHistories()->create([
-//            'type' => config('constants.mqtt_methods_integer_types.' . $methodName),
-//            'payload' => $payloadJson,
-//        ]);
-//
-//        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, $payloadJson);
-//
-//        return response(['result' => ['payload' => $payload], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
-//    }
-//
-//    protected function powerControls(string $methodName, Device $device)
-//    {
-//        $commandHistory = $device->commandHistories()->create([
-//            'type' => config('constants.mqtt_methods_integer_types.' . $methodName),
-//        ]);
-//
-//        Helper::mqttPublish('iotportal/' . $device->unique_id . '/methods/POST/' . $methodName . '/?$rid=' . $commandHistory->id, null);
-//
-//        return response(['result' => ['payload' => null], 'success' => true, 'errors' => [], 'messages' => []], Response::HTTP_OK);
-//    }
 }

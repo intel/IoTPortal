@@ -4,17 +4,6 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require('./bootstrap');
-
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// require('./components/App');
-// require('./App');
-
 import 'react-app-polyfill/ie11'; // For IE 11 support
 import 'react-app-polyfill/stable';
 import 'core-js';
@@ -28,23 +17,36 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import * as serviceWorker from './serviceWorker';
 
-
-import { store, persistor } from './redux/store'
-
+import { persistor, store } from './redux/store'
 import { icons } from './assets/icons';
+
 import App from './App';
+import AppErrorBoundary from './components/AppErrorBoundary/AppErrorBoundary';
+
+require('./bootstrap');
+
+/**
+ * Next, we will create a fresh React component instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+// require('./components/App');
+// require('./App');
 
 React.icons = icons
 
 if (document.getElementById('app')) {
-    ReactDOM.render(
-        <Provider store={store}>
-            <PersistGate persistor={persistor}>
-                <App/>
-            </PersistGate>
-        </Provider>,
-        document.getElementById('app')
-    );
+  ReactDOM.render(
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <AppErrorBoundary>
+          <App/>
+        </AppErrorBoundary>
+      </PersistGate>
+    </Provider>,
+    document.getElementById('app')
+  );
 }
 
 // If you want your app to work offline and load faster, you can change

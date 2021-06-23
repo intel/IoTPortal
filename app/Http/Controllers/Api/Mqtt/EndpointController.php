@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Api\Mqtt;
 
+use App\Actions\Devices\UpdateDeviceLastSeenToNowAction;
+use App\Actions\Devices\UpdateDeviceStatusToOfflineAction;
+use App\Actions\Devices\UpdateDeviceStatusToOnlineAction;
+use App\Actions\Mqtt\CheckIfValidPortalMqttClientId;
+use App\Actions\Mqtt\CheckIfValidPortalMqttCredentials;
+use App\Actions\Mqtt\CheckIfValidPortalMqttTopics;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
-use App\Models\DeviceStatus;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class EndpointController extends Controller
 {
-    public function mqttEndpoint(Request $request)
+    public function mqttEndpoint(Request $request): JsonResponse
     {
         $verneMqHook = $request->header('vernemq-hook');
         Log::debug('Header vernemq-hook-> ' . $verneMqHook . ' ,MQTT request->' . json_encode($request->all()));
@@ -24,24 +30,26 @@ class EndpointController extends Controller
                 return $this->authOnSubscribe($request);
             } elseif ($verneMqHook === config('constants.vernemq_hook.auth_on_publish')) {
                 return $this->authOnPublish($request);
+            } elseif ($verneMqHook === config('constants.vernemq_hook.on_client_offline')) {
+                return $this->onClientOffline($request);
+            } elseif ($verneMqHook === config('constants.vernemq_hook.on_client_gone')) {
+                return $this->onClientGone($request);
             }
 
-            return Helper::mqttApiResponseHttpBadRequest(['error' => 'Header vernemq-hook is invalid.']);
+            return $this->apiMqttBadRequest(['error' => 'Header vernemq-hook is invalid.']);
         }
 
-        return Helper::mqttApiResponseHttpBadRequest(['error' => 'Header vernemq-hook is empty.']);
+        return $this->apiMqttBadRequest(['error' => 'Header vernemq-hook is empty.']);
     }
 
-    protected function authOnRegister(Request $request)
+    protected function authOnRegister(Request $request): JsonResponse
     {
         $username = $request->username;
         $password = $request->password;
         $clientId = $request->client_id;
 
-        $mqttConfig = config('mqttclient.connections.default');
-
-        if ($username === $mqttConfig['username'] && $password === $mqttConfig['password'] && $clientId === $mqttConfig['client_id']) {
-            return Helper::mqttApiResponseHttpOk('ok');
+        if ((new CheckIfValidPortalMqttCredentials)->execute($username, $password, $clientId)) {
+            return $this->apiMqttOk('ok');
         }
 
         $validator = Validator::make($request->all(), [
@@ -51,24 +59,22 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::mqttApiResponseHttpBadRequest(['error' => $validator->getMessageBag()->toArray()]);
+            return $this->apiMqttBadRequest(['error' => $validator->getMessageBag()->toArray()]);
         }
 
-        if ($username === $clientId) {
-            $device = Device::where('unique_id', $username)->first();
+        $device = Device::where('unique_id', $username)->firstOrFail();
 
-            return $device->validateMqttPassword($password)
-                ? Helper::mqttApiResponseHttpOk('ok')
-                : Helper::mqttApiResponseHttpUnauthorized(['error' => 'Invalid username or password.']);
+        if ($device->validateMqttPassword($password)) {
+            (new UpdateDeviceStatusToOnlineAction(new UpdateDeviceLastSeenToNowAction))->execute($device);
+            $this->apiMqttOk('ok');
+        } else {
+            $this->apiMqttUnauthorized(['error' => 'Invalid username or password.']);
         }
-
-        return Helper::mqttApiResponseHttpBadRequest(['error' => 'username and client_id do not match.']);
     }
 
-    protected function authOnSubscribe(Request $request)
+    protected function authOnSubscribe(Request $request): JsonResponse
     {
         $username = $request->username;
-        $clientId = $request->client_id;
 
         $validator = Validator::make($request->all(), [
             'username' => 'required|same:client_id',
@@ -77,47 +83,39 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::mqttApiResponseHttpBadRequest(['error' => $validator->getMessageBag()->toArray()]);
+            return $this->apiMqttBadRequest(['error' => $validator->getMessageBag()->toArray()]);
         }
 
-        if ($username === $clientId) {
-            $device = Device::where('unique_id', $username)->first();
+        $device = Device::where('unique_id', $username)->firstOrFail();
 
-            if ($device) {
-                $topics = $request->topics;
+        $topics = $request->topics;
 
-                $disallowedTopics = [];
+        $disallowedTopics = [];
 
-                foreach ($topics as $topic) {
-                    if (!preg_match('/iotportal\/' . $username . '\//', $topic['topic'])) {
-                        $disallowedTopics[] = [
-                            'topic' => $topic['topic'],
-                            'qos' => 128
-                        ];
-                    }
-                }
-
-                return $disallowedTopics
-                    ? Helper::mqttApiResponseHttpOkWithDisallowedTopics('ok', $disallowedTopics)
-                    : Helper::mqttApiResponseHttpOk('ok');;
+        foreach ($topics as $topic) {
+            if (!preg_match('/iotportal\/' . $username . '\//', $topic['topic'])) {
+                $disallowedTopics[] = [
+                    'topic' => $topic['topic'],
+                    'qos' => 128
+                ];
             }
-
-            return Helper::mqttApiResponseHttpUnauthorized(['error' => 'Invalid username or password.']);
         }
 
-        return Helper::mqttApiResponseHttpBadRequest(['error' => 'username and client_id do not match.']);
+        (new UpdateDeviceStatusToOnlineAction(new UpdateDeviceLastSeenToNowAction))->execute($device);
+
+        return $disallowedTopics
+            ? $this->apiMqttOkWithDisallowedTopics('ok', $disallowedTopics)
+            : $this->apiMqttOk('ok');
     }
 
-    protected function authOnPublish(Request $request)
+    protected function authOnPublish(Request $request): JsonResponse
     {
         $username = $request->username;
         $clientId = $request->client_id;
         $topic = $request->topic;
 
-        $mqttConfig = config('mqttclient.connections.default');
-
-        if ($username === $mqttConfig['username'] && $clientId === $mqttConfig['client_id'] && preg_match('/iotportal\/([\w\-]+)\/methods\/POST\/([\w\-_]+)\/\?\$rid=([\d]+)/', $topic)) {
-            return Helper::mqttApiResponseHttpOk('ok');
+        if ((new CheckIfValidPortalMqttTopics)->execute($username, $clientId, $topic)) {
+            return $this->apiMqttOk('ok');
         }
 
         $validator = Validator::make($request->all(), [
@@ -127,7 +125,7 @@ class EndpointController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return Helper::mqttApiResponseHttpBadRequest(['error' => $validator->getMessageBag()->toArray()]);
+            return $this->apiMqttBadRequest(['error' => $validator->getMessageBag()->toArray()]);
         }
 
         $payload = Helper::sanitisePayload(base64_decode($request->input('payload')));
@@ -138,40 +136,65 @@ class EndpointController extends Controller
 
             if ($username === $clientId && $clientId === $extractedDeviceId) {
 
-                $device = Device::where('unique_id', $username)->first();
+                $device = Device::where('unique_id', $username)->firstOrFail();
 
-                if ($device) {
-                    $this->updateDeviceStatus($device);
-                    if (preg_match('/devices\/([\w\-]+)\/messages\/events/', $topic)) {
-                        return $this->messagesEvents($device, $payload);
-                    } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
-                        return $this->propertiesReported($device, $payload);
-                    } elseif (preg_match('/iotportal\/([\w\-]+)\/methods\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
-                        Log::debug('preg_match updateResponse run-> ' . $topic . ' ,$requestIdMatches->' . $requestIdMatches[2]);
-                        return $this->updateResponse($device, $requestIdMatches[2]);
-                    }
+                (new UpdateDeviceStatusToOnlineAction(new UpdateDeviceLastSeenToNowAction()))->execute($device);
 
-                    return Helper::mqttApiResponseHttpBadRequest(['error' => 'Unsupported topic.']);
+                if (preg_match('/devices\/([\w\-]+)\/messages\/events/', $topic)) {
+                    return $this->messagesEvents($device, $payload);
+                } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
+                    return $this->propertiesReported($device, $payload);
+                } elseif (preg_match('/iotportal\/([\w\-]+)\/methods\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
+                    Log::debug('preg_match updateResponse run-> ' . $topic . ' ,$requestIdMatches->' . $requestIdMatches[2]);
+                    return $this->updateResponse($device, $requestIdMatches[2]);
                 }
 
-                return Helper::mqttApiResponseHttpNotFound(['error' => 'device_unique_id not found.']);
+                return $this->apiMqttBadRequest(['error' => 'Unsupported topic.']);
             }
 
-            return Helper::mqttApiResponseHttpBadRequest(['error' => 'username, client_id and device_unique_id in topic do not match']);
+            return $this->apiMqttBadRequest(['error' => 'username, client_id and device_unique_id in topic do not match']);
         }
 
-        return Helper::mqttApiResponseHttpBadRequest(['error' => 'Invalid device_unique_id in topic.']);
+        return $this->apiMqttBadRequest(['error' => 'Invalid device_unique_id in topic.']);
     }
 
-    protected function messagesEvents(Device $device, ?string $payload)
+    protected function onClientOffline(Request $request): JsonResponse
+    {
+        if ((new CheckIfValidPortalMqttClientId)->execute($request->client_id)) {
+            return $this->apiMqttOk('ok');
+        }
+
+        $device = Device::where('unique_id', $request->client_id)->firstOrFail();
+
+        $success = (new UpdateDeviceStatusToOfflineAction(new UpdateDeviceLastSeenToNowAction))->execute($device);
+
+        return $success
+            ? $this->apiMqttOk('ok')
+            : $this->apiMqttInternalServerError(['error' => 'Error updating device.']);
+    }
+
+    protected function onClientGone(Request $request): JsonResponse
+    {
+        if ((new CheckIfValidPortalMqttClientId)->execute($request->client_id)) {
+            return $this->apiMqttOk('ok');
+        }
+
+        $device = Device::where('unique_id', $request->client_id)->firstOrFail();
+
+        $success = (new UpdateDeviceStatusToOfflineAction(new UpdateDeviceLastSeenToNowAction))->execute($device);
+
+        return $success
+            ? $this->apiMqttOk('ok')
+            : $this->apiMqttInternalServerError(['error' => 'Error updating device.']);
+    }
+
+    protected function messagesEvents(Device $device, ?string $payload): JsonResponse
     {
         Log::debug('Upper $payload->' . $payload);
 
-        $telemetryEvent = $device->events()->getTelemetry();
-
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
-            'event_id' => $telemetryEvent->id,
+            'event_id' => $device->events()->getTelemetry()->id,
         ]);
 
         $payload = json_decode($payload);
@@ -218,19 +241,17 @@ class EndpointController extends Controller
         }
 
         return $eventHistory->exists
-            ? Helper::mqttApiResponseHttpOk('ok')
-            : Helper::mqttApiResponseHttpInternalServerError(['error' => 'Error saving device events.']);
+            ? $this->apiMqttOk('ok')
+            : $this->apiMqttInternalServerError(['error' => 'Error saving device events.']);
     }
 
-    protected function propertiesReported(Device $device, ?string $payload)
+    protected function propertiesReported(Device $device, ?string $payload): JsonResponse
     {
         Log::debug('Upper $payload->' . $payload);
 
-        $propertyEvent = $device->events()->getProperty();
-
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
-            'event_id' => $propertyEvent->id,
+            'event_id' => $device->events()->getProperty()->id,
         ]);
 
         $payload = json_decode($payload);
@@ -276,23 +297,16 @@ class EndpointController extends Controller
         }
 
         return $eventHistory->exists
-            ? Helper::mqttApiResponseHttpOk('ok')
-            : Helper::mqttApiResponseHttpInternalServerError(['error' => 'Error saving device properties.']);
+            ? $this->apiMqttOk('ok')
+            : $this->apiMqttInternalServerError(['error' => 'Error saving device properties.']);
     }
 
-    protected function updateResponse(Device $device, int $requestId)
+    protected function updateResponse(Device $device, int $requestId): JsonResponse
     {
         $updateSuccess = $device->commandHistories()->find($requestId)->update(['responded_at' => now()]);
 
         return $updateSuccess
-            ? Helper::mqttApiResponseHttpOk('ok')
-            : Helper::mqttApiResponseHttpInternalServerError(['error' => 'Error updating device response.']);
-    }
-
-    protected function updateDeviceStatus(Device $device)
-    {
-        if ($device->isRegistered()) {
-            $device->deviceStatus()->associate(DeviceStatus::getProvisioned())->save();
-        }
+            ? $this->apiMqttOk('ok')
+            : $this->apiMqttInternalServerError(['error' => 'Error updating device response.']);
     }
 }

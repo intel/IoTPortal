@@ -18,7 +18,7 @@ import {
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import DevicesDataTable from '../../containers/DevicesDataTable/DevicesDataTable';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import SelectedDevicesDataView from '../../components/SelectedDevicesDataView/SelectedDevicesDataView';
 import DeviceGroupNoDeviceSelectedModal
   from '../../components/DeviceGroupNoDeviceSelectedModal/DeviceGroupNoDeviceSelectedModal';
@@ -96,7 +96,7 @@ const EditDeviceGroup = (props) => {
   if (isFetchingDeviceGroup || isFetchingDeviceGroupDevices) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceGroupErrorMessage || fetchDeviceGroupDevicesErrorMessage) {
-    return (<Error errorMessage={fetchDeviceGroupErrorMessage || fetchDeviceGroupDevicesErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceGroupErrorMessage || fetchDeviceGroupDevicesErrorMessage}/>);
   }
 
   return (

@@ -2,9 +2,17 @@
 
 namespace App\Providers;
 
+use App\Models\Device;
+use App\Models\DeviceCategory;
+use App\Models\DeviceGroup;
+use App\Models\DeviceJob;
+use App\Models\SavedCommand;
+use App\Policies\DeviceCategoryPolicy;
+use App\Policies\DeviceGroupPolicy;
+use App\Policies\DeviceJobPolicy;
+use App\Policies\DevicePolicy;
+use App\Policies\SavedCommandPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,7 +22,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Device::class => DevicePolicy::class,
+        DeviceCategory::class => DeviceCategoryPolicy::class,
+        DeviceGroup::class => DeviceGroupPolicy::class,
+        DeviceJob::class => DeviceJobPolicy::class,
+        SavedCommand::class => SavedCommandPolicy::class,
     ];
 
     /**
@@ -26,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+//        Passport::routes();
 
         //
     }

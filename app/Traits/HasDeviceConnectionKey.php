@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Traits;
-
 
 use Illuminate\Support\Facades\Crypt;
 
@@ -13,7 +11,7 @@ trait HasDeviceConnectionKey
         return static::where('device_connection_key', $value)->exists();
     }
 
-    public static function generateEncryptedDeviceConnectionKey()
+    public static function generateEncryptedDeviceConnectionKey(): string
     {
         $deviceConnectionKey = Crypt::encryptString(bin2hex(random_bytes(32)));
 
@@ -24,17 +22,17 @@ trait HasDeviceConnectionKey
         return $deviceConnectionKey;
     }
 
-    public static function decryptDeviceConnectionKey($value)
+    public static function decryptDeviceConnectionKey($value): string
     {
         return Crypt::decryptString($value);
     }
 
-    public function validateDeviceConnectionKey($value)
+    public function validateDeviceConnectionKey($value): bool
     {
         return $this->device_connection_key === $value;
     }
 
-    public function getDeviceConnectionKeyAttribute($value)
+    public function getDeviceConnectionKeyAttribute($value): string
     {
         return static::decryptDeviceConnectionKey($value);
     }

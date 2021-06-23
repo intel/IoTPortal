@@ -2,15 +2,26 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DeviceStatus extends Model
 {
-    use HasFactory;
+    use HasFactory, EloquentGetTableName;
 
-    const TYPE_REGISTERED = 'REGISTERED';
-    const TYPE_PROVISIONED = 'PROVISIONED';
+    const STATUS_REGISTERED = 'REGISTERED';
+    const STATUS_ONLINE = 'ONLINE';
+    const STATUS_OFFLINE = 'OFFLINE';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
 
     /**
      * Get the devices for the device status.
@@ -52,22 +63,32 @@ class DeviceStatus extends Model
 
     public function scopeRegistered()
     {
-        return $this->name(self::TYPE_REGISTERED);
+        return $this->name(self::STATUS_REGISTERED);
     }
 
-    public function scopeProvisioned()
+    public function scopeOnline()
     {
-        return $this->name(self::TYPE_PROVISIONED);
+        return $this->name(self::STATUS_ONLINE);
+    }
+
+    public function scopeOffline()
+    {
+        return $this->name(self::STATUS_OFFLINE);
     }
 
     public function scopeGetRegistered()
     {
-        return $this->registered()->first();
+        return $this->registered()->firstOrFail();
     }
 
-    public function scopeGetProvisioned()
+    public function scopeGetOnline()
     {
-        return $this->provisioned()->first();
+        return $this->online()->firstOrFail();
+    }
+
+    public function scopeGetOffline()
+    {
+        return $this->offline()->firstOrFail();
     }
 
     public function scopeGetOptions($query)

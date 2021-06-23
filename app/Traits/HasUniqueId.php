@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Traits;
-
 
 use Illuminate\Support\Str;
 
@@ -13,7 +11,7 @@ trait HasUniqueId
         return static::where('unique_id', $value)->exists();
     }
 
-    public static function generateUniqueId()
+    public static function generateUniqueId(): string
     {
         $uniqueId = Str::uuid()->toString();
 

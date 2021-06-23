@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use App\Traits\HasMqttCredentials;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Device extends Model
 {
-    use HasFactory, HasUniqueId, HasMqttCredentials;
+    use HasFactory, EloquentGetTableName, HasUniqueId, HasMqttCredentials;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +29,8 @@ class Device extends Model
         'system_manufacturer',
         'system_product_name',
         'total_memory',
+        'mqtt_password',
+        'last_seen',
         'device_category_id',
         'device_status_id',
     ];
@@ -265,11 +268,16 @@ class Device extends Model
 
     public function isRegistered()
     {
-        return $this->deviceStatus->name === DeviceStatus::TYPE_REGISTERED;
+        return $this->deviceStatus->name === DeviceStatus::STATUS_REGISTERED;
     }
 
-    public function isProvisioned()
+    public function isOnline()
     {
-        return $this->deviceStatus->name === DeviceStatus::TYPE_PROVISIONED;
+        return $this->deviceStatus->name === DeviceStatus::STATUS_ONLINE;
+    }
+
+    public function isOffline()
+    {
+        return $this->deviceStatus->name === DeviceStatus::STATUS_OFFLINE;
     }
 }

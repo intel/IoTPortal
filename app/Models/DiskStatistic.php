@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DiskStatistic extends Model
 {
-    use HasFactory;
+    use HasFactory, EloquentGetTableName;
 
     /**
      * The attributes that are mass assignable.

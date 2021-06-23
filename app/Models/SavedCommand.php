@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SavedCommand extends Model
 {
-    use HasFactory, HasUniqueId;
+    use HasFactory, EloquentGetTableName, HasUniqueId;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,7 @@ class SavedCommand extends Model
         'name',
         'command_name',
         'payload',
+        'user_id',
     ];
 
     public static function boot()

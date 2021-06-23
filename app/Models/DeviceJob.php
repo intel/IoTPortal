@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DeviceJob extends Model
 {
-    use HasFactory, HasUniqueId;
+    use HasFactory, EloquentGetTableName, HasUniqueId;
 
     /**
      * The attributes that are mass assignable.

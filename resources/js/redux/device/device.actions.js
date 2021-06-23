@@ -1,4 +1,5 @@
 import pluralize from 'pluralize';
+
 import deviceActionTypes from './device.types';
 import { API_ENDPOINT } from '../../data/config';
 import { redirectToAfterToastSuccess, toastHelper } from '../../utils/utils';

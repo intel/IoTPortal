@@ -10,7 +10,7 @@ import {
   fetchSavedCommandStartAsync
 } from '../../redux/savedCommand/savedCommand.actions';
 
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DeleteSavedCommandModal from '../../components/DeleteSavedCommandModal/DeleteSavedCommandModal';
 import PayloadViewer from '../../components/PayloadViewer/PayloadViewer';
@@ -42,7 +42,7 @@ const ViewSavedCommand = (props) => {
   if (isFetchingSavedCommand) {
     return (<CardSkeleton/>);
   } else if (fetchSavedCommandErrorMessage) {
-    return (<Error errorMessage={fetchSavedCommandErrorMessage}/>);
+    return (<ContentError errorMessage={fetchSavedCommandErrorMessage}/>);
   }
 
   return (

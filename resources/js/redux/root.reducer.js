@@ -25,6 +25,7 @@ import apiTokenReducer from './apiToken/apiToken.reducer';
 import profileReducer from './profile/profile.reducer';
 import deviceJobReducer from './deviceJob/deviceJob.reducer';
 import timerReducer from './timer/timer.reducer';
+import dashboardReducer from './dashboard/dashboard.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -56,6 +57,7 @@ const rootReducer = combineReducers({
   cota: cotaReducer,
   apiToken: apiTokenReducer,
   sidebar: sidebarReducer,
+  dashboard: dashboardReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

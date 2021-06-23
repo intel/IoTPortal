@@ -77,103 +77,6 @@ var CardSkeleton = function CardSkeleton() {
 
 /***/ }),
 
-/***/ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var DeviceJobStatusIndicator = function DeviceJobStatusIndicator(_ref) {
-  var status = _ref.status;
-  if (status === 'pending') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-info-circle",
-    value: "Pending"
-  });else if (status === 'preparing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-    className: "d-inline-flex align-items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "pi pi-spin pi-spinner mr-2"
-    }), "Preparing commands"]
-  });else if (status === 'processing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-    className: "d-inline-flex align-items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "pi pi-spin pi-spinner mr-2"
-    }), "Processing"]
-  });else if (status === 'successful') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-check",
-    severity: "success",
-    value: "Successful"
-  });else if (status === 'failed') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-times",
-    severity: "danger",
-    value: "Failed"
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobStatusIndicator);
-
-/***/ }),
-
-/***/ "./resources/js/components/Error/Error.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Error/Error.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Error = function Error(_ref) {
-  var errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
-    className: "justify-content-center",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-      md: "6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "clearfix text-center mt-5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          size: "5xl",
-          name: "cil-warning"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-          className: "pt-3",
-          children: "Oops! Something went wrong."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-muted",
-          children: errorMessage || 'The resource you are looking for was not found.'
-        })]
-      })
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
-
-/***/ }),
-
 /***/ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js ***!
@@ -626,12 +529,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
 /* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
 /* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
+/* harmony export */   "roundToTwoDecimalPlaces": () => (/* binding */ roundToTwoDecimalPlaces),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
 /* harmony export */   "filterDateTimeRange": () => (/* binding */ filterDateTimeRange),
 /* harmony export */   "toastHelper": () => (/* binding */ toastHelper),
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
+/* harmony export */   "stripStringAfterLastSlash": () => (/* binding */ stripStringAfterLastSlash),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
@@ -642,14 +547,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -663,7 +567,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -715,6 +618,9 @@ var isValidJsonString = function isValidJsonString(str) {
   }
 
   return true;
+};
+var roundToTwoDecimalPlaces = function roundToTwoDecimalPlaces(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -769,7 +675,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -780,10 +686,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -810,6 +716,13 @@ var truncateToStringEllipsis = function truncateToStringEllipsis(str) {
 
   return null;
 };
+var stripStringAfterLastSlash = function stripStringAfterLastSlash(str) {
+  if (typeof str === 'string' || str instanceof String) {
+    return str.substr(0, str.lastIndexOf('/') + 1);
+  }
+
+  return str;
+};
 var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, location) {
   setTimeout(function () {
     history.push(location);
@@ -817,7 +730,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -826,10 +739,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -838,10 +751,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -850,10 +763,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -862,7 +775,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -886,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _schemas_deviceCategory_editDeviceCategoryValidationSchema__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../schemas/deviceCategory/editDeviceCategoryValidationSchema */ "./resources/js/schemas/deviceCategory/editDeviceCategoryValidationSchema.js");
 /* harmony import */ var _redux_deviceCategory_deviceCategory_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/deviceCategory/deviceCategory.actions */ "./resources/js/redux/deviceCategory/deviceCategory.actions.js");
 /* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
-/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
+/* harmony import */ var _components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/ContentError/ContentError */ "./resources/js/components/ContentError/ContentError.js");
 /* harmony import */ var _components_IotTextInputFormGroup_IotTextInputFormGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/IotTextInputFormGroup/IotTextInputFormGroup */ "./resources/js/components/IotTextInputFormGroup/IotTextInputFormGroup.js");
 /* harmony import */ var _components_PrimarySecondaryButtons_PrimarySecondaryButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PrimarySecondaryButtons/PrimarySecondaryButtons */ "./resources/js/components/PrimarySecondaryButtons/PrimarySecondaryButtons.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -938,7 +851,7 @@ var EditDeviceCategory = function EditDeviceCategory(props) {
   if (isFetchingDeviceCategory) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_8__.default, {});
   } else if (fetchDeviceCategoryErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_9__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_9__.default, {
       errorMessage: fetchDeviceCategoryErrorMessage
     });
   }
@@ -8792,127 +8705,6 @@ function toString(value) {
   return pluralize;
 });
 
-
-/***/ }),
-
-/***/ "./node_modules/primereact/components/tag/Tag.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/primereact/components/tag/Tag.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.Tag = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _ClassNames = __webpack_require__(/*! ../utils/ClassNames */ "./node_modules/primereact/components/utils/ClassNames.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Tag = /*#__PURE__*/function (_Component) {
-  _inherits(Tag, _Component);
-
-  var _super = _createSuper(Tag);
-
-  function Tag() {
-    _classCallCheck(this, Tag);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Tag, [{
-    key: "render",
-    value: function render() {
-      var tagClassName = (0, _ClassNames.classNames)('p-tag p-component', {
-        'p-tag-info': this.props.severity === 'info',
-        'p-tag-success': this.props.severity === 'success',
-        'p-tag-warning': this.props.severity === 'warning',
-        'p-tag-danger': this.props.severity === 'danger',
-        'p-tag-rounded': this.props.rounded
-      }, this.props.className);
-      var iconClass = (0, _ClassNames.classNames)('p-tag-icon', this.props.icon);
-      return /*#__PURE__*/_react.default.createElement("span", {
-        className: tagClassName,
-        style: this.props.style
-      }, this.props.icon && /*#__PURE__*/_react.default.createElement("span", {
-        className: iconClass
-      }), /*#__PURE__*/_react.default.createElement("span", {
-        className: "p-tag-value"
-      }, this.props.value), /*#__PURE__*/_react.default.createElement("span", null, this.props.children));
-    }
-  }]);
-
-  return Tag;
-}(_react.Component);
-
-exports.Tag = Tag;
-
-_defineProperty(Tag, "defaultProps", {
-  value: null,
-  severity: null,
-  rounded: false,
-  icon: null,
-  style: null,
-  className: null
-});
-
-_defineProperty(Tag, "propTypes", {
-  value: _propTypes.default.any,
-  severity: _propTypes.default.string,
-  rounded: _propTypes.default.bool,
-  icon: _propTypes.default.string,
-  style: _propTypes.default.object,
-  className: _propTypes.default.string
-});
-
-/***/ }),
-
-/***/ "./node_modules/primereact/tag.js":
-/*!****************************************!*\
-  !*** ./node_modules/primereact/tag.js ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-module.exports = __webpack_require__(/*! ./components/tag/Tag */ "./node_modules/primereact/components/tag/Tag.js");
 
 /***/ }),
 

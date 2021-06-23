@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Toaster } from 'react-hot-toast';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-import CIcon from '@coreui/icons-react'
-import { CButton, CButtonGroup, CCard, CCardHeader, CCol, CRow } from '@coreui/react'
+import CIcon from '@coreui/icons-react';
+import { CButton, CButtonGroup, CCard, CCardHeader, CCol, CRow } from '@coreui/react';
+import { Toaster } from 'react-hot-toast';
 
 import {
   deleteDeviceCategoriesStartAsync,
   fetchDeviceCategoryStartAsync
 } from '../../redux/deviceCategory/deviceCategory.actions';
 
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DeleteDeviceCategoryModal from '../../components/DeleteDeviceCategoryModal/DeleteDeviceCategoryModal';
 
@@ -40,7 +41,7 @@ const ViewDeviceCategory = (props) => {
   if (isFetchingDeviceCategory) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceCategoryErrorMessage) {
-    return (<Error errorMessage={fetchDeviceCategoryErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceCategoryErrorMessage}/>);
   }
 
   return (

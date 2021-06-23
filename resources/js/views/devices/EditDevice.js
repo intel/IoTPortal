@@ -13,7 +13,7 @@ import { fetchDeviceCategoryOptionsStartAsync } from '../../redux/deviceCategory
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import IotSelectFormGroup from '../../components/IotSelectFormGroup/IotSelectFormGroup';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 
 const EditDevice = (props) => {
@@ -53,12 +53,12 @@ const EditDevice = (props) => {
     }
   };
 
-  const validationSchema = editDeviceValidationSchema();
+  const validationSchema = editDeviceValidationSchema(deviceCategoryOptions);
 
   if (isFetchingDevice) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceErrorMessage) {
-    return (<Error errorMessage={fetchDeviceErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceErrorMessage}/>);
   }
 
   return (

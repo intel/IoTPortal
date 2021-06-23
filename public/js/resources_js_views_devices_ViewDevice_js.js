@@ -2264,6 +2264,110 @@ var CardSkeleton = function CardSkeleton() {
 
 /***/ }),
 
+/***/ "./resources/js/components/ChartCard/ChartCard.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/ChartCard/ChartCard.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
+/* harmony import */ var primereact_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/button */ "./node_modules/primereact/button.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChartSkeleton/ChartSkeleton */ "./resources/js/components/ChartSkeleton/ChartSkeleton.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+var ChartCard = function ChartCard(_ref) {
+  var title = _ref.title,
+      options = _ref.options,
+      series = _ref.series,
+      type = _ref.type,
+      height = _ref.height,
+      timeRangeFilters = _ref.timeRangeFilters,
+      selectedTimeRangeFilter = _ref.selectedTimeRangeFilter,
+      onTimeRangeFilter = _ref.onTimeRangeFilter,
+      onRefresh = _ref.onRefresh,
+      isLoading = _ref.isLoading,
+      errorMessage = _ref.errorMessage;
+  var defaultTimeRangeFilters = [{
+    value: 1,
+    label: 'Last 1 hour'
+  }, {
+    value: 7,
+    label: 'Last 7 hours'
+  }, {
+    value: 24,
+    label: 'Last 24 hours'
+  }, {
+    value: 168,
+    label: 'Last 7 days'
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
+        className: "card-title mb-3",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+          sm: "5",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
+            className: "card-title mb-0",
+            children: title
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
+          sm: "7",
+          className: "d-none d-md-block",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+            icon: classnames__WEBPACK_IMPORTED_MODULE_1___default()('pi', {
+              'pi-spin': isLoading
+            }, 'pi-refresh'),
+            iconPos: "right",
+            className: "float-right",
+            onClick: onRefresh
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButtonGroup, {
+            className: "float-right mr-3",
+            children: (timeRangeFilters ? timeRangeFilters : defaultTimeRangeFilters).map(function (value) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
+                color: "outline-secondary",
+                value: value.value,
+                className: "mx-0",
+                active: value.value === selectedTimeRangeFilter,
+                onClick: onTimeRangeFilter,
+                children: value.label
+              }, value.value);
+            })
+          })]
+        })]
+      }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__.default, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "mt-3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_2__.default, {
+          options: options,
+          series: series,
+          type: type,
+          height: height
+        })
+      })]
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChartCard);
+
+/***/ }),
+
 /***/ "./resources/js/components/ChartSkeleton/ChartSkeleton.js":
 /*!****************************************************************!*\
   !*** ./resources/js/components/ChartSkeleton/ChartSkeleton.js ***!
@@ -2770,55 +2874,6 @@ var DecommissionDeviceModal = function DecommissionDeviceModal(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var primereact_tag__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! primereact/tag */ "./node_modules/primereact/tag.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-var DeviceJobStatusIndicator = function DeviceJobStatusIndicator(_ref) {
-  var status = _ref.status;
-  if (status === 'pending') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-info-circle",
-    value: "Pending"
-  });else if (status === 'preparing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-    className: "d-inline-flex align-items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "pi pi-spin pi-spinner mr-2"
-    }), "Preparing commands"]
-  });else if (status === 'processing') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-    className: "d-inline-flex align-items-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
-      className: "pi pi-spin pi-spinner mr-2"
-    }), "Processing"]
-  });else if (status === 'successful') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-check",
-    severity: "success",
-    value: "Successful"
-  });else if (status === 'failed') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(primereact_tag__WEBPACK_IMPORTED_MODULE_1__.Tag, {
-    icon: "pi pi-times",
-    severity: "danger",
-    value: "Failed"
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeviceJobStatusIndicator);
-
-/***/ }),
-
 /***/ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/DevicePropertyCard/DevicePropertyCard.js ***!
@@ -3037,54 +3092,6 @@ var EditableText = function EditableText(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditableText);
-
-/***/ }),
-
-/***/ "./resources/js/components/Error/Error.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Error/Error.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-var Error = function Error(_ref) {
-  var errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CRow, {
-    className: "justify-content-center",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CCol, {
-      md: "6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "clearfix text-center mt-5",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_2__.default, {
-          size: "5xl",
-          name: "cil-warning"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-          className: "pt-3",
-          children: "Oops! Something went wrong."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-muted",
-          children: errorMessage || 'The resource you are looking for was not found.'
-        })]
-      })
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Error);
 
 /***/ }),
 
@@ -3527,97 +3534,6 @@ var IotTextInputFormGroup = function IotTextInputFormGroup(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/LineChartCard/LineChartCard.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/LineChartCard/LineChartCard.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_apexcharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apexcharts */ "./node_modules/react-apexcharts/dist/react-apexcharts.min.js");
-/* harmony import */ var primereact_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/button */ "./node_modules/primereact/button.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ChartSkeleton/ChartSkeleton */ "./resources/js/components/ChartSkeleton/ChartSkeleton.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-
-
-var LineChartCard = function LineChartCard(_ref) {
-  var title = _ref.title,
-      options = _ref.options,
-      series = _ref.series,
-      type = _ref.type,
-      height = _ref.height,
-      timeRangeFilters = _ref.timeRangeFilters,
-      selectedTimeRangeFilter = _ref.selectedTimeRangeFilter,
-      onTimeRangeFilter = _ref.onTimeRangeFilter,
-      onRefresh = _ref.onRefresh,
-      isLoading = _ref.isLoading,
-      errorMessage = _ref.errorMessage;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCard, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCardBody, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CRow, {
-        className: "card-title mb-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
-          sm: "5",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
-            className: "card-title mb-0",
-            children: title
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CCol, {
-          sm: "7",
-          className: "d-none d-md-block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(primereact_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
-            icon: classnames__WEBPACK_IMPORTED_MODULE_1___default()('pi', {
-              'pi-spin': isLoading
-            }, 'pi-refresh'),
-            iconPos: "right",
-            className: "float-right",
-            onClick: onRefresh
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButtonGroup, {
-            className: "float-right mr-3",
-            children: timeRangeFilters.map(function (value) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_4__.CButton, {
-                color: "outline-secondary",
-                value: value.value,
-                className: "mx-0",
-                active: value.value === selectedTimeRangeFilter,
-                onClick: onTimeRangeFilter,
-                children: value.label
-              }, value.value);
-            })
-          })]
-        })]
-      }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ChartSkeleton_ChartSkeleton__WEBPACK_IMPORTED_MODULE_5__.default, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: "mt-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_apexcharts__WEBPACK_IMPORTED_MODULE_2__.default, {
-          options: options,
-          series: series,
-          type: type,
-          height: height
-        })
-      })]
-    })
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LineChartCard);
-
-/***/ }),
-
 /***/ "./resources/js/components/MetricsCard/MetricsCard.js":
 /*!************************************************************!*\
   !*** ./resources/js/components/MetricsCard/MetricsCard.js ***!
@@ -3632,10 +3548,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _containers_CpuTemperatureLineChartCard_CpuTemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard */ "./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js");
-/* harmony import */ var _containers_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../containers/CpuUsageLineChartCard/CpuUsageLineChartCard */ "./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js");
-/* harmony import */ var _containers_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../containers/DiskUsageLineChartCard/DiskUsageLineChartCard */ "./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js");
-/* harmony import */ var _containers_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard */ "./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js");
+/* harmony import */ var _containers_CpuTemperatureAreaChartCard_CpuTemperatureAreaChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../containers/CpuTemperatureAreaChartCard/CpuTemperatureAreaChartCard */ "./resources/js/containers/CpuTemperatureAreaChartCard/CpuTemperatureAreaChartCard.js");
+/* harmony import */ var _containers_CpuUsageAreaChartCard_CpuUsageAreaChartCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../containers/CpuUsageAreaChartCard/CpuUsageAreaChartCard */ "./resources/js/containers/CpuUsageAreaChartCard/CpuUsageAreaChartCard.js");
+/* harmony import */ var _containers_DiskUsageAreaChartCard_DiskUsageAreaChartCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../containers/DiskUsageAreaChartCard/DiskUsageAreaChartCard */ "./resources/js/containers/DiskUsageAreaChartCard/DiskUsageAreaChartCard.js");
+/* harmony import */ var _containers_AvailableMemoryAreaChartCard_AvailableMemoryAreaChartCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../containers/AvailableMemoryAreaChartCard/AvailableMemoryAreaChartCard */ "./resources/js/containers/AvailableMemoryAreaChartCard/AvailableMemoryAreaChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -3653,13 +3569,13 @@ var MetricsCard = function MetricsCard(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
       children: "Metrics"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuTemperatureLineChartCard_CpuTemperatureLineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuTemperatureAreaChartCard_CpuTemperatureAreaChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
         deviceUniqueId: deviceUniqueId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuUsageLineChartCard_CpuUsageLineChartCard__WEBPACK_IMPORTED_MODULE_4__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_CpuUsageAreaChartCard_CpuUsageAreaChartCard__WEBPACK_IMPORTED_MODULE_4__.default, {
         deviceUniqueId: deviceUniqueId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_DiskUsageLineChartCard_DiskUsageLineChartCard__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_DiskUsageAreaChartCard_DiskUsageAreaChartCard__WEBPACK_IMPORTED_MODULE_5__.default, {
         deviceUniqueId: deviceUniqueId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_AvailableMemoryLineChartCard_AvailableMemoryLineChartCard__WEBPACK_IMPORTED_MODULE_6__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_AvailableMemoryAreaChartCard_AvailableMemoryAreaChartCard__WEBPACK_IMPORTED_MODULE_6__.default, {
         deviceUniqueId: deviceUniqueId
       })]
     })]
@@ -4127,9 +4043,9 @@ var SotaCard = function SotaCard(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js":
+/***/ "./resources/js/containers/AvailableMemoryAreaChartCard/AvailableMemoryAreaChartCard.js":
 /*!**********************************************************************************************!*\
-  !*** ./resources/js/containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard.js ***!
+  !*** ./resources/js/containers/AvailableMemoryAreaChartCard/AvailableMemoryAreaChartCard.js ***!
   \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4141,7 +4057,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/ChartCard/ChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4161,36 +4077,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
+var AvailableMemoryAreaChartCard = function AvailableMemoryAreaChartCard(_ref) {
   var deviceUniqueId = _ref.deviceUniqueId,
       availableMemories = _ref.availableMemories,
       isFetchingAvailableMemories = _ref.isFetchingAvailableMemories,
       fetchAvailableMemoriesErrorMessage = _ref.fetchAvailableMemoriesErrorMessage,
       fetchAvailableMemoriesStartAsync = _ref.fetchAvailableMemoriesStartAsync;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    value: 1,
-    label: 'Last 1 hour'
-  }, {
-    value: 7,
-    label: 'Last 7 hours'
-  }, {
-    value: 24,
-    label: 'Last 24 hours'
-  }, {
-    value: 168,
-    label: 'Last 7 days'
-  }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
-      timeRangeFilters = _useState2[0],
-      setTimeRangeFilters = _useState2[1];
+      selectedTimeRangeFilter = _useState2[0],
+      setSelectedTimeRangeFilter = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selectedTimeRangeFilter = _useState4[0],
-      setSelectedTimeRangeFilter = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
       type: 'area',
       stacked: false,
@@ -4238,9 +4137,9 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
       }
     }
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      chartOptions = _useState6[0],
-      setChartOptions = _useState6[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      chartOptions = _useState4[0],
+      setChartOptions = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchAvailableMemoriesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
@@ -4249,13 +4148,12 @@ var AvailableMemoryLineChartCard = function AvailableMemoryLineChartCard(_ref) {
     name: "Available Memory",
     data: availableMemories
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "Available Memory",
     options: chartOptions,
     series: series,
     type: "area",
     height: 500,
-    timeRangeFilters: timeRangeFilters,
     selectedTimeRangeFilter: selectedTimeRangeFilter,
     onTimeRangeFilter: function onTimeRangeFilter(event) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
@@ -4284,7 +4182,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(AvailableMemoryLineChartCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(AvailableMemoryAreaChartCard));
 
 /***/ }),
 
@@ -4654,9 +4552,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js":
+/***/ "./resources/js/containers/CpuTemperatureAreaChartCard/CpuTemperatureAreaChartCard.js":
 /*!********************************************************************************************!*\
-  !*** ./resources/js/containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard.js ***!
+  !*** ./resources/js/containers/CpuTemperatureAreaChartCard/CpuTemperatureAreaChartCard.js ***!
   \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4668,7 +4566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/ChartCard/ChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4688,36 +4586,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
+var CpuTemperatureAreaChartCard = function CpuTemperatureAreaChartCard(_ref) {
   var deviceUniqueId = _ref.deviceUniqueId,
       cpuTemperatures = _ref.cpuTemperatures,
       isFetchingCpuTemperatures = _ref.isFetchingCpuTemperatures,
       fetchCpuTemperaturesErrorMessage = _ref.fetchCpuTemperaturesErrorMessage,
       fetchCpuTemperaturesStartAsync = _ref.fetchCpuTemperaturesStartAsync;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    value: 1,
-    label: 'Last 1 hour'
-  }, {
-    value: 7,
-    label: 'Last 7 hours'
-  }, {
-    value: 24,
-    label: 'Last 24 hours'
-  }, {
-    value: 168,
-    label: 'Last 7 days'
-  }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
-      timeRangeFilters = _useState2[0],
-      setTimeRangeFilters = _useState2[1];
+      selectedTimeRangeFilter = _useState2[0],
+      setSelectedTimeRangeFilter = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selectedTimeRangeFilter = _useState4[0],
-      setSelectedTimeRangeFilter = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
       type: 'area',
       stacked: false,
@@ -4765,9 +4646,9 @@ var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
       }
     }
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      chartOptions = _useState6[0],
-      setChartOptions = _useState6[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      chartOptions = _useState4[0],
+      setChartOptions = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchCpuTemperaturesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
@@ -4776,13 +4657,12 @@ var CpuTemperatureLineChartCard = function CpuTemperatureLineChartCard(_ref) {
     name: "Temperature",
     data: cpuTemperatures
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "Temperature",
     options: chartOptions,
     series: series,
     type: "area",
     height: 500,
-    timeRangeFilters: timeRangeFilters,
     selectedTimeRangeFilter: selectedTimeRangeFilter,
     onTimeRangeFilter: function onTimeRangeFilter(event) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
@@ -4811,13 +4691,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CpuTemperatureLineChartCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CpuTemperatureAreaChartCard));
 
 /***/ }),
 
-/***/ "./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js":
+/***/ "./resources/js/containers/CpuUsageAreaChartCard/CpuUsageAreaChartCard.js":
 /*!********************************************************************************!*\
-  !*** ./resources/js/containers/CpuUsageLineChartCard/CpuUsageLineChartCard.js ***!
+  !*** ./resources/js/containers/CpuUsageAreaChartCard/CpuUsageAreaChartCard.js ***!
   \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4829,7 +4709,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/ChartCard/ChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -4849,36 +4729,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
+var CpuUsageAreaChartCard = function CpuUsageAreaChartCard(_ref) {
   var deviceUniqueId = _ref.deviceUniqueId,
       cpuUsages = _ref.cpuUsages,
       isFetchingCpuUsages = _ref.isFetchingCpuUsages,
       fetchCpuUsagesErrorMessage = _ref.fetchCpuUsagesErrorMessage,
       fetchCpuUsagesStartAsync = _ref.fetchCpuUsagesStartAsync;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    value: 1,
-    label: 'Last 1 hour'
-  }, {
-    value: 7,
-    label: 'Last 7 hours'
-  }, {
-    value: 24,
-    label: 'Last 24 hours'
-  }, {
-    value: 168,
-    label: 'Last 7 days'
-  }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
-      timeRangeFilters = _useState2[0],
-      setTimeRangeFilters = _useState2[1];
+      selectedTimeRangeFilter = _useState2[0],
+      setSelectedTimeRangeFilter = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selectedTimeRangeFilter = _useState4[0],
-      setSelectedTimeRangeFilter = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
       type: 'area',
       stacked: false,
@@ -4926,9 +4789,9 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
       }
     }
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      chartOptions = _useState6[0],
-      setChartOptions = _useState6[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      chartOptions = _useState4[0],
+      setChartOptions = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchCpuUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
@@ -4937,13 +4800,12 @@ var CpuUsageLineChartCard = function CpuUsageLineChartCard(_ref) {
     name: "CPU Usage %",
     data: cpuUsages
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "CPU Usage",
     options: chartOptions,
     series: series,
     type: "area",
     height: 500,
-    timeRangeFilters: timeRangeFilters,
     selectedTimeRangeFilter: selectedTimeRangeFilter,
     onTimeRangeFilter: function onTimeRangeFilter(event) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
@@ -4972,13 +4834,13 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CpuUsageLineChartCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(CpuUsageAreaChartCard));
 
 /***/ }),
 
-/***/ "./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js":
+/***/ "./resources/js/containers/DiskUsageAreaChartCard/DiskUsageAreaChartCard.js":
 /*!**********************************************************************************!*\
-  !*** ./resources/js/containers/DiskUsageLineChartCard/DiskUsageLineChartCard.js ***!
+  !*** ./resources/js/containers/DiskUsageAreaChartCard/DiskUsageAreaChartCard.js ***!
   \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -4990,7 +4852,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_deviceMetric_deviceMetric_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/deviceMetric/deviceMetric.actions */ "./resources/js/redux/deviceMetric/deviceMetric.actions.js");
-/* harmony import */ var _components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/LineChartCard/LineChartCard */ "./resources/js/components/LineChartCard/LineChartCard.js");
+/* harmony import */ var _components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/ChartCard/ChartCard */ "./resources/js/components/ChartCard/ChartCard.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -5010,36 +4872,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
+var DiskUsageAreaChartCard = function DiskUsageAreaChartCard(_ref) {
   var deviceUniqueId = _ref.deviceUniqueId,
       diskUsages = _ref.diskUsages,
       isFetchingDiskUsages = _ref.isFetchingDiskUsages,
       fetchDiskUsagesErrorMessage = _ref.fetchDiskUsagesErrorMessage,
       fetchDiskUsagesStartAsync = _ref.fetchDiskUsagesStartAsync;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-    value: 1,
-    label: 'Last 1 hour'
-  }, {
-    value: 7,
-    label: 'Last 7 hours'
-  }, {
-    value: 24,
-    label: 'Last 24 hours'
-  }, {
-    value: 168,
-    label: 'Last 7 days'
-  }]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
-      timeRangeFilters = _useState2[0],
-      setTimeRangeFilters = _useState2[1];
+      selectedTimeRangeFilter = _useState2[0],
+      setSelectedTimeRangeFilter = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selectedTimeRangeFilter = _useState4[0],
-      setSelectedTimeRangeFilter = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     chart: {
       type: 'area',
       stacked: false,
@@ -5087,9 +4932,9 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
       }
     }
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      chartOptions = _useState6[0],
-      setChartOptions = _useState6[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      chartOptions = _useState4[0],
+      setChartOptions = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchDiskUsagesStartAsync(deviceUniqueId, selectedTimeRangeFilter);
@@ -5098,13 +4943,12 @@ var DiskUsageLineChartCard = function DiskUsageLineChartCard(_ref) {
     name: "Disk Usage",
     data: diskUsages
   }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_LineChartCard_LineChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_ChartCard_ChartCard__WEBPACK_IMPORTED_MODULE_3__.default, {
     title: "Disk Usage",
     options: chartOptions,
     series: series,
     type: "area",
     height: 500,
-    timeRangeFilters: timeRangeFilters,
     selectedTimeRangeFilter: selectedTimeRangeFilter,
     onTimeRangeFilter: function onTimeRangeFilter(event) {
       return setSelectedTimeRangeFilter(parseInt(event.target.value));
@@ -5133,7 +4977,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(DiskUsageLineChartCard));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps)(DiskUsageAreaChartCard));
 
 /***/ }),
 
@@ -5710,12 +5554,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "COTA_INITIAL_FIELDS_HIDDEN_STATE": () => (/* binding */ COTA_INITIAL_FIELDS_HIDDEN_STATE),
 /* harmony export */   "COTA_FIELDS_HIDDEN_STATES": () => (/* binding */ COTA_FIELDS_HIDDEN_STATES),
 /* harmony export */   "POWER_CONTROLS_COMMAND_OPTIONS": () => (/* binding */ POWER_CONTROLS_COMMAND_OPTIONS),
-/* harmony export */   "colourOptions": () => (/* binding */ colourOptions),
-/* harmony export */   "flavourOptions": () => (/* binding */ flavourOptions),
-/* harmony export */   "stateOptions": () => (/* binding */ stateOptions),
-/* harmony export */   "optionLength": () => (/* binding */ optionLength),
-/* harmony export */   "dogOptions": () => (/* binding */ dogOptions),
-/* harmony export */   "groupedOptions": () => (/* binding */ groupedOptions)
+/* harmony export */   "DEVICE_VIEW_TAB_OPTIONS": () => (/* binding */ DEVICE_VIEW_TAB_OPTIONS)
 /* harmony export */ });
 var AOTA_APP_OPTIONS = [{
   value: 'docker',
@@ -6131,279 +5970,7 @@ var POWER_CONTROLS_COMMAND_OPTIONS = [{
   value: 'DECOMMISSION',
   label: 'DECOMMISSION'
 }];
-var colourOptions = [{
-  value: 'ocean',
-  label: 'Ocean',
-  color: '#00B8D9',
-  isFixed: true
-}, {
-  value: 'blue',
-  label: 'Blue',
-  color: '#0052CC',
-  isDisabled: true
-}, {
-  value: 'purple',
-  label: 'Purple',
-  color: '#5243AA'
-}, {
-  value: 'red',
-  label: 'Red',
-  color: '#FF5630',
-  isFixed: true
-}, {
-  value: 'orange',
-  label: 'Orange',
-  color: '#FF8B00'
-}, {
-  value: 'yellow',
-  label: 'Yellow',
-  color: '#FFC400'
-}, {
-  value: 'green',
-  label: 'Green',
-  color: '#36B37E'
-}, {
-  value: 'forest',
-  label: 'Forest',
-  color: '#00875A'
-}, {
-  value: 'slate',
-  label: 'Slate',
-  color: '#253858'
-}, {
-  value: 'silver',
-  label: 'Silver',
-  color: '#666666'
-}];
-var flavourOptions = [{
-  value: 'vanilla',
-  label: 'Vanilla',
-  rating: 'safe'
-}, {
-  value: 'chocolate',
-  label: 'Chocolate',
-  rating: 'good'
-}, {
-  value: 'strawberry',
-  label: 'Strawberry',
-  rating: 'wild'
-}, {
-  value: 'salted-caramel',
-  label: 'Salted Caramel',
-  rating: 'crazy'
-}];
-var stateOptions = [{
-  value: 'AL',
-  label: 'Alabama'
-}, {
-  value: 'AK',
-  label: 'Alaska'
-}, {
-  value: 'AS',
-  label: 'American Samoa'
-}, {
-  value: 'AZ',
-  label: 'Arizona'
-}, {
-  value: 'AR',
-  label: 'Arkansas'
-}, {
-  value: 'CA',
-  label: 'California'
-}, {
-  value: 'CO',
-  label: 'Colorado'
-}, {
-  value: 'CT',
-  label: 'Connecticut'
-}, {
-  value: 'DE',
-  label: 'Delaware'
-}, {
-  value: 'DC',
-  label: 'District Of Columbia'
-}, {
-  value: 'FM',
-  label: 'Federated States Of Micronesia'
-}, {
-  value: 'FL',
-  label: 'Florida'
-}, {
-  value: 'GA',
-  label: 'Georgia'
-}, {
-  value: 'GU',
-  label: 'Guam'
-}, {
-  value: 'HI',
-  label: 'Hawaii'
-}, {
-  value: 'ID',
-  label: 'Idaho'
-}, {
-  value: 'IL',
-  label: 'Illinois'
-}, {
-  value: 'IN',
-  label: 'Indiana'
-}, {
-  value: 'IA',
-  label: 'Iowa'
-}, {
-  value: 'KS',
-  label: 'Kansas'
-}, {
-  value: 'KY',
-  label: 'Kentucky'
-}, {
-  value: 'LA',
-  label: 'Louisiana'
-}, {
-  value: 'ME',
-  label: 'Maine'
-}, {
-  value: 'MH',
-  label: 'Marshall Islands'
-}, {
-  value: 'MD',
-  label: 'Maryland'
-}, {
-  value: 'MA',
-  label: 'Massachusetts'
-}, {
-  value: 'MI',
-  label: 'Michigan'
-}, {
-  value: 'MN',
-  label: 'Minnesota'
-}, {
-  value: 'MS',
-  label: 'Mississippi'
-}, {
-  value: 'MO',
-  label: 'Missouri'
-}, {
-  value: 'MT',
-  label: 'Montana'
-}, {
-  value: 'NE',
-  label: 'Nebraska'
-}, {
-  value: 'NV',
-  label: 'Nevada'
-}, {
-  value: 'NH',
-  label: 'New Hampshire'
-}, {
-  value: 'NJ',
-  label: 'New Jersey'
-}, {
-  value: 'NM',
-  label: 'New Mexico'
-}, {
-  value: 'NY',
-  label: 'New York'
-}, {
-  value: 'NC',
-  label: 'North Carolina'
-}, {
-  value: 'ND',
-  label: 'North Dakota'
-}, {
-  value: 'MP',
-  label: 'Northern Mariana Islands'
-}, {
-  value: 'OH',
-  label: 'Ohio'
-}, {
-  value: 'OK',
-  label: 'Oklahoma'
-}, {
-  value: 'OR',
-  label: 'Oregon'
-}, {
-  value: 'PW',
-  label: 'Palau'
-}, {
-  value: 'PA',
-  label: 'Pennsylvania'
-}, {
-  value: 'PR',
-  label: 'Puerto Rico'
-}, {
-  value: 'RI',
-  label: 'Rhode Island'
-}, {
-  value: 'SC',
-  label: 'South Carolina'
-}, {
-  value: 'SD',
-  label: 'South Dakota'
-}, {
-  value: 'TN',
-  label: 'Tennessee'
-}, {
-  value: 'TX',
-  label: 'Texas'
-}, {
-  value: 'UT',
-  label: 'Utah'
-}, {
-  value: 'VT',
-  label: 'Vermont'
-}, {
-  value: 'VI',
-  label: 'Virgin Islands'
-}, {
-  value: 'VA',
-  label: 'Virginia'
-}, {
-  value: 'WA',
-  label: 'Washington'
-}, {
-  value: 'WV',
-  label: 'West Virginia'
-}, {
-  value: 'WI',
-  label: 'Wisconsin'
-}, {
-  value: 'WY',
-  label: 'Wyoming'
-}];
-var optionLength = [{
-  value: 1,
-  label: 'general'
-}, {
-  value: 2,
-  label: 'Evil is the moment when I lack the strength to be true to the Good that compels me.'
-}, {
-  value: 3,
-  label: "It is now an easy matter to spell out the ethic of a truth: 'Do all that you can to persevere in that which exceeds your perseverance. Persevere in the interruption. Seize in your being that which has seized and broken you."
-}];
-var dogOptions = [{
-  id: 1,
-  label: 'Chihuahua'
-}, {
-  id: 2,
-  label: 'Bulldog'
-}, {
-  id: 3,
-  label: 'Dachshund'
-}, {
-  id: 4,
-  label: 'Akita'
-}]; // let bigOptions = [];
-// for (let i = 0; i < 10000; i++) {
-// 	bigOptions = bigOptions.concat(colourOptions);
-// }
-
-var groupedOptions = [{
-  label: 'Colours',
-  options: colourOptions
-}, {
-  label: 'Flavours',
-  options: flavourOptions
-}];
+var DEVICE_VIEW_TAB_OPTIONS = ['overview', 'metrics', 'aota', 'fota', 'sota', 'cota', 'command-histories', 'event-histories'];
 
 /***/ }),
 
@@ -7780,12 +7347,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isNotEmptyString": () => (/* binding */ isNotEmptyString),
 /* harmony export */   "isValidJSONObject": () => (/* binding */ isValidJSONObject),
 /* harmony export */   "isValidJsonString": () => (/* binding */ isValidJsonString),
+/* harmony export */   "roundToTwoDecimalPlaces": () => (/* binding */ roundToTwoDecimalPlaces),
 /* harmony export */   "getSanitizedValues": () => (/* binding */ getSanitizedValues),
 /* harmony export */   "formatDateTimeISOStringToCommonString": () => (/* binding */ formatDateTimeISOStringToCommonString),
 /* harmony export */   "formatDateTimeRangeToCommonString": () => (/* binding */ formatDateTimeRangeToCommonString),
 /* harmony export */   "filterDateTimeRange": () => (/* binding */ filterDateTimeRange),
 /* harmony export */   "toastHelper": () => (/* binding */ toastHelper),
 /* harmony export */   "truncateToStringEllipsis": () => (/* binding */ truncateToStringEllipsis),
+/* harmony export */   "stripStringAfterLastSlash": () => (/* binding */ stripStringAfterLastSlash),
 /* harmony export */   "redirectToAfterToastSuccess": () => (/* binding */ redirectToAfterToastSuccess),
 /* harmony export */   "isDeviceNameUnique": () => (/* binding */ isDeviceNameUnique),
 /* harmony export */   "isDeviceNameUniqueDebounced": () => (/* binding */ isDeviceNameUniqueDebounced),
@@ -7796,14 +7365,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDeviceJobNameUnique": () => (/* binding */ isDeviceJobNameUnique),
 /* harmony export */   "isDeviceJobNameUniqueDebounced": () => (/* binding */ isDeviceJobNameUniqueDebounced)
 /* harmony export */ });
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
-/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! debounce-promise */ "./node_modules/debounce-promise/dist/index.js");
+/* harmony import */ var debounce_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(debounce_promise__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
-/* harmony import */ var _components_DeviceJobStatusIndicator_DeviceJobStatusIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/DeviceJobStatusIndicator/DeviceJobStatusIndicator */ "./resources/js/components/DeviceJobStatusIndicator/DeviceJobStatusIndicator.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _data_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/config */ "./resources/js/data/config.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -7817,7 +7385,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -7869,6 +7436,9 @@ var isValidJsonString = function isValidJsonString(str) {
   }
 
   return true;
+};
+var roundToTwoDecimalPlaces = function roundToTwoDecimalPlaces(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
 };
 var getSanitizedValues = function getSanitizedValues(object) {
   var clonedObject = _.cloneDeep(object);
@@ -7923,7 +7493,7 @@ var toastHelper = {
     });
   },
   success: function success(message, toastId) {
-    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+    return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.success( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
       children: message
     }), {
       id: toastId,
@@ -7934,10 +7504,10 @@ var toastHelper = {
   },
   error: function error(message, toastId) {
     return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.error(function (t) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("b", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("b", {
           children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_1__.CButton, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
           onClick: function onClick() {
             return react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.default.dismiss(t.id);
           },
@@ -7964,6 +7534,13 @@ var truncateToStringEllipsis = function truncateToStringEllipsis(str) {
 
   return null;
 };
+var stripStringAfterLastSlash = function stripStringAfterLastSlash(str) {
+  if (typeof str === 'string' || str instanceof String) {
+    return str.substr(0, str.lastIndexOf('/') + 1);
+  }
+
+  return str;
+};
 var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, location) {
   setTimeout(function () {
     history.push(location);
@@ -7971,7 +7548,7 @@ var redirectToAfterToastSuccess = function redirectToAfterToastSuccess(history, 
 };
 var isDeviceNameUnique = function isDeviceNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/devices/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/devices/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -7980,10 +7557,10 @@ var isDeviceNameUnique = function isDeviceNameUnique(name) {
     });
   });
 };
-var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/groups/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/groups/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -7992,10 +7569,10 @@ var isDeviceGroupNameUnique = function isDeviceGroupNameUnique(name) {
     });
   });
 };
-var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceGroupNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceGroupNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/categories/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/categories/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -8004,10 +7581,10 @@ var isDeviceCategoryNameUnique = function isDeviceCategoryNameUnique(name) {
     });
   });
 };
-var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceCategoryNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceCategoryNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
   return new Promise(function (resolve, reject) {
-    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_3__.API_ENDPOINT, "/device/jobs/validateField"), {
+    axios.post("".concat(_data_config__WEBPACK_IMPORTED_MODULE_4__.API_ENDPOINT, "/device/jobs/validateField"), {
       name: name
     }).then(function (result) {
       if (result.data.success) resolve(true);else resolve(false);
@@ -8016,7 +7593,7 @@ var isDeviceJobNameUnique = function isDeviceJobNameUnique(name) {
     });
   });
 };
-var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_0___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_3__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
+var isDeviceJobNameUniqueDebounced = debounce_promise__WEBPACK_IMPORTED_MODULE_1___default()(isDeviceJobNameUnique, _data_config__WEBPACK_IMPORTED_MODULE_4__.ASYNC_VALIDATION_TIMEOUT_IN_MS);
 
 /***/ }),
 
@@ -8033,29 +7610,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
-/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
-/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
-/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
-/* harmony import */ var _redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/shutdown/shutdown.actions */ "./resources/js/redux/shutdown/shutdown.actions.js");
-/* harmony import */ var _redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/reboot/reboot.actions */ "./resources/js/redux/reboot/reboot.actions.js");
-/* harmony import */ var _redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/decommission/decommission.actions */ "./resources/js/redux/decommission/decommission.actions.js");
-/* harmony import */ var _components_Error_Error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Error/Error */ "./resources/js/components/Error/Error.js");
-/* harmony import */ var _components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/EditableText/EditableText */ "./resources/js/components/EditableText/EditableText.js");
-/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
-/* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
-/* harmony import */ var _components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/MetricsCard/MetricsCard */ "./resources/js/components/MetricsCard/MetricsCard.js");
-/* harmony import */ var _containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../containers/CommandHistoriesDataTable/CommandHistoriesDataTable */ "./resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js");
-/* harmony import */ var _containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../containers/EventHistoriesDataTable/EventHistoriesDataTable */ "./resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js");
-/* harmony import */ var _components_RebootDeviceModal_RebootDeviceModal__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/RebootDeviceModal/RebootDeviceModal */ "./resources/js/components/RebootDeviceModal/RebootDeviceModal.js");
-/* harmony import */ var _components_ShutDownDeviceModal_ShutDownDeviceModal__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/ShutDownDeviceModal/ShutDownDeviceModal */ "./resources/js/components/ShutDownDeviceModal/ShutDownDeviceModal.js");
-/* harmony import */ var _components_DecommissionDeviceModal_DecommissionDeviceModal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/DecommissionDeviceModal/DecommissionDeviceModal */ "./resources/js/components/DecommissionDeviceModal/DecommissionDeviceModal.js");
-/* harmony import */ var _containers_SubmitAotaCardForm_SubmitAotaCardForm__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../containers/SubmitAotaCardForm/SubmitAotaCardForm */ "./resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js");
-/* harmony import */ var _containers_SubmitFotaCardForm_SubmitFotaCardForm__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../containers/SubmitFotaCardForm/SubmitFotaCardForm */ "./resources/js/containers/SubmitFotaCardForm/SubmitFotaCardForm.js");
-/* harmony import */ var _containers_SubmitSotaCardForm_SubmitSotaCardForm__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../containers/SubmitSotaCardForm/SubmitSotaCardForm */ "./resources/js/containers/SubmitSotaCardForm/SubmitSotaCardForm.js");
-/* harmony import */ var _containers_SubmitCotaCardForm_SubmitCotaCardForm__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../containers/SubmitCotaCardForm/SubmitCotaCardForm */ "./resources/js/containers/SubmitCotaCardForm/SubmitCotaCardForm.js");
-/* harmony import */ var _components_ConnectDeviceModal_ConnectDeviceModal__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../components/ConnectDeviceModal/ConnectDeviceModal */ "./resources/js/components/ConnectDeviceModal/ConnectDeviceModal.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
+/* harmony import */ var react_hot_toast__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-hot-toast */ "./node_modules/react-hot-toast/dist/react-hot-toast.esm.js");
+/* harmony import */ var _data_options__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../data/options */ "./resources/js/data/options.js");
+/* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/utils */ "./resources/js/utils/utils.js");
+/* harmony import */ var _redux_device_device_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../redux/device/device.actions */ "./resources/js/redux/device/device.actions.js");
+/* harmony import */ var _redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../redux/shutdown/shutdown.actions */ "./resources/js/redux/shutdown/shutdown.actions.js");
+/* harmony import */ var _redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/reboot/reboot.actions */ "./resources/js/redux/reboot/reboot.actions.js");
+/* harmony import */ var _redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/decommission/decommission.actions */ "./resources/js/redux/decommission/decommission.actions.js");
+/* harmony import */ var _components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/EditableText/EditableText */ "./resources/js/components/EditableText/EditableText.js");
+/* harmony import */ var _components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/CardSkeleton/CardSkeleton */ "./resources/js/components/CardSkeleton/CardSkeleton.js");
+/* harmony import */ var _components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/DevicePropertyCard/DevicePropertyCard */ "./resources/js/components/DevicePropertyCard/DevicePropertyCard.js");
+/* harmony import */ var _components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/MetricsCard/MetricsCard */ "./resources/js/components/MetricsCard/MetricsCard.js");
+/* harmony import */ var _containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../containers/CommandHistoriesDataTable/CommandHistoriesDataTable */ "./resources/js/containers/CommandHistoriesDataTable/CommandHistoriesDataTable.js");
+/* harmony import */ var _containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../containers/EventHistoriesDataTable/EventHistoriesDataTable */ "./resources/js/containers/EventHistoriesDataTable/EventHistoriesDataTable.js");
+/* harmony import */ var _components_RebootDeviceModal_RebootDeviceModal__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/RebootDeviceModal/RebootDeviceModal */ "./resources/js/components/RebootDeviceModal/RebootDeviceModal.js");
+/* harmony import */ var _components_ShutDownDeviceModal_ShutDownDeviceModal__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/ShutDownDeviceModal/ShutDownDeviceModal */ "./resources/js/components/ShutDownDeviceModal/ShutDownDeviceModal.js");
+/* harmony import */ var _components_DecommissionDeviceModal_DecommissionDeviceModal__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/DecommissionDeviceModal/DecommissionDeviceModal */ "./resources/js/components/DecommissionDeviceModal/DecommissionDeviceModal.js");
+/* harmony import */ var _containers_SubmitAotaCardForm_SubmitAotaCardForm__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../containers/SubmitAotaCardForm/SubmitAotaCardForm */ "./resources/js/containers/SubmitAotaCardForm/SubmitAotaCardForm.js");
+/* harmony import */ var _containers_SubmitFotaCardForm_SubmitFotaCardForm__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../containers/SubmitFotaCardForm/SubmitFotaCardForm */ "./resources/js/containers/SubmitFotaCardForm/SubmitFotaCardForm.js");
+/* harmony import */ var _containers_SubmitSotaCardForm_SubmitSotaCardForm__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../containers/SubmitSotaCardForm/SubmitSotaCardForm */ "./resources/js/containers/SubmitSotaCardForm/SubmitSotaCardForm.js");
+/* harmony import */ var _containers_SubmitCotaCardForm_SubmitCotaCardForm__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../containers/SubmitCotaCardForm/SubmitCotaCardForm */ "./resources/js/containers/SubmitCotaCardForm/SubmitCotaCardForm.js");
+/* harmony import */ var _components_ConnectDeviceModal_ConnectDeviceModal__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../components/ConnectDeviceModal/ConnectDeviceModal */ "./resources/js/components/ConnectDeviceModal/ConnectDeviceModal.js");
+/* harmony import */ var _components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../components/ContentError/ContentError */ "./resources/js/components/ContentError/ContentError.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8096,9 +7675,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var ViewDevice = function ViewDevice(props) {
   var deviceUniqueId = props.match.params.id;
-  var device = props.device,
+  var activeTab = props.match.params.tab;
+  var history = props.history,
+      match = props.match,
+      device = props.device,
       isFetchingDevice = props.isFetchingDevice,
       fetchDeviceErrorMessage = props.fetchDeviceErrorMessage,
       isSubmittingShutdown = props.isSubmittingShutdown,
@@ -8130,9 +7714,22 @@ var ViewDevice = function ViewDevice(props) {
       showDecommissionModal = _useState8[0],
       setShowDecommissionModal = _useState8[1];
 
+  var DEFAULT_ACTIVE_TAB = 'overview';
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!activeTab) {
+      history.push("".concat(match.url, "/").concat(DEFAULT_ACTIVE_TAB));
+    }
+
+    if (activeTab && !_data_options__WEBPACK_IMPORTED_MODULE_5__.DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
+      history.push("".concat((0,_utils_utils__WEBPACK_IMPORTED_MODULE_6__.stripStringAfterLastSlash)(match.url)).concat(DEFAULT_ACTIVE_TAB));
+    }
+
     fetchDeviceStartAsync(deviceUniqueId);
   }, []);
+
+  var handleNavChange = function handleNavChange(tab) {
+    history.push("".concat((0,_utils_utils__WEBPACK_IMPORTED_MODULE_6__.stripStringAfterLastSlash)(match.url)).concat(tab));
+  };
 
   var confirmShutdown = function confirmShutdown() {
     setShowShutdownModal(!showShutdownModal);
@@ -8150,37 +7747,37 @@ var ViewDevice = function ViewDevice(props) {
   };
 
   if (isFetchingDevice) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_11__.default, {});
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_CardSkeleton_CardSkeleton__WEBPACK_IMPORTED_MODULE_12__.default, {});
   } else if (fetchDeviceErrorMessage) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_Error_Error__WEBPACK_IMPORTED_MODULE_9__.default, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_ContentError_ContentError__WEBPACK_IMPORTED_MODULE_25__.default, {
       errorMessage: fetchDeviceErrorMessage
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CRow, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCol, {
         xs: "12",
         md: "12",
         className: "mb-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCard, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardHeader, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CRow, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCard, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardHeader, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CRow, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCol, {
                 className: "mb-3",
                 lg: "12",
                 xl: "7",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)("div", {
                   className: "d-flex",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)("div", {
                     className: "m-4",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_4__.default, {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
                       name: "cilDevices",
                       size: "4xl"
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)("div", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)("div", {
                     className: "flex-grow-1 overflow-hidden my-auto",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_10__.default, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_EditableText_EditableText__WEBPACK_IMPORTED_MODULE_11__.default, {
                       style: {
                         minHeight: '48px'
                       },
@@ -8192,15 +7789,15 @@ var ViewDevice = function ViewDevice(props) {
                           name: value
                         });
                       }
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)("small", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)("small", {
                       children: ["ID: ", device.unique_id]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)("div", {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)("div", {
                       className: "mt-2",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CBadge, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CBadge, {
                         color: "secondary",
                         className: "font-lg mr-2",
                         children: device.device_status.name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CBadge, {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CBadge, {
                         color: "primary",
                         className: "font-lg",
                         children: device.device_category.name
@@ -8208,46 +7805,46 @@ var ViewDevice = function ViewDevice(props) {
                     })]
                   })]
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCol, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCol, {
                 className: "my-auto",
                 lg: "12",
                 xl: "5",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)("div", {
                   className: "d-flex justify-content-center",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButtonGroup, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CButtonGroup, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CButton, {
                       color: "dark",
                       onClick: function onClick() {
                         return setShowConnectDeviceModal(true);
                       },
                       children: "Connect"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CButton, {
                       color: "danger",
                       onClick: function onClick() {
                         return setShowShutdownModal(true);
                       },
                       disabled: isSubmittingShutdown,
-                      children: [isSubmittingShutdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                      children: [isSubmittingShutdown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSpinner, {
                         color: "white",
                         size: "sm"
                       }), " Shut down"]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CButton, {
                       color: "info",
                       onClick: function onClick() {
                         return setShowRebootModal(true);
                       },
                       disabled: isSubmittingReboot,
-                      children: [isSubmittingReboot && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                      children: [isSubmittingReboot && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSpinner, {
                         color: "white",
                         size: "sm"
                       }), " Reboot"]
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CButton, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CButton, {
                       color: "primary",
                       onClick: function onClick() {
                         return setShowDecommissionModal(true);
                       },
                       disabled: isSubmittingDecommission,
-                      children: [isSubmittingDecommission && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CSpinner, {
+                      children: [isSubmittingDecommission && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSpinner, {
                         color: "white",
                         size: "sm"
                       }), " Decommission"]
@@ -8256,99 +7853,123 @@ var ViewDevice = function ViewDevice(props) {
                 })
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CCardBody, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabs, {
-              activeTab: "overview",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNav, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCardBody, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabs, {
+              activeTab: activeTab,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNav, {
                 variant: "tabs",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "overview",
+                    onClick: function onClick() {
+                      return handleNavChange('overview');
+                    },
                     children: "Overview"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "metrics",
+                    onClick: function onClick() {
+                      return handleNavChange('metrics');
+                    },
                     children: "Metrics"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "aota",
+                    onClick: function onClick() {
+                      return handleNavChange('aota');
+                    },
                     children: "Application OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "fota",
+                    onClick: function onClick() {
+                      return handleNavChange('fota');
+                    },
                     children: "Firmware OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "sota",
+                    onClick: function onClick() {
+                      return handleNavChange('sota');
+                    },
                     children: "Software OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "cota",
+                    onClick: function onClick() {
+                      return handleNavChange('cota');
+                    },
                     children: "Configuration OTA Update"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "command-histories",
+                    onClick: function onClick() {
+                      return handleNavChange('command-histories');
+                    },
                     children: "Command Histories"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavItem, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CNavLink, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavItem, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CNavLink, {
                     "data-tab": "event-histories",
+                    onClick: function onClick() {
+                      return handleNavChange('event-histories');
+                    },
                     children: "Event Histories"
                   })
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabContent, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabContent, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "overview",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  children: activeTab === 'overview' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_DevicePropertyCard_DevicePropertyCard__WEBPACK_IMPORTED_MODULE_13__.default, {
                     device: device
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "metrics",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_13__.default, {
+                  children: activeTab === 'metrics' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_MetricsCard_MetricsCard__WEBPACK_IMPORTED_MODULE_14__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "aota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitAotaCardForm_SubmitAotaCardForm__WEBPACK_IMPORTED_MODULE_19__.default, {
+                  children: activeTab === 'aota' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_SubmitAotaCardForm_SubmitAotaCardForm__WEBPACK_IMPORTED_MODULE_20__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "fota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitFotaCardForm_SubmitFotaCardForm__WEBPACK_IMPORTED_MODULE_20__.default, {
+                  children: activeTab === 'fota' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_SubmitFotaCardForm_SubmitFotaCardForm__WEBPACK_IMPORTED_MODULE_21__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "sota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitSotaCardForm_SubmitSotaCardForm__WEBPACK_IMPORTED_MODULE_21__.default, {
+                  children: activeTab === 'sota' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_SubmitSotaCardForm_SubmitSotaCardForm__WEBPACK_IMPORTED_MODULE_22__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "cota",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_SubmitCotaCardForm_SubmitCotaCardForm__WEBPACK_IMPORTED_MODULE_22__.default, {
+                  children: activeTab === 'cota' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_SubmitCotaCardForm_SubmitCotaCardForm__WEBPACK_IMPORTED_MODULE_23__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "command-histories",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_14__.default, {
+                  children: activeTab === 'command-histories' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_CommandHistoriesDataTable_CommandHistoriesDataTable__WEBPACK_IMPORTED_MODULE_15__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_3__.CTabPane, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CTabPane, {
                   className: "m-3",
                   "data-tab": "event-histories",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_15__.default, {
+                  children: activeTab === 'event-histories' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_containers_EventHistoriesDataTable_EventHistoriesDataTable__WEBPACK_IMPORTED_MODULE_16__.default, {
                     deviceUniqueId: deviceUniqueId
                   })
                 })]
@@ -8357,31 +7978,31 @@ var ViewDevice = function ViewDevice(props) {
           })]
         })
       })
-    }), showConnectDeviceModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_ConnectDeviceModal_ConnectDeviceModal__WEBPACK_IMPORTED_MODULE_23__.default, {
+    }), showConnectDeviceModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_ConnectDeviceModal_ConnectDeviceModal__WEBPACK_IMPORTED_MODULE_24__.default, {
       device: device,
       show: showConnectDeviceModal,
       onClose: function onClose() {
         return setShowConnectDeviceModal(!showConnectDeviceModal);
       }
-    }), showShutdownModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_ShutDownDeviceModal_ShutDownDeviceModal__WEBPACK_IMPORTED_MODULE_17__.default, {
+    }), showShutdownModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_ShutDownDeviceModal_ShutDownDeviceModal__WEBPACK_IMPORTED_MODULE_18__.default, {
       show: showShutdownModal,
       onClose: function onClose() {
         return setShowShutdownModal(!showShutdownModal);
       },
       onConfirm: confirmShutdown
-    }), showRebootModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_RebootDeviceModal_RebootDeviceModal__WEBPACK_IMPORTED_MODULE_16__.default, {
+    }), showRebootModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_RebootDeviceModal_RebootDeviceModal__WEBPACK_IMPORTED_MODULE_17__.default, {
       show: showRebootModal,
       onClose: function onClose() {
         return setShowRebootModal(!showRebootModal);
       },
       onConfirm: confirmReboot
-    }), showDecommissionModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(_components_DecommissionDeviceModal_DecommissionDeviceModal__WEBPACK_IMPORTED_MODULE_18__.default, {
+    }), showDecommissionModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(_components_DecommissionDeviceModal_DecommissionDeviceModal__WEBPACK_IMPORTED_MODULE_19__.default, {
       show: showDecommissionModal,
       onClose: function onClose() {
         return setShowDecommissionModal(!showDecommissionModal);
       },
       onConfirm: confirmDecommission
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_24__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.Toaster, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_26__.jsx)(react_hot_toast__WEBPACK_IMPORTED_MODULE_4__.Toaster, {})]
   });
 };
 
@@ -8401,19 +8022,19 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchDeviceStartAsync: function fetchDeviceStartAsync(deviceUniqueId) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.fetchDeviceStartAsync)(deviceUniqueId));
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_7__.fetchDeviceStartAsync)(deviceUniqueId));
     },
     updateDeviceStartAsync: function updateDeviceStartAsync(deviceUniqueId, params) {
-      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_5__.updateDeviceStartAsync)(deviceUniqueId, params));
+      return dispatch((0,_redux_device_device_actions__WEBPACK_IMPORTED_MODULE_7__.updateDeviceStartAsync)(deviceUniqueId, params));
     },
     submitShutdownStartAsync: function submitShutdownStartAsync(deviceUniqueId) {
-      return dispatch((0,_redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_6__.submitShutdownStartAsync)(deviceUniqueId));
+      return dispatch((0,_redux_shutdown_shutdown_actions__WEBPACK_IMPORTED_MODULE_8__.submitShutdownStartAsync)(deviceUniqueId));
     },
     submitRebootStartAsync: function submitRebootStartAsync(deviceUniqueId) {
-      return dispatch((0,_redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_7__.submitRebootStartAsync)(deviceUniqueId));
+      return dispatch((0,_redux_reboot_reboot_actions__WEBPACK_IMPORTED_MODULE_9__.submitRebootStartAsync)(deviceUniqueId));
     },
     submitDecommissionStartAsync: function submitDecommissionStartAsync(deviceUniqueId) {
-      return dispatch((0,_redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_8__.submitDecommissionStartAsync)(deviceUniqueId));
+      return dispatch((0,_redux_decommission_decommission_actions__WEBPACK_IMPORTED_MODULE_10__.submitDecommissionStartAsync)(deviceUniqueId));
     }
   };
 };
@@ -29497,114 +29118,6 @@ exports.Ripple = Ripple;
 
 /***/ }),
 
-/***/ "./node_modules/primereact/components/tag/Tag.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/primereact/components/tag/Tag.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports.Tag = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _ClassNames = __webpack_require__(/*! ../utils/ClassNames */ "./node_modules/primereact/components/utils/ClassNames.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Tag = /*#__PURE__*/function (_Component) {
-  _inherits(Tag, _Component);
-
-  var _super = _createSuper(Tag);
-
-  function Tag() {
-    _classCallCheck(this, Tag);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Tag, [{
-    key: "render",
-    value: function render() {
-      var tagClassName = (0, _ClassNames.classNames)('p-tag p-component', {
-        'p-tag-info': this.props.severity === 'info',
-        'p-tag-success': this.props.severity === 'success',
-        'p-tag-warning': this.props.severity === 'warning',
-        'p-tag-danger': this.props.severity === 'danger',
-        'p-tag-rounded': this.props.rounded
-      }, this.props.className);
-      var iconClass = (0, _ClassNames.classNames)('p-tag-icon', this.props.icon);
-      return /*#__PURE__*/_react.default.createElement("span", {
-        className: tagClassName,
-        style: this.props.style
-      }, this.props.icon && /*#__PURE__*/_react.default.createElement("span", {
-        className: iconClass
-      }), /*#__PURE__*/_react.default.createElement("span", {
-        className: "p-tag-value"
-      }, this.props.value), /*#__PURE__*/_react.default.createElement("span", null, this.props.children));
-    }
-  }]);
-
-  return Tag;
-}(_react.Component);
-
-exports.Tag = Tag;
-
-_defineProperty(Tag, "defaultProps", {
-  value: null,
-  severity: null,
-  rounded: false,
-  icon: null,
-  style: null,
-  className: null
-});
-
-_defineProperty(Tag, "propTypes", {
-  value: _propTypes.default.any,
-  severity: _propTypes.default.string,
-  rounded: _propTypes.default.bool,
-  icon: _propTypes.default.string,
-  style: _propTypes.default.object,
-  className: _propTypes.default.string
-});
-
-/***/ }),
-
 /***/ "./node_modules/primereact/components/tooltip/Tooltip.js":
 /*!***************************************************************!*\
   !*** ./node_modules/primereact/components/tooltip/Tooltip.js ***!
@@ -32221,19 +31734,6 @@ module.exports = __webpack_require__(/*! ./components/dropdown/Dropdown */ "./no
 
 
 module.exports = __webpack_require__(/*! ./components/inputtext/InputText */ "./node_modules/primereact/components/inputtext/InputText.js");
-
-/***/ }),
-
-/***/ "./node_modules/primereact/tag.js":
-/*!****************************************!*\
-  !*** ./node_modules/primereact/tag.js ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-module.exports = __webpack_require__(/*! ./components/tag/Tag */ "./node_modules/primereact/components/tag/Tag.js");
 
 /***/ }),
 

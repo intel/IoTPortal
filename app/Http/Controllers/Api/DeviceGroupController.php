@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\DeviceGroups\CreateDeviceGroupAction;
+use App\Actions\DeviceGroups\DeleteMultipleDeviceGroupsAction;
+use App\Actions\DeviceGroups\FilterDataTableDeviceGroupAction;
+use App\Actions\DeviceGroups\FindDeviceGroupByIdOrUniqueIdAction;
+use App\Actions\DeviceGroups\UpdateDeviceGroupAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroySelectedDeviceGroupRequest;
 use App\Http\Requests\StoreDeviceGroupRequest;
@@ -12,120 +16,97 @@ use App\Models\DeviceGroup;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 
 class DeviceGroupController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:viewAny,App\Models\DeviceGroup')->only(['index', 'options']);
+        $this->middleware('can:create,App\Models\DeviceGroup')->only('store');
+        $this->middleware('can:update,deviceGroup')->only('update');
+        $this->middleware('can:deleteMany,App\Models\DeviceGroup')->only('destroySelected');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDataTableDeviceGroupAction $filterDataTableDeviceGroupAction
      * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request, FilterDataTableDeviceGroupAction $filterDataTableDeviceGroupAction): JsonResponse
     {
-        $query = Auth::user()->deviceGroups();
+        $deviceGroups = $filterDataTableDeviceGroupAction->execute($request->all());
 
-        if ($request->has('filters')) {
-            $filters = json_decode($request->filters);
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'unique_id') $query->uniqueIdLike($value->value);
-
-                if ($key === 'name') $query->nameLike($value->value);
-
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->uniqueIdLike($value->value)
-                            ->orWhere->nameLike($value->value);
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->sortOrder === '1')
-                $query->orderBy($request->sortField);
-            else
-                $query->orderByDesc($request->sortField);
-        }
-
-        $maxRows = Config::get('constants.index_max_rows');
-        $rows = min((int) $request->input('rows', 10), $maxRows);
-
-        $deviceGroups = $query->paginate($rows);
-
-        return Helper::apiResponseHttpOk(['deviceGroups' => $deviceGroups]);
+        return $this->apiOk(['deviceGroups' => $deviceGroups]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param StoreDeviceGroupRequest $request
+     * @param CreateDeviceGroupAction $createDeviceGroupAction
      * @return JsonResponse
      */
-    public function store(StoreDeviceGroupRequest $request)
+    public function store(StoreDeviceGroupRequest $request, CreateDeviceGroupAction $createDeviceGroupAction): JsonResponse
     {
-        $deviceGroup = Auth::user()->deviceGroups()->create($request->validated());
+        $deviceGroup = $createDeviceGroupAction->execute($request->user(), $request->validated());
 
-        $deviceGroup->devices()->attach($request->devices);
-
-        return $deviceGroup->exists
-            ? Helper::apiResponseHttpOk(['deviceGroup' => $deviceGroup])
-            : Helper::apiResponseHttpInternalServerError(['Failed to create device group']);
+        return $this->apiOk(['deviceGroup' => $deviceGroup]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param FindDeviceGroupByIdOrUniqueIdAction $findDeviceGroupByIdOrUniqueIdAction
+     * @param string $id
      * @return JsonResponse
      */
-    public function show($id)
+    public function show(FindDeviceGroupByIdOrUniqueIdAction $findDeviceGroupByIdOrUniqueIdAction, string $id): JsonResponse
     {
-        $deviceGroup = DeviceGroup::id($id)
-            ->orWhere->uniqueId($id)
-            ->first();
+        $deviceGroup = $findDeviceGroupByIdOrUniqueIdAction->execute($id);
 
-        return Helper::apiResponseHttpOk(['deviceGroup' => $deviceGroup]);
+        $this->authorize('view', $deviceGroup);
+
+        return $this->apiOk(['deviceGroup' => $deviceGroup]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UpdateDeviceGroupRequest $request
+     * @param UpdateDeviceGroupAction $updateDeviceGroupAction
      * @param DeviceGroup $deviceGroup
      * @return JsonResponse
      */
-    public function update(UpdateDeviceGroupRequest $request, DeviceGroup $deviceGroup)
+    public function update(UpdateDeviceGroupRequest $request, UpdateDeviceGroupAction $updateDeviceGroupAction, DeviceGroup $deviceGroup): JsonResponse
     {
-        $success = $deviceGroup->update($request->validated());
-
-        $deviceGroup->devices()->sync($request->devices);
+        $success = $updateDeviceGroupAction->execute($deviceGroup, $request->validated());
 
         return $success
-            ? Helper::apiResponseHttpOk(['deviceGroup' => $deviceGroup])
-            : Helper::apiResponseHttpInternalServerError('Failed to update device group');
+            ? $this->apiOk(['deviceGroup' => $deviceGroup])
+            : $this->apiInternalServerError('Failed to update device group');
     }
 
     /**
      * Remove the specified resources from storage.
      *
      * @param DestroySelectedDeviceGroupRequest $request
+     * @param DeleteMultipleDeviceGroupsAction $deleteMultipleDeviceGroupsAction
      * @return JsonResponse
      */
-    public function destroySelected(DestroySelectedDeviceGroupRequest $request)
+    public function destroySelected(DestroySelectedDeviceGroupRequest $request, DeleteMultipleDeviceGroupsAction $deleteMultipleDeviceGroupsAction): JsonResponse
     {
-        $success = Auth::user()->deviceGroups()->idIn($request->ids)->delete();
+        $success = $deleteMultipleDeviceGroupsAction->execute($request->ids);
 
-        return Helper::apiResponseHttpOk([], $success);
+        return $this->apiOk([], $success);
     }
 
     /**
      * @param Request $request
      * @return JsonResponse
      */
-    public function options(Request $request)
+    public function options(Request $request): JsonResponse
     {
         $query = Auth::user()->deviceGroups();
 
@@ -133,7 +114,7 @@ class DeviceGroupController extends Controller
             $query->nameLike($request->name);
         }
 
-        return Helper::apiResponseHttpOk(['deviceGroups' => $query->getOptions()]);
+        return $this->apiOk(['deviceGroups' => $query->getOptions()]);
     }
 
     /**
@@ -141,8 +122,8 @@ class DeviceGroupController extends Controller
      * @param ValidateDeviceGroupFieldsRequest $request
      * @return JsonResponse
      */
-    public function validateField(ValidateDeviceGroupFieldsRequest $request)
+    public function validateField(ValidateDeviceGroupFieldsRequest $request): JsonResponse
     {
-        return Helper::apiResponseHttpOk();
+        return $this->apiOk();
     }
 }

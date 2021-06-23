@@ -3,12 +3,15 @@
 namespace App\Http\Requests;
 
 use App\Helpers\Helper;
+use App\Traits\ApiResponses;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class BaseFormRequest extends FormRequest
 {
+    use ApiResponses;
+
     /**
      * Handle a failed validation attempt.
      *
@@ -19,6 +22,6 @@ class BaseFormRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(Helper::apiResponseHttpBadRequest($validator->getMessageBag()->toArray()));
+        throw new HttpResponseException($this->apiBadRequest(errors: $validator->getMessageBag()->toArray()));
     }
 }

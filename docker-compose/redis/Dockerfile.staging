@@ -6,4 +6,6 @@ ENV LOCAL_GID=65534
 
 USER $LOCAL_UID:$LOCAL_GID
 
+ENV REDIS_PASSWORD=REa73KiYig6h34iqakg
 
+CMD [ "sh", "-c", "redis-server --requirepass $REDIS_PASSWORD --appendonly yes" ]

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use App\Traits\HasUniqueId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DeviceGroup extends Model
 {
-    use HasFactory, HasUniqueId;
+    use HasFactory, EloquentGetTableName, HasUniqueId;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +18,7 @@ class DeviceGroup extends Model
      */
     protected $fillable = [
         'name',
+        'user_id',
     ];
 
     public static function boot()

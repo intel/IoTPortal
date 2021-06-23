@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    use HasFactory;
+    use HasFactory, EloquentGetTableName;
 
-    const TYPE_PROPERTY = 'PROPERTY';
-    const TYPE_TELEMETRY = 'TELEMETRY';
+    const EVENT_PROPERTY = 'PROPERTY';
+    const EVENT_TELEMETRY = 'TELEMETRY';
 
     /**
      * The attributes that are mass assignable.
@@ -49,22 +50,22 @@ class Event extends Model
 
     public function scopeProperty($query)
     {
-        return $query->name(self::TYPE_PROPERTY);
+        return $query->name(self::EVENT_PROPERTY);
     }
 
     public function scopeTelemetry($query)
     {
-        return $query->name(self::TYPE_TELEMETRY);
+        return $query->name(self::EVENT_TELEMETRY);
     }
 
     public function scopeGetProperty($query)
     {
-        return $query->property()->first();
+        return $query->property()->firstOrFail();
     }
 
     public function scopeGetTelemetry($query)
     {
-        return $query->telemetry()->first();
+        return $query->telemetry()->firstOrFail();
     }
 
     public function scopeGetOptions($query)

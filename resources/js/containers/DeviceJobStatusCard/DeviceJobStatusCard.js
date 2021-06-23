@@ -5,6 +5,7 @@ import { Knob } from 'primereact/knob';
 import Chart from 'react-apexcharts';
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 
+import { roundToTwoDecimalPlaces } from '../../utils/utils';
 import useDeviceJobStatusRenderer from '../../hooks/useDeviceJobStatusRenderer';
 
 import Duration from '../../components/Duration/Duration';
@@ -59,9 +60,10 @@ const DeviceJobStatusCard = ({
             </div>
             <div className="d-flex flex-row align-items-center">
               <div className="mt-3 mr-5 text-center">
-                <h6>Completed</h6>
-                <Knob value={completedPercentage} valueTemplate={"{value}%"} strokeWidth={5}
-                      valueColor="#00e396" size={250} readOnly/>
+                <h6>Completed %</h6>
+                <Knob value={roundToTwoDecimalPlaces(completedPercentage)} valueTemplate={"{value}%"} strokeWidth={5}
+                      valueColor="#00e396" size={250} readOnly
+                />
               </div>
               <Chart
                 options={chartOptions}

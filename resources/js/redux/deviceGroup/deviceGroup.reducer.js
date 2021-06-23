@@ -118,7 +118,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroup: true,
-        fetchDeviceErrorMessage: undefined,
+        fetchDeviceGroupErrorMessage: undefined,
       };
     case deviceGroupActionTypes.FETCH_DEVICE_GROUP_SUCCESS:
       return {
@@ -130,7 +130,7 @@ const deviceGroupReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isFetchingDeviceGroup: false,
-        fetchDeviceErrorMessage: action.payload,
+        fetchDeviceGroupErrorMessage: action.payload,
       };
 
     // Update

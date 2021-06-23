@@ -6,7 +6,7 @@ import { CAlert, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react
 
 import { fetchApiTokensStartAsync } from '../../redux/apiToken/apiToken.actions';
 
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import ApiToken from '../../components/ApiToken/ApiToken';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 
@@ -27,7 +27,7 @@ const ListApiTokens = (props) => {
   if (isFetchingApiTokens) {
     return (<CardSkeleton/>);
   } else if (fetchApiTokensErrorMessage) {
-    return (<Error errorMessage={fetchApiTokensErrorMessage}/>);
+    return (<ContentError errorMessage={fetchApiTokensErrorMessage}/>);
   }
 
   return (

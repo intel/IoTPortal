@@ -18,6 +18,8 @@ cp -rn /var/www/storage/framework/. /iotportaldata/app/storage/framework
 
 cp -n /var/www/.env /iotportaldata/env
 
+cp -n /var/www/docker-compose/redis/redis.conf /iotportaldata/redis/conf/redis.conf
+
 cp -rn /vernemq/log/. /iotportaldata/logs/vernemq
 
 cp -rn /vernemq/data/. /iotportaldata/vernemq/data

@@ -13,7 +13,7 @@ import {
 } from '../../redux/deviceCategory/deviceCategory.actions';
 
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import IotTextInputFormGroup from '../../components/IotTextInputFormGroup/IotTextInputFormGroup';
 import PrimarySecondaryButtons from '../../components/PrimarySecondaryButtons/PrimarySecondaryButtons';
 
@@ -54,7 +54,7 @@ const EditDeviceCategory = (props) => {
   if (isFetchingDeviceCategory) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceCategoryErrorMessage) {
-    return (<Error errorMessage={fetchDeviceCategoryErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceCategoryErrorMessage}/>);
   }
 
   return (

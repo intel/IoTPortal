@@ -2,59 +2,31 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\EventHistories\FilterDataTableEventHistoriesAction;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 
 class EventHistoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:view,device')->only('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDataTableEventHistoriesAction $filterDataTableEventHistoriesAction
      * @param Device $device
      * @return JsonResponse
      */
-    public function index(Request $request, Device $device)
+    public function index(Request $request, FilterDataTableEventHistoriesAction $filterDataTableEventHistoriesAction, Device $device): JsonResponse
     {
-        $query = $device->eventHistories()->with('event:id,name');
+        $deviceEventHistories = $filterDataTableEventHistoriesAction->execute($device, $request->all());
 
-        if ($request->has('filters')) {
-            $filters = json_decode($request->filters);
-
-            foreach ($filters as $key => $value) {
-                if ($key === 'raw_data') $query->rawDataLike($value->value);
-
-                if ($key === 'event_id') $query->eventId($value->value);
-
-                if ($key === 'created_at') {
-                    $dates = explode(" - ", $value->value);
-                    $query->createdAtBetween($dates);
-                }
-
-                if ($key === 'globalFilter') {
-                    $query->where(function ($query) use ($value) {
-                        $query->rawDataLike($value->value);
-                    });
-                }
-            }
-        }
-
-        if ($request->has('sortField')) {
-            if ($request->sortOrder === '1')
-                $query->orderBy($request->sortField);
-            else
-                $query->orderByDesc($request->sortField);
-        }
-
-        $maxRows = Config::get('constants.index_max_rows');
-        $rows = min((int) $request->input('rows', 10), $maxRows);
-
-        $deviceEventHistories = $query->paginate($rows);
-
-        return Helper::apiResponseHttpOk(['deviceEventHistories' => $deviceEventHistories]);
+        return $this->apiOk(['deviceEventHistories' => $deviceEventHistories]);
     }
 }

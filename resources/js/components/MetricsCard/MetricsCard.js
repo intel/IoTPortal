@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import { CCard, CCardBody, CCardHeader } from '@coreui/react';
 
-import CpuTemperatureLineChartCard from '../../containers/CpuTemperatureLineChartCard/CpuTemperatureLineChartCard';
-import CpuUsageLineChartCard from '../../containers/CpuUsageLineChartCard/CpuUsageLineChartCard';
-import DiskUsageLineChartCard from '../../containers/DiskUsageLineChartCard/DiskUsageLineChartCard';
-import AvailableMemoryLineChartCard from '../../containers/AvailableMemoryLineChartCard/AvailableMemoryLineChartCard';
+import CpuTemperatureAreaChartCard from '../../containers/CpuTemperatureAreaChartCard/CpuTemperatureAreaChartCard';
+import CpuUsageAreaChartCard from '../../containers/CpuUsageAreaChartCard/CpuUsageAreaChartCard';
+import DiskUsageAreaChartCard from '../../containers/DiskUsageAreaChartCard/DiskUsageAreaChartCard';
+import AvailableMemoryAreaChartCard from '../../containers/AvailableMemoryAreaChartCard/AvailableMemoryAreaChartCard';
 
 const MetricsCard = ({deviceUniqueId}) => {
   return (
@@ -15,10 +15,10 @@ const MetricsCard = ({deviceUniqueId}) => {
         Metrics
       </CCardHeader>
       <CCardBody>
-        <CpuTemperatureLineChartCard deviceUniqueId={deviceUniqueId}/>
-        <CpuUsageLineChartCard deviceUniqueId={deviceUniqueId}/>
-        <DiskUsageLineChartCard deviceUniqueId={deviceUniqueId}/>
-        <AvailableMemoryLineChartCard deviceUniqueId={deviceUniqueId}/>
+        <CpuTemperatureAreaChartCard deviceUniqueId={deviceUniqueId}/>
+        <CpuUsageAreaChartCard deviceUniqueId={deviceUniqueId}/>
+        <DiskUsageAreaChartCard deviceUniqueId={deviceUniqueId}/>
+        <AvailableMemoryAreaChartCard deviceUniqueId={deviceUniqueId}/>
       </CCardBody>
     </CCard>
   );

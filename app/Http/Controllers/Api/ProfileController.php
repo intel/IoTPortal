@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,8 +14,8 @@ class ProfileController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function show(Request $request)
+    public function show(Request $request): JsonResponse
     {
-        return Helper::apiResponseHttpOk(['profile' => $request->user()]);
+        return $this->apiOk(['profile' => $request->user()]);
     }
 }

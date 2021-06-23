@@ -16,29 +16,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['json.response'])->group(function () {
-//    Route::post('/register', 'App\Http\Controllers\Api\Auth\AuthController@register')->name('api.auth.register');
-//    Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
-
-
-    // direct method invocation from cloud
-//    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\DeviceActionController@methods')->name('api.devices.methods');
 
     Route::post('/devices/register', 'App\Http\Controllers\Api\DeviceController@register')->name('api.devices.register');
 
     Route::post('/mqtt/endpoint', 'App\Http\Controllers\Api\Mqtt\EndpointController@mqttEndpoint')->name('api.mqtt.endpoint');
-
-    // TODO: remove, not using anymore
-//    Route::post('/publish', 'App\Http\Controllers\Api\Mqtt\EndpointController@authOnPublish')->name('api.devices.publish');
-
-    // TODO: remove, not using anymore
-//    Route::get('/devices/publish', 'App\Http\Controllers\Api\DevicePublisherController@publish')->name('api.devices.publish');
-//    Route::get('/devices/listen', 'App\Http\Controllers\Api\DevicePublisherController@index')->name('api.devices.listen');
-
 });
 
 Route::middleware(['json.response', 'auth'])->group(function () {
 
     Route::get('/profile', 'App\Http\Controllers\Api\ProfileController@show');
+
+    // Dashboard
+    Route::get('/dashboard/statistics', 'App\Http\Controllers\Api\DashboardController@showStatistics');
+
+    Route::get('/dashboard/cpu/temperatures', 'App\Http\Controllers\Api\DashboardController@cpuTemperatures');
+
+    Route::get('/dashboard/cpu/usages', 'App\Http\Controllers\Api\DashboardController@cpuUsages');
+
+    Route::get('/dashboard/disk/usages', 'App\Http\Controllers\Api\DashboardController@diskUsages');
+
+    Route::get('/dashboard/memory/availables', 'App\Http\Controllers\Api\DashboardController@memoryAvailables');
+
 
     // Devices
     Route::post('/devices/validateField', 'App\Http\Controllers\Api\DeviceController@validateField');
@@ -127,29 +125,14 @@ Route::middleware(['json.response', 'auth'])->group(function () {
 
     Route::get('/devices/{device}/events/options', 'App\Http\Controllers\Api\EventController@options')->name('api.devices.events.options');
 
-
-
-
-
-
-
-
-
-//    Route::get('/user', function (Request $request) {
-//        return $request->user();
-//    });
-
-
-//    Route::post('/devices/{device}/methods', 'App\Http\Controllers\Api\DeviceController@methods')->name('api.devices.methods');
-
 });
-
-// TODO: remove, not using anymore
-Route::middleware(['json.response', 'auth:api'])->group(function () {
-    Route::post('/logout', 'App\Http\Controllers\Api\Auth\AuthController@logout')->name('api.auth.logout');
-
-    Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
-});
+//
+//// TODO: remove, not using anymore
+//Route::middleware(['json.response', 'auth:api'])->group(function () {
+//    Route::post('/logout', 'App\Http\Controllers\Api\Auth\AuthController@logout')->name('api.auth.logout');
+//
+//    Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
+//});
 
 
 

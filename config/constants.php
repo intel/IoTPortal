@@ -18,8 +18,8 @@ return [
     ],
 
     'event_records' => [
-        ['name' => Event::TYPE_PROPERTY],
-        ['name' => Event::TYPE_TELEMETRY],
+        ['name' => Event::EVENT_PROPERTY],
+        ['name' => Event::EVENT_TELEMETRY],
     ],
 
 //    'device_statuses' => [

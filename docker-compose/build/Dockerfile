@@ -38,7 +38,7 @@ COPY docker-compose/build/certificate.conf /certs
 
 WORKDIR /certs
 
-ARG HOSTNAME=192.168.0.105
+ARG HOSTNAME=192.168.0.106
 
 SHELL ["/bin/bash", "-c"]
 
@@ -59,7 +59,7 @@ RUN openssl req -new -sha256 \
         -key localhost.key \
         -subj "/C=US/ST=Oregon/L=Oregon/O=Intel/OU=Intel Corporation/CN=$HOSTNAME" \
         -reqexts SAN \
-        -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:$HOSTNAME,DNS:localhost,DNS:app,DNS:mysql,DNS:nginx,DNS:vernemq,DNS:redis,DNS:phpmyadmin,DNS:host.docker.internal,IP:127.0.0.1,IP:192.168.1.1,IP:192.168.0.105")) \
+        -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:$HOSTNAME,DNS:localhost,DNS:app,DNS:mysql,DNS:nginx,DNS:vernemq,DNS:redis,DNS:horizon,DNS:phpmyadmin,DNS:host.docker.internal,IP:127.0.0.1,IP:192.168.1.1,IP:192.168.0.106")) \
         -out localhost.csr
 
 # Verify the csr's content
@@ -83,6 +83,14 @@ COPY . /var/www
 WORKDIR /var/www
 
 RUN cp .env.staging .env
+
+RUN sed -i "s~APP_HOST=.*~APP_HOST=$HOSTNAME~g" .env
+
+ARG REDIS_PASSWORD=REa73KiYig6h34iqakg
+
+#RUN echo "requirepass $REDIS_PASSWORD" >> docker-compose/redis/redis.conf
+
+RUN { echo "" ; echo "requirepass $REDIS_PASSWORD"; } >> docker-compose/redis/redis.conf
 
 RUN rm public/js/*.js \
         public/js/*.txt

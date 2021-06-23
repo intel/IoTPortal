@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-import CIcon from '@coreui/icons-react'
+import CIcon from '@coreui/icons-react';
 import { Toaster } from 'react-hot-toast';
-import { CButton, CButtonGroup, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
+import { CButton, CButtonGroup, CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react';
 
 import { deleteDeviceGroupsStartAsync, fetchDeviceGroupStartAsync } from '../../redux/deviceGroup/deviceGroup.actions';
 
-import Error from '../../components/Error/Error';
+import ContentError from '../../components/ContentError/ContentError';
 import CardSkeleton from '../../components/CardSkeleton/CardSkeleton';
 import DevicesDataTable from '../../containers/DevicesDataTable/DevicesDataTable';
 import DeleteDeviceGroupModal from '../../components/DeleteDeviceGroupModal/DeleteDeviceGroupModal';
@@ -39,7 +39,7 @@ const ViewDeviceGroup = (props) => {
   if (isFetchingDeviceGroup) {
     return (<CardSkeleton/>);
   } else if (fetchDeviceGroupErrorMessage) {
-    return (<Error errorMessage={fetchDeviceGroupErrorMessage}/>);
+    return (<ContentError errorMessage={fetchDeviceGroupErrorMessage}/>);
   }
 
   return (

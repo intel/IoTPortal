@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\EloquentGetTableName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CommandHistory extends Model
 {
-    use HasFactory;
+    use HasFactory, EloquentGetTableName;
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +31,8 @@ class CommandHistory extends Model
      * @var array
      */
     protected $casts = [
+        'started_at' => 'datetime',
+        'completed_at' => 'datetime',
         'responded_at' => 'datetime',
     ];
 

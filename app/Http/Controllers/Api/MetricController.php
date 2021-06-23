@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
+use App\Actions\Metrics\FilterDeviceCpuTemperaturesAction;
+use App\Actions\Metrics\FilterDeviceCpuUsagesAction;
+use App\Actions\Metrics\FilterDeviceDiskUsagesAction;
+use App\Actions\Metrics\FilterDeviceMemoryAvailablesAction;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use Illuminate\Http\JsonResponse;
@@ -10,107 +13,68 @@ use Illuminate\Http\Request;
 
 class MetricController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param Request $request
-     * @param Device $device
-     * @return JsonResponse
-     */
-    public function cpuTemperatures(Request $request, Device $device)
+    public function __construct()
     {
-        $timeRangeFilter = (int)$request->input('timeRangeFilter', 1);
-
-        $cpuTemperatures = $device->temperatureStatistics()
-            ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
-            ->orderBy('created_at')
-            ->get(['id', 'temperature', 'created_at']);
-
-        $cpuTemperatures->transform(function ($item, $key) {
-            return [
-                $item->created_at->getPreciseTimestamp(3),
-                $item->temperature,
-            ];
-        });
-
-        return Helper::apiResponseHttpOk(['cpuTemperatures' => $cpuTemperatures->toArray()]);
+        $this->middleware('can:view,device')->only(['cpuTemperatures', 'cpuUsages', 'diskUsages', 'memoryAvailables']);
     }
 
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDeviceCpuTemperaturesAction $filterDeviceCpuTemperaturesAction
      * @param Device $device
      * @return JsonResponse
      */
-    public function cpuUsages(Request $request, Device $device)
+    public function cpuTemperatures(Request $request, FilterDeviceCpuTemperaturesAction $filterDeviceCpuTemperaturesAction, Device $device): JsonResponse
     {
-        $timeRangeFilter = (int)$request->input('timeRangeFilter', 1);
+        $cpuTemperatures = $filterDeviceCpuTemperaturesAction->execute($device, $request->only('timeRangeFilter'));
 
-        $cpuUsages = $device->cpuStatistics()
-            ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
-            ->orderBy('created_at')
-            ->get(['id', 'system_cpu_percentage', 'created_at']);
-
-        $cpuUsages->transform(function ($item, $key) {
-            return [
-                $item->created_at->getPreciseTimestamp(3),
-                $item->system_cpu_percentage,
-            ];
-        });
-
-        return Helper::apiResponseHttpOk(['cpuUsages' => $cpuUsages->toArray()]);
+        return $this->apiOk(['cpuTemperatures' => $cpuTemperatures->toArray()]);
     }
 
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDeviceCpuUsagesAction $filterDeviceCpuUsagesAction
      * @param Device $device
      * @return JsonResponse
      */
-    public function diskUsages(Request $request, Device $device)
+    public function cpuUsages(Request $request, FilterDeviceCpuUsagesAction $filterDeviceCpuUsagesAction, Device $device): JsonResponse
     {
-        $timeRangeFilter = (int)$request->input('timeRangeFilter', 1);
+        $cpuUsages = $filterDeviceCpuUsagesAction->execute($device, $request->only('timeRangeFilter'));
 
-        $diskUsages = $device->diskStatistics()
-            ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
-            ->orderBy('created_at')
-            ->get(['id', 'disk_percentage_used', 'created_at']);
-
-        $diskUsages->transform(function ($item, $key) {
-            return [
-                $item->created_at->getPreciseTimestamp(3),
-                $item->disk_percentage_used,
-            ];
-        });
-
-        return Helper::apiResponseHttpOk(['diskUsages' => $diskUsages->toArray()]);
+        return $this->apiOk(['cpuUsages' => $cpuUsages->toArray()]);
     }
 
     /**
      * Display a listing of the resource.
      *
      * @param Request $request
+     * @param FilterDeviceDiskUsagesAction $filterDeviceDiskUsagesAction
      * @param Device $device
      * @return JsonResponse
      */
-    public function memoryAvailables(Request $request, Device $device)
+    public function diskUsages(Request $request, FilterDeviceDiskUsagesAction $filterDeviceDiskUsagesAction, Device $device): JsonResponse
     {
-        $timeRangeFilter = (int)$request->input('timeRangeFilter', 1);
+        $diskUsages = $filterDeviceDiskUsagesAction->execute($device, $request->only('timeRangeFilter'));
 
-        $availableMemories = $device->memoryStatistics()
-            ->whereBetween('created_at', [now()->subHours($timeRangeFilter), now()])
-            ->orderBy('created_at')
-            ->get(['id', 'available_memory_in_bytes', 'created_at']);
+        return $this->apiOk(['diskUsages' => $diskUsages->toArray()]);
+    }
 
-        $availableMemories->transform(function ($item, $key) {
-            return [
-                $item->created_at->getPreciseTimestamp(3),
-                $item->available_memory_in_bytes,
-            ];
-        });
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @param FilterDeviceMemoryAvailablesAction $filterDeviceMemoryAvailablesAction
+     * @param Device $device
+     * @return JsonResponse
+     */
+    public function memoryAvailables(Request $request, FilterDeviceMemoryAvailablesAction $filterDeviceMemoryAvailablesAction, Device $device): JsonResponse
+    {
+        $availableMemories = $filterDeviceMemoryAvailablesAction->execute($device, $request->only('timeRangeFilter'));
 
-        return Helper::apiResponseHttpOk(['availableMemories' => $availableMemories->toArray()]);
+        return $this->apiOk(['availableMemories' => $availableMemories->toArray()]);
     }
 }

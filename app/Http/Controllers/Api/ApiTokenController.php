@@ -2,21 +2,25 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ApiTokenController extends Controller
 {
     /**
      * Display the specified resource.
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function show()
+    public function show(Request $request): JsonResponse
     {
-        $user = Auth::user();
-        return Helper::apiResponseHttpOk(['uniqueId' => $user->unique_id, 'deviceConnectionKey' => $user->device_connection_key]);
+        $user = $request->user();
+
+        return $this->apiOk([
+            'uniqueId' => $user->unique_id,
+            'deviceConnectionKey' => $user->device_connection_key,
+        ]);
     }
 }
