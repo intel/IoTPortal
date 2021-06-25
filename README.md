@@ -53,6 +53,23 @@ To seed your database with sample data, run the command below. A random generate
 ./iotportal.sh seedDb 
 ```
 
+## Script Commands Reference
+
+Command | Description
+---------------------- | ------------------------------------
+install | Start the installer.
+start | Start all containers.
+restart	| Restart all containers (same as start).
+stop | Stop all containers.
+rebuild	| Rebuild generated installation assets.
+migrateDb | Update/initialize the database.
+seedDb | Seed all required data for first run.
+seedDbSample | Seed the database with sample data. (Development use only)
+clearDb | Clear the entire database. (Development use only)
+help | List all commands.
+
+*Use the commands cautiously. Some are intented for development purpose only.*
+
 ## Contributing
 
 Thank you for considering contributing to the IoT Portal! PHPStorm is highly recommended if you are working on this project. Please commit any pull requests against the `master` branch.

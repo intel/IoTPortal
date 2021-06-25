@@ -5,43 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="Added Dashboard chart. Added MQTT over TLS implementation and redis server password authentication.">
-      <change afterPath="$PROJECT_DIR$/public/js/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/assets/icons/logo-short.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/iotportal.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.staging" beforeDir="false" afterPath="$PROJECT_DIR$/.env.staging" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Envoy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/Envoy.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendDeviceCommandJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendDeviceCommandJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/SampleDatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/SampleDatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.staging.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.staging.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/app/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/app/wait-for-mysql.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/build/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/build/setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/build/setup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/horizon/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/horizon/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/horizon/start_horizon.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/horizon/start_horizon.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/mysql/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/mysql/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/nginx/startup.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/nginx/vhost.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/php/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/redis/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/redis/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/redis/redis.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/redis/redis.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/vernemq/Dockerfile.staging" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/vernemq/vernemq.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/vernemq/vernemq.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/resources_js_views_pages_layout_Layout_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/assets/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/logo-negative.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/logo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/assets/icons/sygnet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/containers/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/containers/Sidebar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -505,7 +470,7 @@
       <workItem from="1624492775016" duration="5642000" />
       <workItem from="1624503275012" duration="7000" />
       <workItem from="1624503774611" duration="29227000" />
-      <workItem from="1624586198637" duration="7832000" />
+      <workItem from="1624586198637" duration="9267000" />
     </task>
     <task id="LOCAL-00001" summary="Added Dashboard chart. Added MQTT over TLS implementation and redis server password authentication.">
       <created>1624438253832</created>
