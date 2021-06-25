@@ -50,23 +50,25 @@ To seed your database with sample data, run the command below. A random generate
 
 *ONLY TRY THIS ON DEVELOPMENT INSTANCE! THIS IS FOR YOU TO EXPERIMENT THE FEATURES WITHOUT ACTUALLY PROVISIONING A DEVICE.*
 ```
-./iotportal.sh seedDb 
+./iotportal.sh seedDbSample 
 ```
+
+By default, the script uses values in the `.env.staging` file for deployment. You should replace those default credentials, e.g. `DB_PASSWORD`, `REDIS_PASSWORD`, `MQTT_PASSWORD` etc.  with your own randomly generated password for production deployment.
 
 ## Script Commands Reference
 
 Command | Description
 ---------------------- | ------------------------------------
-install | Start the installer.
-start | Start all containers.
-restart	| Restart all containers (same as start).
-stop | Stop all containers.
-rebuild	| Rebuild generated installation assets.
-migrateDb | Update/initialize the database.
-seedDb | Seed all required data for first run.
-seedDbSample | Seed the database with sample data. (Development use only)
-clearDb | Clear the entire database. (Development use only)
-help | List all commands.
+`install` | Start the installer.
+`start` | Start all containers.
+`restart`	| Restart all containers (same as start).
+`stop` | Stop all containers.
+`rebuild`	| Rebuild generated installation assets.
+`migrateDb` | Update/initialize the database.
+`seedDb` | Seed all required data for first run.
+`seedDbSample` | Seed the database with sample data. (Development use only)
+`clearDb` | Clear the entire database. (Development use only)
+`help` | List all commands.
 
 *Use the commands cautiously. Some are intented for development purpose only.*
 

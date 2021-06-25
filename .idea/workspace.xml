@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="421dfa82-3b1b-4b34-9895-cbd1d212b192" name="Default Changelist" comment="Added Dashboard chart. Added MQTT over TLS implementation and redis server password authentication.">
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -470,7 +471,7 @@
       <workItem from="1624492775016" duration="5642000" />
       <workItem from="1624503275012" duration="7000" />
       <workItem from="1624503774611" duration="29227000" />
-      <workItem from="1624586198637" duration="9267000" />
+      <workItem from="1624586198637" duration="10853000" />
     </task>
     <task id="LOCAL-00001" summary="Added Dashboard chart. Added MQTT over TLS implementation and redis server password authentication.">
       <created>1624438253832</created>
