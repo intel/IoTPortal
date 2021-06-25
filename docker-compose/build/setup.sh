@@ -16,9 +16,11 @@ cp -rn /var/www/storage/app/. /iotportaldata/app/storage/app
 
 cp -rn /var/www/storage/framework/. /iotportaldata/app/storage/framework
 
-cp -n /var/www/.env /iotportaldata/env
+sed -i "s~LOCAL_UID=.*~LOCAL_UID=$LOCAL_UID~g" /var/www/.env
 
-cp -n /var/www/docker-compose/redis/redis.conf /iotportaldata/redis/conf/redis.conf
+sed -i "s~LOCAL_GID=.*~LOCAL_GID=$LOCAL_GID~g" /var/www/.env
+
+cp -n /var/www/.env /iotportaldata/env
 
 cp -rn /vernemq/log/. /iotportaldata/logs/vernemq
 
@@ -26,14 +28,13 @@ cp -rn /vernemq/data/. /iotportaldata/vernemq/data
 
 cp -rn /vernemq/etc/. /iotportaldata/vernemq/etc
 
-if [ ! -e "$UID_FILE" ] ; then
-    touch "$UID_FILE"
+if [ ! -e "$UID_FILE" ]; then
+  touch "$UID_FILE"
 fi
 
-if [ "$LOCAL_UID" == "" ] || [ "$LOCAL_GID" == "" ]
-then
-    LOCAL_UID="65534"
-    LOCAL_GID="65534"
+if [ "$LOCAL_UID" == "" ] || [ "$LOCAL_GID" == "" ]; then
+  LOCAL_UID="65534"
+  LOCAL_GID="65534"
 fi
 
 chown -R $LOCAL_UID:$LOCAL_GID /iotportaldata

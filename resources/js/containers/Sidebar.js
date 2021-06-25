@@ -12,17 +12,18 @@ import {
   CSidebarNavItem,
   CSidebarNavTitle,
 } from '@coreui/react';
-
 import CIcon from '@coreui/icons-react';
 
 // sidebar nav config
 import navigation from './_nav';
-
 import { sidebarActionTypes } from '../redux/sidebar/sidebar.types';
 
+import logoNegative from '../assets/icons/logo-negative.svg';
+import logoShort from '../assets/icons/logo-short.svg';
+
 const Sidebar = () => {
-  const dispatch = useDispatch()
-  const show = useSelector(state => state.sidebar.sidebarShow)
+  const dispatch = useDispatch();
+  const show = useSelector(state => state.sidebar.sidebarShow);
 
   return (
     <CSidebar
@@ -32,17 +33,18 @@ const Sidebar = () => {
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon
           className="c-sidebar-brand-full"
-          name="logo-negative"
-          height={35}
+          title="IoT Portal"
+          height={50}
+          src={logoNegative}
         />
         <CIcon
           className="c-sidebar-brand-minimized"
-          name="sygnet"
-          height={35}
+          title="IoT Portal"
+          height={50}
+          src={logoShort}
         />
       </CSidebarBrand>
       <CSidebarNav>
-
         <CCreateElement
           items={navigation}
           components={{

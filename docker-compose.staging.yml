@@ -6,8 +6,12 @@ services:
       dockerfile: docker-compose/app/Dockerfile.staging
       args:
         - PHP_VERSION=${PHP_VERSION}
+        - LOCAL_UID=${LOCAL_UID}
+        - LOCAL_GID=${LOCAL_GID}
     image: inteliotportal-app
     container_name: inteliotportal-app
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     depends_on:
       - '${DB_HOST}'
@@ -17,8 +21,6 @@ services:
       CONTAINER_ROLE: app
       MYSQL_USER: '${MYSQL_USER}'
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
@@ -34,16 +36,18 @@ services:
       dockerfile: docker-compose/mysql/Dockerfile.staging
       args:
         - MYSQL_VERSION=${MYSQL_VERSION}
+        - LOCAL_UID=${LOCAL_UID}
+        - LOCAL_GID=${LOCAL_GID}
     image: inteliotportal-mysql
     container_name: inteliotportal-mysql
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     environment:
       MYSQL_DATABASE: '${MYSQL_DATABASE}'
       MYSQL_USER: '${MYSQL_USER}'
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/mysql/data:/var/lib/mysql
     ports:
@@ -60,16 +64,18 @@ services:
         - CHANGE_SOURCE=${NGINX_CHANGE_SOURCE}
         - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}
         - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}
+        - LOCAL_UID=${LOCAL_UID}
+        - LOCAL_GID=${LOCAL_GID}
         - http_proxy
         - https_proxy
         - no_proxy
     image: inteliotportal-nginx
     container_name: inteliotportal-nginx
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     depends_on:
       - '${NGINX_PHP_UPSTREAM_CONTAINER}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ../iotportaldata/nginx/sites-available:/etc/nginx/sites-available
@@ -87,8 +93,12 @@ services:
       dockerfile: docker-compose/vernemq/Dockerfile.staging
       args:
         - VERNEMQ_VERSION=${VERNEMQ_VERSION}
+        - LOCAL_UID=${LOCAL_UID}
+        - LOCAL_GID=${LOCAL_GID}
     image: inteliotportal-vernemq
     container_name: inteliotportal-vernemq
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     environment:
       DOCKER_VERNEMQ_ACCEPT_EULA: '${VERNEMQ_ACCEPT_EULA}'
@@ -110,8 +120,6 @@ services:
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__ON_CLIENT_GONE__ENDPOINT: '${VERNEMQ_VMQ_WEBHOOKS_ON_CLIENT_GONE_ENDPOINT}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__CAFILE: '${VERNEMQ_VMQ_WEBHOOKS_CAFILE}'
       DOCKER_VERNEMQ_VMQ_WEBHOOKS__USE_CRLS: '${VERNEMQ_VMQ_WEBHOOKS_USE_CRLS}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/vernemq/etc:/vernemq/etc
       - ../iotportaldata/vernemq/data:/vernemq/data
@@ -129,16 +137,17 @@ services:
       dockerfile: docker-compose/redis/Dockerfile.staging
       args:
         - REDIS_VERSION=${DOCKER_REDIS_VERSION}
+        - LOCAL_UID=${LOCAL_UID}
+        - LOCAL_GID=${LOCAL_GID}
     image: inteliotportal-redis
     container_name: inteliotportal-redis
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     environment:
       REDIS_PASSWORD: '${DOCKER_REDIS_PASSWORD}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/redis/data:/data
-      - ../iotportaldata/redis/conf:/usr/local/etc/redis
     ports:
       - '${DOCKER_REDIS_PORT:-6379}:6379'
     networks:
@@ -147,6 +156,8 @@ services:
   horizon:
     image: inteliotportal-app
     container_name: inteliotportal-horizon
+    labels:
+      - "com.iotportal.product=iotportal"
     restart: always
     depends_on:
       - app
@@ -157,8 +168,6 @@ services:
       CONTAINER_ROLE: horizon
       MYSQL_USER: '${MYSQL_USER}'
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-    env_file:
-      - ../iotportaldata/env/uid.env
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
@@ -169,18 +178,18 @@ services:
       - inteliotportal
 
 #  Enable only development environment
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:${PMA_VERSION}
-    container_name: inteliotportal-phpmyadmin
-    restart: always
-    depends_on:
-      - '${DB_CONNECTION}'
-    environment:
-      PMA_ARBITRARY: '${PMA_ARBITRARY}'
-    ports:
-      - '${PMA_PORT:-8081}:80'
-    networks:
-      - inteliotportal
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin:${PMA_VERSION}
+#    container_name: inteliotportal-phpmyadmin
+#    restart: always
+#    depends_on:
+#      - '${DB_CONNECTION}'
+#    environment:
+#      PMA_ARBITRARY: '${PMA_ARBITRARY}'
+#    ports:
+#      - '${PMA_PORT:-8081}:80'
+#    networks:
+#      - inteliotportal
 
 networks:
   inteliotportal:

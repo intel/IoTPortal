@@ -12,7 +12,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
 class SendDeviceCommandJob implements ShouldQueue
 {
@@ -74,25 +73,12 @@ class SendDeviceCommandJob implements ShouldQueue
         $this->commandHistory->refresh();
         $startedAt = new Carbon($this->commandHistory->started_at);
         while (!$this->commandHistory->responded_at && $startedAt->diffInSeconds() <= 30) {
-            Log::debug('startedAt diffinseconds' . $startedAt->diffInSeconds());
             sleep(1);
             $this->commandHistory->refresh();
         }
 
-//        $this->commandHistory->refresh();
-//        $elapsedTimeInSeconds = 0;
-//        while (!$this->commandHistory->responded_at && $elapsedTimeInSeconds <= 30) {
-//            $elapsedTimeInSeconds++;
-//            sleep(1);
-//            $this->commandHistory->refresh();
-//        }
-
         if (!$this->commandHistory->responded_at) {
             throw new DeviceTimeoutException('Timeout waiting for device to respond.');
-//            $this->commandHistory->update([
-//                'error' => 'Timeout waiting for device to respond.',
-//                'completed_at' => now(),
-//            ]);
         }
     }
 }

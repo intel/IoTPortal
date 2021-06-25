@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,16 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['json.response'])->group(function () {
 
+    // Device registration endpoint
     Route::post('/devices/register', 'App\Http\Controllers\Api\DeviceController@register')->name('api.devices.register');
 
+    // VerneMQ webhooks endpoint
     Route::post('/mqtt/endpoint', 'App\Http\Controllers\Api\Mqtt\EndpointController@mqttEndpoint')->name('api.mqtt.endpoint');
 });
 
 Route::middleware(['json.response', 'auth'])->group(function () {
 
+    // Profile
     Route::get('/profile', 'App\Http\Controllers\Api\ProfileController@show');
 
-    // Dashboard
+    // Dashboard Charts
     Route::get('/dashboard/statistics', 'App\Http\Controllers\Api\DashboardController@showStatistics');
 
     Route::get('/dashboard/cpu/temperatures', 'App\Http\Controllers\Api\DashboardController@cpuTemperatures');
@@ -126,27 +127,3 @@ Route::middleware(['json.response', 'auth'])->group(function () {
     Route::get('/devices/{device}/events/options', 'App\Http\Controllers\Api\EventController@options')->name('api.devices.events.options');
 
 });
-//
-//// TODO: remove, not using anymore
-//Route::middleware(['json.response', 'auth:api'])->group(function () {
-//    Route::post('/logout', 'App\Http\Controllers\Api\Auth\AuthController@logout')->name('api.auth.logout');
-//
-//    Route::get('/administrations/devices/connectionKey', 'App\Http\Controllers\Api\Administrations\DeviceConnectionController@getDeviceConnectionKey')->name('api.administrations.getDeviceConnectionKey');
-//});
-
-
-
-
-//
-//Route::middleware(['json.response', 'auth:api'])->get('/user', function (Request $request) {
-////    return $request->user();
-//    echo 'sad';
-//});
-
-//Route::get('/register', 'App\Http\Controllers\Api\Auth\AuthController@register')->name('api.auth.register');
-//Route::post('/login', 'App\Http\Controllers\Api\Auth\AuthController@login')->name('api.auth.login');
-//
-//
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});

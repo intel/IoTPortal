@@ -74,7 +74,6 @@
     mkdir -p $OUTPUT_DIR/vernemq/etc
     mkdir -p $OUTPUT_DIR/vernemq/data
     mkdir -p $OUTPUT_DIR/redis/data
-    mkdir -p $OUTPUT_DIR/redis/conf
 
 
     # Create uid.env
@@ -101,7 +100,7 @@
     # sed -i 's~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_REGISTER_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     # sed -i 's~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_SUBSCRIBE_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
     # sed -i 's~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT=.*~VMQ_WEBHOOKS_AUTH_ON_PUBLISH_ENDPOINT="${MIX_API_ENDPOINT}/mqtt/endpoint"~g' .env.staging
-    docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=192.168.0.106 --build-arg REDIS_PASSWORD=REa73KiYig6h34iqakg -f docker-compose/build/Dockerfile .
+    docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=192.168.0.106 -f docker-compose/build/Dockerfile .
     docker run --rm --name setup -v $OUTPUT_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
 
 

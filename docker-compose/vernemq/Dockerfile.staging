@@ -1,19 +1,24 @@
 ARG VERNEMQ_VERSION=latest-alpine
 FROM vernemq/vernemq:${VERNEMQ_VERSION}
 
-ENV LOCAL_UID=65534
-ENV LOCAL_GID=65534
+ARG LOCAL_UID=65534
+ARG LOCAL_GID=65534
+
+ENV LOCAL_UID=$LOCAL_UID
+ENV LOCAL_GID=$LOCAL_GID
 
 USER root
 
-# We replace the startup script with our own to inject default SSL listener configuration value with docker IP.
+# We replace the startup script with our own to inject default SSL listener configuration value with docker IP
 COPY --from=inteliotportal-build /var/www/docker-compose/vernemq/vernemq.sh /usr/sbin/start_vernemq
 
-COPY --from=inteliotportal-build /certs/rootCA.crt /usr/share/ca-certificates/
+RUN chmod +x /usr/sbin/start_vernemq
 
-RUN chmod 644 /usr/share/ca-certificates/rootCA.crt && update-ca-certificates
+#COPY --from=inteliotportal-build /certs/rootCA.crt /usr/share/ca-certificates/
 
-RUN cat /usr/share/ca-certificates/rootCA.crt >> /etc/ssl/cert.pem
+#RUN chmod 644 /usr/share/ca-certificates/rootCA.crt && update-ca-certificates
+
+#RUN cat /usr/share/ca-certificates/rootCA.crt >> /etc/ssl/cert.pem
 
 RUN chown -R $LOCAL_UID:$LOCAL_GID /usr/sbin/start_vernemq \
                                     /vernemq/etc/vm.args \

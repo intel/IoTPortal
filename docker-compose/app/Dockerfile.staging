@@ -1,8 +1,11 @@
 ARG PHP_VERSION=fpm
 FROM php:${PHP_VERSION}
 
-ENV LOCAL_UID=65534
-ENV LOCAL_GID=65534
+ARG LOCAL_UID=65534
+ARG LOCAL_GID=65534
+
+ENV LOCAL_UID=$LOCAL_UID
+ENV LOCAL_GID=$LOCAL_GID
 
 # Install PHP and composer dependencies TODO: remove unused in future
 RUN apt update && apt install -qq -y \
@@ -35,9 +38,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY --from=mysql:latest /usr/bin/mysqladmin /usr/bin/mysqladmin
 
-COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www /var/www/
 
-COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/app/*.sh /var/www
+COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/app/*.sh /var/www/
 
 RUN chmod u+x /var/www/wait-for-mysql.sh \
                 /var/www/startup.sh

@@ -52,10 +52,6 @@ class AppServiceProvider extends ServiceProvider
                         'completed_at' => now(),
                     ]);
                 }
-//                $jobModel->getCommandHistory()->update([
-//                    'error' => 'An error has occurred.',
-//                    'completed_at' => now(),
-//                ]);
             }
         });
     }

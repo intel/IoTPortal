@@ -924,11 +924,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/icons-react */ "./node_modules/@coreui/icons-react/es/index.js");
 /* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_nav */ "./resources/js/containers/_nav.js");
 /* harmony import */ var _redux_sidebar_sidebar_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../redux/sidebar/sidebar.types */ "./resources/js/redux/sidebar/sidebar.types.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _assets_icons_logo_negative_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/icons/logo-negative.svg */ "./resources/js/assets/icons/logo-negative.svg");
+/* harmony import */ var _assets_icons_logo_short_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/icons/logo-short.svg */ "./resources/js/assets/icons/logo-short.svg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
  // sidebar nav config
+
+
 
 
 
@@ -940,7 +944,7 @@ var Sidebar = function Sidebar() {
   var show = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.sidebar.sidebarShow;
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebar, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebar, {
     show: show,
     onShowChange: function onShowChange(val) {
       return dispatch({
@@ -948,20 +952,22 @@ var Sidebar = function Sidebar() {
         payload: val
       });
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarBrand, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarBrand, {
       className: "d-md-down-none",
       to: "/",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
         className: "c-sidebar-brand-full",
-        name: "logo-negative",
-        height: 35
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
+        title: "IoT Portal",
+        height: 50,
+        src: _assets_icons_logo_negative_svg__WEBPACK_IMPORTED_MODULE_6__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_icons_react__WEBPACK_IMPORTED_MODULE_3__.default, {
         className: "c-sidebar-brand-minimized",
-        name: "sygnet",
-        height: 35
+        title: "IoT Portal",
+        height: 50,
+        src: _assets_icons_logo_short_svg__WEBPACK_IMPORTED_MODULE_7__.default
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarNav, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCreateElement, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarNav, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CCreateElement, {
         items: _nav__WEBPACK_IMPORTED_MODULE_4__.default,
         components: {
           CSidebarNavDivider: _coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarNavDivider,
@@ -970,7 +976,7 @@ var Sidebar = function Sidebar() {
           CSidebarNavTitle: _coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarNavTitle
         }
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarMinimizer, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_2__.CSidebarMinimizer, {
       className: "c-d-md-down-none"
     })]
   });
@@ -1418,6 +1424,36 @@ var Layout = function Layout() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);
+
+/***/ }),
+
+/***/ "./resources/js/assets/icons/logo-negative.svg":
+/*!*****************************************************!*\
+  !*** ./resources/js/assets/icons/logo-negative.svg ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo-negative.svg?dd75f1a5412498f1fb299eb78405fd07");
+
+/***/ }),
+
+/***/ "./resources/js/assets/icons/logo-short.svg":
+/*!**************************************************!*\
+  !*** ./resources/js/assets/icons/logo-short.svg ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo-short.svg?131f300c6e01694b3294916e2a7ca556");
 
 /***/ }),
 

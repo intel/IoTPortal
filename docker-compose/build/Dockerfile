@@ -63,7 +63,7 @@ RUN openssl req -new -sha256 \
         -out localhost.csr
 
 # Verify the csr's content
-RUN openssl req -in localhost.csr -noout -text
+#RUN openssl req -in localhost.csr -noout -text
 
 # Generate the certificate using the mydomain csr and key along with the CA Root key
 RUN openssl x509 \
@@ -72,7 +72,7 @@ RUN openssl x509 \
         -extensions req_ext -extfile certificate.conf
 
 # Verify the certificate's content
-RUN openssl x509 -in localhost.crt -text -noout
+#RUN openssl x509 -in localhost.crt -text -noout
 
 SHELL ["/bin/sh", "-c"]
 
@@ -85,12 +85,6 @@ WORKDIR /var/www
 RUN cp .env.staging .env
 
 RUN sed -i "s~APP_HOST=.*~APP_HOST=$HOSTNAME~g" .env
-
-ARG REDIS_PASSWORD=REa73KiYig6h34iqakg
-
-#RUN echo "requirepass $REDIS_PASSWORD" >> docker-compose/redis/redis.conf
-
-RUN { echo "" ; echo "requirepass $REDIS_PASSWORD"; } >> docker-compose/redis/redis.conf
 
 RUN rm public/js/*.js \
         public/js/*.txt

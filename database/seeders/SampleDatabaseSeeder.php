@@ -28,6 +28,8 @@ class SampleDatabaseSeeder extends Seeder
         for ($i = 0; $i < 1; $i++) {
             $user = User::factory()->create();
 
+            $this->command->info('User ' . $i + 1 . ': Email: ' . $user->email);
+
             $deviceCategories = array();
 
             $deviceCategories[] = $user->deviceCategories()->create([
