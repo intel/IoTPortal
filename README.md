@@ -77,7 +77,7 @@ Command | Description
 `clearDb` | Clear the entire database. (Development use only)
 `help` | List all commands.
 
-*Use the commands cautiously. Some are intented for development purpose only.*
+*Use these commands cautiously. Some commands are intended for development purpose only.*
 
 ## Contributing
 
