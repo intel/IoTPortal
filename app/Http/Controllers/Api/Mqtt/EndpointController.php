@@ -66,9 +66,9 @@ class EndpointController extends Controller
 
         if ($device->validateMqttPassword($password)) {
             (new UpdateDeviceStatusToOnlineAction(new UpdateDeviceLastSeenToNowAction))->execute($device);
-            $this->apiMqttOk('ok');
+            return $this->apiMqttOk('ok');
         } else {
-            $this->apiMqttUnauthorized(['error' => 'Invalid username or password.']);
+            return $this->apiMqttUnauthorized(['error' => 'Invalid username or password.']);
         }
     }
 

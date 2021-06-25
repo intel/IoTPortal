@@ -7716,16 +7716,16 @@ var ViewDevice = function ViewDevice(props) {
 
   var DEFAULT_ACTIVE_TAB = 'overview';
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!activeTab) {
-      history.push("".concat(match.url, "/").concat(DEFAULT_ACTIVE_TAB));
-    }
-
-    if (activeTab && !_data_options__WEBPACK_IMPORTED_MODULE_5__.DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
-      history.push("".concat((0,_utils_utils__WEBPACK_IMPORTED_MODULE_6__.stripStringAfterLastSlash)(match.url)).concat(DEFAULT_ACTIVE_TAB));
-    }
-
     fetchDeviceStartAsync(deviceUniqueId);
   }, []);
+
+  if (!activeTab) {
+    history.push("".concat(match.url, "/").concat(DEFAULT_ACTIVE_TAB));
+  }
+
+  if (activeTab && !_data_options__WEBPACK_IMPORTED_MODULE_5__.DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
+    history.push("".concat((0,_utils_utils__WEBPACK_IMPORTED_MODULE_6__.stripStringAfterLastSlash)(match.url)).concat(DEFAULT_ACTIVE_TAB));
+  }
 
   var handleNavChange = function handleNavChange(tab) {
     history.push("".concat((0,_utils_utils__WEBPACK_IMPORTED_MODULE_6__.stripStringAfterLastSlash)(match.url)).concat(tab));

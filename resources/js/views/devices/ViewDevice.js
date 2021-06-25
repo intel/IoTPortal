@@ -72,14 +72,15 @@ const ViewDevice = (props) => {
   const DEFAULT_ACTIVE_TAB = 'overview';
 
   useEffect(() => {
-    if (!activeTab) {
-      history.push(`${match.url}/${DEFAULT_ACTIVE_TAB}`);
-    }
-    if (activeTab && !DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
-      history.push(`${stripStringAfterLastSlash(match.url)}${DEFAULT_ACTIVE_TAB}`);
-    }
     fetchDeviceStartAsync(deviceUniqueId);
   }, []);
+
+  if (!activeTab) {
+    history.push(`${match.url}/${DEFAULT_ACTIVE_TAB}`);
+  }
+  if (activeTab && !DEVICE_VIEW_TAB_OPTIONS.includes(activeTab)) {
+    history.push(`${stripStringAfterLastSlash(match.url)}${DEFAULT_ACTIVE_TAB}`);
+  }
 
   const handleNavChange = (tab) => {
     history.push(`${stripStringAfterLastSlash(match.url)}${tab}`);

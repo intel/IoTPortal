@@ -40,15 +40,22 @@ Finally, start your IoT Portal instance.
 ./iotportal.sh start 
 ```
 
-Seed your database for first run.
+Migrate the database for the first run.
+
+```
+./iotportal.sh migrateDb 
+```
+
+Seed the database.
 
 ```
 ./iotportal.sh seedDb 
 ```
 
-To seed your database with sample data, run the command below. A random generated user will be created with the password defaulted to `password`.
+To seed the database with sample data, run the command below. A random generated user will be created with the password defaulted to `password`.
 
 *ONLY TRY THIS ON DEVELOPMENT INSTANCE! THIS IS FOR YOU TO EXPERIMENT THE FEATURES WITHOUT ACTUALLY PROVISIONING A DEVICE.*
+
 ```
 ./iotportal.sh seedDbSample 
 ```

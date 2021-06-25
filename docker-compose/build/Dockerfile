@@ -46,6 +46,8 @@ RUN sed -i "s~CN =.*~CN = $HOSTNAME~g" certificate.conf
 
 RUN sed -i "s~DNS.1 =.*~DNS.1 = $HOSTNAME~g" certificate.conf
 
+RUN sed -i "s~IP.1 =.*~IP.1 = $HOSTNAME~g" certificate.conf
+
 # Generate rootCA.key (root CA private key) and rootCA.crt (root CA certficate)
 RUN openssl req \
         -new -x509 -subj "/C=US/ST=Oregon/L=Oregon/O=Intel/OU=Intel Corporation/CN=Intel CA" \
@@ -59,7 +61,7 @@ RUN openssl req -new -sha256 \
         -key localhost.key \
         -subj "/C=US/ST=Oregon/L=Oregon/O=Intel/OU=Intel Corporation/CN=$HOSTNAME" \
         -reqexts SAN \
-        -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:$HOSTNAME,DNS:localhost,DNS:app,DNS:mysql,DNS:nginx,DNS:vernemq,DNS:redis,DNS:horizon,DNS:phpmyadmin,DNS:host.docker.internal,IP:127.0.0.1,IP:192.168.1.1,IP:192.168.0.106")) \
+        -config <(cat /etc/ssl/openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:$HOSTNAME,DNS:localhost,DNS:app,DNS:mysql,DNS:nginx,DNS:vernemq,DNS:redis,DNS:horizon,DNS:phpmyadmin,DNS:host.docker.internal,IP:$HOSTNAME,IP:127.0.0.1,IP:192.168.1.1")) \
         -out localhost.csr
 
 # Verify the csr's content
