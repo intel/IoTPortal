@@ -24,31 +24,31 @@ You can install IoT Portal using Docker containers on Linux distributions. Use t
 
 Navigate to the `scripts` directory and give it permission to execute:
 
-```
+```shell
 cd scripts && chmod +x *
 ```
 
 Run the installation script. A `./iotportaldata` directory will be created.
 
-```
+```shell
 ./iotportal.sh install 
 ```
 
 Finally, start your IoT Portal instance.
 
-```
+```shell
 ./iotportal.sh start 
 ```
 
 Migrate the database for the first run.
 
-```
+```shell
 ./iotportal.sh migrateDb 
 ```
 
 Seed the database.
 
-```
+```shell
 ./iotportal.sh seedDb 
 ```
 
@@ -56,7 +56,7 @@ To seed the database with sample data, run the command below. A random generated
 
 *ONLY TRY THIS ON DEVELOPMENT INSTANCE! THIS IS FOR YOU TO EXPERIMENT THE FEATURES WITHOUT ACTUALLY PROVISIONING A DEVICE.*
 
-```
+```shell
 ./iotportal.sh seedDbSample 
 ```
 
@@ -78,6 +78,12 @@ Command | Description
 `help` | List all commands.
 
 *Use these commands cautiously. Some commands are intended for development purpose only.*
+
+## In-band Manageability Integration
+
+Read our [Integration Guide][inbig] to learn how to integrate the IoT Portal adapter into In-band Manageability.  
+
+[inbig]: INB_INTEGRATION.md
 
 ## Contributing
 
