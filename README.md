@@ -1,4 +1,8 @@
-## About IoT Portal
+<h1 align="center">
+  <a href="https://github.com/intel/IoTPortal/">
+    IoT Portal
+  </a>
+</h1>
 
 IoT Portal is a web application that interacts with Intel In-band Manageability to provide remote over-the-air (OTA) updates to IoT devices. It supports Firmware OTA (FOTA), Software OTA (SOTA), Application OTA (AOTA) and Configuration OTA (COTA). 
 

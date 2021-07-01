@@ -1,4 +1,6 @@
-## About In-band Manageability
+<h1 align="center">
+  In-band Manageability
+</h1>
 
 IoT Portal requires In-band Manageability to be installed on the IoT devices for remote over-the-air (OTA) updates to function.
 
