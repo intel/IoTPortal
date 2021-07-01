@@ -9,14 +9,14 @@ IoT Portal is a web application that interacts with Intel In-band Manageability 
 - Mass OTA update feature.
 - Robust Mass OTA background job processing.
 
-## Requirements
+## 📋 Requirements
 
 - [Docker](https://www.docker.com/community-edition#/download)
 - [Docker Compose](https://docs.docker.com/compose/install/) (already included with some Docker installations)
 
 *These dependencies are free to use.*
 
-## Installation
+## 🔧 Installation
 
 You can install IoT Portal using Docker containers on Linux distributions. Use the provided Bash scripts to get started quickly.
 
@@ -62,7 +62,7 @@ To seed the database with sample data, run the command below. A random generated
 
 By default, the script uses values in the `.env.staging` file for deployment. You should replace those default credentials, e.g. `DB_PASSWORD`, `REDIS_PASSWORD`, `MQTT_PASSWORD` etc.  with your own randomly generated password for production deployment.
 
-## Script Commands Reference
+## 📖 Script Commands Reference
 
 Command | Description
 ---------------------- | ------------------------------------
@@ -79,16 +79,16 @@ Command | Description
 
 *Use these commands cautiously. Some commands are intended for development purpose only.*
 
-## In-band Manageability Integration
+## ⚒️ In-band Manageability Integration
 
 Read our [Integration Guide][inbig] to learn how to integrate the IoT Portal adapter into In-band Manageability.  
 
 [inbig]: INB_INTEGRATION.md
 
-## Contributing
+## 👏 Contributing
 
 Thank you for considering contributing to the IoT Portal! PHPStorm is highly recommended if you are working on this project. Please commit any pull requests against the `master` branch.
 
-## License
+## 📄 License
 
 IoT Portal is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

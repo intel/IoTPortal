@@ -2,13 +2,13 @@
 
 IoT Portal requires In-band Manageability to be installed on the IoT devices for remote over-the-air (OTA) updates to function.
 
-## Requirements
+## 📋 Requirements
 
 - [Docker](https://www.docker.com/community-edition#/download)
 - [Docker Compose](https://docs.docker.com/compose/install/) (already included with some Docker installations)
-- [IoT Portal](/) 
+- IoT Portal
 
-## Integrating IoT Portal adapter
+## ⚒️ Integrating IoT Portal adapter
 
 Below are the steps to integrate IoT Portal adapter into In-band Manageability. The following guide assumes that you already have the In-band Manageability source code and is at the project root directory.
 
@@ -162,6 +162,7 @@ class IntelIotPortalAdapter(GenericAdapter):
             raise AdapterConfigureError(error)
 ```
 </details>
+<br />
 
 Add the following contents to the end of `constants.py` file in `cloudadapter-agent/cloudadapter/constants.py` from the repository root of INB. These are the necessary constants for the adapter.
 <details>
@@ -181,6 +182,7 @@ INTEL_IOT_PORTAL_CACERT = INTEL_MANAGEABILITY_ETC_PATH_PREFIX / \
     'public' / 'cloudadapter-agent' / 'rootCA.crt'
 ```
 </details>
+<br />
 
 Modify the `main.go` file in `fpm/inb-provision-cloud/main.go` from the repository root of INB according to the following instructions.
 <details>
