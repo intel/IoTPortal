@@ -1,8 +1,8 @@
 <h1 align="center">
-  In-band Manageability
+  In-Band Manageability
 </h1>
 
-IoT Portal requires In-band Manageability to be installed on the IoT devices for remote over-the-air (OTA) updates to function.
+IoT Portal requires In-Band Manageability to be installed on the IoT devices for remote over-the-air (OTA) updates to function.
 
 ## 📋 Requirements
 
@@ -12,7 +12,7 @@ IoT Portal requires In-band Manageability to be installed on the IoT devices for
 
 ## ⚒️ Integrating IoT Portal adapter
 
-Below are the steps to integrate IoT Portal adapter into In-band Manageability. The following guide assumes that you already have the In-band Manageability source code and is at the project root directory.
+Below are the steps to integrate IoT Portal adapter into In-Band Manageability. The following guide assumes that you already have the In-Band Manageability source code and is at the project root directory.
 
 ### INB Source Code Modification
 
