@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/intel/IoTPortal/">
+  <a href="https://github.com/intel/IoTPortal">
     IoT Portal
   </a>
 </h1>
