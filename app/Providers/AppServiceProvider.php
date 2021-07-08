@@ -8,6 +8,7 @@ use App\Jobs\SendDeviceCommandJob;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Password::defaults(function () {
+            $rule = Password::min(16);
+
+            return $this->app->isProduction()
+                ? $rule->mixedCase()->symbols()->uncompromised()
+                : $rule;
+        });
+
         Queue::failing(function (JobFailed $event) {
             $payload = $event->job->payload();
 

@@ -52,7 +52,7 @@ class SampleDatabaseSeeder extends Seeder
                 'name' => 'LAPTOP',
             ]);
 
-            for ($x = 0; $x < 3; $x++) {
+            for ($x = 0; $x < 5; $x++) {
                 $device = Device::factory()
                     ->for(Arr::random($deviceCategories))
                     ->for(Arr::random($deviceStatuses))
