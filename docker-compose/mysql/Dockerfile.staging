@@ -7,4 +7,23 @@ ARG LOCAL_GID=65534
 ENV LOCAL_UID=$LOCAL_UID
 ENV LOCAL_GID=$LOCAL_GID
 
+RUN mkdir -p /mysql/ssl
+
+RUN chown -R $LOCAL_UID:$LOCAL_GID /mysql
+
+ARG MYSQL_SSL_CA=/mysql/ssl/rootCA.crt
+ARG MYSQL_SSL_CERT=/mysql/ssl/localhost.crt
+ARG MYSQL_SSL_KEY=/mysql/ssl/localhost.key
+
+# Append SSL certificate configurations to mysql configuration file
+RUN echo "ssl_ca=${MYSQL_SSL_CA}" >>/etc/mysql/my.cnf
+
+RUN echo "ssl_cert=${MYSQL_SSL_CERT}" >>/etc/mysql/my.cnf
+
+RUN echo "ssl_key=${MYSQL_SSL_KEY}" >>/etc/mysql/my.cnf
+
+RUN echo "require_secure_transport=ON" >>/etc/mysql/my.cnf
+
 USER $LOCAL_UID:$LOCAL_GID
+
+CMD ["mysqld"]

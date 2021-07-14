@@ -36,6 +36,9 @@ services:
       dockerfile: docker-compose/mysql/Dockerfile.staging
       args:
         - MYSQL_VERSION=${MYSQL_VERSION}
+        - MYSQL_SSL_CA=${MYSQL_SSL_CA}
+        - MYSQL_SSL_CERT=${MYSQL_SSL_CERT}
+        - MYSQL_SSL_KEY=${MYSQL_SSL_KEY}
         - LOCAL_UID=${LOCAL_UID}
         - LOCAL_GID=${LOCAL_GID}
     image: inteliotportal-mysql
@@ -50,6 +53,7 @@ services:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
     volumes:
       - ../iotportaldata/mysql/data:/var/lib/mysql
+      - ../iotportaldata/ssl:/mysql/ssl
     ports:
       - '${MYSQL_PORT:-3306}:3306'
     networks:
