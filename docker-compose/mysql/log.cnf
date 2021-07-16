@@ -1,0 +1,10 @@
+[mysqld]
+log_bin=/mysql/logs/mysql-bin.log
+
+general_log=ON
+general_log_file=/mysql/logs/mysql.log
+
+slow_query_log=ON
+slow_query_log_file=/mysql/logs/mysql-slowquery.log
+
+log_error=/mysql/logs/mysql-error.log

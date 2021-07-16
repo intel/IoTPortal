@@ -12,14 +12,10 @@ import {
   CSidebarNavItem,
   CSidebarNavTitle,
 } from '@coreui/react';
-import CIcon from '@coreui/icons-react';
 
 // sidebar nav config
 import navigation from './_nav';
 import { sidebarActionTypes } from '../redux/sidebar/sidebar.types';
-
-import logoNegative from '../assets/icons/logo-negative.svg';
-import logoShort from '../assets/icons/logo-short.svg';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -30,19 +26,22 @@ const Sidebar = () => {
       show={show}
       onShowChange={(val) => dispatch({type: sidebarActionTypes.SET_SIDEBAR_SHOW, payload: val})}
     >
-      <CSidebarBrand className="d-md-down-none" to="/">
-        <CIcon
-          className="c-sidebar-brand-full"
-          title="IoT Portal"
-          height={50}
-          src={logoNegative}
-        />
-        <CIcon
-          className="c-sidebar-brand-minimized"
-          title="IoT Portal"
-          height={50}
-          src={logoShort}
-        />
+      <CSidebarBrand className="d-md-down-none text-decoration-none" to="/">
+        {/*Uncomment below if you want to enable custom logo */}
+        {/*<CIcon*/}
+        {/*  className="c-sidebar-brand-full"*/}
+        {/*  title="IoT Portal"*/}
+        {/*  height={50}*/}
+        {/*  src={logoNegative}*/}
+        {/*/>*/}
+        {/*<CIcon*/}
+        {/*  className="c-sidebar-brand-minimized"*/}
+        {/*  title="IoT Portal"*/}
+        {/*  height={50}*/}
+        {/*  src={logoShort}*/}
+        {/*/>*/}
+        <span className="c-sidebar-brand-full text-value-lg">IoT Portal</span>
+        <span className="c-sidebar-brand-minimized text-value-lg">IoT</span>
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement

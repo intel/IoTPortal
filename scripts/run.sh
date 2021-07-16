@@ -76,6 +76,7 @@ function dockerComposeVolumes() {
   createDir "logs/app"
   createDir "logs/nginx"
   createDir "logs/vernemq"
+  createDir "logs/mysql"
   createDir "mysql/data"
   createDir "nginx/sites-available"
   createDir "ssl"

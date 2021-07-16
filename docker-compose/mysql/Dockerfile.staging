@@ -7,22 +7,38 @@ ARG LOCAL_GID=65534
 ENV LOCAL_UID=$LOCAL_UID
 ENV LOCAL_GID=$LOCAL_GID
 
-RUN mkdir -p /mysql/ssl
+RUN apt update && apt install -qq -y \
+    logrotate
+
+# Clear out the local repository of retrieved package files
+RUN apt clean && rm -rf /var/lib/apt/lists/*
+
+RUN chmod u+s /usr/sbin/cron
+
+RUN mkdir -p /mysql/ssl \
+             /mysql/logs
 
 RUN chown -R $LOCAL_UID:$LOCAL_GID /mysql
+
+# Copy 'logrotate' config file
+COPY docker-compose/mysql/logrotate/mysql /etc/logrotate.d/
 
 ARG MYSQL_SSL_CA=/mysql/ssl/rootCA.crt
 ARG MYSQL_SSL_CERT=/mysql/ssl/localhost.crt
 ARG MYSQL_SSL_KEY=/mysql/ssl/localhost.key
 
 # Append SSL certificate configurations to mysql configuration file
-RUN echo "ssl_ca=${MYSQL_SSL_CA}" >>/etc/mysql/my.cnf
+RUN echo "ssl_ca=${MYSQL_SSL_CA}\n\
+ssl_cert=${MYSQL_SSL_CERT}\n\
+ssl_key=${MYSQL_SSL_KEY}\n\
+require_secure_transport=ON\n"\
+>> /etc/mysql/my.cnf
 
-RUN echo "ssl_cert=${MYSQL_SSL_CERT}" >>/etc/mysql/my.cnf
+RUN chown -R $LOCAL_UID:$LOCAL_GID /var/lib/mysql /var/run/mysqld
 
-RUN echo "ssl_key=${MYSQL_SSL_KEY}" >>/etc/mysql/my.cnf
+COPY --chown=$LOCAL_UID:$LOCAL_GID docker-compose/mysql/log.cnf /etc/mysql/conf.d
 
-RUN echo "require_secure_transport=ON" >>/etc/mysql/my.cnf
+COPY docker-compose/mysql/docker-entrypoint.sh /usr/local/bin/
 
 USER $LOCAL_UID:$LOCAL_GID
 

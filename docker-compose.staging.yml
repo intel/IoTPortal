@@ -54,6 +54,7 @@ services:
     volumes:
       - ../iotportaldata/mysql/data:/var/lib/mysql
       - ../iotportaldata/ssl:/mysql/ssl
+      - ../iotportaldata/logs/mysql:/mysql/logs
     ports:
       - '${MYSQL_PORT:-3306}:3306'
     networks:

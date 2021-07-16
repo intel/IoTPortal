@@ -1,12 +1,12 @@
 import React from 'react';
+
 import { CFooter } from '@coreui/react';
 
 const Footer = () => {
   return (
     <CFooter fixed={false}>
       <div>
-        <a href="https://www.intel.com" target="_blank" rel="noopener noreferrer">IoT Portal</a>
-        <span className="ml-1">&copy; 2021 Intel.</span>
+        <a href="#" rel="noopener noreferrer">IoT Portal</a>
       </div>
     </CFooter>
   );
