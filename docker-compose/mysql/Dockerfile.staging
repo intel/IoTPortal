@@ -40,6 +40,8 @@ COPY --chown=$LOCAL_UID:$LOCAL_GID docker-compose/mysql/log.cnf /etc/mysql/conf.
 
 COPY docker-compose/mysql/docker-entrypoint.sh /usr/local/bin/
 
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 USER $LOCAL_UID:$LOCAL_GID
 
 CMD ["mysqld"]

@@ -88,8 +88,8 @@ RUN cp .env.staging .env
 
 RUN sed -i "s~APP_HOST=.*~APP_HOST=$HOSTNAME~g" .env
 
-RUN rm public/js/*.js \
-        public/js/*.txt
+RUN rm -f public/js/*.js \
+          public/js/*.txt
 
 RUN npm ci
 
