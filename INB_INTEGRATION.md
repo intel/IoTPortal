@@ -16,9 +16,9 @@ Below are the steps to integrate IoT Portal adapter into In-Band Manageability. 
 
 ### INB Source Code Modification
 
-Create the `intel_iot_portal_adapter.py` file with the following contents in `cloudadapter-agent/cloudadapter/cloud/adapters/intel_iot_portal_adapter.py` from the repository root of INB.
+Create the `iot_portal_adapter.py` file with the following contents in `cloudadapter-agent/cloudadapter/cloud/adapters/iot_portal_adapter.py` from the repository root of INB.
 <details>
-  <summary>intel_iot_portal_adapter.py</summary>
+  <summary>iot_portal_adapter.py</summary>
 
 ```python
 # -*- coding: utf-8 -*-
@@ -26,16 +26,16 @@ Create the `intel_iot_portal_adapter.py` file with the following contents in `cl
 Adapter for communication with the cloud agent on the device. It abstracts
 creation of the cloud connection, termination, creating commands etc.
 
-Connects to Intel IoT Portal via the General Cloud MQTT client
+Connects to IoT Portal via the General Cloud MQTT client
 
 @copyright: Copyright 2020 Intel Corporation All Rights Reserved.
 @license: Intel, see licenses/LICENSE for more details.
 """
 
 from cloudadapter.exceptions import AdapterConfigureError, ClientBuildError
-from cloudadapter.constants import (INTEL_IOT_PORTAL_MQTT_PORT,
-                                    INTEL_IOT_PORTAL_ENDPOINT,
-                                    INTEL_IOT_PORTAL_CACERT,
+from cloudadapter.constants import (IOT_PORTAL_MQTT_PORT,
+                                    IOT_PORTAL_ENDPOINT,
+                                    IOT_PORTAL_CACERT,
                                     ADAPTER_CONFIG_PATH)
 from cloudadapter.cloud.cloud_builders import build_client_with_config
 from cloudadapter.cloud.adapters.generic_adapter import GenericAdapter
@@ -52,10 +52,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class IntelIotPortalAdapter(GenericAdapter):
+class IotPortalAdapter(GenericAdapter):
 
     def configure(self, unique_id, device_connection_key, device_unique_id):
-        """Configure the Intel IoT Portal adapter
+        """Configure the IoT Portal adapter
 
         @param unique_id: (str) The user unique id
         @param device_connection_key: (str) The device connection key
@@ -72,14 +72,14 @@ class IntelIotPortalAdapter(GenericAdapter):
                 "password": device_mqtt_password,
                 "hostname": hostname,
                 "client_id": device_unique_id,
-                "port": INTEL_IOT_PORTAL_MQTT_PORT
+                "port": IOT_PORTAL_MQTT_PORT
             },
             "proxy": {
                 "auto": True
             },
             "tls": {
                 "version": "TLSv1.2",
-                "certificates": str(INTEL_IOT_PORTAL_CACERT)
+                "certificates": str(IOT_PORTAL_CACERT)
             },
             "event": {
                 "pub": event_pub,
@@ -130,7 +130,7 @@ class IntelIotPortalAdapter(GenericAdapter):
         """
 
         # Set up the initial HTTP request
-        endpoint = "{}/api/devices/register".format(INTEL_IOT_PORTAL_ENDPOINT)
+        endpoint = "{}/api/devices/register".format(IOT_PORTAL_ENDPOINT)
         headers = {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8",
@@ -143,12 +143,12 @@ class IntelIotPortalAdapter(GenericAdapter):
             payload = {'unique_id': unique_id, 'device_unique_id': existing_device_unique_id}
 
             # Place a registration request for the device
-            result = requests.post(endpoint, headers=headers, json=payload, verify=INTEL_IOT_PORTAL_CACERT)
+            result = requests.post(endpoint, headers=headers, json=payload, verify=IOT_PORTAL_CACERT)
         else:
             payload = {'unique_id': unique_id}
 
             # Place a registration request for the device
-            result = requests.post(endpoint, headers=headers, json=payload, verify=INTEL_IOT_PORTAL_CACERT)
+            result = requests.post(endpoint, headers=headers, json=payload, verify=IOT_PORTAL_CACERT)
         data = result.json()
 
         # Get the device's assigned hub
@@ -171,16 +171,16 @@ Add the following contents to the end of `constants.py` file in `cloudadapter-ag
   <summary>constants.py</summary>
 
 ```python
-# ========== Intel IoT Portal configuration constants
+# ========== IoT Portal configuration constants
 
 
 # The port to which the IntelMQTTClient should connect
-INTEL_IOT_PORTAL_MQTT_PORT = 8883
+IOT_PORTAL_MQTT_PORT = 8883
 
 # Endpoint for device provisioning
-INTEL_IOT_PORTAL_ENDPOINT = "https://<your-portal-hostname>"
+IOT_PORTAL_ENDPOINT = "https://<your-portal-hostname>"
 
-INTEL_IOT_PORTAL_CACERT = INTEL_MANAGEABILITY_ETC_PATH_PREFIX / \
+IOT_PORTAL_CACERT = INTEL_MANAGEABILITY_ETC_PATH_PREFIX / \
     'public' / 'cloudadapter-agent' / 'rootCA.crt'
 ```
 </details>
@@ -192,18 +192,18 @@ Modify the `main.go` file in `fpm/inb-provision-cloud/main.go` from the reposito
 
 Add the following additional functions into the `main.go` file:
 ```go
-func configureIntelIotPortal() string {
-	println("\nConfiguring to use Intel IoT Portal...")
+func configureIotPortal() string {
+	println("\nConfiguring to use IoT Portal...")
 
 	uniqueId := promptString("Please enter your unique ID:")
 	deviceConnectionKey := promptString("Please enter the Device Connection Key:")
 	deviceUniqueId := promptString("Please enter the Device Unique Id (if available):")
 
-	return makeIntelIotPortalJson(uniqueId, deviceConnectionKey, deviceUniqueId)
+	return makeIotPortalJson(uniqueId, deviceConnectionKey, deviceUniqueId)
 }
 
-func makeIntelIotPortalJson(uniqueId string, deviceConnectionKey string, deviceUniqueId string) string {
-	return `{ "cloud": "inteliotportal", "config": { "unique_id": "` + uniqueId +
+func makeIotPortalJson(uniqueId string, deviceConnectionKey string, deviceUniqueId string) string {
+	return `{ "cloud": "iotportal", "config": { "unique_id": "` + uniqueId +
 	`", "device_connection_key": "` + deviceConnectionKey +
 	`", "device_unique_id": "` + deviceUniqueId + `" } }`
 }
@@ -211,8 +211,8 @@ func makeIntelIotPortalJson(uniqueId string, deviceConnectionKey string, deviceU
 
 Modify the `setUpCloudCredentialDirectory` function in the `main.go` file to add an additional `case` for IoT Portal selection:
 ```go
- case "Intel IoT Portal":
-		cloudConfig = configureIntelIotPortal()
+ case "IoT Portal":
+		cloudConfig = configureIotPortal()
 ```
 </details>
 
