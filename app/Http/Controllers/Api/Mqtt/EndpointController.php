@@ -209,7 +209,7 @@ class EndpointController extends Controller
                         break;
                     case 'containersCpuPercent':
                         $device->containerStatistics()->create([
-                            'container_message' => $value,
+                            'container_message' => json_encode($value),
                         ]);
                         break;
                     case 'availableMemory':
@@ -231,7 +231,7 @@ class EndpointController extends Controller
                         break;
                     case 'networkInformation':
                         $device->networkStatistics()->create([
-                            'network_message' => $value,
+                            'network_message' => json_encode($value),
                         ]);
                         break;
                     default:
