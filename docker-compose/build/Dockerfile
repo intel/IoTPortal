@@ -18,7 +18,7 @@ RUN apt update && apt install -qq -y \
 # Clear out the local repository of retrieved package files
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-RUN if [ -z ${http_proxy} ]; then \
+RUN if [ -n ${http_proxy} ]; then \
     # set pecl to using http proxy
     pear config-set http_proxy ${http_proxy} \
 ;fi
