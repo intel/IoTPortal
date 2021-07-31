@@ -124,15 +124,24 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
+            'scheme' => 'tls',
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', '6379'),
             'database' => env('REDIS_DB', '0'),
+            'context' => [
+                'stream' => [
+//                     Enable below two lines for client authentication (Mutual authentication)
+//                    'local_cert' => env('REDIS_LOCAL_CERT', '/iotportal/ca-certificates/localhost.crt'),
+//                    'local_pk' => env('REDIS_LOCAL_PK', '/iotportal/ca-certificates/localhost.key'),
+                    'cafile' => env('REDIS_CAFILE', '/iotportal/ca-certificates/rootCA.crt'),
+                ],
+            ],
         ],
 
         'cache' => [

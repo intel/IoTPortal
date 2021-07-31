@@ -19,8 +19,8 @@ services:
       - '${REDIS_HOST}'
     environment:
       CONTAINER_ROLE: app
-      MYSQL_USER: '${MYSQL_USER}'
-      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+#      MYSQL_USER: '${MYSQL_USER}'
+#      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
@@ -108,6 +108,7 @@ services:
     environment:
       DOCKER_VERNEMQ_ACCEPT_EULA: '${VERNEMQ_ACCEPT_EULA}'
       DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${VERNEMQ_ALLOW_ANONYMOUS}'
+      DOCKER_VERNEMQ_LOG__CONSOLE: 'both'
       DOCKER_VERNEMQ_SYSTREE_ENABLED: '${VERNEMQ_SYSTREE_ENABLED}'
       DOCKER_VERNEMQ_LISTENER__SSL__CAFILE: '${VERNEMQ_LISTENER_SSL_CAFILE}'
       DOCKER_VERNEMQ_LISTENER__SSL__CERTFILE: '${VERNEMQ_LISTENER_SSL_CERTFILE}'
@@ -154,6 +155,8 @@ services:
       REDIS_PASSWORD: '${DOCKER_REDIS_PASSWORD}'
     volumes:
       - ../iotportaldata/redis/data:/data
+      - ../iotportaldata/redis/conf:/usr/local/etc/redis
+      - ../iotportaldata/ca-certificates:/ca-certificates
     ports:
       - '${DOCKER_REDIS_PORT:-6379}:6379'
     networks:
@@ -172,8 +175,8 @@ services:
       - '${REDIS_HOST}'
     environment:
       CONTAINER_ROLE: horizon
-      MYSQL_USER: '${MYSQL_USER}'
-      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+#      MYSQL_USER: '${MYSQL_USER}'
+#      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app

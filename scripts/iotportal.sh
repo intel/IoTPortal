@@ -20,9 +20,9 @@ EOF
 
 # Setup
 
-SECOND_UPPPER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+SECOND_UPPER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DATA_DIR="$SECOND_UPPPER_DIR/iotportaldata"
+DATA_DIR="$SECOND_UPPER_DIR/iotportaldata"
 
 if [ $# -eq 2 ]; then
   DATA_DIR=$2

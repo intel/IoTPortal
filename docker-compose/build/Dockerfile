@@ -20,7 +20,7 @@ RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN if [ -n ${http_proxy} ]; then \
     # set pecl to using http proxy
-    pear config-set http_proxy ${http_proxy} \
+    pear config-set http_proxy ${http_proxy:-""} \
 ;fi
 
 # Install PHP extensions
@@ -93,6 +93,9 @@ RUN cp .env.staging .env
 
 RUN sed -i "s~APP_HOST=.*~APP_HOST=$HOSTNAME~g" .env
 
+RUN REDIS_PASSWORD=$(grep ^REDIS_PASSWORD=.* .env | cut -d '=' -f2) \
+    && sed -i "s~^requirepass.*~requirepass $REDIS_PASSWORD~g" /var/www/docker-compose/redis/redis.conf
+
 RUN rm -f public/js/*.js \
           public/js/*.txt
 
@@ -116,11 +119,11 @@ RUN php artisan optimize
 
 RUN mkdir -p /vernemq/log /vernemq/data /vernemq/etc
 
-COPY --from=vernemq/vernemq:latest-alpine /vernemq/log /vernemq/log
+COPY docker-compose/vernemq/log/ /vernemq/log
 
-COPY --from=vernemq/vernemq:latest-alpine /vernemq/data /vernemq/data
+COPY docker-compose/vernemq/data/ /vernemq/data
 
-COPY --from=vernemq/vernemq:latest-alpine /vernemq/etc /vernemq/etc
+COPY docker-compose/vernemq/etc/ /vernemq/etc
 
 RUN sed -i 's/\r//g' docker-compose/build/setup.sh
 

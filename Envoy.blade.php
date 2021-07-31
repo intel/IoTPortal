@@ -75,6 +75,7 @@
     mkdir -p $OUTPUT_DIR/vernemq/etc
     mkdir -p $OUTPUT_DIR/vernemq/data
     mkdir -p $OUTPUT_DIR/redis/data
+    mkdir -p $OUTPUT_DIR/redis/conf
 
 
     # Create uid.env

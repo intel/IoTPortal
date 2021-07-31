@@ -12,6 +12,8 @@ cp -n /var/www/docker-compose/nginx/nginx.conf /iotportaldata/nginx
 
 cp -rn /var/www/docker-compose/nginx/sites/. /iotportaldata/nginx/sites-available
 
+cp -rn /var/www/docker-compose/redis/redis.conf /iotportaldata/redis/conf
+
 cp -rn /var/www/storage/app/. /iotportaldata/app/storage/app
 
 cp -rn /var/www/storage/framework/. /iotportaldata/app/storage/framework

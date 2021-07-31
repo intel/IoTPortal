@@ -83,6 +83,7 @@ function dockerComposeVolumes() {
   createDir "vernemq/etc"
   createDir "vernemq/data"
   createDir "redis/data"
+  createDir "redis/conf"
 }
 
 function createDir() {

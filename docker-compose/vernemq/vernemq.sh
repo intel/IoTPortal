@@ -132,6 +132,7 @@ EOF
     echo "listener.http.metrics = ${IP_ADDRESS}:8888" >>/vernemq/etc/vernemq.conf
   fi
 
+  # Listen on container IP address assigned by Docker on startup
   if [ -n "$DOCKER_VERNEMQ_LISTENER__SSL__CAFILE" ] && [ -z "$DOCKER_VERNEMQ_LISTENER__SSL__DEFAULT" ]; then
     echo "listener.ssl.default = ${IP_ADDRESS}:8883" >>/vernemq/etc/vernemq.conf
   fi
