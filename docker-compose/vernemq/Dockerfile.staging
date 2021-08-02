@@ -22,8 +22,11 @@ ENV DOCKER_VERNEMQ_KUBERNETES_LABEL_SELECTOR="app=vernemq" \
 
 WORKDIR /vernemq
 
+# We replace the startup script with our own to inject default SSL listener configuration value with docker IP
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/vernemq/bin/vernemq.sh /usr/sbin/start_vernemq
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/vernemq/files/vm.args /vernemq/etc/vm.args
+
+RUN chmod +x /usr/sbin/start_vernemq
 
 # Copy VerneMQ binary
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/vernemq/builds/vernemq-$VERNEMQ_VERSION.alpine.tar.gz /tmp/vernemq-$VERNEMQ_VERSION.alpine.tar.gz
