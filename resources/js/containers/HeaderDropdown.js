@@ -32,7 +32,7 @@ const HeaderDropdown = ({profile, isFetchingProfile, fetchProfileStartAsync}) =>
         <CDropdownToggle className="c-header-nav-link" caret={false}>
           <div className="c-avatar">
             <CImg
-              src={'/avatars/default2.png'}
+              src={'/avatars/default.svg'}
               className="c-avatar-img"
             />
           </div>
