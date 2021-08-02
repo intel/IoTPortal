@@ -46,7 +46,7 @@ function install() {
   dockerComposeVolumes
 
   docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN \
-    -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
+                -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
 
   docker run --rm --name setup -v $DATA_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
 
