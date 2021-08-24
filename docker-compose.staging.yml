@@ -19,8 +19,6 @@ services:
       - '${REDIS_HOST}'
     environment:
       CONTAINER_ROLE: app
-#      MYSQL_USER: '${MYSQL_USER}'
-#      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
@@ -175,8 +173,6 @@ services:
       - '${REDIS_HOST}'
     environment:
       CONTAINER_ROLE: horizon
-#      MYSQL_USER: '${MYSQL_USER}'
-#      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
     volumes:
       - ../iotportaldata/env/.env:/var/www/.env
       - ../iotportaldata/app/storage/app:/var/www/storage/app
