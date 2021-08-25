@@ -34,6 +34,11 @@ ssl_key=${MYSQL_SSL_KEY}\n\
 require_secure_transport=ON\n"\
 >> /etc/mysql/my.cnf
 
+# Append TLS configurations to mysql configuration file
+RUN echo "tls_version=TLSv1.2\n\
+ssl_cipher=ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384\n"\
+>> /etc/mysql/my.cnf
+
 RUN chown -R $LOCAL_UID:$LOCAL_GID /var/lib/mysql /var/run/mysqld
 
 COPY --chown=$LOCAL_UID:$LOCAL_GID docker-compose/mysql/log.cnf /etc/mysql/conf.d
