@@ -190,9 +190,11 @@ const DeviceJobsDataTable = ({
     return (
       <>
         <Button icon="pi pi-search" className="p-button-rounded p-button-success mr-2"
-                onClick={() => history.push(`/device/jobs/${rowData.unique_id}`)}/>
+                onClick={() => history.push(`/device/jobs/${rowData.unique_id}`)}
+                tooltip="View"/>
         <Button icon="pi pi-trash" className="p-button-rounded p-button-danger mr-2"
-                onClick={() => confirmDeleteDeviceJob(rowData)}/>
+                onClick={() => confirmDeleteDeviceJob(rowData)}
+                tooltip="Delete"/>
       </>
     );
   }

@@ -113,11 +113,11 @@ const SavedCommandsDataTable = ({
     return (
       <>
         <Button icon="pi pi-search" className="p-button-rounded p-button-success mr-2"
-                onClick={() => history.push(`/commands/saved/${rowData.unique_id}`)}/>
-        {/*<Button icon="pi pi-pencil" className="p-button-rounded p-button-warning mr-2"*/}
-        {/*        onClick={() => history.push(`/commands/saved/${rowData.unique_id}/edit`)}/>*/}
+                onClick={() => history.push(`/commands/saved/${rowData.unique_id}`)}
+                tooltip="View"/>
         <Button icon="pi pi-trash" className="p-button-rounded p-button-danger mr-2"
-                onClick={() => confirmDeleteSavedCommand(rowData)}/>
+                onClick={() => confirmDeleteSavedCommand(rowData)}
+                tooltip="Delete"/>
       </>
     );
   };

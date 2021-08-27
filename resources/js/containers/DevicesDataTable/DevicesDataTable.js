@@ -205,13 +205,17 @@ const DevicesDataTable = ({
     return (
       <>
         <Button icon="pi pi-info-circle" className="p-button-rounded p-button-info mr-2"
-                onClick={() => onShowConnectDeviceModal(rowData)}/>
+                onClick={() => onShowConnectDeviceModal(rowData)}
+                tooltip="Connect"/>
         <Button icon="pi pi-search" className="p-button-rounded p-button-success mr-2"
-                onClick={() => history.push(`/devices/${rowData.unique_id}`)}/>
+                onClick={() => history.push(`/devices/${rowData.unique_id}`)}
+                tooltip="View"/>
         <Button icon="pi pi-pencil" className="p-button-rounded p-button-warning mr-2"
-                onClick={() => history.push(`/devices/${rowData.unique_id}/edit`)}/>
+                onClick={() => history.push(`/devices/${rowData.unique_id}/edit`)}
+                tooltip="Edit"/>
         <Button icon="pi pi-trash" className="p-button-rounded p-button-danger mr-2"
-                onClick={() => confirmDeleteDevice(rowData)}/>
+                onClick={() => confirmDeleteDevice(rowData)}
+                tooltip="Delete"/>
       </>
     );
   }

@@ -102,11 +102,14 @@ const DeviceCategoriesDataTable = ({
     return (
       <>
         <Button icon="pi pi-search" className="p-button-rounded p-button-success mr-2"
-                onClick={() => history.push(`/device/categories/${rowData.unique_id}`)}/>
+                onClick={() => history.push(`/device/categories/${rowData.unique_id}`)}
+                tooltip="View"/>
         <Button icon="pi pi-pencil" className="p-button-rounded p-button-warning mr-2"
-                onClick={() => history.push(`/device/categories/${rowData.unique_id}/edit`)}/>
+                onClick={() => history.push(`/device/categories/${rowData.unique_id}/edit`)}
+                tooltip="Edit"/>
         <Button icon="pi pi-trash" className="p-button-rounded p-button-danger mr-2"
-                onClick={() => confirmDeleteDeviceCategory(rowData)}/>
+                onClick={() => confirmDeleteDeviceCategory(rowData)}
+                tooltip="Delete"/>
       </>
     );
   }
