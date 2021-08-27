@@ -40,7 +40,7 @@ const Sidebar = () => {
         {/*  height={50}*/}
         {/*  src={logoShort}*/}
         {/*/>*/}
-        <span className="c-sidebar-brand-full text-value-lg text-center">
+        <span className="c-sidebar-brand-full text-value-lg text-center my-1">
           IoT Portal
           <br/>
           <small>Device Management</small>
