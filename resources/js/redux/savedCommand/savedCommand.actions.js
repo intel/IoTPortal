@@ -174,7 +174,6 @@ export const deleteSavedCommandsStartAsync = (ids, history) => {
         dispatch(deleteSavedCommandsSuccess());
         toastHelper.success(`Saved ${pluralize('command', ids.length)} deleted successfully!`, toastId);
 
-        console.log(history)
         if (history) {
           redirectToAfterToastSuccess(history, '/commands/saved')
         } else {

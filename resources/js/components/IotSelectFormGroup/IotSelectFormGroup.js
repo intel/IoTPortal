@@ -74,7 +74,6 @@ const IotSelectFormGroup = ({isHidden, isLabelHidden, label, value, onInputChang
   };
 
   const renderErrorMessage = () => {
-    console.log(meta.error)
     if (_.isString(meta.error)) {
       return meta.error;
     } else if (isValidJSONObject(meta.error) && _.has(meta.error, 'key') && _.has(meta.error, 'values')) {

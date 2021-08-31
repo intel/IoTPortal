@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 const Duration = ({style, className, hours, minutes, seconds}) => {
 
-  console.log(`hours: ${hours}, minutes: ${minutes}, seconds: ${seconds}`);
-
   const durationClass = 'd-flex flex-row';
 
   const durationHeaderClass = 'd-flex flex-column mx-3';

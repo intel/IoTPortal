@@ -18,7 +18,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         fetchUserErrorMessage: undefined,
       };
     case userActionTypes.FETCH_USER_SUCCESS:
-      console.log(action.payload)
       return {
         ...state,
         user: action.payload,
