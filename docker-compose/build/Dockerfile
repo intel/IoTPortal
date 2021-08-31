@@ -101,8 +101,6 @@ RUN rm -f public/js/*.js \
 
 RUN npm ci
 
-RUN npm rebuild node-sass
-
 RUN npm run production
 
 RUN composer install
