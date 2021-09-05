@@ -24,8 +24,6 @@ sed -i "s~LOCAL_GID=.*~LOCAL_GID=$LOCAL_GID~g" /var/www/.env
 
 cp -n /var/www/.env /iotportaldata/env
 
-cp -rn /vernemq/log/. /iotportaldata/logs/vernemq
-
 cp -rn /vernemq/data/. /iotportaldata/vernemq/data
 
 cp -rn /vernemq/etc/. /iotportaldata/vernemq/etc

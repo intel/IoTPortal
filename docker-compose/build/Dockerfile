@@ -115,9 +115,7 @@ RUN php artisan view:cache
 
 RUN php artisan optimize
 
-RUN mkdir -p /vernemq/log /vernemq/data /vernemq/etc
-
-COPY docker-compose/vernemq/log/ /vernemq/log
+RUN mkdir -p /vernemq/data /vernemq/etc
 
 COPY docker-compose/vernemq/data/ /vernemq/data
 

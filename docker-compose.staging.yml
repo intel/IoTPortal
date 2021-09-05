@@ -12,11 +12,17 @@ services:
     container_name: inteliotportal-app
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     depends_on:
-      - '${DB_HOST}'
-      - '${MQTT_HOST}'
-      - '${REDIS_HOST}'
+      - ${DB_HOST}
+      - ${MQTT_HOST}
+      - ${REDIS_HOST}
     environment:
       CONTAINER_ROLE: app
     volumes:
@@ -24,7 +30,6 @@ services:
       - ../iotportaldata/app/storage/app:/var/www/storage/app
       - ../iotportaldata/app/storage/framework:/var/www/storage/framework
       - ../iotportaldata/ca-certificates:/iotportal/ca-certificates
-      - ../iotportaldata/logs/app:/var/www/storage/logs
     networks:
       - inteliotportal
 
@@ -43,7 +48,13 @@ services:
     container_name: inteliotportal-mysql
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     environment:
       MYSQL_DATABASE: '${MYSQL_DATABASE}'
       MYSQL_USER: '${MYSQL_USER}'
@@ -52,9 +63,11 @@ services:
     volumes:
       - ../iotportaldata/mysql/data:/var/lib/mysql
       - ../iotportaldata/ssl:/mysql/ssl
-      - ../iotportaldata/logs/mysql:/mysql/logs
+    tmpfs:
+      - /tmp:uid=${LOCAL_UID},gid=${LOCAL_GID}
+      - /run/mysqld:uid=${LOCAL_UID},gid=${LOCAL_GID}
     ports:
-      - '${MYSQL_PORT:-3306}:3306'
+      - "${MYSQL_PORT:-3306}:3306"
     networks:
       - inteliotportal
 
@@ -76,17 +89,25 @@ services:
     container_name: inteliotportal-nginx
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     depends_on:
-      - '${NGINX_PHP_UPSTREAM_CONTAINER}'
+      - ${NGINX_PHP_UPSTREAM_CONTAINER}
     volumes:
       - ../iotportaldata/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ../iotportaldata/nginx/sites-available:/etc/nginx/sites-available
       - ../iotportaldata/ssl:/etc/nginx/ssl
-      - ../iotportaldata/logs/nginx:/var/log/nginx
+    tmpfs:
+      - /var/cache/nginx:uid=${LOCAL_UID},gid=${LOCAL_GID}
+      - /run:uid=${LOCAL_UID},gid=${LOCAL_GID}
     ports:
-      - '${NGINX_HTTP_PORT:-80}:8080'
-      - '${NGINX_HTTPS_PORT:-443}:8443'
+      - "${NGINX_HTTP_PORT:-80}:8080"
+      - "${NGINX_HTTPS_PORT:-443}:8443"
     networks:
       - inteliotportal
 
@@ -102,11 +123,17 @@ services:
     container_name: inteliotportal-vernemq
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     environment:
       DOCKER_VERNEMQ_ACCEPT_EULA: '${VERNEMQ_ACCEPT_EULA}'
       DOCKER_VERNEMQ_ALLOW_ANONYMOUS: '${VERNEMQ_ALLOW_ANONYMOUS}'
-      DOCKER_VERNEMQ_LOG__CONSOLE: 'both'
+      DOCKER_VERNEMQ_LOG__CONSOLE: 'console'
       DOCKER_VERNEMQ_SYSTREE_ENABLED: '${VERNEMQ_SYSTREE_ENABLED}'
       DOCKER_VERNEMQ_LISTENER__SSL__CAFILE: '${VERNEMQ_LISTENER_SSL_CAFILE}'
       DOCKER_VERNEMQ_LISTENER__SSL__CERTFILE: '${VERNEMQ_LISTENER_SSL_CERTFILE}'
@@ -129,10 +156,11 @@ services:
       - ../iotportaldata/vernemq/etc:/vernemq/etc
       - ../iotportaldata/vernemq/data:/vernemq/data
       - ../iotportaldata/ssl:/vernemq/ssl
-      - ../iotportaldata/logs/vernemq:/vernemq/log
+    tmpfs:
+      - /tmp:uid=${LOCAL_UID},gid=${LOCAL_GID}
     ports:
-      - '${VERNEMQ_TCP_PORT:-1883}:1883'
-      - '${VERNEMQ_SSL_PORT:-8883}:8883'
+      - "${VERNEMQ_TCP_PORT:-1883}:1883"
+      - "${VERNEMQ_SSL_PORT:-8883}:8883"
     networks:
       - inteliotportal
 
@@ -148,7 +176,13 @@ services:
     container_name: inteliotportal-redis
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     environment:
       REDIS_PASSWORD: '${DOCKER_REDIS_PASSWORD}'
     volumes:
@@ -156,7 +190,7 @@ services:
       - ../iotportaldata/redis/conf:/usr/local/etc/redis
       - ../iotportaldata/ca-certificates:/ca-certificates
     ports:
-      - '${DOCKER_REDIS_PORT:-6379}:6379'
+      - "${DOCKER_REDIS_PORT:-6379}:6379"
     networks:
       - inteliotportal
 
@@ -165,12 +199,18 @@ services:
     container_name: inteliotportal-horizon
     labels:
       - "com.iotportal.product=iotportal"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "10"
     restart: always
+    read_only: true
     depends_on:
       - app
-      - '${DB_HOST}'
-      - '${MQTT_HOST}'
-      - '${REDIS_HOST}'
+      - ${DB_HOST}
+      - ${MQTT_HOST}
+      - ${REDIS_HOST}
     environment:
       CONTAINER_ROLE: horizon
     volumes:
@@ -178,7 +218,6 @@ services:
       - ../iotportaldata/app/storage/app:/var/www/storage/app
       - ../iotportaldata/app/storage/framework:/var/www/storage/framework
       - ../iotportaldata/ca-certificates:/iotportal/ca-certificates
-      - ../iotportaldata/logs/app:/var/www/storage/logs
     networks:
       - inteliotportal
 
@@ -192,7 +231,7 @@ services:
 #    environment:
 #      PMA_ARBITRARY: '${PMA_ARBITRARY}'
 #    ports:
-#      - '${PMA_PORT:-8081}:80'
+#      - "${PMA_PORT:-8081}:80"
 #    networks:
 #      - inteliotportal
 

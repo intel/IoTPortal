@@ -1,3 +1,5 @@
+# Adapted from source https://github.com/vernemq/docker-vernemq/blob/master/Dockerfile.alpine
+
 FROM alpine:3.13
 
 ARG LOCAL_UID=65534
@@ -24,6 +26,7 @@ WORKDIR /vernemq
 
 # We replace the startup script with our own to inject default SSL listener configuration value with docker IP
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/vernemq/bin/vernemq.sh /usr/sbin/start_vernemq
+
 COPY --from=inteliotportal-build --chown=$LOCAL_UID:$LOCAL_GID /var/www/docker-compose/vernemq/files/vm.args /vernemq/etc/vm.args
 
 RUN chmod +x /usr/sbin/start_vernemq
@@ -38,6 +41,10 @@ RUN tar -xzvf /tmp/vernemq-$VERNEMQ_VERSION.alpine.tar.gz && \
     ln -s /vernemq/data /var/lib/vernemq && \
     ln -s /vernemq/log /var/log/vernemq
 
+# forward error and crash logs to docker log collector
+RUN ln -sf /dev/stderr /vernemq/log/error.log \
+	&& ln -sf /dev/stderr /vernemq/log/crash.log
+
 # Ports
 # 1883  MQTT
 # 8883  MQTT/SSL
@@ -50,10 +57,10 @@ RUN tar -xzvf /tmp/vernemq-$VERNEMQ_VERSION.alpine.tar.gz && \
 EXPOSE 1883 8883 8080 44053 4369 8888 \
        9100 9101 9102 9103 9104 9105 9106 9107 9108 9109
 
-
 VOLUME ["/vernemq/log", "/vernemq/data", "/vernemq/etc"]
 
 HEALTHCHECK CMD vernemq ping | grep -q pong
 
 USER $LOCAL_UID:$LOCAL_GID
+
 CMD ["start_vernemq"]
