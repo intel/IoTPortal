@@ -12,7 +12,7 @@ EOF
 
 cat <<EOF
 IoT Portal
-Copyright 2021-$(date +'%Y'), Intel Corporation
+Copyright $(date +'%Y'), Intel Corporation
 
 ===================================================
 
