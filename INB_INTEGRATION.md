@@ -74,9 +74,6 @@ class IotPortalAdapter(GenericAdapter):
                 "client_id": device_unique_id,
                 "port": IOT_PORTAL_MQTT_PORT
             },
-            "proxy": {
-                "auto": True
-            },
             "tls": {
                 "version": "TLSv1.2",
                 "certificates": str(IOT_PORTAL_CACERT)
