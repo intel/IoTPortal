@@ -8,15 +8,22 @@ use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class EventHistoryController
+ * @package App\Http\Controllers\Api
+ */
 class EventHistoryController extends Controller
 {
+    /**
+     * EventHistoryController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:view,device')->only('index');
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the event histories.
      *
      * @param Request $request
      * @param FilterDataTableEventHistoriesAction $filterDataTableEventHistoriesAction

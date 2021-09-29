@@ -11,15 +11,22 @@ use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class MetricController
+ * @package App\Http\Controllers\Api
+ */
 class MetricController extends Controller
 {
+    /**
+     * MetricController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:view,device')->only(['cpuTemperatures', 'cpuUsages', 'diskUsages', 'memoryAvailables']);
     }
 
     /**
-     * Display a listing of the resource.
+     * Return CPU temperature data for the specified device.
      *
      * @param Request $request
      * @param FilterDeviceCpuTemperaturesAction $filterDeviceCpuTemperaturesAction
@@ -34,7 +41,7 @@ class MetricController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return CPU usage data for the specified device.
      *
      * @param Request $request
      * @param FilterDeviceCpuUsagesAction $filterDeviceCpuUsagesAction
@@ -49,7 +56,7 @@ class MetricController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return disk usage data for the specified device.
      *
      * @param Request $request
      * @param FilterDeviceDiskUsagesAction $filterDeviceDiskUsagesAction
@@ -64,7 +71,7 @@ class MetricController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return memory usage data for the specified device.
      *
      * @param Request $request
      * @param FilterDeviceMemoryAvailablesAction $filterDeviceMemoryAvailablesAction

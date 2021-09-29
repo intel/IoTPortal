@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class ApiTokenController
+ * @package App\Http\Controllers\Api
+ */
 class ApiTokenController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Return user unique id and device connection key.
      *
      * @param Request $request
      * @return JsonResponse

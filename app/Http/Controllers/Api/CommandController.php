@@ -7,14 +7,23 @@ use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class CommandController
+ * @package App\Http\Controllers\Api
+ */
 class CommandController extends Controller
 {
+    /**
+     * CommandController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:view,device')->only('options');
     }
 
     /**
+     * Return available command options for users.
+     *
      * @param Request $request
      * @param Device $device
      * @return JsonResponse

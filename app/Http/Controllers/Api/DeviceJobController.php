@@ -11,11 +11,19 @@ use App\Http\Requests\DestroySelectedDeviceJobRequest;
 use App\Http\Requests\StoreDeviceJobRequest;
 use App\Http\Requests\ValidateDeviceJobFieldsRequest;
 use App\Jobs\ProcessDeviceJobJob;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class DeviceJobController
+ * @package App\Http\Controllers\Api
+ */
 class DeviceJobController extends Controller
 {
+    /**
+     * DeviceJobController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:viewAny,App\Models\DeviceJob')->only('index');
@@ -24,7 +32,7 @@ class DeviceJobController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the device job.
      *
      * @param Request $request
      * @param FilterDataTableDeviceJobsAction $filterDataTableDeviceJobsAction
@@ -38,7 +46,7 @@ class DeviceJobController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created device job in storage.
      *
      * @param StoreDeviceJobRequest $request
      * @param CreateDeviceJobAction $createDeviceJobAction
@@ -57,11 +65,12 @@ class DeviceJobController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Return the specified device job.
      *
      * @param FindDeviceJobByIdOrUniqueIdAction $findDeviceJobByIdOrUniqueIdAction
      * @param string $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(FindDeviceJobByIdOrUniqueIdAction $findDeviceJobByIdOrUniqueIdAction, string $id): JsonResponse
     {
@@ -73,7 +82,7 @@ class DeviceJobController extends Controller
     }
 
     /**
-     * Remove the specified resources from storage.
+     * Remove the specified device jobs from storage.
      *
      * @param DestroySelectedDeviceJobRequest $request
      * @param DeleteMultipleDeviceJobsAction $deleteMultipleDeviceJobsAction
@@ -87,6 +96,7 @@ class DeviceJobController extends Controller
     }
 
     /**
+     * Validate device jobs fields.
      *
      * @param ValidateDeviceJobFieldsRequest $request
      * @return JsonResponse

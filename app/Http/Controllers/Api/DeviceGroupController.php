@@ -13,12 +13,20 @@ use App\Http\Requests\StoreDeviceGroupRequest;
 use App\Http\Requests\UpdateDeviceGroupRequest;
 use App\Http\Requests\ValidateDeviceGroupFieldsRequest;
 use App\Models\DeviceGroup;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class DeviceGroupController
+ * @package App\Http\Controllers\Api
+ */
 class DeviceGroupController extends Controller
 {
+    /**
+     * DeviceGroupController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:viewAny,App\Models\DeviceGroup')->only(['index', 'options']);
@@ -28,7 +36,7 @@ class DeviceGroupController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the device group.
      *
      * @param Request $request
      * @param FilterDataTableDeviceGroupAction $filterDataTableDeviceGroupAction
@@ -42,7 +50,7 @@ class DeviceGroupController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created device group in storage.
      *
      * @param StoreDeviceGroupRequest $request
      * @param CreateDeviceGroupAction $createDeviceGroupAction
@@ -56,11 +64,12 @@ class DeviceGroupController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Return the specified device group.
      *
      * @param FindDeviceGroupByIdOrUniqueIdAction $findDeviceGroupByIdOrUniqueIdAction
      * @param string $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(FindDeviceGroupByIdOrUniqueIdAction $findDeviceGroupByIdOrUniqueIdAction, string $id): JsonResponse
     {
@@ -72,7 +81,7 @@ class DeviceGroupController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified device group in storage.
      *
      * @param UpdateDeviceGroupRequest $request
      * @param UpdateDeviceGroupAction $updateDeviceGroupAction
@@ -89,7 +98,7 @@ class DeviceGroupController extends Controller
     }
 
     /**
-     * Remove the specified resources from storage.
+     * Remove the specified device groups from storage.
      *
      * @param DestroySelectedDeviceGroupRequest $request
      * @param DeleteMultipleDeviceGroupsAction $deleteMultipleDeviceGroupsAction
@@ -103,6 +112,8 @@ class DeviceGroupController extends Controller
     }
 
     /**
+     * Return device group options for user.
+     *
      * @param Request $request
      * @return JsonResponse
      */
@@ -118,6 +129,7 @@ class DeviceGroupController extends Controller
     }
 
     /**
+     * Validate device group options for user.
      *
      * @param ValidateDeviceGroupFieldsRequest $request
      * @return JsonResponse

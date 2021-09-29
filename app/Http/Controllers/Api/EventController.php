@@ -7,14 +7,23 @@ use App\Models\Device;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class EventController
+ * @package App\Http\Controllers\Api
+ */
 class EventController extends Controller
 {
+    /**
+     * EventController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:view,device')->only('options');
     }
 
     /**
+     * Return events for the specified device.
+     *
      * @param Request $request
      * @param Device $device
      * @return JsonResponse

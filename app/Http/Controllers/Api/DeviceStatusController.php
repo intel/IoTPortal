@@ -7,9 +7,15 @@ use App\Models\DeviceStatus;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class DeviceStatusController
+ * @package App\Http\Controllers\Api
+ */
 class DeviceStatusController extends Controller
 {
     /**
+     * Return device status option based on name filter.
+     *
      * @param Request $request
      * @return JsonResponse
      */

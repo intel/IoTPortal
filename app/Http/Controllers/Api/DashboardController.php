@@ -15,10 +15,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class DashboardController
+ * @package App\Http\Controllers\Api
+ */
 class DashboardController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Return the overall statistics for users on dashboard.
      *
      * @param GetLastSevenDaysNewDeviceCountAction $getLastSevenDaysNewDeviceCountAction
      * @param GetLastSevenDaysNewDeviceGroupCountAction $getLastSevenDaysNewDeviceGroupCountAction
@@ -63,6 +67,13 @@ class DashboardController extends Controller
 
     }
 
+    /**
+     * Return CPU temperatures chart data.
+     *
+     * @param Request $request
+     * @param FilterOnlineDeviceCpuTemperaturesChartAction $filterOnlineDeviceCpuTemperaturesGraphAction
+     * @return JsonResponse
+     */
     public function cpuTemperatures(Request $request, FilterOnlineDeviceCpuTemperaturesChartAction $filterOnlineDeviceCpuTemperaturesGraphAction): JsonResponse
     {
         $cpuTemperatures = $filterOnlineDeviceCpuTemperaturesGraphAction->execute($request->user(), $request->only('timeRangeFilter'));
@@ -70,6 +81,13 @@ class DashboardController extends Controller
         return $this->apiOk(['cpuTemperatures' => $cpuTemperatures]);
     }
 
+    /**
+     * Return CPU usages chart data.
+     *
+     * @param Request $request
+     * @param FilterOnlineDeviceCpuUsagesChartAction $filterOnlineDeviceCpuUsagesChartAction
+     * @return JsonResponse
+     */
     public function cpuUsages(Request $request, FilterOnlineDeviceCpuUsagesChartAction $filterOnlineDeviceCpuUsagesChartAction): JsonResponse
     {
         $cpuUsages = $filterOnlineDeviceCpuUsagesChartAction->execute($request->user(), $request->only('timeRangeFilter'));
@@ -77,6 +95,13 @@ class DashboardController extends Controller
         return $this->apiOk(['cpuUsages' => $cpuUsages]);
     }
 
+    /**
+     * Return disk usages chart data.
+     *
+     * @param Request $request
+     * @param FilterOnlineDeviceDiskUsagesChartAction $filterOnlineDeviceDiskUsagesChartAction
+     * @return JsonResponse
+     */
     public function diskUsages(Request $request, FilterOnlineDeviceDiskUsagesChartAction $filterOnlineDeviceDiskUsagesChartAction): JsonResponse
     {
         $diskUsages = $filterOnlineDeviceDiskUsagesChartAction->execute($request->user(), $request->only('timeRangeFilter'));
@@ -84,6 +109,13 @@ class DashboardController extends Controller
         return $this->apiOk(['diskUsages' => $diskUsages]);
     }
 
+    /**
+     * Return memory usages chart data.
+     *
+     * @param Request $request
+     * @param FilterOnlineDeviceAvailableMemoriesChartAction $filterOnlineDeviceAvailableMemoriesChartAction
+     * @return JsonResponse
+     */
     public function memoryAvailables(Request $request, FilterOnlineDeviceAvailableMemoriesChartAction $filterOnlineDeviceAvailableMemoriesChartAction): JsonResponse
     {
         $availableMemories = $filterOnlineDeviceAvailableMemoriesChartAction->execute($request->user(), $request->only('timeRangeFilter'));

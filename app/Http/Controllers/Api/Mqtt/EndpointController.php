@@ -16,12 +16,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class EndpointController
+ * @package App\Http\Controllers\Api\Mqtt
+ */
 class EndpointController extends Controller
 {
+    /**
+     * Parse the VerneMQ callback and calls respective handlers.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function mqttEndpoint(Request $request): JsonResponse
     {
         $verneMqHook = $request->header('vernemq-hook');
-        Log::debug('Header vernemq-hook-> ' . $verneMqHook . ' ,MQTT request->' . json_encode($request->all()));
+        Log::debug('[MQTT Received] ' . $verneMqHook . ', Request: ' . json_encode($request->except('password')));
 
         if ($verneMqHook) {
             if ($verneMqHook === config('constants.vernemq_hook.auth_on_register')) {
@@ -42,6 +52,12 @@ class EndpointController extends Controller
         return $this->apiMqttBadRequest(['error' => 'Header vernemq-hook is empty.']);
     }
 
+    /**
+     * Handle MQTT register request.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     protected function authOnRegister(Request $request): JsonResponse
     {
         $username = $request->username;
@@ -72,6 +88,12 @@ class EndpointController extends Controller
         }
     }
 
+    /**
+     * Handle MQTT topic subscribe request.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     protected function authOnSubscribe(Request $request): JsonResponse
     {
         $username = $request->username;
@@ -108,6 +130,12 @@ class EndpointController extends Controller
             : $this->apiMqttOk('ok');
     }
 
+    /**
+     * Handle MQTT topic publish request.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     protected function authOnPublish(Request $request): JsonResponse
     {
         $username = $request->username;
@@ -132,7 +160,6 @@ class EndpointController extends Controller
 
         if (preg_match('/(devices|iotportal)\/([\w\-]+)\//', $topic, $deviceIdMatches)) {
             $extractedDeviceId = $deviceIdMatches[2];
-            Log::debug('$username-> ' . $username . '$clientId-> ' . $clientId . '$extractedDeviceId-> ' . $extractedDeviceId);
 
             if ($username === $clientId && $clientId === $extractedDeviceId) {
 
@@ -145,7 +172,6 @@ class EndpointController extends Controller
                 } elseif (preg_match('/devices\/([\w\-]+)\/properties\/reported/', $topic)) {
                     return $this->propertiesReported($device, $payload);
                 } elseif (preg_match('/iotportal\/([\w\-]+)\/methods\/res\/\?\$rid=([\d]+)/', $topic, $requestIdMatches)) {
-                    Log::debug('preg_match updateResponse run-> ' . $topic . ' ,$requestIdMatches->' . $requestIdMatches[2]);
                     return $this->updateResponse($device, $requestIdMatches[2]);
                 }
 
@@ -158,6 +184,12 @@ class EndpointController extends Controller
         return $this->apiMqttBadRequest(['error' => 'Invalid device_unique_id in topic.']);
     }
 
+    /**
+     * Handle client offline callback and update online state.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     protected function onClientOffline(Request $request): JsonResponse
     {
         if ((new CheckIfValidPortalMqttClientId)->execute($request->client_id)) {
@@ -173,6 +205,12 @@ class EndpointController extends Controller
             : $this->apiMqttInternalServerError(['error' => 'Error updating device.']);
     }
 
+    /**
+     * Handle client disconnected callback and update online state.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     protected function onClientGone(Request $request): JsonResponse
     {
         if ((new CheckIfValidPortalMqttClientId)->execute($request->client_id)) {
@@ -188,9 +226,16 @@ class EndpointController extends Controller
             : $this->apiMqttInternalServerError(['error' => 'Error updating device.']);
     }
 
+    /**
+     * Handle message events from clients.
+     *
+     * @param Device $device
+     * @param string|null $payload
+     * @return JsonResponse
+     */
     protected function messagesEvents(Device $device, ?string $payload): JsonResponse
     {
-        Log::debug('Upper $payload->' . $payload);
+        Log::debug('[MQTT Message Event] ' . $payload);
 
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
@@ -245,9 +290,16 @@ class EndpointController extends Controller
             : $this->apiMqttInternalServerError(['error' => 'Error saving device events.']);
     }
 
+    /**
+     * Handle properties reported from clients.
+     *
+     * @param Device $device
+     * @param string|null $payload
+     * @return JsonResponse
+     */
     protected function propertiesReported(Device $device, ?string $payload): JsonResponse
     {
-        Log::debug('Upper $payload->' . $payload);
+        Log::debug('[MQTT Properties Reported] ' . $payload);
 
         $eventHistory = $device->eventHistories()->create([
             'raw_data' => Helper::isJson($payload) ? $payload : json_encode($payload),
@@ -256,14 +308,10 @@ class EndpointController extends Controller
 
         $payload = json_decode($payload);
 
-        Log::debug('propertiesReported if $payload outer->' . json_encode($payload));
         if ($payload) {
-            Log::debug('propertiesReported if $payload run->' . json_encode($payload));
             foreach ($payload as $key => $value) {
-                Log::debug('propertiesReported foreach run->' . json_encode($value));
                 switch ($key) {
                     case 'totalPhysicalMemory':
-                        Log::debug('propertiesReported totalPhysicalMemory run->' . json_encode($value));
                         $device->update(['total_memory' => $value]);
                         break;
                     case 'cpuId':
@@ -301,6 +349,13 @@ class EndpointController extends Controller
             : $this->apiMqttInternalServerError(['error' => 'Error saving device properties.']);
     }
 
+    /**
+     * Update command response time for clients.
+     *
+     * @param Device $device
+     * @param int $requestId
+     * @return JsonResponse
+     */
     protected function updateResponse(Device $device, int $requestId): JsonResponse
     {
         $updateSuccess = $device->commandHistories()->find($requestId)->update(['responded_at' => now()]);

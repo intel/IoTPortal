@@ -10,12 +10,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroySelectedSavedCommandRequest;
 use App\Http\Requests\StoreSavedCommandRequest;
 use App\Http\Requests\ValidateSavedCommandFieldsRequest;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class SavedCommandController
+ * @package App\Http\Controllers\Api
+ */
 class SavedCommandController extends Controller
 {
+    /**
+     * SavedCommandController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:viewAny,App\Models\SavedCommand')->only(['index', 'options']);
@@ -24,7 +32,7 @@ class SavedCommandController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the saved commands.
      *
      * @param Request $request
      * @param FilterDataTableSavedCommandsAction $filterDataTableSavedCommandsAction
@@ -38,7 +46,7 @@ class SavedCommandController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created saved command in storage.
      *
      * @param StoreSavedCommandRequest $request
      * @param CreateSavedCommandAction $createSavedCommandAction
@@ -52,11 +60,12 @@ class SavedCommandController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Return the specified saved command.
      *
      * @param FindSavedCommandByIdOrUniqueIdAction $findSavedCommandByIdOrUniqueIdAction
      * @param string $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(FindSavedCommandByIdOrUniqueIdAction $findSavedCommandByIdOrUniqueIdAction, string $id): JsonResponse
     {
@@ -68,7 +77,7 @@ class SavedCommandController extends Controller
     }
 
     /**
-     * Remove the specified resources from storage.
+     * Remove the specified saved commands from storage.
      *
      * @param DestroySelectedSavedCommandRequest $request
      * @param DeleteMultipleSavedCommandsAction $deleteMultipleSavedCommandsAction
@@ -82,6 +91,8 @@ class SavedCommandController extends Controller
     }
 
     /**
+     * Return the saved command options available for user.
+     *
      * @param Request $request
      * @return JsonResponse
      */
@@ -97,6 +108,7 @@ class SavedCommandController extends Controller
     }
 
     /**
+     * Validate the saved command form fields.
      *
      * @param ValidateSavedCommandFieldsRequest $request
      * @return JsonResponse

@@ -13,12 +13,20 @@ use App\Http\Requests\StoreDeviceCategoryRequest;
 use App\Http\Requests\UpdateDeviceCategoryRequest;
 use App\Http\Requests\ValidateDeviceCategoryFieldsRequest;
 use App\Models\DeviceCategory;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class DeviceCategoryController
+ * @package App\Http\Controllers\Api
+ */
 class DeviceCategoryController extends Controller
 {
+    /**
+     * DeviceCategoryController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:viewAny,App\Models\DeviceCategory')->only(['index', 'options']);
@@ -28,7 +36,7 @@ class DeviceCategoryController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the device categories.
      *
      * @param Request $request
      * @param FilterDataTableDeviceCategoriesAction $filterDataTableDeviceCategoriesAction
@@ -42,7 +50,7 @@ class DeviceCategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created device category in storage.
      *
      * @param StoreDeviceCategoryRequest $request
      * @param CreateDeviceCategoryAction $createDeviceCategoryAction
@@ -56,11 +64,12 @@ class DeviceCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified device category.
      *
      * @param FindDeviceCategoryByIdOrUniqueIdAction $findDeviceCategoryByIdOrUniqueIdAction
      * @param string $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(FindDeviceCategoryByIdOrUniqueIdAction $findDeviceCategoryByIdOrUniqueIdAction, string $id): JsonResponse
     {
@@ -72,7 +81,7 @@ class DeviceCategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified device category in storage.
      *
      * @param UpdateDeviceCategoryRequest $request
      * @param UpdateDeviceCategoryAction $updateDeviceCategoryAction
@@ -89,7 +98,7 @@ class DeviceCategoryController extends Controller
     }
 
     /**
-     * Remove the specified resources from storage.
+     * Remove the specified device categories from storage.
      *
      * @param DestroySelectedDeviceCategoryRequest $request
      * @param DeleteMultipleDeviceCategoriesAction $deleteMultipleDeviceCategoriesAction
@@ -103,6 +112,8 @@ class DeviceCategoryController extends Controller
     }
 
     /**
+     * Return device category options for user.
+     *
      * @param Request $request
      * @return JsonResponse
      */
@@ -118,6 +129,7 @@ class DeviceCategoryController extends Controller
     }
 
     /**
+     * Validate device category selection.
      *
      * @param ValidateDeviceCategoryFieldsRequest $request
      * @return JsonResponse

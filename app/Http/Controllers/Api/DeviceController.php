@@ -9,6 +9,7 @@ use App\Actions\Devices\FilterDataTableDevicesAction;
 use App\Actions\Devices\FindDeviceByIdOrUniqueIdAction;
 use App\Actions\Devices\RegisterDeviceAction;
 use App\Actions\Devices\UpdateDeviceAction;
+use App\Exceptions\InvalidDeviceConnectionKeyException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DestroySelectedDevicesRequest;
 use App\Http\Requests\RegisterDeviceRequest;
@@ -17,11 +18,19 @@ use App\Http\Requests\TriggerCommandRequest;
 use App\Http\Requests\UpdateDeviceRequest;
 use App\Http\Requests\ValidateDeviceFieldsRequest;
 use App\Models\Device;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class DeviceController
+ * @package App\Http\Controllers\Api
+ */
 class DeviceController extends Controller
 {
+    /**
+     * DeviceController constructor.
+     */
     public function __construct()
     {
         $this->middleware('can:viewAny,App\Models\Device')->only('index');
@@ -32,7 +41,7 @@ class DeviceController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a listing of the devices.
      *
      * @param Request $request
      * @param FilterDataTableDevicesAction $filterDataTableDevicesAction
@@ -46,7 +55,7 @@ class DeviceController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created device in storage.
      *
      * @param StoreDeviceRequest $request
      * @param CreateDeviceAction $createDeviceAction
@@ -60,11 +69,12 @@ class DeviceController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Return the specified device.
      *
      * @param FindDeviceByIdOrUniqueIdAction $findDeviceByIdOrUniqueIdAction
      * @param string $id
      * @return JsonResponse
+     * @throws AuthorizationException
      */
     public function show(FindDeviceByIdOrUniqueIdAction $findDeviceByIdOrUniqueIdAction, string $id): JsonResponse
     {
@@ -76,7 +86,7 @@ class DeviceController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified device in storage.
      *
      * @param UpdateDeviceRequest $request
      * @param UpdateDeviceAction $updateDeviceAction
@@ -93,7 +103,7 @@ class DeviceController extends Controller
     }
 
     /**
-     * Remove the specified resources from storage.
+     * Remove the specified devices from storage.
      *
      * @param DestroySelectedDevicesRequest $request
      * @param DeleteMultipleDevicesAction $deleteMultipleDevicesAction
@@ -107,6 +117,7 @@ class DeviceController extends Controller
     }
 
     /**
+     * Validate device selection.
      *
      * @param ValidateDeviceFieldsRequest $request
      * @return JsonResponse
@@ -116,6 +127,14 @@ class DeviceController extends Controller
         return $this->apiOk();
     }
 
+    /**
+     * Handle device command and trigger command.
+     *
+     * @param TriggerCommandRequest $request
+     * @param TriggerCommandAction $triggerCommandAction
+     * @param Device $device
+     * @return JsonResponse
+     */
     public function commands(TriggerCommandRequest $request, TriggerCommandAction $triggerCommandAction, Device $device): JsonResponse
     {
         $commandHistory = $triggerCommandAction->execute($device, $request->validated());
@@ -123,6 +142,14 @@ class DeviceController extends Controller
         return $this->apiOk(['commandHistory' => $commandHistory]);
     }
 
+    /**
+     * Handle device registration request from client devices.
+     *
+     * @param RegisterDeviceRequest $request
+     * @param RegisterDeviceAction $registerDeviceAction
+     * @return JsonResponse
+     * @throws InvalidDeviceConnectionKeyException
+     */
     public function register(RegisterDeviceRequest $request, RegisterDeviceAction $registerDeviceAction): JsonResponse
     {
         $device = $registerDeviceAction->execute($request->validated(), $request->bearerToken());

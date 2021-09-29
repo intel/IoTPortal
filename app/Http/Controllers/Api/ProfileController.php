@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class ProfileController
+ * @package App\Http\Controllers\Api
+ */
 class ProfileController extends Controller
 {
     /**
-     * Display the specified resource.
+     * Return the current logged in user data.
      *
      * @param Request $request
      * @return JsonResponse
