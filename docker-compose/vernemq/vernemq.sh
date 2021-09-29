@@ -4,6 +4,9 @@
 # Copyright (C) 2021 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 #
+# Adapted from source https://github.com/vernemq/docker-vernemq/blob/master/bin/vernemq.sh
+# Added Line #141-143 to fix VerneMQ not binding to the docker container IP, to listen for MQTT over TLS connections.
+#
 
 NET_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$')
 NET_INTERFACE=${DOCKER_NET_INTERFACE:-${NET_INTERFACE}}
