@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const deviceEventHistoryActionTypes = {
   // Index
   FETCH_DEVICE_EVENT_HISTORIES_START: 'FETCH_DEVICE_EVENT_HISTORIES_START',

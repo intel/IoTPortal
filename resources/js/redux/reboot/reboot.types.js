@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const rebootActionTypes = {
   // Submit reboot
   SUBMIT_REBOOT_START: 'SUBMIT_REBOOT_START',

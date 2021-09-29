@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 export const AOTA_APP_OPTIONS = [
   {value: 'docker', label: 'docker'},
   {value: 'compose', label: 'compose'},

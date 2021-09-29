@@ -1,8 +1,11 @@
 <?php
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
 
 namespace App\Http\Requests;
 
-use App\Helpers\Helper;
 use App\Traits\ApiResponses;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;

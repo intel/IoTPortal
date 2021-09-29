@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Intel GPL-2.0-or-later" pattern="file[intel-iot-portal]:docker-compose/mysql//*" />
+</component>

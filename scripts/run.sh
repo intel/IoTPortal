@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+#
+# Copyright (C) 2021 Intel Corporation
+# SPDX-License-Identifier: AGPL-3.0-only
+#
+# Adapted UID parsing logic - Line 31-40
+#
+
 set -e
 
 # Setup

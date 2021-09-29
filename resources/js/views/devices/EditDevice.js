@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 

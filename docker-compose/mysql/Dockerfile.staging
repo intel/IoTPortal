@@ -1,3 +1,8 @@
+#
+# Copyright (C) 2021 Intel Corporation
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+
 ARG MYSQL_VERSION=latest
 FROM mysql:${MYSQL_VERSION}
 

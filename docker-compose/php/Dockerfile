@@ -1,3 +1,8 @@
+#
+# Copyright (C) 2021 Intel Corporation
+# SPDX-License-Identifier: MIT
+#
+
 # Set the base image for subsequent instructions
 FROM php:latest
 

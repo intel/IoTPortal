@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Intel AGPL-3.0-only" pattern="file:scripts/run.sh" />
+</component>

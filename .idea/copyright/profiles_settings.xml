@@ -1,7 +1,10 @@
 <component name="CopyrightManager">
   <settings>
     <module2copyright>
-      <element module="app" copyright="Intel GPL v2 or later license" />
+      <element module="Intel MIT" copyright="Intel MIT" />
+      <element module="Intel GPL-2.0-or-later" copyright="Intel GPL-2.0-or-later" />
+      <element module="Intel AGPL-3.0-only" copyright="Intel AGPL-3.0-only" />
+      <element module="Intel Apache-2.0" copyright="Intel Apache-2.0" />
     </module2copyright>
   </settings>
 </component>

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Intel BSD-2-Clause" pattern="file[intel-iot-portal]:docker-compose/nginx//*" />
+</component>

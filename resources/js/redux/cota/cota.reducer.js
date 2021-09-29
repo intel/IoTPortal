@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import cotaActionTypes from './cota.types';
 
 const INITIAL_STATE = {

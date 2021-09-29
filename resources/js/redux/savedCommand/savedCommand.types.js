@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const savedCommandActionTypes = {
   // Index
   FETCH_SAVED_COMMANDS_START: 'FETCH_SAVED_COMMANDS_START',

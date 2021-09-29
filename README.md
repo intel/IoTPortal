@@ -95,4 +95,4 @@ Thank you for considering contributing to the IoT Portal! PHPStorm is highly rec
 
 ## 📄 License
 
-IoT Portal is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+IoT Portal is open-sourced software licensed under the [GPL-2.0-or-later license](https://spdx.org/licenses/GPL-2.0-or-later.html).

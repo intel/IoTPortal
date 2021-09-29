@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import deviceEventActionTypes from './deviceEvent.types';
 import { API_ENDPOINT } from '../../data/config';
 

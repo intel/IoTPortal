@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 import debounce from 'debounce-promise';
 import toast from 'react-hot-toast';

@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useRef, useState } from 'react';
 import { Form, Formik } from 'formik';
 

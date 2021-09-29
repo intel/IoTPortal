@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const deviceMetricActionTypes = {
   // CPU temperatures
   FETCH_CPU_TEMPERATURES_START: 'FETCH_CPU_TEMPERATURES_START',

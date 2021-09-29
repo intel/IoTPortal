@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import shutdownActionTypes from './shutdown.types';
 
 const INITIAL_STATE = {

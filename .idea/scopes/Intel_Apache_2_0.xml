@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Intel Apache-2.0" pattern="file:docker-compose/vernemq/Dockerfile.staging||file:docker-compose/vernemq/vernemq.sh" />
+</component>

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#
+# Copyright (C) 2021 Intel Corporation
+# SPDX-License-Identifier: MIT
+#
+
 OUTPUT_DIR="/iotportaldata"
 ENV_DIR="$OUTPUT_DIR/env"
 UID_FILE="$ENV_DIR/uid.env"

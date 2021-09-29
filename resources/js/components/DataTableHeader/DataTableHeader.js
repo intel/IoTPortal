@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import { useCallback } from 'react';
 
 import { InputText } from 'primereact/inputtext';

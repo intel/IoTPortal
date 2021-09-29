@@ -1,3 +1,8 @@
+#
+# Copyright (C) 2021 Intel Corporation
+# SPDX-License-Identifier: MIT
+#
+
 FROM php:fpm AS inteliotportal-build
 
 # Install PHP and composer dependencies

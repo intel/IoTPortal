@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 @keyframes pulse {
     0% {
         background-color: rgba(165, 165, 165, 0.1)

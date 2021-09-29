@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const shutdownActionTypes = {
   // Submit shutdown
   SUBMIT_SHUTDOWN_START: 'SUBMIT_SHUTDOWN_START',

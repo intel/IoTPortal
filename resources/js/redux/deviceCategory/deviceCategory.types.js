@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 const deviceCategoryActionTypes = {
   // Index
   FETCH_DEVICE_CATEGORIES_START: 'FETCH_DEVICE_CATEGORIES_START',

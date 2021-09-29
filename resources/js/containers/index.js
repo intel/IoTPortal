@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import Content from './Content'
 import Footer from './Footer'
 import Header from './Header'

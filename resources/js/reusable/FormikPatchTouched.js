@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2021 Intel Corporation
+ * SPDX-License-Identifier: MIT
+ */
+
 import flatten from 'flat';
 import { useEffect } from 'react';
 import { useFormikContext } from 'formik';
