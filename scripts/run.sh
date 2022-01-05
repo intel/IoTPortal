@@ -24,6 +24,10 @@ ENV_DIR="$DATA_DIR/env"
 DOCKER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../docker-compose" && pwd)"
 PORTAL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# Ensure net-tools exists
+sudo apt-get update -qq >/dev/null
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq net-tools >/dev/null
+
 # Determine default host machine IP address
 NET_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$')
 IP_ADDRESS=$(ip -4 addr show ${NET_INTERFACE} | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | sed -e "s/^[[:space:]]*//" | head -n 1)
@@ -52,7 +56,9 @@ function install() {
 
   dockerComposeVolumes
 
-  docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN \
+  source ../.env.staging
+
+  docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN --build-arg PHP_VERSION \
                 -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
 
   docker run --rm --name setup -v $DATA_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build

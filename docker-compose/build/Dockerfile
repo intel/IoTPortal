@@ -3,7 +3,8 @@
 # SPDX-License-Identifier: MIT
 #
 
-FROM php:fpm AS inteliotportal-build
+ARG PHP_VERSION=fpm
+FROM php:${PHP_VERSION} AS inteliotportal-build
 
 # Install PHP and composer dependencies
 RUN apt update && apt install -qq -y \
