@@ -58,6 +58,8 @@ function install() {
 
   source ../.env.staging
 
+  export PHP_VERSION
+
   docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN --build-arg PHP_VERSION \
                 -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
 
