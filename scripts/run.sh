@@ -56,12 +56,10 @@ function install() {
 
   dockerComposeVolumes
 
-  source ../.env.staging
+  source ../.env.staging && export COMPOSER_VERSION PHP_VERSION
 
-  export PHP_VERSION
-
-  docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN --build-arg PHP_VERSION \
-                -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
+  docker build --no-cache -t inteliotportal-build --build-arg HOSTNAME=$DOMAIN --build-arg COMPOSER_VERSION \
+    --build-arg PHP_VERSION -f $DOCKER_DIR/build/Dockerfile $PORTAL_DIR
 
   docker run --rm --name setup -v $DATA_DIR:/iotportaldata --env-file $ENV_DIR/uid.env inteliotportal-build
 

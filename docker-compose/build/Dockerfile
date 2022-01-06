@@ -3,7 +3,12 @@
 # SPDX-License-Identifier: MIT
 #
 
+ARG COMPOSER_VERSION=latest
+
 ARG PHP_VERSION=fpm
+
+FROM composer:${COMPOSER_VERSION} AS inteliotportal-composer
+
 FROM php:${PHP_VERSION} AS inteliotportal-build
 
 # Install PHP and composer dependencies
@@ -35,8 +40,8 @@ RUN pecl install -o -f redis \
             && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip \
             && docker-php-ext-enable redis
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Get Composer
+COPY --from=inteliotportal-composer /usr/bin/composer /usr/bin/composer
 
 # Install NodeJS
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -

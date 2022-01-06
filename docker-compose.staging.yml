@@ -10,6 +10,7 @@ services:
       context: ./
       dockerfile: docker-compose/app/Dockerfile.staging
       args:
+        - COMPOSER_VERSION=${COMPOSER_VERSION}
         - PHP_VERSION=${PHP_VERSION}
         - LOCAL_UID=${LOCAL_UID}
         - LOCAL_GID=${LOCAL_GID}
