@@ -206,10 +206,13 @@ func makeIotPortalJson(uniqueId string, deviceConnectionKey string, deviceUnique
 }
 ```
 
-Modify the `setUpCloudCredentialDirectory` function in the `main.go` file to add an additional `case` for IoT Portal selection:
+Modify the `setUpCloudCredentialDirectory` function in the `main.go` file to add an additional `selection` and `case` for IoT Portal selection:
 ```go
- case "IoT Portal":
-		cloudConfig = configureIotPortal()
+selection := promptSelect("Please choose a cloud service to use.",
+    []string{"Telit Device Cloud", "Azure IoT Central", "ThingsBoard", "IoT Portal", "Custom"})
+
+case "IoT Portal":
+    cloudConfig = configureIotPortal()
 ```
 </details>
 

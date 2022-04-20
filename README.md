@@ -26,6 +26,12 @@ You can install IoT Portal using Docker containers on Linux distributions. Use t
 
 ### Linux
 
+Clone the repository to your system:
+
+```shell
+git clone https://github.com/intel/IoTPortal
+```
+
 Navigate to the `scripts` directory and give it permission to execute:
 
 ```shell
