@@ -29,8 +29,7 @@ sudo apt-get update -qq >/dev/null
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq net-tools >/dev/null
 
 # Determine default host machine IP address
-NET_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$')
-IP_ADDRESS=$(ip -4 addr show ${NET_INTERFACE} | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | sed -e "s/^[[:space:]]*//" | head -n 1)
+IP_ADDRESS=$(ip route get 1 | awk '{print $7}'| head -1)
 
 # Initialize UID/GID which will be used to run services from within containers
 if ! grep -q "^LOCAL_UID=" $ENV_DIR/uid.env 2>/dev/null || ! grep -q "^LOCAL_GID=" $ENV_DIR/uid.env 2>/dev/null; then
