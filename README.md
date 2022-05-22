@@ -15,7 +15,7 @@ IoT Portal is a web application that interacts with Intel In-Band Manageability 
 
 ## 📋 Requirements
 
-- [Docker Engine 19.03](https://docs.docker.com/engine/install/ubuntu/)
+- [Docker Engine 20.10](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker Compose 1.29.2](https://docs.docker.com/compose/install/) (already included with some Docker installations)
 
 *These dependencies are free to use.*
@@ -26,11 +26,11 @@ You can install IoT Portal using Docker containers on Linux distributions. Use t
 
 ### Linux
 
-Install Docker Engine 19.03
+Install Docker Engine 20.10
 
 ```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
-sudo VERSION=19.03 sh get-docker.sh
+sudo VERSION=20.10 sh get-docker.sh
 ```
 
 Install Docker Compose 1.29.2
