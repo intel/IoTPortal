@@ -33,6 +33,14 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo VERSION=20.10 sh get-docker.sh
 ```
 
+Optionally, manage Docker as a non-root user by following the instructions at [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+```shell
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
 Install Docker Compose 1.29.2
 
 ```shell
