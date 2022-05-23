@@ -215,6 +215,20 @@ case "IoT Portal":
     cloudConfig = configureIotPortal()
 ```
 </details>
+<br />
+
+Modify the `adapter_factory.py` file in `cloudadapter-agent/cloudadapter/cloud/adapter_factory.py` from the repository root of INB according to the following instructions.
+<details>
+  <summary>adapter_factory.py</summary>
+
+Import the `IotPortalAdapter` module and modify the `get_adapter` function in the `adapter_factory.py` file to add a case for IoT Portal adapter:
+```python
+from cloudadapter.cloud.adapters.iot_portal_adapter import IotPortalAdapter
+
+elif cloud == "iotportal":
+    adapter = IotPortalAdapter()  # type: ignore
+```
+</details>
 
 ### Adding Self-Signed CA Certificate to Build
 If you are using self-signed CA certificate, follow the step below to add the certificate to the build.
