@@ -25,7 +25,7 @@
         "formik": "^2.2.6",
         "i18next": "^20.3.1",
         "i18next-browser-languagedetector": "^6.1.1",
-        "moment": "^2.29.1",
+        "moment": "^2.29.4",
         "pluralize": "^8.0.0",
         "primeflex": "^2.0.0",
         "primeicons": "^4.1.0",
